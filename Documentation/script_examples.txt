@@ -1,0 +1,55 @@
+Keywords: are case insensitive meaning, Arena12 is the same as areNA12 or ARENA12
+	ArenaX 					[arena1, arena12, arena10] Means that everything find inside this script block will be related to this specific arena
+	eventual_stream 		[] if there are few enemies, new will be created [definition of few is hard coded for time being]
+	[0-15] timeframe		[0-15] [16-21] during this timeframe, the following codeblock will be executed
+>>Arena1
+[0-15]
+25, Melee
+37, Range
+
+[15-30]
+40, Melee
+40, Range
+
+[35-80]
+80, Melee
+80, Range
+
+[0-90]
+>>eventual_stream
+2, Melee
+2, Random
+<<eventual_stream
+<<Arena1
+
+<root>
+	<Arena1>
+		<command timeframe="0-10">
+			<Melee no="35" />
+			<Range no="35" />
+		</command>
+		<command timeframe="10-35">
+			<Melee no="5" />
+			<Range no="15" />
+		</command>
+		<command timeframe="0-90">
+			<eventual_stream Melee="2" Range="2" />
+		</command>
+	</Arena1>
+	<Arena2>
+		<command timeframe="0-5">
+			<Melee no="35">
+			<Range no="5">
+		</command>
+		<command timeframe="5-35">
+			<Melee no="5" />
+			<Range no="40" />
+		</command>
+		<command timeframe="10-14">
+			<Melee no="10" />
+		</command>
+		<command timeframe="45-70">
+			<Melee no="50" />
+			<Range no="50" />
+		</command>	
+	</Arena2>
