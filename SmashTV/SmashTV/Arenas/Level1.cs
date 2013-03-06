@@ -9,9 +9,9 @@ namespace MesserSmash.Arenas {
         private float _timestampLastSpawnedWave;
         private float _internalWaveTimer;
         private int _spawnCounter;
-        private const int MAX_ENEMIES_PER_WAVE = 8;
-        private const float TIME_BETWEEN_WAVES = 3;
-        private const float BETWEEN_EACH_UNIQUE_SPAWN_CD = 0.15f;
+        private const int MAX_ENEMIES_PER_WAVE = 30;
+        private const float TIME_BETWEEN_WAVES = 2.67f;
+        private const float BETWEEN_EACH_UNIQUE_SPAWN_CD = 0.055f;
 
         public Level1() {
             _secondsLeft = 60;
@@ -22,7 +22,11 @@ namespace MesserSmash.Arenas {
 
             list.Add(new Spawnpoint(new Rectangle(Bounds.Center.X - 140, Bounds.Bottom - 60, 60, 60),
                                     TextureManager.getArenaTexture()));
-            list.Add(new Spawnpoint(new Rectangle(Bounds.Center.X + 80, Bounds.Bottom - 60, 60, 60),
+            list.Add(new Spawnpoint(new Rectangle(Bounds.Center.X + 100, Bounds.Top, 60, 60),
+                                    TextureManager.getArenaTexture()));
+            list.Add(new Spawnpoint(new Rectangle(Bounds.Left, Bounds.Center.Y, 60, 60),
+                                    TextureManager.getArenaTexture()));
+            list.Add(new Spawnpoint(new Rectangle(Bounds.Right - 60, Bounds.Center.Y, 60, 60),
                                     TextureManager.getArenaTexture()));
             return list;
         }

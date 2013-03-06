@@ -43,7 +43,7 @@ namespace MesserSmash {
             _circleTexture = _content.Load<Texture2D>("circle 64x64");
             _defaultTexture = _content.Load<Texture2D>("default");
             _defaultFont = _content.Load<SpriteFont>("Arial 12");
-            TextureManager._player = _circleTexture;
+            TextureManager._player = _content.Load<Texture2D>("player64x64");
             TextureManager._shot = _circleTexture;
             TextureManager._arena = _defaultTexture;
             TextureManager._enemy = _circleTexture;

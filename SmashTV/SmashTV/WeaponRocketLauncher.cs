@@ -6,11 +6,11 @@ using Microsoft.Xna.Framework;
 
 namespace MesserSmash {
     public class WeaponRocketLauncher {
-        private const float SHOT_GENERATION_CD = 1.140f;
+        private const float SHOT_GENERATION_CD = 6.140f;
         private float _timeSinceLastShot;
 
         public WeaponRocketLauncher() {
-            _timeSinceLastShot = 0;
+            _timeSinceLastShot = SHOT_GENERATION_CD;
         }
 
         public void update(float gametime) {
