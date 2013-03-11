@@ -9,16 +9,16 @@ namespace MesserSmash.Arenas {
         private float _timestampLastSpawnedWave;
         private float _internalWaveTimer;
         private int _spawnCounter;
-        private const int MAX_ENEMIES_PER_WAVE = 6;
-        private const float TIME_BETWEEN_WAVES = 4;
-        private const float BETWEEN_EACH_UNIQUE_SPAWN_CD = 0.15f;
+        private const int ID_LEVEL2_MAX_ENEMIES_PER_WAVE = 6;
+        private const float ID_LEVEL2_TIME_BETWEEN_WAVES = 4;
+        private const float ID_LEVEL2_BETWEEN_EACH_UNIQUE_SPAWN_CD = 0.15f;
 
         public Level2() {
             _secondsLeft = 60;
         }
 
         public override void startLevel() {
-            _timestampLastSpawnedWave = TIME_BETWEEN_WAVES - 3;
+            _timestampLastSpawnedWave = ID_LEVEL2_TIME_BETWEEN_WAVES - 3;
             EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Level 2");
 
         }
@@ -33,13 +33,13 @@ namespace MesserSmash.Arenas {
 
         protected override void custUpdate(float gametime) {
             _timestampLastSpawnedWave += gametime;
-            if (_timestampLastSpawnedWave >= TIME_BETWEEN_WAVES) {
+            if (_timestampLastSpawnedWave >= ID_LEVEL2_TIME_BETWEEN_WAVES) {
                 _internalWaveTimer += gametime;
-                if (_internalWaveTimer >= BETWEEN_EACH_UNIQUE_SPAWN_CD && _spawnCounter < MAX_ENEMIES_PER_WAVE) {
+                if (_internalWaveTimer >= ID_LEVEL2_BETWEEN_EACH_UNIQUE_SPAWN_CD && _spawnCounter < ID_LEVEL2_MAX_ENEMIES_PER_WAVE) {
                     getRandomSpawnpoint().generateRangedEnemies(1);
                     _internalWaveTimer = 0;
                     _spawnCounter++;
-                } else if (_spawnCounter >= MAX_ENEMIES_PER_WAVE) {
+                } else if (_spawnCounter >= ID_LEVEL2_MAX_ENEMIES_PER_WAVE) {
                     _spawnCounter = 0;
                     _internalWaveTimer = 0;
                     _timestampLastSpawnedWave = 0;

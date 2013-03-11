@@ -18,7 +18,7 @@ namespace MesserSmash.Arenas {
         private Rectangle _bounds;
         private List<Spawnpoint> _spawnPoints;
         private float _timeSinceLastCreation;
-        private const float ENEMY_CREATION_CD = 0.65f;
+        private const float ARENA_ENEMY_CREATION_CD = 0.65f;
         private List<LootType> _lootTable;
         private List<Loot> _activeLoot;
         protected float _secondsLeft;
@@ -184,7 +184,7 @@ namespace MesserSmash.Arenas {
         }
 
         protected bool canCreateEnemies() {
-            if (TimeSinceLastCreation < ENEMY_CREATION_CD)
+            if (TimeSinceLastCreation < ARENA_ENEMY_CREATION_CD)
                 return false;
 
             return true;

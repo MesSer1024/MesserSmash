@@ -152,6 +152,7 @@
     <Compile Include="Modules\BoundaryChecker.cs" />
     <Compile Include="Modules\Logger.cs" />
     <Compile Include="Modules\PathFinder.cs" />
+    <Compile Include="Modules\SmashDb.cs" />
     <Compile Include="NormalState.cs" />
     <Compile Include="PerformanceUtil.cs" />
     <Compile Include="PistolShot.cs" />

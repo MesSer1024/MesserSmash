@@ -9,16 +9,16 @@ namespace MesserSmash.Arenas {
          private float _timestampLastSpawnedWave;
         private float _internalWaveTimer;
         private int _spawnCounter;
-        private const int MAX_ENEMIES_PER_WAVE = 9;
-        private const float TIME_BETWEEN_WAVES = 6;
-        private const float BETWEEN_EACH_UNIQUE_SPAWN_CD = 0.15f;
+        private const int ID_LEVEL3_MAX_ENEMIES_PER_WAVE = 9;
+        private const float ID_LEVEL3_TIME_BETWEEN_WAVES = 6;
+        private const float ID_LEVEL3_BETWEEN_EACH_UNIQUE_SPAWN_CD = 0.15f;
 
         public Level3() {
             _secondsLeft = 60;
         }
 
         public override void startLevel() {
-            _timestampLastSpawnedWave = TIME_BETWEEN_WAVES - 3;
+            _timestampLastSpawnedWave = ID_LEVEL3_TIME_BETWEEN_WAVES - 3;
             EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Level 3");
 
         }
@@ -37,9 +37,9 @@ namespace MesserSmash.Arenas {
 
         protected override void custUpdate(float gametime) {
             _timestampLastSpawnedWave += gametime;
-            if (_timestampLastSpawnedWave >= TIME_BETWEEN_WAVES) {
+            if (_timestampLastSpawnedWave >= ID_LEVEL3_TIME_BETWEEN_WAVES) {
                 _internalWaveTimer += gametime;
-                if (_internalWaveTimer >= BETWEEN_EACH_UNIQUE_SPAWN_CD && _spawnCounter  < MAX_ENEMIES_PER_WAVE) {
+                if (_internalWaveTimer >= ID_LEVEL3_BETWEEN_EACH_UNIQUE_SPAWN_CD && _spawnCounter  < ID_LEVEL3_MAX_ENEMIES_PER_WAVE) {
                     if (Utils.randomBool()) {
                         getRandomSpawnpoint().generateRangedEnemies(1);
                         getRandomSpawnpoint().generateSecondaryRangedEnemies(1);
@@ -49,7 +49,7 @@ namespace MesserSmash.Arenas {
                     }
                     _internalWaveTimer = 0;
                     _spawnCounter += 2;
-                } else if (_spawnCounter >= MAX_ENEMIES_PER_WAVE) {
+                } else if (_spawnCounter >= ID_LEVEL3_MAX_ENEMIES_PER_WAVE) {
                     _spawnCounter = 0;
                     _internalWaveTimer = 0;
                     _timestampLastSpawnedWave = 0;
