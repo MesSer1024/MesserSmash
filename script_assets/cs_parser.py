@@ -17,7 +17,7 @@ values = []
 m = re.compile(".*(?P<key>ID_[\w]*)\s*=\s*(?P<value>[\w.]*)")
 
 def main():
-    showFile("../SmashTV/SmashTV/SmashTV/Arenas/Level1.cs")
+    showFile("../SmashTV/SmashTV/Arenas/Level1.cs")
     for i, v in zip(keys,values):
         print("{0}\t\t=\t\t{1}".format(i,v))
     with open('workfile', 'w+') as output:
