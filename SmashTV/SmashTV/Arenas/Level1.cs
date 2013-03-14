@@ -10,13 +10,9 @@ namespace MesserSmash.Arenas {
         private float _timestampLastSpawnedWave;
         private float _internalWaveTimer;
         private int _spawnCounter;
-        private const int ID_LEVEL1_MAX_ENEMIES_PER_WAVE = 30;
-        private const float ID_LEVEL1_TIME_BETWEEN_WAVES = 2.67f;
-        private const float ID_LEVEL1_BETWEEN_EACH_UNIQUE_SPAWN_CD = 0.055f;
 
         public Level1() {
             _secondsLeft = 60;
-
         }
 
         protected override List<Spawnpoint> createSpawnpoints() {
@@ -36,18 +32,18 @@ namespace MesserSmash.Arenas {
 
         public override void startLevel() {
             EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Level 1");
-            _timestampLastSpawnedWave = ID_LEVEL1_TIME_BETWEEN_WAVES > 1 ? ID_LEVEL1_TIME_BETWEEN_WAVES : 0;
+            _timestampLastSpawnedWave = DataDefines.ID_LEVEL1_TIME_BETWEEN_WAVES > 1 ? DataDefines.ID_LEVEL1_TIME_BETWEEN_WAVES : 0;
         }
 
         protected override void custUpdate(float gametime) {
             _timestampLastSpawnedWave += gametime;
-            if (_timestampLastSpawnedWave >= ID_LEVEL1_TIME_BETWEEN_WAVES) {
+            if (_timestampLastSpawnedWave >= DataDefines.ID_LEVEL1_TIME_BETWEEN_WAVES) {
                 _internalWaveTimer += gametime;
-                if (_internalWaveTimer >= ID_LEVEL1_BETWEEN_EACH_UNIQUE_SPAWN_CD && _spawnCounter < ID_LEVEL1_MAX_ENEMIES_PER_WAVE) {
+                if (_internalWaveTimer >= DataDefines.ID_LEVEL1_BETWEEN_EACH_UNIQUE_SPAWN_CD && _spawnCounter < DataDefines.ID_LEVEL1_MAX_ENEMIES_PER_WAVE) {
                     getRandomSpawnpoint().generateMeleeEnemies(1);
                     _internalWaveTimer = 0;
                     _spawnCounter++;
-                } else if (_spawnCounter >= ID_LEVEL1_MAX_ENEMIES_PER_WAVE) {
+                } else if (_spawnCounter >= DataDefines.ID_LEVEL1_MAX_ENEMIES_PER_WAVE) {
                     _spawnCounter = 0;
                     _internalWaveTimer = 0;
                     _timestampLastSpawnedWave = 0;

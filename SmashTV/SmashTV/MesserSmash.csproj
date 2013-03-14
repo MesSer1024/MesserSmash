@@ -150,6 +150,7 @@
     <Compile Include="Enemies\IEnemy.cs" />
     <Compile Include="InfoWindow.cs" />
     <Compile Include="Modules\BoundaryChecker.cs" />
+    <Compile Include="Modules\DataDefines.cs" />
     <Compile Include="Modules\Logger.cs" />
     <Compile Include="Modules\PathFinder.cs" />
     <Compile Include="Modules\SmashDb.cs" />
