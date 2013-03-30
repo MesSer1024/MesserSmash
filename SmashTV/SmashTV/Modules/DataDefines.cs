@@ -5,6 +5,28 @@ using System.Text;
 namespace MesserSmash.Modules {
 	public static class DataDefines {
 		private static float getValue(int hash) { return (float)SmashDb.get(hash); }
+		private const int _ID_MELEE_ENEMY_DAMAGE = -1054125204;
+		public static float ID_MELEE_ENEMY_DAMAGE { get { return getValue(_ID_MELEE_ENEMY_DAMAGE); } }
+		private const int _ID_MELEE_ENEMY_RADIUS = 1496791282;
+		public static float ID_MELEE_ENEMY_RADIUS { get { return getValue(_ID_MELEE_ENEMY_RADIUS); } }
+		private const int _ID_RUSHER_DAMAGE = -1847579432;
+		public static float ID_RUSHER_DAMAGE { get { return getValue(_ID_RUSHER_DAMAGE); } }
+		private const int _ID_RUSHER_RADIUS = -1895701796;
+		public static float ID_RUSHER_RADIUS { get { return getValue(_ID_RUSHER_RADIUS); } }
+		private const int _ID_RUSHER_ATTACK_RADIUS = -1561555024;
+		public static float ID_RUSHER_ATTACK_RADIUS { get { return getValue(_ID_RUSHER_ATTACK_RADIUS); } }
+		private const int _ID_RANGE_DAMAGE = -1261140252;
+		public static float ID_RANGE_DAMAGE { get { return getValue(_ID_RANGE_DAMAGE); } }
+		private const int _ID_RANGE_RADIUS = 346120256;
+		public static float ID_RANGE_RADIUS { get { return getValue(_ID_RANGE_RADIUS); } }
+		private const int _ID_RANGE_ATTACK_RADIUS = -525028114;
+		public static float ID_RANGE_ATTACK_RADIUS { get { return getValue(_ID_RANGE_ATTACK_RADIUS); } }
+		private const int _ID_RANGE2_DAMAGE = -1300324153;
+		public static float ID_RANGE2_DAMAGE { get { return getValue(_ID_RANGE2_DAMAGE); } }
+		private const int _ID_RANGE2_RADIUS = -1029815875;
+		public static float ID_RANGE2_RADIUS { get { return getValue(_ID_RANGE2_RADIUS); } }
+		private const int _ID_RANGE2_ATTACK_RADIUS = 1549272162;
+		public static float ID_RANGE2_ATTACK_RADIUS { get { return getValue(_ID_RANGE2_ATTACK_RADIUS); } }
 		private const int _ID_LEVEL1_MAX_ENEMIES_PER_WAVE = -1846210081;
 		public static float ID_LEVEL1_MAX_ENEMIES_PER_WAVE { get { return getValue(_ID_LEVEL1_MAX_ENEMIES_PER_WAVE); } }
 		private const int _ID_LEVEL1_TIME_BETWEEN_WAVES = -1883733526;

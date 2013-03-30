@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MesserSmash.Behaviours;
+using MesserSmash.Modules;
 
 namespace MesserSmash.Enemies {
 
@@ -12,16 +13,16 @@ namespace MesserSmash.Enemies {
 
         public MeleeStabber(Vector2 position, Player player) {
             Position = position;
-            Damage = 20;
+            Damage = DataDefines.ID_RUSHER_DAMAGE;
             _target = player;
         }
 
         protected override float _getRadius() {
-            return 8;
+            return DataDefines.ID_RUSHER_RADIUS;
         }
 
         protected override float _getAttackRadius() {
-            return 140;
+            return DataDefines.ID_RUSHER_ATTACK_RADIUS;
         }
 
         protected override Texture2D _getTexture() {

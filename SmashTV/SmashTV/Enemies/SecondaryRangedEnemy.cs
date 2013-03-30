@@ -1,21 +1,23 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MesserSmash.Behaviours;
+using MesserSmash.Modules;
 
 namespace MesserSmash.Enemies {
     public class SecondaryRangedEnemy : EnemyBase {
+
         public SecondaryRangedEnemy(Vector2 position, Player player) {
             Position = position;
             _target = player;
-            Damage = 10;
+            Damage = DataDefines.ID_RANGE2_DAMAGE;
         }
 
         protected override float _getRadius() {
-            return 15;
+            return DataDefines.ID_RANGE2_RADIUS;
         }
 
         protected override float _getAttackRadius() {
-            return 140;
+            return DataDefines.ID_RANGE2_ATTACK_RADIUS;
         }
 
         protected override Texture2D _getTexture() {

@@ -24,6 +24,7 @@ namespace MesserSmash.GUI {
             addDebugButton("[M] Drop Money");
             addDebugButton("[Del] Force GC & Output");
 
+            addDebugButton("[Pause/Break] Pause the game");
             addDebugButton("[Tab] Reload Database-file");
             addDebugButton("[F1] Start Level1");
             addDebugButton("[F2] Start Level2");

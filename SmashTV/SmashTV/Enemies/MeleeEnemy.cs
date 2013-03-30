@@ -5,18 +5,19 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using MesserSmash.Behaviours;
+using MesserSmash.Modules;
 
 namespace MesserSmash.Enemies {
     public class MeleeEnemy : EnemyBase {
 
         public MeleeEnemy(Vector2 position, Player player) {
             Position = position;
-            Damage = 20;
+            Damage = DataDefines.ID_MELEE_ENEMY_DAMAGE;
             _target = player;
         }
 
         protected override float _getRadius() {
-            return 11;
+            return DataDefines.ID_MELEE_ENEMY_RADIUS;
         }
 
         protected override Texture2D _getTexture() {

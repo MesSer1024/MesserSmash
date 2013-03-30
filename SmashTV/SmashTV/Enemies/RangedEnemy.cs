@@ -5,21 +5,22 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MesserSmash.Behaviours;
+using MesserSmash.Modules;
 
 namespace MesserSmash.Enemies {
     class RangedEnemy : EnemyBase {
         public RangedEnemy(Vector2 position, Player player) {
             Position = position;
             _target = player;
-            Damage = 7;
+            Damage = DataDefines.ID_RANGE_DAMAGE;
         }
 
         protected override float _getRadius() {
-            return 11;
+            return DataDefines.ID_RANGE_RADIUS;
         }
 
         protected override float _getAttackRadius() {
-            return 120;
+            return DataDefines.ID_RANGE_ATTACK_RADIUS;
         }
 
         protected override Texture2D _getTexture() {
