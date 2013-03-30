@@ -27,6 +27,8 @@ namespace MesserSmash {
         private int _currentLevelIndex;
         private float _timeInState;
         private bool _waitingForTimer;
+        private DebugGuiOverlay _debugGui;
+        private bool _paused;
 
         public SmashTV_main(Microsoft.Xna.Framework.Content.ContentManager Content, Microsoft.Xna.Framework.GraphicsDeviceManager graphics, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Game game) {
             _content = Content;
@@ -37,11 +39,7 @@ namespace MesserSmash {
         }
 
         private void init() {
-            DirectoryInfo dir = new DirectoryInfo(System.Environment.CurrentDirectory);
-            using (StreamReader sr = new StreamReader("./database.txt")) {
-                SmashDb.populateJson(sr);
-            }
-            //SmashDb.populate(
+            reloadDatabase();
 
             _graphics.PreferredBackBufferWidth = 1440;
             _graphics.PreferredBackBufferHeight = 800;
@@ -69,9 +67,20 @@ namespace MesserSmash {
             _currentLevelIndex = 1;
             _waitingForTimer = true;
             _timeInState = 0;
+
+            _debugGui = new DebugGuiOverlay(new Rectangle(40, 40, 850, 600));
+        }
+
+        private void reloadDatabase() {
+            DirectoryInfo dir = new DirectoryInfo(System.Environment.CurrentDirectory);
+            using (StreamReader sr = new StreamReader("./database.txt")) {
+                SmashDb.populateJson(sr);
+            }
         }
 
         private void launchArena(int level) {
+            reloadDatabase();
+            _paused = false;
             Arena arena = null;
             _waitingForTimer = false;
             switch(level) {
@@ -106,8 +115,28 @@ namespace MesserSmash {
         }
 
         public void update(GameTime time) {
+            
+            handleGlobalInput();
+            //handle pause
+            if (_paused) {
+                SmashTVSystem.Instance.Arena.checkDebugInput();
+                return;
+            }
+
             float deltaTime = (float)time.ElapsedGameTime.TotalSeconds;
             _timeInState += deltaTime;
+            if (_waitingForTimer && _timeInState >= 5) {
+                _waitingForTimer = false;
+                launchArena(_currentLevelIndex);
+            }
+            _smashTvSystem.update(deltaTime);
+        }
+
+        private void handleGlobalInput() {
+            if (Utils.isNewKeyPress(Keys.Delete)) {
+                Logger.flush();
+                GC.Collect();
+            }
             if (Utils.isNewKeyPress(Keys.F1)) {
                 launchArena(1);
             } else if (Utils.isNewKeyPress(Keys.F2)) {
@@ -121,17 +150,21 @@ namespace MesserSmash {
             } else if (Utils.isNewKeyPress(Keys.F10)) {
                 launchArena(10);
             }
-            Utils.update(); 
-            _smashTvSystem.update(deltaTime);
-            if (_waitingForTimer && _timeInState >= 5) {
-                _waitingForTimer = false;
-                launchArena(_currentLevelIndex);
+            if (Utils.isNewKeyPress(Keys.Tab)) {
+                reloadDatabase();
+                _paused = false;
             }
+            if (Utils.isNewKeyPress(Keys.Pause)) {
+                _paused = !_paused;
+            }
+
+            Utils.tickInputStates();
         }
 
         public void draw(GameTime time) {
             _smashTvSystem.draw(_spriteBatch);
             InfoWindow.draw(_spriteBatch);
+            _debugGui.draw(_spriteBatch);
         }
     }
 }

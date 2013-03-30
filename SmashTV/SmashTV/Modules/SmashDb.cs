@@ -17,6 +17,8 @@ namespace MesserSmash.Modules {
             _db = new Dictionary<int, double>();
             while (!sr.EndOfStream) {
                 var line = sr.ReadLine().Split('|');
+                if (line.Length != 3)
+                    continue;
                 int hashkey = Int32.Parse(line[0]);
                 //double value = Double.Parse(line[2]);
                 double value = Double.Parse(line[2], NumberStyles.Float, CultureInfo.InvariantCulture);

@@ -91,11 +91,8 @@ namespace MesserSmash.Arenas {
             onUpdate(gametime);
         }
 
-        private void onUpdate(float gametime) {
+        public void checkDebugInput() {
             if (_state == States.Running) {
-                foreach (var spawnPoint in _spawnPoints) {
-                    spawnPoint.update(gametime);
-                }
                 //debug                
                 if (Utils.isNewKeyPress(Keys.G)) {
                     createEnemies(10);
@@ -113,6 +110,15 @@ namespace MesserSmash.Arenas {
                     dropLoot(LootType.Money, Utils.randomPositionWithinRectangle(_bounds));
                 }
                 //--
+            }
+        }
+
+        private void onUpdate(float gametime) {
+            checkDebugInput();
+            if (_state == States.Running) {
+                foreach (var spawnPoint in _spawnPoints) {
+                    spawnPoint.update(gametime);
+                }
                 foreach (var loot in getActiveLoot()) {
                     loot.update(gametime);
                 }

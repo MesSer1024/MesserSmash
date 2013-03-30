@@ -133,6 +133,7 @@
     <Compile Include="Enemies\IEntity.cs" />
     <Compile Include="Enemies\MeleeStabber.cs" />
     <Compile Include="Enemies\SecondaryRangedEnemy.cs" />
+    <Compile Include="GUI\DebugGuiOverlay.cs" />
     <Compile Include="GUI\FunnyText.cs" />
     <Compile Include="GUI\InGameView.cs" />
     <Compile Include="Loot.cs" />

@@ -39,7 +39,7 @@ _timestamp = time.time()
 
 def main():
     readJsonFile("recent.txt")
-    writeDatabaseFile("database.txt")
+    writeDatabaseFile("database")
     pass
 
 def readJsonFile(fileUrl):
@@ -52,14 +52,20 @@ def readJsonFile(fileUrl):
             originalLines.append(o[ID_LINE])
 
 def writeDatabaseFile(fileUrl):
+    txtOutputFile = fileUrl + ".txt"
+    bakOutputFile = fileUrl + "_backup.foo"
     lines = []
     for i,j,k in zip(keys, values, hashkeys):
         #remove any trailing d/f values from the numeric value
         j = j.rstrip('df')
         lines.append("{2}|{0}|{1}".format(i, j, k))
-    with open(RELEASE_FOLDER + fileUrl, "w") as output:
+    with open(RELEASE_FOLDER + txtOutputFile, "w") as output:
         output.write("\n".join(lines))
-    with open(DEBUG_FOLDER + fileUrl, "w") as output:
+    with open(RELEASE_FOLDER + bakOutputFile, "w") as output:
+        output.write("\n".join(lines))
+    with open(DEBUG_FOLDER + txtOutputFile, "w") as output:
+        output.write("\n".join(lines))
+    with open(DEBUG_FOLDER + bakOutputFile, "w") as output:
         output.write("\n".join(lines))
 
 

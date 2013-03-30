@@ -111,10 +111,6 @@ namespace MesserSmash {
         }
 
         public void update(float deltatime) {
-            if (Utils.isNewKeyPress(Keys.Delete)) {
-                Logger.flush();
-                GC.Collect();
-            }
             _timeInState += deltatime;
             if (_queuedCommands.Count > 0) {
                 foreach (string s in _queuedCommands) {

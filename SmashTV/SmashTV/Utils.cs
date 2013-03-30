@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using MesserSmash.Arenas;
+using MesserSmash.Modules;
 
 namespace MesserSmash {
     static class Utils {
@@ -16,7 +17,7 @@ namespace MesserSmash {
         private static MouseState _oldMouseState;
         private static MouseState _newMouseState = new MouseState();
 
-        public static void update() {
+        public static void tickInputStates() {
             _oldState = _newState;
             _oldMouseState = _newMouseState;
 
@@ -146,11 +147,22 @@ namespace MesserSmash {
             pos.Y = (float)dy;
         }
 
-        public static bool valueBetween(IComparable checkedValue, IComparable lower, IComparable upper) {
-            if (checkedValue.CompareTo(lower) >= 0 && checkedValue.CompareTo(upper) <= 0) {
-                return true;
-            }
-            return false;
+        public static bool valueBetween(object value, object lower, object upper)
+        {
+            //try {
+                var v = Convert.ToDouble(value);
+                var l = Convert.ToDouble(lower);
+                var u = Convert.ToDouble(upper);
+
+                return v >= l && v <= u;
+            //} catch (Exception e) {
+            //    Logger.error("Error parsing values as doubles -- {0} {1} {2}", value, lower, upper);
+            //    return false;
+            //}
+        }
+
+        public static bool anyEquals(object value, params object[] args) {
+            throw new NotImplementedException("dunno when and how this should be used (what object types to cater for)");
         }
     }
 }

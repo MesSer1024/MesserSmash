@@ -15,8 +15,6 @@ namespace MesserSmash.GUI {
         private Healthbar _health;
         private Healthbar _energy;
 
-        private List<ShortcutButton> _debugButtons;
-
         private ShortcutButton _btnLMB;
         private ShortcutButton _btnRMB;
         private ShortcutButton _boost;
@@ -46,25 +44,6 @@ namespace MesserSmash.GUI {
             _secondsLeft.TextColor = Color.LightGoldenrodYellow;
             _secondsLeft.Visible = false;
             _secondsLeft.TextScale = 2.25f;
-            
-            //debug buttons
-            addDebugButton("[W-A-S-D] Movements");
-            addDebugButton("[LMB-RMB] Fire weapons");
-            addDebugButton("[Ctrl] speed booster!");
-            addDebugButton("-----");
-            addDebugButton("[G] Create 10 Random");
-            addDebugButton("[P_holdable] Create 5 Random");
-            addDebugButton("[R] Create 5 Ranged");
-            addDebugButton("[H] Drop Health pack");
-            addDebugButton("[M] Drop Money");
-            addDebugButton("[Del] Force GC & Output");
-
-            addDebugButton("[F1] Start Level1");
-            addDebugButton("[F2] Start Level2");
-            addDebugButton("[F3] Start Level3");
-            addDebugButton("[F4] Start Level4");
-            addDebugButton("[F5] Start Level5");
-            addDebugButton("[F10] Start Special Level");
         }
 
         public void update(float gametime) {
@@ -86,9 +65,6 @@ namespace MesserSmash.GUI {
         }
 
         public void draw(SpriteBatch sb) {
-            foreach (var button in _debugButtons) {
-                button.draw(sb);
-            }
             sb.Draw(TextureManager.getDefaultTexture(), _background, _backgroundColor);
             sb.Draw(TextureManager.getDefaultTexture(), _playerHudBackground, Color.Black);
             sb.Draw(TextureManager.getPortraitTexture(), _portraitPosition, Color.White);
@@ -101,23 +77,8 @@ namespace MesserSmash.GUI {
             _secondsLeft.Draw(sb);
         }
 
-        internal void addDebugButton(string text) {
-            if (_debugButtons == null) {
-                _debugButtons = new List<ShortcutButton>();
-            }
-
-            var bounds = SmashTVSystem.Instance.Arena.Bounds;
-            int row = _debugButtons.Count / 10;
-            var y = bounds.Top + (_debugButtons.Count % 10 * 33);
-            var x = bounds.Right + 20 + (row * 230);
-
-            var button = new ShortcutButton(new Rectangle(x, y, 230, 30));
-            button.setText(text);
-            _debugButtons.Add(button);
-        }
-
         public void setSecondsLeft(float time) {
-            if (Utils.valueBetween((int)time, 0, 9)) {
+            if (Utils.valueBetween(time, 0, 9)) {
                 //use countdown in middle of screen
                 _secondsLeft.Text = ((int)time).ToString();
                 _secondsLeft.Visible = true;
