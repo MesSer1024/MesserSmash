@@ -7,6 +7,7 @@ using System.IO;
 
 namespace MesserSmash.Modules {
     class Logger {
+
         private static string LOG_FILE = "SmashLogFile.txt";
         private static List<string> _logMessages = new List<string>();
          private static StringBuilder sb = new StringBuilder();

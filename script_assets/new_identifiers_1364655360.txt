@@ -1,0 +1,1 @@
+[{"hashkey": -1316247377, "original_line": "        public static string ID_ASDFASDF = \"asdfijasdoifj\";\n", "name": "ID_ASDFASDF", "value": ""}]

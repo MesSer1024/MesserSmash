@@ -3,7 +3,6 @@ using MesserSmash.Enemies;
 
 namespace MesserSmash.Behaviours {
     public class Behaviour {
-
         public delegate void BehaviourDelegate(Behaviour behaviour);
 
         public event BehaviourDelegate onBehaviourEnded;
