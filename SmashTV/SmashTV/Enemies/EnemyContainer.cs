@@ -8,6 +8,7 @@ using MesserSmash.Modules;
 namespace MesserSmash.Enemies {
     public class EnemyContainer {
         public delegate void EnemyDelegate(IEnemy enemy);
+        private const float ID_FOOBAR_TEST = 125.123f;
 
         private List<IEnemy> _enemies;        
         private float _timeCounter;

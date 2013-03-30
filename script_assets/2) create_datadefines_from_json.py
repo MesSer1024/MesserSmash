@@ -28,7 +28,7 @@ hashkeys = []
 originalLines = []
 
 def main():
-    readDatabase("recent.txt")
+    readDatabase("id_dump_json.txt")
     fillDataDefines(DATA_DEFINES)
     pass
 
@@ -46,8 +46,6 @@ def fillDataDefines(file):
 
     try:
         f = open(file, "w+")
-        fileDump = ''.join(f.readlines())
-
         splitter = "class DataDefines {"
 
         fileStart = "using System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text;\nnamespace MesserSmash.Modules {\n\tpublic static class DataDefines {\n\t\t"
