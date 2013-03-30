@@ -38,7 +38,7 @@ allFiles = []
 _timestamp = time.time()
 
 def main():
-    readJsonFile("recent.txt")
+    readJsonFile("id_dump_json.txt")
     writeDatabaseFile("database")
     pass
 
@@ -56,7 +56,7 @@ def writeDatabaseFile(fileUrl):
     bakOutputFile = fileUrl + "_backup.foo"
     lines = []
     for i,j,k in zip(keys, values, hashkeys):
-        #remove any trailing d/f values from the numeric value
+        #remove any trailing d/f-suffixes from the numeric value
         j = j.rstrip('df')
         lines.append("{2}|{0}|{1}".format(i, j, k))
     with open(RELEASE_FOLDER + txtOutputFile, "w") as output:

@@ -20,6 +20,7 @@ from os import remove, close
 
 #regex find a string starting with ID_(something) = (some kind of value)
 regexp = re.compile(".*(?P<key>ID_[\w]*)\s*=\s*(?P<value>[\w.]*)")
+regexpNoMatch = re.compile("^\s*\/\/.*(?P<key>ID_[\w]*)\s*=\s*(?P<value>[\w.]*)")
 
 ID_KEY = 'name'
 ID_VALUE = 'value'
@@ -42,7 +43,7 @@ def abortIfTimeout():
         sys.exit("timeout error")
 
 def main():
-    readDatabase("recent.txt")
+    readDatabase("id_dump_json.txt")
     findAllFilesMatchingPattern(".cs")
     updateIdsToHashKeys()
     pass
@@ -62,6 +63,9 @@ def fileContainsRegexp(url):
         for line in f:
             match = regexp.match(line)
             if(match):
+                #skip commented lines
+                if(regexpNoMatch.match(line)):
+                    continue
                 return True
         return False
 
@@ -75,6 +79,7 @@ def readDatabase(fileUrl):
             originalLines.append(o[ID_LINE])
 
 def updateIdsToHashKeys():
+    ix = 0
     for file in allFiles:
         for line in originalLines:
             replace(file, line, "")
