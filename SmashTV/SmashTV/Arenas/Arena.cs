@@ -196,15 +196,18 @@ namespace MesserSmash.Arenas {
             return true;
         }
 
-        public void draw(SpriteBatch sb) {
+        public void drawBackground(SpriteBatch sb) {
             if (_state == States.Stopped)
                 return;
             sb.Draw(_texture, _bounds, Color.Gray);
-            if (_state != States.End)
+            if (_state != States.End) {
                 foreach (var spawnpoint in _spawnPoints) {
                     spawnpoint.draw(sb);
                 }
+            }
+        }
 
+        public void drawLoot(SpriteBatch sb) {
             foreach (var loot in getActiveLoot()) {
                 loot.draw(sb);
             }

@@ -9,7 +9,7 @@ namespace MesserSmash.Enemies {
     public class EnemyContainer {
         public delegate void EnemyDelegate(IEnemy enemy);
 
-        private List<IEnemy> _enemies;
+        private List<IEnemy> _enemies;        
         private float _timeCounter;
 
         public EnemyContainer() {
@@ -53,7 +53,10 @@ namespace MesserSmash.Enemies {
         }
 
         public void draw(SpriteBatch sb) {
-            foreach (var i in _enemies) {
+            foreach (var i in _enemies.FindAll(a => a.IsAlive == false)) {
+                i.draw(sb);
+            }
+            foreach (var i in _enemies.FindAll(a => a.IsAlive)) {
                 i.draw(sb);
             }
         }

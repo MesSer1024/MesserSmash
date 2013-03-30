@@ -174,10 +174,6 @@ namespace MesserSmash {
             }
         }
 
-        private void _drawAmountOfKilledEnemies() {
-            InfoWindow._killCount = _killCount.ToString();
-        }
-
         private void _updateGUIValues() {
             InfoWindow._energy = Utils.makeString("Energy : [{0}/{1}]", _energySystem.AvailableEnergy.ToString("000"), _energySystem.MaxEnergy);
             InfoWindow._playerPosition = Utils.makeString("({0},{1})", _player.Position.X.ToString("0.0"), _player.Position.Y.ToString("0.0"));
@@ -251,10 +247,11 @@ namespace MesserSmash {
 
         public void draw(Microsoft.Xna.Framework.Graphics.SpriteBatch sb) {
             if (_isInitialized) {
-                _drawAmountOfKilledEnemies();
+                InfoWindow._killCount = _killCount.ToString();
 
-                _arena.draw(sb);
+                _arena.drawBackground(sb);
                 _shotContainer.drawExplosions(sb);
+                _arena.drawLoot(sb);
                 _enemyContainer.draw(sb);
                 _player.draw(sb);
                 _shotContainer.draw(sb);
