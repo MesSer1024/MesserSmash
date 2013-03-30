@@ -12,6 +12,7 @@ using MesserSmash.GUI;
 using MesserSmash.Enemies;
 using MesserSmash.Modules;
 using System.IO;
+using MesserSmash.Commands;
 
 namespace MesserSmash {
     class SmashTV_main {
@@ -39,7 +40,7 @@ namespace MesserSmash {
         }
 
         private void init() {
-            reloadDatabase();
+            new ReloadDatabaseCommand().execute();
 
             _graphics.PreferredBackBufferWidth = 1440;
             _graphics.PreferredBackBufferHeight = 800;
@@ -71,15 +72,8 @@ namespace MesserSmash {
             _debugGui = new DebugGuiOverlay(new Rectangle(40, 40, 850, 600));
         }
 
-        private void reloadDatabase() {
-            DirectoryInfo dir = new DirectoryInfo(System.Environment.CurrentDirectory);
-            using (StreamReader sr = new StreamReader("./database.txt")) {
-                SmashDb.populateJson(sr);
-            }
-        }
-
         private void launchArena(int level) {
-            reloadDatabase();
+            new ReloadDatabaseCommand().execute();
             _paused = false;
             Arena arena = null;
             _waitingForTimer = false;
@@ -109,7 +103,6 @@ namespace MesserSmash {
         }
 
         void onGameFinished(Arena arena) {
-            _currentLevelIndex++;
             _timeInState = 0;
             _waitingForTimer = true;
         }
@@ -127,7 +120,7 @@ namespace MesserSmash {
             _timeInState += deltaTime;
             if (_waitingForTimer && _timeInState >= 5) {
                 _waitingForTimer = false;
-                launchArena(_currentLevelIndex);
+                launchArena(++_currentLevelIndex);
             }
             _smashTvSystem.update(deltaTime);
         }
@@ -151,7 +144,7 @@ namespace MesserSmash {
                 launchArena(10);
             }
             if (Utils.isNewKeyPress(Keys.Tab)) {
-                reloadDatabase();
+                new ReloadDatabaseCommand().execute();
                 _paused = false;
             }
             if (Utils.isNewKeyPress(Keys.Pause)) {

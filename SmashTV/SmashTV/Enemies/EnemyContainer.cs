@@ -52,12 +52,15 @@ namespace MesserSmash.Enemies {
             _timeCounter = 0;
         }
 
-        public void draw(SpriteBatch sb) {
-            foreach (var i in _enemies.FindAll(a => a.IsAlive == false)) {
-                i.draw(sb);
+        public void drawBegin(SpriteBatch sb) {
+            foreach (var enemy in _enemies) {
+                enemy.drawBegin(sb);
             }
-            foreach (var i in _enemies.FindAll(a => a.IsAlive)) {
-                i.draw(sb);
+        }
+
+        public void draw(SpriteBatch sb) {
+            foreach (var enemy in _enemies) {
+                enemy.draw(sb);
             }
         }
 

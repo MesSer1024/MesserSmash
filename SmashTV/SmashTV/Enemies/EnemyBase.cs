@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MesserSmash.Behaviours;
 using MesserSmash.Commands;
+using MesserSmash.Modules;
 
 namespace MesserSmash.Enemies {
     public class EnemyBase : IEnemy {
@@ -21,10 +22,10 @@ namespace MesserSmash.Enemies {
         #region Class Members
         public delegate void EnemyDelegate(IEnemy enemy);
 
-        private readonly float _attackRadiusScale;
-        private readonly float _scale;
-        private readonly Texture2D _texture;
-        private readonly int _textureOrigin;
+        private float _attackRadiusScale;
+        private float _scale;
+        private Texture2D _texture;
+        private int _textureOrigin;
         private float _health;
         protected Vector2 _position;
         protected Vector2 _velocity;
@@ -76,19 +77,23 @@ namespace MesserSmash.Enemies {
             Damage = 20;
             _id = _identifier++;
 
+            reloadValues(null);
+        }
+
+        public void init() {
+            //Controller.instance.registerInterest(Controller.DATABASE_RELOADED, reloadValues
+            Controller.instance.registerInterest(ReloadDatabaseCommand.NAME, reloadValues);
+            SmashTVSystem.Instance.EnemyContainer.addEnemy(this);
+            State = EnemyStates.EngagingPlayer;
+        }
+
+        private void reloadValues(ICommand cmd) {
             _texture = _getTexture();
             _radius = _getRadius();
             AttackRadius = _getAttackRadius();
-            _scale = 2*_radius/_texture.Width;
-            _attackRadiusScale = 2*AttackRadius/_texture.Width;
-            _textureOrigin = _texture.Width/2;
-        }
-
-
-
-        public void init() {
-            SmashTVSystem.Instance.EnemyContainer.addEnemy(this);
-            State = EnemyStates.EngagingPlayer;
+            _scale = 2 * _radius / _texture.Width;
+            _attackRadiusScale = 2 * AttackRadius / _texture.Width;
+            _textureOrigin = _texture.Width / 2;
         }
 
         protected virtual float _getAttackRadius() {
@@ -130,17 +135,23 @@ namespace MesserSmash.Enemies {
             //update(deltatime);
         }
 
+        public virtual void drawBegin(SpriteBatch sb) {
+            if (DataDefines.ID_GAME_DRAW_ATTACK_RADIUS != 0 && IsAlive) {
+                sb.Draw(_texture, _position, null, getAttackRadiusColor() * 0.55f, 0f,
+                        new Vector2(_textureOrigin, _textureOrigin), _attackRadiusScale, SpriteEffects.None, 0);
+            }
+            if (State == EnemyStates.Dead) {
+                sb.Draw(_texture, _position, null, Color.Red, 0f, new Vector2(_textureOrigin, _textureOrigin), _scale,
+                        SpriteEffects.None, 0);
+            }
+        }
+
         public virtual void draw(SpriteBatch sb) {
             if (State == EnemyStates.Removed) {
                 return;
             }
-            Color color = getColor();
-            if (State == EnemyStates.Dead) {
-                color = Color.Red;
-            } else {
-                //sb.Draw(_texture, _position, null, getAttackRadiusColor(), 0f,
-                        //new Vector2(_textureOrigin, _textureOrigin), _attackRadiusScale, SpriteEffects.None, 0);
-            }
+
+            Color color = State == EnemyStates.Dead ? Color.Red : getColor();
             sb.Draw(_texture, _position, null, color, 0f, new Vector2(_textureOrigin, _textureOrigin), _scale,
                     SpriteEffects.None, 0);
         }
@@ -185,7 +196,7 @@ namespace MesserSmash.Enemies {
         }
 
         protected virtual Color getAttackRadiusColor() {
-            return new Color(120, 120, 120, 40);
+            return Color.White;
         }
 
         protected virtual Color getColor() {

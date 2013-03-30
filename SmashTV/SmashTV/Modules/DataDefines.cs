@@ -5,6 +5,8 @@ using System.Text;
 namespace MesserSmash.Modules {
 	public static class DataDefines {
 		private static float getValue(int hash) { return (float)SmashDb.get(hash); }
+		private const int _ID_GAME_DRAW_ATTACK_RADIUS = 447298688;
+		public static float ID_GAME_DRAW_ATTACK_RADIUS { get { return getValue(_ID_GAME_DRAW_ATTACK_RADIUS); } }
 		private const int _ID_MELEE_ENEMY_DAMAGE = -1054125204;
 		public static float ID_MELEE_ENEMY_DAMAGE { get { return getValue(_ID_MELEE_ENEMY_DAMAGE); } }
 		private const int _ID_MELEE_ENEMY_RADIUS = 1496791282;

@@ -80,5 +80,10 @@ namespace MesserSmash {
         public bool canFirePistolShot() {
             return true;
         }
+
+        internal void reset() {
+            _maxEnergy = 100;
+            _energyAvailable = _maxEnergy;
+        }
     }
 }

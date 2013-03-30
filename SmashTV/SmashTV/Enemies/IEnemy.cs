@@ -19,6 +19,7 @@ namespace MesserSmash.Enemies {
 
         void preUpdate(float deltatime);
         void update(float deltatime);
+        void drawBegin(SpriteBatch sb);
         void draw(SpriteBatch sb);
     }
 }

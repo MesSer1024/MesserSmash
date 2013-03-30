@@ -67,6 +67,7 @@ namespace MesserSmash {
             _shotContainer = shotContainer;
             _enemyContainer = enemyContainer;
             _energySystem = EnergySystem.Instance;
+            _energySystem.reset();
 
             Controller.instance.registerInterest(AttackPlayerCommand.NAME, onEnemyAttackedPlayer);
             Controller.instance.registerInterest(DeadEnemyCommand.NAME, onEnemyDead);
@@ -251,6 +252,7 @@ namespace MesserSmash {
 
                 _arena.drawBackground(sb);
                 _shotContainer.drawExplosions(sb);
+                _enemyContainer.drawBegin(sb);
                 _arena.drawLoot(sb);
                 _enemyContainer.draw(sb);
                 _player.draw(sb);

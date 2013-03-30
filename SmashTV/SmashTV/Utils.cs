@@ -162,7 +162,11 @@ namespace MesserSmash {
         }
 
         public static bool anyEquals(object value, params object[] args) {
-            throw new NotImplementedException("dunno when and how this should be used (what object types to cater for)");
+            for (int i = 0; i < args.Length; i++) {
+                if (value == args[i])
+                    return true;
+            }
+            return false;
         }
     }
 }
