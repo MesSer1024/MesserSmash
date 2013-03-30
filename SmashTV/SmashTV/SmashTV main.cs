@@ -10,6 +10,8 @@ using MesserSmash.Arenas;
 using Microsoft.Xna.Framework.Input;
 using MesserSmash.GUI;
 using MesserSmash.Enemies;
+using MesserSmash.Modules;
+using System.IO;
 
 namespace MesserSmash {
     class SmashTV_main {
@@ -35,6 +37,12 @@ namespace MesserSmash {
         }
 
         private void init() {
+            DirectoryInfo dir = new DirectoryInfo(System.Environment.CurrentDirectory);
+            using (StreamReader sr = new StreamReader("./database.txt")) {
+                SmashDb.populateJson(sr);
+            }
+            //SmashDb.populate(
+
             _graphics.PreferredBackBufferWidth = 1440;
             _graphics.PreferredBackBufferHeight = 800;
             Utils.setGameSize(1440, 800);

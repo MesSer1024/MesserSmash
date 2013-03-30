@@ -36,7 +36,10 @@ files = []
 def main():
     files = findAllFilesMatchingPattern(".cs")
     for file in files:
-        findIdentifierInFile(file)
+        if (file.lower().find("datadefines") == -1):
+            findIdentifierInFile(file)
+        else:
+            print("ignoring file:" + file)
     printKeysAndValues()
     id = int(time.time())
     print(id)
@@ -53,6 +56,7 @@ def findAllFilesMatchingPattern(pattern):
     return allFiles;
 
 def findIdentifierInFile(url):
+    print("Browsing:" + url)
     with open(url) as f:
         anyMatch = False
         for line in f:

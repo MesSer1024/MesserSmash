@@ -6,20 +6,22 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Globalization;
 
 namespace MesserSmash.Modules {
 
     public static class SmashDb {
         private static Dictionary<int, double> _db;
 
-        public static void populate(StreamReader sr) {
+        public static void populateJson(StreamReader sr) {
             _db = new Dictionary<int, double>();
-            var foo = sr.ReadLine().Split(':');
-            _db.Add(generateKey(foo[0]), 0);
-        }
-
-        private static int generateKey(string s) {
-            return s.GetHashCode();
+            while (!sr.EndOfStream) {
+                var line = sr.ReadLine().Split('|');
+                int hashkey = Int32.Parse(line[0]);
+                //double value = Double.Parse(line[2]);
+                double value = Double.Parse(line[2], NumberStyles.Float, CultureInfo.InvariantCulture);
+                _db.Add(hashkey, value);
+            }
         }
 
         internal static double get(int hash) {
