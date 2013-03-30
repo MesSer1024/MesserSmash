@@ -65,6 +65,7 @@ def fileContainsRegexp(url):
             if(match):
                 #skip commented lines
                 if(regexpNoMatch.match(line)):
+                    print("skipping commented line")
                     continue
                 return True
         return False
