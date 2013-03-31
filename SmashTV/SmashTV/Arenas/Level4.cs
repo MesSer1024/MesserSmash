@@ -31,10 +31,10 @@ namespace MesserSmash.Arenas {
             return list;
         }
 
-        protected override void custUpdate(float gametime) {
-            _timestampLastSpawnedWave += gametime;
+        protected override void custUpdate(GameState state) {
+            _timestampLastSpawnedWave += state.DeltaTime;
             if (_timestampLastSpawnedWave >= DataDefines.ID_LEVEL4_TIME_BETWEEN_WAVES) {
-                _internalWaveTimer += gametime;
+                _internalWaveTimer += state.DeltaTime;
                 if (_internalWaveTimer >= DataDefines.ID_LEVEL4_BETWEEN_EACH_UNIQUE_SPAWN_CD && _spawnCounter  < DataDefines.ID_LEVEL4_MAX_ENEMIES_PER_WAVE) {
                     if (Utils.randomInt(100) < 33) {
                         getRandomSpawnpoint().generateSecondaryMeleeUnits(1);

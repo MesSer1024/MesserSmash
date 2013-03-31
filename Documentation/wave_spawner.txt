@@ -1,0 +1,40 @@
+----------------------------
+What is needed design wise?
+----------------------------
+
+WaveSpawn
+	meta: 		enemyType [drop down list of all enemies]
+	int : 		total enemies in wave
+	num :		delay between each spawned "mini wave"
+	
+	Trigger Criterias [ < > = (mod)% ]
+		int :		enemies alive < 25
+		num : 		seconds spent in arena > 35s
+		int :		total enemies killed = 200
+		
+	Looting thingys:
+		default : 	default loot table [and link to it]
+		special :	unique handling so that this wave drops for instance a health pack
+		
+		
+	Special:
+		int :		times wave can be repeated/looped
+		num :		time before this unique wave can be repeated
+		
+		
+
+		
+		
+----------------------------------------------
+How is this implemented code wise?
+----------------------------------------------
+- Skip the possibility to reload values during "a started level", reload these values when level is loaded and then keep them throughout level
+	- Not neccessary if we use WaveSpawner solution
+- Level/System can dispatch/notify/sharing the triggers that is needed in order to handle trigger criterias
+	- In that case we only need "public function create(enemyType, amount, waveId = 0)" inside arena/level
+		- Make sure that this handles any calls after game is finished to do nothing and report error
+	- Need another system "WaveSpawner"
+		- read trigger criterias [enemies alive, time spent, kill counter]
+		- read criterias for waves
+		- if match, spawn enemies using "createEnemies(enemyType, amount)"
+	

@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.Input;
 using MesserSmash.Enemies;
 using MesserSmash.GUI;
 using Helper = MesserSmash.SmashTVSystem;
+using MesserSmash.Commands;
+using MesserSmash.Modules;
 
 namespace MesserSmash.Arenas {
     public class Arena {
@@ -62,9 +64,25 @@ namespace MesserSmash.Arenas {
             _lootTable = createLootTable();
         }
 
+        public void begin() {
+            //EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Arena");
+            Controller.instance.registerInterest(SpawnWaveCommand.NAME, onSpawnWave);
+            startLevel();
+        }
+
         public virtual void startLevel() {
             EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Arena");
-            //throw new NotImplementedException();
+        }
+
+        private void onSpawnWave(ICommand cmd) {
+            if (cmd is SpawnWaveCommand == false) {
+                throw new Exception("Invalid command!");
+            }
+            custSpawnWaveCommand((cmd as SpawnWaveCommand).WaveSpawner);
+        }
+
+        protected virtual void custSpawnWaveCommand(WaveSpawner cmd) {
+            throw new Exception("Baseclass responsibility!");
         }
 
         public virtual Vector2 getPlayerStartPosition() {
@@ -84,11 +102,12 @@ namespace MesserSmash.Arenas {
             return Utils.generateLootTable(927, 12, 3);
         }
 
-        public void update(float gametime) {
+        public void update(GameState state) {
+            var gametime = state.DeltaTime;
             _timeSinceLastCreation = TimeSinceLastCreation + gametime;
             _timeInState += gametime;
             _secondsLeft -= gametime;
-            onUpdate(gametime);
+            onUpdate(state);
         }
 
         public void checkDebugInput() {
@@ -113,7 +132,8 @@ namespace MesserSmash.Arenas {
             }
         }
 
-        private void onUpdate(float gametime) {
+        private void onUpdate(GameState state) {
+            var gametime = state.DeltaTime;
             checkDebugInput();
             if (_state == States.Running) {
                 foreach (var spawnPoint in _spawnPoints) {
@@ -123,7 +143,7 @@ namespace MesserSmash.Arenas {
                     loot.update(gametime);
                 }
                 _showTimeLeft();
-                custUpdate(gametime);
+                custUpdate(state);
                 if (_secondsLeft <= 0) {
                     _state = States.End;
                     EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.LevelFinished, this, "levelFinished");
@@ -154,7 +174,7 @@ namespace MesserSmash.Arenas {
             return _spawnPoints[Utils.randomInt(_spawnPoints.Count)];
         }
 
-        protected virtual void custUpdate(float gametime) {
+        protected virtual void custUpdate(GameState state) {
             if (canCreateEnemies()) {
                 createEnemies(1);
             }
@@ -232,5 +252,6 @@ namespace MesserSmash.Arenas {
 
 
         public float SecondsToFinish { get {return _secondsLeft; } }
+        public float TimeSinceStart { get { return _timeInState; } }
     }
 }

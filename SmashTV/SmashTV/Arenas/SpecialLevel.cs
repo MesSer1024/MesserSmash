@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MesserSmash.Modules;
 
 namespace MesserSmash.Arenas {
     class SpecialLevel : Arena {
@@ -14,7 +15,7 @@ namespace MesserSmash.Arenas {
 
         }
 
-        protected override void custUpdate(float gametime) {
+        protected override void custUpdate(GameState state) {
             if (canCreateEnemies()) {
                 createEnemies(10);
             }

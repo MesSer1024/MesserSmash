@@ -77,7 +77,7 @@ namespace MesserSmash {
             _gui = new GUIMain();
 
             //
-            _arena.startLevel();
+            _arena.begin();
         }
 
         void onZeroTimer(Arena arena) {
@@ -122,6 +122,7 @@ namespace MesserSmash {
                 _queuedCommands.Clear();
             }
             if (_isInitialized) {
+                var state = new GameState(deltatime, _arena.TimeSinceStart, _enemyContainer.getAliveEnemies().Count, _killCount);
                 PerformanceUtil.begin("frame");
                 PerformanceUtil.begin("energy");
                 _energySystem.update(deltatime);
@@ -133,7 +134,7 @@ namespace MesserSmash {
                 _shotContainer.update(deltatime);
                 PerformanceUtil.end("shots");
                 PerformanceUtil.begin("arena");
-                _arena.update(deltatime);
+                _arena.update(state);
                 PerformanceUtil.end("arena");
                 PerformanceUtil.begin("player");
                 _player.update(deltatime);
