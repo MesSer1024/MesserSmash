@@ -13,7 +13,7 @@ namespace MesserSmash.Modules {
 
         public bool Active { get; private set; }
         public bool Satisfied { get; private set; }
-        
+
         private int _repeatCounter;
         private float _timeSinceRepeat;
 

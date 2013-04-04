@@ -24,7 +24,7 @@ namespace MesserSmash.Enemies {
         }
 
         protected override Texture2D _getTexture() {
-            return TextureManager.getRangedEnemyTexture();
+            return AssetManager.getRangedEnemyTexture();
         }
 
         protected override Color getColor() {

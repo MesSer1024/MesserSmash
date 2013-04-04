@@ -12,22 +12,44 @@ namespace MesserSmash.Modules {
 
     public static class SmashDb {
         private static Dictionary<int, double> _db;
+        //private static List<
 
-        public static void populateJson(StreamReader sr) {
+        public static void populateKeyValues(StreamReader sr) {
             _db = new Dictionary<int, double>();
             while (!sr.EndOfStream) {
                 var line = sr.ReadLine().Split('|');
-                if (line.Length != 3)
-                    continue;
-                int hashkey = Int32.Parse(line[0]);
-                //double value = Double.Parse(line[2]);
-                double value = Double.Parse(line[2], NumberStyles.Float, CultureInfo.InvariantCulture);
-                _db.Add(hashkey, value);
+                var type = "number";
+                switch (type.ToLower()) {
+                    case "number":
+                        parseNumber(line);
+                        break;
+                    default:
+                        throw new Exception("Invalid parse value!");
+                }
             }
+        }
+
+        public static void populateLevels(StreamReader sr) {
+            //var o = fastJSON.JSON.Instance.ToObject(sr.ReadToEnd());            
+            //while (!sr.EndOfStream) {
+            //}
+        }
+
+        private static void parseNumber(string[] line) {
+            if (line.Length != 3) {
+                return;
+            }
+            int hashkey = Int32.Parse(line[0]);
+            double value = Double.Parse(line[2], NumberStyles.Float, CultureInfo.InvariantCulture);
+            _db.Add(hashkey, value);                
         }
 
         internal static double get(int hash) {
             return _db[hash];
+        }
+
+        internal static string getLevel(int index) {
+            return "";
         }
     }
 }

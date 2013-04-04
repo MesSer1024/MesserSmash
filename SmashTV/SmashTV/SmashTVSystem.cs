@@ -57,6 +57,7 @@ namespace MesserSmash {
         private int _behaviourDestructors;
         private int _behaviourConstructors;
         private int _enemyConstructors;
+        private SoundManager _sound;
 
         public void startGame(Arena arena, Player player, ShotContainer shotContainer, EnemyContainer enemyContainer) {
             _timeInState = 0;

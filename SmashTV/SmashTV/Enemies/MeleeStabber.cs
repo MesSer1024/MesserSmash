@@ -26,7 +26,7 @@ namespace MesserSmash.Enemies {
         }
 
         protected override Texture2D _getTexture() {
-            return TextureManager.getEnemyTexture();
+            return AssetManager.getEnemyTexture();
         }
 
         protected override Behaviour createAttackBehaviour() {

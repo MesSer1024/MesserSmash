@@ -14,7 +14,10 @@ namespace MesserSmash.Commands {
 
             DirectoryInfo dir = new DirectoryInfo(System.Environment.CurrentDirectory);
             using (StreamReader sr = new StreamReader("./database.txt")) {
-                SmashDb.populateJson(sr);
+                SmashDb.populateKeyValues(sr);
+            }
+            using (StreamReader sr = new StreamReader("./levels.txt")) {
+                SmashDb.populateLevels(sr);
             }
         }
     }

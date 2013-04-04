@@ -44,7 +44,7 @@ namespace MesserSmash {
 
         public Player(Vector2 position) {
             _position = position;
-            _texture = TextureManager.getPlayerTexture();
+            _texture = AssetManager.getPlayerTexture();
             _velocity = Vector2.Zero;
             _radius = 18;
             _scale = 2 * _radius / _texture.Width;

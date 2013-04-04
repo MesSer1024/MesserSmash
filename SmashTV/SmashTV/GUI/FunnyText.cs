@@ -45,7 +45,7 @@ namespace MesserSmash.GUI {
         }
 
         public FunnyText(String s, Rectangle bounds) {
-            _font = TextureManager._bigGuiFont;
+            _font = AssetManager._bigGuiFont;
             _bounds = bounds;
             Visible = true;
             _text = s;

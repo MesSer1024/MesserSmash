@@ -25,7 +25,7 @@ namespace MesserSmash.Arenas {
             var list = new List<Spawnpoint>();
             int size = 100;
             list.Add(new Spawnpoint(new Rectangle(Bounds.Center.X - size / 2, Bounds.Center.Y - size / 2, size, size),
-                                    TextureManager.getArenaTexture()));
+                                    AssetManager.getArenaTexture()));
             return list;
         }
 
@@ -44,6 +44,12 @@ namespace MesserSmash.Arenas {
                 }
             }
 
+        }
+
+        protected override void custSpawnWaveCommand(WaveSpawner spawner) {
+            //int enemyType = spawner.EnemyType;
+            //spawner.deactivate();
+            //getRandomSpawnpoint().generateMeleeEnemies(spawner.SpawnCount);
         }
 
     }

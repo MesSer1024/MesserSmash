@@ -37,14 +37,14 @@ namespace MesserSmash.GUI {
         }
 
         public void draw(SpriteBatch sb) {
-            var texture = TextureManager.getDefaultTexture();
+            var texture = AssetManager.getDefaultTexture();
             Color borderColor = _active ? _activeColor : _borderColor;
             Color innerColor = _active ? Color.White : _inactiveColor;
             sb.Draw(texture, _outerBounds, borderColor);
             sb.Draw(texture, _innerBounds, innerColor);
 
             if (hasText()) {
-                sb.DrawString(TextureManager.getDefaultFont(), _text, new Vector2(_innerBounds.X + 1, _innerBounds.Y + 1), Color.Black);
+                sb.DrawString(AssetManager.getDefaultFont(), _text, new Vector2(_innerBounds.X + 1, _innerBounds.Y + 1), Color.Black);
             }
         }
 

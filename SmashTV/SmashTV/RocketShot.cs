@@ -45,7 +45,7 @@ namespace MesserSmash {
         }
 
         protected override Texture2D _initTexture() {
-            return TextureManager.getRocketShotTexture();
+            return AssetManager.getRocketShotTexture();
         }
 
         protected override bool _doesSplashDamage() {

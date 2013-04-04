@@ -52,7 +52,7 @@ namespace MesserSmash.Arenas {
         }
 
         public Arena() {
-            _texture = TextureManager.getArenaTexture();
+            _texture = AssetManager.getArenaTexture();
             _bounds = new Rectangle(40, 40, 850, 600);
             _timeSinceLastCreation = 0;
             _activeLoot = new List<Loot>();
@@ -67,7 +67,16 @@ namespace MesserSmash.Arenas {
         public void begin() {
             //EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Arena");
             Controller.instance.registerInterest(SpawnWaveCommand.NAME, onSpawnWave);
+            Controller.instance.registerInterest(ReloadDatabaseCommand.NAME, onReloadDatabase);
             startLevel();
+        }
+
+        private void onReloadDatabase(ICommand cmd) {
+            custReloadDatabase();
+        }
+
+        protected virtual void custReloadDatabase() {
+
         }
 
         public virtual void startLevel() {
@@ -243,7 +252,7 @@ namespace MesserSmash.Arenas {
         }
 
         private void dropLoot(LootType lootType, Vector2 pos) {
-            _activeLoot.Add(new Loot(lootType, TextureManager.getHealthPackTexture(), TextureManager.getMoneyBagTexture(), pos));
+            _activeLoot.Add(new Loot(lootType, AssetManager.getHealthPackTexture(), AssetManager.getMoneyBagTexture(), pos));
         }
 
         public List<Loot> getActiveLoot() {

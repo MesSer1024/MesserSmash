@@ -25,11 +25,11 @@ namespace MesserSmash.Arenas {
             var list = new List<Spawnpoint>();
             int size = 60;
             list.Add(new Spawnpoint(new Rectangle(Bounds.Left, Bounds.Center.Y - size / 2, size, size),
-                                    TextureManager.getArenaTexture()));
+                                    AssetManager.getArenaTexture()));
             list.Add(new Spawnpoint(new Rectangle(Bounds.Center.X - size / 2, Bounds.Bottom - size, size, size),
-                                                TextureManager.getArenaTexture()));
+                                                AssetManager.getArenaTexture()));
             list.Add(new Spawnpoint(new Rectangle(Bounds.Right - size, Bounds.Center.Y - size / 2, size, size),
-                                                TextureManager.getArenaTexture()));
+                                                AssetManager.getArenaTexture()));
             return list;
         }
 

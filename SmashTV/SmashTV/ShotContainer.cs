@@ -30,7 +30,7 @@ namespace MesserSmash {
         }
 
         void onGenerateGroundEffect(ShotBase shot, float timeToShow) {
-            Texture2D texture = TextureManager.getRocketShotTexture();
+            Texture2D texture = AssetManager.getRocketShotTexture();
             _explosions.Add(new Explosion(shot.Position, shot.Radius, texture, timeToShow));
         }
 

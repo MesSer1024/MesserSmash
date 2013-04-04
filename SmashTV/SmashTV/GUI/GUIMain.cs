@@ -65,9 +65,9 @@ namespace MesserSmash.GUI {
         }
 
         public void draw(SpriteBatch sb) {
-            sb.Draw(TextureManager.getDefaultTexture(), _background, _backgroundColor);
-            sb.Draw(TextureManager.getDefaultTexture(), _playerHudBackground, Color.Black);
-            sb.Draw(TextureManager.getPortraitTexture(), _portraitPosition, Color.White);
+            sb.Draw(AssetManager.getDefaultTexture(), _background, _backgroundColor);
+            sb.Draw(AssetManager.getDefaultTexture(), _playerHudBackground, Color.Black);
+            sb.Draw(AssetManager.getPortraitTexture(), _portraitPosition, Color.White);
             _health.draw(sb);
             _energy.draw(sb);
             _boost.draw(sb);

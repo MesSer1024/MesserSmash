@@ -36,9 +36,9 @@ namespace MesserSmash.GUI {
         }
 
         public void draw(SpriteBatch sb) {
-            sb.Draw(TextureManager.getDefaultTexture(), _outerBounds, _borderColor);
-            sb.Draw(TextureManager.getDefaultTexture(), _innerBounds, _nonValuedColor);
-            sb.Draw(TextureManager.getDefaultTexture(), getBoundsByValue(), _valueColor);            
+            sb.Draw(AssetManager.getDefaultTexture(), _outerBounds, _borderColor);
+            sb.Draw(AssetManager.getDefaultTexture(), _innerBounds, _nonValuedColor);
+            sb.Draw(AssetManager.getDefaultTexture(), getBoundsByValue(), _valueColor);            
         }
 
         private Rectangle getBoundsByValue() {

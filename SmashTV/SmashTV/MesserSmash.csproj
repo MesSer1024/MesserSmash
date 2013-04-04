@@ -60,6 +60,9 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="fastJSON">
+      <HintPath>..\..\..\[libs]\fastJSON.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -114,6 +117,7 @@
     <Compile Include="Arenas\Level3.cs" />
     <Compile Include="Arenas\Level4.cs" />
     <Compile Include="Arenas\Level5.cs" />
+    <Compile Include="Commands\LevelStartedCommand.cs" />
     <Compile Include="Arenas\SpecialLevel.cs" />
     <Compile Include="Behaviours\AttackingMeleeBehaviour.cs" />
     <Compile Include="Behaviours\AttackingRangeBehaviour.cs" />
@@ -127,6 +131,7 @@
     <Compile Include="Commands\AttackPlayerCommand.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\DeadEnemyCommand.cs" />
+    <Compile Include="Commands\FirePistolShotCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\ReloadDatabaseCommand.cs" />
     <Compile Include="Commands\SpawnWaveCommand.cs" />
@@ -158,6 +163,7 @@
     <Compile Include="Modules\Logger.cs" />
     <Compile Include="Modules\PathFinder.cs" />
     <Compile Include="Modules\SmashDb.cs" />
+    <Compile Include="Modules\SoundManager.cs" />
     <Compile Include="Modules\SpawnCriteria.cs" />
     <Compile Include="Modules\WaveSpawner.cs" />
     <Compile Include="NormalState.cs" />
@@ -175,7 +181,7 @@
     <Compile Include="Spawnpoint.cs" />
     <Compile Include="SprintState.cs" />
     <Compile Include="SmashTVSystem.cs" />
-    <Compile Include="TextureManager.cs" />
+    <Compile Include="AssetManager.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="WeaponPistol.cs" />
     <Compile Include="WeaponRocketLauncher.cs" />

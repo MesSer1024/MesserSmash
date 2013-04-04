@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using MesserSmash.Commands;
 
 namespace MesserSmash {
     public class WeaponPistol {
@@ -33,6 +34,7 @@ namespace MesserSmash {
                 Vector2 myPos = pos + dir * 18;
                 new PistolShot(myPos, dir);
                 _timeSinceLastShot = 0;
+                new PlaySoundCommand(AssetManager.getWeaponSound()).execute();
             }
         }
 

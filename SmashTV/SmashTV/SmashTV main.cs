@@ -13,6 +13,8 @@ using MesserSmash.Enemies;
 using MesserSmash.Modules;
 using System.IO;
 using MesserSmash.Commands;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace MesserSmash {
     class SmashTV_main {
@@ -30,6 +32,7 @@ namespace MesserSmash {
         private bool _waitingForTimer;
         private DebugGuiOverlay _debugGui;
         private bool _paused;
+        private SoundManager _sound;
 
         public SmashTV_main(Microsoft.Xna.Framework.Content.ContentManager Content, Microsoft.Xna.Framework.GraphicsDeviceManager graphics, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Game game) {
             _content = Content;
@@ -50,18 +53,24 @@ namespace MesserSmash {
             _circleTexture = _content.Load<Texture2D>("circle 64x64");
             _defaultTexture = _content.Load<Texture2D>("default");
             _defaultFont = _content.Load<SpriteFont>("Arial 12");
-            TextureManager._player = _content.Load<Texture2D>("player64x64");
-            TextureManager._shot = _circleTexture;
-            TextureManager._arena = _defaultTexture;
-            TextureManager._enemy = _circleTexture;
-            TextureManager._rangedEnemy = _circleTexture;
-            TextureManager._healthPack = _circleTexture;
-            TextureManager._moneyBag = _circleTexture;
-            TextureManager._rocketShot = _circleTexture;
-            TextureManager._default = _defaultTexture;
-            TextureManager._playerPortrait = _content.Load<Texture2D>("portrait");
-            TextureManager._defaultFont = _defaultFont;
-            TextureManager._bigGuiFont = _content.Load<SpriteFont>("BigGuiFont32");
+            AssetManager._player = _content.Load<Texture2D>("player64x64");
+            AssetManager._shot = _circleTexture;
+            AssetManager._arena = _defaultTexture;
+            AssetManager._enemy = _circleTexture;
+            AssetManager._rangedEnemy = _circleTexture;
+            AssetManager._healthPack = _circleTexture;
+            AssetManager._moneyBag = _circleTexture;
+            AssetManager._rocketShot = _circleTexture;
+            AssetManager._default = _defaultTexture;
+            AssetManager._playerPortrait = _content.Load<Texture2D>("portrait");
+            AssetManager._defaultFont = _defaultFont;
+            AssetManager._bigGuiFont = _content.Load<SpriteFont>("BigGuiFont32");
+            AssetManager._bgSound = _content.Load<SoundEffect>("background_music");
+            AssetManager._failSound = _content.Load<SoundEffect>("fail");
+            AssetManager._weaponSound = _content.Load<SoundEffect>("weapon");
+            _sound = new SoundManager();
+            _sound.init();
+
 
             InfoWindow._defaultFont = _defaultFont;
             _smashTvSystem = new SmashTVSystem();
