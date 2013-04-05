@@ -37,17 +37,8 @@ namespace MesserSmash.Arenas {
             //}
         }
 
-        protected override List<Spawnpoint> createSpawnpoints() {            
-            var list = new List<Spawnpoint>();
-            list.Add(new Spawnpoint(new Rectangle(Bounds.Center.X - 140, Bounds.Bottom - 60, 60, 60),
-                                    AssetManager.getArenaTexture()));
-            list.Add(new Spawnpoint(new Rectangle(Bounds.Center.X + 100, Bounds.Top, 60, 60),
-                                    AssetManager.getArenaTexture()));
-            list.Add(new Spawnpoint(new Rectangle(Bounds.Left, Bounds.Center.Y, 60, 60),
-                                    AssetManager.getArenaTexture()));
-            list.Add(new Spawnpoint(new Rectangle(Bounds.Right - 60, Bounds.Center.Y, 60, 60),
-                                    AssetManager.getArenaTexture()));
-            return list;
+        protected override List<Spawnpoint> createSpawnpoints() {
+            return Utils.generateSpawnpoints(Bounds);
         }
 
         public override void startLevel() {

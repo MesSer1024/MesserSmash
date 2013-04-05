@@ -17,7 +17,7 @@ namespace MesserSmash.Weapons {
     /// TODO: Update summary.
     /// </summary>
     public class EnemyPistolShot : ShotBase {
-        private const float MOVEMENT_SPEED = 282;
+        private const float MOVEMENT_SPEED = 232;
         private enum ShotStates {
             Alive,
             Dead,

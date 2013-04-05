@@ -168,5 +168,18 @@ namespace MesserSmash {
             }
             return false;
         }
+
+        internal static List<Spawnpoint> generateSpawnpoints(Rectangle bounds) {
+            var list = new List<Spawnpoint>();
+            list.Add(new Spawnpoint(new Rectangle(bounds.Center.X - 140, bounds.Bottom - 60, 60, 60),
+                                    AssetManager.getArenaTexture()));
+            list.Add(new Spawnpoint(new Rectangle(bounds.Center.X + 100, bounds.Top, 60, 60),
+                                    AssetManager.getArenaTexture()));
+            list.Add(new Spawnpoint(new Rectangle(bounds.Left, bounds.Center.Y, 60, 60),
+                                    AssetManager.getArenaTexture()));
+            list.Add(new Spawnpoint(new Rectangle(bounds.Right - 60, bounds.Center.Y, 60, 60),
+                                    AssetManager.getArenaTexture()));
+            return list;
+        }
     }
 }

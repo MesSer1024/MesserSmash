@@ -4,53 +4,72 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using MesserSmash.Modules;
+using MesserSmash.Commands;
+using MesserSmash.Enemies;
 
 namespace MesserSmash.Arenas {
     class Level2 : Arena {
         private float _timestampLastSpawnedWave;
-        private float _internalWaveTimer;
-        private int _spawnCounter;
+        private List<WaveSpawner> _spawners = new List<WaveSpawner>();
 
         public Level2() {
             _secondsLeft = 60;
-        }
 
-        public override void startLevel() {
-            _timestampLastSpawnedWave = DataDefines.ID_LEVEL2_TIME_BETWEEN_WAVES - 3;
-            EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Level 2");
+            StringBuilder sb = new StringBuilder();
 
+            for (int i = 0; i < 30; i++) {
+                var wave = new WaveSpawner((int)EnemyTypes.Types.Range, 4 + (int)(i * 0.09f));
+                var criteria = new SpawnCriteria();
+                criteria.MinSecondsInArena = (int)(i * 2.40f);
+                criteria.MaxEnemiesAlive = 20;
+                wave.addCriteria(criteria);
+                _spawners.Add(wave);
+            }
+
+            _spawners[0].SpawnCount = 24;
+            _spawners[4].SpawnCount = 14;
+            _spawners[7].SpawnCount = 14;
+            var end = new WaveSpawner((int)EnemyTypes.Types.Range, 4);
+            end.addCriteria(new SpawnCriteria { MinSecondsInArena = 43, MaxEnemiesAlive = 35 });
+            var end2 = new WaveSpawner((int)EnemyTypes.Types.Range, 4);
+            end2.addCriteria(new SpawnCriteria { MinSecondsInArena = 43, MaxEnemiesAlive = 35 });
+            var end3 = new WaveSpawner((int)EnemyTypes.Types.Range, 6);
+            end3.addCriteria(new SpawnCriteria { MinSecondsInArena = 51, MaxEnemiesAlive = 42 });
+            var end4 = new WaveSpawner((int)EnemyTypes.Types.Range, 4);
+            end4.addCriteria(new SpawnCriteria { MinSecondsInArena = 54, MaxEnemiesAlive = 45 });
+            var end5 = new WaveSpawner((int)EnemyTypes.Types.Range, 8);
+            end5.addCriteria(new SpawnCriteria { MinSecondsInArena = 57, MaxEnemiesAlive = 45 });
+
+            _spawners.Add(end);
+            _spawners.Add(end2);
+            _spawners.Add(end3);
+            _spawners.Add(end4);
+            _spawners.Add(end5);
         }
 
         protected override List<Spawnpoint> createSpawnpoints() {
-            var list = new List<Spawnpoint>();
-            int size = 100;
-            list.Add(new Spawnpoint(new Rectangle(Bounds.Center.X - size / 2, Bounds.Center.Y - size / 2, size, size),
-                                    AssetManager.getArenaTexture()));
-            return list;
+            return Utils.generateSpawnpoints(Bounds);
+        }
+
+        public override void startLevel() {
+            new LevelStartedCommand(this).execute();
+            //EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Level 1");
+            _timestampLastSpawnedWave = DataDefines.ID_LEVEL2_TIME_BETWEEN_WAVES;
         }
 
         protected override void custUpdate(GameState state) {
             _timestampLastSpawnedWave += state.DeltaTime;
-            if (_timestampLastSpawnedWave >= DataDefines.ID_LEVEL2_TIME_BETWEEN_WAVES) {
-                _internalWaveTimer += state.DeltaTime;
-                if (_internalWaveTimer >= DataDefines.ID_LEVEL2_BETWEEN_EACH_UNIQUE_SPAWN_CD && _spawnCounter < DataDefines.ID_LEVEL2_MAX_ENEMIES_PER_WAVE) {
-                    getRandomSpawnpoint().generateRangedEnemies(1);
-                    _internalWaveTimer = 0;
-                    _spawnCounter++;
-                } else if (_spawnCounter >= DataDefines.ID_LEVEL2_MAX_ENEMIES_PER_WAVE) {
-                    _spawnCounter = 0;
-                    _internalWaveTimer = 0;
-                    _timestampLastSpawnedWave = 0;
-                }
+            foreach (var wave in _spawners) {
+                wave.update(state);
             }
-
         }
 
         protected override void custSpawnWaveCommand(WaveSpawner spawner) {
-            //int enemyType = spawner.EnemyType;
-            //spawner.deactivate();
-            //getRandomSpawnpoint().generateMeleeEnemies(spawner.SpawnCount);
+            EnemyTypes.Types enemyType = (EnemyTypes.Types)spawner.EnemyType;
+            spawner.deactivate();
+            for (int i = 0; i < spawner.SpawnCount; i++) {
+                getRandomSpawnpoint().generateSecondaryRangedEnemies(1);
+            }
         }
-
     }
 }
