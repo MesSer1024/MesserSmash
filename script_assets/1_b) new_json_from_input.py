@@ -36,14 +36,11 @@ files = []
 
 
 def main():
-    files = findAllFilesMatchingPattern(".cs")
-    for file in files:
-        if (file.lower().find("datadefines") == -1):
-            findIdentifierInFile(file)
-        else:
-            print("ignoring file:" + file)
-    printKeysAndValues()
     id = int(time.time())
+
+    addIdentifier("ID_LEVEL5_TIME_BETWEEN_WAVES", 2.67)
+    addIdentifier("ID_LEVEL5_BETWEEN_EACH_UNIQUE_SPAWN_CD", 0.55)
+
     if(len(keys) == len(values) and len(values) > 0):
         makeHashKeys();
         print("updating file [id=" + str(id) + "]")
@@ -54,6 +51,11 @@ def main():
     else:
         print("no new entries found!")
     pass
+
+def addIdentifier(key, value):
+    keys.append(key)
+    values.append(value)
+    originalLines.append("")
 
 def findAllFilesMatchingPattern(pattern):
     allFiles = []

@@ -40,6 +40,7 @@ _timestamp = time.time()
 def main():
     readJsonFile("id_dump_json.txt")
     writeDatabaseFile("database")
+    print("--All Done---")
     pass
 
 def readJsonFile(fileUrl):
@@ -51,6 +52,13 @@ def readJsonFile(fileUrl):
             hashkeys.append(o[ID_HASH])
             originalLines.append(o[ID_LINE])
 
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
 def writeDatabaseFile(fileUrl):
     txtOutputFile = fileUrl + ".txt"
     bakOutputFile = fileUrl + "_backup.foo"
@@ -58,11 +66,13 @@ def writeDatabaseFile(fileUrl):
     lines = []
     for i,j,k in zip(keys, values, hashkeys):
         #remove any trailing d/f-suffixes from the numeric value
-        j = j.rstrip('df')
+        if(not is_number(j)):
+            j = j.rstrip('df')
         lines.append("{2}|{0}|{1}".format(i, j, k))
 
-    os.rename(DEBUG_FOLDER + txtOutputFile, DEBUG_FOLDER + userOutputFile)
-    os.rename(RELEASE_FOLDER + txtOutputFile, RELEASE_FOLDER + userOutputFile)
+    from shutil import move
+    move(DEBUG_FOLDER + txtOutputFile, DEBUG_FOLDER + userOutputFile)
+    move(RELEASE_FOLDER + txtOutputFile, RELEASE_FOLDER + userOutputFile)
     with open(RELEASE_FOLDER + txtOutputFile, "w") as output:
         output.write("\n".join(lines))
     with open(RELEASE_FOLDER + bakOutputFile, "w") as output:

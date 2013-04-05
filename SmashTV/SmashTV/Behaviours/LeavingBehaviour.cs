@@ -19,15 +19,9 @@ namespace MesserSmash.Behaviours {
     public class LeavingBehaviour :Behaviour {
 
         protected override void onUpdate() {
-            try {
-                (Enemy as EnemyBase).Health = float.MaxValue;
-                if (TimeActive >= 3.0f) {
-                    notifyDone();
-                }
-            }
-            catch (Exception e) {
-                //TODO Create a debugger/logger
-                //Debug.
+            (Enemy as EnemyBase).Health = float.MaxValue;
+            if (TimeActive >= 3.0f) {
+                notifyDone();
             }
         }
     }

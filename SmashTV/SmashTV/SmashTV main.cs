@@ -83,8 +83,11 @@ namespace MesserSmash {
 
         private void launchArena(int level) {
             new ReloadDatabaseCommand().execute();
-            _paused = false;
-            Arena arena = null;
+            _paused = false;            
+            Arena arena = SmashTVSystem.Instance.Arena;
+            if (arena != null) {
+                arena.onGameFinished -= onGameFinished;
+            }
             _waitingForTimer = false;
             switch(level) {
                 case 1:

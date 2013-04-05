@@ -7,8 +7,8 @@ using System.Collections.ObjectModel;
 
 namespace MesserSmash.Modules {
     public class WaveSpawner {
-        public int EnemyType { get; private set; }
-        public int SpawnCount { get; private set; }
+        public int EnemyType { get; set; }
+        public int SpawnCount { get; set; }
 
         public List<SpawnCriteria> Criterias;
         private bool _active;

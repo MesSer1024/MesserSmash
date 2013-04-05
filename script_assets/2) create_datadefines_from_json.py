@@ -50,14 +50,15 @@ def fillDataDefines(file):
 
         fileStart = "using System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text;\nnamespace MesserSmash.Modules {\n\tpublic static class DataDefines {\n\t\t"
         hashFunction = "private static float getValue(int hash) { return (float)SmashDb.get(hash); }\n\t\t"
+        setFunction = "private static void setValue(int hash, float value) { SmashDb.set(hash, value); }\n\t\t"
         fileContent = []
         fileEnd = "\n\t}\n}"
 
         for k, v, h in zip(keys, values, hashkeys):
             fileContent.append("private const int _{0} = {1};".format(k, h))
-            fileContent.append("public static float {0} {{ get {{ return getValue(_{0}); }} }}".format(k))
+            fileContent.append("public static float {0} {{ get {{ return getValue(_{0}); }} set {{ setValue(_{0}, value); }} }}".format(k))
 
-        output = fileStart + hashFunction + '\n\t\t'.join(fileContent) + fileEnd
+        output = fileStart + hashFunction + setFunction + '\n\t\t'.join(fileContent) + fileEnd
         f.write(output)
         f.close()
         print(output)

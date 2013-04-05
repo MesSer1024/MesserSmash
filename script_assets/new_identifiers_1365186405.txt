@@ -1,0 +1,1 @@
+[{"name": "ID_LEVEL5_TIME_BETWEEN_WAVES", "value": 2.67, "original_line": "", "hashkey": -222004833}, {"name": "ID_LEVEL5_BETWEEN_EACH_UNIQUE_SPAWN_CD", "value": 0.55, "original_line": "", "hashkey": -7039306}]

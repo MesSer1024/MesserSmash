@@ -136,7 +136,7 @@ namespace MesserSmash.Enemies {
         }
 
         public virtual void drawBegin(SpriteBatch sb) {
-            if (DataDefines.ID_GAME_DRAW_ATTACK_RADIUS != 0 && IsAlive) {
+            if (DataDefines.ID_SETTINGS_DRAW_ATTACK_RADIUS != 0 && IsAlive) {
                 sb.Draw(_texture, _position, null, getAttackRadiusColor() * 0.55f, 0f,
                         new Vector2(_textureOrigin, _textureOrigin), _attackRadiusScale, SpriteEffects.None, 0);
             }

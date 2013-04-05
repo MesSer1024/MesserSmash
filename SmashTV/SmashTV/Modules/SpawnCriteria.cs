@@ -14,8 +14,8 @@ namespace MesserSmash.Modules {
         public bool Active { get; private set; }
         public bool Satisfied { get; private set; }
 
-        private int _repeatCounter;
-        private float _timeSinceRepeat;
+        //private int _repeatCounter;
+        //private float _timeSinceRepeat;
 
         public SpawnCriteria(int repeatCount = 0, int secondsBetweenRepeat = 1) {
             MaxEnemiesAlive = -1;
@@ -24,8 +24,8 @@ namespace MesserSmash.Modules {
             WaveRepeatableCount = repeatCount;
             SecondsBetweenRepeat = secondsBetweenRepeat;
 
-            _repeatCounter = 0;
-            _timeSinceRepeat = 10000000;
+            //_repeatCounter = 0;
+            //_timeSinceRepeat = 10000000;
 
             Satisfied = false;
             Active = true;

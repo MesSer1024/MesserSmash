@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using MesserSmash.Commands;
 
 namespace MesserSmash {
     public class WeaponRocketLauncher {
@@ -18,8 +19,10 @@ namespace MesserSmash {
         }
 
         public void tryFireShot(Vector2 pos, Vector2 targetPos) {
-            if (canFireShot()) {
-                fireShot(pos, targetPos);
+            if (noCooldown()) {
+                if (EnergySystem.Instance.canFireRocket()) {
+                    fireShot(pos, targetPos);
+                }
             }
         }
 
@@ -30,10 +33,9 @@ namespace MesserSmash {
             }
         }
 
-        public bool canFireShot() {
+        public bool noCooldown() {
             if (_timeSinceLastShot >= SHOT_GENERATION_CD)
-                if(EnergySystem.Instance.canFireRocket())
-                    return true;
+                return true;
             return false;
         }
     }

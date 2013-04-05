@@ -57,7 +57,6 @@ namespace MesserSmash {
         private int _behaviourDestructors;
         private int _behaviourConstructors;
         private int _enemyConstructors;
-        private SoundManager _sound;
 
         public void startGame(Arena arena, Player player, ShotContainer shotContainer, EnemyContainer enemyContainer) {
             _timeInState = 0;
@@ -123,7 +122,9 @@ namespace MesserSmash {
                 _queuedCommands.Clear();
             }
             if (_isInitialized) {
-                var state = new GameState(deltatime, _arena.TimeSinceStart, _enemyContainer.getAliveEnemies().Count, _killCount);
+                var state = new GameState(deltatime, _arena.TimeSinceStart);
+                DataDefines.ID_STATE_ENEMIES_ALIVE = SmashTVSystem.Instance.EnemyContainer.getAliveEnemies().Count;
+                DataDefines.ID_STATE_ENEMIES_KILLED = _killCount;
                 PerformanceUtil.begin("frame");
                 PerformanceUtil.begin("energy");
                 _energySystem.update(deltatime);

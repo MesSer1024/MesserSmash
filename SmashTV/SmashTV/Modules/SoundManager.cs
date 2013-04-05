@@ -15,17 +15,18 @@ namespace MesserSmash.Modules {
 
         private void onLevelStarted(ICommand cmd) {
             var command = cmd as LevelStartedCommand;
-            _music = AssetManager.getBackgroundMusic().CreateInstance();
-            _music.IsLooped = true;
-            //music.IsLooped = true;
-            //music.Volume = 0.8f;
-            //music.State;
-            _music.Play();
+            if (DataDefines.ID_SETTINGS_PLAY_MUSIC != 0) {
+                _music = AssetManager.getBackgroundMusic().CreateInstance();
+                _music.IsLooped = true;
+                _music.Play();
+            }
         }
 
         private void onPlaySound(ICommand cmd) {
             var command = cmd as PlaySoundCommand;
-            command.Sound.Play(0.8f,0,0);
+            if (DataDefines.ID_SETTINGS_PLAY_SOUND != 0) {
+                command.Sound.Play(0.8f, 0, 0);
+            }
         }
     }
 }

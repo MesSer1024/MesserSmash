@@ -65,7 +65,7 @@ namespace MesserSmash.Enemies {
         }
 
         private void _drawEnemiesAlive() {
-            InfoWindow._aliveEnemies = _enemies.Count.ToString();
+            InfoWindow._aliveEnemies = getAliveEnemies().Count.ToString();
         }
 
         public List<IEnemy> getAliveEnemies() {

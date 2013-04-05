@@ -44,7 +44,6 @@ namespace MesserSmash.Modules {
             while (isInsideBounds(entity.Position + direction, bounds)) {
                 entity.Position += direction;
             }
-            int bajs=0;
         }
 
         private bool isInsideBounds(Vector2 pos, Rectangle bounds) {

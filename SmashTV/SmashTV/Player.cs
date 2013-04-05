@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using MesserSmash.Enemies;
 using MesserSmash.Modules;
+using MesserSmash.Commands;
 
 namespace MesserSmash {
     public class Player : IEntity {
@@ -41,6 +42,7 @@ namespace MesserSmash {
         }
 
         private PlayerState _currentState;
+        private bool _soundlock;
 
         public Player(Vector2 position) {
             _position = position;
@@ -64,6 +66,9 @@ namespace MesserSmash {
             //the state of the player affects movement and handles state specific inputs!
             _currentState.validate(deltatime);
             _currentState.handleInput();
+            if (_soundlock && Mouse.GetState().RightButton == ButtonState.Released) {
+                _soundlock = false;
+            }
             Vector2 movement = Utils.safeNormalize(generateMovementVector());
             _velocity = movement * _currentState.getMovementSpeed() * deltatime;
             restrictMovementToBounds();
@@ -142,8 +147,17 @@ namespace MesserSmash {
         }
 
         public void tryFireRMB() {
-            if (_weaponRMB.canFireShot()) {
-                _weaponRMB.tryFireShot(_position, Utils.getMousePos());
+            if (_weaponRMB.noCooldown()) {
+                if (EnergySystem.Instance.canFireRocket()) {
+                    _weaponRMB.tryFireShot(_position, Utils.getMousePos());
+                    _soundlock = false;
+                }
+                else {
+                    if (_soundlock == false) {
+                        _soundlock = true;
+                        new PlaySoundCommand(AssetManager.getFailSound()).execute();
+                    }
+                }
             }
         }
 

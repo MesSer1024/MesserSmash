@@ -88,6 +88,7 @@ namespace MesserSmash.Arenas {
                 throw new Exception("Invalid command!");
             }
             custSpawnWaveCommand((cmd as SpawnWaveCommand).WaveSpawner);
+            DataDefines.ID_STATE_ENEMIES_ALIVE = SmashTVSystem.Instance.EnemyContainer.getAliveEnemies().Count;
         }
 
         protected virtual void custSpawnWaveCommand(WaveSpawner cmd) {
