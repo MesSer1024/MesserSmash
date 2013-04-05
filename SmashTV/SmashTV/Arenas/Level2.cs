@@ -54,7 +54,7 @@ namespace MesserSmash.Arenas {
         public override void startLevel() {
             new LevelStartedCommand(this).execute();
             //EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Level 1");
-            _timestampLastSpawnedWave = DataDefines.ID_LEVEL2_TIME_BETWEEN_WAVES;
+            _timestampLastSpawnedWave = 0;
         }
 
         protected override void custUpdate(GameState state) {

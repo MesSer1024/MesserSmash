@@ -1,1 +1,0 @@
-[{"name": "ID_FOOBAR_TEST", "hashkey": -1556897297, "original_line": "        private const float ID_FOOBAR_TEST = 125.123f;\n", "value": "125.123f"}]

@@ -1,1 +1,0 @@
-[{"hashkey": 447298688, "value": "1", "original_line": "        private bool ID_GAME_DRAW_ATTACK_RADIUS = 1;\n", "name": "ID_GAME_DRAW_ATTACK_RADIUS"}]

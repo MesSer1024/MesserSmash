@@ -7,8 +7,8 @@ using MesserSmash.Enemies;
     public class EngagingMeleeUnitBehaviour : Behaviour{
         private readonly float _movementSpeed;
 
-        public EngagingMeleeUnitBehaviour() {
-            _movementSpeed = 50;
+        public EngagingMeleeUnitBehaviour(float movementSpeed) {
+            _movementSpeed = movementSpeed;
         }
 
         protected override void onUpdate() {

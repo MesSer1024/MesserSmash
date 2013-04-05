@@ -38,8 +38,22 @@ files = []
 def main():
     id = int(time.time())
 
-    addIdentifier("ID_LEVEL5_TIME_BETWEEN_WAVES", 2.67)
-    addIdentifier("ID_LEVEL5_BETWEEN_EACH_UNIQUE_SPAWN_CD", 0.55)
+    addIdentifier("ID_SETTINGS_DRAW_ATTACK_RADIUS", 0)
+    addIdentifier("ID_SETTINGS_PLAY_MUSIC", 0)
+    addIdentifier("ID_SETTINGS_PLAY_SOUND", 0)
+    addIdentifier("ID_STATE_ENEMIES_ALIVE", 0)
+    addIdentifier("ID_STATE_ENEMIES_KILLED", 0)
+    addIdentifier("ID_MELEE_ENEMY_DAMAGE", 0)
+    addIdentifier("ID_MELEE_ENEMY_RADIUS", 0)
+    addIdentifier("ID_RUSHER_DAMAGE", 0)
+    addIdentifier("ID_RUSHER_RADIUS", 0)
+    addIdentifier("ID_RUSHER_ATTACK_RADIUS", 0)
+    addIdentifier("ID_RANGE_DAMAGE", 0)
+    addIdentifier("ID_RANGE_RADIUS", 0)
+    addIdentifier("ID_RANGE_ATTACK_RADIUS", 0)
+    addIdentifier("ID_RANGE2_DAMAGE", 0)
+    addIdentifier("ID_RANGE2_RADIUS", 0)
+    addIdentifier("ID_RANGE2_ATTACK_RADIUS", 0)
 
     if(len(keys) == len(values) and len(values) > 0):
         makeHashKeys();
@@ -56,32 +70,6 @@ def addIdentifier(key, value):
     keys.append(key)
     values.append(value)
     originalLines.append("")
-
-def findAllFilesMatchingPattern(pattern):
-    allFiles = []
-    for r,d,f in os.walk(SOURCE_FOLDER):
-        for files in f:
-            if files.endswith(pattern):
-                 allFiles.append(os.path.join(r,files))
-    return allFiles;
-
-def findIdentifierInFile(url):
-    print("Browsing:" + url)
-    with open(url) as f:
-        for line in f:
-            match = regexp.match(line)
-            if(match):
-                #skip commented lines
-                if(regexpNoMatch.match(line)):
-                    continue
-                key = match.group('key')
-                print("found key {0}, is match?{1}".format(key, key in keys))
-                if(not key in keys):
-                    value = match.group('value')
-                    originalLines.append(line)
-                    files.append(url.replace(SOURCE_FOLDER, "$src$\\"))
-                    keys.append(key)
-                    values.append(value)
 
 def printKeysAndValues():
     for i, v in zip(keys,values):
@@ -126,16 +114,19 @@ def backupFile(file1, file2):
     shutil.copyfile(file1, file2)
 
 def appendOldData(fileUrl):
-    with open(fileUrl) as f:
-        something = json.load(f)
-        for o in something:
-            if(o[ID_NAME_KEY] not in keys and o[ID_HASH] not in hashkeys):
-                keys.append(o[ID_NAME_KEY])
-                values.append(o[ID_VALUE])
-                hashkeys.append(o[ID_HASH])
-                originalLines.append(o[ID_ORIGINAL_LINE])
-            else:
-                print("ignoring a possible duplicate item?\n key:{0}, value:{1}, hash:{2}, originalLine:{3}".format(o[ID_NAME_KEY], o[ID_VALUE], o[ID_HASH], o[ID_ORIGINAL_LINE]))
+    try:
+        with open(fileUrl) as f:
+            something = json.load(f)
+            for o in something:
+                if(o[ID_NAME_KEY] not in keys and o[ID_HASH] not in hashkeys):
+                    keys.append(o[ID_NAME_KEY])
+                    values.append(o[ID_VALUE])
+                    hashkeys.append(o[ID_HASH])
+                    originalLines.append(o[ID_ORIGINAL_LINE])
+                else:
+                    print("ignoring a possible duplicate item?\n key:{0}, value:{1}, hash:{2}, originalLine:{3}".format(o[ID_NAME_KEY], o[ID_VALUE], o[ID_HASH], o[ID_ORIGINAL_LINE]))
+    except:
+        print("error loading old json file")
 
 if __name__ == '__main__':
     main()

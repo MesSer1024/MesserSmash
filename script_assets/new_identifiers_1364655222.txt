@@ -1,1 +1,0 @@
-[{"name": "ID_FOO", "value": "0", "hashkey": -947836360, "original_line": "        private static int ID_FOO = 0;\n"}]

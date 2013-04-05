@@ -96,6 +96,10 @@ namespace MesserSmash.Enemies {
             _textureOrigin = _texture.Width / 2;
         }
 
+        protected virtual float _getMovementSpeed() {
+            return 50;
+        }
+
         protected virtual float _getAttackRadius() {
             return _radius * 2;
         }
@@ -227,7 +231,7 @@ namespace MesserSmash.Enemies {
         //called when unit is in engaging and player enters their attack radius
 
         protected virtual Behaviour createEngagingBehaviour() {
-            return new EngagingMeleeUnitBehaviour();
+            return new EngagingMeleeUnitBehaviour(_getMovementSpeed());
         }
 
         protected virtual Behaviour createAttackBehaviour() {

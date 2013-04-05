@@ -17,6 +17,14 @@ namespace MesserSmash.Enemies {
             _target = player;
         }
 
+        protected override float _getMovementSpeed() {
+            return base._getMovementSpeed() - 10;
+        }
+
+        protected override Color getColor() {
+            return Color.Orange;
+        }
+
         protected override float _getRadius() {
             return DataDefines.ID_RUSHER_RADIUS;
         }

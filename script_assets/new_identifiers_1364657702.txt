@@ -1,1 +1,0 @@
-[{"hashkey": 1783128820, "original_line": "        public const int ID_ASDFJI = 12;\n", "name": "ID_ASDFJI", "value": "12"}]

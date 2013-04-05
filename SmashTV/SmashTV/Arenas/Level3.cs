@@ -4,56 +4,82 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using MesserSmash.Modules;
+using MesserSmash.Enemies;
+using MesserSmash.Commands;
 
 namespace MesserSmash.Arenas {
     class Level3 : Arena {
          private float _timestampLastSpawnedWave;
-        private float _internalWaveTimer;
-        private int _spawnCounter;
+        private List<WaveSpawner> _spawners = new List<WaveSpawner>();
 
         public Level3() {
             _secondsLeft = 60;
+
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < 30; i++) {
+                WaveSpawner wave;
+                if (i % 2 == 0) {
+                    wave = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 4 + (int)(i * 0.29f));
+                } else {
+                    wave = new WaveSpawner((int)EnemyTypes.Types.Melee, 5 + (int)(i * 0.29f));
+                }
+                var criteria = new SpawnCriteria();
+                criteria.MinSecondsInArena = (int)(i * 1.37f);
+                criteria.MaxEnemiesAlive = 50;
+                wave.addCriteria(criteria);
+                _spawners.Add(wave);
+            }
+
+            _spawners[0].SpawnCount = 18;
+            _spawners[1].SpawnCount = 18;
+            _spawners[4].SpawnCount = 16;
+            _spawners[5].SpawnCount = 16;
+            var end = new WaveSpawner((int)EnemyTypes.Types.Melee, 4);
+            end.addCriteria(new SpawnCriteria { MinSecondsInArena = 43, MaxEnemiesAlive = 35 });
+            var end2 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 4);
+            end2.addCriteria(new SpawnCriteria { MinSecondsInArena = 43, MaxEnemiesAlive = 35 });
+            var end3 = new WaveSpawner((int)EnemyTypes.Types.Melee, 6);
+            end3.addCriteria(new SpawnCriteria { MinSecondsInArena = 51, MaxEnemiesAlive = 42 });
+            var end4 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 4);
+            end4.addCriteria(new SpawnCriteria { MinSecondsInArena = 54, MaxEnemiesAlive = 45 });
+            var end5 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 8);
+            end5.addCriteria(new SpawnCriteria { MinSecondsInArena = 57, MaxEnemiesAlive = 45 });
+
+            _spawners.Add(end);
+            _spawners.Add(end2);
+            _spawners.Add(end3);
+            _spawners.Add(end4);
+            _spawners.Add(end5);
         }
 
         public override void startLevel() {
-            _timestampLastSpawnedWave = DataDefines.ID_LEVEL3_TIME_BETWEEN_WAVES - 3;
+            _timestampLastSpawnedWave = 0;
             EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Level 3");
-
         }
 
         protected override List<Spawnpoint> createSpawnpoints() {
-            var list = new List<Spawnpoint>();
-            int size = 60;
-            list.Add(new Spawnpoint(new Rectangle(Bounds.Left, Bounds.Center.Y - size / 2, size, size),
-                                    AssetManager.getArenaTexture()));
-            list.Add(new Spawnpoint(new Rectangle(Bounds.Center.X - size / 2, Bounds.Bottom - size, size, size),
-                                                AssetManager.getArenaTexture()));
-            list.Add(new Spawnpoint(new Rectangle(Bounds.Right - size, Bounds.Center.Y - size / 2, size, size),
-                                                AssetManager.getArenaTexture()));
-            return list;
+            return Utils.generateSpawnpoints(Bounds);
         }
 
         protected override void custUpdate(GameState state) {
             _timestampLastSpawnedWave += state.DeltaTime;
-            if (_timestampLastSpawnedWave >= DataDefines.ID_LEVEL3_TIME_BETWEEN_WAVES) {
-                _internalWaveTimer += state.DeltaTime;
-                if (_internalWaveTimer >= DataDefines.ID_LEVEL3_BETWEEN_EACH_UNIQUE_SPAWN_CD && _spawnCounter  < DataDefines.ID_LEVEL3_MAX_ENEMIES_PER_WAVE) {
-                    if (Utils.randomBool()) {
-                        getRandomSpawnpoint().generateRangedEnemies(1);
-                        getRandomSpawnpoint().generateSecondaryRangedEnemies(1);
-                    } else {
-                        getRandomSpawnpoint().generateMeleeEnemies(1);
-                        getRandomSpawnpoint().generateMeleeEnemies(1);
-                    }
-                    _internalWaveTimer = 0;
-                    _spawnCounter += 2;
-                } else if (_spawnCounter >= DataDefines.ID_LEVEL3_MAX_ENEMIES_PER_WAVE) {
-                    _spawnCounter = 0;
-                    _internalWaveTimer = 0;
-                    _timestampLastSpawnedWave = 0;
-                }
+            foreach (var wave in _spawners) {
+                wave.update(state);
             }
+        }
 
+        protected override void custSpawnWaveCommand(WaveSpawner spawner) {
+            EnemyTypes.Types enemyType = (EnemyTypes.Types)spawner.EnemyType;
+            spawner.deactivate();
+            for (int i = 0; i < spawner.SpawnCount; i++) {
+                if (enemyType == EnemyTypes.Types.Melee) {
+                    getRandomSpawnpoint().generateMeleeEnemies(1);
+                } else {
+                    getRandomSpawnpoint().generateSecondaryMeleeUnits(1);
+                }
+                
+            }
         }
     }
 }
