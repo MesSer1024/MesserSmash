@@ -22,7 +22,7 @@ namespace MesserSmash.Enemies {
         }
 
         protected override Color getColor() {
-            return Color.Orange;
+            return Color.DarkKhaki;
         }
 
         protected override float _getRadius() {
