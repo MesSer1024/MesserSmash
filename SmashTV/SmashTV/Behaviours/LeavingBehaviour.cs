@@ -20,7 +20,7 @@ namespace MesserSmash.Behaviours {
 
         protected override void onUpdate() {
             (Enemy as EnemyBase).Health = float.MaxValue;
-            if (TimeActive >= 3.0f) {
+            if (TimeThisBehaviour >= 3.0f) {
                 notifyDone();
             }
         }

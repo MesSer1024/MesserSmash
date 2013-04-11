@@ -21,11 +21,11 @@ namespace MesserSmash.Behaviours {
         }
 
         protected override void onUpdate() {
-            if (TimeActive <= 0.25f) {
+            if (TimeThisBehaviour <= 0.25f) {
                 Vector2 dir = Utils.safeNormalize(Target.Position - Position);
                 Velocity = dir * _movementSpeed * DeltaTime;
                 Position += Velocity;
-            } else if (TimeActive >= 0.25f && TimeActive <= 0.75f) {
+            } else if (TimeThisBehaviour >= 0.25f && TimeThisBehaviour <= 0.75f) {
                 if (_reachedPlayerInAttackAnimation == false) {
                     _reachedPlayerInAttackAnimation = true;
                     notifyReachedPlayer();

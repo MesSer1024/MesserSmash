@@ -33,11 +33,11 @@ namespace MesserSmash.Enemies {
         protected Player _target;
 
         private EnemyStates _state;
-        private Behaviour _behaviour;
+        protected Behaviour _behaviour;
         private static int _identifier;
         private int _id;
 
-        public float TimeInState { get; protected set; }
+        public float TimeSinceCreation { get; protected set; }
 
         public float Health {
             get { return _health; }
@@ -61,7 +61,7 @@ namespace MesserSmash.Enemies {
             get { return _state; }
             protected set {
                 _state = value;
-                TimeInState = 0;
+                TimeSinceCreation = 0;
                 handleStateChange();
             }
         }
@@ -120,11 +120,11 @@ namespace MesserSmash.Enemies {
 
         public virtual bool CollisionEnabled {
             //handle all non-dead-states
-            get { return _behaviour != null && _behaviour.CollisionEnabled; }
+            get { return _behaviour != null && _behaviour.PathFindEnabled; }
         }
 
         public void preUpdate(float deltatime) {
-            TimeInState += deltatime;
+            TimeSinceCreation += deltatime;
 
             //it is up to the behaviour to validate that the target position is valid and functioning (inside bounds etc)
             if (IsAlive) {

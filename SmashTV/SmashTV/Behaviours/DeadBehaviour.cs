@@ -3,11 +3,11 @@ namespace MesserSmash.Behaviours {
 
     public class DeadBehaviour : Behaviour{
         public DeadBehaviour() {
-            CollisionEnabled = false;
+            PathFindEnabled = false;
         }
 
         protected override void onUpdate() {
-            if (TimeActive >= 1.5f) {
+            if (TimeThisBehaviour >= 1.5f) {
                 notifyDone();
             }
         }
