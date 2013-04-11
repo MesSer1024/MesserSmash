@@ -39,5 +39,11 @@ namespace MesserSmash {
                 }
             }
         }
+
+        public void removeInterest(string id, CommandDelegate function) {
+            if (_interests.ContainsKey(id)) {
+                _interests[id].Remove(function);
+            }
+        }
     }
 }

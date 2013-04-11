@@ -87,6 +87,7 @@ namespace MesserSmash {
             Arena arena = SmashTVSystem.Instance.Arena;
             if (arena != null) {
                 arena.onGameFinished -= onGameFinished;
+                arena.abort();
             }
             _waitingForTimer = false;
             switch(level) {
@@ -163,7 +164,7 @@ namespace MesserSmash {
                 _paused = !_paused;
             }
 
-            Utils.tickInputStates();
+            Utils.tick();
         }
 
         public void draw(GameTime time) {

@@ -263,5 +263,11 @@ namespace MesserSmash.Arenas {
 
         public float SecondsToFinish { get {return _secondsLeft; } }
         public float TimeSinceStart { get { return _timeInState; } }
+
+        internal void abort() {
+            Controller.instance.removeInterest(SpawnWaveCommand.NAME, onSpawnWave);
+            Controller.instance.removeInterest(ReloadDatabaseCommand.NAME, onReloadDatabase);
+            _spawnPoints.Clear();
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace MesserSmash {
         private static MouseState _oldMouseState;
         private static MouseState _newMouseState = new MouseState();
 
-        public static void tickInputStates() {
+        public static void tick() {
             _oldState = _newState;
             _oldMouseState = _newMouseState;
 
