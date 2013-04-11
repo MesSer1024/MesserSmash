@@ -12,9 +12,10 @@ namespace MesserSmash.Behaviours {
         public Vector2 Velocity { get; set; }
         public IEnemy Enemy { get; set; }
 
-        public bool CollisionEnabled { get; protected set; }
+        public bool PathFindEnabled { get; protected set; }
+        public bool CollisionEnabled { get { return PathFindEnabled; } }
 
-        protected float TimeActive { get; private set; }
+        public float TimeThisBehaviour { get; private set; }
         protected float DeltaTime { get; private set; }
 
 
@@ -23,12 +24,12 @@ namespace MesserSmash.Behaviours {
             SmashTVSystem.Instance.behaviourCreated();
             Position = Vector2.Zero;
             Velocity = Vector2.Zero;
-            CollisionEnabled = true;
+            PathFindEnabled = true;
         }
 
         public void update(float deltatime) {
             DeltaTime = deltatime;
-            TimeActive += deltatime;
+            TimeThisBehaviour += deltatime;
             onUpdate();
         }
 

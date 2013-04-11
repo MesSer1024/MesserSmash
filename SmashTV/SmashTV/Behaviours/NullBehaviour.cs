@@ -7,7 +7,7 @@
 namespace MesserSmash.Behaviours {
     public class NullBehaviour : Behaviour {
         public NullBehaviour() {
-            CollisionEnabled = false;
+            PathFindEnabled = false;
         }
 
         protected override void onUpdate() {}

@@ -1,5 +1,5 @@
-/MesserSmash.suo
 /bin/debug/*.pdb
 /bin/debug/*.exe
 /bin/release/*.pdb
 /bin/release/*.exe
+/*.suo
