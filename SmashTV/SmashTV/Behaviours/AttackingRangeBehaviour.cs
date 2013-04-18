@@ -7,17 +7,19 @@ namespace MesserSmash.Behaviours {
 
     public class AttackingRangeBehaviour : Behaviour, IEntity {
         private float _noOfShotsFired;
-        private const float TIME_BETWEEN_SHOTS = 0.330f;
-        private const int CHANCE_FIRE_SHOT = 10;
+        private const float TIME_BETWEEN_SHOTS = 0; //0.330f
+        private const int CHANCE_FIRE_SHOT = 29;
         private const float TIME_BETWEEN_BEHAVIOR_SHIFTS = 1.25f;
-        private const float MAX_SHOTS_RANGED_ENEMY = 2;
+        private const float MAX_SHOTS_RANGED_ENEMY = 3;
         protected const float ENEMY_MOVEMENT_SPEED = 50;
         private float _timeSinceLastShot;
         private bool _hasNotified;
         private readonly bool _rotateLeft;
         private float _preferredDistance;
+        private Vector2 _aimRandomness;
 
-        public AttackingRangeBehaviour(float preferredDistanceToPlayer) {
+        public AttackingRangeBehaviour(float preferredDistanceToPlayer, Vector2 aimRandomness) {
+            _aimRandomness = aimRandomness;
             _preferredDistance = preferredDistanceToPlayer;
             _timeSinceLastShot = 0 - TIME_BETWEEN_BEHAVIOR_SHIFTS + TIME_BETWEEN_SHOTS;
             _rotateLeft = Utils.randomBool();
@@ -58,7 +60,7 @@ namespace MesserSmash.Behaviours {
         private void createShot() {
             _timeSinceLastShot = 0;
             _noOfShotsFired++;
-            new EnemyPistolShot(Position, Target.Position - Position);
+            new EnemyPistolShot(Position, Target.Position - Position + _aimRandomness);
         }
 
         protected void updatePlayerPosition() {

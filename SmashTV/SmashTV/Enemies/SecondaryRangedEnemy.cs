@@ -6,6 +6,7 @@ using MesserSmash.Modules;
 namespace MesserSmash.Enemies {
     public class SecondaryRangedEnemy : EnemyBase {
         private float _preferredMultiplier;
+        private Vector2 _aimRandomness;
 
         public SecondaryRangedEnemy(Vector2 position, Player player) {
             Position = position;
@@ -13,6 +14,8 @@ namespace MesserSmash.Enemies {
             Damage = DataDefines.ID_RANGE2_DAMAGE;
             float variationSize = 0.45f;
             _preferredMultiplier = (float)(Utils.random() * variationSize + (1-variationSize/2));
+            float maxAimOffset = 75.0f;
+            _aimRandomness = new Vector2((float)(Utils.random() * maxAimOffset) - maxAimOffset/2);
         }
 
         protected override float _getRadius() {
@@ -32,7 +35,7 @@ namespace MesserSmash.Enemies {
         }
 
         protected override Behaviour createAttackBehaviour() {
-            var behaviour = new AttackingRangeBehaviour(DataDefines.ID_RANGE2_PREFERRED_DISTANCE_FROM_PLAYER * _preferredMultiplier);
+            var behaviour = new AttackingRangeBehaviour(DataDefines.ID_RANGE2_PREFERRED_DISTANCE_FROM_PLAYER * _preferredMultiplier, _aimRandomness);
             behaviour.onBehaviourEnded += onAttackBehaviourEnded;
             return behaviour;
         }
