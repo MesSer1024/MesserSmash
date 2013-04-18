@@ -15,13 +15,14 @@ namespace MesserSmash.Behaviours {
 
     public class AttackWithCharge : Behaviour {
         private float _chargeSpeed;
-        private const float MAX_CHARGE_TIME = 0.66f;
+        private readonly float MAX_CHARGE_TIME;
         private float _movementSpeed;
         private float _chargeTimer;
 
-        public AttackWithCharge(float moveSpeed = 50, float chargeSpeed = 260) {
+        public AttackWithCharge(float moveSpeed = 50, float chargeSpeed = 260, float chargeTime = 0.86f) {
             _movementSpeed = moveSpeed;
             _chargeSpeed = chargeSpeed;
+            MAX_CHARGE_TIME = chargeTime;
             _chargeTimer = 0;
             PathFindEnabled = false;
         }

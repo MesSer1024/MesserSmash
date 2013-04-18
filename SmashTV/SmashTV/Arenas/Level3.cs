@@ -35,16 +35,20 @@ namespace MesserSmash.Arenas {
             _spawners[1].SpawnCount = 18;
             _spawners[4].SpawnCount = 8;
             _spawners[5].SpawnCount = 16;
-            var end = new WaveSpawner((int)EnemyTypes.Types.Melee, 38);
-            end.addCriteria(new SpawnCriteria { MinSecondsInArena = 43, MaxEnemiesAlive = 50 });
-            var end2 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 8);
-            end2.addCriteria(new SpawnCriteria { MinSecondsInArena = 43, MaxEnemiesAlive = 50 });
+            var end10 = new WaveSpawner((int)EnemyTypes.Types.Melee, 20);
+            end10.addCriteria(new SpawnCriteria { MinSecondsInArena = 39, MaxEnemiesAlive = 70 });
+            var end = new WaveSpawner((int)EnemyTypes.Types.Melee, 20);
+            end.addCriteria(new SpawnCriteria { MinSecondsInArena = 43, MaxEnemiesAlive = 70 });
+            var end2 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 18);
+            end2.addCriteria(new SpawnCriteria { MinSecondsInArena = 41, MaxEnemiesAlive = 70 });
+            var end11 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 18);
+            end11.addCriteria(new SpawnCriteria { MinSecondsInArena = 46, MaxEnemiesAlive = 70 });
             var end3 = new WaveSpawner((int)EnemyTypes.Types.Melee, 10);
-            end3.addCriteria(new SpawnCriteria { MinSecondsInArena = 51, MaxEnemiesAlive = 42 });
-            var end4 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 4);
-            end4.addCriteria(new SpawnCriteria { MinSecondsInArena = 54, MaxEnemiesAlive = 45 });
+            end3.addCriteria(new SpawnCriteria { MinSecondsInArena = 51, MaxEnemiesAlive = 100 });
+            var end4 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 6);
+            end4.addCriteria(new SpawnCriteria { MinSecondsInArena = 54, MaxEnemiesAlive = 100 });
             var end5 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 8);
-            end5.addCriteria(new SpawnCriteria { MinSecondsInArena = 57, MaxEnemiesAlive = 45 });
+            end5.addCriteria(new SpawnCriteria { MinSecondsInArena = 53, MaxEnemiesAlive = 100 });
 
             _spawners.Add(end);
             _spawners.Add(end2);
