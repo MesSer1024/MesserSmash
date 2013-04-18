@@ -130,7 +130,7 @@ namespace MesserSmash.Arenas {
                     createEnemies(5);
                 }
                 if (Utils.isNewKeyPress(Keys.R)) {
-                    createRangedEnemies(10);
+                    createRangedSecondaryEnemies(10);
                 }
                 if (Utils.isNewKeyPress(Keys.H)) {
                     dropLoot(LootType.Health, Utils.randomPositionWithinRectangle(_bounds));
@@ -197,12 +197,6 @@ namespace MesserSmash.Arenas {
             _timeSinceLastCreation = 0;
         }
 
-        protected void createRangedEnemies(int amount) {
-            while (amount-- > 0) {
-                getRandomSpawnpoint().generateRangedEnemies(1);
-            }
-            _timeSinceLastCreation = 0;
-        }
         protected void createSecondaryMeleeUnits(int amount) {
             while (amount-- > 0) {
                 Spawnpoint sp = _spawnPoints[Utils.randomInt(_spawnPoints.Count)];

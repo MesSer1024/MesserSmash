@@ -14,9 +14,13 @@ namespace MesserSmash.Behaviours {
         protected const float ENEMY_MOVEMENT_SPEED = 50;
         private float _timeSinceLastShot;
         private bool _hasNotified;
+        private readonly bool _rotateLeft;
+        private float _preferredDistance;
 
-        public AttackingRangeBehaviour() {
+        public AttackingRangeBehaviour(float preferredDistanceToPlayer) {
+            _preferredDistance = preferredDistanceToPlayer;
             _timeSinceLastShot = 0 - TIME_BETWEEN_BEHAVIOR_SHIFTS + TIME_BETWEEN_SHOTS;
+            _rotateLeft = Utils.randomBool();
         }
 
         protected override void onUpdate() {
@@ -57,7 +61,7 @@ namespace MesserSmash.Behaviours {
             new EnemyPistolShot(Position, Target.Position - Position);
         }
 
-        protected virtual void updatePlayerPosition() {
+        protected void updatePlayerPosition() {
             if (shouldMoveTowardsPlayer()) {
                 var difference = Target.Position - Position;
                 var dir = Utils.safeNormalize(difference);
@@ -65,17 +69,25 @@ namespace MesserSmash.Behaviours {
                 Position += Velocity;
             } else {
                 var difference = Target.Position - Position;
-                var dir = Utils.safeNormalize(rotate90Degrees(difference));
+                var rotation = _rotateLeft ? rotate270Degrees(difference) : rotate90Degrees(difference);
+                var dir = Utils.safeNormalize(rotation);
                 Velocity = dir * ENEMY_MOVEMENT_SPEED * DeltaTime;
                 new BoundaryChecker().restrictMovementToBounds(this);
                 Position += Velocity;
             }
         }
 
+        private Vector2 rotate270Degrees(Vector2 v) {
+            // (A,B) -> 90 : (-B, A) -> 180: (-A,-B) -> 270: (B, -A)
+            float temp = v.X;
+            v.X = v.Y;
+            v.Y = temp * -1;
+            return v;
+        }
+
         protected bool shouldMoveTowardsPlayer() {
             var difference = Target.Position - Position;
-            var closestWantedRangeTowardsPlayer = Enemy.AttackRadius*Enemy.AttackRadius*0.5f + Enemy.Radius*0.5f;
-            return (difference.LengthSquared() > closestWantedRangeTowardsPlayer);
+            return (difference.Length() > _preferredDistance);
         }
 
         protected Vector2 rotate90Degrees(Vector2 v) {

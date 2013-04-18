@@ -6,6 +6,8 @@ namespace MesserSmash.Modules {
 	public static class DataDefines {
 		private static float getValue(int hash) { return (float)SmashDb.get(hash); }
 		private static void setValue(int hash, float value) { SmashDb.set(hash, value); }
+		private const int _ID_RANGE2_PREFERRED_DISTANCE_FROM_PLAYER = -232007963;
+		public static float ID_RANGE2_PREFERRED_DISTANCE_FROM_PLAYER { get { return getValue(_ID_RANGE2_PREFERRED_DISTANCE_FROM_PLAYER); } set { setValue(_ID_RANGE2_PREFERRED_DISTANCE_FROM_PLAYER, value); } }
 		private const int _ID_SETTINGS_DRAW_ATTACK_RADIUS = 2038939980;
 		public static float ID_SETTINGS_DRAW_ATTACK_RADIUS { get { return getValue(_ID_SETTINGS_DRAW_ATTACK_RADIUS); } set { setValue(_ID_SETTINGS_DRAW_ATTACK_RADIUS, value); } }
 		private const int _ID_SETTINGS_PLAY_MUSIC = -1732770757;

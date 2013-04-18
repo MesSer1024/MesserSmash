@@ -22,19 +22,16 @@ namespace MesserSmash {
         }
 
         public void generateRandomEnemies(int noOfEnemies) {
-            int rnd = Utils.randomInt(4);
+            int rnd = Utils.randomInt(3);
             for (var i = 0; i < noOfEnemies; ++i) {
                 switch (rnd) {
                     case 0:
                         generateMeleeEnemies(1);
                         break;
                     case 1:
-                        generateRangedEnemies(1);
-                        break;
-                    case 2:
                         generateSecondaryMeleeUnits(1);
                         break;
-                    case 3:
+                    case 2:
                         generateSecondaryRangedEnemies(1);
                         break;
                 }
@@ -45,18 +42,6 @@ namespace MesserSmash {
             while (amount-- > 0) {
                 Player player = SmashTVSystem.Instance.Player;
                 IEnemy enemy = new MeleeEnemy(Utils.randomPositionWithinRectangle(_bounds), player);
-                enemy.init();
-            }
-        }
-
-        public void generateMeleeEnemiesOverTime(int amount, float seconds) {
-            
-        }
-
-        public void generateRangedEnemies(int amount) {
-            while (amount-- > 0) {
-                Player player = SmashTVSystem.Instance.Player;
-                IEnemy enemy = new RangedEnemy(Utils.randomPositionWithinRectangle(_bounds), player);
                 enemy.init();
             }
         }

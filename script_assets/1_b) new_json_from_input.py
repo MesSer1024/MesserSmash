@@ -38,22 +38,7 @@ files = []
 def main():
     id = int(time.time())
 
-    addIdentifier("ID_SETTINGS_DRAW_ATTACK_RADIUS", 0)
-    addIdentifier("ID_SETTINGS_PLAY_MUSIC", 0)
-    addIdentifier("ID_SETTINGS_PLAY_SOUND", 0)
-    addIdentifier("ID_STATE_ENEMIES_ALIVE", 0)
-    addIdentifier("ID_STATE_ENEMIES_KILLED", 0)
-    addIdentifier("ID_MELEE_ENEMY_DAMAGE", 0)
-    addIdentifier("ID_MELEE_ENEMY_RADIUS", 0)
-    addIdentifier("ID_RUSHER_DAMAGE", 0)
-    addIdentifier("ID_RUSHER_RADIUS", 0)
-    addIdentifier("ID_RUSHER_ATTACK_RADIUS", 0)
-    addIdentifier("ID_RANGE_DAMAGE", 0)
-    addIdentifier("ID_RANGE_RADIUS", 0)
-    addIdentifier("ID_RANGE_ATTACK_RADIUS", 0)
-    addIdentifier("ID_RANGE2_DAMAGE", 0)
-    addIdentifier("ID_RANGE2_RADIUS", 0)
-    addIdentifier("ID_RANGE2_ATTACK_RADIUS", 0)
+    addIdentifier("ID_RANGE2_PREFERRED_DISTANCE_FROM_PLAYER", 125)
 
     if(len(keys) == len(values) and len(values) > 0):
         makeHashKeys();

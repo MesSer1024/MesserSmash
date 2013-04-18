@@ -121,7 +121,6 @@
     <Compile Include="Arenas\SpecialLevel.cs" />
     <Compile Include="Behaviours\AttackingMeleeBehaviour.cs" />
     <Compile Include="Behaviours\AttackingRangeBehaviour.cs" />
-    <Compile Include="Behaviours\AttackingRangedTwoWays.cs" />
     <Compile Include="Behaviours\AttackWithCharge.cs" />
     <Compile Include="Behaviours\Behaviour.cs" />
     <Compile Include="Behaviours\DeadBehaviour.cs" />
@@ -147,7 +146,6 @@
     <Compile Include="Enemies\MeleeEnemy.cs" />
     <Compile Include="Enemies\EnemyBase.cs" />
     <Compile Include="Enemies\EnemyContainer.cs" />
-    <Compile Include="Enemies\RangedEnemy.cs" />
     <Compile Include="EnergySystem.cs" />
     <Compile Include="EventHandler.cs" />
     <Compile Include="Explosion.cs" />

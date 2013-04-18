@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using MesserSmash.Modules;
 
 namespace MesserSmash {
     /// <summary>
@@ -63,8 +64,10 @@ namespace MesserSmash {
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime) {
             // Allows the game to exit
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape)) {
+                Logger.flush();
                 this.Exit();
+            }
 
             // TODO: Add your update logic here
             base.Update(gameTime);
