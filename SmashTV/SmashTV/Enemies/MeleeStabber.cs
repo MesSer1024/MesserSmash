@@ -46,7 +46,7 @@ namespace MesserSmash.Enemies {
         }
 
         protected override Behaviour createAttackBehaviour() {
-            var behaviour = new AttackWithCharge(_getMovementSpeed(), 180f, 1f);
+            var behaviour = new AttackWithCharge(_getMovementSpeed(), 190f, 1.1f);
             behaviour.onBehaviourEnded += onAttackDone;
             return behaviour;
         }

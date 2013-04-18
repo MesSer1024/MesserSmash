@@ -30,10 +30,24 @@ namespace MesserSmash.Arenas {
                 _spawners.Add(wave);
             }
 
+            for (int i = 0; i < 20; i++) {
+                WaveSpawner wave = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 6);
+                wave.addCriteria(new SpawnCriteria { MinSecondsInArena = i * 6 });
+                _spawners.Add(wave);
+            }
+
             _spawners[0].SpawnCount = 18;
             _spawners[1].SpawnCount = 18;
             _spawners[4].SpawnCount = 12;
             _spawners[5].SpawnCount = 10;
+
+            var middle = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 11);
+            middle.addCriteria(new SpawnCriteria { MinSecondsInArena = 37 });
+            _spawners.Add(middle);
+            var middle2 = new WaveSpawner((int)EnemyTypes.Types.SecondaryRange, 6);
+            middle2.addCriteria(new SpawnCriteria { MinSecondsInArena = 36 });
+            _spawners.Add(middle2);
+
             var end = new WaveSpawner((int)EnemyTypes.Types.Melee, 4);
             end.addCriteria(new SpawnCriteria { MinSecondsInArena = 46, MaxEnemiesAlive = 35 });
             var end2 = new WaveSpawner((int)EnemyTypes.Types.SecondaryRange, 4);
@@ -41,21 +55,6 @@ namespace MesserSmash.Arenas {
 
             _spawners.Add(end);
             _spawners.Add(end2);
-            _spawners.RemoveAt(15);
-            _spawners.RemoveAt(15);
-            _spawners.RemoveAt(15);
-            var foo = new WaveSpawner((int)EnemyTypes.Types.SecondaryRange, 9);
-            var crit = new SpawnCriteria();
-            crit.MaxEnemiesAlive = 5;
-            crit.MinSecondsInArena = (int)(16 * 1.37f);
-            foo.addCriteria(crit);
-            _spawners.Insert(15, foo);
-            _spawners.RemoveAt(7);
-            _spawners.RemoveAt(7);
-            _spawners.RemoveAt(26);
-            _spawners.RemoveAt(26);
-            _spawners.RemoveAt(34);
-            _spawners.RemoveAt(35);
         }
 
         public override void startLevel() {
@@ -78,12 +77,19 @@ namespace MesserSmash.Arenas {
             EnemyTypes.Types enemyType = (EnemyTypes.Types)spawner.EnemyType;
             spawner.deactivate();
             for (int i = 0; i < spawner.SpawnCount; i++) {
-                if (enemyType == EnemyTypes.Types.Melee) {
-                    getRandomSpawnpoint().generateMeleeEnemies(1);
-                } else if (enemyType == EnemyTypes.Types.SecondaryRange) {
-                    getRandomSpawnpoint().generateSecondaryRangedEnemies(1);
+                switch (enemyType) {
+                    case EnemyTypes.Types.Melee:
+                        getRandomSpawnpoint().generateMeleeEnemies(1);
+                        break;
+                    case EnemyTypes.Types.SecondaryRange:
+                        getRandomSpawnpoint().generateSecondaryRangedEnemies(1);
+                        break;
+                    case EnemyTypes.Types.SecondaryMelee:
+                        getRandomSpawnpoint().generateSecondaryMeleeUnits(1);
+                        break;
+                    default:
+                        throw new Exception("unknown enemy type");
                 }
-                
             }
         }
     }

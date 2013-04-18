@@ -8,7 +8,7 @@ namespace MesserSmash.Behaviours {
     public class AttackingRangeBehaviour : Behaviour, IEntity {
         private float _noOfShotsFired;
         private const float TIME_BETWEEN_SHOTS = 0; //0.330f
-        private const int CHANCE_FIRE_SHOT = 29;
+        private const int CHANCE_FIRE_SHOT = 32; //29
         private const float TIME_BETWEEN_BEHAVIOR_SHIFTS = 1.25f;
         private const float MAX_SHOTS_RANGED_ENEMY = 3;
         protected const float ENEMY_MOVEMENT_SPEED = 50;

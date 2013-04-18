@@ -14,7 +14,7 @@ namespace MesserSmash.Enemies {
             Damage = DataDefines.ID_RANGE2_DAMAGE;
             float variationSize = 0.45f;
             _preferredMultiplier = (float)(Utils.random() * variationSize + (1-variationSize/2));
-            float maxAimOffset = 75.0f;
+            float maxAimOffset = 115.0f;
             _aimRandomness = new Vector2((float)(Utils.random() * maxAimOffset) - maxAimOffset/2);
         }
 
