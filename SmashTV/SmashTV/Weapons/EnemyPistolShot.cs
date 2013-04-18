@@ -50,10 +50,6 @@ namespace MesserSmash.Weapons {
             return AssetManager.getShotTexture();
         }
 
-        protected override bool _doesSplashDamage() {
-            return false;
-        }
-
         protected override void _update(float deltatime) {
             if (_state != ShotStates.Removed) {
                 if (_state == ShotStates.Dead) {
@@ -76,7 +72,7 @@ namespace MesserSmash.Weapons {
             }
         }
 
-        protected override void _explode(Vector2 impactPosition) {
+        protected override void _entityCollision(Vector2 impactPosition) {
             if (_state == ShotStates.Removed || _state == ShotStates.Dead)
                 return;
             _state = ShotStates.Dead;

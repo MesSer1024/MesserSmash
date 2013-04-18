@@ -12,7 +12,8 @@ namespace MesserSmash {
         private const float FLIGHT_SIZE = 5;
 
         private const float FLYING_TIME = 1.35f;
-        private const float EXPLOSION_ACTIVE_TIME = 0.75f;
+        private const float EXPLOSION_TIME_SHOWN = 0.750f;
+        private const float EXPLOSION_TIME_DEAL_DAMAGE = 0.175f;        
         private readonly float MOVEMENT_SPEED;
         private Vector2 _direction;
         private Vector2 _targetPosition;
@@ -48,10 +49,6 @@ namespace MesserSmash {
             return AssetManager.getRocketShotTexture();
         }
 
-        protected override bool _doesSplashDamage() {
-            return true;
-        }
-
         protected override bool _flaggedForCollision() {
             return _state == ShotState.Landed;
         }
@@ -60,11 +57,8 @@ namespace MesserSmash {
             return _state == ShotState.Removable;
         }
 
-        protected override void _explode(Vector2 impactPosition) {
-            if (_state == ShotState.Landed) {
-                _state = ShotState.ExplodeAnimation;
-                _timeInState = 0;
-            }
+        protected override void _entityCollision(Vector2 impactPosition) {
+            //do nothing on hit with unit since we should not change this shots behavior in that scenario
         }
 
         protected override void _update(float gametime) {
@@ -85,19 +79,12 @@ namespace MesserSmash {
                     }
                     break;
                 case ShotState.Landed:
-                    if (_timeInState >= 0.15f) {
-                        explode(_targetPosition);
-                    }
-                    break;
-                case ShotState.ExplodeAnimation:
-                    if (_timeInState >= 0.5f) {
-                        _timeInState = 0;
+                    if (_timeInState >= EXPLOSION_TIME_DEAL_DAMAGE) {
                         _state = ShotState.Removable;
                     }
                     break;
             }
         }
-
 
         private bool isOutsideOfBounds() {
             return new BoundaryChecker().entityWasOutsideBoundsBeforeRestriction(this);
@@ -107,7 +94,7 @@ namespace MesserSmash {
             _timeInState = 0;
             _state = ShotState.Landed;
             _radius = GROUND_SIZE;            
-            requestBecomeGroundEffect(EXPLOSION_ACTIVE_TIME);
+            requestBecomeGroundEffect(EXPLOSION_TIME_DEAL_DAMAGE, EXPLOSION_TIME_SHOWN);
         }
 
         protected override void _draw(SpriteBatch sb) {

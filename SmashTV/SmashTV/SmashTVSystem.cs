@@ -209,7 +209,10 @@ namespace MesserSmash {
 					if (enemy.IsAlive) {
 						if (isOverlapping(shotPos, enemy.Position, shotRadius, enemy.Radius)) {
 							enemy.takeDamage(shot.Damage);
-							shot.explode(enemy.Position);
+							shot.entityCollision(enemy.Position);
+                            if (shot.CollisionEnabled == false) {
+                                break;
+                            }
 						}
 					}
 				}
@@ -224,7 +227,7 @@ namespace MesserSmash {
 				float shotRadius = shot.Radius;
 				if (isOverlapping(shotPos, Player.Position, shotRadius, Player.Radius)) {
 					Player.takeDamage(shot.Damage);
-					shot.explode(Player.Position);
+					shot.entityCollision(Player.Position);
 				}
 			}               
 		}
@@ -255,7 +258,7 @@ namespace MesserSmash {
 		public void draw(Microsoft.Xna.Framework.Graphics.SpriteBatch sb) {
 			if (_isInitialized) {
 				InfoWindow._killCount = _killCount.ToString();
-
+				
 				_arena.drawBackground(sb);
 				_shotContainer.drawExplosions(sb);
 				_enemyContainer.drawBegin(sb);

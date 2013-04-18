@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace MesserSmash {
     class Explosion {
         private float _timeToShow;
+        private float _timeDealDamage;
         private float _currTime;
         private Vector2 _position;
         private float _radius;
@@ -18,11 +19,12 @@ namespace MesserSmash {
         private bool _isAlive;
         public bool IsAlive { get { return _isAlive; } }
 
-        public Explosion(Vector2 pos, float radius, Texture2D texture, float timeToShow) {
+        public Explosion(Vector2 pos, float radius, Texture2D texture, float timeDealDamage, float timeToShow) {
             _position = pos;
             _radius = radius;
             _texture = texture;
             _timeToShow = timeToShow;
+            _timeDealDamage = timeDealDamage;
 
             _scale = 2 * _radius / _texture.Width;
             _textureOrigin = _texture.Width / 2;
@@ -41,9 +43,13 @@ namespace MesserSmash {
 
         public void draw(SpriteBatch sb) {
             if(_isAlive) {
-                Color color = Color.DarkBlue;
-                sb.Draw(_texture, _position, null, Color.DarkBlue, 0f, new Vector2(_textureOrigin, _textureOrigin), _scale, SpriteEffects.None, 0);
+                Color color = isDealingDamage() ? Color.DarkOrange : Color.DarkBlue;
+                sb.Draw(_texture, _position, null, color, 0f, new Vector2(_textureOrigin, _textureOrigin), _scale, SpriteEffects.None, 0);
             }
+        }
+
+        private bool isDealingDamage() {
+            return _currTime <= _timeDealDamage;
         }
     }
 }

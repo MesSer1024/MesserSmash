@@ -127,6 +127,16 @@ namespace MesserSmash {
             return rng.Next(max);
         }
 
+        /// <summary>
+        /// Find out whether something with a certain percentage (0..100) should happen or not
+        /// </summary>
+        /// <param name="percentage">a value [0..99] to see if it would happen or not (basically value >= random(100))</param>
+        /// <returns></returns>
+        public static bool randomHappening(float percentage) {
+            double rnd = random();
+            return rnd * 100 < percentage;
+        }
+
         public static Vector2 randomPositionWithinRectangle(Rectangle bounds) {
             Vector2 point = Vector2.Zero;
             point.X = rng.Next(bounds.Left, bounds.Right + 1);

@@ -21,17 +21,18 @@ namespace MesserSmash {
 
         public void addShot(ShotBase shot) {
             _shots.Add(shot);
-            shot.onGenerateGroundEffect += new ShotBase.ShotDelegate(onGenerateGroundEffect);
+            shot.GenerateGroundEffect += new ShotBase.ShotDelegate(onGenerateGroundEffect);
         }
 
         public void addEnemyShot(ShotBase shot) {
             _enemyShots.Add(shot);
-            shot.onGenerateGroundEffect += new ShotBase.ShotDelegate(onGenerateGroundEffect);
+            shot.GenerateGroundEffect += new ShotBase.ShotDelegate(onGenerateGroundEffect);
         }
 
-        void onGenerateGroundEffect(ShotBase shot, float timeToShow) {
+        void onGenerateGroundEffect(ShotBase shot, float timeDealDamage, float timeToShow) {
             Texture2D texture = AssetManager.getRocketShotTexture();
-            _explosions.Add(new Explosion(shot.Position, shot.Radius, texture, timeToShow));
+            shot.GenerateGroundEffect -= onGenerateGroundEffect;
+            _explosions.Add(new Explosion(shot.Position, shot.Radius, texture, timeDealDamage, timeToShow));
         }
 
         public void update(float deltatime) {
@@ -41,7 +42,7 @@ namespace MesserSmash {
                 i.update(deltatime);
                 if (i.CollisionEnabled) {
                     if (isOutOfBounds(i, bounds)) {
-                        i.explode(getImpactPosition(i, bounds));
+                        i.entityCollision(getImpactPosition(i, bounds));
                     }
                 }
             }
@@ -50,7 +51,7 @@ namespace MesserSmash {
                 i.update(deltatime);
                 if (i.CollisionEnabled) {
                     if (isOutOfBounds(i, bounds)) {
-                        i.explode(getImpactPosition(i, bounds));
+                        i.entityCollision(getImpactPosition(i, bounds));
                     }
                 }
             }

@@ -8,8 +8,8 @@ using MesserSmash.Enemies;
 
 namespace MesserSmash {
     public abstract class ShotBase : IEntity {
-        public delegate void ShotDelegate(ShotBase shot, float timeToShow);
-        public event ShotDelegate onGenerateGroundEffect;
+        public delegate void ShotDelegate(ShotBase shot, float timeDealDamage, float timeToShow);
+        public event ShotDelegate GenerateGroundEffect;
 
         protected Vector2 _position;
         protected Vector2 _velocity;
@@ -28,8 +28,6 @@ namespace MesserSmash {
         }
 
         public bool CollisionEnabled { get { return _flaggedForCollision(); } }
-
-        public bool DoesSplashDamage { get { return _doesSplashDamage(); } }
 
         public ShotBase() : this(Vector2.Zero, false) {}
 
@@ -54,7 +52,6 @@ namespace MesserSmash {
         protected abstract float _initRadius();
         protected abstract bool _flaggedForCollision();
         protected abstract bool _removable();
-        protected abstract bool _doesSplashDamage();
 
         public void update(float deltatime) {
             _timeInState += deltatime;
@@ -67,14 +64,14 @@ namespace MesserSmash {
         }
         protected abstract void _draw(SpriteBatch sb);
 
-        public void explode(Vector2 impactPosition) {
-            _explode(impactPosition);
+        public void entityCollision(Vector2 impactPosition) {
+            _entityCollision(impactPosition);
         }
-        protected abstract void _explode(Vector2 impactPosition);
+        protected abstract void _entityCollision(Vector2 impactPosition);
 
-        protected void requestBecomeGroundEffect(float timeToShow) {
-            if (onGenerateGroundEffect != null) {
-                onGenerateGroundEffect.Invoke(this, timeToShow);
+        protected void requestBecomeGroundEffect(float timeDealDamage, float timeToShow) {
+            if (GenerateGroundEffect != null) {
+                GenerateGroundEffect.Invoke(this, timeDealDamage, timeToShow);
             }
         }
 

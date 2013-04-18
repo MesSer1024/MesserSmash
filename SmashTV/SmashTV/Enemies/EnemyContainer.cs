@@ -59,7 +59,10 @@ namespace MesserSmash.Enemies {
         }
 
         public void draw(SpriteBatch sb) {
-            foreach (var enemy in _enemies) {
+            foreach (var enemy in _enemies.FindAll(a => a.IsAlive == false)) {
+                enemy.draw(sb);
+            }
+            foreach (var enemy in getAliveEnemies()) {
                 enemy.draw(sb);
             }
         }

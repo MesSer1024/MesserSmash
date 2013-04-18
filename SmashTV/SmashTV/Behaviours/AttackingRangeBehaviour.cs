@@ -8,18 +8,20 @@ namespace MesserSmash.Behaviours {
     public class AttackingRangeBehaviour : Behaviour, IEntity {
         private float _noOfShotsFired;
         private const float TIME_BETWEEN_SHOTS = 0.330f;
+        private const int CHANCE_FIRE_SHOT = 10;
         private const float TIME_BETWEEN_BEHAVIOR_SHIFTS = 1.25f;
+        private const float MAX_SHOTS_RANGED_ENEMY = 2;
         protected const float ENEMY_MOVEMENT_SPEED = 50;
         private float _timeSinceLastShot;
         private bool _hasNotified;
 
         public AttackingRangeBehaviour() {
-            _timeSinceLastShot = TIME_BETWEEN_SHOTS;
+            _timeSinceLastShot = 0 - TIME_BETWEEN_BEHAVIOR_SHIFTS + TIME_BETWEEN_SHOTS;
         }
 
         protected override void onUpdate() {
             _timeSinceLastShot += DeltaTime;
-            if (canFireGun()) {
+            if (canFireGun() && randomHappening()) {
                 createShot();
             } else {
                 updatePlayerPosition();
@@ -33,6 +35,10 @@ namespace MesserSmash.Behaviours {
             }
         }
 
+        private bool randomHappening() {
+            return Utils.randomHappening(CHANCE_FIRE_SHOT * DeltaTime);
+        }
+
         private bool canFireGun() {
             return shotCooldown() && !hasFiredAllShots();
         }
@@ -42,7 +48,7 @@ namespace MesserSmash.Behaviours {
         }
 
         private bool hasFiredAllShots() {
-            return _noOfShotsFired >= 3;
+            return _noOfShotsFired >= MAX_SHOTS_RANGED_ENEMY;
         }
 
         private void createShot() {
