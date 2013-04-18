@@ -109,7 +109,7 @@ namespace MesserSmash.Arenas {
         }
 
         protected virtual List<LootType> createLootTable() {
-            return Utils.generateLootTable(927, 12, 3);
+            return Utils.generateLootTable(200, 12, 0);
         }
 
         public void update(GameState state) {

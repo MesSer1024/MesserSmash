@@ -19,19 +19,19 @@ namespace MesserSmash.Arenas {
             for (int i = 0; i < 60; i++) {
                 WaveSpawner wave;
                 if (i % 2 == 0) {
-                    wave = new WaveSpawner((int)EnemyTypes.Types.SecondaryRange, 2 + (int)(i * 0.09f));
+                    wave = new WaveSpawner((int)EnemyTypes.Types.SecondaryRange,Math.Min(5, 2 + (int)(i * 0.09f)));
                 } else {
-                    wave = new WaveSpawner((int)EnemyTypes.Types.Melee, 5 + (int)(i * 0.09f));
+                    wave = new WaveSpawner((int)EnemyTypes.Types.Melee, Math.Min(9, 5 + (int)(i * 0.09f)));
                 }
                 var criteria = new SpawnCriteria();
-                criteria.MinSecondsInArena = (int)(i * 1.37f);
+                criteria.MinSecondsInArena = (int)(i * 1.67f);
                 criteria.MaxEnemiesAlive = 50;
                 wave.addCriteria(criteria);
                 _spawners.Add(wave);
             }
 
             for (int i = 0; i < 20; i++) {
-                WaveSpawner wave = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 6);
+                WaveSpawner wave = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 4);
                 wave.addCriteria(new SpawnCriteria { MinSecondsInArena = i * 6 });
                 _spawners.Add(wave);
             }
