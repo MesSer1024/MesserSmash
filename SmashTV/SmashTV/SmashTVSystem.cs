@@ -71,6 +71,7 @@ namespace MesserSmash {
 
 			Controller.instance.registerInterest(AttackPlayerCommand.NAME, onEnemyAttackedPlayer);
 			Controller.instance.registerInterest(DeadEnemyCommand.NAME, onEnemyDead);
+            Controller.instance.registerInterest(PlayerDiedCommand.NAME, onPlayerDead);
 			_killCount = 0;
 			_arena.onGameFinished += new Arena.ArenaDelegate(onGameFinished);
 			_arena.onZeroTimer += new Arena.ArenaDelegate(onZeroTimer);
@@ -91,7 +92,7 @@ namespace MesserSmash {
 			_queuedCommands.Add("end_arena");
 		}
 
-		void clearData() {
+		void stopGame() {
 			if (_arena != null) {
 				_arena.abort();
 			}
@@ -114,55 +115,67 @@ namespace MesserSmash {
 			_gui.setKillCount(_killCount);
 		}
 
+        void onPlayerDead(ICommand command) {
+            var cmd = command as PlayerDiedCommand;
+            _queuedCommands.Add("end_arena");
+
+            new GameOverCommand(_gui).execute();
+        }
+
 		public void update(float deltatime) {
 			_timeInState += deltatime;
 			if (_queuedCommands.Count > 0) {
 				foreach (string s in _queuedCommands) {
 					if (s == "end_arena") {
-						clearData();
+						stopGame();
 					}
 				}
 				_queuedCommands.Clear();
 			}
-			if (_isInitialized) {
-				var state = new GameState(deltatime, _arena.TimeSinceStart);
-				DataDefines.ID_STATE_ENEMIES_ALIVE = SmashTVSystem.Instance.EnemyContainer.getAliveEnemies().Count;
-				DataDefines.ID_STATE_ENEMIES_KILLED = _killCount;
-				PerformanceUtil.begin("frame");
-				PerformanceUtil.begin("energy");
-				_energySystem.update(deltatime);
-				PerformanceUtil.end("energy");
-				PerformanceUtil.begin("enemy");
-				_enemyContainer.update(deltatime); //let all enemies decide where they want to move
-				PerformanceUtil.end("enemy");
-				PerformanceUtil.begin("shots");
-				_shotContainer.update(deltatime);
-				PerformanceUtil.end("shots");
-				PerformanceUtil.begin("arena");
-				_arena.update(state);
-				PerformanceUtil.end("arena");
-				PerformanceUtil.begin("player");
-				_player.update(deltatime);
-				PerformanceUtil.end("player");
-				PerformanceUtil.begin("collision");
+            if (_isInitialized) {
+                var state = new GameState(deltatime, _arena.TimeSinceStart);
+                DataDefines.ID_STATE_ENEMIES_ALIVE = SmashTVSystem.Instance.EnemyContainer.getAliveEnemies().Count;
+                DataDefines.ID_STATE_ENEMIES_KILLED = _killCount;
+                PerformanceUtil.begin("frame");
+                PerformanceUtil.begin("energy");
+                _energySystem.update(deltatime);
+                PerformanceUtil.end("energy");
+                PerformanceUtil.begin("enemy");
+                _enemyContainer.update(deltatime); //let all enemies decide where they want to move
+                PerformanceUtil.end("enemy");
+                PerformanceUtil.begin("shots");
+                _shotContainer.update(deltatime);
+                PerformanceUtil.end("shots");
+                PerformanceUtil.begin("arena");
+                _arena.update(state);
+                PerformanceUtil.end("arena");
+                PerformanceUtil.begin("player");
+                _player.update(deltatime);
+                PerformanceUtil.end("player");
+                PerformanceUtil.begin("collision");
 
-				//check for collisions between shots and enemies
-				collisionDetection();
+                //check for collisions between shots and enemies
+                collisionDetection();
 
-				//check for possible enemy attacks
-				checkForNearnessToPlayer();
+                //check for possible enemy attacks
+                checkForNearnessToPlayer();
 
-				//check if player can pickup loot
-				detectLootPickup();
-				PerformanceUtil.end("collision");
+                //check if player can pickup loot
+                detectLootPickup();
+                PerformanceUtil.end("collision");
 
 
-				PerformanceUtil.begin("gui");
-				_updateGUIValues();
-				_gui.update(deltatime);
-				PerformanceUtil.end("gui");
-				PerformanceUtil.end("frame");
-			}
+                PerformanceUtil.begin("gui");
+                _updateGUIValues();
+                _gui.update(deltatime);
+                PerformanceUtil.end("gui");
+                PerformanceUtil.end("frame");
+            } else {
+                //not started or game over
+                if (_gui != null) {
+                    _gui.update(deltatime);
+                }
+            }
 		}
 
 		private void detectLootPickup() {
@@ -171,12 +184,10 @@ namespace MesserSmash {
 				Vector2 lootPos = loot.Position;
 				float lootRadius = loot.Radius;
 				if (isOverlapping(lootPos, _player.Position, lootRadius, _player.Radius)) {
-					loot.inactivate();
-					if (loot.Type == Arena.LootType.Health) {
-						_player.receiveHealth(45);
-					} else {
-						_player.receiveMoney(250);
-					}
+                    new LootPickedUpCommand(loot, _player).execute();
+                    if (loot.Type == Arenas.Arena.LootType.Health) {
+                        _player.receiveHealth(45);
+                    }
 				}
 			}
 		}
@@ -184,7 +195,6 @@ namespace MesserSmash {
 		private void _updateGUIValues() {
             InfoWindow._energy = Utils.makeString("Energy : [{0}/{1}]", _energySystem.AvailableEnergy.ToString("000"), _energySystem.MaxEnergy.ToString("000"));
 			InfoWindow._playerPosition = Utils.makeString("({0},{1})", _player.Position.X.ToString("0.0"), _player.Position.Y.ToString("0.0"));
-			InfoWindow._money = _player.Money.ToString();
 			InfoWindow._health = _player.Health.ToString();
 			InfoWindow._enemyDestructors = _enemyConstructors.ToString() + ":" + _enemyDestructors.ToString();
 			InfoWindow._behaviourDestructors = _behaviourConstructors.ToString() + ":" + _behaviourDestructors.ToString();
@@ -267,7 +277,12 @@ namespace MesserSmash {
 				_player.draw(sb);
 				_shotContainer.draw(sb);
 				_gui.draw(sb);
-			}
+            } else {
+                //not started or game over
+                if (_gui != null) {
+                    _gui.draw(sb);
+                }
+            }
 		}
 
 		public void enemyRemoved() {

@@ -1,0 +1,1 @@
+[{"hashkey": -1279721056, "original_line": "", "name": "ID_MELEE_ENEMY_SCORE", "value": 8}, {"hashkey": -883718525, "original_line": "", "name": "ID_RUSHER_SCORE", "value": 15}, {"hashkey": -2121534913, "original_line": "", "name": "ID_RANGE2_SCORE", "value": 13}]

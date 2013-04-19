@@ -12,7 +12,6 @@ namespace MesserSmash {
         public static string _aliveShots = "";
         public static string _aliveEnemies = "";
         public static string _killCount = "";
-        public static string _money = "";
         public static string _health = "";
         public static string _timeLeft = "";
         public static string _energy = "";
@@ -26,7 +25,6 @@ namespace MesserSmash {
             Vector2 pos = Vector2.Zero;
             _sb = sb;
             pos = internalDraw(_defaultFont, "Playerpos:" + _playerPosition, pos, Color.Black);
-            pos = internalDraw(_defaultFont, "$Money$: " + _money, pos, Color.Black);
             pos = internalDraw(_defaultFont, "+Health+: " + _health, pos, Color.Black);
             pos = internalDraw(_defaultFont, _energy, pos, Color.Black);
             pos = internalDraw(_defaultFont, "Active Shots: " + _aliveShots, pos, Color.Black);

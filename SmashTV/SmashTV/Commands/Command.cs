@@ -24,8 +24,11 @@ namespace MesserSmash.Commands {
             get { return _name; }
         }
 
-        public virtual void execute() {
+        public void execute() {
+            custExecute();
             Controller.instance.handleCommand(this);
         }
+
+        protected virtual void custExecute() {}
     }
 }

@@ -133,6 +133,7 @@
     <Compile Include="Commands\DeadEnemyCommand.cs" />
     <Compile Include="Commands\FirePistolShotCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\PlayerDiedCommand.cs" />
     <Compile Include="Commands\ReloadDatabaseCommand.cs" />
     <Compile Include="Commands\SpawnWaveCommand.cs" />
     <Compile Include="Controller.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Enemies\IEntity.cs" />
     <Compile Include="Enemies\MeleeStabber.cs" />
     <Compile Include="Enemies\SecondaryRangedEnemy.cs" />
+    <Compile Include="Commands\GameOverCommand.cs" />
     <Compile Include="GUI\DebugGuiOverlay.cs" />
     <Compile Include="GUI\FunnyText.cs" />
     <Compile Include="GUI\InGameView.cs" />
@@ -156,6 +158,7 @@
     <Compile Include="GUI\ShortcutButton.cs" />
     <Compile Include="Enemies\IEnemy.cs" />
     <Compile Include="InfoWindow.cs" />
+    <Compile Include="Commands\LootPickedUpCommand.cs" />
     <Compile Include="Modules\BoundaryChecker.cs" />
     <Compile Include="Modules\DataDefines.cs" />
     <Compile Include="Modules\GameState.cs" />
@@ -174,6 +177,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="RocketShot.cs" />
+    <Compile Include="Scoring.cs" />
     <Compile Include="ShotBase.cs" />
     <Compile Include="ShotContainer.cs" />
     <Compile Include="SmashTV main.cs" />

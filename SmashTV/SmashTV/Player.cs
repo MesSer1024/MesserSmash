@@ -36,10 +36,6 @@ namespace MesserSmash {
         }
 
         public bool CollisionEnabled { get { return true; } }
-        private int _money;
-        public int Money {
-            get { return _money; }
-        }
 
         private PlayerState _currentState;
         private bool _soundlock;
@@ -53,7 +49,6 @@ namespace MesserSmash {
             _textureOrigin = _texture.Width / 2;
             _weaponLMB = new WeaponPistol();
             _weaponRMB = new WeaponRocketLauncher();
-            _money = 0;
             _health = 100;
             _currentState = new NormalState(this);
         }
@@ -119,6 +114,7 @@ namespace MesserSmash {
             if (_health <= 0) {
                 EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.PlayerDead, this, "damage:" + amount + "|health=" + _health);
                 _health = 0;
+                new PlayerDiedCommand(this).execute();
                 //player is dead...
                 //throw new Exception("Player is dead...");
             }
@@ -126,10 +122,6 @@ namespace MesserSmash {
 
         public void receiveHealth(float amount) {
             _health += amount;
-        }
-
-        public void receiveMoney(int amount) {
-            _money += amount;
         }
 
         public void tryChangeState(PlayerState state) {

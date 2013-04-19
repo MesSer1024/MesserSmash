@@ -10,6 +10,7 @@ namespace MesserSmash.Enemies {
         EnemyBase.EnemyStates State { get; }
         float AttackRadius { get; }
         float Damage { get; }
+        float Score { get; }
 
         void init();
 

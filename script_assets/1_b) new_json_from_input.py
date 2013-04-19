@@ -38,7 +38,9 @@ files = []
 def main():
     id = int(time.time())
 
-    addIdentifier("ID_RANGE2_PREFERRED_DISTANCE_FROM_PLAYER", 125)
+    addIdentifier("ID_MELEE_ENEMY_SCORE", 8)
+    addIdentifier("ID_RUSHER_SCORE", 15)
+    addIdentifier("ID_RANGE2_SCORE", 13)
 
     if(len(keys) == len(values) and len(values) > 0):
         makeHashKeys();

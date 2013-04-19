@@ -38,6 +38,10 @@ namespace MesserSmash.Enemies {
             return AssetManager.getEnemyTexture();
         }
 
+        protected override float _getScore() {
+            return DataDefines.ID_RUSHER_SCORE;
+        }
+
         override public void onPlayerInAttackRadius() {
             if (_behaviour.TimeThisBehaviour > SECONDS_BETWEEN_CHARGE) {
                 State = EnemyStates.Attacking;

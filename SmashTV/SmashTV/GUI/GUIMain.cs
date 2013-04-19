@@ -20,8 +20,11 @@ namespace MesserSmash.GUI {
         private ShortcutButton _boost;
         private FunnyText _killCounter;
         private FunnyText _secondsLeft;
+        private bool _inGame;
+        private float _score;
 
         public GUIMain() {
+            _inGame = true;
             int h = 120;
             _background = new Rectangle(0, Utils.getGameHeight() - h, Utils.getGameWidth(), Utils.getGameHeight());
             _backgroundColor = Color.YellowGreen;
@@ -44,12 +47,18 @@ namespace MesserSmash.GUI {
             _secondsLeft.TextColor = Color.LightGoldenrodYellow;
             _secondsLeft.Visible = false;
             _secondsLeft.TextScale = 2.25f;
+
+
         }
 
         public void update(float gametime) {
-            _boost.setMode(Utils.isKeyDown(Keys.LeftControl));
-            _btnLMB.setMode(Mouse.GetState().LeftButton == ButtonState.Pressed);
-            _btnRMB.setMode(Mouse.GetState().RightButton == ButtonState.Pressed);
+            if (_inGame) {
+                _boost.setMode(Utils.isKeyDown(Keys.LeftControl));
+                _btnLMB.setMode(Mouse.GetState().LeftButton == ButtonState.Pressed);
+                _btnRMB.setMode(Mouse.GetState().RightButton == ButtonState.Pressed);
+            } else {
+
+            }
         }
 
         public void setPlayerHealth(int value) {
@@ -65,16 +74,31 @@ namespace MesserSmash.GUI {
         }
 
         public void draw(SpriteBatch sb) {
-            sb.Draw(AssetManager.getDefaultTexture(), _background, _backgroundColor);
-            sb.Draw(AssetManager.getDefaultTexture(), _playerHudBackground, Color.Black);
-            sb.Draw(AssetManager.getPortraitTexture(), _portraitPosition, Color.White);
-            _health.draw(sb);
-            _energy.draw(sb);
-            _boost.draw(sb);
-            _btnLMB.draw(sb);
-            _btnRMB.draw(sb);
-            _killCounter.Draw(sb);
-            _secondsLeft.Draw(sb);
+            if (_inGame) {
+                sb.Draw(AssetManager.getDefaultTexture(), _background, _backgroundColor);
+                sb.Draw(AssetManager.getDefaultTexture(), _playerHudBackground, Color.Black);
+                sb.Draw(AssetManager.getPortraitTexture(), _portraitPosition, Color.White);
+                _health.draw(sb);
+                _energy.draw(sb);
+                _boost.draw(sb);
+                _btnLMB.draw(sb);
+                _btnRMB.draw(sb);
+                _killCounter.Draw(sb);
+                _secondsLeft.Draw(sb);
+            } else {
+                var r = new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight());
+                sb.Draw(AssetManager.getDefaultTexture(), r, Color.Black);
+
+                var text = new FunnyText("Game Over", new Rectangle { X = 0, Y = 0, Width = Utils.getGameWidth(), Height = Utils.getGameHeight()});
+                text.Draw(sb);
+
+                var culture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
+                var formattedNumber = string.Format(culture, "{0:n}", _score);
+                var text2 = new FunnyText(Utils.makeString("Your Score: {0}", formattedNumber) 
+                    , new Rectangle { X = 0, Y = 100, Width = Utils.getGameWidth(), Height = Utils.getGameHeight() });
+                text.Draw(sb);
+                text2.Draw(sb);
+            }
         }
 
         public void setSecondsLeft(float time) {
@@ -88,6 +112,18 @@ namespace MesserSmash.GUI {
             } else {
                 _secondsLeft.Visible = false;
             }
+        }
+
+        public void showGameOver() {
+            _inGame = false;
+        }
+
+        public void restart() {
+            _inGame = true;
+        }
+
+        public void setScore(float newScore) {
+            _score = newScore;
         }
     }
 }

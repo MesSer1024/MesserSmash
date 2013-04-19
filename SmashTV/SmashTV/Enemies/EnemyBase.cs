@@ -56,6 +56,7 @@ namespace MesserSmash.Enemies {
 
         public float AttackRadius { get; protected set; }
         public float Damage { get; protected set; }
+        public float Score { get; protected set; }
 
         public EnemyStates State {
             get { return _state; }
@@ -94,6 +95,7 @@ namespace MesserSmash.Enemies {
             _scale = 2 * _radius / _texture.Width;
             _attackRadiusScale = 2 * AttackRadius / _texture.Width;
             _textureOrigin = _texture.Width / 2;
+            Score = _getScore();
         }
 
         protected virtual float _getMovementSpeed() {
@@ -105,11 +107,15 @@ namespace MesserSmash.Enemies {
         }
 
         protected virtual Texture2D _getTexture() {
-            throw new NotImplementedException("BaseClass responsibility");
+            throw new NotImplementedException("SubClass responsibility");
         }
 
         protected virtual float _getRadius() {
-            throw new NotImplementedException("BaseClass responsibility");
+            throw new NotImplementedException("SubClass responsibility");
+        }
+
+        protected virtual float _getScore() {
+            throw new NotImplementedException("SubClass responsibility");
         }
         #endregion constructors and initializer methods
 
@@ -265,6 +271,7 @@ namespace MesserSmash.Enemies {
         }
 
         ~EnemyBase() {
+            Controller.instance.removeInterest(ReloadDatabaseCommand.NAME, reloadValues);
             SmashTVSystem.Instance.enemyRemoved();
         }
     }

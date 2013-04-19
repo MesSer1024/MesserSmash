@@ -34,6 +34,10 @@ namespace MesserSmash.Enemies {
             return Color.BurlyWood;
         }
 
+        protected override float _getScore() {
+            return DataDefines.ID_RANGE2_SCORE;
+        }
+
         protected override Behaviour createAttackBehaviour() {
             var behaviour = new AttackingRangeBehaviour(DataDefines.ID_RANGE2_PREFERRED_DISTANCE_FROM_PLAYER * _preferredMultiplier, _aimRandomness);
             behaviour.onBehaviourEnded += onAttackBehaviourEnded;

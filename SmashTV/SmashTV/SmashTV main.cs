@@ -71,6 +71,8 @@ namespace MesserSmash {
             _sound = new SoundManager();
             _sound.init();
 
+            Scoring.reset();
+
 
             InfoWindow._defaultFont = _defaultFont;
             _smashTvSystem = new SmashTVSystem();

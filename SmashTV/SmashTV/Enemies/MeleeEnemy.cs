@@ -25,6 +25,10 @@ namespace MesserSmash.Enemies {
             return AssetManager.getEnemyTexture();
         }
 
+        protected override float _getScore() {
+            return DataDefines.ID_MELEE_ENEMY_SCORE;
+        }
+
         override public void onPlayerInAttackRadius() {
             if (TimeSinceCreation > SECONDS_BEFORE_FIRST_ATTACK) {
                 State = EnemyStates.Attacking;
