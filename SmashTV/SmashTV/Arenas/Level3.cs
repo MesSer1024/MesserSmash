@@ -9,13 +9,9 @@ using MesserSmash.Commands;
 
 namespace MesserSmash.Arenas {
     class Level3 : Arena {
-         private float _timestampLastSpawnedWave;
-        private List<WaveSpawner> _spawners = new List<WaveSpawner>();
 
         public Level3() {
             _secondsLeft = 60;
-
-            StringBuilder sb = new StringBuilder();
 
             for (int i = 0; i < 30; i++) {
                 WaveSpawner wave;
@@ -55,35 +51,6 @@ namespace MesserSmash.Arenas {
             _spawners.Add(end3);
             _spawners.Add(end4);
             _spawners.Add(end5);
-        }
-
-        public override void startLevel() {
-            _timestampLastSpawnedWave = 0;
-            EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Level 3");
-        }
-
-        protected override List<Spawnpoint> createSpawnpoints() {
-            return Utils.generateSpawnpoints(Bounds);
-        }
-
-        protected override void custUpdate(GameState state) {
-            _timestampLastSpawnedWave += state.DeltaTime;
-            foreach (var wave in _spawners) {
-                wave.update(state);
-            }
-        }
-
-        protected override void custSpawnWaveCommand(WaveSpawner spawner) {
-            EnemyTypes.Types enemyType = (EnemyTypes.Types)spawner.EnemyType;
-            spawner.deactivate();
-            for (int i = 0; i < spawner.SpawnCount; i++) {
-                if (enemyType == EnemyTypes.Types.Melee) {
-                    getRandomSpawnpoint().generateMeleeEnemies(1);
-                } else {
-                    getRandomSpawnpoint().generateSecondaryMeleeUnits(1);
-                }
-                
-            }
         }
     }
 }

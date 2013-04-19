@@ -15,7 +15,7 @@ namespace MesserSmash.Modules {
 
         private void onLevelStarted(ICommand cmd) {
             var command = cmd as LevelStartedCommand;
-            if (DataDefines.ID_SETTINGS_PLAY_MUSIC != 0) {
+            if (DataDefines.ID_SETTINGS_PLAY_MUSIC != 0 && _music == null) {
                 _music = AssetManager.getBackgroundMusic().CreateInstance();
                 _music.IsLooped = true;
                 _music.Play();

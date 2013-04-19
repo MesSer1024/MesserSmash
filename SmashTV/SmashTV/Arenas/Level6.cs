@@ -6,17 +6,23 @@ using Microsoft.Xna.Framework;
 using MesserSmash.Modules;
 using MesserSmash.Enemies;
 
-namespace MesserSmash.Arenas {
-    class Level5 : Arena {
-
-        public Level5() {
+namespace MesserSmash.Arenas
+{
+    class Level6 : Arena
+    {
+        public Level6()
+        {
             _secondsLeft = 60;
 
             WaveSpawner wave;
-            for (int i = 0; i < 30; i++) {
-                if (i % 2 == 0) {
+            for (int i = 0; i < 30; i++)
+            {
+                if (i % 2 == 0)
+                {
                     wave = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 4 + (int)(i * 0.29f));
-                } else {
+                }
+                else
+                {
                     wave = new WaveSpawner((int)EnemyTypes.Types.Melee, 5 + (int)(i * 0.29f));
                 }
                 var criteria = new SpawnCriteria();

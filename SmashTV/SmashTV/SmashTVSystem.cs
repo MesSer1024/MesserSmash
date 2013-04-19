@@ -182,7 +182,7 @@ namespace MesserSmash {
 		}
 
 		private void _updateGUIValues() {
-			InfoWindow._energy = Utils.makeString("Energy : [{0}/{1}]", _energySystem.AvailableEnergy.ToString("000"), _energySystem.MaxEnergy);
+            InfoWindow._energy = Utils.makeString("Energy : [{0}/{1}]", _energySystem.AvailableEnergy.ToString("000"), _energySystem.MaxEnergy.ToString("000"));
 			InfoWindow._playerPosition = Utils.makeString("({0},{1})", _player.Position.X.ToString("0.0"), _player.Position.Y.ToString("0.0"));
 			InfoWindow._money = _player.Money.ToString();
 			InfoWindow._health = _player.Health.ToString();

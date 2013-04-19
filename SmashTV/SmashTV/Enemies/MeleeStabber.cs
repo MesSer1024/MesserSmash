@@ -11,7 +11,6 @@ namespace MesserSmash.Enemies {
 
     public class MeleeStabber : EnemyBase {
         private const float SECONDS_BETWEEN_CHARGE = 2.5f;
-        private const float SECONDS_BEFORE_FIRST_CHARGE = 0.30f;
 
         public MeleeStabber(Vector2 position, Player player) {
             Position = position;
@@ -40,13 +39,13 @@ namespace MesserSmash.Enemies {
         }
 
         override public void onPlayerInAttackRadius() {
-            if (TimeSinceCreation > SECONDS_BEFORE_FIRST_CHARGE && _behaviour.TimeThisBehaviour > SECONDS_BETWEEN_CHARGE) {
+            if (_behaviour.TimeThisBehaviour > SECONDS_BETWEEN_CHARGE) {
                 State = EnemyStates.Attacking;
             }
         }
 
         protected override Behaviour createAttackBehaviour() {
-            var behaviour = new AttackWithCharge(_getMovementSpeed(), 190f, 1.1f);
+            var behaviour = new AttackWithCharge(_getMovementSpeed(), 190f, 1.0f);
             behaviour.onBehaviourEnded += onAttackDone;
             return behaviour;
         }

@@ -9,6 +9,7 @@ using MesserSmash.Modules;
 
 namespace MesserSmash.Enemies {
     public class MeleeEnemy : EnemyBase {
+        private const float SECONDS_BEFORE_FIRST_ATTACK = 1.175f;
 
         public MeleeEnemy(Vector2 position, Player player) {
             Position = position;
@@ -22,6 +23,12 @@ namespace MesserSmash.Enemies {
 
         protected override Texture2D _getTexture() {
             return AssetManager.getEnemyTexture();
+        }
+
+        override public void onPlayerInAttackRadius() {
+            if (TimeSinceCreation > SECONDS_BEFORE_FIRST_ATTACK) {
+                State = EnemyStates.Attacking;
+            }
         }
 
         protected override Behaviour createAttackBehaviour() {

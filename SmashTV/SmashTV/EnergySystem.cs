@@ -7,8 +7,9 @@ namespace MesserSmash {
     class EnergySystem {
         private static EnergySystem _instance;
         private float _energyAvailable;
-        private float _maxEnergy;
         private const float REGENERATION_RATE = 10;
+
+        private const float MAX_ENERGY = 180;
 
         private const float COST_FIRE_ROCKET = 15f;
         private const float COST_FIRE_PISTOL_SHOT = 1.05f;
@@ -16,7 +17,7 @@ namespace MesserSmash {
         private const float COST_RUNNING = 100/2.5f; //should be depleted over "value" seconds
 
         public float AvailableEnergy { get { return _energyAvailable; } }
-        public float MaxEnergy { get { return _maxEnergy; } }
+        public float MaxEnergy { get { return MAX_ENERGY; } }
 
 
         public static EnergySystem Instance {
@@ -28,14 +29,13 @@ namespace MesserSmash {
             }
         }
         private EnergySystem() {
-            _maxEnergy = 100;
-            _energyAvailable = _maxEnergy;
+            _energyAvailable = MAX_ENERGY;
         }
 
         public void update(float deltatime) {
             _energyAvailable += REGENERATION_RATE * deltatime;
-            if (_energyAvailable > _maxEnergy) {
-                _energyAvailable = _maxEnergy;
+            if (_energyAvailable > MAX_ENERGY) {
+                _energyAvailable = MAX_ENERGY;
             }
         }
 
@@ -82,8 +82,7 @@ namespace MesserSmash {
         }
 
         internal void reset() {
-            _maxEnergy = 100;
-            _energyAvailable = _maxEnergy;
+            _energyAvailable = MAX_ENERGY;
         }
     }
 }

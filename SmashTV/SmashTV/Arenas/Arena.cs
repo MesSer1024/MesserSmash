@@ -19,6 +19,7 @@ namespace MesserSmash.Arenas {
 
         private Rectangle _bounds;
         private List<Spawnpoint> _spawnPoints;
+        protected List<WaveSpawner> _spawners;
         private float _timeSinceLastCreation;
         private const float ARENA_ENEMY_CREATION_CD = 0.65f;
         private List<LootType> _lootTable;
@@ -55,6 +56,7 @@ namespace MesserSmash.Arenas {
             _texture = AssetManager.getArenaTexture();
             _bounds = new Rectangle(40, 40, 850, 600);
             _timeSinceLastCreation = 0;
+            _spawners = new List<WaveSpawner>();
             _activeLoot = new List<Loot>();
             _secondsLeft = 120;
             _state = States.Running;
@@ -80,7 +82,8 @@ namespace MesserSmash.Arenas {
         }
 
         public virtual void startLevel() {
-            EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Arena");
+            new LevelStartedCommand(this).execute();
+            //EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Arena");
         }
 
         private void onSpawnWave(ICommand cmd) {
@@ -91,8 +94,28 @@ namespace MesserSmash.Arenas {
             DataDefines.ID_STATE_ENEMIES_ALIVE = SmashTVSystem.Instance.EnemyContainer.getAliveEnemies().Count;
         }
 
-        protected virtual void custSpawnWaveCommand(WaveSpawner cmd) {
-            throw new Exception("Baseclass responsibility!");
+        protected virtual void custSpawnWaveCommand(WaveSpawner spawner) {
+            spawner.deactivate();
+
+            for (int i = 0; i < spawner.SpawnCount; i++) {
+                switch ((EnemyTypes.Types)spawner.EnemyType)
+                {
+                    case EnemyTypes.Types.Melee:
+                        getRandomSpawnpoint().generateMeleeEnemies(1);
+                        break;
+                    case EnemyTypes.Types.SecondaryMelee:
+                        getRandomSpawnpoint().generateSecondaryMeleeUnits(1);
+                        break;
+                    case EnemyTypes.Types.Range:
+                        getRandomSpawnpoint().generateSecondaryRangedEnemies(1);
+                        break;
+                    case EnemyTypes.Types.RandomItem:
+                        getRandomSpawnpoint().generateRandomEnemies(1);
+                        break;
+                    default:
+                        throw new Exception("Unhandled enemy!");
+                }
+            }
         }
 
         public virtual Vector2 getPlayerStartPosition() {
@@ -100,12 +123,7 @@ namespace MesserSmash.Arenas {
         }
 
         protected virtual List<Spawnpoint> createSpawnpoints() {
-            var spawns = new List<Spawnpoint>();
-            spawns.Add(new Spawnpoint(new Rectangle(40, 40, 80, 80), _texture));
-            spawns.Add(new Spawnpoint(new Rectangle(_bounds.Right - 80, 40, 80, 80), _texture));
-            spawns.Add(new Spawnpoint(new Rectangle(40, _bounds.Bottom - 80, 80, 80), _texture));
-            spawns.Add(new Spawnpoint(new Rectangle(_bounds.Right - 80, _bounds.Bottom - 80, 80, 80), _texture));
-            return spawns;
+            return Utils.generateSpawnpoints(Bounds);
         }
 
         protected virtual List<LootType> createLootTable() {
@@ -152,6 +170,10 @@ namespace MesserSmash.Arenas {
                 foreach (var loot in getActiveLoot()) {
                     loot.update(gametime);
                 }
+                foreach (var wave in _spawners)
+                {
+                    wave.update(state);
+                }
                 _showTimeLeft();
                 custUpdate(state);
                 if (_secondsLeft <= 0) {
@@ -185,9 +207,9 @@ namespace MesserSmash.Arenas {
         }
 
         protected virtual void custUpdate(GameState state) {
-            if (canCreateEnemies()) {
-                createEnemies(1);
-            }
+            //if (canCreateEnemies()) {
+            //    createEnemies(1);
+            //}
         }
 
         protected void createEnemies(int amount) {

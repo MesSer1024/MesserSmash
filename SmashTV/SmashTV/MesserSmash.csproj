@@ -117,6 +117,7 @@
     <Compile Include="Arenas\Level3.cs" />
     <Compile Include="Arenas\Level4.cs" />
     <Compile Include="Arenas\Level5.cs" />
+    <Compile Include="Arenas\Level6.cs" />
     <Compile Include="Commands\LevelStartedCommand.cs" />
     <Compile Include="Arenas\SpecialLevel.cs" />
     <Compile Include="Behaviours\AttackingMeleeBehaviour.cs" />

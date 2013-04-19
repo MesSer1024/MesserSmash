@@ -18,7 +18,7 @@ namespace MesserSmash.Enemies {
             Melee,
             SecondaryMelee,
             Range,
-            SecondaryRange,
+            RandomItem,
         }
     }
 }
