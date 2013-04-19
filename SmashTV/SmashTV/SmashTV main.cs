@@ -27,7 +27,7 @@ namespace MesserSmash {
         private SpriteFont _defaultFont;
 
         private SmashTVSystem _smashTvSystem;
-        private int _currentLevelIndex;
+        private int _currentLevel;
         private float _timeInState;
         private bool _waitingForTimer;
         private DebugGuiOverlay _debugGui;
@@ -74,7 +74,7 @@ namespace MesserSmash {
 
             InfoWindow._defaultFont = _defaultFont;
             _smashTvSystem = new SmashTVSystem();
-            _currentLevelIndex = 1;
+            _currentLevel = 0;
             _waitingForTimer = true;
             _timeInState = 0;
 
@@ -110,6 +110,8 @@ namespace MesserSmash {
                     arena = new SpecialLevel();
                     break;
             }
+
+            _currentLevel = level;
             var player = new Player(arena.getPlayerStartPosition());
             arena.onGameFinished += new Arena.ArenaDelegate(onGameFinished);
             _smashTvSystem.startGame(arena, player, new ShotContainer(), new EnemyContainer());
@@ -133,7 +135,7 @@ namespace MesserSmash {
             _timeInState += deltaTime;
             if (_waitingForTimer && _timeInState >= 5) {
                 _waitingForTimer = false;
-                launchArena(++_currentLevelIndex);
+                launchArena(++_currentLevel);
             }
             _smashTvSystem.update(deltaTime);
         }
