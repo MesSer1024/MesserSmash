@@ -76,7 +76,7 @@ namespace MesserSmash {
 			_arena.onGameFinished += new Arena.ArenaDelegate(onGameFinished);
 			_arena.onZeroTimer += new Arena.ArenaDelegate(onZeroTimer);
 			_gui = new GUIMain();
-
+            _gui.setScore(Scoring.getScore());
 			//
 			_arena.begin();
 		}
@@ -85,6 +85,8 @@ namespace MesserSmash {
 			_enemyContainer.endGame();
 			_shotContainer.endGame();
 			_player.stateEndGame();
+            _energySystem.endGame();
+            Scoring.setKillsOnLevel(_killCount);
 		}
 
 		void onGameFinished(Arena arena) {
@@ -110,16 +112,19 @@ namespace MesserSmash {
 
 		void onEnemyDead(ICommand command) {
 			var cmd = command as DeadEnemyCommand;
+            Scoring.awardScore(cmd.Enemy.Score);
 			_arena.handleDeadEnemy(cmd.Enemy.Position, _killCount);
 			++_killCount;
 			_gui.setKillCount(_killCount);
+            _gui.setScore(Scoring.getScore());
 		}
 
         void onPlayerDead(ICommand command) {
             var cmd = command as PlayerDiedCommand;
             _queuedCommands.Add("end_arena");
 
-            new GameOverCommand(_gui).execute();
+            Scoring.setKillsOnLevel(_killCount);
+            _gui.showGameOver();
         }
 
 		public void update(float deltatime) {
@@ -136,23 +141,11 @@ namespace MesserSmash {
                 var state = new GameState(deltatime, _arena.TimeSinceStart);
                 DataDefines.ID_STATE_ENEMIES_ALIVE = SmashTVSystem.Instance.EnemyContainer.getAliveEnemies().Count;
                 DataDefines.ID_STATE_ENEMIES_KILLED = _killCount;
-                PerformanceUtil.begin("frame");
-                PerformanceUtil.begin("energy");
                 _energySystem.update(deltatime);
-                PerformanceUtil.end("energy");
-                PerformanceUtil.begin("enemy");
                 _enemyContainer.update(deltatime); //let all enemies decide where they want to move
-                PerformanceUtil.end("enemy");
-                PerformanceUtil.begin("shots");
                 _shotContainer.update(deltatime);
-                PerformanceUtil.end("shots");
-                PerformanceUtil.begin("arena");
                 _arena.update(state);
-                PerformanceUtil.end("arena");
-                PerformanceUtil.begin("player");
                 _player.update(deltatime);
-                PerformanceUtil.end("player");
-                PerformanceUtil.begin("collision");
 
                 //check for collisions between shots and enemies
                 collisionDetection();
@@ -162,14 +155,9 @@ namespace MesserSmash {
 
                 //check if player can pickup loot
                 detectLootPickup();
-                PerformanceUtil.end("collision");
 
-
-                PerformanceUtil.begin("gui");
                 _updateGUIValues();
                 _gui.update(deltatime);
-                PerformanceUtil.end("gui");
-                PerformanceUtil.end("frame");
             } else {
                 //not started or game over
                 if (_gui != null) {
@@ -184,11 +172,13 @@ namespace MesserSmash {
 				Vector2 lootPos = loot.Position;
 				float lootRadius = loot.Radius;
 				if (isOverlapping(lootPos, _player.Position, lootRadius, _player.Radius)) {
-                    new LootPickedUpCommand(loot, _player).execute();
+                    loot.inactivate();
+                    Scoring.onLoot(loot);
                     if (loot.Type == Arenas.Arena.LootType.Health) {
                         _player.receiveHealth(45);
                     }
-				}
+                    _gui.setScore(Scoring.getScore());
+                }
 			}
 		}
 

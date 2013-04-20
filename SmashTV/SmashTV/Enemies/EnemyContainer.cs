@@ -23,16 +23,11 @@ namespace MesserSmash.Enemies {
 
         public void update(float deltatime) {
             _timeCounter += deltatime;
-            Logger.info("Enemy count: {0}", _enemies.Count);
-            PerformanceUtil.begin("pre_update");
             foreach (var i in _enemies) {
                 i.preUpdate(deltatime);
                 PathFinder.registerPosition(i);
             }
-            PerformanceUtil.end("pre_update");
-            PerformanceUtil.begin("clump");
             PathFinder.makeEnemiesNotClumpTogether();
-            PerformanceUtil.end("clump");
 
             foreach (var i in _enemies) {
                 i.update(deltatime); //do the actual position updates

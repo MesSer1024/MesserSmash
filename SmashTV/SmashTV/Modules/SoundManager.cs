@@ -17,6 +17,7 @@ namespace MesserSmash.Modules {
             var command = cmd as LevelStartedCommand;
             if (DataDefines.ID_SETTINGS_PLAY_MUSIC != 0 && _music == null) {
                 _music = AssetManager.getBackgroundMusic().CreateInstance();
+                _music.Volume = 0.45f;
                 _music.IsLooped = true;
                 _music.Play();
             }
@@ -25,7 +26,7 @@ namespace MesserSmash.Modules {
         private void onPlaySound(ICommand cmd) {
             var command = cmd as PlaySoundCommand;
             if (DataDefines.ID_SETTINGS_PLAY_SOUND != 0) {
-                command.Sound.Play(0.8f, 0, 0);
+                command.Sound.Play(0.25f, 0, 0);
             }
         }
     }

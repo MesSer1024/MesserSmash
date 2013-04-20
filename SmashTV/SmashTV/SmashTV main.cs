@@ -43,6 +43,7 @@ namespace MesserSmash {
         }
 
         private void init() {
+            Controller.instance.registerInterest(StartGameCommand.NAME, onStartGame);
             new ReloadDatabaseCommand().execute();
 
             _graphics.PreferredBackBufferWidth = 1440;
@@ -81,6 +82,12 @@ namespace MesserSmash {
             _timeInState = 0;
 
             _debugGui = new DebugGuiOverlay(new Rectangle(40, 40, 850, 600));
+        }
+
+        private void onStartGame(ICommand command) {
+            var cmd = command as StartGameCommand;
+            Scoring.reset();            
+            launchArena(cmd.Level);
         }
 
         private void launchArena(int level) {
@@ -128,7 +135,7 @@ namespace MesserSmash {
             
             handleGlobalInput();
             //handle pause
-            if (_paused) {
+            if (_paused && SmashTVSystem.Instance.Arena != null) {
                 SmashTVSystem.Instance.Arena.checkDebugInput();
                 return;
             }

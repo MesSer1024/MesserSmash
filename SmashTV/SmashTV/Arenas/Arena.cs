@@ -127,7 +127,25 @@ namespace MesserSmash.Arenas {
         }
 
         protected virtual List<LootType> createLootTable() {
-            return Utils.generateLootTable(200, 12, 0);
+            var table = Utils.generateLootTable(200, 12, 0);
+            for(int i =0; i < 200; ++i) {
+                table.Add(Arena.LootType.Empty);
+            }
+            table[230] = LootType.Money;
+            table[250] = LootType.Money;
+            table[300] = LootType.Money;
+            table[325] = LootType.Money;
+            table[330] = LootType.Money;
+            table[340] = LootType.Money;
+            table[350] = LootType.Money;
+            table[351] = LootType.Money;
+            table[355] = LootType.Money;
+            table[356] = LootType.Money;
+            table[365] = LootType.Money;
+            table[385] = LootType.Money;
+            table[398] = LootType.Money;
+            table[399] = LootType.Money;
+            return table;
         }
 
         public void update(GameState state) {

@@ -39,6 +39,7 @@ namespace MesserSmash {
 
         private PlayerState _currentState;
         private bool _soundlock;
+        private bool _finished;
 
         public Player(Vector2 position) {
             _position = position;
@@ -109,6 +110,10 @@ namespace MesserSmash {
         }
 
         public void takeDamage(float amount) {
+            if (_finished) {
+                return;
+            }
+
             _health -= amount;
             EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.PlayerDamaged, this, "damage:" + amount + "|health=" + _health);
             if (_health <= 0) {
@@ -129,7 +134,7 @@ namespace MesserSmash {
         }
 
         public void stateEndGame() {
-
+            _finished = true;
         }
 
         public void tryFireLMB() {

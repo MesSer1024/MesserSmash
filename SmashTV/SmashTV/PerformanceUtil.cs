@@ -18,7 +18,6 @@ namespace MesserSmash {
 
         internal static void end(string p) {
             var delta = System.Environment.TickCount - _timers[p];
-            Logger.info("Timer[{0}] ticks:{1}", p, delta);
         }
     }
 }

@@ -12,9 +12,11 @@ namespace MesserSmash {
         private const float MAX_ENERGY = 180;
 
         private const float COST_FIRE_ROCKET = 15f;
+        private const float COST_FIRE_ROCKET_REQUIREMENT = 5f;
         private const float COST_FIRE_PISTOL_SHOT = 1.05f;
         private const float COST_ACTIVATE_SPRINT_MODE = 5f;
         private const float COST_RUNNING = 100/2.5f; //should be depleted over "value" seconds
+        private bool _endgame;
 
         public float AvailableEnergy { get { return _energyAvailable; } }
         public float MaxEnergy { get { return MAX_ENERGY; } }
@@ -33,6 +35,8 @@ namespace MesserSmash {
         }
 
         public void update(float deltatime) {
+            if (_endgame)
+                return;
             _energyAvailable += REGENERATION_RATE * deltatime;
             if (_energyAvailable > MAX_ENERGY) {
                 _energyAvailable = MAX_ENERGY;
@@ -40,31 +44,31 @@ namespace MesserSmash {
         }
 
         public bool couldFireRocket() {
-            if (_energyAvailable >= COST_FIRE_ROCKET) {
-                _energyAvailable -= COST_FIRE_ROCKET;
+            if (_energyAvailable >= COST_FIRE_ROCKET_REQUIREMENT) {
+                _energyAvailable = Math.Max(_energyAvailable - COST_FIRE_ROCKET, 0);
                 return true;
             }
             return false;
         }
 
         public bool canFireRocket() {
-            if (_energyAvailable >= COST_FIRE_ROCKET)
-                return true;
-            return false;
+            return _energyAvailable >= COST_FIRE_ROCKET_REQUIREMENT;
         }
 
         public bool couldFirePistolShot() {
-            _energyAvailable -= COST_FIRE_PISTOL_SHOT;
-            if (_energyAvailable < 0)
-                _energyAvailable = 0;
+            _energyAvailable = Math.Max(_energyAvailable - COST_FIRE_PISTOL_SHOT, 0);
             return true;
         }
 
         public bool canActivateSprintMode() {
+            if (_endgame)
+                return true;
             return _energyAvailable >= COST_ACTIVATE_SPRINT_MODE;
         }
 
         public bool couldRun(float deltaTime) {
+            if (_endgame)
+                return true;
             float value = COST_RUNNING * deltaTime;
             if (value <= _energyAvailable) {
                 _energyAvailable -= value;
@@ -74,6 +78,8 @@ namespace MesserSmash {
         }
 
         public bool canRun(float deltatime) {
+            if (_endgame)
+                return true;
             return COST_RUNNING * deltatime <= _energyAvailable;
         }
 
@@ -82,7 +88,12 @@ namespace MesserSmash {
         }
 
         internal void reset() {
+            _endgame = false;
             _energyAvailable = MAX_ENERGY;
+        }
+
+        internal void endGame() {
+            _endgame = true;
         }
     }
 }

@@ -7,32 +7,32 @@ using MesserSmash.Commands;
 namespace MesserSmash {
     static class Scoring {
         private static float _score;
+        private static float _kills;
 
         public static void reset() {
-            destroy();
             _score = 0;
-            Controller.instance.registerInterest(DeadEnemyCommand.NAME, onEnemyDied);
-            Controller.instance.registerInterest(LootPickedUpCommand.NAME, onLoot);
+            _kills = 0;
         }
 
         public static float getScore() {
             return _score;
         }
 
-        private static void onEnemyDied(ICommand command) {
-            var cmd = command as DeadEnemyCommand;
-            _score += cmd.Enemy.Score;
-        }
-
-        private static void onLoot(ICommand command) {
-            var cmd = command as LootPickedUpCommand;
-            var score = cmd.LootReached.Type == Arenas.Arena.LootType.Money ? 200 : 10;
+        public static void awardScore(float score) {
             _score += score;
         }
 
-        public static void destroy() {
-            Controller.instance.removeInterest(DeadEnemyCommand.NAME, onEnemyDied);
-            Controller.instance.registerInterest(LootPickedUpCommand.NAME, onLoot);
+        public static void setKillsOnLevel(float kills) {
+            _kills += kills;
+        }
+
+        public static void onLoot(Loot loot) {
+            var score = loot.Type == Arenas.Arena.LootType.Money ? 200 : 10;
+            _score += score;
+        }
+
+        public static float getKills() {
+            return _kills;
         }
     }
 }
