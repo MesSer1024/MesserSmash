@@ -7,6 +7,7 @@ using MesserSmash.Commands;
 namespace MesserSmash.Modules {
     class SoundManager {
         private Microsoft.Xna.Framework.Audio.SoundEffectInstance _music;
+        
         public void init() {
             //EventDispatcher
             Controller.instance.registerInterest(LevelStartedCommand.NAME, onLevelStarted);
@@ -26,7 +27,7 @@ namespace MesserSmash.Modules {
         private void onPlaySound(ICommand cmd) {
             var command = cmd as PlaySoundCommand;
             if (DataDefines.ID_SETTINGS_PLAY_SOUND != 0) {
-                command.Sound.Play(0.25f, 0, 0);
+                command.Sound.Play(command.Volume, 0, 0);
             }
         }
     }

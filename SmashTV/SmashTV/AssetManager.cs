@@ -23,6 +23,7 @@ namespace MesserSmash {
         public static SoundEffect _bgSound;
         public static SoundEffect _failSound;
         public static SoundEffect _weaponSound;
+        public static SoundEffect _weaponReadySound;
 
         public static Texture2D getDefaultTexture() {
             return _default;
@@ -82,6 +83,10 @@ namespace MesserSmash {
 
         public static SoundEffect getWeaponSound() {
             return _weaponSound;
+        }
+
+        public static SoundEffect getWeaponReadySound() {
+            return _weaponReadySound;
         }
     }
 }
