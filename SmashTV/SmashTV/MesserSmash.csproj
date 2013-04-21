@@ -190,6 +190,7 @@
     <Compile Include="AssetManager.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="WeaponPistol.cs" />
+    <Compile Include="Commands\LauncherReadyCommand.cs" />
     <Compile Include="WeaponRocketLauncher.cs" />
     <Compile Include="Weapons\EnemyPistolShot.cs" />
   </ItemGroup>

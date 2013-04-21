@@ -10,6 +10,7 @@ using MesserSmash.Modules;
 
 namespace MesserSmash.GUI {
     class GUIMain {
+        public static GUIMain Instance {get; set;}
         private Rectangle _background;
         private Color _backgroundColor;
         private Rectangle _playerHudBackground;
@@ -28,11 +29,15 @@ namespace MesserSmash.GUI {
         private StringBuilder _gameoverName;
         private float _timeDead;
         private bool _saved;
+        private FunnyText _recharge;
+        private float _timeRechargeShown;
 
         public GUIMain() {
+            Instance = this;
             _gameoverName = new StringBuilder();
             _inGame = true;
             _saved = false;
+            _timeRechargeShown = 100;
             int h = 120;
             _background = new Rectangle(0, Utils.getGameHeight() - h, Utils.getGameWidth(), Utils.getGameHeight());
             _backgroundColor = Color.YellowGreen;
@@ -63,6 +68,12 @@ namespace MesserSmash.GUI {
                 _boost.setMode(Utils.isKeyDown(Keys.LeftControl));
                 _btnLMB.setMode(Mouse.GetState().LeftButton == ButtonState.Pressed);
                 _btnRMB.setMode(Mouse.GetState().RightButton == ButtonState.Pressed);
+                if(_recharge != null) {
+                    _timeRechargeShown += gametime;
+                    if (_timeRechargeShown >= 0.75f) {
+                        _recharge = null;
+                    }
+                }
             } else {
                 _timeDead += gametime;
                 if (_timeDead > 1.24f) {
@@ -117,6 +128,9 @@ namespace MesserSmash.GUI {
                 _killCounter.Draw(sb);
                 _secondsLeft.Draw(sb);
                 _scoreField.Draw(sb);
+                if (_recharge != null) {
+                    _recharge.Draw(sb);
+                }
             } else {
                 var r = new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight());
                 sb.Draw(AssetManager.getDefaultTexture(), r, Color.Black);
@@ -179,6 +193,12 @@ namespace MesserSmash.GUI {
         public void setScore(float newScore) {
             _score = newScore;
             _scoreField.Text = Utils.makeString("Score: {0}", formatScorePoints(_score));
+        }
+
+        public void showWeaponRecharged() {
+            _recharge = new FunnyText("Weapon Recharged!", new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight()));
+            _recharge.TextColor = Color.NavajoWhite;
+            _timeRechargeShown = 0;
         }
     }
 }

@@ -61,7 +61,7 @@ namespace MesserSmash {
             AssetManager._arena = _defaultTexture;
             AssetManager._enemy = _circleTexture;
             AssetManager._rangedEnemy = _circleTexture;
-            AssetManager._healthPack = _circleTexture;
+            AssetManager._healthPack = _content.Load<Texture2D>("health_loot");
             AssetManager._moneyBag = _content.Load<Texture2D>("money_loot");
             AssetManager._rocketShot = _circleTexture;
             AssetManager._default = _defaultTexture;
@@ -71,6 +71,7 @@ namespace MesserSmash {
             AssetManager._bgSound = _content.Load<SoundEffect>("background_music");
             AssetManager._failSound = _content.Load<SoundEffect>("fail");
             AssetManager._weaponSound = _content.Load<SoundEffect>("weapon");
+            AssetManager._weaponReadySound = _content.Load<SoundEffect>("weapon_ready");
             _sound = new SoundManager();
             _sound.init();
 
