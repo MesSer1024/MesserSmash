@@ -6,33 +6,58 @@ using MesserSmash.Commands;
 
 namespace MesserSmash {
     static class Scoring {
-        private static float _score;
-        private static float _kills;
+        private static List<LevelScore> _levelScores = new List<LevelScore>();
+        private static LevelScore _currLevel;
 
         public static void reset() {
-            _score = 0;
-            _kills = 0;
+            _levelScores.Clear();
+            _currLevel = null;
         }
 
-        public static float getScore() {
-            return _score;
+        public static void setLevel(int level) {
+            _currLevel = null;
+            foreach (var i in _levelScores) {
+                if (i.Level == level) {
+                    _currLevel = i;
+                }
+            }
+            if (_currLevel == null) {
+                _currLevel = new LevelScore(level);
+                _levelScores.Add(_currLevel);
+            }
         }
 
         public static void awardScore(float score) {
-            _score += score;
+            _currLevel.Score += (int)score;
         }
 
-        public static void setKillsOnLevel(float kills) {
-            _kills += kills;
+        public static void setKillsOnLevel(int kills) {
+            _currLevel.Kills = kills;
         }
 
         public static void onLoot(Loot loot) {
             var score = loot.Type == Arenas.Arena.LootType.Money ? 200 : 10;
-            _score += score;
+            _currLevel.Score += score;
         }
 
-        public static float getKills() {
-            return _kills;
+        public static int getTotalKills() {
+            var val = 0;
+            foreach (var i in _levelScores) {
+                val += i.Kills;
+            }
+            return val;
+        }
+
+        public static float getTotalScore() {
+            var val = 0.0f;
+            foreach (var i in _levelScores) {
+                val += i.Score;
+            }
+            return val;
+        }
+
+        public static List<LevelScore> getLevelScores() {
+            return _levelScores;
         }
     }
 }

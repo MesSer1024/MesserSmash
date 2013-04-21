@@ -5,13 +5,13 @@ using System.Text;
 
 namespace MesserSmash.Commands {
     class RestartGameCommand : Command {
-        public static string NAME = "RestartGameCommand";
+        public static readonly string NAME = "StartGameCommand";
 
-        public RestartGameCommand()
+        public RestartGameCommand(int level = 1)
             : base(NAME) {
+                Level = level;
         }
 
-        protected override void custExecute() {
-        }
+        public int Level { get; private set; }
     }
 }

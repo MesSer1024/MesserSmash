@@ -191,5 +191,15 @@ namespace MesserSmash {
                                     AssetManager.getArenaTexture()));
             return list;
         }
+
+        internal static bool isEitherNewlyPressed(params Keys[] keys) {
+            for (int i = 0; i < keys.Length; i++) {
+                var key = keys[i];
+                if (_newState.IsKeyDown(key) && _oldState.IsKeyUp(key)) {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

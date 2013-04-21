@@ -6,6 +6,8 @@ namespace MesserSmash.Modules {
 	public static class DataDefines {
 		private static float getValue(int hash) { return (float)SmashDb.get(hash); }
 		private static void setValue(int hash, float value) { SmashDb.set(hash, value); }
+		private const int _ID_SETTINGS_GOD_MODE = -1229209685;
+		public static float ID_SETTINGS_GOD_MODE { get { return getValue(_ID_SETTINGS_GOD_MODE); } set { setValue(_ID_SETTINGS_GOD_MODE, value); } }
 		private const int _ID_MELEE_ENEMY_SCORE = -1279721056;
 		public static float ID_MELEE_ENEMY_SCORE { get { return getValue(_ID_MELEE_ENEMY_SCORE); } set { setValue(_ID_MELEE_ENEMY_SCORE, value); } }
 		private const int _ID_RUSHER_SCORE = -883718525;

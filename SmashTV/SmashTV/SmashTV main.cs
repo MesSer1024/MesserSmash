@@ -33,6 +33,8 @@ namespace MesserSmash {
         private DebugGuiOverlay _debugGui;
         private bool _paused;
         private SoundManager _sound;
+        private int _timeMultiplierIndex = 3;
+        private List<float> _timeMultipliers = new List<float> { 0.25f, 0.5f, 0.75f, 1f, 1.25f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f, 6f, 8f };
 
         public SmashTV_main(Microsoft.Xna.Framework.Content.ContentManager Content, Microsoft.Xna.Framework.GraphicsDeviceManager graphics, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Game game) {
             _content = Content;
@@ -43,7 +45,7 @@ namespace MesserSmash {
         }
 
         private void init() {
-            Controller.instance.registerInterest(StartGameCommand.NAME, onStartGame);
+            Controller.instance.registerInterest(RestartGameCommand.NAME, onRestartGame);
             new ReloadDatabaseCommand().execute();
 
             _graphics.PreferredBackBufferWidth = 1440;
@@ -60,7 +62,7 @@ namespace MesserSmash {
             AssetManager._enemy = _circleTexture;
             AssetManager._rangedEnemy = _circleTexture;
             AssetManager._healthPack = _circleTexture;
-            AssetManager._moneyBag = _circleTexture;
+            AssetManager._moneyBag = _content.Load<Texture2D>("money_loot");
             AssetManager._rocketShot = _circleTexture;
             AssetManager._default = _defaultTexture;
             AssetManager._playerPortrait = _content.Load<Texture2D>("portrait");
@@ -84,13 +86,13 @@ namespace MesserSmash {
             _debugGui = new DebugGuiOverlay(new Rectangle(40, 40, 850, 600));
         }
 
-        private void onStartGame(ICommand command) {
-            var cmd = command as StartGameCommand;
+        private void onRestartGame(ICommand command) {
+            var cmd = command as RestartGameCommand;
             Scoring.reset();            
-            launchArena(cmd.Level);
+            beginLevel(cmd.Level);
         }
 
-        private void launchArena(int level) {
+        private void beginLevel(int level) {
             new ReloadDatabaseCommand().execute();
             _paused = false;            
             Arena arena = SmashTVSystem.Instance.Arena;
@@ -121,6 +123,7 @@ namespace MesserSmash {
             }
 
             _currentLevel = level;
+            Scoring.setLevel(_currentLevel);
             var player = new Player(arena.getPlayerStartPosition());
             arena.onGameFinished += new Arena.ArenaDelegate(onGameFinished);
             _smashTvSystem.startGame(arena, player, new ShotContainer(), new EnemyContainer());
@@ -140,11 +143,11 @@ namespace MesserSmash {
                 return;
             }
 
-            float deltaTime = (float)time.ElapsedGameTime.TotalSeconds;
+            float deltaTime = (float)time.ElapsedGameTime.TotalSeconds * _timeMultipliers[_timeMultiplierIndex];
             _timeInState += deltaTime;
             if (_waitingForTimer && _timeInState >= 5) {
                 _waitingForTimer = false;
-                launchArena(++_currentLevel);
+                beginLevel(++_currentLevel);
             }
             _smashTvSystem.update(deltaTime);
         }
@@ -155,17 +158,17 @@ namespace MesserSmash {
                 GC.Collect();
             }
             if (Utils.isNewKeyPress(Keys.F1)) {
-                launchArena(1);
+                new RestartGameCommand(1).execute();
             } else if (Utils.isNewKeyPress(Keys.F2)) {
-                launchArena(2);
+                new RestartGameCommand(2).execute();
             } else if (Utils.isNewKeyPress(Keys.F3)) {
-                launchArena(3);
+                new RestartGameCommand(3).execute();
             } else if (Utils.isNewKeyPress(Keys.F4)) {
-                launchArena(4);
+                new RestartGameCommand(4).execute();
             } else if (Utils.isNewKeyPress(Keys.F5)) {
-                launchArena(5);
+                new RestartGameCommand(5).execute();
             } else if (Utils.isNewKeyPress(Keys.F10)) {
-                launchArena(10);
+                new RestartGameCommand(10).execute();
             }
             if (Utils.isNewKeyPress(Keys.Tab)) {
                 new ReloadDatabaseCommand().execute();
@@ -173,6 +176,12 @@ namespace MesserSmash {
             }
             if (Utils.isNewKeyPress(Keys.Pause)) {
                 _paused = !_paused;
+            }
+
+            if (Utils.isEitherNewlyPressed(Keys.OemPlus, Keys.Add)) {
+                _timeMultiplierIndex = (int)MathHelper.Clamp(_timeMultiplierIndex + 1, 0, _timeMultipliers.Count - 1);
+            } else if (Utils.isEitherNewlyPressed(Keys.OemMinus, Keys.Subtract)) {
+                _timeMultiplierIndex = (int)MathHelper.Clamp(_timeMultiplierIndex - 1, 0, _timeMultipliers.Count - 1);
             }
 
             Utils.tick();

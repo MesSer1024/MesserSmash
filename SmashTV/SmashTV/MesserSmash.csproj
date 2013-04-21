@@ -136,9 +136,8 @@
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\PlayerDiedCommand.cs" />
     <Compile Include="Commands\ReloadDatabaseCommand.cs" />
-    <Compile Include="Commands\RestartGameCommand.cs" />
     <Compile Include="Commands\SpawnWaveCommand.cs" />
-    <Compile Include="Commands\StartGameCommand.cs" />
+    <Compile Include="Commands\RestartGameCommand.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="Enemies\EnemyTypes.cs" />
     <Compile Include="Enemies\IEntity.cs" />
@@ -148,6 +147,7 @@
     <Compile Include="GUI\FunnyText.cs" />
     <Compile Include="GUI\InGameView.cs" />
     <Compile Include="Commands\RegisterHighscoreCommand.cs" />
+    <Compile Include="LevelScore.cs" />
     <Compile Include="Loot.cs" />
     <Compile Include="Enemies\MeleeEnemy.cs" />
     <Compile Include="Enemies\EnemyBase.cs" />

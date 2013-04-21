@@ -44,7 +44,7 @@ namespace MesserSmash {
             _moneyTexture = moneyTexture;
             _isActive = true;
             _position = position;
-            _radius = 45;
+            _radius = 25;
 
             switch (_type) {
                 case Arena.LootType.Health:
@@ -76,7 +76,7 @@ namespace MesserSmash {
                 if (_type == Arena.LootType.Health) {
                     color = Color.PapayaWhip;
                 } else {
-                    color = Color.Gold;
+                    color = Color.WhiteSmoke;
                 }
 
                 float alpha = _timeUntilRemoval / _originalTime;

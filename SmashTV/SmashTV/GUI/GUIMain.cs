@@ -76,7 +76,7 @@ namespace MesserSmash.GUI {
                                 new RegisterHighscoreCommand(_gameoverName.ToString()).execute();
                                 _saved = true;
                             } else {
-                                new StartGameCommand(1).execute();
+                                new RestartGameCommand(1).execute();
                             }
                         } else {
                             if (validHighscoreCharacter(key) && Utils.isNewKeyPress(key) && _saved == false) {
@@ -166,7 +166,7 @@ namespace MesserSmash.GUI {
         }
 
         public void showGameOver() {
-            Highscore.Instance.load();
+            Highscore.Instance.load("./highscore.txt");
             _inGame = false;
             _saved = false;
         }

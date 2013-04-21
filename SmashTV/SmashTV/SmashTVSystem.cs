@@ -76,7 +76,7 @@ namespace MesserSmash {
 			_arena.onGameFinished += new Arena.ArenaDelegate(onGameFinished);
 			_arena.onZeroTimer += new Arena.ArenaDelegate(onZeroTimer);
 			_gui = new GUIMain();
-            _gui.setScore(Scoring.getScore());
+            _gui.setScore(Scoring.getTotalScore());
 			//
 			_arena.begin();
 		}
@@ -116,7 +116,7 @@ namespace MesserSmash {
 			_arena.handleDeadEnemy(cmd.Enemy.Position, _killCount);
 			++_killCount;
 			_gui.setKillCount(_killCount);
-            _gui.setScore(Scoring.getScore());
+            _gui.setScore(Scoring.getTotalScore());
 		}
 
         void onPlayerDead(ICommand command) {
@@ -177,7 +177,7 @@ namespace MesserSmash {
                     if (loot.Type == Arenas.Arena.LootType.Health) {
                         _player.receiveHealth(45);
                     }
-                    _gui.setScore(Scoring.getScore());
+                    _gui.setScore(Scoring.getTotalScore());
                 }
 			}
 		}
@@ -262,9 +262,9 @@ namespace MesserSmash {
 				_arena.drawBackground(sb);
 				_shotContainer.drawExplosions(sb);
 				_enemyContainer.drawBegin(sb);
-				_arena.drawLoot(sb);
-				_enemyContainer.draw(sb);
-				_player.draw(sb);
+                _arena.drawLoot(sb);
+                _enemyContainer.draw(sb);
+                _player.draw(sb);
 				_shotContainer.draw(sb);
 				_gui.draw(sb);
             } else {

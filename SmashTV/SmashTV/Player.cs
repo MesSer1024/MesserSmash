@@ -117,6 +117,9 @@ namespace MesserSmash {
             _health -= amount;
             EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.PlayerDamaged, this, "damage:" + amount + "|health=" + _health);
             if (_health <= 0) {
+                if (DataDefines.ID_SETTINGS_GOD_MODE != 0) {
+                    return;
+                }
                 EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.PlayerDead, this, "damage:" + amount + "|health=" + _health);
                 _health = 0;
                 new PlayerDiedCommand(this).execute();

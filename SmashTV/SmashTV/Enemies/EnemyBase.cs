@@ -157,11 +157,11 @@ namespace MesserSmash.Enemies {
         }
 
         public virtual void draw(SpriteBatch sb) {
-            if (State == EnemyStates.Removed) {
+            if (State == EnemyStates.Removed || State == EnemyStates.Dead) {
                 return;
             }
 
-            Color color = State == EnemyStates.Dead ? Color.Red : getColor();
+            Color color = getColor();
             sb.Draw(_texture, _position, null, color, 0f, new Vector2(_textureOrigin, _textureOrigin), _scale,
                     SpriteEffects.None, 0);
         }
