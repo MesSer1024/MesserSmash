@@ -165,7 +165,6 @@
     <Compile Include="Modules\DataDefines.cs" />
     <Compile Include="Modules\GameState.cs" />
     <Compile Include="Modules\Highscore.cs" />
-    <Compile Include="Modules\Logger.cs" />
     <Compile Include="Modules\PathFinder.cs" />
     <Compile Include="Modules\SmashDb.cs" />
     <Compile Include="Modules\SoundManager.cs" />
@@ -199,6 +198,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SharedSmashResources\SharedSmashResources.csproj">
+      <Project>{49F58CBC-B8A3-4FA7-B9DA-D6105BB1F217}</Project>
+      <Name>SharedSmashResources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SmashTVContent\MesserSmashContent.contentproj">
       <Name>MesserSmashContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>

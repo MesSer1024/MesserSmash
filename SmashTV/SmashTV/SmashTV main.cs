@@ -15,6 +15,7 @@ using System.IO;
 using MesserSmash.Commands;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
+using SharedSmashResources;
 
 namespace MesserSmash {
     class SmashTV_main {
@@ -35,6 +36,7 @@ namespace MesserSmash {
         private SoundManager _sound;
         private int _timeMultiplierIndex = 3;
         private List<float> _timeMultipliers = new List<float> { 0.25f, 0.5f, 0.75f, 1f, 1.25f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f, 6f, 8f };
+        private StatusUpdate _states;
 
         public SmashTV_main(Microsoft.Xna.Framework.Content.ContentManager Content, Microsoft.Xna.Framework.GraphicsDeviceManager graphics, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Game game) {
             _content = Content;
@@ -74,6 +76,7 @@ namespace MesserSmash {
             AssetManager._weaponReadySound = _content.Load<SoundEffect>("weapon_ready");
             _sound = new SoundManager();
             _sound.init();
+            _states = new StatusUpdate();
 
             Scoring.reset();
 
@@ -89,7 +92,8 @@ namespace MesserSmash {
 
         private void onRestartGame(ICommand command) {
             var cmd = command as RestartGameCommand;
-            Scoring.reset();            
+            Scoring.reset();
+            _states.reset();
             beginLevel(cmd.Level);
         }
 
@@ -136,7 +140,6 @@ namespace MesserSmash {
         }
 
         public void update(GameTime time) {
-            
             handleGlobalInput();
             //handle pause
             if (_paused && SmashTVSystem.Instance.Arena != null) {
@@ -145,12 +148,22 @@ namespace MesserSmash {
             }
 
             float deltaTime = (float)time.ElapsedGameTime.TotalSeconds * _timeMultipliers[_timeMultiplierIndex];
+
+
             _timeInState += deltaTime;
             if (_waitingForTimer && _timeInState >= 5) {
                 _waitingForTimer = false;
                 beginLevel(++_currentLevel);
             }
             _smashTvSystem.update(deltaTime);
+            updateState(deltaTime);
+        }
+
+        private void updateState(float deltaTime) {
+            _states.DeltaTimes.Add(deltaTime);
+            _states.KeyboardStates.Add(Keyboard.GetState());
+            _states.MouseStates.Add(Mouse.GetState());
+            var s = _states.toJson();
         }
 
         private void handleGlobalInput() {

@@ -3,3 +3,5 @@
 /bin/release/*.pdb
 /bin/release/*.exe
 /*.suo
+obj
+bin
