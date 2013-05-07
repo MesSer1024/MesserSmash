@@ -1,0 +1,19 @@
+-----------
+  0.2
+-----------
+
+-----------
+  0.1
+-----------
+- Added highscore list (global and individual for each different level)
+- Balanced the 5 levels and made them challenging
+- New money and health texture
+- Notifications when secondary weapon is ready for use
+- added god mode game setting
+- added time multiplier to game (+/-)
+- resets score when user changes level (F1-F5)
+
+-----------
+  0.0
+-----------
+- Game running with 5 unbalanced levels

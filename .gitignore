@@ -3,5 +3,5 @@
 /bin/release/*.pdb
 /bin/release/*.exe
 /*.suo
-obj
-bin
+/SmashTV/MesserSmashWebServer/obj/x86/Debug/*.cache
+/SmashTV/SharedSmashResources/obj/Debug/*.cache
