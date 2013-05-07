@@ -62,7 +62,7 @@ namespace MesserSmash {
             //the state of the player affects movement and handles state specific inputs!
             _currentState.validate(deltatime);
             _currentState.handleInput();
-            if (_soundlock && Mouse.GetState().RightButton == ButtonState.Released) {
+            if (_soundlock && !Utils.RmbPressed) {
                 _soundlock = false;
             }
             Vector2 movement = Utils.safeNormalize(generateMovementVector());

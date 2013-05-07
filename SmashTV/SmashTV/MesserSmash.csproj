@@ -136,6 +136,7 @@
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\PlayerDiedCommand.cs" />
     <Compile Include="Commands\ReloadDatabaseCommand.cs" />
+    <Compile Include="Commands\SaveGameCommand.cs" />
     <Compile Include="Commands\SpawnWaveCommand.cs" />
     <Compile Include="Commands\RestartGameCommand.cs" />
     <Compile Include="Controller.cs" />

@@ -66,8 +66,8 @@ namespace MesserSmash.GUI {
         public void update(float gametime) {
             if (_inGame) {
                 _boost.setMode(Utils.isKeyDown(Keys.LeftControl));
-                _btnLMB.setMode(Mouse.GetState().LeftButton == ButtonState.Pressed);
-                _btnRMB.setMode(Mouse.GetState().RightButton == ButtonState.Pressed);
+                _btnLMB.setMode(Utils.LmbPressed);
+                _btnRMB.setMode(Utils.RmbPressed);
                 if(_recharge != null) {
                     _timeRechargeShown += gametime;
                     if (_timeRechargeShown >= 0.75f) {

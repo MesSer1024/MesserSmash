@@ -94,17 +94,6 @@ namespace MesserSmash {
 			_queuedCommands.Add("end_arena");
 		}
 
-		void stopGame() {
-			if (_arena != null) {
-				_arena.abort();
-			}
-			_arena = null;
-			_player = null;
-			_shotContainer = null;
-			_enemyContainer = null;
-			_isInitialized = false;
-		}
-
 		void onEnemyAttackedPlayer(ICommand command) {
 			var cmd = command as AttackPlayerCommand;
 			_player.takeDamage(cmd.Enemy.Damage);
@@ -132,7 +121,14 @@ namespace MesserSmash {
 			if (_queuedCommands.Count > 0) {
 				foreach (string s in _queuedCommands) {
 					if (s == "end_arena") {
-						stopGame();
+                        if (_arena != null) {
+                            _arena.abort();
+                        }
+                        _arena = null;
+                        _player = null;
+                        _shotContainer = null;
+                        _enemyContainer = null;
+                        _isInitialized = false;
 					}
 				}
 				_queuedCommands.Clear();

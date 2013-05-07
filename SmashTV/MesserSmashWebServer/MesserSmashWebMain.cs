@@ -6,6 +6,7 @@ using MesserSmash.Modules;
 using SharedSmashResources;
 using System.Collections;
 using Microsoft.Xna.Framework;
+using System.IO;
 
 namespace MesserSmashWebServer {
     class MesserSmashWebMain {
@@ -20,15 +21,32 @@ namespace MesserSmashWebServer {
             //Logger.flush();
 
             //--status request--
-            var statusInput = fastJSON.JSON.Instance.ToJSON(dummyStatusRequest());
-            var gameid = "f0a0a00a";
-            _start = DateTime.Now;
-            if (verifyGameId(gameid)) {
-                var statusOutput = buildResponse("status", statusInput);
-            } else {
-                var statusOutput = buildInvalidGameidResponse("status", gameid, statusInput);
+            //var statusInput = fastJSON.JSON.Instance.ToJSON(dummyStatusRequest());
+            //var gameid = "f0a0a00a";
+            //_start = DateTime.Now;
+            //if (verifyGameId(gameid)) {
+            //    var statusOutput = buildResponse("status", statusInput);
+            //} else {
+            //    var statusOutput = buildInvalidGameidResponse("status", gameid, statusInput);
+            //}
+            //Logger.flush();
+
+
+            //--test load game--
+            using (var sr = new StreamReader("../../../../bin/debug/games635035698361145192_save.txt")) {
+                var s = sr.ReadToEnd();
+                var state = fastJSON.JSON.Instance.Parse(s);
+                //state[""]
+                var foo = new StatusUpdate();
+
+                StatusUpdate status = fastJSON.JSON.Instance.FillObject(new StatusUpdate(), s) as StatusUpdate;
+                //var keyboardStates = state.KeyboardStates;
+                //foreach (var keyb in keyboardStates) {
+                //    if (keyb.GetPressedKeys().Length > 0) {
+                //        var keys = keyb.GetPressedKeys();
+                //    }
+                //}
             }
-            Logger.flush();
         }
 
         private static bool verifyGameId(string gameid) {

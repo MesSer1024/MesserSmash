@@ -6,25 +6,38 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using MesserSmash.Arenas;
 using MesserSmash.Modules;
+using SharedSmashResources;
 
 namespace MesserSmash {
     static class Utils {
-        private static KeyboardState _oldState;
-        private static KeyboardState _newState = new KeyboardState();
-        private static Random rng = new Random();
+        public static int Seed { get; private set; }
+
+        private static MesserKeys _oldState;
+        private static MesserKeys _newState;
+        private static Random rng;
         private static Vector2 _mousePos;
         private static Vector2 _screenSize;
-        private static MouseState _oldMouseState;
-        private static MouseState _newMouseState = new MouseState();
+        private static MesserMouse _oldMouseState;
+        private static MesserMouse _newMouseState;
 
-        public static void tick() {
+        public static void initialize(int seed) {
+            Seed = seed;
+            rng = new Random(Seed);
+            _newState = new MesserKeys();
+            _newMouseState = new MesserMouse();
+        }
+
+        public static void tick() {            
             _oldState = _newState;
             _oldMouseState = _newMouseState;
 
-            _newState = Keyboard.GetState();
-            _newMouseState = Mouse.GetState();
+            _newState = MesserKeys.Create(Keyboard.GetState());
+            _newMouseState = MesserMouse.Create(Mouse.GetState());
             _mousePos = new Vector2(_newMouseState.X, _newMouseState.Y);
         }
+
+        public static bool LmbPressed { get { return _newMouseState.LeftButton; } }
+        public static bool RmbPressed { get { return _newMouseState.RightButton; } }
 
         public static bool isNewKeyPress(Keys key) {
             if (_newState.IsKeyDown(key) && _oldState.IsKeyUp(key)) {
@@ -79,7 +92,7 @@ namespace MesserSmash {
         }
 
         public static Keys[] getPressedKeys() {
-            return _newState.GetPressedKeys();
+            return _newState.PressedKeys;
         }
 
         public static Vector2 safeNormalize(Vector2 vector) {
@@ -200,6 +213,22 @@ namespace MesserSmash {
                 }
             }
             return false;
+        }
+
+        internal static MesserMouse getMouseState() {
+            return MesserMouse.Create(Mouse.GetState());
+        }
+
+        internal static MesserKeys getKeyboardState() {
+            return MesserKeys.Create(Keyboard.GetState());
+        }
+
+        internal static void forceState(StatusUpdate loadedGame, int replayIndex) {
+            _newMouseState = loadedGame.MouseStates[replayIndex];
+            _oldMouseState = loadedGame.MouseStates[Math.Max(0, replayIndex-1)];
+            _newState = loadedGame.KeyboardStates[replayIndex];
+            _oldState = loadedGame.KeyboardStates[Math.Max(0, replayIndex - 1)];
+            _mousePos = new Vector2(_newMouseState.X, _newMouseState.Y);
         }
     }
 }

@@ -22,10 +22,10 @@ namespace MesserSmash {
         public virtual void handleInput() {}
 
         public virtual void checkForShots() {
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed) {
+            if (Utils.LmbPressed) {
                 _player.tryFireLMB();
             }
-            if (Mouse.GetState().RightButton == ButtonState.Pressed) {
+            if (Utils.RmbPressed) {
                 _player.tryFireRMB();
             }
         }

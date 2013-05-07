@@ -29,7 +29,7 @@ namespace MesserSmash {
 
         private SmashTVSystem _smashTvSystem;
         private int _currentLevel;
-        private float _timeInState;
+        private float _betweenLevelTimer;
         private bool _waitingForTimer;
         private DebugGuiOverlay _debugGui;
         private bool _paused;
@@ -37,6 +37,11 @@ namespace MesserSmash {
         private int _timeMultiplierIndex = 3;
         private List<float> _timeMultipliers = new List<float> { 0.25f, 0.5f, 0.75f, 1f, 1.25f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f, 6f, 8f };
         private StatusUpdate _states;
+        private bool _playing;
+        private float _deltaTime;
+        private bool _replay;
+        private StatusUpdate _loadedGame;
+        private int _currentReplayIndex;
 
         public SmashTV_main(Microsoft.Xna.Framework.Content.ContentManager Content, Microsoft.Xna.Framework.GraphicsDeviceManager graphics, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Game game) {
             _content = Content;
@@ -47,6 +52,8 @@ namespace MesserSmash {
         }
 
         private void init() {
+            Utils.initialize((int)DateTime.Now.Ticks);
+
             Controller.instance.registerInterest(RestartGameCommand.NAME, onRestartGame);
             new ReloadDatabaseCommand().execute();
 
@@ -85,7 +92,7 @@ namespace MesserSmash {
             _smashTvSystem = new SmashTVSystem();
             _currentLevel = 0;
             _waitingForTimer = true;
-            _timeInState = 0;
+            _betweenLevelTimer = 0;
 
             _debugGui = new DebugGuiOverlay(new Rectangle(40, 40, 850, 600));
         }
@@ -93,19 +100,13 @@ namespace MesserSmash {
         private void onRestartGame(ICommand command) {
             var cmd = command as RestartGameCommand;
             Scoring.reset();
-            _states.reset();
             beginLevel(cmd.Level);
         }
 
         private void beginLevel(int level) {
-            new ReloadDatabaseCommand().execute();
-            _paused = false;            
-            Arena arena = SmashTVSystem.Instance.Arena;
-            if (arena != null) {
-                arena.onGameFinished -= onGameFinished;
-                arena.abort();
-            }
-            _waitingForTimer = false;
+            cleanOldData();
+            Arena arena;
+            Utils.initialize((int)DateTime.Now.Ticks);
             switch(level) {
                 case 1:
                     arena = new Level1();
@@ -122,21 +123,53 @@ namespace MesserSmash {
                 case 5:
                     arena = new Level5();
                     break;
+                case -10:
+                    _replay = true;
+                    _currentReplayIndex = 0;
+                    _loadedGame = new GameLoader("635035727813189753_save.txt", true).Replay;
+                    Utils.initialize(_loadedGame.Seed);
+                    arena = new Level1();
+                    break;
                 default:
                     arena = new SpecialLevel();
                     break;
             }
 
             _currentLevel = level;
+            _playing = true;
             Scoring.setLevel(_currentLevel);
             var player = new Player(arena.getPlayerStartPosition());
             arena.onGameFinished += new Arena.ArenaDelegate(onGameFinished);
             _smashTvSystem.startGame(arena, player, new ShotContainer(), new EnemyContainer());
+
+            Controller.instance.registerInterest(PlayerDiedCommand.NAME, onPlayerDead);
+        }
+
+        void onPlayerDead(ICommand command) {
+            var cmd = command as PlayerDiedCommand;
+            _playing = false;
+            updateState(_deltaTime);
+            saveGame();
+        }
+
+        private void cleanOldData() {
+            _states.reset();
+            _paused = false;
+            Arena arena = SmashTVSystem.Instance.Arena;
+            if (arena != null) {
+                arena.onGameFinished -= onGameFinished;
+                arena.abort();
+            }
+            _waitingForTimer = false;
+            new ReloadDatabaseCommand().execute();
         }
 
         void onGameFinished(Arena arena) {
-            _timeInState = 0;
+            _playing = false;
+            _betweenLevelTimer = 0;
             _waitingForTimer = true;
+            updateState(_deltaTime);
+            saveGame();
         }
 
         public void update(GameTime time) {
@@ -147,23 +180,37 @@ namespace MesserSmash {
                 return;
             }
 
-            float deltaTime = (float)time.ElapsedGameTime.TotalSeconds * _timeMultipliers[_timeMultiplierIndex];
-
-
-            _timeInState += deltaTime;
-            if (_waitingForTimer && _timeInState >= 5) {
-                _waitingForTimer = false;
-                beginLevel(++_currentLevel);
+            if (_replay) {
+                Utils.forceState(_loadedGame, _currentReplayIndex);
+                _deltaTime = _loadedGame.DeltaTimes[_currentReplayIndex];
+            } else {
+                _deltaTime = (float)time.ElapsedGameTime.TotalSeconds * _timeMultipliers[_timeMultiplierIndex];
             }
-            _smashTvSystem.update(deltaTime);
-            updateState(deltaTime);
+
+
+            _betweenLevelTimer += _deltaTime;
+            if (_waitingForTimer && _betweenLevelTimer >= 5) {
+                _waitingForTimer = false;
+                //beginLevel(++_currentLevel);
+                beginLevel(-10);
+            }
+            _smashTvSystem.update(_deltaTime);
+            if (_playing) {
+                updateState(_deltaTime);
+            }
+            _currentReplayIndex++;
+        }
+
+        private void saveGame() {
+            if (_replay) { return; }
+            _states.Seed = Utils.Seed;
+            new SaveGameCommand(_states);
         }
 
         private void updateState(float deltaTime) {
             _states.DeltaTimes.Add(deltaTime);
-            _states.KeyboardStates.Add(Keyboard.GetState());
-            _states.MouseStates.Add(Mouse.GetState());
-            var s = _states.toJson();
+            _states.addKeyboard(Utils.getKeyboardState());            
+            _states.addMouse(Utils.getMouseState());
         }
 
         private void handleGlobalInput() {
