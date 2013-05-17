@@ -14,7 +14,6 @@ namespace MesserSmash {
 
         private static MesserKeys _oldState;
         private static MesserKeys _newState;
-        private static Random rng;
         private static Vector2 _mousePos;
         private static Vector2 _screenSize;
         private static MesserMouse _oldMouseState;
@@ -22,7 +21,7 @@ namespace MesserSmash {
 
         public static void initialize(int seed) {
             Seed = seed;
-            rng = new Random(Seed);
+            MesserRandom.init(seed);
             _newState = new MesserKeys();
             _newMouseState = new MesserMouse();
         }
@@ -60,7 +59,7 @@ namespace MesserSmash {
 
             int totalCreations = noOfMoneyBags + noOfHealthPacks;
             while (totalCreations > 0) {
-                int item = rng.Next(noOfEnemies);
+                int item = MesserRandom.nextInt(noOfEnemies);
                 if (myList[item] == Arena.LootType.Empty) {
                     --totalCreations;
                     if (noOfHealthPacks > 0) {
@@ -121,14 +120,11 @@ namespace MesserSmash {
         }
 
         public static double random() {
-            return rng.NextDouble();
+            return MesserRandom.next();
         }
 
         public static bool randomBool() {
-            if (rng.NextDouble() > 0.5) {
-                return true;
-            }
-            return false;
+            return MesserRandom.nextBool();
         }
 
         /// <summary>
@@ -137,7 +133,7 @@ namespace MesserSmash {
         /// <param name="max">EXCLUSIVE max value</param>
         /// <returns></returns>
         public static int randomInt(int max) {
-            return rng.Next(max);
+            return MesserRandom.nextInt(max);
         }
 
         /// <summary>
@@ -152,8 +148,8 @@ namespace MesserSmash {
 
         public static Vector2 randomPositionWithinRectangle(Rectangle bounds) {
             Vector2 point = Vector2.Zero;
-            point.X = rng.Next(bounds.Left, bounds.Right + 1);
-            point.Y = rng.Next(bounds.Top, bounds.Bottom + 1);
+            point.X = MesserRandom.nextInt(bounds.Left, bounds.Right + 1);
+            point.Y = MesserRandom.nextInt(bounds.Top, bounds.Bottom + 1);
             return point;
         }
 

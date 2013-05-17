@@ -52,7 +52,11 @@ namespace MesserSmash {
         }
 
         private void init() {
-            Utils.initialize((int)DateTime.Now.Ticks);
+            Logger.info("-------------------------------------------------------------------------");
+            Logger.info("-------------------------------------------------------------------------");
+            Logger.info("Game started at {0}", DateTime.Now.Ticks);
+            Utils.tick();
+            //Utils.initialize((int)DateTime.Now.Ticks);
 
             Controller.instance.registerInterest(RestartGameCommand.NAME, onRestartGame);
             new ReloadDatabaseCommand().execute();
@@ -98,15 +102,19 @@ namespace MesserSmash {
         }
 
         private void onRestartGame(ICommand command) {
+            Logger.info("onRestartGame");
+            //Controller.instance.removeInterest(RestartGameCommand.NAME, onRestartGame);
             var cmd = command as RestartGameCommand;
             Scoring.reset();
             beginLevel(cmd.Level);
         }
 
         private void beginLevel(int level) {
+            Logger.info("beginLevel");
             cleanOldData();
             Arena arena;
-            Utils.initialize((int)DateTime.Now.Ticks);
+            var seed = (int)DateTime.Now.Ticks;
+            Utils.initialize(seed);
             switch(level) {
                 case 1:
                     arena = new Level1();
@@ -126,9 +134,11 @@ namespace MesserSmash {
                 case -10:
                     _replay = true;
                     _currentReplayIndex = 0;
-                    _loadedGame = new GameLoader("635035727813189753_save.txt", true).Replay;
+                    var gameid = "showcase2/level2_1.txt";
+                    _loadedGame = new GameLoader(gameid, true).Replay;
+                    Logger.info("Begin replay: {0}", gameid);
                     Utils.initialize(_loadedGame.Seed);
-                    arena = new Level1();
+                    arena = new Level2();
                     break;
                 default:
                     arena = new SpecialLevel();
@@ -148,8 +158,18 @@ namespace MesserSmash {
         void onPlayerDead(ICommand command) {
             var cmd = command as PlayerDiedCommand;
             _playing = false;
-            updateState(_deltaTime);
+            saveState(_deltaTime);
             saveGame();
+            Logger.info("Player died frames:{1}, random status: {0}", MesserRandom.getStatus(), _states.StoredStatesCount);
+        }
+
+        void onGameFinished(Arena arena) {
+            _playing = false;
+            _betweenLevelTimer = 0;
+            _waitingForTimer = true;
+            saveState(_deltaTime);
+            saveGame();
+            Logger.info("Game finished frames:{1} random status: {0}", MesserRandom.getStatus(), _states.StoredStatesCount);
         }
 
         private void cleanOldData() {
@@ -164,16 +184,10 @@ namespace MesserSmash {
             new ReloadDatabaseCommand().execute();
         }
 
-        void onGameFinished(Arena arena) {
-            _playing = false;
-            _betweenLevelTimer = 0;
-            _waitingForTimer = true;
-            updateState(_deltaTime);
-            saveGame();
-        }
-
         public void update(GameTime time) {
             handleGlobalInput();
+            Logger.flush();
+
             //handle pause
             if (_paused && SmashTVSystem.Instance.Arena != null) {
                 SmashTVSystem.Instance.Arena.checkDebugInput();
@@ -181,24 +195,32 @@ namespace MesserSmash {
             }
 
             if (_replay) {
-                Utils.forceState(_loadedGame, _currentReplayIndex);
-                _deltaTime = _loadedGame.DeltaTimes[_currentReplayIndex];
+                if (_currentReplayIndex < _loadedGame.StoredStatesCount) {
+                    Utils.forceState(_loadedGame, _currentReplayIndex);
+                    _deltaTime = _loadedGame.DeltaTimes[_currentReplayIndex];
+                } else {
+                    Logger.info("Last frame: status={0}", MesserRandom.getStatus());
+                    _paused = true;
+                    _replay = false;
+                    _playing = false;
+                    return;
+                }
             } else {
                 _deltaTime = (float)time.ElapsedGameTime.TotalSeconds * _timeMultipliers[_timeMultiplierIndex];
             }
 
 
             _betweenLevelTimer += _deltaTime;
-            if (_waitingForTimer && _betweenLevelTimer >= 5) {
-                _waitingForTimer = false;
-                //beginLevel(++_currentLevel);
-                beginLevel(-10);
-            }
             _smashTvSystem.update(_deltaTime);
-            if (_playing) {
-                updateState(_deltaTime);
+            if (_playing && !_replay) {
+                saveState(_deltaTime);
             }
             _currentReplayIndex++;
+            if (_waitingForTimer && _betweenLevelTimer >= 5) {
+                _waitingForTimer = false;
+                beginLevel(++_currentLevel);
+                return;
+            }
         }
 
         private void saveGame() {
@@ -207,45 +229,53 @@ namespace MesserSmash {
             new SaveGameCommand(_states);
         }
 
-        private void updateState(float deltaTime) {
+        private void saveState(float deltaTime) {
             _states.DeltaTimes.Add(deltaTime);
             _states.addKeyboard(Utils.getKeyboardState());            
             _states.addMouse(Utils.getMouseState());
         }
 
         private void handleGlobalInput() {
-            if (Utils.isNewKeyPress(Keys.Delete)) {
-                Logger.flush();
-                GC.Collect();
-            }
-            if (Utils.isNewKeyPress(Keys.F1)) {
-                new RestartGameCommand(1).execute();
-            } else if (Utils.isNewKeyPress(Keys.F2)) {
-                new RestartGameCommand(2).execute();
-            } else if (Utils.isNewKeyPress(Keys.F3)) {
-                new RestartGameCommand(3).execute();
-            } else if (Utils.isNewKeyPress(Keys.F4)) {
-                new RestartGameCommand(4).execute();
-            } else if (Utils.isNewKeyPress(Keys.F5)) {
-                new RestartGameCommand(5).execute();
-            } else if (Utils.isNewKeyPress(Keys.F10)) {
-                new RestartGameCommand(10).execute();
-            }
-            if (Utils.isNewKeyPress(Keys.Tab)) {
-                new ReloadDatabaseCommand().execute();
-                _paused = false;
-            }
-            if (Utils.isNewKeyPress(Keys.Pause)) {
-                _paused = !_paused;
-            }
+            ICommand cmd = null;
+            if (Utils.getPressedKeys().Length > 0) {
+                if (Utils.isNewKeyPress(Keys.Delete)) {
+                    Logger.flush();
+                    GC.Collect();
+                }
+                if (Utils.isNewKeyPress(Keys.OemPipe)) {
+                    cmd = new RestartGameCommand(-10);
+                } else if (Utils.isNewKeyPress(Keys.F1)) {
+                    cmd = new RestartGameCommand(1);
+                } else if (Utils.isNewKeyPress(Keys.F2)) {
+                    cmd = new RestartGameCommand(2);
+                } else if (Utils.isNewKeyPress(Keys.F3)) {
+                    cmd = new RestartGameCommand(3);
+                } else if (Utils.isNewKeyPress(Keys.F4)) {
+                    cmd = new RestartGameCommand(4);
+                } else if (Utils.isNewKeyPress(Keys.F5)) {
+                    cmd = new RestartGameCommand(5);
+                } else if (Utils.isNewKeyPress(Keys.F10)) {
+                    cmd = new RestartGameCommand(10);
+                }
+                if (Utils.isNewKeyPress(Keys.Tab)) {
+                    cmd = new ReloadDatabaseCommand();
+                    _paused = false;
+                }
+                if (Utils.isNewKeyPress(Keys.Pause)) {
+                    _paused = !_paused;
+                }
 
-            if (Utils.isEitherNewlyPressed(Keys.OemPlus, Keys.Add)) {
-                _timeMultiplierIndex = (int)MathHelper.Clamp(_timeMultiplierIndex + 1, 0, _timeMultipliers.Count - 1);
-            } else if (Utils.isEitherNewlyPressed(Keys.OemMinus, Keys.Subtract)) {
-                _timeMultiplierIndex = (int)MathHelper.Clamp(_timeMultiplierIndex - 1, 0, _timeMultipliers.Count - 1);
+                if (Utils.isEitherNewlyPressed(Keys.OemPlus, Keys.Add)) {
+                    _timeMultiplierIndex = (int)MathHelper.Clamp(_timeMultiplierIndex + 1, 0, _timeMultipliers.Count - 1);
+                } else if (Utils.isEitherNewlyPressed(Keys.OemMinus, Keys.Subtract)) {
+                    _timeMultiplierIndex = (int)MathHelper.Clamp(_timeMultiplierIndex - 1, 0, _timeMultipliers.Count - 1);
+                }
             }
 
             Utils.tick();
+            if (cmd != null) {
+                cmd.execute();
+            }
         }
 
         public void draw(GameTime time) {

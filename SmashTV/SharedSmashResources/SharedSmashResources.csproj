@@ -47,6 +47,7 @@
     <Compile Include="GameLoader.cs" />
     <Compile Include="MesserKeys.cs" />
     <Compile Include="MesserMouse.cs" />
+    <Compile Include="MesserRandom.cs" />
     <Compile Include="StatusUpdate.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

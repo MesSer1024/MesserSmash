@@ -1,0 +1,4 @@
+[info] beginLevel
+[info] Game finished frames:2522 random status: MesserRandom seed=-1586218506 totalRequests=1586
+[info] beginLevel
+[info] Game finished frames:5927 random status: MesserRandom seed=-1109721252 totalRequests=66834

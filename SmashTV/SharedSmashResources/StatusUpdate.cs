@@ -57,7 +57,7 @@ namespace SharedSmashResources {
         }
 
         public void reset() {
-            //KeyboardStates.Clear();
+            KeyboardStates.Clear();
             MouseStates.Clear();
             DeltaTimes.Clear();
             TimeMultiplier = 0;
@@ -78,5 +78,7 @@ namespace SharedSmashResources {
             sb.Append(fastJSON.JSON.Instance.ToJSON(this));
             return sb.ToString();
         }
+
+        public int StoredStatesCount { get { return MouseStates.Count; } }
     }
 }

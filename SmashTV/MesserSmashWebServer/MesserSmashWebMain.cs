@@ -33,7 +33,7 @@ namespace MesserSmashWebServer {
 
 
             //--test load game--
-            using (var sr = new StreamReader("../../../../bin/debug/games635035698361145192_save.txt")) {
+            using (var sr = new StreamReader("../../../../bin/debug/635036930231319915_save.txt")) {
                 var s = sr.ReadToEnd();
                 var state = fastJSON.JSON.Instance.Parse(s);
                 //state[""]

@@ -1,56 +1,570 @@
-INFO: FAAF - 0 - 0
-INFO: MESSER - 4760 - 320
-INFO: MESSER - 13462 - 174
-INFO: MESSER - 22890 - 172
-INFO: MESSER - 4232 - 229
-INFO: MESSER - 8672 - 255
-INFO: MESSER - 4984 - 322
-INFO: MESSER - 12636 - 446
-INFO: MESSER - 36489 - 644
-INFO: MESSER - 3728 - 191
-INFO: MESSER - 13262 - 389
-INFO: MESSER - 1208 - 76
-INFO: MESSER - 4064 - 233
-INFO: MESSER - 7043 - 128
-INFO: MESSER - 9647 - 195
-INFO: MESSER - 9767 - 203
-INFO: MESSER - 31475 - 1589
-INFO: ADF - 1096 - 37
-INFO: MESSER - 2736 - 117
-INFO:  - 1848 - 156
-INFO:  - 2064 - 108
-INFO:  - 512 - 39
-INFO:  - 752 - 69
-INFO:  - 80 - 10
-INFO:  - 1256 - 106
-INFO:  - 368 - 46
-INFO:  - 40 - 5
-INFO:  - 0 - 0
-INFO:  - 88 - 11
-INFO:  - 112 - 13
-INFO: MESSER - 3752 - 194
-INFO:  - 5002 - 249
-INFO: MESSER - 8290 - 241
-INFO:  - 2400 - 150
-INFO: MESSER - 3784 - 223
-INFO: MESSER - 14198 - 711
-INFO: MESSER - 9625 - 485
-INFO: MESSER - 10735 - 545
-INFO: MESSER - 9771 - 482
-INFO: MESSER - 2096 - 112
-INFO: MESSER - 10834 - 543
-INFO: MESSER - 6208 - 350
-INFO: DRK - 608 - 51
-INFO:  - 632 - 79
-INFO:  - 552 - 69
-INFO: MESSER - 3768 - 171
-INFO: MESSER - 25042 - 1599
-INFO: MESSER - 8131 - 522
-INFO:  - 1104 - 88
-INFO:  - 1128 - 91
-INFO:  - 1496 - 112
-INFO:  - 1440 - 105
-INFO:  - 4040 - 280
-[info] MESSER - 4228 - 288
-[info] MESSER - 584 - 48
-[info] MESSER - 1544 - 68
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043453477288326
+[info] onRestartGame
+[info] beginLevel
+[info] MesserRandom seed=0 totalRequests=0
+[info]  - 1776 - 97
+[info] onRestartGame
+[info] beginLevel
+[info] MesserRandom seed=97984204 totalRequests=548
+[info]  - 1128 - 65
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043454333207282
+[info] onRestartGame
+[info] beginLevel
+[info] MesserRandom seed=0 totalRequests=0
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043457631835953
+[info] onRestartGame
+[info] beginLevel
+[info] Player died, random status: MesserRandom seed=-38395234 totalRequests=1584
+[info] MESSER - 5184 - 323
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043459268979592
+[info] beginLevel
+[info] Begin replay: 635043458214709291_save.txt
+[info] Player died, random status: MesserRandom seed=-38395234 totalRequests=1584
+[info] Last frame: status=MesserRandom seed=-38395234 totalRequests=1584
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043461301755860
+[info] beginLevel
+[info] Begin replay: 635043458214709291_save.txt
+[info] Player died, random status: MesserRandom seed=-38395234 totalRequests=1584
+[info] Last frame: status=MesserRandom seed=-38395234 totalRequests=1584
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043464943544159
+[info] beginLevel
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043466106960702
+[info] onRestartGame
+[info] beginLevel
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043466658292237
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: 635043458214709291_save.txt
+[info] Player died, random status: MesserRandom seed=-38395234 totalRequests=1584
+[info] Last frame: status=MesserRandom seed=-38395234 totalRequests=1584
+[info] onRestartGame
+[info] beginLevel
+[info] Last frame: status=MesserRandom seed=1257095588 totalRequests=24
+[info] onRestartGame
+[info] beginLevel
+[info] Last frame: status=MesserRandom seed=1257425606 totalRequests=24
+[info] onRestartGame
+[info] beginLevel
+[info] Last frame: status=MesserRandom seed=1257765626 totalRequests=24
+[info] onRestartGame
+[info] beginLevel
+[info] Last frame: status=MesserRandom seed=1258095645 totalRequests=26
+[info] Last frame: status=MesserRandom seed=1258095645 totalRequests=26
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043468146957384
+[info] onRestartGame
+[info] beginLevel
+[info] Game finished random status: MesserRandom seed=1884141453 totalRequests=1716
+[info] beginLevel
+[info] Game finished random status: MesserRandom seed=-1730736945 totalRequests=27394
+[info] beginLevel
+[info] Game finished random status: MesserRandom seed=-1050418033 totalRequests=1208
+[info] beginLevel
+[info] Game finished random status: MesserRandom seed=-370259130 totalRequests=15612
+[info] beginLevel
+[info] Game finished random status: MesserRandom seed=310059782 totalRequests=1308
+[info] beginLevel
+[info] Player died, random status: MesserRandom seed=990378694 totalRequests=22846
+[info] MESSERREAL - 27854 - 1678
+[info] onRestartGame
+[info] beginLevel
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043474503020930
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: showcase/level1.txt
+[info] Game finished random status: MesserRandom seed=1884141453 totalRequests=1716
+[info] Last frame: status=MesserRandom seed=1884141453 totalRequests=1716
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043475489127332
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: showcase/level2.txt
+[info] Player died, random status: MesserRandom seed=-1730736945 totalRequests=11186
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043478615966177
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: showcase/level2.txt
+[info] Player died, random status: MesserRandom seed=-1730736945 totalRequests=25929
+[info] Last frame: status=MesserRandom seed=-1730736945 totalRequests=25929
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043479317196285
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: showcase/level2.txt
+[info] Player died, random status: MesserRandom seed=-1730736945 totalRequests=25929
+[info] Last frame: status=MesserRandom seed=-1730736945 totalRequests=25929
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043482957184480
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: showcase/level2.txt
+[info] Player died frames:3557, random status: MesserRandom seed=-1730736945 totalRequests=25929
+[info] Last frame: status=MesserRandom seed=-1730736945 totalRequests=25929
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043484218136602
+[info] onRestartGame
+[info] beginLevel
+[info] Game finished frames:3777 random status: MesserRandom seed=773951402 totalRequests=25596
+[info] beginLevel
+[info] Game finished frames:3782 random status: MesserRandom seed=1454030300 totalRequests=1208
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043486336577770
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: showcase2/level2.txt
+[info] Game finished frames:3777 random status: MesserRandom seed=773951402 totalRequests=25597
+[info] Last frame: status=MesserRandom seed=773951402 totalRequests=25597
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043490507116311
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: showcase2/level3.txt
+[info] Player died frames:2647, random status: MesserRandom seed=1454030300 totalRequests=1112
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043491020635683
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: showcase2/level3.txt
+[info] Player died frames:2647, random status: MesserRandom seed=1454030300 totalRequests=1112
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043493339068290
+[info] onRestartGame
+[info] beginLevel
+[info] Player died frames:1591, random status: MesserRandom seed=1305328519 totalRequests=900
+[info] Player died frames:1592, random status: MesserRandom seed=1305328519 totalRequests=900
+[info] Player died frames:1593, random status: MesserRandom seed=1305328519 totalRequests=900
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] Player died frames:1437, random status: MesserRandom seed=1591094864 totalRequests=900
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] Player died frames:1819, random status: MesserRandom seed=1996428047 totalRequests=1220
+[info]  - 2512 - 214
+[info] onRestartGame
+[info] beginLevel
+[info] Player died frames:2118, random status: MesserRandom seed=-1955869649 totalRequests=1338
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] Game finished frames:2522 random status: MesserRandom seed=-1586218506 totalRequests=1586
+[info] beginLevel
+[info] Game finished frames:5927 random status: MesserRandom seed=-1109721252 totalRequests=66834
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043497474684834
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: showcase2/level1.txt
+[info] Player died frames:1409, random status: MesserRandom seed=-1586218506 totalRequests=902
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043500047451987
+[info] onRestartGame
+[info] beginLevel
+[info] Player died frames:2054, random status: MesserRandom seed=-576942417 totalRequests=1108
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043500439904434
+[info] onRestartGame
+[info] beginLevel
+[info] Player died frames:2404, random status: MesserRandom seed=-184749985 totalRequests=1586
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043500892580326
+[info] onRestartGame
+[info] beginLevel
+[info] Game finished frames:3053 random status: MesserRandom seed=270766069 totalRequests=1584
+[info] beginLevel
+[info] Game finished frames:3876 random status: MesserRandom seed=821327560 totalRequests=25017
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043502473020722
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: showcase2/level1.txt
+[info] Game finished frames:3053 random status: MesserRandom seed=270766069 totalRequests=1584
+[info] Last frame: status=MesserRandom seed=270766069 totalRequests=1584
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043503135358606
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: showcase2/level2.txt
+[info] Player died frames:2985, random status: MesserRandom seed=821327560 totalRequests=27608
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043503823457963
+[info] onRestartGame
+[info] beginLevel
+[info] Player died frames:5365, random status: MesserRandom seed=-1086253186 totalRequests=73158
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043505018956341
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: showcase2/level2_1.txt
+[info] Player died frames:3858, random status: MesserRandom seed=-1086253186 totalRequests=39966
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043505802541160
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: showcase2/level2_1.txt
+[info] Player died frames:3858, random status: MesserRandom seed=-1086253186 totalRequests=39966
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043510640667885
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043511250162746
+[info] onRestartGame
+[info] beginLevel
+[info] Player died frames:236, random status: MesserRandom seed=2046944385 totalRequests=276
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043512360656262
+[info] onRestartGame
+[info] beginLevel
+[info] Player died frames:377, random status: MesserRandom seed=-1146669917 totalRequests=336
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043515915389582
+[info] onRestartGame
+[info] beginLevel
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043518533329319
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043518674857414
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] onRestartGame
+[info] beginLevel
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043519905147783
+[info] onRestartGame
+[info] beginLevel
+[info] Player died frames:356, random status: MesserRandom seed=-2090637185 totalRequests=276
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043520887593975
+[info] onRestartGame
+[info] beginLevel
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043525531959618
+[info] onRestartGame
+[info] beginLevel
+[info] Begin replay: showcase2/level2_1.txt
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043528410424257
+[info] onRestartGame
+[info] beginLevel
+[info] -------------------------------------------------------------------------
+[info] -------------------------------------------------------------------------
+[info] Game started at 635043529243721919
+[info] onRestartGame
+[info] beginLevel
