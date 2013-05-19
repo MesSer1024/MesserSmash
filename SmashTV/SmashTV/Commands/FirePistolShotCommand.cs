@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace MesserSmash.Commands {
     class PlaySoundCommand : Command {
-        public static readonly string NAME = "FirePistolShotCommand";
+        public const string NAME = "PlaySoundCommand";
 
         public PlaySoundCommand(SoundEffect soundEffect):base(NAME) {
             // TODO: Complete member initialization

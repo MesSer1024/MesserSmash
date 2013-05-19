@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using SharedSmashResources;
 using System.IO;
+using MesserSmash.Modules;
 
 namespace MesserSmash.Commands {
     class SaveGameCommand : Command {
-        public static readonly string NAME = "SaveGameCommand";
+        public const string NAME = "SaveGameCommand";
         private StatusUpdate _states;
 
         public SaveGameCommand(SharedSmashResources.StatusUpdate states)
@@ -19,6 +20,12 @@ namespace MesserSmash.Commands {
                 
                 var timestamp = DateTime.Now.Ticks.ToString();
                 using (var sw = new StreamWriter(folder.FullName + "/" + timestamp + "_save.txt")) {
+                    sw.Write(_states.toJson());
+                    sw.Flush();
+                }
+                Logger.flushToFile(folder.FullName + "/" + timestamp + "_log.txt");
+
+                using (var sw = new StreamWriter(folder.FullName + "/last_save.txt", false)) {
                     sw.Write(_states.toJson());
                     sw.Flush();
                 }

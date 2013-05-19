@@ -65,8 +65,9 @@ namespace MesserSmash {
         protected override void Update(GameTime gameTime) {
             // Allows the game to exit
             if (Keyboard.GetState().IsKeyDown(Keys.Escape)) {
-                Logger.flush();
+                _game.exit();        
                 this.Exit();
+                return;
             }
 
             // TODO: Add your update logic here

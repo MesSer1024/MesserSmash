@@ -6,7 +6,7 @@ using MesserSmash.Modules;
 
 namespace MesserSmash.Commands {
     class SpawnWaveCommand : Command {
-        public static readonly string NAME = "SpawnWaveCommand";
+        public const string NAME = "SpawnWaveCommand";
 
         public SpawnWaveCommand(WaveSpawner spawner):base(NAME) {
             WaveSpawner = spawner;            

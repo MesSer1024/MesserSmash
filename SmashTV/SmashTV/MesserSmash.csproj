@@ -118,7 +118,8 @@
     <Compile Include="Arenas\Level4.cs" />
     <Compile Include="Arenas\Level5.cs" />
     <Compile Include="Arenas\Level6.cs" />
-    <Compile Include="Commands\AdvanceNextLevelCommand.cs" />
+    <Compile Include="Commands\ClientReadyCommand.cs" />
+    <Compile Include="Commands\RegisterLevelHighscoreCommand.cs" />
     <Compile Include="Commands\LevelStartedCommand.cs" />
     <Compile Include="Arenas\SpecialLevel.cs" />
     <Compile Include="Behaviours\AttackingMeleeBehaviour.cs" />
@@ -134,7 +135,9 @@
     <Compile Include="Commands\DeadEnemyCommand.cs" />
     <Compile Include="Commands\FirePistolShotCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\LoadConfigFileCommand.cs" />
     <Compile Include="Commands\PlayerDiedCommand.cs" />
+    <Compile Include="Commands\RegisterUsernameCommand.cs" />
     <Compile Include="Commands\ReloadDatabaseCommand.cs" />
     <Compile Include="Commands\SaveGameCommand.cs" />
     <Compile Include="Commands\SpawnWaveCommand.cs" />
@@ -148,6 +151,8 @@
     <Compile Include="GUI\FunnyText.cs" />
     <Compile Include="GUI\InGameView.cs" />
     <Compile Include="Commands\RegisterHighscoreCommand.cs" />
+    <Compile Include="GUI\IScreen.cs" />
+    <Compile Include="GUI\NewUserScreen.cs" />
     <Compile Include="LevelScore.cs" />
     <Compile Include="Loot.cs" />
     <Compile Include="Enemies\MeleeEnemy.cs" />
@@ -172,6 +177,7 @@
     <Compile Include="Modules\SpawnCriteria.cs" />
     <Compile Include="Modules\WaveSpawner.cs" />
     <Compile Include="NormalState.cs" />
+    <Compile Include="Patterns\IObserver.cs" />
     <Compile Include="PerformanceUtil.cs" />
     <Compile Include="PistolShot.cs" />
     <Compile Include="Player.cs" />

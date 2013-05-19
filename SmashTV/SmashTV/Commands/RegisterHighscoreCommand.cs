@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace MesserSmash.Commands {
     class RegisterHighscoreCommand : Command {
-        public static string NAME = "RegisterHighscoreCommand";        
+        public const string NAME = "RegisterHighscoreCommand";        
 
         public RegisterHighscoreCommand(string playerName) : base(NAME) {
             // TODO: Complete member initialization

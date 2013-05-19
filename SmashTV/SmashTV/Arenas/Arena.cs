@@ -10,9 +10,11 @@ using MesserSmash.GUI;
 using Helper = MesserSmash.SmashTVSystem;
 using MesserSmash.Commands;
 using MesserSmash.Modules;
+using SharedSmashResources.Patterns;
+using SharedSmashResources;
 
 namespace MesserSmash.Arenas {
-    public class Arena {
+    public class Arena : IObserver {
         public delegate void ArenaDelegate(Arena arena);
         public event ArenaDelegate onGameFinished;
         public event ArenaDelegate onZeroTimer;
@@ -36,6 +38,9 @@ namespace MesserSmash.Arenas {
             get { return _bounds; }
             set { _bounds = value; }
         }
+
+        public int Level { get; protected set; }
+
 
         public float TimeSinceLastCreation {
             get { return _timeSinceLastCreation; }
@@ -67,10 +72,10 @@ namespace MesserSmash.Arenas {
         }
 
         public void begin() {
-            //EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Arena");
-            Controller.instance.registerInterest(SpawnWaveCommand.NAME, onSpawnWave);
-            Controller.instance.registerInterest(ReloadDatabaseCommand.NAME, onReloadDatabase);
-            startLevel();
+            Controller.instance.addObserver(this);
+            _timeInState = 0;
+            new LevelStartedCommand(this).execute();
+            custStartLevel();
         }
 
         private void onReloadDatabase(ICommand cmd) {
@@ -81,10 +86,7 @@ namespace MesserSmash.Arenas {
 
         }
 
-        public virtual void startLevel() {
-            new LevelStartedCommand(this).execute();
-            //EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Arena");
-        }
+        public virtual void custStartLevel() { }
 
         private void onSpawnWave(ICommand cmd) {
             if (cmd is SpawnWaveCommand == false) {
@@ -127,6 +129,7 @@ namespace MesserSmash.Arenas {
         }
 
         protected virtual List<LootType> createLootTable() {
+            Logger.info("-->CreateLootTable");
             var table = Utils.generateLootTable(200, 12, 0);
             for(int i =0; i < 200; ++i) {
                 table.Add(Arena.LootType.Empty);
@@ -145,6 +148,7 @@ namespace MesserSmash.Arenas {
             table[385] = LootType.Money;
             table[398] = LootType.Money;
             table[399] = LootType.Money;
+            Logger.info("<--CreateLootTable randomStatus:{0}", MesserRandom.getStatus());
             return table;
         }
 
@@ -296,12 +300,31 @@ namespace MesserSmash.Arenas {
 
 
         public float SecondsToFinish { get {return _secondsLeft; } }
-        public float TimeSinceStart { get { return _timeInState; } }
+        //public float TimeSinceStart { get { return _timeInState; } }
 
-        internal void abort() {
-            Controller.instance.removeInterest(SpawnWaveCommand.NAME, onSpawnWave);
-            Controller.instance.removeInterest(ReloadDatabaseCommand.NAME, onReloadDatabase);
-            _spawnPoints.Clear();
+        ~Arena() {
+            clean();
+        }
+
+        internal void clean() {
+            Controller.instance.removeObserver(this);
+            if (_spawnPoints != null) {
+                _spawnPoints.Clear();
+                _spawnPoints = null;
+            }
+        }
+
+        public void handleCommand(ICommand cmd) {
+            //Controller.instance.addObserver(SpawnWaveCommand.NAME, onSpawnWave);
+            //Controller.instance.addObserver(ReloadDatabaseCommand.NAME, onReloadDatabase);
+            switch (cmd.Name) {
+                case SpawnWaveCommand.NAME:
+                    onSpawnWave(cmd);
+                    break;
+                case ReloadDatabaseCommand.NAME:
+                    onReloadDatabase(cmd);
+                    break;
+            }
         }
     }
 }

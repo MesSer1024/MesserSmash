@@ -19,6 +19,7 @@ namespace MesserSmash {
         private static SpriteBatch _sb;
         public static string _behaviourDestructors;
         public static string _enemyDestructors;
+        public static string _randomStatus = "";
         //public static string _overlappingEnemies;
 
         public static void draw(SpriteBatch sb) {
@@ -33,6 +34,7 @@ namespace MesserSmash {
             pos = internalDraw(_defaultFont, "Time left: " + _timeLeft, pos, Color.Black);
             pos = internalDraw(_defaultFont, "~Behaviour; " + _behaviourDestructors, pos, Color.Black);
             pos = internalDraw(_defaultFont, "~Enemy; " + _enemyDestructors, pos, Color.Black);
+            pos = internalDraw(_defaultFont, _randomStatus, pos, Color.Black);
             //pos = internalDraw(_defaultFont, "Overlapping enemies: " + _overlappingEnemies, pos, Color.Black);
         }
 

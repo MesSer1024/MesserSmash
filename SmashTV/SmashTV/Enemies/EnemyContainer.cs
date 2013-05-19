@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using MesserSmash.Modules;
+using SharedSmashResources.Patterns;
+using MesserSmash.Commands;
 
 namespace MesserSmash.Enemies {
-    public class EnemyContainer {
+    public class EnemyContainer : IObserver {
         public delegate void EnemyDelegate(IEnemy enemy);
 
         private List<IEnemy> _enemies;        
@@ -78,6 +80,16 @@ namespace MesserSmash.Enemies {
             var enemies = getAliveEnemies();
             foreach (IEnemy enemy in enemies) {
                 enemy.onArenaEnded();
+            }
+        }
+
+        public void handleCommand(Commands.ICommand cmd) {
+            switch (cmd.Name) {
+                case ReloadDatabaseCommand.NAME:
+                    foreach (var item in getAliveEnemies()) {
+                        item.reloadDatabaseValues();
+                    }
+                    break;
             }
         }
     }

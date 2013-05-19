@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MesserSmash.Behaviours;
 using MesserSmash.Commands;
 using MesserSmash.Modules;
+using SharedSmashResources.Patterns;
 
 namespace MesserSmash.Enemies {
     public class EnemyBase : IEnemy {
@@ -78,17 +79,16 @@ namespace MesserSmash.Enemies {
             Damage = 20;
             _id = _identifier++;
 
-            reloadValues(null);
+            reloadDatabaseValues();
         }
 
         public void init() {
-            //Controller.instance.registerInterest(Controller.DATABASE_RELOADED, reloadValues
-            Controller.instance.registerInterest(ReloadDatabaseCommand.NAME, reloadValues);
+            //Controller.instance.addObserver(this);
             SmashTVSystem.Instance.EnemyContainer.addEnemy(this);
             State = EnemyStates.EngagingPlayer;
         }
 
-        private void reloadValues(ICommand cmd) {
+        public void reloadDatabaseValues() {
             _texture = _getTexture();
             _radius = _getRadius();
             AttackRadius = _getAttackRadius();
@@ -271,7 +271,6 @@ namespace MesserSmash.Enemies {
         }
 
         ~EnemyBase() {
-            Controller.instance.removeInterest(ReloadDatabaseCommand.NAME, reloadValues);
             SmashTVSystem.Instance.enemyRemoved();
         }
     }

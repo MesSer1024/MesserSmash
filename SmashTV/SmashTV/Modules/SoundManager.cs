@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MesserSmash.Commands;
+using SharedSmashResources.Patterns;
 
 namespace MesserSmash.Modules {
-    class SoundManager {
+    class SoundManager : IObserver {
         private Microsoft.Xna.Framework.Audio.SoundEffectInstance _music;
         
         public void init() {
+            Controller.instance.addObserver(this);
             //EventDispatcher
-            Controller.instance.registerInterest(LevelStartedCommand.NAME, onLevelStarted);
-            Controller.instance.registerInterest(PlaySoundCommand.NAME, onPlaySound);
+            //Controller.instance.addObserver(LevelStartedCommand.NAME, onLevelStarted);
+            //Controller.instance.addObserver(PlaySoundCommand.NAME, onPlaySound);
         }
 
         private void onLevelStarted(ICommand cmd) {
@@ -28,6 +30,18 @@ namespace MesserSmash.Modules {
             var command = cmd as PlaySoundCommand;
             if (DataDefines.ID_SETTINGS_PLAY_SOUND != 0) {
                 command.Sound.Play(command.Volume, 0, 0);
+            }
+        }
+
+        public void handleCommand(ICommand cmd) {
+            switch (cmd.Name) {
+                case LevelStartedCommand.NAME:
+                    onLevelStarted(cmd);
+                    break;
+                case PlaySoundCommand.NAME:
+                    onPlaySound(cmd);
+                    break;
+
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿using MesserSmash.Enemies;
 namespace MesserSmash.Commands {
     public class AttackPlayerCommand : Command {
-        public static readonly string NAME = "AttackPlayerCommand";
+        public const string NAME = "AttackPlayerCommand";
         private IEnemy _enemy;
         private Player _player;
 

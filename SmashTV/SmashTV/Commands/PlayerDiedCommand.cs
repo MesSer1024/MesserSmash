@@ -6,7 +6,7 @@ using MesserSmash.Enemies;
 
 namespace MesserSmash.Commands {
     class PlayerDiedCommand  : Command {
-        public static readonly string NAME = "PlayerDiedCommand";
+        public const string NAME = "PlayerDiedCommand";
         private MesserSmash.Player _player;
 
         public PlayerDiedCommand(Player player)

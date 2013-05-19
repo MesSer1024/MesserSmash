@@ -27,7 +27,7 @@ namespace MesserSmash {
             }
         }
 
-        public static void awardScore(float score) {
+        public static void addScore(float score) {
             _currLevel.Score += (int)score;
         }
 

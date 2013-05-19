@@ -11,6 +11,7 @@ namespace MesserSmash.Arenas {
 
         public Level5() {
             _secondsLeft = 60;
+            Level = 5;
 
             WaveSpawner wave;
             for (int i = 0; i < 30; i++) {

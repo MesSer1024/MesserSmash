@@ -9,9 +9,11 @@ using MesserSmash.GUI;
 using MesserSmash.Enemies;
 using MesserSmash.Commands;
 using MesserSmash.Modules;
+using SharedSmashResources.Patterns;
+using SharedSmashResources;
 
 namespace MesserSmash {
-	public class SmashTVSystem {
+	public class SmashTVSystem : IObserver {
 		private static SmashTVSystem _instance;
 		public static SmashTVSystem Instance { get { return _instance; } }
 
@@ -46,51 +48,56 @@ namespace MesserSmash {
 
 		public SmashTVSystem() {
 			_instance = this;
+			Controller.instance.addObserver(this);
 		}
 
+        public string Username { get; set; }
+
 		private int _killCount;
-		private bool _isInitialized = false;
+		private bool _gameStarted = false;
 		private List<string> _queuedCommands = new List<string>();
-		private float _timeInState = 0;
 		private GUIMain _gui;
 		private int _enemyDestructors;
 		private int _behaviourDestructors;
 		private int _behaviourConstructors;
 		private int _enemyConstructors;
+        private bool _replay;
 
-		public void startGame(Arena arena, Player player, ShotContainer shotContainer, EnemyContainer enemyContainer) {
-			_timeInState = 0;
-			_isInitialized = true;
+		public void initLevel(Arena arena, Player player, ShotContainer shotContainer, EnemyContainer enemyContainer, bool replay) {
+            _replay = replay;
+			_gameStarted = false;
 			_queuedCommands = new List<string>();
 			_arena = arena;
 			_player = player;
 			_shotContainer = shotContainer;
 			_enemyContainer = enemyContainer;
 			_energySystem = EnergySystem.Instance;
-			_energySystem.reset();
 
-			Controller.instance.registerInterest(AttackPlayerCommand.NAME, onEnemyAttackedPlayer);
-			Controller.instance.registerInterest(DeadEnemyCommand.NAME, onEnemyDead);
-            Controller.instance.registerInterest(PlayerDiedCommand.NAME, onPlayerDead);
-			_killCount = 0;
-			_arena.onGameFinished += new Arena.ArenaDelegate(onGameFinished);
-			_arena.onZeroTimer += new Arena.ArenaDelegate(onZeroTimer);
+			_arena.onGameFinished += new Arena.ArenaDelegate(onArenaFinished);
+			_arena.onZeroTimer += new Arena.ArenaDelegate(onArenaTimerZero);
 			_gui = new GUIMain();
-            _gui.setScore(Scoring.getTotalScore());
-			//
+			_gui.showLoadingScreen();
+		}
+
+		public void startLoadedLevel() {
+			_gameStarted = true;
+			_gui.setScore(Scoring.getTotalScore());
+			_killCount = 0;
+			_energySystem.reset();
 			_arena.begin();
 		}
 
-		void onZeroTimer(Arena arena) {
+		void onArenaTimerZero(Arena arena) {
 			_enemyContainer.endGame();
 			_shotContainer.endGame();
 			_player.stateEndGame();
-            _energySystem.endGame();
-            Scoring.setKillsOnLevel(_killCount);
+			_energySystem.endGame();
+			Scoring.setKillsOnLevel(_killCount);
 		}
 
-		void onGameFinished(Arena arena) {
-			_arena.onGameFinished -= onGameFinished;
+		void onArenaFinished(Arena arena) {
+			_arena.onGameFinished -= onArenaFinished;
+            new RegisterLevelHighscoreCommand(SmashTVSystem.Instance.Username, arena.Level);
 			_queuedCommands.Add("end_arena");
 		}
 
@@ -101,65 +108,64 @@ namespace MesserSmash {
 
 		void onEnemyDead(ICommand command) {
 			var cmd = command as DeadEnemyCommand;
-            Scoring.awardScore(cmd.Enemy.Score);
+			Scoring.addScore(cmd.Enemy.Score);
 			_arena.handleDeadEnemy(cmd.Enemy.Position, _killCount);
 			++_killCount;
 			_gui.setKillCount(_killCount);
-            _gui.setScore(Scoring.getTotalScore());
+			_gui.setScore(Scoring.getTotalScore());
 		}
 
-        void onPlayerDead(ICommand command) {
-            var cmd = command as PlayerDiedCommand;
-            _queuedCommands.Add("end_arena");
+		void onPlayerDead(ICommand command) {
+			var cmd = command as PlayerDiedCommand;
+			_queuedCommands.Add("end_arena");
 
-            Scoring.setKillsOnLevel(_killCount);
-            _gui.showGameOver();
-        }
+			Scoring.setKillsOnLevel(_killCount);
+            if (!_replay) {
+                new RegisterHighscoreCommand(SmashTVSystem.Instance.Username).execute();
+                _gui.showGameOver();
+            }
+		}
 
-		public void update(float deltatime) {
-			_timeInState += deltatime;
+		public void update(GameState state) {
 			if (_queuedCommands.Count > 0) {
 				foreach (string s in _queuedCommands) {
 					if (s == "end_arena") {
-                        if (_arena != null) {
-                            _arena.abort();
-                        }
-                        _arena = null;
-                        _player = null;
-                        _shotContainer = null;
-                        _enemyContainer = null;
-                        _isInitialized = false;
+						_arena.clean();
+						_player = null;
+						_shotContainer = null;
+						_enemyContainer = null;
+						_gameStarted = false;
 					}
 				}
 				_queuedCommands.Clear();
 			}
-            if (_isInitialized) {
-                var state = new GameState(deltatime, _arena.TimeSinceStart);
-                DataDefines.ID_STATE_ENEMIES_ALIVE = SmashTVSystem.Instance.EnemyContainer.getAliveEnemies().Count;
-                DataDefines.ID_STATE_ENEMIES_KILLED = _killCount;
-                _energySystem.update(deltatime);
-                _enemyContainer.update(deltatime); //let all enemies decide where they want to move
-                _shotContainer.update(deltatime);
-                _arena.update(state);
-                _player.update(deltatime);
+			if (_gameStarted) {
+                //var state = new GameState(deltatime, _arena.TimeSinceStart);
+				DataDefines.ID_STATE_ENEMIES_ALIVE = SmashTVSystem.Instance.EnemyContainer.getAliveEnemies().Count;
+				DataDefines.ID_STATE_ENEMIES_KILLED = _killCount;
+				_energySystem.update(state.DeltaTime);
+                _enemyContainer.update(state.DeltaTime); //let all enemies decide where they want to move
+                _shotContainer.update(state.DeltaTime);
+				_arena.update(state);
+                _player.update(state.DeltaTime);
 
-                //check for collisions between shots and enemies
-                collisionDetection();
+				//check for collisions between shots and enemies
+				collisionDetection();
 
-                //check for possible enemy attacks
-                checkForNearnessToPlayer();
+				//check for possible enemy attacks
+				checkForNearnessToPlayer();
 
-                //check if player can pickup loot
-                detectLootPickup();
+				//check if player can pickup loot
+				detectLootPickup();
 
-                _updateGUIValues();
-                _gui.update(deltatime);
-            } else {
-                //not started or game over
-                if (_gui != null) {
-                    _gui.update(deltatime);
-                }
-            }
+				_updateGUIValues();
+                _gui.update(state.DeltaTime);
+			} else {
+				//not started or game over
+				if (_gui != null) {
+                    _gui.update(state.DeltaTime);
+				}
+			}
 		}
 
 		private void detectLootPickup() {
@@ -168,22 +174,23 @@ namespace MesserSmash {
 				Vector2 lootPos = loot.Position;
 				float lootRadius = loot.Radius;
 				if (isOverlapping(lootPos, _player.Position, lootRadius, _player.Radius)) {
-                    loot.inactivate();
-                    Scoring.onLoot(loot);
-                    if (loot.Type == Arenas.Arena.LootType.Health) {
-                        _player.receiveHealth(45);
-                    }
-                    _gui.setScore(Scoring.getTotalScore());
-                }
+					loot.inactivate();
+					Scoring.onLoot(loot);
+					if (loot.Type == Arenas.Arena.LootType.Health) {
+						_player.receiveHealth(45);
+					}
+					_gui.setScore(Scoring.getTotalScore());
+				}
 			}
 		}
 
 		private void _updateGUIValues() {
-            InfoWindow._energy = Utils.makeString("Energy : [{0}/{1}]", _energySystem.AvailableEnergy.ToString("000"), _energySystem.MaxEnergy.ToString("000"));
+			InfoWindow._energy = Utils.makeString("Energy : [{0}/{1}]", _energySystem.AvailableEnergy.ToString("000"), _energySystem.MaxEnergy.ToString("000"));
 			InfoWindow._playerPosition = Utils.makeString("({0},{1})", _player.Position.X.ToString("0.0"), _player.Position.Y.ToString("0.0"));
 			InfoWindow._health = _player.Health.ToString();
 			InfoWindow._enemyDestructors = _enemyConstructors.ToString() + ":" + _enemyDestructors.ToString();
 			InfoWindow._behaviourDestructors = _behaviourConstructors.ToString() + ":" + _behaviourDestructors.ToString();
+            InfoWindow._randomStatus = Utils.makeString("Randomizer: {0}", MesserRandom.getStatus());
 			_gui.setPlayerEnergy(Convert.ToInt32(_energySystem.AvailableEnergy));
 			_gui.setPlayerHealth(Convert.ToInt32(_player.Health));
 			_gui.setSecondsLeft(_arena.SecondsToFinish);
@@ -206,9 +213,9 @@ namespace MesserSmash {
 						if (isOverlapping(shotPos, enemy.Position, shotRadius, enemy.Radius)) {
 							enemy.takeDamage(shot.Damage);
 							shot.entityCollision(enemy.Position);
-                            if (shot.CollisionEnabled == false) {
-                                break;
-                            }
+							if (shot.CollisionEnabled == false) {
+								break;
+							}
 						}
 					}
 				}
@@ -252,23 +259,23 @@ namespace MesserSmash {
 		}
 
 		public void draw(Microsoft.Xna.Framework.Graphics.SpriteBatch sb) {
-			if (_isInitialized) {
+			if (_gameStarted) {
 				InfoWindow._killCount = _killCount.ToString();
 				
 				_arena.drawBackground(sb);
 				_shotContainer.drawExplosions(sb);
 				_enemyContainer.drawBegin(sb);
-                _arena.drawLoot(sb);
-                _enemyContainer.draw(sb);
-                _player.draw(sb);
+				_arena.drawLoot(sb);
+				_enemyContainer.draw(sb);
+				_player.draw(sb);
 				_shotContainer.draw(sb);
 				_gui.draw(sb);
-            } else {
-                //not started or game over
-                if (_gui != null) {
-                    _gui.draw(sb);
-                }
-            }
+			} else {
+				//not started or game over
+				if (_gui != null) {
+					_gui.draw(sb);
+				}
+			}
 		}
 
 		public void enemyRemoved() {
@@ -285,6 +292,20 @@ namespace MesserSmash {
 
 		public void behaviourCreated() {
 			_behaviourConstructors++;
+		}
+
+		public void handleCommand(ICommand cmd) {
+			switch(cmd.Name) {
+				case AttackPlayerCommand.NAME:
+					onEnemyAttackedPlayer(cmd);
+					break;
+				case DeadEnemyCommand.NAME:
+					onEnemyDead(cmd);
+					break;
+				case PlayerDiedCommand.NAME:
+					onPlayerDead(cmd);
+					break;
+			}
 		}
 	}
 }

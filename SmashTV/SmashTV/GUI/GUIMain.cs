@@ -26,17 +26,15 @@ namespace MesserSmash.GUI {
         private bool _inGame;
         private float _score;
         private FunnyText _scoreField;
-        private StringBuilder _gameoverName;
         private float _timeDead;
-        private bool _saved;
         private FunnyText _recharge;
         private float _timeRechargeShown;
+        private bool _loadingScreenVisible;
 
         public GUIMain() {
             Instance = this;
-            _gameoverName = new StringBuilder();
             _inGame = true;
-            _saved = false;
+            _loadingScreenVisible = false;
             _timeRechargeShown = 100;
             int h = 120;
             _background = new Rectangle(0, Utils.getGameHeight() - h, Utils.getGameWidth(), Utils.getGameHeight());
@@ -64,7 +62,11 @@ namespace MesserSmash.GUI {
         }
 
         public void update(float gametime) {
-            if (_inGame) {
+            if (_loadingScreenVisible) {
+                if (Utils.isNewKeyPress(Keys.Space)) {
+                    performClientReady();
+                }
+            } else if (_inGame) {
                 _boost.setMode(Utils.isKeyDown(Keys.LeftControl));
                 _btnLMB.setMode(Utils.LmbPressed);
                 _btnRMB.setMode(Utils.RmbPressed);
@@ -76,29 +78,18 @@ namespace MesserSmash.GUI {
                 }
             } else {
                 _timeDead += gametime;
-                if (_timeDead > 1.24f) {
-                    foreach (var key in Utils.getPressedKeys()) {
-                        if (key == Keys.Back && _saved == false) {
-                            if (_gameoverName.Length > 0) {
-                                _gameoverName.Remove(_gameoverName.Length - 1, 1);
-                            }
-                        } else if (key == Keys.Enter && Utils.isNewKeyPress(key)) {
-                            if (_saved == false) {
-                                new RegisterHighscoreCommand(_gameoverName.ToString()).execute();
-                                _saved = true;
-                            } else {
-                                new RestartGameCommand(1).execute();
-                            }
-                        } else {
-                            if (validHighscoreCharacter(key) && Utils.isNewKeyPress(key) && _saved == false) {
-                                _gameoverName.Append(key.ToString());
-                            }
-                        }
+                if (_timeDead > 2f) {
+                    if (Utils.isNewKeyPress(Keys.Enter)) {
+                        new RestartGameCommand(1).execute();
                     }
                 }
             }
         }
 
+        public void performClientReady() {
+            new ClientReadyCommand().execute();
+            _loadingScreenVisible = false;
+        }
         private bool validHighscoreCharacter(Keys key) {
             return (key >= Keys.A && key <= Keys.Z) || (key >= Keys.D0 && key <= Keys.D9);
         }
@@ -116,6 +107,14 @@ namespace MesserSmash.GUI {
         }
 
         public void draw(SpriteBatch sb) {
+            if (_loadingScreenVisible) {
+                var r = new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight());
+                sb.Draw(AssetManager.getDefaultTexture(), r, Color.Bisque);
+                var text = new FunnyText("Press <space> to start game", new Rectangle { X = 0, Y = 0, Width = Utils.getGameWidth(), Height = Utils.getGameHeight() });
+                text.HorizontalCenter = true;
+                text.VerticalCenter = true;
+                text.Draw(sb);
+            }
             if (_inGame) {
                 sb.Draw(AssetManager.getDefaultTexture(), _background, _backgroundColor);
                 sb.Draw(AssetManager.getDefaultTexture(), _playerHudBackground, Color.Black);
@@ -135,18 +134,20 @@ namespace MesserSmash.GUI {
                 var r = new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight());
                 sb.Draw(AssetManager.getDefaultTexture(), r, Color.Black);
 
-                var text = new FunnyText("Game Over", new Rectangle { X = 0, Y = 0, Width = Utils.getGameWidth(), Height = 75});
-                text.HorizontalCenter = false;
-                text.Draw(sb);
-                if (_saved == false) {
-                    var text3 = new FunnyText(Utils.makeString("Your Score: {0}", formatScorePoints(_score))
-                        , new Rectangle { X = 0, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
-                    text3.HorizontalCenter = false;
-                    var text2 = new FunnyText(Utils.makeString("Enter Name: {0}", _gameoverName.ToString())
-                        , new Rectangle { X = 0, Y = 150, Width = Utils.getGameWidth(), Height = 75 });
-                    text2.HorizontalCenter = false;
-                    text3.Draw(sb);
-                    text2.Draw(sb);
+                {
+                    var text = new FunnyText("GAME OVER!", new Rectangle { X = 50, Y = 0, Width = Utils.getGameWidth(), Height = 75 });
+                    text.HorizontalCenter = false;
+                    text.Draw(sb);
+                }
+                {
+                    var text = new FunnyText(Utils.makeString("Your Score: {0}", formatScorePoints(_score)), new Rectangle { X = 50, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
+                    text.HorizontalCenter = false;
+                    text.Draw(sb);
+                }
+                {
+                    var text = new FunnyText(Utils.makeString("Press <enter> to restart game"), new Rectangle(50, 200, Utils.getGameWidth(), 75));
+                    text.HorizontalCenter = false;
+                    text.Draw(sb);
                 }
 
                 for (int i = 0; i < Math.Min(8, Highscore.Instance.Score.Count); i++) {
@@ -182,12 +183,13 @@ namespace MesserSmash.GUI {
         public void showGameOver() {
             Highscore.Instance.load("./highscore.txt");
             _inGame = false;
-            _saved = false;
+            _loadingScreenVisible = false;
+            _timeDead = 0;
         }
 
         public void restart() {
             _inGame = true;
-            _saved = false;
+            _loadingScreenVisible = false;
         }
 
         public void setScore(float newScore) {
@@ -199,6 +201,10 @@ namespace MesserSmash.GUI {
             _recharge = new FunnyText("Weapon Recharged!", new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight()));
             _recharge.TextColor = Color.NavajoWhite;
             _timeRechargeShown = 0;
+        }
+
+        internal void showLoadingScreen() {
+            _loadingScreenVisible = true;
         }
     }
 }

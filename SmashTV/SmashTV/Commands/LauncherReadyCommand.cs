@@ -6,7 +6,7 @@ using MesserSmash.GUI;
 
 namespace MesserSmash.Commands {
     class LauncherReadyCommand : Command {
-        public static readonly string NAME = "LauncherReadyCommand";
+        public const string NAME = "LauncherReadyCommand";
 
         public LauncherReadyCommand()
             : base(NAME) {

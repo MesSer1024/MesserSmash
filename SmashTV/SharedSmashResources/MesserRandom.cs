@@ -17,23 +17,30 @@ namespace SharedSmashResources {
         }
 
         public static int nextInt(int max) {
-            _counter++;
             return nextInt(0, max);
         }
 
         public static int nextInt(int min, int max) {
+            var value = _random.Next(min, max);
+            reportStatus(_counter, value.ToString());
             _counter++;
-            return _random.Next(min, max);
+            return value;
         }
 
         public static double next() {
+            var value = _random.NextDouble();
+            reportStatus(_counter, value.ToString("0.000"));
             _counter++;
-            return _random.NextDouble();
+            return value;
         }
 
         public static bool nextBool() {
-            _counter++;
-            return next() < 0.5;
+            var value = next() < 0.5;
+            return value;
+        }
+
+        private static void reportStatus(int counter, string value) {
+            Logger.info("random [{0}]={1}", counter, value);
         }
 
         public static string getStatus() {
@@ -43,6 +50,6 @@ namespace SharedSmashResources {
             sb.AppendFormat("MesserRandom seed={0} totalRequests={1}", _seed, _counter);
             return sb.ToString();
         }
-        
+
     }
 }

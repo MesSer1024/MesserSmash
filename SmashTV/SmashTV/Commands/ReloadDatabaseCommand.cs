@@ -7,7 +7,7 @@ using MesserSmash.Modules;
 
 namespace MesserSmash.Commands {
     class ReloadDatabaseCommand : Command {
-        public static readonly string NAME = "ReloadDatabaseCommand";
+        public const string NAME = "ReloadDatabaseCommand";
 
         public ReloadDatabaseCommand()
             : base(NAME) {
