@@ -6,6 +6,7 @@
 - saves highscore after each completed level
 - waiting for user interaction before game starts
 - now uses player profile
+
 -----------
   0.1
 -----------
