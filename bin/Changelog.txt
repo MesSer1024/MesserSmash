@@ -1,7 +1,11 @@
 -----------
   0.2
 -----------
-
+- Multiple bugfixes and code improvements (50 or so)
+- Introduced replays
+- saves highscore after each completed level
+- waiting for user interaction before game starts
+- now uses player profile
 -----------
   0.1
 -----------

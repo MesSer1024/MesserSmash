@@ -129,7 +129,7 @@ namespace MesserSmash {
 				_replay = true;
 				_currentReplayIndex = 0;
 				//var gameid = "last_save.txt";
-                var gameid = "635046006072118592_save.txt";
+                var gameid = "635046033029580470_save.txt";
 				_loadedGame = new GameLoader(gameid, true).Replay;
 				Logger.info("prepareNewLevel replay: {0}", gameid);
 				Utils.initialize(_loadedGame.Seed);
@@ -244,13 +244,12 @@ namespace MesserSmash {
 					return;
 				}
 			} else {
-				var t = (float)time.ElapsedGameTime.TotalSeconds * _timeMultipliers[_timeMultiplierIndex];
-				if (!_hasUsername) {
-					_screen.update(t);
+                deltaTime = (float)time.ElapsedGameTime.TotalSeconds * _timeMultipliers[_timeMultiplierIndex];
+                Utils.tick();
+                if (!_hasUsername) {
+                    _screen.update(deltaTime);
 					return;
 				}
-				Utils.tick();
-				deltaTime = t;
 
 				handleGlobalInput(); //only run global input on non-replay
 				//handle pause
@@ -354,6 +353,9 @@ namespace MesserSmash {
 				case ClientReadyCommand.NAME:
 					onClientReady(cmd);
 					break;
+                case RegisterUsernameCommand.NAME:
+                    onRegisterUsername(cmd);
+                    break;
 			}
 		}
 	}
