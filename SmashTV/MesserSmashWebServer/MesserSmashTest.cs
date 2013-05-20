@@ -9,11 +9,11 @@ using Microsoft.Xna.Framework;
 using System.IO;
 
 namespace MesserSmashWebServer {
-    class MesserSmashWebMain {
+    class MesserSmashTest {
 
         private class JsonDictionary : Dictionary<string, object> {}
         private static DateTime _start;
-        static void Main(string[] args) {
+        static void test(string[] args) {
             //--begin request--
             //var input = fastJSON.JSON.Instance.ToJSON(dummyBeginGameRequest());
             //_start = DateTime.Now;
@@ -33,12 +33,9 @@ namespace MesserSmashWebServer {
 
 
             //--test load game--
-            using (var sr = new StreamReader("../../../../bin/debug/635036930231319915_save.txt")) {
+            using (var sr = new StreamReader("../../../../bin/debug/games/last_save.txt")) {
                 var s = sr.ReadToEnd();
                 var state = fastJSON.JSON.Instance.Parse(s);
-                //state[""]
-                var foo = new StatusUpdate();
-
                 StatusUpdate status = fastJSON.JSON.Instance.FillObject(new StatusUpdate(), s) as StatusUpdate;
                 //var keyboardStates = state.KeyboardStates;
                 //foreach (var keyb in keyboardStates) {

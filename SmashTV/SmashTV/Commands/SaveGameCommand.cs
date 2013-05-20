@@ -29,6 +29,9 @@ namespace MesserSmash.Commands {
                     sw.Write(_states.toJson());
                     sw.Flush();
                 }
+
+                var server = new LocalServer();
+                server.send(_states);
         }
     }
 }

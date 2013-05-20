@@ -129,7 +129,7 @@ namespace MesserSmash {
 				_replay = true;
 				_currentReplayIndex = 0;
 				//var gameid = "last_save.txt";
-                var gameid = "635046033029580470_save.txt";
+                var gameid = "showcase_games/level3_save.txt";
 				_loadedGame = new GameLoader(gameid, true).Replay;
 				Logger.info("prepareNewLevel replay: {0}", gameid);
 				Utils.initialize(_loadedGame.Seed);
@@ -275,6 +275,20 @@ namespace MesserSmash {
 		private void saveGame() {
 			if (_replay) { return; }
 			_states.Seed = Utils.Seed;
+            _states.UserName = SmashTVSystem.Instance.Username;
+            _states.UserId = SmashTVSystem.Instance.UserId;
+            _states.GameId = SmashTVSystem.Instance.GameId;
+
+            var levelInfo = Scoring.getLevelScores()[Scoring.getLevelScores().Count - 1];
+            _states.Kills = levelInfo.Kills;
+            _states.Score = levelInfo.Score;
+
+            double totalTime = 0;
+            foreach (var i in _states.DeltaTimes) {
+                totalTime += i;
+            }
+            _states.TotalGametime = totalTime;
+
 			new SaveGameCommand(_states);
 		}
 

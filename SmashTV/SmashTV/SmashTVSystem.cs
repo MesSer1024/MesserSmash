@@ -46,12 +46,16 @@ namespace MesserSmash {
 			get { return _gui; }
 		}
 
+        public int KillCount { get { return _killCount; } }
+
 		public SmashTVSystem() {
 			_instance = this;
 			Controller.instance.addObserver(this);
 		}
 
         public string Username { get; set; }
+        public string GameId { get; set; }
+        public string UserId { get; set; }
 
 		private int _killCount;
 		private bool _gameStarted = false;
