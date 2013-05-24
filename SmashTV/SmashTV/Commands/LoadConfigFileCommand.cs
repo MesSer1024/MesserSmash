@@ -10,6 +10,8 @@ namespace MesserSmash.Commands {
 
         public bool HasUsername { get; set; }
         public string Username { get; set; }
+        public string ServerIp { get; set; }
+        public string ReplayPath { get; set;}
 
         public LoadConfigFileCommand()
             : base(NAME) {
@@ -18,18 +20,27 @@ namespace MesserSmash.Commands {
             StringBuilder sb = new StringBuilder();
             using (var sr = new StreamReader("./settings.ini")) {
                 while (!sr.EndOfStream) {
-                    var splitter = '|';
                     var line = sr.ReadLine().Trim();
                     if (line.StartsWith("username")) {
-                        var foo = line.Split(splitter);
-                        var item = foo[1].Trim();
-                        if (item.Length > 0 && item != "$_foo") {
+                        var value = readValue(line) ?? "$_foo";
+                        if (value.Length > 0 && value != "$_foo") {
                             HasUsername = true;
-                            Username = item;
+                            Username = value;
                         }
+                    } else if (line.StartsWith("server_ip")) {
+                        ServerIp = readValue(line) ?? "http://localhost:8801/";
+                    } else if (line.StartsWith("replay_path")) {
+                        var replayId = readValue(line);
+                        ReplayPath = replayId ?? "last_save.txt";
                     }
                 }
             }
+        }
+
+        private string readValue(string line) {
+            var splitter = '|';
+            var item = line.Split(splitter)[1].Trim();
+            return item;
         }
     }
 }

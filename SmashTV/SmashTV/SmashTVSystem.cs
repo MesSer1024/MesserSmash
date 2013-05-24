@@ -56,6 +56,7 @@ namespace MesserSmash {
         public string Username { get; set; }
         public string GameId { get; set; }
         public string UserId { get; set; }
+        public string ServerIp { get; set; }
 
 		private int _killCount;
 		private bool _gameStarted = false;
@@ -123,7 +124,6 @@ namespace MesserSmash {
 			var cmd = command as PlayerDiedCommand;
 			_queuedCommands.Add("end_arena");
 
-			Scoring.setKillsOnLevel(_killCount);
             if (!_replay) {
                 new RegisterHighscoreCommand(SmashTVSystem.Instance.Username).execute();
                 _gui.showGameOver();
@@ -311,5 +311,11 @@ namespace MesserSmash {
 					break;
 			}
 		}
-	}
+
+        internal void saveData() {
+            Scoring.setKillsOnLevel(_killCount);
+        }
+
+        public string ReplayPath { get; set; }
+    }
 }

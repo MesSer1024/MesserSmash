@@ -128,8 +128,7 @@ namespace MesserSmash {
 			if (level < 0) {
 				_replay = true;
 				_currentReplayIndex = 0;
-				//var gameid = "last_save.txt";
-                var gameid = "showcase_games/level3_save.txt";
+                var gameid = SmashTVSystem.Instance.ReplayPath;
 				_loadedGame = new GameLoader(gameid, true).Replay;
 				Logger.info("prepareNewLevel replay: {0}", gameid);
 				Utils.initialize(_loadedGame.Seed);
@@ -178,6 +177,8 @@ namespace MesserSmash {
 			_hasUsername = command.HasUsername;
 			if (_hasUsername) {
 				SmashTVSystem.Instance.Username = command.Username;
+                SmashTVSystem.Instance.ServerIp = command.ServerIp;
+                SmashTVSystem.Instance.ReplayPath = command.ReplayPath;
 			} else {
 				_screen = new NewUserScreen();
 			}
@@ -274,6 +275,7 @@ namespace MesserSmash {
 
 		private void saveGame() {
 			if (_replay) { return; }
+            _smashTvSystem.saveData();
 			_states.Seed = Utils.Seed;
             _states.UserName = SmashTVSystem.Instance.Username;
             _states.UserId = SmashTVSystem.Instance.UserId;

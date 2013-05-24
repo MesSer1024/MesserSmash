@@ -29,12 +29,6 @@ namespace MesserSmash.Modules {
             }
         }
 
-        public static void populateLevels(StreamReader sr) {
-            //var o = fastJSON.JSON.Instance.ToObject(sr.ReadToEnd());            
-            //while (!sr.EndOfStream) {
-            //}
-        }
-
         private static void parseNumber(string[] line) {
             if (line.Length != 3) {
                 return;

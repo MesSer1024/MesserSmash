@@ -16,9 +16,6 @@ namespace MesserSmash.Commands {
             using (StreamReader sr = new StreamReader("./database.txt")) {
                 SmashDb.populateKeyValues(sr);
             }
-            using (StreamReader sr = new StreamReader("./levels.txt")) {
-                SmashDb.populateLevels(sr);
-            }
         }
     }
 }

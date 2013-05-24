@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameLoader.cs" />
+    <Compile Include="LocalServer.cs" />
     <Compile Include="MesserKeys.cs" />
     <Compile Include="MesserMouse.cs" />
     <Compile Include="MesserRandom.cs" />

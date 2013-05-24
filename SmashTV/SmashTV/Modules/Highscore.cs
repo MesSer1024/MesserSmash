@@ -33,7 +33,7 @@ namespace MesserSmash.Modules {
         }
 
         public void insertTotalHighscore(string name, int score, int kills) {
-            var url = "./highscore.txt";
+            string url = "./local_highscores/highscore.txt";
             load(url);
             int i = 0;
 
@@ -51,7 +51,7 @@ namespace MesserSmash.Modules {
         }
 
         public void insertLevelHighscore(string name, int level, int score, int kills) {
-            var url = "./level" + level + ".txt";
+            var url = "./local_highscores/level" + level + ".txt";
             load(url);
             int i = 0;
 
@@ -76,7 +76,7 @@ namespace MesserSmash.Modules {
             }
         }
 
-        public void load(string url) {
+        public void load(string url = "./local_highscores/highscore.txt") {
             _players.Clear();
             _score.Clear();
             _kills.Clear();

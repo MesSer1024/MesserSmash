@@ -1,0 +1,28 @@
+[error] Unable to parse data from client System.IO.InvalidDataException: The magic number in GZip header is not correct. Make sure you are passing in a GZip stream.
+   at System.IO.Compression.GZipDecoder.ReadHeader(InputBuffer input)
+   at System.IO.Compression.Inflater.Decode()
+   at System.IO.Compression.Inflater.Inflate(Byte[] bytes, Int32 offset, Int32 length)
+   at System.IO.Compression.DeflateStream.Read(Byte[] array, Int32 offset, Int32 count)
+   at System.IO.Compression.GZipStream.Read(Byte[] array, Int32 offset, Int32 count)
+   at SharedSmashResources.LocalServer.CopyTo(Stream src, Stream dest) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 89
+   at SharedSmashResources.LocalServer.Unzip(Byte[] bytes) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 77
+   at SharedSmashResources.LocalServer.receive(Byte[] data) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 53
+   at MesserSmashWebServer.Program.SendResponse(HttpListenerRequest request) in D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\Program.cs:line 59
+[error] Unable to parse data from client System.IO.InvalidDataException: The magic number in GZip header is not correct. Make sure you are passing in a GZip stream.
+   at System.IO.Compression.GZipDecoder.ReadHeader(InputBuffer input)
+   at System.IO.Compression.Inflater.Decode()
+   at System.IO.Compression.Inflater.Inflate(Byte[] bytes, Int32 offset, Int32 length)
+   at System.IO.Compression.DeflateStream.Read(Byte[] array, Int32 offset, Int32 count)
+   at System.IO.Compression.GZipStream.Read(Byte[] array, Int32 offset, Int32 count)
+   at SharedSmashResources.LocalServer.CopyTo(Stream src, Stream dest) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 89
+   at SharedSmashResources.LocalServer.Unzip(Byte[] bytes) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 77
+   at SharedSmashResources.LocalServer.receive(Byte[] data) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 53
+   at MesserSmashWebServer.Program.SendResponse(HttpListenerRequest request) in D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\Program.cs:line 59
+[error] Unable to parse data from client System.IO.InvalidDataException: The magic number in GZip header is not correct. Make sure you are passing in a GZip stream.
+   at System.IO.Compression.GZipDecoder.ReadHeader(InputBuffer input)
+   at System.IO.Compression.Inflater.Decode()
+   at System.IO.Compression.Inflater.Inflate(Byte[] bytes, Int32 offset, Int32 length)
+   at System.IO.Compression.DeflateStream.Read(Byte[] array, Int32 offset, Int32 count)
+   at System.IO.Compression.GZipStream.Read(Byte[] array, Int32 offset, Int32 count)
+   at SharedSmashResources.LocalServer.CopyTo(Stream src, Stream dest) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 89
+   at SharedSmashResources.LocalServer.Unzip(Byte[] bytes) in D:\_programmering2\SmashT

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SharedSmashResources;
 using System.IO;
 using MesserSmash.Modules;
+using SharedSmashResources;
 
 namespace MesserSmash.Commands {
     class SaveGameCommand : Command {
@@ -30,7 +30,7 @@ namespace MesserSmash.Commands {
                     sw.Flush();
                 }
 
-                var server = new LocalServer();
+                var server = new LocalServer(SmashTVSystem.Instance.ServerIp);
                 server.send(_states);
         }
     }

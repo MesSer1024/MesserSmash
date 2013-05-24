@@ -181,7 +181,7 @@ namespace MesserSmash.GUI {
         }
 
         public void showGameOver() {
-            Highscore.Instance.load("./highscore.txt");
+            Highscore.Instance.load();
             _inGame = false;
             _loadingScreenVisible = false;
             _timeDead = 0;

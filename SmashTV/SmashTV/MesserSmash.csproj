@@ -171,7 +171,6 @@
     <Compile Include="Modules\DataDefines.cs" />
     <Compile Include="Modules\GameState.cs" />
     <Compile Include="Modules\Highscore.cs" />
-    <Compile Include="Modules\LocalServer.cs" />
     <Compile Include="Modules\PathFinder.cs" />
     <Compile Include="Modules\SmashDb.cs" />
     <Compile Include="Modules\SoundManager.cs" />

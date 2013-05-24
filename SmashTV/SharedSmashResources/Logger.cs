@@ -41,11 +41,11 @@ namespace MesserSmash.Modules {
             _logMessages.Clear();
         }
 
-        public static void init() {
+        public static void init(string fileUrl = DEFAULT_LOG_FILE) {
             clean();
             _logMessages = new List<string>();
             sb = new StringBuilder();
-            sw = new StreamWriter(DEFAULT_LOG_FILE, true);            
+            sw = new StreamWriter(fileUrl, true);            
         }
 
         public static void clean() {
