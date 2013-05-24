@@ -11,3 +11,8 @@ boost:		ctrl
 
 All abilities except movement costs energy, energy is recharged while playing.
 Survive against the mobs in the arena and get the highest score!
+
+
+
+The amazing music is from OpenGameArt.com. Named "Art - Szymon Matuszewski (matuszewskisy@gmail.com)"
+The SoundFX is 8bit gunloop explosion by Luke.RUSTLTD (http://www.rustltd.com/)
