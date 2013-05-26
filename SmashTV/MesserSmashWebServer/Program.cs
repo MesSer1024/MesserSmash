@@ -14,7 +14,7 @@ namespace MesserSmashWebServer {
         //http://pawncraft.co.uk:8801/ this is the external url to the messersmash server
 
         static void Main(string[] args) {
-            _highscores = new StreamWriter("highscores.txt");
+            _highscores = new StreamWriter("highscores.txt", true);
             Logger.init("MesserSmashServer.txt");
             string url = null;
             var file = new FileInfo("../../../../bin/debug/settings.ini");
@@ -56,6 +56,7 @@ namespace MesserSmashWebServer {
                 saveGame(states);
             }
             Console.WriteLine("->Handled request in: {0}ms", (DateTime.Now - timestamp).TotalMilliseconds);
+            Logger.info("->Handled request in: {0}ms", (DateTime.Now - timestamp).TotalMilliseconds);
             return string.Format("Foobar | status={0}", states);
         }
 
