@@ -111,13 +111,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arenas\Arena.cs" />
+    <Compile Include="Arenas\Level08.cs" />
+    <Compile Include="Arenas\Level09.cs" />
+    <Compile Include="Arenas\Level10.cs" />
+    <Compile Include="Arenas\Level07.cs" />
+    <Compile Include="Arenas\Level06.cs" />
+    <Compile Include="Arenas\Level05.cs" />
+    <Compile Include="Arenas\Level04.cs" />
+    <Compile Include="Arenas\Level02.cs" />
+    <Compile Include="Arenas\Level03.cs" />
     <Compile Include="Arenas\EnemyFactory.cs" />
-    <Compile Include="Arenas\Level1.cs" />
-    <Compile Include="Arenas\Level2.cs" />
-    <Compile Include="Arenas\Level3.cs" />
-    <Compile Include="Arenas\Level4.cs" />
-    <Compile Include="Arenas\Level5.cs" />
-    <Compile Include="Arenas\Level6.cs" />
+    <Compile Include="Arenas\Level01.cs" />
+    <Compile Include="Arenas\Level11.cs" />
+    <Compile Include="Arenas\Level12.cs" />
+    <Compile Include="Arenas\Level13.cs" />
+    <Compile Include="Arenas\Level14.cs" />
+    <Compile Include="Arenas\Level15.cs" />
+    <Compile Include="Arenas\Level16.cs" />
     <Compile Include="Commands\ClientReadyCommand.cs" />
     <Compile Include="Commands\RegisterLevelHighscoreCommand.cs" />
     <Compile Include="Commands\LevelStartedCommand.cs" />
@@ -145,7 +155,7 @@
     <Compile Include="Controller.cs" />
     <Compile Include="Enemies\EnemyTypes.cs" />
     <Compile Include="Enemies\IEntity.cs" />
-    <Compile Include="Enemies\MeleeStabber.cs" />
+    <Compile Include="Enemies\MeleeCharger.cs" />
     <Compile Include="Enemies\SecondaryRangedEnemy.cs" />
     <Compile Include="GUI\DebugGuiOverlay.cs" />
     <Compile Include="GUI\FunnyText.cs" />

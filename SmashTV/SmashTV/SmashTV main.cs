@@ -24,7 +24,8 @@ namespace MesserSmash {
 		private Microsoft.Xna.Framework.GraphicsDeviceManager _graphics;
 		private Microsoft.Xna.Framework.Graphics.SpriteBatch _spriteBatch;
 		private Microsoft.Xna.Framework.Game _game;
-		private Texture2D _circleTexture;
+        private Texture2D _circleTexture;
+        private Texture2D _rombTexture;
 		private Texture2D _defaultTexture;
 		private SpriteFont _defaultFont;
 
@@ -73,14 +74,15 @@ namespace MesserSmash {
 			Utils.setGameSize(1440, 800);
 			_graphics.ApplyChanges();
 			_game.IsMouseVisible = true;
-			_circleTexture = _content.Load<Texture2D>("circle 64x64");
+            _circleTexture = _content.Load<Texture2D>("circle 64x64");
+            _rombTexture = _content.Load<Texture2D>("rectangle_64x64");
 			_defaultTexture = _content.Load<Texture2D>("default");
 			_defaultFont = _content.Load<SpriteFont>("Arial 12");
 			AssetManager._player = _content.Load<Texture2D>("player64x64");
 			AssetManager._shot = _circleTexture;
 			AssetManager._arena = _defaultTexture;
 			AssetManager._enemy = _circleTexture;
-			AssetManager._rangedEnemy = _circleTexture;
+			AssetManager._rangedEnemy = _rombTexture;
 			AssetManager._healthPack = _content.Load<Texture2D>("health_loot");
 			AssetManager._moneyBag = _content.Load<Texture2D>("money_loot");
 			AssetManager._rocketShot = _circleTexture;
@@ -150,20 +152,53 @@ namespace MesserSmash {
 			Arena arena;
 			switch (level) {
 				case 1:
-					arena = new Level1();
+					arena = new Level01();
 					break;
 				case 2:
-					arena = new Level2();
+					arena = new Level02();
 					break;
 				case 3:
-					arena = new Level3();
+					arena = new Level03();
 					break;
 				case 4:
-					arena = new Level4();
+					arena = new Level04();
 					break;
 				case 5:
-					arena = new Level5();
-					break;
+					arena = new Level05();
+                    break;
+                case 6:
+                    arena = new Level06();
+                    break;
+                case 7:
+                    arena = new Level07();
+                    break;
+                case 8:
+                    arena = new Level08();
+                    break;
+                case 9:
+                    arena = new Level09();
+                    break;
+                case 10:
+                    arena = new Level10(); //BOSS LEVEL!
+                    break;
+                case 11:
+                    arena = new Level11();
+                    break;
+                case 12:
+                    arena = new Level12();
+                    break;
+                case 13:
+                    arena = new Level13();
+                    break;
+                case 14:
+                    arena = new Level14();
+                    break;
+                case 15:
+                    arena = new Level15();
+                    break;
+                case 16:
+                    arena = new Level16();
+                    break;
 				default:
 					arena = new SpecialLevel();
 					Logger.error("unknown level={0}", level);
@@ -318,9 +353,21 @@ namespace MesserSmash {
 					cmd = new RestartGameCommand(4);
 				} else if (Utils.isNewKeyPress(Keys.F5)) {
 					cmd = new RestartGameCommand(5);
-				} else if (Utils.isNewKeyPress(Keys.F10)) {
+                } else if (Utils.isNewKeyPress(Keys.F6)) {
+                    cmd = new RestartGameCommand(6);
+                } else if (Utils.isNewKeyPress(Keys.F7)) {
+                    cmd = new RestartGameCommand(7);
+                } else if (Utils.isNewKeyPress(Keys.F8)) {
+                    cmd = new RestartGameCommand(8);
+                } else if (Utils.isNewKeyPress(Keys.F9)) {
+                    cmd = new RestartGameCommand(9);
+                } else if (Utils.isNewKeyPress(Keys.F10)) {
 					cmd = new RestartGameCommand(10);
-				}
+                } else if (Utils.isNewKeyPress(Keys.F11)) {
+                    cmd = new RestartGameCommand(11);
+                } else if (Utils.isNewKeyPress(Keys.F12)) {
+                    cmd = new RestartGameCommand(12);
+                }
 				if (Utils.isNewKeyPress(Keys.Tab)) {
 					cmd = new ReloadDatabaseCommand();
 					_paused = false;

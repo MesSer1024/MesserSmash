@@ -61,7 +61,7 @@ namespace MesserSmash {
         public void generateSecondaryMeleeUnits(int amount) {
             while (amount-- > 0) {
                 Player player = SmashTVSystem.Instance.Player;
-                IEnemy enemy = new MeleeStabber(Utils.randomPositionWithinRectangle(_bounds), player);
+                IEnemy enemy = new MeleeCharger(Utils.randomPositionWithinRectangle(_bounds), player);
                 enemy.init();
             }
         }
