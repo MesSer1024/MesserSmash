@@ -18,6 +18,7 @@ namespace MesserSmash {
         public static Texture2D _default;
         public static Texture2D _playerPortrait;
         public static SpriteFont _defaultFont;
+        public static Texture2D _controllerLayout;
         public static Texture2D _rangedEnemy;
         public static SpriteFont _bigGuiFont;
         public static SoundEffect _bgSound;
@@ -87,6 +88,10 @@ namespace MesserSmash {
 
         public static SoundEffect getWeaponReadySound() {
             return _weaponReadySound;
+        }
+
+        public static Texture2D getControlsTexture() {
+            return _controllerLayout;
         }
     }
 }

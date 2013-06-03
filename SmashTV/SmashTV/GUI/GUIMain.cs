@@ -31,6 +31,9 @@ namespace MesserSmash.GUI {
         private float _timeRechargeShown;
         private bool _loadingScreenVisible;
 
+        private DebugGuiOverlay _debugGui;
+
+
         public GUIMain() {
             Instance = this;
             _inGame = true;
@@ -59,6 +62,8 @@ namespace MesserSmash.GUI {
             _secondsLeft.TextColor = Color.LightGoldenrodYellow;
             _secondsLeft.Visible = false;
             _secondsLeft.TextScale = 2.25f;
+
+            _debugGui = new DebugGuiOverlay(new Rectangle(40, 40, 850, 600));
         }
 
         public void update(float gametime) {
@@ -108,14 +113,21 @@ namespace MesserSmash.GUI {
 
         public void draw(SpriteBatch sb) {
             if (_loadingScreenVisible) {
-                var r = new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight());
-                sb.Draw(AssetManager.getDefaultTexture(), r, Color.Bisque);
-                var text = new FunnyText("Press <space> to start game", new Rectangle { X = 0, Y = 0, Width = Utils.getGameWidth(), Height = Utils.getGameHeight() });
+                sb.Draw(AssetManager.getControlsTexture(), new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight()), Color.White);
+
+                var text = new FunnyText(String.Format("Press <space> to start Level{0}", SmashTVSystem.Instance.Arena.Level), new Rectangle { X = 0, Y = Utils.getGameHeight() - 100, Width = Utils.getGameWidth(), Height = 0 });
                 text.HorizontalCenter = true;
                 text.VerticalCenter = true;
                 text.Draw(sb);
+                return;
             }
+
+            _debugGui.draw(sb);
+
             if (_inGame) {
+                var text = new FunnyText(String.Format("Level {0}", SmashTVSystem.Instance.Arena.Level), new Rectangle { X = SmashTVSystem.Instance.Arena.Bounds.X, Y = 0, Width = SmashTVSystem.Instance.Arena.Bounds.Width, Height = 50 });
+                text.VerticalCenter = true;
+                text.Draw(sb);
                 sb.Draw(AssetManager.getDefaultTexture(), _background, _backgroundColor);
                 sb.Draw(AssetManager.getDefaultTexture(), _playerHudBackground, Color.Black);
                 sb.Draw(AssetManager.getPortraitTexture(), _portraitPosition, Color.White);

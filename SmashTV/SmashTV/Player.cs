@@ -11,6 +11,7 @@ using MesserSmash.Commands;
 
 namespace MesserSmash {
     public class Player : IEntity {
+        private const float TOTAL_HURT_ANIM_TIME = 0.155f;
         private Texture2D _texture;
         private Vector2 _position;
 
@@ -40,6 +41,7 @@ namespace MesserSmash {
         private PlayerState _currentState;
         private bool _soundlock;
         private bool _finished;
+        private float _takeDamageAnimationTime;        
 
         public Player(Vector2 position) {
             _position = position;
@@ -52,6 +54,7 @@ namespace MesserSmash {
             _weaponRMB = new WeaponRocketLauncher();
             _health = 100;
             _currentState = new NormalState(this);
+            _takeDamageAnimationTime = 1500;
         }
 
         public void update(float deltatime) {
@@ -69,6 +72,7 @@ namespace MesserSmash {
             _velocity = movement * _currentState.getMovementSpeed() * deltatime;
             restrictMovementToBounds();
             moveUnit(deltatime);
+            _takeDamageAnimationTime += deltatime;
         }
 
         private Vector2 generateMovementVector() {
@@ -106,7 +110,16 @@ namespace MesserSmash {
         }
 
         public void draw(SpriteBatch sb) {
-            sb.Draw(_texture, _position, null, Color.Yellow, 0f, new Vector2(_textureOrigin, _textureOrigin), _scale, SpriteEffects.None, 0);
+            var color = Color.Yellow;
+            if (_takeDamageAnimationTime < TOTAL_HURT_ANIM_TIME) {
+                var t = TOTAL_HURT_ANIM_TIME / 2;
+                if (_takeDamageAnimationTime < t) {
+                    color.G = (byte)(byte.MaxValue - (_takeDamageAnimationTime / t * byte.MaxValue));
+                } else {
+                    color.G = (byte)(((_takeDamageAnimationTime - t) / t) * byte.MaxValue);
+                }
+            }
+            sb.Draw(_texture, _position, null, color, 0f, new Vector2(_textureOrigin, _textureOrigin), _scale, SpriteEffects.None, 0);
         }
 
         public void takeDamage(float amount) {
@@ -114,6 +127,7 @@ namespace MesserSmash {
                 return;
             }
 
+            _takeDamageAnimationTime = 0;
             _health -= amount;
             EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.PlayerDamaged, this, "damage:" + amount + "|health=" + _health);
             if (_health <= 0) {

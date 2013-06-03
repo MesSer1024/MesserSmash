@@ -33,7 +33,6 @@ namespace MesserSmash {
 		private int _currentLevel;
 		private float _betweenLevelTimer;
 		private bool _waitingForTimer;
-		private DebugGuiOverlay _debugGui;
 		private bool _paused;
 		private SoundManager _sound;
 		private int _timeMultiplierIndex = 3;
@@ -87,6 +86,7 @@ namespace MesserSmash {
 			AssetManager._moneyBag = _content.Load<Texture2D>("money_loot");
 			AssetManager._rocketShot = _circleTexture;
 			AssetManager._default = _defaultTexture;
+            AssetManager._controllerLayout = _content.Load<Texture2D>("smashTV_controls");
 			AssetManager._playerPortrait = _content.Load<Texture2D>("portrait");
 			AssetManager._defaultFont = _defaultFont;
 			AssetManager._bigGuiFont = _content.Load<SpriteFont>("BigGuiFont32");
@@ -107,7 +107,6 @@ namespace MesserSmash {
 			_waitingForTimer = true;
 			_betweenLevelTimer = 0;
 
-			_debugGui = new DebugGuiOverlay(new Rectangle(40, 40, 850, 600));
 			new LoadConfigFileCommand().execute();
 		}
 
@@ -395,7 +394,6 @@ namespace MesserSmash {
 			}
 			_smashTvSystem.draw(_spriteBatch);
 			InfoWindow.draw(_spriteBatch);
-			_debugGui.draw(_spriteBatch);
 		}
 
 		internal void exit() {
