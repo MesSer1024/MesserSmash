@@ -1,4 +1,10 @@
 -----------
+  0.5
+-----------
+- Added GameVersion to saves
+- Fixed bug with no server communication on account creation
+- Added 10 new levels
+-----------
   0.4
 -----------
 - Added replay functionality
