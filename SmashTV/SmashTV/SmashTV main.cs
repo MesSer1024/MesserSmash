@@ -131,7 +131,10 @@ namespace MesserSmash {
 				_currentReplayIndex = 0;
                 var gameid = SmashTVSystem.Instance.ReplayPath;
 				_loadedGame = new GameLoader(gameid, true).Replay;
-				Logger.info("prepareNewLevel replay: {0}", gameid);
+				Logger.info("prepareNewLevel replay: {0} -- version {1}", gameid, _loadedGame.GameVersion);
+                if (_loadedGame.GameVersion != SmashTVSystem.Instance.GameVersion) {
+                    throw new Exception(Utils.makeString("Invalid GameVersions! {0}", SmashTVSystem.Instance.GameVersion));
+                }
 				Utils.initialize(_loadedGame.Seed);
 				arena = buildLevel(_loadedGame.Level);
 				_currentLevel = _loadedGame.Level;
@@ -208,11 +211,12 @@ namespace MesserSmash {
 
 		private void onConfigFileLoaded(ICommand cmd) {
 			var command = cmd as LoadConfigFileCommand;
-			_hasUsername = command.HasUsername;
-			if (_hasUsername) {
+            SmashTVSystem.Instance.ServerIp = command.ServerIp;
+            SmashTVSystem.Instance.ReplayPath = command.ReplayPath;
+            SmashTVSystem.Instance.GameVersion = command.GameVersion;
+            _hasUsername = command.HasUsername;
+            if (_hasUsername) {
 				SmashTVSystem.Instance.Username = command.Username;
-                SmashTVSystem.Instance.ServerIp = command.ServerIp;
-                SmashTVSystem.Instance.ReplayPath = command.ReplayPath;
 			} else {
 				_screen = new NewUserScreen();
 			}
@@ -314,6 +318,7 @@ namespace MesserSmash {
             _states.UserName = SmashTVSystem.Instance.Username;
             _states.UserId = SmashTVSystem.Instance.UserId;
             _states.GameId = SmashTVSystem.Instance.GameId;
+            _states.GameVersion = SmashTVSystem.Instance.GameVersion;
 
             var levelInfo = Scoring.getLevelScores()[Scoring.getLevelScores().Count - 1];
             _states.Kills = levelInfo.Kills;

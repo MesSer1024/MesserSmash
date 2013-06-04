@@ -11,6 +11,7 @@ namespace SharedSmashResources {
         public string GameId { get; set; }
         public string UserId { get; set; }
         public string UserName { get; set; }
+        public string GameVersion { get; set; }
         
         public int Seed { get; set; }
         public int Level { get; set; }
@@ -24,6 +25,7 @@ namespace SharedSmashResources {
         public List<MesserKeys> KeyboardStates { get; set; }
         public List<MesserMouse> MouseStates { get; set; }
         public List<float> DeltaTimes { get; set; }
+        public int StoredStatesCount { get { return MouseStates.Count; } }
 
         public StatusUpdate() {
             //TODO: Need to handle KeyboardStates and MouseStates manually in order to parse them to json, 
@@ -78,7 +80,5 @@ namespace SharedSmashResources {
             sb.Append(fastJSON.JSON.Instance.ToJSON(this));
             return sb.ToString();
         }
-
-        public int StoredStatesCount { get { return MouseStates.Count; } }
     }
 }

@@ -57,6 +57,8 @@ namespace MesserSmash {
         public string GameId { get; set; }
         public string UserId { get; set; }
         public string ServerIp { get; set; }
+        public string ReplayPath { get; set; }
+        public string GameVersion { get; set; }
 
 		private int _killCount;
 		private bool _gameStarted = false;
@@ -316,6 +318,5 @@ namespace MesserSmash {
             Scoring.setKillsOnLevel(_killCount);
         }
 
-        public string ReplayPath { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace MesserSmash.Commands {
         public string Username { get; set; }
         public string ServerIp { get; set; }
         public string ReplayPath { get; set;}
+        public string GameVersion { get; set; }
 
         public LoadConfigFileCommand()
             : base(NAME) {
@@ -32,6 +33,9 @@ namespace MesserSmash.Commands {
                     } else if (line.StartsWith("replay_path")) {
                         var replayId = readValue(line);
                         ReplayPath = replayId ?? "last_save.txt";
+                    } else if (line.StartsWith("game_version")) {
+                        var version = readValue(line);
+                        GameVersion = version ?? "";
                     }
                 }
             }
