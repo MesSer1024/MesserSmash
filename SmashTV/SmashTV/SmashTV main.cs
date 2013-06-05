@@ -112,7 +112,6 @@ namespace MesserSmash {
 
 		private void onRestartGame(ICommand command) {
 			Logger.info("onRestartGame");
-			//Controller.instance.removeInterest(RestartGameCommand.NAME, onRestartGame);
 			var cmd = command as RestartGameCommand;
 			prepareNewLevel(cmd.Level, true);
 		}
@@ -132,9 +131,9 @@ namespace MesserSmash {
                 var gameid = SmashTVSystem.Instance.ReplayPath;
 				_loadedGame = new GameLoader(gameid, true).Replay;
 				Logger.info("prepareNewLevel replay: {0} -- version {1}", gameid, _loadedGame.GameVersion);
-                if (_loadedGame.GameVersion != SmashTVSystem.Instance.GameVersion) {
-                    throw new Exception(Utils.makeString("Invalid GameVersions! {0}", SmashTVSystem.Instance.GameVersion));
-                }
+                //if (_loadedGame.GameVersion != SmashTVSystem.Instance.GameVersion) {
+                //    throw new Exception(Utils.makeString("Invalid GameVersions! {0}", SmashTVSystem.Instance.GameVersion));
+                //}
 				Utils.initialize(_loadedGame.Seed);
 				arena = buildLevel(_loadedGame.Level);
 				_currentLevel = _loadedGame.Level;

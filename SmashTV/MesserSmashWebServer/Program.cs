@@ -17,9 +17,9 @@ namespace MesserSmashWebServer {
             _highscores = new StreamWriter("highscores.txt", true);
             Logger.init("MesserSmashServer.txt");
             string url = null;
-            var file = new FileInfo("../../../../bin/debug/settings.ini");
+            var file = new FileInfo("../../../../bin/debug/server_settings.ini");
             if (!file.Exists) {
-                file = new FileInfo("./settings.ini");
+                file = new FileInfo("./server_settings.ini");
             }
             using (var sr = new StreamReader(file.FullName)) {
                 while (!sr.EndOfStream) {
@@ -50,13 +50,18 @@ namespace MesserSmashWebServer {
                 }                
                 states = server.receive(data);
             } catch (Exception e) {
+                Console.WriteLine("Unable to parse data from client {0}", e.ToString());
                 Logger.error("Unable to parse data from client {0}", e.ToString());
             }
             if (states != null) {
                 saveGame(states);
+            } else {
+                return string.Format("Foobar | error={0}", states);
             }
-            Console.WriteLine("->Handled request in: {0}ms", (DateTime.Now - timestamp).TotalMilliseconds);
-            Logger.info("->Handled request in: {0}ms", (DateTime.Now - timestamp).TotalMilliseconds);
+            StringBuilder sb = new StringBuilder();            
+            sb.AppendFormat("{1}->Handled request in: {0}ms from user={2}[{3}]", (DateTime.Now - timestamp).TotalMilliseconds, DateTime.Now.ToString("dd/MM[HH:mm:ss]"), states.UserName, states.UserId);
+            Console.WriteLine(sb.ToString());
+            Logger.info(sb.ToString());
             return string.Format("Foobar | status={0}", states);
         }
 
@@ -74,7 +79,7 @@ namespace MesserSmashWebServer {
                 sw.Write(data.toJson());
                 sw.Flush();
             }
-            _highscores.WriteLine("ticks={0}|username={1}|level={6}|userid={2}|gameid={3}|kills={4}|score={5}", timestamp, data.UserName, data.UserId, data.GameId, data.Kills, data.Score, data.Level);
+            _highscores.WriteLine("ticks={0}|username={1}|level={6}|userid={2}|gameid={3}|kills={4}|score={5}|version={7}", timestamp, data.UserName, data.UserId, data.GameId, data.Kills, data.Score, data.Level, data.GameVersion);
             _highscores.Flush();
         }
     }

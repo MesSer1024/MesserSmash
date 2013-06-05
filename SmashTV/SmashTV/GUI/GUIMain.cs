@@ -83,9 +83,12 @@ namespace MesserSmash.GUI {
                 }
             } else {
                 _timeDead += gametime;
-                if (_timeDead > 2f) {
-                    if (Utils.isNewKeyPress(Keys.Enter)) {
+                if (_timeDead > 1.0f) {
+                    if (Utils.isNewKeyPress(Keys.R)) {
                         new RestartGameCommand(1).execute();
+                    }
+                    else if (Utils.isNewKeyPress(Keys.Enter)) {
+                        new RestartGameCommand(SmashTVSystem.Instance.Arena.Level).execute();
                     }
                 }
             }
@@ -157,7 +160,12 @@ namespace MesserSmash.GUI {
                     text.Draw(sb);
                 }
                 {
-                    var text = new FunnyText(Utils.makeString("Press <enter> to restart game"), new Rectangle(50, 200, Utils.getGameWidth(), 75));
+                    var text = new FunnyText(Utils.makeString("Press <enter> to retry level"), new Rectangle(50, 200, Utils.getGameWidth(), 75));
+                    text.HorizontalCenter = false;
+                    text.Draw(sb);
+                }
+                {
+                    var text = new FunnyText(Utils.makeString("Press <r> to restart game"), new Rectangle(50, 250, Utils.getGameWidth(), 75));
                     text.HorizontalCenter = false;
                     text.Draw(sb);
                 }

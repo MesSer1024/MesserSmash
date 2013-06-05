@@ -12,7 +12,7 @@ namespace MesserSmashWebServer {
     class MesserSmashTest {
 
         private class JsonDictionary : Dictionary<string, object> {}
-        private static DateTime _start;
+        private static DateTime _start = DateTime.Now;
         static void test(string[] args) {
             //--begin request--
             //var input = fastJSON.JSON.Instance.ToJSON(dummyBeginGameRequest());

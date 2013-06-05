@@ -20,7 +20,7 @@ namespace MesserSmash.Commands {
                 totalkills += i.Kills;
                 Highscore.Instance.insertLevelHighscore(playerName, i.Level, i.Score, i.Kills);
             }
-            Logger.info("{0} - {1} - {2}", playerName, totalScore, totalkills);
+            Logger.info("RegisterHighscoreCommand: {0} - {1} - {2}", playerName, totalScore, totalkills);
             Highscore.Instance.insertTotalHighscore(playerName, totalScore, totalkills);
         }
     }

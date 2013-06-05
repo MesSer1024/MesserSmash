@@ -1,8 +1,0 @@
-[info] Player died frames:434, random status: MesserRandom seed=-707976791 totalRequests=201
-[info] MESSER3 - 1080 - 35
-[info] ->handleCommand RegisterHighscoreCommand
-[info] <--handleCommand RegisterHighscoreCommand
-[info] <--handleCommand PlayerDiedCommand
-[info] <--handleCommand AttackPlayerCommand
-[info] ->handleCommand AttackPlayerCommand
-[info] ->handleCommand PlayerDiedCommand

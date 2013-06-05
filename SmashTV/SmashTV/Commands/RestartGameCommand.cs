@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MesserSmash.Commands {
     class RestartGameCommand : Command {
-        public const string NAME = "StartGameCommand";
+        public const string NAME = "RestartGameCommand";
 
         public RestartGameCommand(int level = 1)
             : base(NAME) {

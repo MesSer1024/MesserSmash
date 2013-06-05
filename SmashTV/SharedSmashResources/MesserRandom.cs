@@ -22,14 +22,12 @@ namespace SharedSmashResources {
 
         public static int nextInt(int min, int max) {
             var value = _random.Next(min, max);
-            reportStatus(_counter, value.ToString());
             _counter++;
             return value;
         }
 
         public static double next() {
             var value = _random.NextDouble();
-            reportStatus(_counter, value.ToString("0.000"));
             _counter++;
             return value;
         }
@@ -37,10 +35,6 @@ namespace SharedSmashResources {
         public static bool nextBool() {
             var value = next() < 0.5;
             return value;
-        }
-
-        private static void reportStatus(int counter, string value) {
-            Logger.info("random [{0}]={1}", counter, value);
         }
 
         public static string getStatus() {

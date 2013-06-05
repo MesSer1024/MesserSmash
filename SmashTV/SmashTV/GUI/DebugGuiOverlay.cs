@@ -52,6 +52,7 @@ namespace MesserSmash.GUI {
             foreach (var button in _debugButtons) {
                 button.draw(sb);
             }
+            //sb.DrawString(AssetManager.getDefaultFont(), DateTime.Now.ToString("dd/mm-HH:mm:ss"), new Vector2(100, 100), Color.White);
         }
     }
 }

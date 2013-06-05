@@ -13,6 +13,7 @@ namespace MesserSmash.Commands {
         public string ServerIp { get; set; }
         public string ReplayPath { get; set;}
         public string GameVersion { get; set; }
+        public bool IgnoreVersion { get; set; }
 
         public LoadConfigFileCommand()
             : base(NAME) {
