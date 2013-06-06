@@ -149,6 +149,7 @@
     <Compile Include="Commands\PlayerDiedCommand.cs" />
     <Compile Include="Commands\RegisterUsernameCommand.cs" />
     <Compile Include="Commands\ReloadDatabaseCommand.cs" />
+    <Compile Include="Commands\RequestHighscoresCommand.cs" />
     <Compile Include="Commands\SaveGameCommand.cs" />
     <Compile Include="Commands\SpawnWaveCommand.cs" />
     <Compile Include="Commands\RestartGameCommand.cs" />
@@ -180,11 +181,12 @@
     <Compile Include="Modules\BoundaryChecker.cs" />
     <Compile Include="Modules\DataDefines.cs" />
     <Compile Include="Modules\GameState.cs" />
-    <Compile Include="Modules\Highscore.cs" />
+    <Compile Include="Modules\ClientHighscore.cs" />
     <Compile Include="Modules\PathFinder.cs" />
     <Compile Include="Modules\SmashDb.cs" />
     <Compile Include="Modules\SoundManager.cs" />
     <Compile Include="Modules\SpawnCriteria.cs" />
+    <Compile Include="Modules\ThreadWatcher.cs" />
     <Compile Include="Modules\WaveSpawner.cs" />
     <Compile Include="NormalState.cs" />
     <Compile Include="Patterns\IObserver.cs" />
@@ -199,7 +201,7 @@
     <Compile Include="Scoring.cs" />
     <Compile Include="ShotBase.cs" />
     <Compile Include="ShotContainer.cs" />
-    <Compile Include="SmashTV main.cs" />
+    <Compile Include="SmashTVmain.cs" />
     <Compile Include="Spawnpoint.cs" />
     <Compile Include="SprintState.cs" />
     <Compile Include="SmashTVSystem.cs" />

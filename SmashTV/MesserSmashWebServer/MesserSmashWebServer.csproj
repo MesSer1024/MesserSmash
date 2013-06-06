@@ -77,6 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HighscoreContainer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MesserSmashTest.cs" />
     <Compile Include="MesserSmashWebServer.cs" />

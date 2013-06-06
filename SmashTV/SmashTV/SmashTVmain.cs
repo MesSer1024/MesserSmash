@@ -37,11 +37,11 @@ namespace MesserSmash {
 		private SoundManager _sound;
 		private int _timeMultiplierIndex = 3;
 		private List<float> _timeMultipliers = new List<float> { 0.25f, 0.5f, 0.75f, 1f, 1.25f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f, 6f, 8f };
-		private StatusUpdate _states;
+		private GameStates _states;
 		private bool _playing;
 		private GameState _state;
 		private bool _replay;
-		private StatusUpdate _loadedGame;
+		private GameStates _loadedGame;
 		private int _currentReplayIndex;
 		private bool _hasUsername;
 		private IScreen _screen;
@@ -96,7 +96,7 @@ namespace MesserSmash {
 			AssetManager._weaponReadySound = _content.Load<SoundEffect>("weapon_ready");
 			_sound = new SoundManager();
 			_sound.init();
-			_states = new StatusUpdate();
+			_states = new GameStates();
 
 			Scoring.reset();
 
@@ -108,6 +108,7 @@ namespace MesserSmash {
 			_betweenLevelTimer = 0;
 
 			new LoadConfigFileCommand().execute();
+            //new RequestHighscoresCommand(1).execute();
 		}
 
 		private void onRestartGame(ICommand command) {
@@ -236,6 +237,10 @@ namespace MesserSmash {
 			_playing = false;
 			saveInputState(_state);
 			saveGame();
+            if (!_replay) {
+                new RegisterHighscoreCommand(_states.UserName);
+                _smashTvSystem.showGameOverScreen();
+            }
 			Logger.info("Player died frames:{1}, random status: {0}", MesserRandom.getStatus(), _states.StoredStatesCount);
 		}
 
@@ -245,6 +250,7 @@ namespace MesserSmash {
 			_waitingForTimer = true;
 			saveInputState(_state);
 			saveGame();
+
 			Logger.info("Game finished frames:{1} random status: {0}", MesserRandom.getStatus(), _states.StoredStatesCount);
 		}
 

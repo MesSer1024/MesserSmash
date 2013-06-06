@@ -1,0 +1,31 @@
+[info] ->handleCommand ReloadDatabaseCommand
+[info] <--handleCommand ReloadDatabaseCommand
+[info] Utils.initialize seed=-1659785334
+[info] -->CreateLootTable
+[info] <--CreateLootTable randomStatus:MesserRandom seed=-1659785334 totalRequests=12
+[info] ->handleCommand ClientReadyCommand
+[info] ->addObserver MesserSmash.Arenas.Level01
+[info] <-addObserver MesserSmash.Arenas.Level01
+[info] ->handleCommand LevelStartedCommand
+[info] <--handleCommand LevelStartedCommand
+[info] <--handleCommand ClientReadyCommand
+[info] ->handleCommand SpawnWaveCommand
+[info] <--handleCommand SpawnWaveCommand
+[info] ->handleCommand DeadEnemyCommand
+[info] <--handleCommand DeadEnemyCommand
+[info] ->handleCommand DeadEnemyCommand
+[info] <--handleCommand DeadEnemyCommand
+[info] ->handleCommand DeadEnemyCommand
+[info] <--handleCommand DeadEnemyCommand
+[info] ->handleCommand DeadEnemyCommand
+[info] <--handleCommand DeadEnemyCommand
+[info] ->handleCommand AttackPlayerCommand
+[info] <--handleCommand AttackPlayerCommand
+[info] ->handleCommand AttackPlayerCommand
+[info] <--handleCommand AttackPlayerCommand
+[info] ->handleCommand AttackPlayerCommand
+[info] <--handleCommand AttackPlayerCommand
+[info] ->handleCommand AttackPlayerCommand
+[info] ->handleCommand PlayerDiedCommand
+[info] ->handleCommand RequestHighscoresCommand
+[info] <--handleCommand RequestHighscoresCommand

@@ -1,0 +1,47 @@
+[info] ->handleCommand ReloadDatabaseCommand
+[info] <--handleCommand ReloadDatabaseCommand
+[info] Utils.initialize seed=-1142712138
+[info] -->CreateLootTable
+[info] <--CreateLootTable randomStatus:MesserRandom seed=-1142712138 totalRequests=12
+[error] Exception in postWebRequestAndGetHandle: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetHandle(String url, String request, Byte[] data) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 43
+[error] Error communicating with server: System.Net.ProtocolViolationException: You must provide a request body if you set ContentLength>0 or SendChunked==true.  Do this by calling [Begin]GetRequestStream before [Begin]GetResponse.
+   at System.Net.HttpWebRequest.GetResponse()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 58
+[info] ->handleCommand RequestHighscoresCommand
+[info] <--handleCommand RequestHighscoresCommand
+[info] ->handleCommand ClientReadyCommand
+[info] ->addObserver MesserSmash.Arenas.Level02
+[info] <-addObserver MesserSmash.Arenas.Level02
+[info] ->handleCommand LevelStartedCommand
+[info] <--handleCommand LevelStartedCommand
+[info] <--handleCommand ClientReadyCommand
+[info] ->handleCommand SpawnWaveCommand
+[info] <--handleCommand SpawnWaveCommand
+[info] ->handleCommand SpawnWaveCommand
+[info] <--handleCommand SpawnWaveCommand
+[info] ->handleCommand AttackPlayerCommand
+[info] <--handleCommand AttackPlayerCommand
+[info] ->handleCommand AttackPlayerCommand
+[info] <--handleCommand AttackPlayerCommand
+[info] ->handleCommand AttackPlayerCommand
+[info] <--handleCommand AttackPlayerCommand
+[info] ->handleCommand AttackPlayerCommand
+[info] <--handleCommand AttackPlayerCommand
+[info] ->handleCommand DeadEnemyCommand
+[info] <--handleCommand DeadEnemyCommand
+[info] ->handleCommand DeadEnemyCommand
+[info] <--handleCommand DeadEnemyCommand
+[info] ->handleCommand DeadEnemyCommand
+[info] <--handleCommand DeadEnemyCommand
+[info] ->handleCommand DeadEnemyCommand
+[info] <--handleCommand DeadEnemyCommand
+[info] ->handleCommand AttackPlayerCommand
+[info] <--handleCommand AttackPlayerCommand
+[info] ->handleCommand AttackPlayerCommand
+[info] ->handleCommand PlayerDiedCommand

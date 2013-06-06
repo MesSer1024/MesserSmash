@@ -415,7 +415,7 @@ namespace MesserSmash {
             return _keyboardState;
         }
 
-        internal static void forceState(StatusUpdate loadedGame, int replayIndex) {
+        internal static void forceState(GameStates loadedGame, int replayIndex) {
             _mouseState = loadedGame.MouseStates[replayIndex];
             _oldMouseState = loadedGame.MouseStates[Math.Max(0, replayIndex-1)];
             _keyboardState = loadedGame.KeyboardStates[replayIndex];

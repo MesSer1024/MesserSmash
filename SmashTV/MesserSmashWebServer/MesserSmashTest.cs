@@ -36,7 +36,7 @@ namespace MesserSmashWebServer {
             using (var sr = new StreamReader("../../../../bin/debug/games/last_save.txt")) {
                 var s = sr.ReadToEnd();
                 var state = fastJSON.JSON.Instance.Parse(s);
-                StatusUpdate status = fastJSON.JSON.Instance.FillObject(new StatusUpdate(), s) as StatusUpdate;
+                GameStates status = fastJSON.JSON.Instance.FillObject(new GameStates(), s) as GameStates;
                 //var keyboardStates = state.KeyboardStates;
                 //foreach (var keyb in keyboardStates) {
                 //    if (keyb.GetPressedKeys().Length > 0) {
@@ -113,7 +113,7 @@ namespace MesserSmashWebServer {
             int status_code = 0;
             Dictionary<String, object> result;
             switch (id) {
-                case SmashWebIdentifiers.REQUEST_BEGIN: {
+                case SmashWebIdentifiers.REQUEST_BEGIN_GAME: {
                         GameHandler.verifyDataStartGame(data, out status_code);
                         var guid = Guid.NewGuid().ToString();
                         result = new Dictionary<String, object> {
@@ -122,14 +122,14 @@ namespace MesserSmashWebServer {
                         };
                     }
                     break;
-                case SmashWebIdentifiers.REQUEST_STATUS: {
+                case SmashWebIdentifiers.REQUEST_UPDATE_STATUS: {
                         GameHandler.verifyDataStatus(data, out status_code);
                         result = new Dictionary<string, object> {
                                 {SmashWebIdentifiers.STATUS_CODE, status_code}
                             };
                     }
                     break;
-                case SmashWebIdentifiers.REQUEST_FINAL: {
+                case SmashWebIdentifiers.REQUEST_SAVE_GAME: {
                         GameHandler.verifyDataStatus(data, out status_code);
                         if (status_code == 0) {
                             var level = (int)GameHandler.readLevel();
@@ -171,13 +171,13 @@ namespace MesserSmashWebServer {
 
             Dictionary<string, object> result;
             switch (request) {
-                case SmashWebIdentifiers.REQUEST_STATUS: {
+                case SmashWebIdentifiers.REQUEST_UPDATE_STATUS: {
                         result = new Dictionary<string, object> {
                                 {SmashWebIdentifiers.STATUS_CODE, invalid_gameid}
                             };
                     }
                     break;
-                case SmashWebIdentifiers.REQUEST_FINAL: {
+                case SmashWebIdentifiers.REQUEST_SAVE_GAME: {
                         int code;
                         GameHandler.verifyDataStatus(data, out code);
                         if (code == 0) {

@@ -18,10 +18,10 @@ namespace MesserSmash.Commands {
             foreach (var i in levelScore) {                
                 totalScore += i.Score;
                 totalkills += i.Kills;
-                Highscore.Instance.insertLevelHighscore(playerName, i.Level, i.Score, i.Kills);
+                ClientHighscore.Instance.resetWithLevelInsertAndOutputToFile(playerName, i.Level, i.Score, i.Kills);
             }
             Logger.info("RegisterHighscoreCommand: {0} - {1} - {2}", playerName, totalScore, totalkills);
-            Highscore.Instance.insertTotalHighscore(playerName, totalScore, totalkills);
+            ClientHighscore.Instance.resetWithTotalScoreAndInsertScoreAndOutputToFile(playerName, totalScore, totalkills);
         }
     }
 }

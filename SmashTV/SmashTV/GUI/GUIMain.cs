@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using MesserSmash.Commands;
 using MesserSmash.Modules;
+using SharedSmashResources;
 
 namespace MesserSmash.GUI {
     class GUIMain {
@@ -32,6 +33,8 @@ namespace MesserSmash.GUI {
         private bool _loadingScreenVisible;
 
         private DebugGuiOverlay _debugGui;
+        private bool _gameOver;
+        private List<Highscore> _highscoresToShow;
 
 
         public GUIMain() {
@@ -145,7 +148,7 @@ namespace MesserSmash.GUI {
                 if (_recharge != null) {
                     _recharge.Draw(sb);
                 }
-            } else {
+            } else if(_gameOver){
                 var r = new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight());
                 sb.Draw(AssetManager.getDefaultTexture(), r, Color.Black);
 
@@ -155,7 +158,7 @@ namespace MesserSmash.GUI {
                     text.Draw(sb);
                 }
                 {
-                    var text = new FunnyText(Utils.makeString("Your Score: {0}", formatScorePoints(_score)), new Rectangle { X = 50, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
+                    var text = new FunnyText(Utils.makeString("Your Score On Level: {0}", formatScorePoints(_score)), new Rectangle { X = 50, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
                     text.HorizontalCenter = false;
                     text.Draw(sb);
                 }
@@ -170,11 +173,9 @@ namespace MesserSmash.GUI {
                     text.Draw(sb);
                 }
 
-                for (int i = 0; i < Math.Min(8, Highscore.Instance.Score.Count); i++) {
-                    var score = Highscore.Instance.Score[i];
-                    var name = Highscore.Instance.Players[i];
-                    var kills = Highscore.Instance.Kills[i];
-                    var foo = new FunnyText(name + " - " + score + " - " + kills, new Rectangle(100, 300 + 50 * i, Utils.getGameWidth(), 75));
+                for (int i = 0; i < _highscoresToShow.Count; ++i) {
+                    var item = _highscoresToShow[i];
+                    var foo = new FunnyText(String.Format("{0} - {1} - {2}", item.UserName, item.Score, item.Kills), new Rectangle(100, 300 + 50 * i, Utils.getGameWidth(), 75));
                     foo.HorizontalCenter = false;
                     foo.Draw(sb);
                 }
@@ -200,16 +201,18 @@ namespace MesserSmash.GUI {
             }
         }
 
-        public void showGameOver() {
-            Highscore.Instance.load();
+        public void showGameOver(List<Highscore> highscores) {
+            _highscoresToShow = highscores;
             _inGame = false;
             _loadingScreenVisible = false;
+            _gameOver = true;
             _timeDead = 0;
         }
 
         public void restart() {
             _inGame = true;
             _loadingScreenVisible = false;
+            _gameOver = false;
         }
 
         public void setScore(float newScore) {

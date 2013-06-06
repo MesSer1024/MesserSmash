@@ -11,6 +11,8 @@ using MesserSmash.Commands;
 using MesserSmash.Modules;
 using SharedSmashResources.Patterns;
 using SharedSmashResources;
+using System.ComponentModel;
+using System.Threading;
 
 namespace MesserSmash {
 	public class SmashTVSystem : IObserver {
@@ -46,6 +48,11 @@ namespace MesserSmash {
 			get { return _gui; }
 		}
 
+        private HighscoreContainer _globalHighscores;
+        public HighscoreContainer HighscoresClient {
+            get { return _globalHighscores; }
+        }
+
         public int KillCount { get { return _killCount; } }
 
 		public SmashTVSystem() {
@@ -78,8 +85,10 @@ namespace MesserSmash {
 			_player = player;
 			_shotContainer = shotContainer;
 			_enemyContainer = enemyContainer;
+            _globalHighscores = new HighscoreContainer();
 			_energySystem = EnergySystem.Instance;
-
+            
+            new RequestHighscoresCommand(_arena.Level).execute();
 			_arena.onGameFinished += new Arena.ArenaDelegate(onArenaFinished);
 			_arena.onZeroTimer += new Arena.ArenaDelegate(onArenaTimerZero);
 			_gui = new GUIMain();
@@ -92,20 +101,6 @@ namespace MesserSmash {
 			_killCount = 0;
 			_energySystem.reset();
 			_arena.begin();
-		}
-
-		void onArenaTimerZero(Arena arena) {
-			_enemyContainer.endGame();
-			_shotContainer.endGame();
-			_player.stateEndGame();
-			_energySystem.endGame();
-			Scoring.setKillsOnLevel(_killCount);
-		}
-
-		void onArenaFinished(Arena arena) {
-			_arena.onGameFinished -= onArenaFinished;
-            new RegisterLevelHighscoreCommand(SmashTVSystem.Instance.Username, arena.Level);
-			_queuedCommands.Add("end_arena");
 		}
 
 		void onEnemyAttackedPlayer(ICommand command) {
@@ -122,14 +117,23 @@ namespace MesserSmash {
 			_gui.setScore(Scoring.getTotalScore());
 		}
 
+        void onArenaTimerZero(Arena arena) {
+            new RequestHighscoresCommand(_arena.Level).execute();
+            _enemyContainer.endGame();
+            _shotContainer.endGame();
+            _player.stateEndGame();
+            _energySystem.endGame();
+            Scoring.setKillsOnLevel(_killCount);
+        }
+
+        void onArenaFinished(Arena arena) {
+            _arena.onGameFinished -= onArenaFinished;
+            _queuedCommands.Add("end_arena");
+        }
+
 		void onPlayerDead(ICommand command) {
 			var cmd = command as PlayerDiedCommand;
-			_queuedCommands.Add("end_arena");
-
-            if (!_replay) {
-                new RegisterHighscoreCommand(SmashTVSystem.Instance.Username).execute();
-                _gui.showGameOver();
-            }
+			_queuedCommands.Add("end_arena");            
 		}
 
 		public void update(GameState state) {
@@ -318,5 +322,17 @@ namespace MesserSmash {
             Scoring.setKillsOnLevel(_killCount);
         }
 
+        internal void showGameOverScreen() {
+            _gui.showGameOver(new List<Highscore>());
+
+            ThreadWatcher.runBgThread(() => {
+                ClientHighscore.Instance.loadLocalLevelScore(_arena.Level);
+                var highscores = _globalHighscores.getHighscoresOnLevel((uint)_arena.Level);
+                foreach (var score in highscores) {
+                    ClientHighscore.Instance.appendScore(score.UserName, (int)score.Score, (int)score.Kills);
+                }
+                _gui.showGameOver(ClientHighscore.Instance.getTopScores(8));
+            });      
+        }
     }
 }

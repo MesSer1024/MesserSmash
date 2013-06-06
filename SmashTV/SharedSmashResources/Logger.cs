@@ -13,6 +13,10 @@ namespace MesserSmash.Modules {
          private static StringBuilder sb;
          private static StreamWriter sw;
 
+         public static void info(string s) {
+             info("{0}", s);
+         }
+
          public static void info(string s, params Object[] p) {
              sb.Clear();
              sb.Append("[info] ");

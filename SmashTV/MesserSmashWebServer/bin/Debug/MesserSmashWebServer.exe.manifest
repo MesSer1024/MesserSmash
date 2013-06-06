@@ -59,26 +59,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MesserSmashWebServer.exe" size="16896">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MesserSmashWebServer.exe" size="19968">
       <assemblyIdentity name="MesserSmashWebServer" version="1.0.0.6" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>WFCEje55tvo0wOJv7rMyDtYkX7o=</dsig:DigestValue>
+        <dsig:DigestValue>L4C71pbczhgX1u/X1B0PvTy7Erw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SharedSmashResources.dll" size="15872">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SharedSmashResources.dll" size="22016">
       <assemblyIdentity name="SharedSmashResources" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>pXNjhoU3JK+3t273j8kWNTmXtu4=</dsig:DigestValue>
+        <dsig:DigestValue>lvA7jlS1dJKABwAb0s02EncRhj0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
