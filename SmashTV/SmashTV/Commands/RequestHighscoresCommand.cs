@@ -20,7 +20,10 @@ namespace MesserSmash.Commands {
 
             ThreadWatcher.runBgThread(() => {
                 var server = new LocalServer(SmashTVSystem.Instance.ServerIp);
-                server.requestHighscores(onResponse, level);
+                var dir = new Dictionary<string, object> {
+                    {MesserSmashWeb.LEVEL, level}
+                };
+                server.requestHighscores(onResponse, dir);
             });
         }
 
@@ -33,7 +36,7 @@ namespace MesserSmash.Commands {
                         SmashTVSystem.Instance.HighscoresClient.addHighscore(Highscore.FromString(line));
                     }
                 }
-            }
+            }            
         }
     }
 }

@@ -199,12 +199,7 @@ namespace MesserSmash.Arenas {
                 _showTimeLeft();
                 custUpdate(state);
                 if (_secondsLeft <= 0) {
-                    _state = States.End;
-                    EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.LevelFinished, this, "levelFinished");
-                    _timeInState = 0;
-                    if (onZeroTimer != null) {
-                        onZeroTimer.Invoke(this);
-                    }
+                    handleArenaCompleted();
                 }
             } else if (_state == States.End) {
                 if (_timeInState < 3.0f) {
@@ -212,11 +207,24 @@ namespace MesserSmash.Arenas {
                         loot.update(gametime);
                     }
                 } else {
-                    _state = States.Stopped;
-                    if (onGameFinished != null) {
-                        onGameFinished.Invoke(this);
-                    }
+                    handleGameFinished();
                 }
+            }
+        }
+
+        protected void handleArenaCompleted() {
+            _secondsLeft = 0;
+            _state = States.End;
+            _timeInState = 0;
+            if (onZeroTimer != null) {
+                onZeroTimer.Invoke(this);
+            }
+        }
+
+        protected void handleGameFinished() {
+            _state = States.Stopped;
+            if (onGameFinished != null) {
+                onGameFinished.Invoke(this);
             }
         }
 

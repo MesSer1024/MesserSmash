@@ -46,6 +46,8 @@ namespace MesserSmash {
 		private bool _hasUsername;
 		private IScreen _screen;
 		private float _timeSinceLevelStart;
+        private bool _waitingForGameCredentials;
+        private Queue<FileInfo> _replayQueue;
 
 		public SmashTV_main(Microsoft.Xna.Framework.Content.ContentManager Content, Microsoft.Xna.Framework.GraphicsDeviceManager graphics, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Game game) {
 			_content = Content;
@@ -117,28 +119,50 @@ namespace MesserSmash {
 			prepareNewLevel(cmd.Level, true);
 		}
 
-		private void prepareNewLevel(int level, bool resetScore = false) {
+		private void prepareNewLevel(int level, bool restartGame = false) {
 			Logger.info("prepareNewLevel");
-			if (resetScore) {
-				Scoring.reset();
-			}
 			cleanOldData();
-			Arena arena;
+            _waitingForGameCredentials = level > 0;
+            if (restartGame) {
+                if (_waitingForGameCredentials) {
+                    new RequestBeginNewGameCommand(level).execute();
+                }
+
+                Scoring.reset();
+            } else {
+                if (_waitingForGameCredentials) {
+                    new RequestContinueGameCommand(level).execute();
+                }
+            }
+            Arena arena;
 			var seed = (int)DateTime.Now.Ticks;
 			Utils.initialize(seed);
 			if (level < 0) {
-				_replay = true;
-				_currentReplayIndex = 0;
-                var gameid = SmashTVSystem.Instance.ReplayPath;
-				_loadedGame = new GameLoader(gameid, true).Replay;
-				Logger.info("prepareNewLevel replay: {0} -- version {1}", gameid, _loadedGame.GameVersion);
+                string replayFile = "";
+                if (_replayQueue == null) {
+                    replayFile = SmashTVSystem.Instance.ReplayPath;
+                    _loadedGame = new GameLoader().loadFromRelativePath(replayFile).Replay;
+                } else {
+                    if (_replayQueue.Count > 0) {
+                        var file = _replayQueue.Dequeue();
+                        replayFile = file.FullName;
+                        _loadedGame = new GameLoader().loadFromFileInfo(file).Replay;
+                    }
+                }
+                if (_loadedGame == null) {
+                    _smashTvSystem.showPopup(String.Format("Could not find file <{0}>", replayFile));
+                    return;
+                }
+				Logger.info("prepareNewLevel replay: {0} -- version {1}", replayFile, _loadedGame.GameVersion);
                 //if (_loadedGame.GameVersion != SmashTVSystem.Instance.GameVersion) {
                 //    throw new Exception(Utils.makeString("Invalid GameVersions! {0}", SmashTVSystem.Instance.GameVersion));
                 //}
 				Utils.initialize(_loadedGame.Seed);
 				arena = buildLevel(_loadedGame.Level);
 				_currentLevel = _loadedGame.Level;
-			} else {
+                _replay = true;
+                _currentReplayIndex = 0;
+            } else {
 				arena = buildLevel(level);
 				_currentLevel = level;
 			}
@@ -214,12 +238,17 @@ namespace MesserSmash {
             SmashTVSystem.Instance.ServerIp = command.ServerIp;
             SmashTVSystem.Instance.ReplayPath = command.ReplayPath;
             SmashTVSystem.Instance.GameVersion = command.GameVersion;
+            SmashTVSystem.Instance.LoginResponseKey = "freeloader";
+            SmashTVSystem.Instance.SessionId = "";
+            SmashTVSystem.Instance.GameId = "";
+            
             _hasUsername = command.HasUsername;
             if (_hasUsername) {
 				SmashTVSystem.Instance.Username = command.Username;
 			} else {
 				_screen = new NewUserScreen();
 			}
+
 		}
 
 		private void onRegisterUsername(ICommand cmd) {
@@ -232,14 +261,28 @@ namespace MesserSmash {
 			}
 		}
 
+        private void onUpdateGameCredentials(ICommand cmd) {
+            var command = cmd as UpdateGameCredentialsCommand;
+            SmashTVSystem.Instance.GameId = command.GameId;
+            SmashTVSystem.Instance.SessionId = command.SessionId;
+            if (_waitingForGameCredentials) {
+                _waitingForGameCredentials = false;
+                _smashTvSystem.Gui.showLoadingScreen(true);
+            }
+        }
+
 		void onPlayerDead(ICommand command) {
 			var cmd = command as PlayerDiedCommand;
 			_playing = false;
 			saveInputState(_state);
-			saveGame();
+            saveGame();
             if (!_replay) {
                 new RegisterHighscoreCommand(_states.UserName);
                 _smashTvSystem.showGameOverScreen();
+            } else {
+                if (_replay && _replayQueue != null && _replayQueue.Count > 0) {
+                    SmashTVSystem.Instance.Gui.showNextReplayOnClick();
+                }
             }
 			Logger.info("Player died frames:{1}, random status: {0}", MesserRandom.getStatus(), _states.StoredStatesCount);
 		}
@@ -252,6 +295,10 @@ namespace MesserSmash {
 			saveGame();
 
 			Logger.info("Game finished frames:{1} random status: {0}", MesserRandom.getStatus(), _states.StoredStatesCount);
+
+            if (_replay && _replayQueue != null && _replayQueue.Count > 0) {
+                SmashTVSystem.Instance.Gui.showNextReplayOnClick();
+            }
 		}
 
 		private void onClientReady(ICommand cmd) {
@@ -260,6 +307,8 @@ namespace MesserSmash {
 		}
 
 		private void cleanOldData() {
+            _waitingForGameCredentials = false;
+            _smashTvSystem.resetStates();
 			_states.reset();
 			Logger.init();
 			_paused = false;
@@ -269,12 +318,13 @@ namespace MesserSmash {
 				arena.clean();
 			}
 			_waitingForTimer = false;
+            _loadedGame = null;
 			new ReloadDatabaseCommand().execute();
 		}
 
 		public void update(GameTime time) {
-			//populate input and deltatime
-			float deltaTime;
+            Controller.instance.processCommands();
+            float deltaTime;
 			if (_replay) {
 				if (_currentReplayIndex < _loadedGame.StoredStatesCount) {
 					Utils.forceState(_loadedGame, _currentReplayIndex);
@@ -282,7 +332,7 @@ namespace MesserSmash {
 					_currentReplayIndex++;
 				} else {
 					Logger.info("Last replay frame: status={0}", MesserRandom.getStatus());
-					_paused = true;
+                    //_paused = true;
 					_replay = false;
 					_playing = false;
 					return;
@@ -311,7 +361,7 @@ namespace MesserSmash {
 			_timeSinceLevelStart += deltaTime;
 			_state = new GameState(deltaTime, _timeSinceLevelStart);
 			_smashTvSystem.update(_state);
-			if (_playing && !_replay) {
+			if (_playing && !_replay && !_waitingForGameCredentials) {
 				saveInputState(_state);
 			}
 		}
@@ -339,6 +389,9 @@ namespace MesserSmash {
 		}
 
 		private void saveInputState(GameState state) {
+            if (_replay) {
+                return;
+            }
 			_states.DeltaTimes.Add(state.DeltaTime);
 			_states.addKeyboard(Utils.getKeyboardState());            
 			_states.addMouse(Utils.getMouseState());
@@ -351,7 +404,7 @@ namespace MesserSmash {
 					GC.Collect();
 				}
 				if (Utils.isNewKeyPress(Keys.OemPipe)) {
-					cmd = new RestartGameCommand(-10);
+                    cmd = new BeginReplayQueueCommand();
 				} else if (Utils.isNewKeyPress(Keys.F1)) {
 					cmd = new RestartGameCommand(1);
 				} else if (Utils.isNewKeyPress(Keys.F2)) {
@@ -427,8 +480,24 @@ namespace MesserSmash {
                 case RegisterUsernameCommand.NAME:
                     onRegisterUsername(cmd);
                     break;
+                case UpdateGameCredentialsCommand.NAME:
+                    onUpdateGameCredentials(cmd);
+                    break;
+                case BeginReplayQueueCommand.NAME:
+                    onBeginReplayQueue(cmd);
+                    break;
 			}
 		}
+
+        private void onBeginReplayQueue(ICommand cmd) {
+            var command = cmd as BeginReplayQueueCommand;
+            _replayQueue = new Queue<FileInfo>();
+            foreach (var item in command.Replays)
+            {
+                _replayQueue.Enqueue(item);
+            }
+            new RestartGameCommand(-10).execute();
+        }
 	}
 }
 

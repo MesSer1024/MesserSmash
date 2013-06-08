@@ -12,9 +12,14 @@ namespace MesserSmash.Arenas {
             WaveSpawner wave = new WaveSpawner((int)EnemyTypes.Types.Range, 333);
             var criteria = new SpawnCriteria();
             criteria.MinSecondsInArena = 5;
-            criteria.MaxEnemiesAlive = 30;
             wave.addCriteria(criteria);
             _spawners.Add(wave);
+        }
+
+        protected override void custUpdate(GameState state) {
+            if (state.EnemiesAlive == 0 && state.TimeInArena > 5) {
+                handleArenaCompleted();
+            }
         }
     }
 }

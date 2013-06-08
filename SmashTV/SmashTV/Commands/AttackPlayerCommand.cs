@@ -6,6 +6,7 @@ namespace MesserSmash.Commands {
         private Player _player;
 
         public AttackPlayerCommand(IEnemy enemy, Player player) : base(NAME) {
+            executeDirectly = true;
             _enemy = enemy;
             _player = player;
         }

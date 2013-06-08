@@ -15,7 +15,7 @@ namespace MesserSmash.Commands {
         public const string NAME = "DeadEnemyCommand";
 
         public DeadEnemyCommand(IEnemy enemy, float amount = 0) : base(NAME) {
-            EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.EnemyKilled, this, "damage:" + amount);
+            executeDirectly = true;
             Enemy = enemy;
         }
 

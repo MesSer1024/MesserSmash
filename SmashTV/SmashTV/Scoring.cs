@@ -48,6 +48,10 @@ namespace MesserSmash {
             return val;
         }
 
+        public static float getLevelScore() {
+            return _currLevel.Score;
+        }
+
         public static float getTotalScore() {
             var val = 0.0f;
             foreach (var i in _levelScores) {

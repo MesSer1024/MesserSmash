@@ -5,6 +5,7 @@ using System.Text;
 
 namespace SharedSmashResources {
     public class Highscore {
+        private static object ThreadLock = new object();
         public string UserId { get; set; }
         public string GameId { get; set; }
         public string SessionId { get; set; }
@@ -22,25 +23,27 @@ namespace SharedSmashResources {
         }
 
         public static Highscore FromString(string rawLine) {
-            Dictionary<string, string> table = new Dictionary<string, string>();
-            var items = rawLine.Split('|');
-            foreach (var pair in items) {
-                var item = pair.Split('=');
-                table.Add(item[0], item[1]);
+            lock (ThreadLock) {
+                Dictionary<string, string> table = new Dictionary<string, string>();
+                var items = rawLine.Split('|');
+                foreach (var pair in items) {
+                    var item = pair.Split('=');
+                    table.Add(item[0], item[1]);
+                }
+
+                var ret = new Highscore();
+                ret.UserId = ParseString(table, "userid");
+                ret.GameId = ParseString(table, "gameid");
+                ret.SessionId = ParseString(table, "sessionid");
+                ret.Ticks = ParseLong(table, "ticks");
+                ret.UserName = ParseString(table, "username");
+                ret.Level = ParseUint(table, "level");
+                ret.Kills = ParseUint(table, "kills");
+                ret.Score = ParseUint(table, "score");
+                ret.GameVersion = ParseString(table, "version", "0.0004");
+                ret.File = ParseString(table, "file", String.Format("{0}_save.txt", ret.Ticks));
+                return ret;
             }
-            
-            var ret = new Highscore();
-            ret.UserId = ParseString(table, "userid");
-            ret.GameId = ParseString(table, "gameid");
-            ret.SessionId = ParseString(table, "sessionid");
-            ret.Ticks = ParseLong(table, "ticks");
-            ret.UserName = ParseString(table, "username");
-            ret.Level = ParseUint(table, "level");
-            ret.Kills = ParseUint(table, "kills");
-            ret.Score = ParseUint(table, "score");
-            ret.GameVersion = ParseString(table, "version", "0.0004");
-            ret.File = ParseString(table, "file", String.Format("{0}_save.txt", ret.Ticks));
-            return ret;
         }
 
         private static long ParseLong(Dictionary<string, string> container, string key, long defaultValue = 0) {

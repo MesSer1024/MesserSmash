@@ -22,12 +22,22 @@ namespace MesserSmash {
         private bool _needsUpdate = false;
         private List<IObserver> _itemsToAdd;
         private List<IObserver> _itemsToRemove;
+        private Queue<ICommand> _commandQueue;
 
         private Controller() {
             _modificationLocks = 0;
+            _commandQueue = new Queue<ICommand>();
             _observers = new List<IObserver>();
             _itemsToAdd = new List<IObserver>(4);
             _itemsToRemove = new List<IObserver>(4);
+        }
+
+        public void processCommands() {
+            var items = _commandQueue.ToArray();
+            _commandQueue.Clear();
+            foreach (var cmd in items) {
+                proccessCommand(cmd);
+            }
         }
 
         public void addObserver(IObserver observer) {
@@ -45,10 +55,18 @@ namespace MesserSmash {
             Logger.info("<-addObserver {0}", observer.GetType());
         }
 
-        public void handleCommand(ICommand cmd) {
+        public void handleCommand(ICommand cmd, bool forceExecuteThisFrame = false) {
+            if (forceExecuteThisFrame) {
+                proccessCommand(cmd);
+            } else {
+                _commandQueue.Enqueue(cmd);
+            }
+        }
+
+        private void proccessCommand(ICommand cmd) {
             Logger.info("->handleCommand {0}", cmd.Name);
             Interlocked.Increment(ref _modificationLocks);
-             foreach (var i in _observers) {
+            foreach (var i in _observers) {
                 i.handleCommand(cmd);
             }
             Interlocked.Decrement(ref _modificationLocks);

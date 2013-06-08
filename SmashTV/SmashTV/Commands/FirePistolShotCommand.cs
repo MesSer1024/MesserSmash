@@ -11,6 +11,7 @@ namespace MesserSmash.Commands {
 
         public PlaySoundCommand(SoundEffect soundEffect):base(NAME) {
             // TODO: Complete member initialization
+            executeDirectly = true;
             Sound = soundEffect;
             Volume = 0.25f;
         }

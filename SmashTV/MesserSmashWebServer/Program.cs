@@ -11,12 +11,17 @@ namespace MesserSmashWebServer {
     class Program {
         private static HighscoreContainer _highscores;
         private static string _url;
+        private static LocalServer _server;
         //http://pawncraft.co.uk:8801/ this is the external url to the messersmash server
 
         static void Main(string[] args) {
             var highscoreFilePath = "./highscores/highscores.txt";
             _highscores = new HighscoreContainer();
             Logger.init("MesserSmashServer.txt");
+
+            //MesserSmashTest.test(null);
+
+
             string url = null;
             var file = new FileInfo("../../../../bin/debug/server_settings.ini");
             if (!file.Exists) {
@@ -35,9 +40,10 @@ namespace MesserSmashWebServer {
 
             _highscores.populateHighscores(highscoreFilePath);
 
-            var server = new MesserSmashWebServer(HandleHttpRequest, url);
+            var server = new MesserSmashWebServer(HandleHttpRequest, _url);
+            _server = server.LocalServer;
             server.Run();
-            Console.WriteLine("A simple webserver url:{0} \nPress a key to quit.", url);
+            Console.WriteLine("A simple webserver url:{0} \nPress a key to quit.", _url);
             Console.ReadKey();
             server.Stop();
             _highscores.outputToFile(highscoreFilePath);
@@ -47,58 +53,28 @@ namespace MesserSmashWebServer {
             _highscores.outputToFile(relativeFilePath);
         }
 
-        public static string HandleHttpRequest(HttpListenerRequest httpRequest) {
-            if (httpRequest == null || !httpRequest.HasEntityBody) { return null; }
-            var timestamp = DateTime.Now;
-            var request = httpRequest.Headers["request"];
-            var data = new byte[httpRequest.ContentLength64];
-            try{
-                using (System.IO.Stream body = httpRequest.InputStream) {
-                    body.Read(data, 0, data.Length);
-                };
-            }
-            catch(Exception e) {
-                Console.WriteLine("Unable to parse data from client {0}", e.ToString());
-                Logger.error("Unable to parse data from client {0}", e.ToString());            
-            }
+        public static string HandleHttpRequest(string request, string rawData) {
             switch (request) {
-                case SmashWebIdentifiers.REQUEST_SAVE_GAME: {
-                        var server = new LocalServer(_url);
-                        GameStates states = server.buildGameState(data);
+                case MesserSmashWeb.REQUEST_SAVE_GAME: {
+                        GameStates states = _server.handleSaveGame(rawData);
                         if (states != null) {
                             saveGame(states);
                         } else {
                             return string.Format("Foobar | error={0}", states);
                         }
                         StringBuilder sb = new StringBuilder();
-                        sb.AppendFormat("{1}->Handled request in: {0}ms from user={2}[{3}]", (DateTime.Now - timestamp).TotalMilliseconds, DateTime.Now.ToString("dd/MM[HH:mm:ss]"), states.UserName, states.UserId);
-                        Console.WriteLine(sb.ToString());
-                        Logger.info(sb.ToString());
                         return "OK";
                     }
-                case SmashWebIdentifiers.REQUEST_GET_HIGHSCORE_ON_LEVEL: {
-                        var server = new LocalServer(_url);
+                case MesserSmashWeb.REQUEST_GET_HIGHSCORE_ON_LEVEL: {
                         try {
-
-                            var rawData = server.readData(data);
-                            var foo2 = rawData.Split(';');
-
-                            Dictionary<string, string> items = new Dictionary<string, string>();
-                            foreach (var item in foo2) {
-                                var a = item.Split('=');
-                                if (a.Length != 2)
-                                    throw new Exception("REQUEST_GET_HIGHSCORE_ON_LEVEL-data wasn't a key-value pair!");
-                                items.Add(a[0], a[1]);
-                            }
-                            uint level = uint.Parse(items["Level"]);                            
+                            var items = toTable(rawData);
+                            uint level = uint.Parse(items[MesserSmashWeb.LEVEL].ToString());
                             var scores = _highscores.getHighscoresOnLevel(level).OrderByDescending(a => a.Score);
+                            //return fastJSON.JSON.Instance.ToJSON(scores);
                             var sb = new StringBuilder();
-                            foreach (var item in scores)
-                            {
+                            foreach (var item in scores) {
                                 sb.AppendLine(item.ToString());
                             }
-                            Console.WriteLine("{1}->Handled getHighscoreRequest in: {0}ms on level:{2}", (DateTime.Now - timestamp).TotalMilliseconds, DateTime.Now.ToString("dd/MM[HH:mm:ss]"), level);
-                            Logger.info("{1}->Handled getHighscoreRequest in: {0}ms on level:{2}", (DateTime.Now - timestamp).TotalMilliseconds, DateTime.Now.ToString("dd/MM[HH:mm:ss]"), level);
                             return sb.ToString();
                         } catch (Exception e) {
                             Console.WriteLine("Unable to parse data from client {0}", e.ToString());
@@ -107,11 +83,27 @@ namespace MesserSmashWebServer {
 
                     }
                     break;
-                default:
-                    Logger.error("Unhandled request: {0}", request);
+                case MesserSmashWeb.REQUEST_BEGIN_GAME: {
+                        var gameid = Guid.NewGuid().ToString();
+                        var sessionid = Guid.NewGuid().ToString();
+                        var result = new Dictionary<string, object> {
+                            {MesserSmashWeb.GAME_ID, gameid},
+                            {MesserSmashWeb.SESSION_ID, sessionid}
+                        };
+                        return fastJSON.JSON.Instance.ToJSON(result);
+                    }
+                default: {
+                        Logger.error("Unhandled request: {0}", request);
+                        var jsondata = fastJSON.JSON.Instance.ToObject<Dictionary<string, object>>(rawData);
+                    }
                     break;
             }
             return "status=666";
+        }
+
+        private static Dictionary<string, object> toTable(string rawData) {
+            if (rawData == "" || rawData == null) { return new Dictionary<string, object>(); }
+            return fastJSON.JSON.Instance.Parse(rawData) as Dictionary<string, object>;
         }
 
         private static void saveGame(GameStates data) {

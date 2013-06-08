@@ -22,13 +22,13 @@ namespace MesserSmash.Commands {
             Logger.flushToFile(folder.FullName + "/" + timestamp + "_log.txt");
 
             ThreadWatcher.runBgThread(() => {
-                using (var sw = new StreamWriter(folder.FullName + "/" + timestamp + "_save.txt")) {
+                using (var sw = new StreamWriter(folder.FullName + "/" + timestamp + "_save.mer")) {
                     sw.Write(_states.toJson());
                     sw.Flush();
                 }
             });
             ThreadWatcher.runBgThread(() => {
-                using (var sw = new StreamWriter(folder.FullName + "/last_save.txt", false)) {
+                using (var sw = new StreamWriter(folder.FullName + "/last_save.mer", false)) {
                     sw.Write(_states.toJson());
                     sw.Flush();
                 }
@@ -36,7 +36,7 @@ namespace MesserSmash.Commands {
 
             ThreadWatcher.runBgThread(() => {
                 var server = new LocalServer(SmashTVSystem.Instance.ServerIp);
-                server.sendGameState(_states);
+                server.requestSaveGame(_states);
             });
         }
     }

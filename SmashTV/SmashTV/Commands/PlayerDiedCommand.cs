@@ -11,6 +11,7 @@ namespace MesserSmash.Commands {
 
         public PlayerDiedCommand(Player player)
             : base(NAME) {
+            executeDirectly = true;
             _player = player;
         }
 

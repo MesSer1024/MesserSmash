@@ -129,6 +129,8 @@
     <Compile Include="Arenas\Level15.cs" />
     <Compile Include="Arenas\Level16.cs" />
     <Compile Include="Commands\ClientReadyCommand.cs" />
+    <Compile Include="Commands\BeginReplayQueueCommand.cs" />
+    <Compile Include="Commands\RequestContinueGameCommand.cs" />
     <Compile Include="Commands\RegisterLevelHighscoreCommand.cs" />
     <Compile Include="Commands\LevelStartedCommand.cs" />
     <Compile Include="Arenas\SpecialLevel.cs" />
@@ -150,9 +152,11 @@
     <Compile Include="Commands\RegisterUsernameCommand.cs" />
     <Compile Include="Commands\ReloadDatabaseCommand.cs" />
     <Compile Include="Commands\RequestHighscoresCommand.cs" />
+    <Compile Include="Commands\RequestBeginNewGameCommand.cs" />
     <Compile Include="Commands\SaveGameCommand.cs" />
     <Compile Include="Commands\SpawnWaveCommand.cs" />
     <Compile Include="Commands\RestartGameCommand.cs" />
+    <Compile Include="Commands\UpdateGameCredentialsCommand.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="Enemies\EnemyTypes.cs" />
     <Compile Include="Enemies\IEntity.cs" />
@@ -170,7 +174,6 @@
     <Compile Include="Enemies\EnemyBase.cs" />
     <Compile Include="Enemies\EnemyContainer.cs" />
     <Compile Include="EnergySystem.cs" />
-    <Compile Include="EventHandler.cs" />
     <Compile Include="Explosion.cs" />
     <Compile Include="GameEvent.cs" />
     <Compile Include="GUI\GUIMain.cs" />

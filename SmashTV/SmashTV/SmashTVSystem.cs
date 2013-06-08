@@ -66,16 +66,21 @@ namespace MesserSmash {
         public string ServerIp { get; set; }
         public string ReplayPath { get; set; }
         public string GameVersion { get; set; }
+        public string LoginResponseKey { get; set; }
 
 		private int _killCount;
 		private bool _gameStarted = false;
 		private List<string> _queuedCommands = new List<string>();
-		private GUIMain _gui;
+		private GUIMain _gui = new GUIMain();
 		private int _enemyDestructors;
 		private int _behaviourDestructors;
 		private int _behaviourConstructors;
 		private int _enemyConstructors;
         private bool _replay;
+
+        internal void resetStates() {
+            _gameStarted = false;
+        }
 
 		public void initLevel(Arena arena, Player player, ShotContainer shotContainer, EnemyContainer enemyContainer, bool replay) {
             _replay = replay;
@@ -91,11 +96,12 @@ namespace MesserSmash {
             new RequestHighscoresCommand(_arena.Level).execute();
 			_arena.onGameFinished += new Arena.ArenaDelegate(onArenaFinished);
 			_arena.onZeroTimer += new Arena.ArenaDelegate(onArenaTimerZero);
-			_gui = new GUIMain();
-			_gui.showLoadingScreen();
+            _gui.reset();
+            _gui.showLoadingScreen(replay);
 		}
 
 		public void startLoadedLevel() {
+            _gui.startLevel();
 			_gameStarted = true;
 			_gui.setScore(Scoring.getTotalScore());
 			_killCount = 0;
@@ -334,5 +340,12 @@ namespace MesserSmash {
                 _gui.showGameOver(ClientHighscore.Instance.getTopScores(8));
             });      
         }
+
+        internal void showPopup(string s) {
+            _gui.showOkPopup(s, null);
+        }
+
+
+        public string SessionId { get; set; }
     }
 }

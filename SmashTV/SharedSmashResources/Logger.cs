@@ -4,64 +4,88 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 
 namespace MesserSmash.Modules {
     public static class Logger {
+        [Flags]
+        private enum State : uint {
+            None = 1 << 0,
+            StreamOpen = 1 << 1,
+        }
 
         private const string DEFAULT_LOG_FILE = "SmashLogFile.txt";
         private static List<string> _logMessages;
-         private static StringBuilder sb;
-         private static StreamWriter sw;
+        private static StringBuilder sb;
+        private static StreamWriter sw;
+        private static object ThreadLock = new object();
+        private static State _flag;
 
-         public static void info(string s) {
-             info("{0}", s);
-         }
+        public static void info(string s) {
+            info("{0}", s);
+        }
 
-         public static void info(string s, params Object[] p) {
-             sb.Clear();
-             sb.Append("[info] ");
-             sb.AppendFormat(s, p);
-             _logMessages.Add(sb.ToString());
-             sw.WriteLine(sb.ToString());
-         }
+        public static void info(string s, params Object[] p) {
+            lock (ThreadLock) {
+                if ((_flag & State.StreamOpen) != State.StreamOpen)
+                    return;
+                sb.Clear();
+                sb.Append("[info] ");
+                sb.AppendFormat(s, p);
+                _logMessages.Add(sb.ToString());
+                sw.WriteLine(sb.ToString());
+            }
+        }
 
         public static void error(string s, params Object[] p) {
-            sb.Clear();
-            sb.Append("[error] ");
-            sb.AppendFormat(s, p);
-            _logMessages.Add(sb.ToString());
-            sw.WriteLine(sb.ToString());
+            lock (ThreadLock) {
+                if ((_flag & State.StreamOpen) != State.StreamOpen)
+                    return;
+                sb.Clear();
+                sb.Append("[error] ");
+                sb.AppendFormat(s, p);
+                _logMessages.Add(sb.ToString());
+                sw.WriteLine(sb.ToString());
+            }
         }
 
         public static void flushToFile(string url) {
-            if (_logMessages.Count > 0) {
-                using (StreamWriter sw = new StreamWriter(url, true)) {
-                    foreach (var line in _logMessages) {
-                        sw.WriteLine(line);
+            lock (ThreadLock) {
+                if ((_flag & State.StreamOpen) != State.StreamOpen)
+                    return;
+                if (_logMessages.Count > 0) {
+                    using (StreamWriter sw = new StreamWriter(url, true)) {
+                        foreach (var line in _logMessages) {
+                            sw.WriteLine(line);
+                        }
                     }
                 }
+                sb.Clear();
+                _logMessages.Clear();
             }
-            sb.Clear();
-            _logMessages.Clear();
         }
 
         public static void init(string fileUrl = DEFAULT_LOG_FILE) {
             clean();
             _logMessages = new List<string>();
             sb = new StringBuilder();
-            sw = new StreamWriter(fileUrl, true);            
+            sw = new StreamWriter(fileUrl, true);
+            _flag |= State.StreamOpen;
         }
 
         public static void clean() {
-            if (sw != null) {
-                sw.Flush();
-                sw.Close();
-            }
-            if (sb != null) {
-                sb.Clear();
-            }
-            if (_logMessages != null) {
-                _logMessages.Clear();
+            lock (ThreadLock) {
+                _flag &= ~State.StreamOpen; //AND on an Inverted StreamOpen (clears only that flag)
+                if (sw != null) {
+                    sw.Flush();
+                    sw.Close();
+                }
+                if (sb != null) {
+                    sb.Clear();
+                }
+                if (_logMessages != null) {
+                    _logMessages.Clear();
+                }
             }
         }
     }

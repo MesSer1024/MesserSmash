@@ -9,6 +9,7 @@ namespace MesserSmash.Commands {
         public const string NAME = "SpawnWaveCommand";
 
         public SpawnWaveCommand(WaveSpawner spawner):base(NAME) {
+            executeDirectly = true;
             WaveSpawner = spawner;            
         }
 

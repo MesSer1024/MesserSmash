@@ -23,8 +23,9 @@ namespace MesserSmash {
             Logger.info("Utils.initialize seed=" + seed);
             Seed = seed;
             MesserRandom.init(seed);
-            _keyboardState = new MesserKeys();
-            _mouseState = new MesserMouse();
+            //cant set them here due to it making it possible to hold down F1 and create a basillion games
+            //_keyboardState = new MesserKeys();
+            //_mouseState = new MesserMouse();
         }
 
         public static void tick() {            
@@ -40,7 +41,7 @@ namespace MesserSmash {
         public static bool RmbPressed { get { return _mouseState.RightButton; } }
 
         public static bool isNewKeyPress(Keys key) {
-            if (_keyboardState.IsKeyDown(key) && _oldKeyboardState.IsKeyUp(key)) {
+            if (_keyboardState.IsKeyDown(key) && _oldKeyboardState != null && _oldKeyboardState.IsKeyUp(key)) {
                 return true;
             }
             return false;
@@ -400,7 +401,7 @@ namespace MesserSmash {
         internal static bool isEitherNewlyPressed(params Keys[] keys) {
             for (int i = 0; i < keys.Length; i++) {
                 var key = keys[i];
-                if (_keyboardState.IsKeyDown(key) && _oldKeyboardState.IsKeyUp(key)) {
+                if (_keyboardState.IsKeyDown(key) && _oldKeyboardState != null && _oldKeyboardState.IsKeyUp(key)) {
                     return true;
                 }
             }
@@ -421,6 +422,10 @@ namespace MesserSmash {
             _keyboardState = loadedGame.KeyboardStates[replayIndex];
             _oldKeyboardState = loadedGame.KeyboardStates[Math.Max(0, replayIndex - 1)];
             _mousePos = new Vector2(_mouseState.X, _mouseState.Y);
+        }
+
+        public static Rectangle getGameBounds() {
+            return new Rectangle(0, 0, getGameWidth(), getGameHeight());
         }
     }
 }

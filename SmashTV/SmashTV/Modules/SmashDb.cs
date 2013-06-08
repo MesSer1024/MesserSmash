@@ -45,9 +45,5 @@ namespace MesserSmash.Modules {
         internal static void set(int hash, double value) {
             _db[hash] = value;
         }
-
-        internal static string getLevel(int index) {
-            return "";
-        }
     }
 }

@@ -9,6 +9,7 @@ namespace SharedSmashResources {
         private static int _seed;
         private static Random _random;
         private static int _counter;
+        private static object ThreadLock = new object();
 
         public static void init(int seed) {
             _counter = 0;
@@ -21,20 +22,26 @@ namespace SharedSmashResources {
         }
 
         public static int nextInt(int min, int max) {
-            var value = _random.Next(min, max);
-            _counter++;
-            return value;
+            lock (ThreadLock) {
+                var value = _random.Next(min, max);
+                _counter++;
+                return value;
+            }
         }
 
         public static double next() {
-            var value = _random.NextDouble();
-            _counter++;
-            return value;
+            lock (ThreadLock) {
+                var value = _random.NextDouble();
+                _counter++;
+                return value;
+            }
         }
 
         public static bool nextBool() {
-            var value = next() < 0.5;
-            return value;
+            lock (ThreadLock) {
+                var value = next() < 0.5;
+                return value;
+            }
         }
 
         public static string getStatus() {

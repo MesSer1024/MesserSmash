@@ -15,7 +15,6 @@ namespace MesserSmash.Arenas {
         public override void custStartLevel() {
             _secondsLeft = 9000;
             _enemyCounter = 1;
-            EventHandler.Instance.dispatchEvent(GameEvent.GameEvents.GameStarted, this, "Level Endless Stream started");
             createEnemies(48);
         }
 

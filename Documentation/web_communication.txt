@@ -1,0 +1,22 @@
+StartGame:
+
+request:
+	LOGIN_SESSION: 		"freeloader"			//received from login server or set to freeloader
+	USER_NAME:			"MesSer"
+	USER_ID:			"MesSer1024"
+	LEVEL:				"1"
+
+response:
+	rc != 0
+		1-99:		error in sent data (request, headers, data)		[nothing to show to user except a generic message]
+			1:	invalid request
+			2:	corrupt or missing headers
+			3:	corrupt or missing data
+		100-999:	errors on server side, disk full, unable to finalize [probably nothing specific to show to user except a generic message]
+			-	generic internal error
+			-	unable to find required files (database or something)
+		1000-1999:	errors with something related to user, invalid gameid/session/
+			1000:	invalid gamesession
+			1001:	invalid userid
+			1002:	invalid gameid
+				

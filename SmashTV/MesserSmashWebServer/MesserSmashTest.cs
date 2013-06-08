@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MesserSmash.Modules;
-using SharedSmashResources;
 using System.Collections;
 using Microsoft.Xna.Framework;
 using System.IO;
+using SharedSmashResources;
 
 namespace MesserSmashWebServer {
     class MesserSmashTest {
 
-        private class JsonDictionary : Dictionary<string, object> {}
         private static DateTime _start = DateTime.Now;
-        static void test(string[] args) {
+        public static void test(string[] args) {
             //--begin request--
-            //var input = fastJSON.JSON.Instance.ToJSON(dummyBeginGameRequest());
-            //_start = DateTime.Now;
-            //var output = buildResponse("begin", input);
-            //Logger.flush();
+            var input = fastJSON.JSON.Instance.ToJSON(dummyBeginGameRequest());
+            _start = DateTime.Now;
+            var foo = fastJSON.JSON.Instance.Parse(input) as Dictionary<string, object>;
+            var a = foo["product_key"];
+            var output = buildResponse(MesserSmashWeb.REQUEST_BEGIN_GAME, input);
 
             //--status request--
             //var statusInput = fastJSON.JSON.Instance.ToJSON(dummyStatusRequest());
@@ -33,30 +33,30 @@ namespace MesserSmashWebServer {
 
 
             //--test load game--
-            using (var sr = new StreamReader("../../../../bin/debug/games/last_save.txt")) {
-                var s = sr.ReadToEnd();
-                var state = fastJSON.JSON.Instance.Parse(s);
-                GameStates status = fastJSON.JSON.Instance.FillObject(new GameStates(), s) as GameStates;
+            //using (var sr = new StreamReader("../../../../bin/debug/games/last_save.txt")) {
+            //    var s = sr.ReadToEnd();
+            //    var state = fastJSON.JSON.Instance.Parse(s);
+            //    GameStates status = fastJSON.JSON.Instance.FillObject(new GameStates(), s) as GameStates;
                 //var keyboardStates = state.KeyboardStates;
                 //foreach (var keyb in keyboardStates) {
                 //    if (keyb.GetPressedKeys().Length > 0) {
                 //        var keys = keyb.GetPressedKeys();
                 //    }
                 //}
-            }
+            //}
         }
 
         private static bool verifyGameId(string gameid) {
             return true;
         }
 
-        private static JsonDictionary dummyBeginGameRequest() {
-            var d = new JsonDictionary {
-                {SmashWebIdentifiers.PRODUCT_KEY, "abc0123"},
-                {SmashWebIdentifiers.USER_NAME, "MesSer"},
-                {SmashWebIdentifiers.USER_ID, "MesSer1024"},
-                {SmashWebIdentifiers.PLAYER_STATE, 
-                    new JsonDictionary {
+        private static Dictionary<string, object> dummyBeginGameRequest() {
+            var d = new Dictionary<string, object> {
+                {MesserSmashWeb.LOGIN_SESSION, "abc0123"},
+                {MesserSmashWeb.USER_NAME, "MesSer"},
+                {MesserSmashWeb.USER_ID, "MesSer1024"},
+                {MesserSmashWeb.PLAYER_STATE, 
+                    new Dictionary<string, object> {
                         {"asdf", "123"},
                         {"foo", "bar"}
                     }
@@ -66,17 +66,17 @@ namespace MesserSmashWebServer {
             return d;
         }
 
-        private static JsonDictionary dummyStatusRequest() {
-            var d = new JsonDictionary {
-                {SmashWebIdentifiers.USER_NAME, "MesSer"},
-                {SmashWebIdentifiers.USER_ID, "MesSer1024"},
-                {SmashWebIdentifiers.LEVEL, 1},
-                {SmashWebIdentifiers.KILLS, 138},
-                {SmashWebIdentifiers.SCORE, 1258},
-                {SmashWebIdentifiers.TOTAL_GAME_TIME, 18.897987},
-                {SmashWebIdentifiers.TIME_MULTIPLIER, 1},
-                {SmashWebIdentifiers.RANDOM_SEED, 0},
-                {SmashWebIdentifiers.KEYBOARD_STATES, 
+        private static Dictionary<string, object> dummyStatusRequest() {
+            var d = new Dictionary<string, object> {
+                {MesserSmashWeb.USER_NAME, "MesSer"},
+                {MesserSmashWeb.USER_ID, "MesSer1024"},
+                {MesserSmashWeb.LEVEL, 1},
+                {MesserSmashWeb.KILLS, 138},
+                {MesserSmashWeb.SCORE, 1258},
+                {MesserSmashWeb.TOTAL_GAME_TIME, 18.897987},
+                {MesserSmashWeb.TIME_MULTIPLIER, 1},
+                {MesserSmashWeb.RANDOM_SEED, 0},
+                {MesserSmashWeb.KEYBOARD_STATES, 
                     new ArrayList {
                         new ArrayList {"W","S"},
                         new ArrayList {},
@@ -85,7 +85,7 @@ namespace MesserSmashWebServer {
                         new ArrayList {"W","A","D"}
                     }
                 },
-                {SmashWebIdentifiers.DELTA_TIME, 
+                {MesserSmashWeb.DELTA_TIME, 
                     new ArrayList {
                         0,
                         15,
@@ -94,7 +94,7 @@ namespace MesserSmashWebServer {
                         18
                     }
                 },
-                {SmashWebIdentifiers.MOUSE_STATES, 
+                {MesserSmashWeb.MOUSE_STATES, 
                     new ArrayList {
                         new ArrayList {},
                         new ArrayList {},
@@ -113,34 +113,34 @@ namespace MesserSmashWebServer {
             int status_code = 0;
             Dictionary<String, object> result;
             switch (id) {
-                case SmashWebIdentifiers.REQUEST_BEGIN_GAME: {
+                case MesserSmashWeb.REQUEST_BEGIN_GAME: {
                         GameHandler.verifyDataStartGame(data, out status_code);
                         var guid = Guid.NewGuid().ToString();
                         result = new Dictionary<String, object> {
-                            {SmashWebIdentifiers.STATUS_CODE, status_code},
-                            {SmashWebIdentifiers.GAME_ID, status_code == 0 ? guid : ""}
+                            {MesserSmashWeb.STATUS_CODE, status_code},
+                            {MesserSmashWeb.GAME_ID, status_code == 0 ? guid : ""}
                         };
                     }
                     break;
-                case SmashWebIdentifiers.REQUEST_UPDATE_STATUS: {
+                case MesserSmashWeb.REQUEST_UPDATE_STATUS: {
                         GameHandler.verifyDataStatus(data, out status_code);
                         result = new Dictionary<string, object> {
-                                {SmashWebIdentifiers.STATUS_CODE, status_code}
+                                {MesserSmashWeb.STATUS_CODE, status_code}
                             };
                     }
                     break;
-                case SmashWebIdentifiers.REQUEST_SAVE_GAME: {
+                case MesserSmashWeb.REQUEST_SAVE_GAME: {
                         GameHandler.verifyDataStatus(data, out status_code);
                         if (status_code == 0) {
                             var level = (int)GameHandler.readLevel();
                             result = new Dictionary<string, object> {
-                                {SmashWebIdentifiers.STATUS_CODE, status_code},
-                                {SmashWebIdentifiers.TOP_SCORES, generateHighscoreList(10, level)},
-                                {SmashWebIdentifiers.USERS_HIGHSCORE_INFO, generateUserScore(level)}
+                                {MesserSmashWeb.STATUS_CODE, status_code},
+                                {MesserSmashWeb.TOP_SCORES, generateHighscoreList(10, level)},
+                                {MesserSmashWeb.USERS_HIGHSCORE_INFO, generateUserScore(level)}
                             };
                         } else {
                             result = new Dictionary<string, object> {
-                                {SmashWebIdentifiers.STATUS_CODE, status_code}
+                                {MesserSmashWeb.STATUS_CODE, status_code}
                             };
                         }
                     }
@@ -157,10 +157,10 @@ namespace MesserSmashWebServer {
         private static Dictionary<string, object> generateUserScore(int level) {
             int rank = 756;
             var d = new Dictionary<string, object> {
-                {SmashWebIdentifiers.SCORE, GameHandler.readScore()},
-                {SmashWebIdentifiers.KILLS, GameHandler.readKills()},
-                {SmashWebIdentifiers.USER_NAME, GameHandler.readUserName()},
-                {SmashWebIdentifiers.RANK, rank}
+                {MesserSmashWeb.SCORE, GameHandler.readScore()},
+                {MesserSmashWeb.KILLS, GameHandler.readKills()},
+                {MesserSmashWeb.USER_NAME, GameHandler.readUserName()},
+                {MesserSmashWeb.RANK, rank}
             };
             return d;
         }
@@ -171,13 +171,13 @@ namespace MesserSmashWebServer {
 
             Dictionary<string, object> result;
             switch (request) {
-                case SmashWebIdentifiers.REQUEST_UPDATE_STATUS: {
+                case MesserSmashWeb.REQUEST_UPDATE_STATUS: {
                         result = new Dictionary<string, object> {
-                                {SmashWebIdentifiers.STATUS_CODE, invalid_gameid}
+                                {MesserSmashWeb.STATUS_CODE, invalid_gameid}
                             };
                     }
                     break;
-                case SmashWebIdentifiers.REQUEST_SAVE_GAME: {
+                case MesserSmashWeb.REQUEST_SAVE_GAME: {
                         int code;
                         GameHandler.verifyDataStatus(data, out code);
                         if (code == 0) {
@@ -185,12 +185,12 @@ namespace MesserSmashWebServer {
                             var highscores = generateHighscoreList(10, level);
 
                             result = new Dictionary<string, object> {
-                            {SmashWebIdentifiers.STATUS_CODE, invalid_gameid},
-                            {SmashWebIdentifiers.TOP_SCORES, highscores}
+                            {MesserSmashWeb.STATUS_CODE, invalid_gameid},
+                            {MesserSmashWeb.TOP_SCORES, highscores}
                         };
                         } else {
                             result = new Dictionary<string, object> {
-                            {SmashWebIdentifiers.STATUS_CODE, invalid_data}
+                            {MesserSmashWeb.STATUS_CODE, invalid_data}
                         };
                         }
                     }
@@ -209,15 +209,15 @@ namespace MesserSmashWebServer {
             for (int i = 0; i < number; i++) {
                 if(i == 0) {
                     output.Add( new Dictionary<string, object> {
-                                {SmashWebIdentifiers.USER_NAME, "foobar1"},
-                                {SmashWebIdentifiers.KILLS, 357},
-                                {SmashWebIdentifiers.SCORE, 4269}
+                                {MesserSmashWeb.USER_NAME, "foobar1"},
+                                {MesserSmashWeb.KILLS, 357},
+                                {MesserSmashWeb.SCORE, 4269}
                             });
                 } else {
                     output.Add( new Dictionary<string, object> {
-                                {SmashWebIdentifiers.USER_NAME, "foobar" + i},
-                                {SmashWebIdentifiers.KILLS, 350},
-                                {SmashWebIdentifiers.SCORE, 4260}
+                                {MesserSmashWeb.USER_NAME, "foobar" + i},
+                                {MesserSmashWeb.KILLS, 350},
+                                {MesserSmashWeb.SCORE, 4260}
                             });
                 
                 }

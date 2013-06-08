@@ -35,13 +35,32 @@ namespace MesserSmash.GUI {
         private DebugGuiOverlay _debugGui;
         private bool _gameOver;
         private List<Highscore> _highscoresToShow;
+        private bool _popupVisible;
+        private string _popupText;
+        private bool _gotLoadingScreenData;
+        private bool _showNextReplay;
+        private Action _onPopupCallback;
 
 
         public GUIMain() {
             Instance = this;
-            _inGame = true;
+            _debugGui = new DebugGuiOverlay(new Rectangle(40, 40, 850, 600));
+            reset();
+        }
+
+        internal void reset() {
+            _showNextReplay = false;
+            _inGame = false;
             _loadingScreenVisible = false;
+            _popupVisible = false;
+            _onPopupCallback = null;
+            _gameOver = false;
             _timeRechargeShown = 100;
+        }
+
+        public void startLevel() {
+            reset();
+            _inGame = true;
             int h = 120;
             _background = new Rectangle(0, Utils.getGameHeight() - h, Utils.getGameWidth(), Utils.getGameHeight());
             _backgroundColor = Color.YellowGreen;
@@ -66,12 +85,21 @@ namespace MesserSmash.GUI {
             _secondsLeft.Visible = false;
             _secondsLeft.TextScale = 2.25f;
 
-            _debugGui = new DebugGuiOverlay(new Rectangle(40, 40, 850, 600));
         }
 
         public void update(float gametime) {
-            if (_loadingScreenVisible) {
+            if (_popupVisible) {
                 if (Utils.isNewKeyPress(Keys.Space)) {
+                    _popupVisible = false;
+                    if (_onPopupCallback != null) {
+                        _onPopupCallback.Invoke();
+                    }
+                    return;
+                }
+            }
+
+            if (_loadingScreenVisible) {
+                if (_gotLoadingScreenData && Utils.isNewKeyPress(Keys.Space)) {
                     performClientReady();
                 }
             } else if (_inGame) {
@@ -118,13 +146,29 @@ namespace MesserSmash.GUI {
         }
 
         public void draw(SpriteBatch sb) {
-            if (_loadingScreenVisible) {
-                sb.Draw(AssetManager.getControlsTexture(), new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight()), Color.White);
-
-                var text = new FunnyText(String.Format("Press <space> to start Level{0}", SmashTVSystem.Instance.Arena.Level), new Rectangle { X = 0, Y = Utils.getGameHeight() - 100, Width = Utils.getGameWidth(), Height = 0 });
+            if (_popupVisible) {
+                sb.Draw(AssetManager.getDefaultTexture(), Utils.getGameBounds(), Color.Black * 0.6f);
+                sb.Draw(AssetManager.getDefaultTexture(), new Rectangle(300, 200, 600, 400), Color.Black);
+                var text = new FunnyText(String.Format("{0}\nPress <space> to close", _popupText), Utils.getGameBounds());
                 text.HorizontalCenter = true;
                 text.VerticalCenter = true;
                 text.Draw(sb);
+            }
+
+            if (_loadingScreenVisible) {
+                sb.Draw(AssetManager.getControlsTexture(), new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight()), Color.White);
+
+                if (_gotLoadingScreenData) {
+                    var text = new FunnyText(String.Format("Press <space> to start Level{0}", SmashTVSystem.Instance.Arena.Level), new Rectangle { X = 0, Y = Utils.getGameHeight() - 100, Width = Utils.getGameWidth(), Height = 0 });
+                    text.HorizontalCenter = true;
+                    text.VerticalCenter = true;
+                    text.Draw(sb);
+                } else {
+                    var text = new FunnyText(String.Format("Using Internet...", SmashTVSystem.Instance.Arena.Level), new Rectangle { X = 0, Y = Utils.getGameHeight() - 100, Width = Utils.getGameWidth(), Height = 0 });
+                    text.HorizontalCenter = true;
+                    text.VerticalCenter = true;
+                    text.Draw(sb);
+                }
                 return;
             }
 
@@ -158,7 +202,7 @@ namespace MesserSmash.GUI {
                     text.Draw(sb);
                 }
                 {
-                    var text = new FunnyText(Utils.makeString("Your Score On Level: {0}", formatScorePoints(_score)), new Rectangle { X = 50, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
+                    var text = new FunnyText(Utils.makeString("Your Score On Level: {0} RoundScore: {1}", formatScorePoints(Scoring.getLevelScore()), formatScorePoints(_score)), new Rectangle { X = 50, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
                     text.HorizontalCenter = false;
                     text.Draw(sb);
                 }
@@ -184,7 +228,7 @@ namespace MesserSmash.GUI {
 
         private string formatScorePoints(float score) {
             var culture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
-            var formattedNumber = string.Format(culture, "{0:n}", _score);
+            var formattedNumber = string.Format(culture, "{0:n}", score);
             return formattedNumber;
         }
 
@@ -209,12 +253,6 @@ namespace MesserSmash.GUI {
             _timeDead = 0;
         }
 
-        public void restart() {
-            _inGame = true;
-            _loadingScreenVisible = false;
-            _gameOver = false;
-        }
-
         public void setScore(float newScore) {
             _score = newScore;
             _scoreField.Text = Utils.makeString("Score: {0}", formatScorePoints(_score));
@@ -226,8 +264,28 @@ namespace MesserSmash.GUI {
             _timeRechargeShown = 0;
         }
 
-        internal void showLoadingScreen() {
+        internal void showLoadingScreen(bool haveData) {
+            Logger.info("showLoadingScreen status=" + haveData);
             _loadingScreenVisible = true;
+            _gotLoadingScreenData = haveData;
+        }
+
+        internal void showOkPopup(string s, Action cb) {
+            if (_popupVisible) {
+                throw new Exception("Allready showing a popup, create a new solution for popups...");
+            }
+            _popupVisible = true;
+            _popupText = s;
+            _onPopupCallback = cb;
+        }
+
+        internal void showNextReplayOnClick() {
+            _showNextReplay = true;
+            showOkPopup("Replay Finished, continue to next?", onShowNextReplay);
+        }
+
+        private void onShowNextReplay() {
+            new RestartGameCommand(-10).execute();
         }
     }
 }

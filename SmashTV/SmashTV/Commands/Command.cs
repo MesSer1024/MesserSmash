@@ -15,6 +15,7 @@ namespace MesserSmash.Commands {
     /// </summary>
     public class Command : ICommand {
         private readonly string _name;
+        protected bool executeDirectly = false;
 
         public Command(string name) {
             _name = name;
@@ -26,7 +27,7 @@ namespace MesserSmash.Commands {
 
         public void execute() {
             custExecute();
-            Controller.instance.handleCommand(this);
+            Controller.instance.handleCommand(this, executeDirectly);
         }
 
         protected virtual void custExecute() {}

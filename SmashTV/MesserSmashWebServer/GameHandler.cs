@@ -115,17 +115,18 @@ namespace MesserSmashWebServer {
 
         public static void verifyDataStartGame(String data, out int status) {
             _data = fastJSON.JSON.Instance.Parse(data) as Dictionary<string, object>;
+            
             _status = 0;
 
             try {
                 string key, name, id;
                 double level;
                 object state;
-                reader.readString(SmashWebIdentifiers.PRODUCT_KEY, out key);
-                reader.readString(SmashWebIdentifiers.USER_NAME, out name);
-                reader.readString(SmashWebIdentifiers.USER_ID, out id);
-                reader.readNumber(SmashWebIdentifiers.LEVEL, out level);
-                reader.readObject(SmashWebIdentifiers.PLAYER_STATE, out state);
+                reader.readString(MesserSmashWeb.LOGIN_SESSION, out key);
+                reader.readString(MesserSmashWeb.USER_NAME, out name);
+                reader.readString(MesserSmashWeb.USER_ID, out id);
+                reader.readNumber(MesserSmashWeb.LEVEL, out level);
+                reader.readObject(MesserSmashWeb.PLAYER_STATE, out state);
             } catch (Exception e) {
                 Logger.error("unable to parse, original data={0} \n exception={1}", data, e.ToString());
                 _status = 1;
@@ -148,17 +149,17 @@ namespace MesserSmashWebServer {
                 double energy, gametime, timeMultiplier, seed;
                 ArrayList keyboardStates, times, mouseStates;
 
-                reader.readNumber(SmashWebIdentifiers.LEVEL, out level);
-                reader.readNumber(SmashWebIdentifiers.KILLS, out kills);
-                reader.readNumber(SmashWebIdentifiers.SCORE, out score);
-                reader.readNumber(SmashWebIdentifiers.ENERGY, out energy);
-                reader.readNumber(SmashWebIdentifiers.TOTAL_GAME_TIME, out gametime);
-                reader.readNumber(SmashWebIdentifiers.TIME_MULTIPLIER, out timeMultiplier);
-                reader.readNumber(SmashWebIdentifiers.RANDOM_SEED, out seed);
-                reader.readString(SmashWebIdentifiers.GAME_STATE, out gameState);
-                reader.readArray(SmashWebIdentifiers.DELTA_TIME, out times);
-                reader.readArray(SmashWebIdentifiers.KEYBOARD_STATES, out keyboardStates);
-                reader.readArray(SmashWebIdentifiers.MOUSE_STATES, out mouseStates);
+                reader.readNumber(MesserSmashWeb.LEVEL, out level);
+                reader.readNumber(MesserSmashWeb.KILLS, out kills);
+                reader.readNumber(MesserSmashWeb.SCORE, out score);
+                reader.readNumber(MesserSmashWeb.ENERGY, out energy);
+                reader.readNumber(MesserSmashWeb.TOTAL_GAME_TIME, out gametime);
+                reader.readNumber(MesserSmashWeb.TIME_MULTIPLIER, out timeMultiplier);
+                reader.readNumber(MesserSmashWeb.RANDOM_SEED, out seed);
+                reader.readString(MesserSmashWeb.GAME_STATE, out gameState);
+                reader.readArray(MesserSmashWeb.DELTA_TIME, out times);
+                reader.readArray(MesserSmashWeb.KEYBOARD_STATES, out keyboardStates);
+                reader.readArray(MesserSmashWeb.MOUSE_STATES, out mouseStates);
             } catch (Exception e) {
                 Logger.error("unable to parse, original data={0} \n exception={1}", data, e.ToString());
                 _status = 1;
@@ -168,25 +169,25 @@ namespace MesserSmashWebServer {
 
         public static double readLevel() {
             double value;
-            reader.readNumber(SmashWebIdentifiers.LEVEL, out value);
+            reader.readNumber(MesserSmashWeb.LEVEL, out value);
             return value;
         }
 
         public static double readKills() {
             double value;
-            reader.readNumber(SmashWebIdentifiers.KILLS, out value);
+            reader.readNumber(MesserSmashWeb.KILLS, out value);
             return value;
         }
 
         internal static double readScore() {
             double value;
-            reader.readNumber(SmashWebIdentifiers.SCORE, out value);
+            reader.readNumber(MesserSmashWeb.SCORE, out value);
             return value;
         }
 
         internal static string readUserName() {
             string value;
-            reader.readString(SmashWebIdentifiers.USER_NAME, out value);
+            reader.readString(MesserSmashWeb.USER_NAME, out value);
             return value;
 
         }
