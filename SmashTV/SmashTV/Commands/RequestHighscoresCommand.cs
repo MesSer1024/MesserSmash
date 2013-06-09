@@ -21,7 +21,8 @@ namespace MesserSmash.Commands {
             ThreadWatcher.runBgThread(() => {
                 var server = new LocalServer(SmashTVSystem.Instance.ServerIp);
                 var dir = new Dictionary<string, object> {
-                    {MesserSmashWeb.LEVEL, level}
+                    {MesserSmashWeb.LEVEL, level},
+                    {MesserSmashWeb.LOGIN_SESSION, SmashTVSystem.Instance.LoginResponseKey},
                 };
                 server.requestHighscores(onResponse, dir);
             });

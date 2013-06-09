@@ -12,70 +12,25 @@ using System.Threading;
 namespace SharedSmashResources {
     public class LocalServer {
         private class Headers : List<KeyValuePair<string, string>> { };
-        
-        private static class MesserProtocol {
-            private static object ThreadLock = new object();
-            public static byte[] Zip(string str) {
-                lock (ThreadLock) {
-
-                    var bytes = Encoding.UTF8.GetBytes(str);
-
-                    using (var msi = new MemoryStream(bytes))
-                    using (var mso = new MemoryStream()) {
-                        using (var gs = new GZipStream(mso, CompressionMode.Compress)) {
-                            //msi.CopyTo(gs);
-                            CopyTo(msi, gs);
-                        }
-
-                        return mso.ToArray();
-                    }
-                }
-            }
-
-            public static string Unzip(byte[] bytes) {
-                lock (ThreadLock) {
-
-                    using (var msi = new MemoryStream(bytes))
-                    using (var mso = new MemoryStream()) {
-                        using (var gs = new GZipStream(msi, CompressionMode.Decompress)) {
-                            CopyTo(gs, mso);
-                        }
-
-                        return Encoding.UTF8.GetString(mso.ToArray());
-                    }
-                }
-            }
-
-            private static void CopyTo(Stream src, Stream dest) {
-                lock (ThreadLock) {
-                    byte[] bytes = new byte[4096];
-
-                    int cnt;
-
-                    while ((cnt = src.Read(bytes, 0, bytes.Length)) != 0) {
-                        dest.Write(bytes, 0, cnt);
-                    }
-                }
-            }
-        }
-
+        private DataCompression _compression;
         private string _url;
 
         public LocalServer(string url) {
+            _compression = new DataCompression();
             _url = url;
         }
 
         public string unparse(byte[] data) {
-            return MesserProtocol.Unzip(data);
+            return _compression.Unzip(data);
         }
 
         public byte[] parse(string data) {
-            return MesserProtocol.Zip(data);
+            return _compression.Zip(data);
         }
 
         public void log(byte[] data) {
             try {
-                var unzipped = MesserProtocol.Unzip(data);
+                var unzipped = _compression.Unzip(data);
                 Logger.error("error unzipped data={0}", unzipped);
             } catch (System.Exception e) {
                 Logger.error("error parsing data:{0}", e.ToString());
@@ -129,8 +84,8 @@ namespace SharedSmashResources {
 
         public bool requestSaveGame(GameStates states) {
             try {
-                byte[] data = MesserProtocol.Zip(fastJSON.JSON.Instance.ToJSON(states));
-                var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.REQUEST_SAVE_GAME, data);
+                byte[] data = _compression.Zip(fastJSON.JSON.Instance.ToJSON(states));
+                var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.REQUEST_END_GAME, data);
                 Logger.info(String.Format("sendGameState ServerResponse={0}", response));
             } catch (Exception e) {
                 Logger.error("Error when communicating with server:\n {0} \n\n{1}", e.ToString(), e.StackTrace);
@@ -140,21 +95,21 @@ namespace SharedSmashResources {
         }
 
         public void requestHighscores( Action<int,string> cb, Dictionary<string, object> data) {
-            var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.REQUEST_GET_HIGHSCORE_ON_LEVEL, MesserProtocol.Zip(fastJSON.JSON.Instance.ToJSON(data)));
+            var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.REQUEST_GET_HIGHSCORE_ON_LEVEL, _compression.Zip(fastJSON.JSON.Instance.ToJSON(data)));
             cb.Invoke(0, response);
             //var rsp = postWebRequestAndGetResponse()
         }
 
         public void requestBeginGame(Action<int, string> cb, Dictionary<string, object> data) {
             Logger.info("->requestBeginGame");
-            var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.REQUEST_BEGIN_GAME, MesserProtocol.Zip(fastJSON.JSON.Instance.ToJSON(data)), 5000);
+            var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.REQUEST_BEGIN_GAME, _compression.Zip(fastJSON.JSON.Instance.ToJSON(data)), 5000);
             cb.Invoke(0, response);
             Logger.info("<-requestBeginGame");
         }
 
         public void requestContinueGame(Action<int, string> cb, Dictionary<string, object> data) {
             Logger.info("->requestBeginGame");
-            var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.REQUEST_BEGIN_GAME, MesserProtocol.Zip(fastJSON.JSON.Instance.ToJSON(data)), 5000);
+            var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.REQUEST_CONTINUE_GAME, _compression.Zip(fastJSON.JSON.Instance.ToJSON(data)), 5000);
             cb.Invoke(0, response);
             Logger.info("<-requestBeginGame");
         }

@@ -9,7 +9,6 @@ using System.IO;
 namespace MesserSmash.Commands {
     class RequestContinueGameCommand : Command {
         public const string NAME = "RequestContinueGameCommand";
-        private bool _guiwaiting;
 
         public int Level { get; private set; }
 
@@ -22,13 +21,13 @@ namespace MesserSmash.Commands {
                 var server = new LocalServer(SmashTVSystem.Instance.ServerIp);
                 var dir = new Dictionary<string, object> {
                     {MesserSmashWeb.LEVEL, level},
+                    {MesserSmashWeb.LOGIN_SESSION, SmashTVSystem.Instance.LoginResponseKey},
                     {MesserSmashWeb.SESSION_ID, SmashTVSystem.Instance.SessionId},
                     {MesserSmashWeb.USER_NAME, SmashTVSystem.Instance.Username},
                     {MesserSmashWeb.USER_ID, SmashTVSystem.Instance.UserId}
                 };
 
                 server.requestContinueGame(onResponse, dir);
-                invalidData();
             });
         }
 

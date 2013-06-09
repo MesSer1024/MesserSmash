@@ -37,17 +37,20 @@ namespace MesserSmash {
 		private SoundManager _sound;
 		private int _timeMultiplierIndex = 3;
 		private List<float> _timeMultipliers = new List<float> { 0.25f, 0.5f, 0.75f, 1f, 1.25f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f, 6f, 8f };
+        private int _replaySpeedIndex = 0;
+        private List<int> _replaySpeeds = new List<int> {1, 2, 3, 4, 5, 6, 7, 8 };
 		private GameStates _states;
 		private bool _playing;
 		private GameState _state;
 		private bool _replay;
 		private GameStates _loadedGame;
-		private int _currentReplayIndex;
+		private int _replayFrameIndex;
 		private bool _hasUsername;
 		private IScreen _screen;
 		private float _timeSinceLevelStart;
         private bool _waitingForGameCredentials;
-        private Queue<FileInfo> _replayQueue;
+        private List<FileInfo> _replayQueue;
+        private int _replayQueueIndex;
 
 		public SmashTV_main(Microsoft.Xna.Framework.Content.ContentManager Content, Microsoft.Xna.Framework.GraphicsDeviceManager graphics, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Game game) {
 			_content = Content;
@@ -143,10 +146,12 @@ namespace MesserSmash {
                     replayFile = SmashTVSystem.Instance.ReplayPath;
                     _loadedGame = new GameLoader().loadFromRelativePath(replayFile).Replay;
                 } else {
-                    if (_replayQueue.Count > 0) {
-                        var file = _replayQueue.Dequeue();
+                    if (_replayQueueIndex + 1 < _replayQueue.Count) {
+                        var file = getNextReplay();
                         replayFile = file.FullName;
                         _loadedGame = new GameLoader().loadFromFileInfo(file).Replay;
+                    } else {
+                        replayFile = "Finished with queue!";
                     }
                 }
                 if (_loadedGame == null) {
@@ -161,7 +166,7 @@ namespace MesserSmash {
 				arena = buildLevel(_loadedGame.Level);
 				_currentLevel = _loadedGame.Level;
                 _replay = true;
-                _currentReplayIndex = 0;
+                _replayFrameIndex = 0;
             } else {
 				arena = buildLevel(level);
 				_currentLevel = level;
@@ -173,6 +178,24 @@ namespace MesserSmash {
 			arena.onGameFinished += new Arena.ArenaDelegate(onGameFinished);
 			_smashTvSystem.initLevel(arena, player, new ShotContainer(), new EnemyContainer(), _replay);
 		}
+
+        private FileInfo getNextReplay() {
+            if (++_replayQueueIndex < _replayQueue.Count) {
+                _replayQueueIndex = _replayQueueIndex < 0 ? 0 : _replayQueueIndex;
+                return _replayQueue[_replayQueueIndex];
+            }
+
+            return null;
+        }
+
+        private FileInfo getPreviousReplay() {
+            if (--_replayQueueIndex >= 0) {
+                _replayQueueIndex = _replayQueueIndex >= _replayQueue.Count ? _replayQueue.Count - 1 : _replayQueueIndex;
+                return _replayQueue[_replayQueueIndex];
+            }
+
+            return null;
+        }
 
 		private Arena buildLevel(int level) {
 			Arena arena;
@@ -284,7 +307,7 @@ namespace MesserSmash {
                     SmashTVSystem.Instance.Gui.showNextReplayOnClick();
                 }
             }
-			Logger.info("Player died frames:{1}, random status: {0}", MesserRandom.getStatus(), _states.StoredStatesCount);
+			Logger.info("Player died frames:{1}, random status: {0}", MesserRandom.getStatus(), _states.FrameCounts);
 		}
 
 		void onGameFinished(Arena arena) {
@@ -294,7 +317,7 @@ namespace MesserSmash {
 			saveInputState(_state);
 			saveGame();
 
-			Logger.info("Game finished frames:{1} random status: {0}", MesserRandom.getStatus(), _states.StoredStatesCount);
+			Logger.info("Game finished frames:{1} random status: {0}", MesserRandom.getStatus(), _states.FrameCounts);
 
             if (_replay && _replayQueue != null && _replayQueue.Count > 0) {
                 SmashTVSystem.Instance.Gui.showNextReplayOnClick();
@@ -323,47 +346,55 @@ namespace MesserSmash {
 		}
 
 		public void update(GameTime time) {
-            Controller.instance.processCommands();
+            int replayFrames = _replaySpeeds[_replaySpeedIndex];
+            ReplayRestartLabel: //ugly goto-hack #TODO: refactor replay into its' own method
             float deltaTime;
-			if (_replay) {
-				if (_currentReplayIndex < _loadedGame.StoredStatesCount) {
-					Utils.forceState(_loadedGame, _currentReplayIndex);
-					deltaTime = _loadedGame.DeltaTimes[_currentReplayIndex];
-					_currentReplayIndex++;
-				} else {
-					Logger.info("Last replay frame: status={0}", MesserRandom.getStatus());
+            Controller.instance.processCommands();
+            if (_replay) {
+                if (_replayFrameIndex > 20) {
+                    handleReplayInput();
+                }
+                if (_replayFrameIndex < _loadedGame.FrameCounts) {
+                    Utils.forceState(_loadedGame, _replayFrameIndex);
+                    deltaTime = _loadedGame.DeltaTimes[_replayFrameIndex];
+                    _replayFrameIndex++;
+                } else {
+                    Logger.info("Last replay frame: status={0}", MesserRandom.getStatus());
                     //_paused = true;
-					_replay = false;
-					_playing = false;
-					return;
-				}
-			} else {
+                    _replay = false;
+                    _playing = false;
+                    return;
+                }
+            } else {
                 deltaTime = (float)time.ElapsedGameTime.TotalSeconds * _timeMultipliers[_timeMultiplierIndex];
                 Utils.tick();
                 if (!_hasUsername) {
                     _screen.update(deltaTime);
-					return;
-				}
+                    return;
+                }
 
-				handleGlobalInput(); //only run global input on non-replay
-				//handle pause
-				if (_paused && SmashTVSystem.Instance.Arena != null) {
-					SmashTVSystem.Instance.Arena.checkDebugInput();
-					return;
-				}
-				_betweenLevelTimer += deltaTime;
-				if (_waitingForTimer && _betweenLevelTimer >= 5) {
-					_waitingForTimer = false;
-					prepareNewLevel(++_currentLevel);
-					return;
-				}
-			}
+                handleGlobalInput(); //only run global input on non-replay
+                //handle pause
+                if (_paused && SmashTVSystem.Instance.Arena != null) {
+                    SmashTVSystem.Instance.Arena.checkDebugInput();
+                    return;
+                }
+                _betweenLevelTimer += deltaTime;
+                if (_waitingForTimer && _betweenLevelTimer >= 5) {
+                    _waitingForTimer = false;
+                    prepareNewLevel(++_currentLevel);
+                    return;
+                }
+            }
 			_timeSinceLevelStart += deltaTime;
 			_state = new GameState(deltaTime, _timeSinceLevelStart);
 			_smashTvSystem.update(_state);
 			if (_playing && !_replay && !_waitingForGameCredentials) {
 				saveInputState(_state);
 			}
+            if (_replay && --replayFrames > 0) {
+                goto ReplayRestartLabel; //ugly goto-hack #TODO: refactor replay into its' own method
+            }
 		}
 
 		private void saveGame() {
@@ -374,6 +405,8 @@ namespace MesserSmash {
             _states.UserId = SmashTVSystem.Instance.UserId;
             _states.GameId = SmashTVSystem.Instance.GameId;
             _states.GameVersion = SmashTVSystem.Instance.GameVersion;
+            _states.LoginKey = SmashTVSystem.Instance.LoginResponseKey;
+            _states.SessionId = SmashTVSystem.Instance.SessionId;
 
             var levelInfo = Scoring.getLevelScores()[Scoring.getLevelScores().Count - 1];
             _states.Kills = levelInfo.Kills;
@@ -385,7 +418,7 @@ namespace MesserSmash {
             }
             _states.TotalGametime = totalTime;
 
-			new SaveGameCommand(_states);
+			new SaveGameCommand(_states).execute();
 		}
 
 		private void saveInputState(GameState state) {
@@ -396,6 +429,24 @@ namespace MesserSmash {
 			_states.addKeyboard(Utils.getKeyboardState());            
 			_states.addMouse(Utils.getMouseState());
 		}
+
+        private void handleReplayInput() {
+            if (Utils.NonForcedKeyboard.isEitherNewlyPressed(Keys.OemPlus, Keys.Add)) {
+                _replaySpeedIndex = (int)MathHelper.Clamp(_replaySpeedIndex + 1, 0, _replaySpeeds.Count - 1);
+            } else if (Utils.NonForcedKeyboard.isEitherNewlyPressed(Keys.OemMinus, Keys.Subtract)) {
+                _replaySpeedIndex = (int)MathHelper.Clamp(_replaySpeedIndex - 1, 0, _replaySpeeds.Count - 1);
+            }
+
+            if (Utils.NonForcedKeyboard.isNewKeyPress(Keys.Right) && _replayQueueIndex < _replayQueue.Count - 1) {
+                _replaySpeedIndex = 0;
+                new RestartGameCommand(-10).execute();
+            } else if (Utils.NonForcedKeyboard.isNewKeyPress(Keys.Left) && _replayQueueIndex > 1) {
+                _replaySpeedIndex = 0;
+                _replayQueueIndex -= 2;
+                new RestartGameCommand(-10).execute();
+            }
+
+        }
 
 		private void handleGlobalInput() {
 			ICommand cmd = null;
@@ -491,11 +542,7 @@ namespace MesserSmash {
 
         private void onBeginReplayQueue(ICommand cmd) {
             var command = cmd as BeginReplayQueueCommand;
-            _replayQueue = new Queue<FileInfo>();
-            foreach (var item in command.Replays)
-            {
-                _replayQueue.Enqueue(item);
-            }
+            _replayQueue = command.Replays;
             new RestartGameCommand(-10).execute();
         }
 	}

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataCompression.cs" />
     <Compile Include="GameLoader.cs" />
     <Compile Include="Highscore.cs" />
     <Compile Include="HighscoreContainer.cs" />

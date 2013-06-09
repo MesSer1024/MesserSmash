@@ -27,7 +27,6 @@ namespace MesserSmash.Commands {
                 };
 
                 server.requestBeginGame(onResponse, dir);
-                invalidData();
             });
         }
 

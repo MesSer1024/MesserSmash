@@ -39,6 +39,13 @@ ticks=635060345638059492|username=SHELT|level=1|userid=|gameid=|kills=0|score=0|
 ticks=635060790220432360|username=MESSERHOME00005|level=1|userid=|gameid=|kills=19|score=352|version=0.0005|sessionid=|file=635060790220432360_save.txt
 ticks=635060791236150144|username=MESSER00005|level=1|userid=|gameid=|kills=9|score=72|version=0.0005|sessionid=|file=635060791236150144_save.txt
 ticks=635062535796987366|username=MESSER|level=1|userid=|gameid=6e4c30a8-4d29-4fc3-848e-725f913dcebc|kills=25|score=800|version=0.0006|sessionid=|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635062535796987366_save.txt
+ticks=635063885847798341|username=MESSER|level=1|userid=|gameid=|kills=159|score=2872|version=0.0006|sessionid=|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063885847798341_save.txt
+ticks=635063891873873012|username=MESSER|level=1|userid=|gameid=80814159-ab88-4673-8000-267a9840e4ef|kills=148|score=2984|version=0.0006|sessionid=|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063891873873012_save.txt
+ticks=635063894306172132|username=MESSER|level=1|userid=|gameid=08f5b275-ddb4-468e-a0e8-1f7a728b1d6f|kills=157|score=2456|version=0.0006|sessionid=|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063894306172132_save.txt
+ticks=635063899955965282|username=MESSER|level=1|userid=|gameid=1a7e7711-d986-4455-a6c0-09336eeea7b5|kills=144|score=2752|version=0.0006|sessionid=|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063899955965282_save.txt
+ticks=635063904911888744|username=MESSER|level=1|userid=|gameid=87e54848-ab2d-4465-9292-57bbccf5fb1f|kills=151|score=2408|version=0.0006|sessionid=116186ea-b7c1-48ec-b7b1-6d96466cfb18|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063904911888744_save.txt
+ticks=635063913301068578|username=MESSER|level=1|userid=|gameid=79826788-9c56-4d8a-9bde-bb3cee69129b|kills=136|score=2488|version=0.0006|sessionid=fe1fd076-a3a3-4dec-95b0-5d8e55e29680|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063913301068578_save.txt
+ticks=635063914199639973|username=MESSER|level=1|userid=|gameid=17c7a5df-e384-47b5-a5a3-fd577b648b6d|kills=138|score=1904|version=0.0006|sessionid=f1713cdc-f60e-43e0-9f74-d153d3d1c041|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063914199639973_save.txt
 ticks=635056326200020816|username=MESSER3|level=2|userid=|gameid=|kills=141|score=3233|version=0.0004|sessionid=|file=635056326200020816_save.txt
 ticks=635056335056780372|username=MESSER3|level=2|userid=|gameid=|kills=100|score=1700|version=0.0004|sessionid=|file=635056335056780372_save.txt
 ticks=635056336200106380|username=MESSER3|level=2|userid=|gameid=|kills=109|score=2617|version=0.0004|sessionid=|file=635056336200106380_save.txt
@@ -67,6 +74,12 @@ ticks=635060321991225959|username=SHELT|level=2|userid=|gameid=|kills=177|score=
 ticks=635060327937644403|username=SHELT|level=2|userid=|gameid=|kills=82|score=1715|version=0.0004|sessionid=|file=635060327937644403_save.txt
 ticks=635060330802277435|username=SHELT|level=2|userid=|gameid=|kills=165|score=3968|version=0.0004|sessionid=|file=635060330802277435_save.txt
 ticks=635060716476762836|username=MESSER|level=2|userid=|gameid=|kills=46|score=936|version=0.0006|sessionid=|file=635060716476762836_save.txt
+ticks=635063894851863344|username=MESSER|level=2|userid=|gameid=b5fd85d0-48ce-4676-a5bc-3fdc7680023e|kills=159|score=3927|version=0.0006|sessionid=|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063894851863344_save.txt
+ticks=635063900464464366|username=MESSER|level=2|userid=|gameid=9ecdb31f-90fe-45c9-a8dd-0550ec3240e2|kills=105|score=1962|version=0.0006|sessionid=|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063900464464366_save.txt
+ticks=635063905392096210|username=MESSER|level=2|userid=|gameid=b9afc433-44ee-4589-83d3-5e7d5c529025|kills=152|score=2843|version=0.0006|sessionid=116186ea-b7c1-48ec-b7b1-6d96466cfb18|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063905392096210_save.txt
+ticks=635063913665219406|username=MESSER|level=2|userid=|gameid=cdc6ec08-1adb-4ee8-ba9c-397b1f6ab285|kills=144|score=2151|version=0.0006|sessionid=fe1fd076-a3a3-4dec-95b0-5d8e55e29680|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063913665219406_save.txt
+ticks=635063914436803538|username=MESSER|level=2|userid=|gameid=9b0e8dba-427c-4759-88dc-c2795fcf42cc|kills=88|score=1563|version=0.0006|sessionid=f1713cdc-f60e-43e0-9f74-d153d3d1c041|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063914436803538_save.txt
+ticks=635063914723679947|username=MESSER|level=2|userid=|gameid=73785878-6790-44bf-8b8d-e24fbcadf177|kills=111|score=2224|version=0.0006|sessionid=901ad6e5-1b30-4942-acb8-6092c0fc563b|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063914723679947_save.txt
 ticks=635056346456344394|username=MESSER3|level=3|userid=|gameid=|kills=119|score=2747|version=0.0004|sessionid=|file=635056346456344394_save.txt
 ticks=635056388411214084|username=MESSER3|level=3|userid=|gameid=|kills=126|score=2638|version=0.0004|sessionid=|file=635056388411214084_save.txt
 ticks=635056398289931435|username=MESSER3|level=3|userid=|gameid=|kills=127|score=3451|version=0.0004|sessionid=|file=635056398289931435_save.txt
@@ -84,6 +97,9 @@ ticks=635060123552637420|username=SHELT|level=3|userid=|gameid=|kills=137|score=
 ticks=635060214332472866|username=MESSERDICE|level=3|userid=|gameid=|kills=144|score=3217|version=0.0004|sessionid=|file=635060214332472866_save.txt
 ticks=635060322675599161|username=SHELT|level=3|userid=|gameid=|kills=159|score=1557|version=0.0004|sessionid=|file=635060322675599161_save.txt
 ticks=635060331496166653|username=SHELT|level=3|userid=|gameid=|kills=154|score=3512|version=0.0004|sessionid=|file=635060331496166653_save.txt
+ticks=635063895314279792|username=MESSER|level=3|userid=|gameid=a4fa9e2b-2c30-4440-ae9e-a095ad0956f5|kills=151|score=3288|version=0.0006|sessionid=|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063895314279792_save.txt
+ticks=635063905856652782|username=MESSER|level=3|userid=|gameid=3f3c3bc5-8e70-4574-8f31-510d61ed32fd|kills=138|score=2174|version=0.0006|sessionid=116186ea-b7c1-48ec-b7b1-6d96466cfb18|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063905856652782_save.txt
+ticks=635063913841559492|username=MESSER|level=3|userid=|gameid=84a8786e-534c-41ec-bfee-8eac2676ad63|kills=52|score=731|version=0.0006|sessionid=fe1fd076-a3a3-4dec-95b0-5d8e55e29680|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063913841559492_save.txt
 ticks=635056347141809598|username=MESSER3|level=4|userid=|gameid=|kills=140|score=3375|version=0.0004|sessionid=|file=635056347141809598_save.txt
 ticks=635056389100891295|username=MESSER3|level=4|userid=|gameid=|kills=150|score=2880|version=0.0004|sessionid=|file=635056389100891295_save.txt
 ticks=635056398975240639|username=MESSER3|level=4|userid=|gameid=|kills=150|score=3280|version=0.0004|sessionid=|file=635056398975240639_save.txt
@@ -98,6 +114,8 @@ ticks=635060215019342073|username=MESSERDICE|level=4|userid=|gameid=|kills=131|s
 ticks=635060323364964372|username=SHELT|level=4|userid=|gameid=|kills=135|score=3555|version=0.0004|sessionid=|file=635060323364964372_save.txt
 ticks=635060332182255859|username=SHELT|level=4|userid=|gameid=|kills=135|score=3555|version=0.0004|sessionid=|file=635060332182255859_save.txt
 ticks=635060723336562885|username=MESSER|level=4|userid=|gameid=|kills=17|score=221|version=0.0006|sessionid=|file=635060723336562885_save.txt
+ticks=635063895779476400|username=MESSER|level=4|userid=|gameid=39096ef9-ef87-4fe4-ac59-1792f327ea46|kills=124|score=3012|version=0.0006|sessionid=|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063895779476400_save.txt
+ticks=635063906330729897|username=MESSER|level=4|userid=|gameid=cf1ec4b4-f2ca-4e99-8f74-5542f4b3536a|kills=126|score=3238|version=0.0006|sessionid=116186ea-b7c1-48ec-b7b1-6d96466cfb18|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063906330729897_save.txt
 ticks=635056349841394340|username=MESSER3|level=5|userid=|gameid=|kills=143|score=3635|version=0.0004|sessionid=|file=635056349841394340_save.txt
 ticks=635056389803048529|username=MESSER3|level=5|userid=|gameid=|kills=139|score=3575|version=0.0004|sessionid=|file=635056389803048529_save.txt
 ticks=635056399666009852|username=MESSER3|level=5|userid=|gameid=|kills=142|score=3020|version=0.0004|sessionid=|file=635056399666009852_save.txt
@@ -111,6 +129,8 @@ ticks=635060124938543854|username=SHELT|level=5|userid=|gameid=|kills=152|score=
 ticks=635060215708551283|username=MESSERDICE|level=5|userid=|gameid=|kills=146|score=3876|version=0.0004|sessionid=|file=635060215708551283_save.txt
 ticks=635060324053393581|username=SHELT|level=5|userid=|gameid=|kills=151|score=3949|version=0.0004|sessionid=|file=635060324053393581_save.txt
 ticks=635060332868189063|username=SHELT|level=5|userid=|gameid=|kills=150|score=3734|version=0.0004|sessionid=|file=635060332868189063_save.txt
+ticks=635063895947115988|username=MESSER|level=5|userid=|gameid=6754767b-5a4c-43ad-b3ce-ed6fe643f5d9|kills=32|score=1046|version=0.0006|sessionid=|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063895947115988_save.txt
+ticks=635063906791646260|username=MESSER|level=5|userid=|gameid=ba8a1635-1616-4ea4-8083-90db7d2ee81b|kills=144|score=2848|version=0.0006|sessionid=116186ea-b7c1-48ec-b7b1-6d96466cfb18|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063906791646260_save.txt
 ticks=635056359452727221|username=MESSER3|level=6|userid=|gameid=|kills=192|score=4623|version=0.0004|sessionid=|file=635056359452727221_save.txt
 ticks=635056362379604362|username=MESSER3|level=6|userid=|gameid=|kills=207|score=4985|version=0.0004|sessionid=|file=635056362379604362_save.txt
 ticks=635056390415349604|username=MESSER3|level=6|userid=|gameid=|kills=186|score=3505|version=0.0004|sessionid=|file=635056390415349604_save.txt
@@ -123,6 +143,7 @@ ticks=635060125637425082|username=SHELT|level=6|userid=|gameid=|kills=208|score=
 ticks=635060216394016487|username=MESSERDICE|level=6|userid=|gameid=|kills=207|score=4585|version=0.0004|sessionid=|file=635060216394016487_save.txt
 ticks=635060324739638786|username=SHELT|level=6|userid=|gameid=|kills=208|score=4993|version=0.0004|sessionid=|file=635060324739638786_save.txt
 ticks=635060333554278268|username=SHELT|level=6|userid=|gameid=|kills=207|score=4978|version=0.0004|sessionid=|file=635060333554278268_save.txt
+ticks=635063907183098650|username=MESSER|level=6|userid=|gameid=a6e1c9f7-a0dc-4d7e-8081-64e245386ebb|kills=163|score=3024|version=0.0006|sessionid=116186ea-b7c1-48ec-b7b1-6d96466cfb18|file=D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\games/635063907183098650_save.txt
 ticks=635056363063821564|username=MESSER3|level=7|userid=|gameid=|kills=195|score=4658|version=0.0004|sessionid=|file=635056363063821564_save.txt
 ticks=635056401044272273|username=MESSER3|level=7|userid=|gameid=|kills=205|score=5212|version=0.0004|sessionid=|file=635056401044272273_save.txt
 ticks=635058900189908697|username=MESSER3|level=7|userid=|gameid=|kills=198|score=4507|version=0.0004|sessionid=|file=635058900189908697_save.txt

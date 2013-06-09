@@ -11,6 +11,7 @@ namespace SharedSmashResources {
         public string GameId { get; set; }
         public string UserId { get; set; }
         public string SessionId { get; set; }
+        public string LoginKey { get; set; }
         public string UserName { get; set; }
         public string GameVersion { get; set; }
         
@@ -26,7 +27,7 @@ namespace SharedSmashResources {
         public List<MesserKeys> KeyboardStates { get; set; }
         public List<MesserMouse> MouseStates { get; set; }
         public List<float> DeltaTimes { get; set; }
-        public int StoredStatesCount { get { return MouseStates.Count; } }
+        public int FrameCounts { get { return MouseStates.Count; } }
 
         public GameStates() {
             KeyboardStates = new List<MesserKeys>();
@@ -53,6 +54,7 @@ namespace SharedSmashResources {
             Kills = 0;
             Level = 0;
             Seed = 0;
+            LoginKey = "";
             UserName = "";
             UserId = "";
             GameId = "";

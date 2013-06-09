@@ -38,7 +38,6 @@ namespace MesserSmash.GUI {
         private bool _popupVisible;
         private string _popupText;
         private bool _gotLoadingScreenData;
-        private bool _showNextReplay;
         private Action _onPopupCallback;
 
 
@@ -49,7 +48,6 @@ namespace MesserSmash.GUI {
         }
 
         internal void reset() {
-            _showNextReplay = false;
             _inGame = false;
             _loadingScreenVisible = false;
             _popupVisible = false;
@@ -280,7 +278,6 @@ namespace MesserSmash.GUI {
         }
 
         internal void showNextReplayOnClick() {
-            _showNextReplay = true;
             showOkPopup("Replay Finished, continue to next?", onShowNextReplay);
         }
 

@@ -3,25 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SharedSmashResources {
-    public class Highscore {
+namespace MesserSmashWebServer {
+    class GameEntry {
+        [Flags]
+        public enum GameStatuses {
+            Open = 1 << 0,
+            Closed = 1 << 1,
+            LevelCompleted = 1 << 2,
+            Dead = 1 << 3,
+            Aborted = 1 << 4,
+        }
+
+        public string LoginKey { get; set; }
+        public string UserName { get; set; }
         public string UserId { get; set; }
         public string GameId { get; set; }
         public string SessionId { get; set; }
         public long Ticks { get; set; }
-
-        public string UserName { get; set; }
         public uint Level { get; set; }
-        public uint Kills { get; set; }
-        public uint Score { get; set; }
-        public string GameVersion { get; set; }
-        public string File { get; set; }
+        public GameStatuses Status { get; set; }
 
         public override string ToString() {
-            return String.Format("ticks={0}|username={1}|level={2}|userid={3}|gameid={4}|kills={5}|score={6}|version={7}|sessionid={8}|file={9}", Ticks, UserName, Level, UserId, GameId, Kills, Score, GameVersion, SessionId, File);
+            return String.Format("ticks={0}|sessionid={1}|username={2}|userid={3}|gameid={4}|loginkey={5}|level={6}|status={7}", Ticks, SessionId, UserName, UserId, GameId, LoginKey, Level, (uint)Status);
         }
 
-        public static Highscore FromString(string rawLine) {
+        public static GameEntry FromString(string rawLine) {
             Dictionary<string, string> table = new Dictionary<string, string>();
             var items = rawLine.Split('|');
             foreach (var pair in items) {
@@ -29,17 +35,15 @@ namespace SharedSmashResources {
                 table.Add(item[0], item[1]);
             }
 
-            var ret = new Highscore();
+            var ret = new GameEntry();
+            ret.Ticks = ParseLong(table, "ticks");
+            ret.SessionId = ParseString(table, "sessionid");
             ret.UserName = ParseString(table, "username");
             ret.UserId = ParseString(table, "userid");
             ret.GameId = ParseString(table, "gameid");
-            ret.SessionId = ParseString(table, "sessionid");
-            ret.Ticks = ParseLong(table, "ticks");
             ret.Level = ParseUint(table, "level");
-            ret.Kills = ParseUint(table, "kills");
-            ret.Score = ParseUint(table, "score");
-            ret.GameVersion = ParseString(table, "version", "0.0004");
-            ret.File = ParseString(table, "file", String.Format("{0}_save.txt", ret.Ticks));
+            ret.LoginKey = ParseString(table, "loginkey");
+            ret.Status = (GameStatuses)ParseUint(table, "status");
             return ret;
         }
 
@@ -55,7 +59,7 @@ namespace SharedSmashResources {
         }
 
         private static string ParseString(Dictionary<string, string> container, string key, string defaultValue = "") {
-            if(container.ContainsKey(key)) {
+            if (container.ContainsKey(key)) {
                 return container[key];
             }
             return defaultValue;

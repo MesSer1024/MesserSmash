@@ -12,9 +12,10 @@ namespace SharedSmashResources {
         }
 
         public const string REQUEST_BEGIN_GAME = "beginGame";
+        public const string REQUEST_CONTINUE_GAME = "continueGame";
         public const string REQUEST_UPDATE_STATUS = "status";
         public const string REQUEST_GET_HIGHSCORE_ON_LEVEL = "getHighscoreOnLevel";
-        public const string REQUEST_SAVE_GAME = "final";
+        public const string REQUEST_END_GAME = "final";
         public const string SCORE = "score";
         public const string KILLS = "kills";
         public const string LEVEL = "level";

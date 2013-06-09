@@ -1,0 +1,12 @@
+ticks=0|sessionid=fe1fd076-a3a3-4dec-95b0-5d8e55e29680|username=MESSER|userid=|gameid=79826788-9c56-4d8a-9bde-bb3cee69129b|loginkey=freeloader|level=1|status=1
+ticks=635063913301068578|sessionid=fe1fd076-a3a3-4dec-95b0-5d8e55e29680|username=MESSER|userid=|gameid=79826788-9c56-4d8a-9bde-bb3cee69129b|loginkey=freeloader|level=1|status=2
+ticks=0|sessionid=fe1fd076-a3a3-4dec-95b0-5d8e55e29680|username=MESSER|userid=|gameid=cdc6ec08-1adb-4ee8-ba9c-397b1f6ab285|loginkey=freeloader|level=2|status=1
+ticks=635063913665219406|sessionid=fe1fd076-a3a3-4dec-95b0-5d8e55e29680|username=MESSER|userid=|gameid=cdc6ec08-1adb-4ee8-ba9c-397b1f6ab285|loginkey=freeloader|level=2|status=2
+ticks=0|sessionid=fe1fd076-a3a3-4dec-95b0-5d8e55e29680|username=MESSER|userid=|gameid=84a8786e-534c-41ec-bfee-8eac2676ad63|loginkey=freeloader|level=3|status=1
+ticks=635063913841559492|sessionid=fe1fd076-a3a3-4dec-95b0-5d8e55e29680|username=MESSER|userid=|gameid=84a8786e-534c-41ec-bfee-8eac2676ad63|loginkey=freeloader|level=3|status=2
+ticks=0|sessionid=f1713cdc-f60e-43e0-9f74-d153d3d1c041|username=MESSER|userid=|gameid=17c7a5df-e384-47b5-a5a3-fd577b648b6d|loginkey=freeloader|level=1|status=1
+ticks=635063914199639973|sessionid=f1713cdc-f60e-43e0-9f74-d153d3d1c041|username=MESSER|userid=|gameid=17c7a5df-e384-47b5-a5a3-fd577b648b6d|loginkey=freeloader|level=1|status=2
+ticks=0|sessionid=f1713cdc-f60e-43e0-9f74-d153d3d1c041|username=MESSER|userid=|gameid=9b0e8dba-427c-4759-88dc-c2795fcf42cc|loginkey=freeloader|level=2|status=1
+ticks=635063914436803538|sessionid=f1713cdc-f60e-43e0-9f74-d153d3d1c041|username=MESSER|userid=|gameid=9b0e8dba-427c-4759-88dc-c2795fcf42cc|loginkey=freeloader|level=2|status=2
+ticks=0|sessionid=901ad6e5-1b30-4942-acb8-6092c0fc563b|username=MESSER|userid=|gameid=73785878-6790-44bf-8b8d-e24fbcadf177|loginkey=freeloader|level=2|status=1
+ticks=635063914723679947|sessionid=901ad6e5-1b30-4942-acb8-6092c0fc563b|username=MESSER|userid=|gameid=73785878-6790-44bf-8b8d-e24fbcadf177|loginkey=freeloader|level=2|status=2

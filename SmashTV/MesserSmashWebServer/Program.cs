@@ -12,11 +12,13 @@ namespace MesserSmashWebServer {
         private static HighscoreContainer _highscores;
         private static string _url;
         private static LocalServer _server;
+        private static ServerDb _gameEntries;
         //http://pawncraft.co.uk:8801/ this is the external url to the messersmash server
 
         static void Main(string[] args) {
             var highscoreFilePath = "./highscores/highscores.txt";
             _highscores = new HighscoreContainer();
+            _gameEntries = new ServerDb();
             Logger.init("MesserSmashServer.txt");
 
             //MesserSmashTest.test(null);
@@ -39,6 +41,7 @@ namespace MesserSmashWebServer {
             _url = url ?? "http://localhost:8801/";
 
             _highscores.populateHighscores(highscoreFilePath);
+            _gameEntries.init();
 
             var server = new MesserSmashWebServer(HandleHttpRequest, _url);
             _server = server.LocalServer;
@@ -47,22 +50,38 @@ namespace MesserSmashWebServer {
             Console.ReadKey();
             server.Stop();
             _highscores.outputToFile(highscoreFilePath);
-        }
-
-        private void writeHighscoresToFile(string relativeFilePath) {
-            _highscores.outputToFile(relativeFilePath);
+            _gameEntries.close();
         }
 
         public static string HandleHttpRequest(string request, string rawData) {
             switch (request) {
-                case MesserSmashWeb.REQUEST_SAVE_GAME: {
+                case MesserSmashWeb.REQUEST_BEGIN_GAME: {
+                    var items = toTable(rawData);
+                        var userid = items[MesserSmashWeb.USER_ID].ToString();
+                        var username = items[MesserSmashWeb.USER_NAME].ToString();
+                        var loginKey = items[MesserSmashWeb.LOGIN_SESSION].ToString();
+                        var level = uint.Parse(items[MesserSmashWeb.LEVEL].ToString());
+
+                        var gameid = Guid.NewGuid().ToString();
+                        var sessionid = Guid.NewGuid().ToString();
+
+                        var result = new Dictionary<string, object> {
+                            {MesserSmashWeb.GAME_ID, gameid},
+                            {MesserSmashWeb.SESSION_ID, sessionid}
+                        };
+
+                        _gameEntries.addEntry(new GameEntry { UserId = userid, UserName = username, LoginKey = loginKey, Level = level, GameId = gameid, SessionId = sessionid, Status = GameEntry.GameStatuses.Open });
+
+                        return fastJSON.JSON.Instance.ToJSON(result);
+                    }
+                case MesserSmashWeb.REQUEST_END_GAME: {
                         GameStates states = _server.handleSaveGame(rawData);
                         if (states != null) {
-                            saveGame(states);
+                            var ticks = saveGameAndGetTimestamp(states);
+                            _gameEntries.addEntry(new GameEntry {UserId = states.UserId, GameId=states.GameId, Level = (uint)states.Level, SessionId=states.SessionId, Ticks = ticks, UserName = states.UserName, LoginKey=states.LoginKey, Status = GameEntry.GameStatuses.Closed });
                         } else {
                             return string.Format("Foobar | error={0}", states);
                         }
-                        StringBuilder sb = new StringBuilder();
                         return "OK";
                     }
                 case MesserSmashWeb.REQUEST_GET_HIGHSCORE_ON_LEVEL: {
@@ -83,12 +102,20 @@ namespace MesserSmashWebServer {
 
                     }
                     break;
-                case MesserSmashWeb.REQUEST_BEGIN_GAME: {
+                case MesserSmashWeb.REQUEST_CONTINUE_GAME: {
+                        var items = toTable(rawData);
+                        uint level = uint.Parse(items[MesserSmashWeb.LEVEL].ToString());
+                        string session = items[MesserSmashWeb.SESSION_ID].ToString();
+                        string userid = items[MesserSmashWeb.USER_ID].ToString();
+                        string username = items[MesserSmashWeb.USER_NAME].ToString();
+                        string loginkey = items[MesserSmashWeb.LOGIN_SESSION].ToString();
+
                         var gameid = Guid.NewGuid().ToString();
-                        var sessionid = Guid.NewGuid().ToString();
+                        _gameEntries.addEntry(new GameEntry { UserId = userid, UserName = username, LoginKey = loginkey, Level = level, GameId = gameid, SessionId = session, Status = GameEntry.GameStatuses.Open });
+
                         var result = new Dictionary<string, object> {
                             {MesserSmashWeb.GAME_ID, gameid},
-                            {MesserSmashWeb.SESSION_ID, sessionid}
+                            {MesserSmashWeb.SESSION_ID, session}
                         };
                         return fastJSON.JSON.Instance.ToJSON(result);
                     }
@@ -98,6 +125,7 @@ namespace MesserSmashWebServer {
                     }
                     break;
             }
+            
             return "status=666";
         }
 
@@ -106,7 +134,7 @@ namespace MesserSmashWebServer {
             return fastJSON.JSON.Instance.Parse(rawData) as Dictionary<string, object>;
         }
 
-        private static void saveGame(GameStates data) {
+        private static long saveGameAndGetTimestamp(GameStates data) {
             var folder = new DirectoryInfo(System.Environment.CurrentDirectory);
             folder = folder.CreateSubdirectory("games");
 
@@ -122,6 +150,7 @@ namespace MesserSmashWebServer {
                 sw.Flush();
             }
             _highscores.addHighscore(new Highscore { Ticks = timestamp, File = outputFile, GameId = data.GameId, GameVersion = data.GameVersion, Kills = (uint)data.Kills, Level = (uint)data.Level, Score = (uint)data.Score, SessionId = data.SessionId, UserId = data.UserId, UserName = data.UserName });
+            return timestamp;
         }
     }
 }

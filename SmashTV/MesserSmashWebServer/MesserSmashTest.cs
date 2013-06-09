@@ -129,7 +129,7 @@ namespace MesserSmashWebServer {
                             };
                     }
                     break;
-                case MesserSmashWeb.REQUEST_SAVE_GAME: {
+                case MesserSmashWeb.REQUEST_END_GAME: {
                         GameHandler.verifyDataStatus(data, out status_code);
                         if (status_code == 0) {
                             var level = (int)GameHandler.readLevel();
@@ -177,7 +177,7 @@ namespace MesserSmashWebServer {
                             };
                     }
                     break;
-                case MesserSmashWeb.REQUEST_SAVE_GAME: {
+                case MesserSmashWeb.REQUEST_END_GAME: {
                         int code;
                         GameHandler.verifyDataStatus(data, out code);
                         if (code == 0) {

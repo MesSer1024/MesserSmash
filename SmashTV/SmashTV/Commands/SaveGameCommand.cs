@@ -10,10 +10,12 @@ namespace MesserSmash.Commands {
     class SaveGameCommand : Command {
         public const string NAME = "SaveGameCommand";
         private GameStates _states;
+        private DataCompression _compression;
 
         public SaveGameCommand(SharedSmashResources.GameStates states)
             : base(NAME) {
             _states = states;
+            _compression = new DataCompression();
 
             var folder = new DirectoryInfo(System.Environment.CurrentDirectory);
             folder = folder.CreateSubdirectory("games");

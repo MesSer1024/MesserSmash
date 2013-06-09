@@ -17,7 +17,9 @@ using System.Threading;
 namespace MesserSmash {
 	public class SmashTVSystem : IObserver {
 		private static SmashTVSystem _instance;
-		public static SmashTVSystem Instance { get { return _instance; } }
+        public static SmashTVSystem Instance {
+            get { return _instance; }
+        }
 
 		private Arena _arena;
 
@@ -53,10 +55,16 @@ namespace MesserSmash {
             get { return _globalHighscores; }
         }
 
-        public int KillCount { get { return _killCount; } }
-
 		public SmashTVSystem() {
 			_instance = this;
+            Username = "";
+            GameId = "";
+            UserId = "";
+            ServerIp = "";
+            ReplayPath = "";
+            GameVersion = "";
+            LoginResponseKey = "";
+            SessionId = "";
 			Controller.instance.addObserver(this);
 		}
 
@@ -67,6 +75,12 @@ namespace MesserSmash {
         public string ReplayPath { get; set; }
         public string GameVersion { get; set; }
         public string LoginResponseKey { get; set; }
+        private string _sessionId;
+        public string SessionId {
+            get { return _sessionId; }
+            set { _sessionId = value; }
+        }
+        public int KillCount { get { return _killCount; } }
 
 		private int _killCount;
 		private bool _gameStarted = false;
@@ -344,8 +358,5 @@ namespace MesserSmash {
         internal void showPopup(string s) {
             _gui.showOkPopup(s, null);
         }
-
-
-        public string SessionId { get; set; }
     }
 }

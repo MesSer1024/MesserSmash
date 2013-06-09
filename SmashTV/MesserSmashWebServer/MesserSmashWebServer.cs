@@ -50,7 +50,7 @@ namespace MesserSmashWebServer {
             ThreadPool.QueueUserWorkItem((o) => {
                 Console.WriteLine("Webserver running...");
                 try {
-                    while (_listener.IsListening) {
+                    while (_listener.IsListening) {                        
                         Console.WriteLine("<-Got data");
                         ThreadPool.QueueUserWorkItem((c) => {
                             var ctx = c as HttpListenerContext;
@@ -85,6 +85,7 @@ namespace MesserSmashWebServer {
                                 // always close the stream
                                 ctx.Response.OutputStream.Close();
                                 Logger.info("Handled request={0} in {1}ms", request, (DateTime.Now - timestamp).TotalMilliseconds);
+                                Console.WriteLine("Handled request={0} in {1}ms", request, (DateTime.Now - timestamp).TotalMilliseconds);
                             }
                         }, _listener.GetContext());
                     }

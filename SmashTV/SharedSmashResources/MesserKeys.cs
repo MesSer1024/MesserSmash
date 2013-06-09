@@ -9,14 +9,14 @@ namespace SharedSmashResources {
         public Keys[] PressedKeys { get; set; }
 
         public MesserKeys() {
-            PressedKeys = new Keys[0];
+            PressedKeys = new Keys[] {};
         }
 
         public static MesserKeys Create(KeyboardState state) {
-            var mouse = new MesserKeys {
+            var keyb = new MesserKeys {
                 PressedKeys = state.GetPressedKeys()
             };
-            return mouse;
+            return keyb;
         }
 
         public bool IsKeyDown(Keys key) {
