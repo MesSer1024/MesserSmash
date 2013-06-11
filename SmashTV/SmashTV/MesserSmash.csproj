@@ -130,6 +130,9 @@
     <Compile Include="Arenas\Level16.cs" />
     <Compile Include="Commands\ClientReadyCommand.cs" />
     <Compile Include="Commands\BeginReplayQueueCommand.cs" />
+    <Compile Include="Commands\LevelWonCommand.cs" />
+    <Compile Include="Commands\RoundWonCommand.cs" />
+    <Compile Include="Commands\RequestRoundHighscoresCommand.cs" />
     <Compile Include="Commands\RequestContinueGameCommand.cs" />
     <Compile Include="Commands\RegisterLevelHighscoreCommand.cs" />
     <Compile Include="Commands\LevelStartedCommand.cs" />
@@ -151,7 +154,7 @@
     <Compile Include="Commands\PlayerDiedCommand.cs" />
     <Compile Include="Commands\RegisterUsernameCommand.cs" />
     <Compile Include="Commands\ReloadDatabaseCommand.cs" />
-    <Compile Include="Commands\RequestHighscoresCommand.cs" />
+    <Compile Include="Commands\RequestLevelHighscoresCommand.cs" />
     <Compile Include="Commands\RequestBeginNewGameCommand.cs" />
     <Compile Include="Commands\SaveGameCommand.cs" />
     <Compile Include="Commands\SpawnWaveCommand.cs" />
@@ -184,7 +187,7 @@
     <Compile Include="Modules\BoundaryChecker.cs" />
     <Compile Include="Modules\DataDefines.cs" />
     <Compile Include="Modules\GameState.cs" />
-    <Compile Include="Modules\ClientHighscore.cs" />
+    <Compile Include="Modules\LocalHighscore.cs" />
     <Compile Include="Modules\PathFinder.cs" />
     <Compile Include="Modules\SmashDb.cs" />
     <Compile Include="Modules\SoundManager.cs" />

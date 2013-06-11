@@ -37,8 +37,9 @@ namespace MesserSmash.Commands {
                     var dir = MesserSmashWeb.toObject(data);
                     var gameid = dir[MesserSmashWeb.GAME_ID];
                     var sessionid = dir[MesserSmashWeb.SESSION_ID];
+                    var roundid = dir[MesserSmashWeb.ROUND_ID];
 
-                    var cmd = new UpdateGameCredentialsCommand(sessionid.ToString(), gameid.ToString());
+                    var cmd = new UpdateGameCredentialsCommand(sessionid.ToString(), gameid.ToString(), roundid.ToString());
                     cmd.execute();
                 } catch (System.Exception ex) {
                     Logger.error("Error parsing RequestSession data={0}", ex.ToString());
@@ -50,7 +51,7 @@ namespace MesserSmash.Commands {
         }
 
         private void invalidData() {            
-            new UpdateGameCredentialsCommand(null, null).execute();
+            new UpdateGameCredentialsCommand(null, null, null).execute();
         }
     }
 }

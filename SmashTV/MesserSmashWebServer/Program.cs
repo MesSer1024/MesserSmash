@@ -40,7 +40,7 @@ namespace MesserSmashWebServer {
             }
             _url = url ?? "http://localhost:8801/";
 
-            _highscores.populateHighscores(highscoreFilePath);
+            _highscores.populateHighscoresFromFile(highscoreFilePath);
             _gameEntries.init();
 
             var server = new MesserSmashWebServer(HandleHttpRequest, _url);
@@ -49,7 +49,7 @@ namespace MesserSmashWebServer {
             Console.WriteLine("A simple webserver url:{0} \nPress a key to quit.", _url);
             Console.ReadKey();
             server.Stop();
-            _highscores.outputToFile(highscoreFilePath);
+            _highscores.writeHighscoresToFile(highscoreFilePath);
             _gameEntries.close();
         }
 
@@ -92,6 +92,23 @@ namespace MesserSmashWebServer {
                             //return fastJSON.JSON.Instance.ToJSON(scores);
                             var sb = new StringBuilder();
                             foreach (var item in scores) {
+                                sb.AppendLine(item.ToString());
+                            }
+                            return sb.ToString();
+                        } catch (Exception e) {
+                            Console.WriteLine("Unable to parse data from client {0}", e.ToString());
+                            Logger.error("Unable to parse data from client {0}", e.ToString());
+                        }
+
+                    }
+                    break;
+                case MesserSmashWeb.REQUEST_GET_HIGHSCORE_FOR_ROUND: {
+                        try {
+                            var items = toTable(rawData);
+                            uint round = uint.Parse(items[MesserSmashWeb.ROUND_ID].ToString());
+                            var scores = _highscores.getHighscoresOnRound(round);
+                            var sb = new StringBuilder();
+                            foreach (var item in scores.Values) {
                                 sb.AppendLine(item.ToString());
                             }
                             return sb.ToString();
@@ -149,7 +166,7 @@ namespace MesserSmashWebServer {
                 sw.Write(data.toJson());
                 sw.Flush();
             }
-            _highscores.addHighscore(new Highscore { Ticks = timestamp, File = outputFile, GameId = data.GameId, GameVersion = data.GameVersion, Kills = (uint)data.Kills, Level = (uint)data.Level, Score = (uint)data.Score, SessionId = data.SessionId, UserId = data.UserId, UserName = data.UserName });
+            _highscores.addHighscore(new Highscore { Ticks = timestamp, File = timestamp + "_save.txt", GameId = data.GameId, GameVersion = data.GameVersion, Kills = (uint)data.Kills, Level = (uint)data.Level, Score = (uint)data.Score, SessionId = data.SessionId, UserId = data.UserId, UserName = data.UserName });
             return timestamp;
         }
     }

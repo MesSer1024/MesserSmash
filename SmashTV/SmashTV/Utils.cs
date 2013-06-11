@@ -415,7 +415,7 @@ namespace MesserSmash {
 
         public static bool anyEquals(object value, params object[] args) {
             for (int i = 0; i < args.Length; i++) {
-                if (value == args[i])
+                if (value.Equals(args[i]))
                     return true;
             }
             return false;

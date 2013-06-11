@@ -15,11 +15,13 @@ namespace SharedSmashResources {
         public const string REQUEST_CONTINUE_GAME = "continueGame";
         public const string REQUEST_UPDATE_STATUS = "status";
         public const string REQUEST_GET_HIGHSCORE_ON_LEVEL = "getHighscoreOnLevel";
+        public const string REQUEST_GET_HIGHSCORE_FOR_ROUND = "getHighscoreForRound";
         public const string REQUEST_END_GAME = "final";
         public const string SCORE = "score";
         public const string KILLS = "kills";
         public const string LEVEL = "level";
 
+        public const string ROUND_ID = "round_id";
         public const string LOGIN_SESSION = "product_key";
         public const string USER_NAME = "user_name";
         public const string USER_ID = "user_id";
@@ -38,5 +40,6 @@ namespace SharedSmashResources {
         public const string TOP_SCORES = "top_scores";
         public const string RANK = "highscore_rank";
         public const string USERS_HIGHSCORE_INFO = "users_score";
+
     }
 }

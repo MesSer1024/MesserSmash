@@ -31,8 +31,6 @@ namespace MesserSmash {
 
 		private SmashTVSystem _smashTvSystem;
 		private int _currentLevel;
-		private float _betweenLevelTimer;
-		private bool _waitingForTimer;
 		private bool _paused;
 		private SoundManager _sound;
 		private int _timeMultiplierIndex = 3;
@@ -48,7 +46,6 @@ namespace MesserSmash {
 		private bool _hasUsername;
 		private IScreen _screen;
 		private float _timeSinceLevelStart;
-        private bool _waitingForGameCredentials;
         private List<FileInfo> _replayQueue;
         private int _replayQueueIndex;
 
@@ -109,11 +106,7 @@ namespace MesserSmash {
 			InfoWindow._defaultFont = _defaultFont;
 			_smashTvSystem = new SmashTVSystem();
 			_currentLevel = 0;
-			_waitingForTimer = true;
-			_betweenLevelTimer = 0;
-
 			new LoadConfigFileCommand().execute();
-            //new RequestHighscoresCommand(1).execute();
 		}
 
 		private void onRestartGame(ICommand command) {
@@ -125,15 +118,15 @@ namespace MesserSmash {
 		private void prepareNewLevel(int level, bool restartGame = false) {
 			Logger.info("prepareNewLevel");
 			cleanOldData();
-            _waitingForGameCredentials = level > 0;
+            SmashTVSystem.Instance.WaitingForGameCredentials = level > 0;
             if (restartGame) {
-                if (_waitingForGameCredentials) {
+                if (SmashTVSystem.Instance.WaitingForGameCredentials) {
                     new RequestBeginNewGameCommand(level).execute();
                 }
 
                 Scoring.reset();
             } else {
-                if (_waitingForGameCredentials) {
+                if (SmashTVSystem.Instance.WaitingForGameCredentials) {
                     new RequestContinueGameCommand(level).execute();
                 }
             }
@@ -172,11 +165,10 @@ namespace MesserSmash {
 				_currentLevel = level;
 			}
 			_states.Level = _currentLevel;
-			Scoring.setLevel(_currentLevel);
 			_playing = true;
 			var player = new Player(arena.getPlayerStartPosition());
 			arena.onGameFinished += new Arena.ArenaDelegate(onGameFinished);
-			_smashTvSystem.initLevel(arena, player, new ShotContainer(), new EnemyContainer(), _replay);
+			_smashTvSystem.initLevel(arena, player, new ShotContainer(), new EnemyContainer(), _replay, restartGame);
 		}
 
         private FileInfo getNextReplay() {
@@ -272,6 +264,7 @@ namespace MesserSmash {
 				_screen = new NewUserScreen();
 			}
 
+            prepareNewLevel(1, true);
 		}
 
 		private void onRegisterUsername(ICommand cmd) {
@@ -288,10 +281,9 @@ namespace MesserSmash {
             var command = cmd as UpdateGameCredentialsCommand;
             SmashTVSystem.Instance.GameId = command.GameId;
             SmashTVSystem.Instance.SessionId = command.SessionId;
-            if (_waitingForGameCredentials) {
-                _waitingForGameCredentials = false;
-                _smashTvSystem.Gui.showLoadingScreen(true);
-            }
+            SmashTVSystem.Instance.RoundId = command.RoundId;
+
+            SmashTVSystem.Instance.WaitingForGameCredentials = false;
         }
 
 		void onPlayerDead(ICommand command) {
@@ -301,7 +293,6 @@ namespace MesserSmash {
             saveGame();
             if (!_replay) {
                 new RegisterHighscoreCommand(_states.UserName);
-                _smashTvSystem.showGameOverScreen();
             } else {
                 if (_replay && _replayQueue != null && _replayQueue.Count > 0) {
                     SmashTVSystem.Instance.Gui.showNextReplayOnClick();
@@ -312,25 +303,38 @@ namespace MesserSmash {
 
 		void onGameFinished(Arena arena) {
 			_playing = false;
-			_betweenLevelTimer = 0;
-			_waitingForTimer = true;
 			saveInputState(_state);
 			saveGame();
 
 			Logger.info("Game finished frames:{1} random status: {0}", MesserRandom.getStatus(), _states.FrameCounts);
-
             if (_replay && _replayQueue != null && _replayQueue.Count > 0) {
                 SmashTVSystem.Instance.Gui.showNextReplayOnClick();
+            }
+
+            if (_smashTvSystem.lastLevelInSet(_currentLevel, SmashTVSystem.Instance.RoundId)) {
+                _smashTvSystem.unloadArena();
+                var cmd = new RoundWonCommand();
+                cmd.GameInstance = SmashTVSystem.Instance;
+                cmd.Gui = SmashTVSystem.Instance.Gui;                
+                cmd.execute();
+            } else {
+                _smashTvSystem.unloadArena();
+                var cmd = new LevelWonCommand();
+                cmd.GameInstance = SmashTVSystem.Instance;
+                cmd.Gui = SmashTVSystem.Instance.Gui;
+                cmd.execute();
+                prepareNewLevel(++_currentLevel);
             }
 		}
 
 		private void onClientReady(ICommand cmd) {
-			_timeSinceLevelStart = 0;
+            Scoring.setLevel(_currentLevel);
+            _timeSinceLevelStart = 0;
 			_smashTvSystem.startLoadedLevel();
 		}
 
 		private void cleanOldData() {
-            _waitingForGameCredentials = false;
+            SmashTVSystem.Instance.WaitingForGameCredentials = false;
             _smashTvSystem.resetStates();
 			_states.reset();
 			Logger.init();
@@ -340,7 +344,6 @@ namespace MesserSmash {
 				arena.onGameFinished -= onGameFinished;
 				arena.clean();
 			}
-			_waitingForTimer = false;
             _loadedGame = null;
 			new ReloadDatabaseCommand().execute();
 		}
@@ -379,17 +382,11 @@ namespace MesserSmash {
                     SmashTVSystem.Instance.Arena.checkDebugInput();
                     return;
                 }
-                _betweenLevelTimer += deltaTime;
-                if (_waitingForTimer && _betweenLevelTimer >= 5) {
-                    _waitingForTimer = false;
-                    prepareNewLevel(++_currentLevel);
-                    return;
-                }
             }
 			_timeSinceLevelStart += deltaTime;
 			_state = new GameState(deltaTime, _timeSinceLevelStart);
 			_smashTvSystem.update(_state);
-			if (_playing && !_replay && !_waitingForGameCredentials) {
+			if (_playing && !_replay && !SmashTVSystem.Instance.WaitingForGameCredentials) {
 				saveInputState(_state);
 			}
             if (_replay && --replayFrames > 0) {

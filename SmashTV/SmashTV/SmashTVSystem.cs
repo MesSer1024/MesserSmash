@@ -51,7 +51,7 @@ namespace MesserSmash {
 		}
 
         private HighscoreContainer _globalHighscores;
-        public HighscoreContainer HighscoresClient {
+        public HighscoreContainer GameHighscores {
             get { return _globalHighscores; }
         }
 
@@ -66,8 +66,11 @@ namespace MesserSmash {
             LoginResponseKey = "";
             SessionId = "";
 			Controller.instance.addObserver(this);
+            _globalHighscores = new HighscoreContainer();
 		}
 
+        public uint RoundId { get; set; }
+        public bool WaitingForGameCredentials { get; set; }
         public string Username { get; set; }
         public string GameId { get; set; }
         public string UserId { get; set; }
@@ -96,7 +99,7 @@ namespace MesserSmash {
             _gameStarted = false;
         }
 
-		public void initLevel(Arena arena, Player player, ShotContainer shotContainer, EnemyContainer enemyContainer, bool replay) {
+		public void initLevel(Arena arena, Player player, ShotContainer shotContainer, EnemyContainer enemyContainer, bool replay, bool restartGame) {
             _replay = replay;
 			_gameStarted = false;
 			_queuedCommands = new List<string>();
@@ -104,14 +107,13 @@ namespace MesserSmash {
 			_player = player;
 			_shotContainer = shotContainer;
 			_enemyContainer = enemyContainer;
-            _globalHighscores = new HighscoreContainer();
 			_energySystem = EnergySystem.Instance;
             
-            new RequestHighscoresCommand(_arena.Level).execute();
-			_arena.onGameFinished += new Arena.ArenaDelegate(onArenaFinished);
 			_arena.onZeroTimer += new Arena.ArenaDelegate(onArenaTimerZero);
-            _gui.reset();
-            _gui.showLoadingScreen(replay);
+            if (restartGame) {
+                _gui.reset();
+                _gui.showLoadingScreen();
+            }
 		}
 
 		public void startLoadedLevel() {
@@ -138,7 +140,6 @@ namespace MesserSmash {
 		}
 
         void onArenaTimerZero(Arena arena) {
-            new RequestHighscoresCommand(_arena.Level).execute();
             _enemyContainer.endGame();
             _shotContainer.endGame();
             _player.stateEndGame();
@@ -146,15 +147,26 @@ namespace MesserSmash {
             Scoring.setKillsOnLevel(_killCount);
         }
 
-        void onArenaFinished(Arena arena) {
-            _arena.onGameFinished -= onArenaFinished;
+        public bool lastLevelInSet(int level, uint RoundId) {
+            if (Utils.anyEquals(level, 10,20,100))
+                return true;
+            return false;
+        }
+
+        public void unloadArena() {
             _queuedCommands.Add("end_arena");
         }
 
 		void onPlayerDead(ICommand command) {
-			var cmd = command as PlayerDiedCommand;
+            new RequestRoundHighscoresCommand(RoundId, GameHighscores, onRequestRoundHighscoreGameLost).execute();
+            _gui.showGameOver(_globalHighscores, false);
+            var cmd = command as PlayerDiedCommand;
 			_queuedCommands.Add("end_arena");            
 		}
+
+        private void onRequestRoundHighscoreGameLost(RequestRoundHighscoresCommand cmd) {
+            _gui.showGameOver(cmd.ScoringProvider, true);
+        }
 
 		public void update(GameState state) {
 			if (_queuedCommands.Count > 0) {
@@ -340,19 +352,6 @@ namespace MesserSmash {
 
         internal void saveData() {
             Scoring.setKillsOnLevel(_killCount);
-        }
-
-        internal void showGameOverScreen() {
-            _gui.showGameOver(new List<Highscore>());
-
-            ThreadWatcher.runBgThread(() => {
-                ClientHighscore.Instance.loadLocalLevelScore(_arena.Level);
-                var highscores = _globalHighscores.getHighscoresOnLevel((uint)_arena.Level);
-                foreach (var score in highscores) {
-                    ClientHighscore.Instance.appendScore(score.UserName, (int)score.Score, (int)score.Kills);
-                }
-                _gui.showGameOver(ClientHighscore.Instance.getTopScores(8));
-            });      
         }
 
         internal void showPopup(string s) {

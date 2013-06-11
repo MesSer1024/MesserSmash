@@ -100,6 +100,11 @@ namespace SharedSmashResources {
             //var rsp = postWebRequestAndGetResponse()
         }
 
+        public void requestRoundHighscores(Action<int, string> cb, Dictionary<string, object> data) {
+            var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.REQUEST_GET_HIGHSCORE_FOR_ROUND, _compression.Zip(fastJSON.JSON.Instance.ToJSON(data)));
+            cb.Invoke(0, response);
+        }
+
         public void requestBeginGame(Action<int, string> cb, Dictionary<string, object> data) {
             Logger.info("->requestBeginGame");
             var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.REQUEST_BEGIN_GAME, _compression.Zip(fastJSON.JSON.Instance.ToJSON(data)), 5000);
@@ -113,5 +118,6 @@ namespace SharedSmashResources {
             cb.Invoke(0, response);
             Logger.info("<-requestBeginGame");
         }
+
     }
 }

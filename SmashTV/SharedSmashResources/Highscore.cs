@@ -11,11 +11,19 @@ namespace SharedSmashResources {
         public long Ticks { get; set; }
 
         public string UserName { get; set; }
+        public uint RoundId { get; set; }
         public uint Level { get; set; }
         public uint Kills { get; set; }
         public uint Score { get; set; }
         public string GameVersion { get; set; }
         public string File { get; set; }
+        public bool IsLocalHighscore { get; set; }
+        public bool IsVerified { get; set; }
+        public bool IsMerged { get; set; }
+
+        public Highscore() {
+            IsLocalHighscore = true;            
+        }
 
         public override string ToString() {
             return String.Format("ticks={0}|username={1}|level={2}|userid={3}|gameid={4}|kills={5}|score={6}|version={7}|sessionid={8}|file={9}", Ticks, UserName, Level, UserId, GameId, Kills, Score, GameVersion, SessionId, File);
@@ -70,6 +78,15 @@ namespace SharedSmashResources {
                 }
             }
             return defaultValue;
+        }
+
+        public override bool Equals(object obj) {
+            var o = obj as Highscore;
+            if (o == null) { return false; }
+            if (o.GameId == GameId && o.GameId != "") {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -6,16 +6,19 @@ using System.IO;
 using SharedSmashResources;
 
 namespace MesserSmash.Modules {
-    class ClientHighscore {
-        private static ClientHighscore _instance;
-        public static ClientHighscore Instance { get {
-            if (_instance == null) {
-                _instance = new ClientHighscore();
+    public class LocalHighscore {
+        private static LocalHighscore _instance;
+        public static LocalHighscore Instance {
+            get {
+                if (_instance == null) {
+                    _instance = new LocalHighscore();
+                }
+                return _instance;
             }
-            return _instance;
-        } }
-        private ClientHighscore() {
+        }
 
+        private LocalHighscore() {
+            _instance = this;
         }
 
         private List<Highscore> _highscores = new List<Highscore>();
@@ -69,16 +72,37 @@ namespace MesserSmash.Modules {
             _highscores.Add(new Highscore { UserName = userName, Score = uint.Parse(score), Kills = uint.Parse(kills) });
         }
 
-        public List<Highscore> getTopScores(int howManyResults) {
+        internal List<Highscore> getHackedHighscoreList(int level) {
+            loadLocalLevelScore(level);
             var ret = new List<Highscore>();
-
-            var sortedHighscores = _highscores.OrderByDescending(a => a.Score);
-            foreach (var item in sortedHighscores)
-            {
+            var idx = 1;
+            foreach (var item in _highscores) {
+                item.GameId = idx.ToString();
+                item.SessionId = idx.ToString();
+                item.RoundId = (uint)idx;
+                item.IsLocalHighscore = true;
+                item.IsVerified = false;
+                item.Level = (uint)level;
+                idx++;
                 ret.Add(item);
-                if (ret.Count >= howManyResults) {
-                    return ret;
-                }
+            }
+            return ret;
+        }
+
+        internal List<Highscore> getHackedHighscoreListForRound(uint roundid) {
+            load();
+            var ret = new List<Highscore>();
+            var idx = 1;
+            var r = new Random();
+            foreach (var item in _highscores) {
+                item.GameId = idx.ToString();
+                item.SessionId = idx.ToString();
+                item.RoundId = roundid;
+                item.IsLocalHighscore = true;
+                item.IsVerified = false;
+                item.Level = (uint)(r.Next(9) + 1);
+                idx++;
+                ret.Add(item);
             }
             return ret;
         }
