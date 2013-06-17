@@ -13,23 +13,25 @@ namespace MesserSmash.Commands {
 
         private Action<RequestRoundHighscoresCommand> _callback;
         public uint RoundId { get; private set; }
-        public HighscoreContainer ScoringProvider { get; private set; }
+        private HighscoreContainer _scoringProvider;
+        public List<Highscore> Scores { get; private set; }
 
         public RequestRoundHighscoresCommand(uint roundid, HighscoreContainer scoringProvider, Action<RequestRoundHighscoresCommand> cb)
             : base(NAME) {
 
             _callback = cb;
+            Scores = new List<Highscore>();
             RoundId = roundid;
-            ScoringProvider = scoringProvider;
-            ScoringProvider.clearData();
+            _scoringProvider = scoringProvider;
+            _scoringProvider.clearData();
             //Hack in local highscores...
             var localScores = LocalHighscore.Instance.getHackedHighscoreListForRound(roundid);
-            ScoringProvider.addHighscores(localScores);
+            _scoringProvider.addHighscores(localScores);
 
             ThreadWatcher.runBgThread(() => {
                 var server = new LocalServer(SmashTVSystem.Instance.ServerIp);
                 var dir = new Dictionary<string, object> {
-                        {MesserSmashWeb.LOGIN_SESSION, SmashTVSystem.Instance.LoginResponseKey},
+                        {MesserSmashWeb.VERIFIED_LOGIN_SESSION, SmashTVSystem.Instance.LoginResponseKey},
                         {MesserSmashWeb.ROUND_ID, SmashTVSystem.Instance.RoundId},
                     };
                 server.requestRoundHighscores(onRoundResponse, dir);
@@ -42,10 +44,12 @@ namespace MesserSmash.Commands {
                     string line;
                     while ((line = sr.ReadLine()) != null) {
                         var score = Highscore.FromString(line);
-                        //#TODO: Fix these sometime...
-                        score.IsLocalHighscore = false;
-                        score.IsVerified = true;
-                        ScoringProvider.addHighscore(score);
+                        if (score != null) {
+                            //#TODO: Fix these sometime...
+                            score.IsLocalHighscore = false;
+                            score.IsVerified = true;
+                            Scores.Add(score);
+                        }
                     }
                 }
             }

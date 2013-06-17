@@ -1,0 +1,55 @@
+[info|635071137069578459] sendGameState ServerResponse=OK
+[info|635071137069628462] Utils.initialize seed=-1675396050
+[info|635071137069628462] ->requestBeginGame
+[info|635071137069638463] -->CreateLootTable
+[info|635071137069638463] <--CreateLootTable randomStatus:MesserRandom seed=-1675396050 totalRequests=12
+[info|635071137069678465] ->handleCommand SaveGameCommand
+[info|635071137069678465] <--handleCommand SaveGameCommand
+[info|635071137069678465] ->handleCommand RequestLevelHighscoresCommand
+[info|635071137069678465] <--handleCommand RequestLevelHighscoresCommand
+[info|635071137069678465] ->handleCommand LevelWonCommand
+[info|635071137069678465] <--handleCommand LevelWonCommand
+[info|635071137069678465] ->handleCommand ReloadDatabaseCommand
+[info|635071137069678465] <--handleCommand ReloadDatabaseCommand
+[info|635071137069678465] ->handleCommand RequestContinueGameCommand
+[info|635071137069678465] <--handleCommand RequestContinueGameCommand
+[info|635071137069708467] RequestContinueGameCommand cb
+[info|635071137069708467] ctor() UpdateGameCredentialsCommand
+[info|635071137069708467] Executing UpdateGameCredentialsCommand
+[info|635071137069708467] <-requestBeginGame
+[info|635071137069788471] ->handleCommand UpdateGameCredentialsCommand
+[info|635071137069788471] <--handleCommand UpdateGameCredentialsCommand
+[info|635071137084789329] ->handleCommand ClientReadyCommand
+[info|635071137084789329] ->addObserver MesserSmash.Arenas.Level08
+[info|635071137084789329] <-addObserver MesserSmash.Arenas.Level08
+[info|635071137084789329] <--handleCommand ClientReadyCommand
+[info|635071137084949338] ->handleCommand LevelStartedCommand
+[info|635071137084949338] <--handleCommand LevelStartedCommand
+[info|635071137094959911] ->handleCommand PlaySoundCommand
+[info|635071137094959911] <--handleCommand PlaySoundCommand
+[info|635071137095119920] ->handleCommand LauncherReadyCommand
+[info|635071137095119920] <--handleCommand LauncherReadyCommand
+[info|635071137105290502] ->handleCommand PlaySoundCommand
+[info|635071137105290502] <--handleCommand PlaySoundCommand
+[info|635071137105450511] ->handleCommand LauncherReadyCommand
+[info|635071137105450511] <--handleCommand LauncherReadyCommand
+[info|635071137115621093] ->handleCommand PlaySoundCommand
+[info|635071137115621093] <--handleCommand PlaySoundCommand
+[info|635071137115791102] ->handleCommand LauncherReadyCommand
+[info|635071137115791102] <--handleCommand LauncherReadyCommand
+[info|635071137125961684] ->handleCommand PlaySoundCommand
+[info|635071137125961684] <--handleCommand PlaySoundCommand
+[info|635071137126121693] ->handleCommand LauncherReadyCommand
+[info|635071137126121693] <--handleCommand LauncherReadyCommand
+[info|635071137136292275] ->handleCommand PlaySoundCommand
+[info|635071137136292275] <--handleCommand PlaySoundCommand
+[info|635071137136452284] ->handleCommand LauncherReadyCommand
+[info|635071137136452284] <--handleCommand LauncherReadyCommand
+[info|635071137146622866] ->handleCommand PlaySoundCommand
+[info|635071137146622866] <--handleCommand PlaySoundCommand
+[info|635071137146782875] ->handleCommand LauncherReadyCommand
+[info|635071137146782875] <--handleCommand LauncherReadyCommand
+[info|635071137156953457] ->handleCommand PlaySoundCommand
+[info|635071137156953457] <--handleCommand PlaySoundCommand
+[info|635071137157123467] ->handleCommand LauncherReadyCommand
+[info|635071137157123467] <--handleCommand LauncherReadyCommand

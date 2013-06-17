@@ -68,6 +68,13 @@ namespace MesserSmashWebServer {
                                     };
                                     var rawData = _server.unparse(data);
                                     responseString = _responderMethod(request, rawData);
+                                    if (request == MesserSmashWeb.REQUEST_END_GAME) {
+                                        Logger.debug("Incoming: request={1}, data=(stripped)", rawData, request);
+                                        Logger.debug("Outgoing: request={1}, data={0}", responseString, request);
+                                    } else {
+                                        Logger.debug("Incoming: request={1}, data={0}", rawData, request);
+                                        Logger.debug("Outgoing: request={1}, data={0}", responseString, request);
+                                    }
                                 } else {
                                     rc = "1";
                                 }
@@ -97,6 +104,7 @@ namespace MesserSmashWebServer {
         public void Stop() {
             _listener.Stop();
             _listener.Close();
+            Logger.clean();
         }
     }
 }

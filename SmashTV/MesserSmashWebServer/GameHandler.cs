@@ -122,7 +122,7 @@ namespace MesserSmashWebServer {
                 string key, name, id;
                 double level;
                 object state;
-                reader.readString(MesserSmashWeb.LOGIN_SESSION, out key);
+                reader.readString(MesserSmashWeb.VERIFIED_LOGIN_SESSION, out key);
                 reader.readString(MesserSmashWeb.USER_NAME, out name);
                 reader.readString(MesserSmashWeb.USER_ID, out id);
                 reader.readNumber(MesserSmashWeb.LEVEL, out level);

@@ -14,6 +14,7 @@ namespace MesserSmash.Commands {
         public GUI.GUIMain Gui { get; set; }
         
         public int Level { get; private set; }
+        public int ScoreOnLevel { get; private set; }
 
         public LevelWonCommand()
             : base(NAME) {
@@ -21,14 +22,20 @@ namespace MesserSmash.Commands {
 
         protected override void custExecute() {
             Level = SmashTVSystem.Instance.Arena.Level;
-            Gui.showLevelWon(GameInstance.GameHighscores, false, Level);
+            ScoreOnLevel = (int)Scoring.getLevelScore();
+            Gui.showLevelWon(GameInstance.GameHighscores, false, Level, ScoreOnLevel);
             new RequestLevelHighscoresCommand(GameInstance.Arena.Level, GameInstance.GameHighscores, onRoundResponse).execute();
         }
 
         private void onRoundResponse(RequestLevelHighscoresCommand cmd) {
-            Gui.showLevelWon(cmd.ScoringProvider, true, Level);
+            if (!SmashTVSystem.IsGameStarted) {
+                var scoringProvider = SmashTVSystem.Instance.GameHighscores;
+                scoringProvider.addHighscores(cmd.Scores);
+                Gui.showLevelWon(scoringProvider, true, Level, ScoreOnLevel);
+            } else {
+                Logger.error("Game started before LevelWonCommand was finished with highscores");
+            }
         }
-
 
     }
 }

@@ -64,7 +64,12 @@ namespace MesserSmash {
         }
 
         private void proccessCommand(ICommand cmd) {
-            Logger.info("->handleCommand {0}", cmd.Name);
+            bool logItem = cmd is AttackPlayerCommand || cmd is DeadEnemyCommand || cmd is SpawnWaveCommand || cmd is PlaySoundCommand;
+            logItem = !logItem;
+            if (logItem) {
+                Logger.info("->handleCommand {0}", cmd.Name);
+            }
+
             Interlocked.Increment(ref _modificationLocks);
             foreach (var i in _observers) {
                 i.handleCommand(cmd);
@@ -86,7 +91,9 @@ namespace MesserSmash {
                 }
                 _itemsToRemove.Clear();
             }
-            Logger.info("<--handleCommand {0}", cmd.Name);
+            if (logItem) {
+                Logger.info("<--handleCommand {0}", cmd.Name);
+            }
         }
 
         public void removeObserver(IObserver observer) {

@@ -1,0 +1,548 @@
+[debug|635071131709291868] Incoming: request=beginGame, data={"level":1,"product_key":"freeloader","user_name":"MESSER","user_id":""}
+[debug|635071131709291868] Outgoing: request=beginGame, data={"game_id":"3cc72378-e368-423f-b4f2-044cb25d41be","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","round_id":1}
+[info|635071131709301869] Handled request=beginGame in 25,0014ms
+[debug|635071131817958084] Incoming: request=final, data=(stripped)
+[debug|635071131817958084] Outgoing: request=final, data=OK
+[info|635071131817968084] Handled request=final in 120,0068ms
+[debug|635071131818008087] Incoming: request=getHighscoreOnLevel, data={"level":1,"product_key":"freeloader"}
+[debug|635071131818008087] Outgoing: request=getHighscoreOnLevel, data=ticks=635071124260555825|username=MESSER|level=1|userid=|gameid=efeb753f-bdfb-4693-83ce-209d68f2638d|kills=149|score=3392|version=0.0006|sessionid=317b03d9-404a-412d-94df-789cee8c6fa4|file=635071124260555825_save.txt|roundid=1
+ticks=635071110941204002|username=MESSER|level=1|userid=|gameid=4f36adcd-a995-4ba9-bcbe-74dc8b489ae6|kills=128|score=2824|version=0.0006|sessionid=0ee5cbaf-43b8-4efc-b57c-36ec736491d4|file=635071110941204002_save.txt|roundid=1
+ticks=635071094437050018|username=MESSER|level=1|userid=|gameid=2a601397-e492-4765-b58b-58f55ea9e002|kills=148|score=2784|version=0.0006|sessionid=963312b6-fcbb-4b76-b24b-4121fce28f41|file=635071094437050018_save.txt|roundid=1
+ticks=635071087313442571|username=MESSER|level=1|userid=|gameid=b8e7fa6a-2e4a-4a5d-be0a-b6bc88f02815|kills=134|score=2672|version=0.0006|sessionid=13b4c7e9-04fb-43c6-8619-9adb33c98f9c|file=635071087313442571_save.txt|roundid=1
+ticks=635071112301241791|username=MESSER|level=1|userid=|gameid=2e3917a5-f393-4ab1-8100-4eff1208e0ca|kills=147|score=2576|version=0.0006|sessionid=a28bec19-3366-4c9d-bf17-3f35e42d0fc0|file=635071112301241791_save.txt|roundid=1
+ticks=635071131817398052|username=MESSER|level=1|userid=|gameid=3cc72378-e368-423f-b4f2-044cb25d41be|kills=104|score=2232|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131817398052_save.txt|roundid=1
+
+[info|635071131818008087] Handled request=getHighscoreOnLevel in 4,0003ms
+[debug|635071131818008087] Incoming: request=continueGame, data={"level":2,"round_id":1,"product_key":"freeloader","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","user_name":"MESSER","user_id":""}
+[debug|635071131818008087] Outgoing: request=continueGame, data={"game_id":"f56f976a-3d9e-4bba-a307-4c8cd8b47d72","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","round_id":1}
+[info|635071131818008087] Handled request=continueGame in 0ms
+[debug|635071131962476350] Incoming: request=final, data=(stripped)
+[debug|635071131962476350] Outgoing: request=final, data=OK
+[info|635071131962476350] Handled request=final in 43,0025ms
+[debug|635071131962496351] Incoming: request=getHighscoreOnLevel, data={"level":2,"product_key":"freeloader"}
+[debug|635071131962496351] Outgoing: request=getHighscoreOnLevel, data=ticks=635071131962176333|username=MESSER|level=2|userid=|gameid=f56f976a-3d9e-4bba-a307-4c8cd8b47d72|kills=138|score=3475|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131962176333_save.txt|roundid=1
+
+[info|635071131962496351] Handled request=getHighscoreOnLevel in 2,0001ms
+[debug|635071131962506351] Incoming: request=continueGame, data={"level":3,"round_id":1,"product_key":"freeloader","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","user_name":"MESSER","user_id":""}
+[debug|635071131962506351] Outgoing: request=continueGame, data={"game_id":"c3916802-d1f7-49a8-8a92-04889de5c270","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","round_id":1}
+[info|635071131962506351] Handled request=continueGame in 1ms
+[debug|635071132061452011] Incoming: request=getHighscoreOnLevel, data={"level":3,"product_key":"freeloader"}
+[debug|635071132061452011] Outgoing: request=getHighscoreOnLevel, data=
+[info|635071132061452011] Handled request=getHighscoreOnLevel in 0ms
+[debug|635071132061782030] Incoming: request=continueGame, data={"level":4,"round_id":1,"product_key":"freeloader","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","user_name":"MESSER","user_id":""}
+[debug|635071132061782030] Outgoing: request=continueGame, data={"game_id":"b55d9a97-3437-4673-9dbe-0864c220b8bc","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","round_id":1}
+[info|635071132061782030] Handled request=continueGame in 0ms
+[debug|635071132061972041] Incoming: request=final, data=(stripped)
+[debug|635071132061972041] Outgoing: request=final, data=OK
+[info|635071132061972041] Handled request=final in 39,0023ms
+[debug|635071132149197030] Incoming: request=getHighscoreOnLevel, data={"level":4,"product_key":"freeloader"}
+[debug|635071132149197030] Outgoing: request=getHighscoreOnLevel, data=
+[info|635071132149197030] Handled request=getHighscoreOnLevel in 0ms
+[debug|635071132149347038] Incoming: request=final, data=(stripped)
+[debug|635071132149347038] Outgoing: request=final, data=OK
+[info|635071132149347038] Handled request=final in 34,0019ms
+[debug|635071132149347038] Incoming: request=continueGame, data={"level":5,"round_id":1,"product_key":"freeloader","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","user_name":"MESSER","user_id":""}
+[debug|635071132149347038] Outgoing: request=continueGame, data={"game_id":"0ff4943b-f248-4f08-bf19-538065198f04","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","round_id":1}
+[info|635071132149357039] Handled request=continueGame in 2,0001ms
+[debug|635071132241342300] Incoming: request=getHighscoreOnLevel, data={"level":5,"product_key":"freeloader"}
+[debug|635071132241342300] Outgoing: request=getHighscoreOnLevel, data=
+[info|635071132241342300] Handled request=getHighscoreOnLevel in 0ms
+[debug|635071132241732322] Incoming: request=continueGame, data={"level":6,"round_id":1,"product_key":"freeloader","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","user_name":"MESSER","user_id":""}
+[debug|635071132241732322] Outgoing: request=continueGame, data={"game_id":"cda08c71-aabe-490a-a892-2c1ee1092686","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","round_id":1}
+[info|635071132241742323] Handled request=continueGame in 14,0008ms
+[debug|635071132241932334] Incoming: request=final, data=(stripped)
+[debug|635071132241932334] Outgoing: request=final, data=OK
+[info|635071132241932334] Handled request=final in 38,0022ms
+[debug|635071132330067375] Incoming: request=getHighscoreOnLevel, data={"level":6,"product_key":"freeloader"}
+[debug|635071132330067375] Outgoing: request=getHighscoreOnLevel, data=
+[info|635071132330067375] Handled request=getHighscoreOnLevel in 1,0001ms
+[debug|635071132330147379] Incoming: request=final, data=(stripped)
+[debug|635071132330147379] Outgoing: request=final, data=OK
+[info|635071132330147379] Handled request=final in 40,0023ms
+[debug|635071132330167380] Incoming: request=continueGame, data={"level":7,"round_id":1,"product_key":"freeloader","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","user_name":"MESSER","user_id":""}
+[debug|635071132330167380] Outgoing: request=continueGame, data={"game_id":"9663a525-544a-45db-927d-9b600eb5e06d","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","round_id":1}
+[info|635071132330177381] Handled request=continueGame in 2,0001ms
+[debug|635071132416402313] Incoming: request=getHighscoreOnLevel, data={"level":7,"product_key":"freeloader"}
+[debug|635071132416402313] Outgoing: request=getHighscoreOnLevel, data=
+[info|635071132416412313] Handled request=getHighscoreOnLevel in 1ms
+[debug|635071132416802336] Incoming: request=continueGame, data={"level":8,"round_id":1,"product_key":"freeloader","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","user_name":"MESSER","user_id":""}
+[debug|635071132416802336] Outgoing: request=continueGame, data={"game_id":"2497cab7-54be-4351-ad8f-e1754bae3ab6","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","round_id":1}
+[info|635071132416812336] Handled request=continueGame in 6,0003ms
+[debug|635071132416852339] Incoming: request=final, data=(stripped)
+[debug|635071132416852339] Outgoing: request=final, data=OK
+[info|635071132416852339] Handled request=final in 30,0018ms
+[debug|635071132505217393] Incoming: request=final, data=(stripped)
+[debug|635071132505217393] Outgoing: request=final, data=OK
+[info|635071132505227393] Handled request=final in 29,0016ms
+[debug|635071132505237394] Incoming: request=getHighscoreOnLevel, data={"level":8,"product_key":"freeloader"}
+[debug|635071132505237394] Outgoing: request=getHighscoreOnLevel, data=ticks=635071132505037382|username=MESSER|level=8|userid=|gameid=2497cab7-54be-4351-ad8f-e1754bae3ab6|kills=184|score=4210|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132505037382_save.txt|roundid=1
+
+[info|635071132505237394] Handled request=getHighscoreOnLevel in 4,0002ms
+[debug|635071132505337400] Incoming: request=continueGame, data={"level":9,"round_id":1,"product_key":"freeloader","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","user_name":"MESSER","user_id":""}
+[debug|635071132505337400] Outgoing: request=continueGame, data={"game_id":"54a42f2f-bc3f-43f3-b9e5-d789c94b7b8a","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","round_id":1}
+[info|635071132505337400] Handled request=continueGame in 2,0002ms
+[debug|635071132596832633] Incoming: request=getHighscoreOnLevel, data={"level":9,"product_key":"freeloader"}
+[debug|635071132596832633] Outgoing: request=getHighscoreOnLevel, data=
+[info|635071132596832633] Handled request=getHighscoreOnLevel in 17,001ms
+[debug|635071132596992642] Incoming: request=final, data=(stripped)
+[debug|635071132596992642] Outgoing: request=final, data=OK
+[info|635071132596992642] Handled request=final in 35,002ms
+[debug|635071132597012643] Incoming: request=continueGame, data={"level":10,"round_id":1,"product_key":"freeloader","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","user_name":"MESSER","user_id":""}
+[debug|635071132597012643] Outgoing: request=continueGame, data={"game_id":"a09e5504-39a9-4d9e-aa0a-a6983c8be642","session_id":"b45ae235-23c5-430c-9c3a-2226a31c7cdd","round_id":1}
+[info|63507[debug|635071135935093570] Incoming: request=beginGame, data={"level":1,"product_key":"freeloader","user_name":"MESSER","user_id":""}
+[debug|635071135935093570] Outgoing: request=beginGame, data={"game_id":"fe58da78-32b5-4e49-895d-51d3916fbfe5","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","round_id":1}
+[info|635071135935143573] Handled request=beginGame in 29,0016ms
+[debug|635071136040009571] Incoming: request=final, data=(stripped)
+[debug|635071136040009571] Outgoing: request=final, data=OK
+[info|635071136040009571] Handled request=final in 91,0052ms
+[debug|635071136040079575] Incoming: request=getHighscoreOnLevel, data={"level":1,"product_key":"freeloader"}
+[debug|635071136040079575] Outgoing: request=getHighscoreOnLevel, data=ticks=635071124260555825|username=MESSER|level=1|userid=|gameid=efeb753f-bdfb-4693-83ce-209d68f2638d|kills=149|score=3392|version=0.0006|sessionid=317b03d9-404a-412d-94df-789cee8c6fa4|file=635071124260555825_save.txt|roundid=1
+ticks=635071110941204002|username=MESSER|level=1|userid=|gameid=4f36adcd-a995-4ba9-bcbe-74dc8b489ae6|kills=128|score=2824|version=0.0006|sessionid=0ee5cbaf-43b8-4efc-b57c-36ec736491d4|file=635071110941204002_save.txt|roundid=1
+ticks=635071094437050018|username=MESSER|level=1|userid=|gameid=2a601397-e492-4765-b58b-58f55ea9e002|kills=148|score=2784|version=0.0006|sessionid=963312b6-fcbb-4b76-b24b-4121fce28f41|file=635071094437050018_save.txt|roundid=1
+ticks=635071087313442571|username=MESSER|level=1|userid=|gameid=b8e7fa6a-2e4a-4a5d-be0a-b6bc88f02815|kills=134|score=2672|version=0.0006|sessionid=13b4c7e9-04fb-43c6-8619-9adb33c98f9c|file=635071087313442571_save.txt|roundid=1
+ticks=635071112301241791|username=MESSER|level=1|userid=|gameid=2e3917a5-f393-4ab1-8100-4eff1208e0ca|kills=147|score=2576|version=0.0006|sessionid=a28bec19-3366-4c9d-bf17-3f35e42d0fc0|file=635071112301241791_save.txt|roundid=1
+ticks=635071131817398052|username=MESSER|level=1|userid=|gameid=3cc72378-e368-423f-b4f2-044cb25d41be|kills=104|score=2232|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131817398052_save.txt|roundid=1
+ticks=635071136039729555|username=MESSER|level=1|userid=|gameid=fe58da78-32b5-4e49-895d-51d3916fbfe5|kills=131|score=2048|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136039729555_save.txt|roundid=1
+
+[info|635071136040119578] Handled request=getHighscoreOnLevel in 9,0006ms
+[debug|635071136040119578] Incoming: request=continueGame, data={"level":2,"round_id":1,"product_key":"freeloader","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","user_name":"MESSER","user_id":""}
+[debug|635071136040119578] Outgoing: request=continueGame, data={"game_id":"d65e0f9c-6fdd-4356-97ec-e255aa7ffe96","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","round_id":1}
+[info|635071136040119578] Handled request=continueGame in 0ms
+[debug|635071136132194844] Incoming: request=final, data=(stripped)
+[debug|635071136132194844] Outgoing: request=final, data=OK
+[info|635071136132194844] Handled request=final in 22,0013ms
+[debug|635071136132224846] Incoming: request=getHighscoreOnLevel, data={"level":2,"product_key":"freeloader"}
+[debug|635071136132224846] Outgoing: request=getHighscoreOnLevel, data=ticks=635071131962176333|username=MESSER|level=2|userid=|gameid=f56f976a-3d9e-4bba-a307-4c8cd8b47d72|kills=138|score=3475|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131962176333_save.txt|roundid=1
+ticks=635071136132044835|username=MESSER|level=2|userid=|gameid=d65e0f9c-6fdd-4356-97ec-e255aa7ffe96|kills=0|score=0|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136132044835_save.txt|roundid=1
+
+[info|635071136132224846] Handled request=getHighscoreOnLevel in 2,0001ms
+[debug|635071136132454859] Incoming: request=continueGame, data={"level":3,"round_id":1,"product_key":"freeloader","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","user_name":"MESSER","user_id":""}
+[debug|635071136132454859] Outgoing: request=continueGame, data={"game_id":"e0e51e32-a2f3-421f-90d1-bfc530340e0b","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","round_id":1}
+[info|635071136132454859] Handled request=continueGame in 1,0001ms
+[debug|635071136648074351] Incoming: request=getHighscoreOnLevel, data={"level":3,"product_key":"freeloader"}
+[debug|635071136648074351] Outgoing: request=getHighscoreOnLevel, data=ticks=635071132061702025|username=MESSER|level=3|userid=|gameid=c3916802-d1f7-49a8-8a92-04889de5c270|kills=133|score=2724|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132061702025_save.txt|roundid=1
+
+[info|635071136648074351] Handled request=getHighscoreOnLevel in 9,0006ms
+[debug|635071136648104352] Incoming: request=continueGame, data={"level":4,"round_id":1,"product_key":"freeloader","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","user_name":"MESSER","user_id":""}
+[debug|635071136648104352] Outgoing: request=continueGame, data={"game_id":"28d52800-8a04-47aa-bd52-016419ba031e","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","round_id":1}
+[info|635071136648104352] Handled request=continueGame in 0ms
+[debug|635071136649254418] Incoming: request=final, data=(stripped)
+[debug|635071136649254418] Outgoing: request=final, data=OK
+[info|635071136649254418] Handled request=final in 117,0067ms
+[debug|635071136737959492] Incoming: request=getHighscoreOnLevel, data={"level":4,"product_key":"freeloader"}
+[debug|635071136737959492] Outgoing: request=getHighscoreOnLevel, data=ticks=635071132149087023|username=MESSER|level=4|userid=|gameid=b55d9a97-3437-4673-9dbe-0864c220b8bc|kills=69|score=1697|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132149087023_save.txt|roundid=1
+
+[info|635071136737959492] Handled request=getHighscoreOnLevel in 1,0001ms
+[debug|635071136738289511] Incoming: request=final, data=(stripped)
+[debug|635071136738289511] Outgoing: request=final, data=OK
+[info|635071136738299511] Handled request=final in 36,002ms
+[debug|635071136738369515] Incoming: request=continueGame, data={"level":5,"round_id":1,"product_key":"freeloader","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","user_name":"MESSER","user_id":""}
+[debug|635071136738369515] Outgoing: request=continueGame, data={"game_id":"5b3387a9-65bf-46cb-80e2-85c83b6d2b13","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","round_id":1}
+[info|635071136738369515] Handled request=continueGame in 0ms
+[debug|635071136841565418] Incoming: request=getHighscoreOnLevel, data={"level":5,"product_key":"freeloader"}
+[debug|635071136841565418] Outgoing: request=getHighscoreOnLevel, data=ticks=635071132241732322|username=MESSER|level=5|userid=|gameid=0ff4943b-f248-4f08-bf19-538065198f04|kills=130|score=3260|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132241732322_save.txt|roundid=1
+
+[info|635071136841565418] Handled request=getHighscoreOnLevel in 1,0001ms
+[debug|635071136841695425] Incoming: request=final, data=(stripped)
+[debug|635071136841695425] Outgoing: request=final, data=OK
+[info|635071136841695425] Handled request=final in 31,0018ms
+[debug|635071136841805431] Incoming: request=continueGame, data={"level":6,"round_id":1,"product_key":"freeloader","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","user_name":"MESSER","user_id":""}
+[debug|635071136841805431] Outgoing: request=continueGame, data={"game_id":"ccc3027c-88d3-4634-ac94-c50c9205281b","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","round_id":1}
+[info|635071136841805431] Handled request=continueGame in 0ms
+[debug|635071136936350839] Incoming: request=getHighscoreOnLevel, data={"level":6,"product_key":"freeloader"}
+[debug|635071136936350839] Outgoing: request=getHighscoreOnLevel, data=ticks=635071132329837362|username=MESSER|level=6|userid=|gameid=cda08c71-aabe-490a-a892-2c1ee1092686|kills=200|score=4498|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132329837362_save.txt|roundid=1
+
+[info|635071136936350839] Handled request=getHighscoreOnLevel in 3,0002ms
+[debug|635071136936610854] Incoming: request=continueGame, data={"level":7,"round_id":1,"product_key":"freeloader","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","user_name":"MESSER","user_id":""}
+[debug|635071136936610854] Outgoing: request=continueGame, data={"game_id":"2ffb3dcc-6eef-433e-9730-5f06cb5ecffd","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","round_id":1}
+[info|635071136936620855] Handled request=continueGame in 23,0014ms
+[debug|635071136936710860] Incoming: request=final, data=(stripped)
+[debug|635071136936710860] Outgoing: request=final, data=OK
+[info|635071136936710860] Handled request=final in 47,0027ms
+[debug|635071137069578459] Incoming: request=final, data=(stripped)
+[debug|635071137069578459] Outgoing: request=final, data=OK
+[info|635071137069578459] Handled request=final in 34,0019ms
+[debug|635071137069608461] Incoming: request=getHighscoreOnLevel, data={"level":7,"product_key":"freeloader"}
+[debug|635071137069608461] Outgoing: request=getHighscoreOnLevel, data=ticks=635071132416642327|username=MESSER|level=7|userid=|gameid=9663a525-544a-45db-927d-9b600eb5e06d|kills=177|score=3812|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132416642327_save.txt|roundid=1
+ticks=635071137069358447|username=MESSER|level=7|userid=|gameid=2ffb3dcc-6eef-433e-9730-5f06cb5ecffd|kills=152|score=3661|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137069358447_save.txt|roundid=1
+
+[info|635071137069608461] Handled request=getHighscoreOnLevel in 4,0002ms
+[debug|635071137069698466] Incoming: request=continueGame, data={"level":8,"round_id":1,"product_key":"freeloader","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","user_name":"MESSER","user_id":""}
+[debug|635071137069698466] Outgoing: request=continueGame, data={"game_id":"c414d38b-a7f4-4e0b-b1f6-8e3e340a04bb","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","round_id":1}
+[info|635071137069708467] Handled request=continueGame in 6,0004ms
+[debug|635071137164113866] Incoming: request=getHighscoreOnLevel, data={"level":8,"product_key":"freeloader"}
+[debug|635071137164113866] Outgoing: request=getHighscoreOnLevel, data=ticks=635071132505037382|username=MESSER|level=8|userid=|gameid=2497cab7-54be-4351-ad8f-e1754bae3ab6|kills=184|score=4210|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132505037382_save.txt|roundid=1
+
+[info|635071137164123867] Handled request=getHighscoreOnLevel in 1,0001ms
+[debug|635071137164353880] Incoming: request=continueGame, data={"level":9,"round_id":1,"product_key":"freeloader","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","user_name":"MESSER","user_id":""}
+[debug|635071137164353880] Outgoing: request=continueGame, data={"game_id":"13bb3a1f-b444-4f99-a6ac-e403f241cd68","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","round_id":1}
+[info|635071137164353880] Handled request=continueGame in 8,0004ms
+[debug|635071137164383882] Incoming: request=final, data=(stripped)
+[debug|635071137164383882] Outgoing: request=final, data=OK
+[info|635071137164383882] Handled request=final in 30,0017ms
+[debug|635071137254109014] Incoming: request=getHighscoreOnLevel, data={"level":9,"product_key":"freeloader"}
+[debug|635071137254109014] Outgoing: request=getHighscoreOnLevel, data=ticks=635071132596762629|username=MESSER|level=9|userid=|gameid=54a42f2f-bc3f-43f3-b9e5-d789c94b7b8a|kills=245|score=5644|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132596762629_save.txt|roundid=1
+
+[info|635071137254109014] Handled request=getHighscoreOnLevel in 0ms
+[debug|635071137254319026] Incoming: request=continueGame, data={"level":10,"round_id":1,"product_key":"freeloader","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","user_name":"MESSER","user_id":""}
+[debug|635071137254319026] Outgoing: request=continueGame, data={"game_id":"5feeec7a-d3fa-4d5f-b25b-07e8ed74dc01","session_id":"00c02222-071c-460d-a6fb-0d9ef61f9bf1","round_id":1}
+[info|635071137254319026] Handled request=continueGame in 7,0004ms
+[debug|635071137254349028] Incoming: request=final, data=(stripped)
+[debug|635071137254349028] Outgoing: request=final, data=OK
+[info|635071137254349028] Handled request=final in 31,0018ms
+[debug|635071137346084274] Incoming: request=final, data=(stripped)
+[debug|635071137346084274] Outgoing: request=final, data=OK
+[info|635071137346094275] Handled request=final in 35,002ms
+[debug|635071137346124277] Incoming: request=getHighscoreForRound, data={"product_key":"freeloader","round_id":1}
+[debug|635071137346124277] Outgoing: request=getHighscoreForRound, data=ticks=635071087313442571|username=MESSER|level=1|userid=|gameid=b8e7fa6a-2e4a-4a5d-be0a-b6bc88f02815|kills=134|score=2672|version=0.0006|sessionid=13b4c7e9-04fb-43c6-8619-9adb33c98f9c|file=635071087313442571_save.txt|roundid=1
+ticks=635071094437050018|username=MESSER|level=1|userid=|gameid=2a601397-e492-4765-b58b-58f55ea9e002|kills=148|score=2784|version=0.0006|sessionid=963312b6-fcbb-4b76-b24b-4121fce28f41|file=635071094437050018_save.txt|roundid=1
+ticks=635071110941204002|username=MESSER|level=1|userid=|gameid=4f36adcd-a995-4ba9-bcbe-74dc8b489ae6|kills=128|score=2824|version=0.0006|sessionid=0ee5cbaf-43b8-4efc-b57c-36ec736491d4|file=635071110941204002_save.txt|roundid=1
+ticks=635071112301241791|username=MESSER|level=1|userid=|gameid=2e3917a5-f393-4ab1-8100-4eff1208e0ca|kills=147|score=2576|version=0.0006|sessionid=a28bec19-3366-4c9d-bf17-3f35e42d0fc0|file=635071112301241791_save.txt|roundid=1
+ticks=635071124260555825|username=MESSER|level=1|userid=|gameid=efeb753f-bdfb-4693-83ce-209d68f2638d|kills=149|score=3392|version=0.0006|sessionid=317b03d9-404a-412d-94df-789cee8c6fa4|file=635071124260555825_save.txt|roundid=1
+ticks=635071131817398052|username=MESSER|level=1|userid=|gameid=3cc72378-e368-423f-b4f2-044cb25d41be|kills=104|score=2232|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131817398052_save.txt|roundid=1
+ticks=635071131962176333|username=MESSER|level=2|userid=|gameid=f56f976a-3d9e-4bba-a307-4c8cd8b47d72|kills=138|score=3475|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131962176333_save.txt|roundid=1
+ticks=635071132061702025|username=MESSER|level=3|userid=|gameid=c3916802-d1f7-49a8-8a92-04889de5c270|kills=133|score=2724|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132061702025_save.txt|roundid=1
+ticks=635071132149087023|username=MESSER|level=4|userid=|gameid=b55d9a97-3437-4673-9dbe-0864c220b8bc|kills=69|score=1697|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132149087023_save.txt|roundid=1
+ticks=635071132241732322|username=MESSER|level=5|userid=|gameid=0ff4943b-f248-4f08-bf19-538065198f04|kills=130|score=3260|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132241732322_save.txt|roundid=1
+ticks=635071132329837362|username=MESSER|level=6|userid=|gameid=cda08c71-aabe-490a-a892-2c1ee1092686|kills=200|score=4498|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132329837362_save.txt|roundid=1
+ticks=635071132416642327|username=MESSER|level=7|userid=|gameid=9663a525-544a-45db-927d-9b600eb5e06d|kills=177|score=3812|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132416642327_save.txt|roundid=1
+ticks=635071132505037382|username=MESSER|level=8|userid=|gameid=2497cab7-54be-4351-ad8f-e1754bae3ab6|kills=184|score=4210|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132505037382_save.txt|roundid=1
+ticks=635071132596762629|username=MESSER|level=9|userid=|gameid=54a42f2f-bc3f-43f3-b9e5-d789c94b7b8a|kills=245|score=5644|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132596762629_save.txt|roundid=1
+ticks=635071132681597481|username=MESSER|level=10|userid=|gameid=a09e5504-39a9-4d9e-aa0a-a6983c8be642|kills=333|score=6329|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132681597481_save.txt|roundid=1
+ticks=635071136039729555|username=MESSER|level=1|userid=|gameid=fe58da78-32b5-4e49-895d-51d3916fbfe5|kills=131|score=2048|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136039729555_save.txt|roundid=1
+ticks=635071136132044835|username=MESSER|level=2|userid=|gameid=d65e0f9c-6fdd-4356-97ec-e255aa7ffe96|kills=0|score=0|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136132044835_save.txt|roundid=1
+ticks=635071136648674385|username=MESSER|level=3|userid=|gameid=e0e51e32-a2f3-421f-90d1-bfc530340e0b|kills=132|score=2276|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136648674385_save.txt|roundid=1
+ticks=635071136738029496|username=MESSER|level=4|userid=|gameid=28d52800-8a04-47aa-bd52-016419ba031e|kills=67|score=1671|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136738029496_save.txt|roundid=1
+ticks=635071136841495414|username=MESSER|level=5|userid=|gameid=5b3387a9-65bf-46cb-80e2-85c83b6d2b13|kills=112|score=2992|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136841495414_save.txt|roundid=1
+ticks=635071136936530849|username=MESSER|level=6|userid=|gameid=ccc3027c-88d3-4634-ac94-c50c9205281b|kills=169|score=4097|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136936530849_save.txt|roundid=1
+ticks=635071137069358447|username=MESSER|level=7|userid=|gameid=2ffb3dcc-6eef-433e-9730-5f06cb5ecffd|kills=152|score=3661|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137069358447_save.txt|roundid=1
+ticks=635071137164183870|username=MESSER|level=8|userid=|gameid=c414d38b-a7f4-4e0b-b1f6-8e3e340a04bb|kills=150|score=3666|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137164183870_save.txt|roundid=1
+ticks=635071137254169017|username=MESSER|level=9|userid=|gameid=13bb3a1f-b444-4f99-a6ac-e403f241cd68|kills=202|score=4640|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137254169017_save.txt|roundid=1
+ticks=635071137345904264|username=MESSER|level=10|userid=|gameid=5feeec7a-d3fa-4d5f-b25b-07e8ed74dc01|kills=332|score=6316|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137345904264_save.txt|roundid=1
+
+[info|635071137346144278] Handled request=getHighscoreForRound in 17,001ms
+[debug|635071138487829579] Incoming: request=beginGame, data={"level":1,"product_key":"freeloader","user_name":"MESSER","user_id":""}
+[debug|635071138487829579] Outgoing: request=beginGame, data={"game_id":"6ce7cfa2-114b-4897-a364-0465709a2940","session_id":"6a244a44-56bc-4192-b38a-06e469ec7358","round_id":1}
+[info|635071138487829579] Handled request=beginGame in 1,0001ms
+[debug|635071138505880611] Incoming: request=beginGame, data={"level":10,"product_key":"freeloader","user_name":"MESSER","user_id":""}
+[debug|635071138505880611] Outgoing: request=beginGame, data={"game_id":"008b8ccb-8fdd-4739-b7cd-cf8d54993cf9","session_id":"ca451b45-c401-48ed-ba81-a7efcd9c0367","round_id":1}
+[info|635071138505880611] Handled request=beginGame in 1,0001ms
+[debug|635071138646598660] Incoming: request=final, data=(stripped)
+[debug|635071138646598660] Outgoing: request=final, data=OK
+[info|635071138646598660] Handled request=final in 45,0026ms
+[debug|635071138646688665] Incoming: request=getHighscoreForRound, data={"product_key":"freeloader","round_id":1}
+[debug|635071138646688665] Outgoing: request=getHighscoreForRound, data=ticks=635071087313442571|username=MESSER|level=1|userid=|gameid=b8e7fa6a-2e4a-4a5d-be0a-b6bc88f02815|kills=134|score=2672|version=0.0006|sessionid=13b4c7e9-04fb-43c6-8619-9adb33c98f9c|file=635071087313442571_save.txt|roundid=1
+ticks=635071094437050018|username=MESSER|level=1|userid=|gameid=2a601397-e492-4765-b58b-58f55ea9e002|kills=148|score=2784|version=0.0006|sessionid=963312b6-fcbb-4b76-b24b-4121fce28f41|file=635071094437050018_save.txt|roundid=1
+ticks=635071110941204002|username=MESSER|level=1|userid=|gameid=4f36adcd-a995-4ba9-bcbe-74dc8b489ae6|kills=128|score=2824|version=0.0006|sessionid=0ee5cbaf-43b8-4efc-b57c-36ec736491d4|file=635071110941204002_save.txt|roundid=1
+ticks=635071112301241791|username=MESSER|level=1|userid=|gameid=2e3917a5-f393-4ab1-8100-4eff1208e0ca|kills=147|score=2576|version=0.0006|sessionid=a28bec19-3366-4c9d-bf17-3f35e42d0fc0|file=635071112301241791_save.txt|roundid=1
+ticks=635071124260555825|username=MESSER|level=1|userid=|gameid=efeb753f-bdfb-4693-83ce-209d68f2638d|kills=149|score=3392|version=0.0006|sessionid=317b03d9-404a-412d-94df-789cee8c6fa4|file=635071124260555825_save.txt|roundid=1
+ticks=635071131817398052|username=MESSER|level=1|userid=|gameid=3cc72378-e368-423f-b4f2-044cb25d41be|kills=104|score=2232|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131817398052_save.txt|roundid=1
+ticks=635071131962176333|username=MESSER|level=2|userid=|gameid=f56f976a-3d9e-4bba-a307-4c8cd8b47d72|kills=138|score=3475|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131962176333_save.txt|roundid=1
+ticks=635071132061702025|username=MESSER|level=3|userid=|gameid=c3916802-d1f7-49a8-8a92-04889de5c270|kills=133|score=2724|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132061702025_save.txt|roundid=1
+ticks=635071132149087023|username=MESSER|level=4|userid=|gameid=b55d9a97-3437-4673-9dbe-0864c220b8bc|kills=69|score=1697|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132149087023_save.txt|roundid=1
+ticks=635071132241732322|username=MESSER|level=5|userid=|gameid=0ff4943b-f248-4f08-bf19-538065198f04|kills=130|score=3260|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132241732322_save.txt|roundid=1
+ticks=635071132329837362|username=MESSER|level=6|userid=|gameid=cda08c71-aabe-490a-a892-2c1ee1092686|kills=200|score=4498|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132329837362_save.txt|roundid=1
+ticks=635071132416642327|username=MESSER|level=7|userid=|gameid=9663a525-544a-45db-927d-9b600eb5e06d|kills=177|score=3812|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132416642327_save.txt|roundid=1
+ticks=635071132505037382|username=MESSER|level=8|userid=|gameid=2497cab7-54be-4351-ad8f-e1754bae3ab6|kills=184|score=4210|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132505037382_save.txt|roundid=1
+ticks=635071132596762629|username=MESSER|level=9|userid=|gameid=54a42f2f-bc3f-43f3-b9e5-d789c94b7b8a|kills=245|score=5644|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132596762629_save.txt|roundid=1
+ticks=635071132681597481|username=MESSER|level=10|userid=|gameid=a09e5504-39a9-4d9e-aa0a-a6983c8be642|kills=333|score=6329|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132681597481_save.txt|roundid=1
+ticks=635071136039729555|username=MESSER|level=1|userid=|gameid=fe58da78-32b5-4e49-895d-51d3916fbfe5|kills=131|score=2048|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136039729555_save.txt|roundid=1
+ticks=635071136132044835|username=MESSER|level=2|userid=|gameid=d65e0f9c-6fdd-4356-97ec-e255aa7ffe96|kills=0|score=0|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136132044835_save.txt|roundid=1
+ticks=635071136648674385|username=MESSER|level=3|userid=|gameid=e0e51e32-a2f3-421f-90d1-bfc530340e0b|kills=132|score=2276|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136648674385_save.txt|roundid=1
+ticks=635071136738029496|username=MESSER|level=4|userid=|gameid=28d52800-8a04-47aa-bd52-016419ba031e|kills=67|score=1671|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136738029496_save.txt|roundid=1
+ticks=635071136841495414|username=MESSER|level=5|userid=|gameid=5b3387a9-65bf-46cb-80e2-85c83b6d2b13|kills=112|score=2992|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136841495414_save.txt|roundid=1
+ticks=635071136936530849|username=MESSER|level=6|userid=|gameid=ccc3027c-88d3-4634-ac94-c50c9205281b|kills=169|score=4097|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136936530849_save.txt|roundid=1
+ticks=635071137069358447|username=MESSER|level=7|userid=|gameid=2ffb3dcc-6eef-433e-9730-5f06cb5ecffd|kills=152|score=3661|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137069358447_save.txt|roundid=1
+ticks=635071137164183870|username=MESSER|level=8|userid=|gameid=c414d38b-a7f4-4e0b-b1f6-8e3e340a04bb|kills=150|score=3666|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137164183870_save.txt|roundid=1
+ticks=635071137254169017|username=MESSER|level=9|userid=|gameid=13bb3a1f-b444-4f99-a6ac-e403f241cd68|kills=202|score=4640|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137254169017_save.txt|roundid=1
+ticks=635071137345904264|username=MESSER|level=10|userid=|gameid=5feeec7a-d3fa-4d5f-b25b-07e8ed74dc01|kills=332|score=6316|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137345904264_save.txt|roundid=1
+ticks=635071138646338645|username=MESSER|level=10|userid=|gameid=008b8ccb-8fdd-4739-b7cd-cf8d54993cf9|kills=329|score=6677|version=0.0006|sessionid=ca451b45-c401-48ed-ba81-a7efcd9c0367|file=635071138646338645_save.txt|roundid=1
+
+[info|635071138646698665] Handled request=getHighscoreForRound in 2,0001ms
+[debug|635071140464162618] Incoming: request=beginGame, data={"level":1,"product_key":"freeloader","user_name":"MESSER","user_id":""}
+[debug|635071140464162618] Outgoing: request=beginGame, data={"game_id":"189ab67a-4f41-467e-a908-d4f80c4aa131","session_id":"4e1b6cb3-f3fe-4da0-b35c-80e7bcdbdb47","round_id":1}
+[info|635071140464212621] Handled request=beginGame in 5,0003ms
+[debug|635071140476293312] Incoming: request=beginGame, data={"level":10,"product_key":"freeloader","user_name":"MESSER","user_id":""}
+[debug|635071140476293312] Outgoing: request=beginGame, data={"game_id":"8b5fb713-25b6-4e13-bd8e-703892f9bdc9","session_id":"ea12842e-a461-4611-8842-8ba32102f8c8","round_id":1}
+[info|635071140476293312] Handled request=beginGame in 1ms
+[debug|635071140572768830] Incoming: request=final, data=(stripped)
+[debug|635071140572768830] Outgoing: request=final, data=OK
+[info|635071140572788831] Handled request=final in 38,0021ms
+[debug|635071140572798832] Incoming: request=getHighscoreForRound, data={"product_key":"freeloader","round_id":1}
+[debug|635071140572798832] Outgoing: request=getHighscoreForRound, data=ticks=635071087313442571|username=MESSER|level=1|userid=|gameid=b8e7fa6a-2e4a-4a5d-be0a-b6bc88f02815|kills=134|score=2672|version=0.0006|sessionid=13b4c7e9-04fb-43c6-8619-9adb33c98f9c|file=635071087313442571_save.txt|roundid=1
+ticks=635071094437050018|username=MESSER|level=1|userid=|gameid=2a601397-e492-4765-b58b-58f55ea9e002|kills=148|score=2784|version=0.0006|sessionid=963312b6-fcbb-4b76-b24b-4121fce28f41|file=635071094437050018_save.txt|roundid=1
+ticks=635071110941204002|username=MESSER|level=1|userid=|gameid=4f36adcd-a995-4ba9-bcbe-74dc8b489ae6|kills=128|score=2824|version=0.0006|sessionid=0ee5cbaf-43b8-4efc-b57c-36ec736491d4|file=635071110941204002_save.txt|roundid=1
+ticks=635071112301241791|username=MESSER|level=1|userid=|gameid=2e3917a5-f393-4ab1-8100-4eff1208e0ca|kills=147|score=2576|version=0.0006|sessionid=a28bec19-3366-4c9d-bf17-3f35e42d0fc0|file=635071112301241791_save.txt|roundid=1
+ticks=635071124260555825|username=MESSER|level=1|userid=|gameid=efeb753f-bdfb-4693-83ce-209d68f2638d|kills=149|score=3392|version=0.0006|sessionid=317b03d9-404a-412d-94df-789cee8c6fa4|file=635071124260555825_save.txt|roundid=1
+ticks=635071131817398052|username=MESSER|level=1|userid=|gameid=3cc72378-e368-423f-b4f2-044cb25d41be|kills=104|score=2232|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131817398052_save.txt|roundid=1
+ticks=635071131962176333|username=MESSER|level=2|userid=|gameid=f56f976a-3d9e-4bba-a307-4c8cd8b47d72|kills=138|score=3475|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131962176333_save.txt|roundid=1
+ticks=635071132061702025|username=MESSER|level=3|userid=|gameid=c3916802-d1f7-49a8-8a92-04889de5c270|kills=133|score=2724|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132061702025_save.txt|roundid=1
+ticks=635071132149087023|username=MESSER|level=4|userid=|gameid=b55d9a97-3437-4673-9dbe-0864c220b8bc|kills=69|score=1697|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132149087023_save.txt|roundid=1
+ticks=635071132241732322|username=MESSER|level=5|userid=|gameid=0ff4943b-f248-4f08-bf19-538065198f04|kills=130|score=3260|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132241732322_save.txt|roundid=1
+ticks=635071132329837362|username=MESSER|level=6|userid=|gameid=cda08c71-aabe-490a-a892-2c1ee1092686|kills=200|score=4498|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132329837362_save.txt|roundid=1
+ticks=635071132416642327|username=MESSER|level=7|userid=|gameid=9663a525-544a-45db-927d-9b600eb5e06d|kills=177|score=3812|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132416642327_save.txt|roundid=1
+ticks=635071132505037382|username=MESSER|level=8|userid=|gameid=2497cab7-54be-4351-ad8f-e1754bae3ab6|kills=184|score=4210|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132505037382_save.txt|roundid=1
+ticks=635071132596762629|username=MESSER|level=9|userid=|gameid=54a42f2f-bc3f-43f3-b9e5-d789c94b7b8a|kills=245|score=5644|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132596762629_save.txt|roundid=1
+ticks=635071132681597481|username=MESSER|level=10|userid=|gameid=a09e5504-39a9-4d9e-aa0a-a6983c8be642|kills=333|score=6329|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132681597481_save.txt|roundid=1
+ticks=635071136039729555|username=MESSER|level=1|userid=|gameid=fe58da78-32b5-4e49-895d-51d3916fbfe5|kills=131|score=2048|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136039729555_save.txt|roundid=1
+ticks=635071136132044835|username=MESSER|level=2|userid=|gameid=d65e0f9c-6fdd-4356-97ec-e255aa7ffe96|kills=0|score=0|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136132044835_save.txt|roundid=1
+ticks=635071136648674385|username=MESSER|level=3|userid=|gameid=e0e51e32-a2f3-421f-90d1-bfc530340e0b|kills=132|score=2276|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136648674385_save.txt|roundid=1
+ticks=635071136738029496|username=MESSER|level=4|userid=|gameid=28d52800-8a04-47aa-bd52-016419ba031e|kills=67|score=1671|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136738029496_save.txt|roundid=1
+ticks=635071136841495414|username=MESSER|level=5|userid=|gameid=5b3387a9-65bf-46cb-80e2-85c83b6d2b13|kills=112|score=2992|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136841495414_save.txt|roundid=1
+ticks=635071136936530849|username=MESSER|level=6|userid=|gameid=ccc3027c-88d3-4634-ac94-c50c9205281b|kills=169|score=4097|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136936530849_save.txt|roundid=1
+ticks=635071137069358447|username=MESSER|level=7|userid=|gameid=2ffb3dcc-6eef-433e-9730-5f06cb5ecffd|kills=152|score=3661|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137069358447_save.txt|roundid=1
+ticks=635071137164183870|username=MESSER|level=8|userid=|gameid=c414d38b-a7f4-4e0b-b1f6-8e3e340a04bb|kills=150|score=3666|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137164183870_save.txt|roundid=1
+ticks=635071137254169017|username=MESSER|level=9|userid=|gameid=13bb3a1f-b444-4f99-a6ac-e403f241cd68|kills=202|score=4640|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137254169017_save.txt|roundid=1
+ticks=635071137345904264|username=MESSER|level=10|userid=|gameid=5feeec7a-d3fa-4d5f-b25b-07e8ed74dc01|kills=332|score=6316|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137345904264_save.txt|roundid=1
+ticks=635071138646338645|username=MESSER|level=10|userid=|gameid=008b8ccb-8fdd-4739-b7cd-cf8d54993cf9|kills=329|score=6677|version=0.0006|sessionid=ca451b45-c401-48ed-ba81-a7efcd9c0367|file=635071138646338645_save.txt|roundid=1
+ticks=635071140572538817|username=MESSER|level=10|userid=|gameid=8b5fb713-25b6-4e13-bd8e-703892f9bdc9|kills=333|score=7329|version=0.0006|sessionid=ea12842e-a461-4611-8842-8ba32102f8c8|file=635071140572538817_save.txt|roundid=1
+
+[info|635071140572798832] Handled request=getHighscoreForRound in 0ms
+[debug|635071140731277896] Incoming: request=beginGame, data={"level":10,"product_key":"freeloader","user_name":"MESSER","user_id":""}
+[debug|635071140731277896] Outgoing: request=beginGame, data={"game_id":"75cf787f-5814-4fd6-bee6-adc2ed262a3d","session_id":"76103661-9662-40cf-86e5-44de77bfe344","round_id":1}
+[info|635071140731277896] Handled request=beginGame in 1ms
+[debug|635071140824773244] Incoming: request=getHighscoreForRound, data={"product_key":"freeloader","round_id":1}
+[debug|635071140824773244] Outgoing: request=getHighscoreForRound, data=ticks=635071087313442571|username=MESSER|level=1|userid=|gameid=b8e7fa6a-2e4a-4a5d-be0a-b6bc88f02815|kills=134|score=2672|version=0.0006|sessionid=13b4c7e9-04fb-43c6-8619-9adb33c98f9c|file=635071087313442571_save.txt|roundid=1
+ticks=635071094437050018|username=MESSER|level=1|userid=|gameid=2a601397-e492-4765-b58b-58f55ea9e002|kills=148|score=2784|version=0.0006|sessionid=963312b6-fcbb-4b76-b24b-4121fce28f41|file=635071094437050018_save.txt|roundid=1
+ticks=635071110941204002|username=MESSER|level=1|userid=|gameid=4f36adcd-a995-4ba9-bcbe-74dc8b489ae6|kills=128|score=2824|version=0.0006|sessionid=0ee5cbaf-43b8-4efc-b57c-36ec736491d4|file=635071110941204002_save.txt|roundid=1
+ticks=635071112301241791|username=MESSER|level=1|userid=|gameid=2e3917a5-f393-4ab1-8100-4eff1208e0ca|kills=147|score=2576|version=0.0006|sessionid=a28bec19-3366-4c9d-bf17-3f35e42d0fc0|file=635071112301241791_save.txt|roundid=1
+ticks=635071124260555825|username=MESSER|level=1|userid=|gameid=efeb753f-bdfb-4693-83ce-209d68f2638d|kills=149|score=3392|version=0.0006|sessionid=317b03d9-404a-412d-94df-789cee8c6fa4|file=635071124260555825_save.txt|roundid=1
+ticks=635071131817398052|username=MESSER|level=1|userid=|gameid=3cc72378-e368-423f-b4f2-044cb25d41be|kills=104|score=2232|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131817398052_save.txt|roundid=1
+ticks=635071131962176333|username=MESSER|level=2|userid=|gameid=f56f976a-3d9e-4bba-a307-4c8cd8b47d72|kills=138|score=3475|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131962176333_save.txt|roundid=1
+ticks=635071132061702025|username=MESSER|level=3|userid=|gameid=c3916802-d1f7-49a8-8a92-04889de5c270|kills=133|score=2724|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132061702025_save.txt|roundid=1
+ticks=635071132149087023|username=MESSER|level=4|userid=|gameid=b55d9a97-3437-4673-9dbe-0864c220b8bc|kills=69|score=1697|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132149087023_save.txt|roundid=1
+ticks=635071132241732322|username=MESSER|level=5|userid=|gameid=0ff4943b-f248-4f08-bf19-538065198f04|kills=130|score=3260|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132241732322_save.txt|roundid=1
+ticks=635071132329837362|username=MESSER|level=6|userid=|gameid=cda08c71-aabe-490a-a892-2c1ee1092686|kills=200|score=4498|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132329837362_save.txt|roundid=1
+ticks=635071132416642327|username=MESSER|level=7|userid=|gameid=9663a525-544a-45db-927d-9b600eb5e06d|kills=177|score=3812|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132416642327_save.txt|roundid=1
+ticks=635071132505037382|username=MESSER|level=8|userid=|gameid=2497cab7-54be-4351-ad8f-e1754bae3ab6|kills=184|score=4210|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132505037382_save.txt|roundid=1
+ticks=635071132596762629|username=MESSER|level=9|userid=|gameid=54a42f2f-bc3f-43f3-b9e5-d789c94b7b8a|kills=245|score=5644|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132596762629_save.txt|roundid=1
+ticks=635071132681597481|username=MESSER|level=10|userid=|gameid=a09e5504-39a9-4d9e-aa0a-a6983c8be642|kills=333|score=6329|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132681597481_save.txt|roundid=1
+ticks=635071136039729555|username=MESSER|level=1|userid=|gameid=fe58da78-32b5-4e49-895d-51d3916fbfe5|kills=131|score=2048|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136039729555_save.txt|roundid=1
+ticks=635071136132044835|username=MESSER|level=2|userid=|gameid=d65e0f9c-6fdd-4356-97ec-e255aa7ffe96|kills=0|score=0|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136132044835_save.txt|roundid=1
+ticks=635071136648674385|username=MESSER|level=3|userid=|gameid=e0e51e32-a2f3-421f-90d1-bfc530340e0b|kills=132|score=2276|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136648674385_save.txt|roundid=1
+ticks=635071136738029496|username=MESSER|level=4|userid=|gameid=28d52800-8a04-47aa-bd52-016419ba031e|kills=67|score=1671|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136738029496_save.txt|roundid=1
+ticks=635071136841495414|username=MESSER|level=5|userid=|gameid=5b3387a9-65bf-46cb-80e2-85c83b6d2b13|kills=112|score=2992|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136841495414_save.txt|roundid=1
+ticks=635071136936530849|username=MESSER|level=6|userid=|gameid=ccc3027c-88d3-4634-ac94-c50c9205281b|kills=169|score=4097|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136936530849_save.txt|roundid=1
+ticks=635071137069358447|username=MESSER|level=7|userid=|gameid=2ffb3dcc-6eef-433e-9730-5f06cb5ecffd|kills=152|score=3661|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137069358447_save.txt|roundid=1
+ticks=635071137164183870|username=MESSER|level=8|userid=|gameid=c414d38b-a7f4-4e0b-b1f6-8e3e340a04bb|kills=150|score=3666|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137164183870_save.txt|roundid=1
+ticks=635071137254169017|username=MESSER|level=9|userid=|gameid=13bb3a1f-b444-4f99-a6ac-e403f241cd68|kills=202|score=4640|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137254169017_save.txt|roundid=1
+ticks=635071137345904264|username=MESSER|level=10|userid=|gameid=5feeec7a-d3fa-4d5f-b25b-07e8ed74dc01|kills=332|score=6316|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137345904264_save.txt|roundid=1
+ticks=635071138646338645|username=MESSER|level=10|userid=|gameid=008b8ccb-8fdd-4739-b7cd-cf8d54993cf9|kills=329|score=6677|version=0.0006|sessionid=ca451b45-c401-48ed-ba81-a7efcd9c0367|file=635071138646338645_save.txt|roundid=1
+ticks=635071140572538817|username=MESSER|level=10|userid=|gameid=8b5fb713-25b6-4e13-bd8e-703892f9bdc9|kills=333|score=7329|version=0.0006|sessionid=ea12842e-a461-4611-8842-8ba32102f8c8|file=635071140572538817_save.txt|roundid=1
+
+[info|635071140824793245] Handled request=getHighscoreForRound in 6,0003ms
+[debug|635071140825083262] Incoming: request=final, data=(stripped)
+[debug|635071140825083262] Outgoing: request=final, data=OK
+[info|635071140825083262] Handled request=final in 26,0015ms
+[debug|635071141047775999] Incoming: request=beginGame, data={"level":10,"product_key":"freeloader","user_name":"MESSER","user_id":""}
+[debug|635071141047775999] Outgoing: request=beginGame, data={"game_id":"ef0e2cec-1c3b-4a62-b670-f0b151ec4210","session_id":"87186d56-3eb1-45f3-bf80-1826e74cacef","round_id":1}
+[info|635071141047775999] Handled request=beginGame in 1ms
+[debug|635071141136121052] Incoming: request=final, data=(stripped)
+[debug|635071141136121052] Outgoing: request=final, data=OK
+[info|635071141136121052] Handled request=final in 34,0019ms
+[debug|635071141136161054] Incoming: request=getHighscoreForRound, data={"product_key":"freeloader","round_id":1}
+[debug|635071141136161054] Outgoing: request=getHighscoreForRound, data=ticks=635071087313442571|username=MESSER|level=1|userid=|gameid=b8e7fa6a-2e4a-4a5d-be0a-b6bc88f02815|kills=134|score=2672|version=0.0006|sessionid=13b4c7e9-04fb-43c6-8619-9adb33c98f9c|file=635071087313442571_save.txt|roundid=1
+ticks=635071094437050018|username=MESSER|level=1|userid=|gameid=2a601397-e492-4765-b58b-58f55ea9e002|kills=148|score=2784|version=0.0006|sessionid=963312b6-fcbb-4b76-b24b-4121fce28f41|file=635071094437050018_save.txt|roundid=1
+ticks=635071110941204002|username=MESSER|level=1|userid=|gameid=4f36adcd-a995-4ba9-bcbe-74dc8b489ae6|kills=128|score=2824|version=0.0006|sessionid=0ee5cbaf-43b8-4efc-b57c-36ec736491d4|file=635071110941204002_save.txt|roundid=1
+ticks=635071112301241791|username=MESSER|level=1|userid=|gameid=2e3917a5-f393-4ab1-8100-4eff1208e0ca|kills=147|score=2576|version=0.0006|sessionid=a28bec19-3366-4c9d-bf17-3f35e42d0fc0|file=635071112301241791_save.txt|roundid=1
+ticks=635071124260555825|username=MESSER|level=1|userid=|gameid=efeb753f-bdfb-4693-83ce-209d68f2638d|kills=149|score=3392|version=0.0006|sessionid=317b03d9-404a-412d-94df-789cee8c6fa4|file=635071124260555825_save.txt|roundid=1
+ticks=635071131817398052|username=MESSER|level=1|userid=|gameid=3cc72378-e368-423f-b4f2-044cb25d41be|kills=104|score=2232|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131817398052_save.txt|roundid=1
+ticks=635071131962176333|username=MESSER|level=2|userid=|gameid=f56f976a-3d9e-4bba-a307-4c8cd8b47d72|kills=138|score=3475|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131962176333_save.txt|roundid=1
+ticks=635071132061702025|username=MESSER|level=3|userid=|gameid=c3916802-d1f7-49a8-8a92-04889de5c270|kills=133|score=2724|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132061702025_save.txt|roundid=1
+ticks=635071132149087023|username=MESSER|level=4|userid=|gameid=b55d9a97-3437-4673-9dbe-0864c220b8bc|kills=69|score=1697|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132149087023_save.txt|roundid=1
+ticks=635071132241732322|username=MESSER|level=5|userid=|gameid=0ff4943b-f248-4f08-bf19-538065198f04|kills=130|score=3260|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132241732322_save.txt|roundid=1
+ticks=635071132329837362|username=MESSER|level=6|userid=|gameid=cda08c71-aabe-490a-a892-2c1ee1092686|kills=200|score=4498|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132329837362_save.txt|roundid=1
+ticks=635071132416642327|username=MESSER|level=7|userid=|gameid=9663a525-544a-45db-927d-9b600eb5e06d|kills=177|score=3812|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132416642327_save.txt|roundid=1
+ticks=635071132505037382|username=MESSER|level=8|userid=|gameid=2497cab7-54be-4351-ad8f-e1754bae3ab6|kills=184|score=4210|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132505037382_save.txt|roundid=1
+ticks=635071132596762629|username=MESSER|level=9|userid=|gameid=54a42f2f-bc3f-43f3-b9e5-d789c94b7b8a|kills=245|score=5644|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132596762629_save.txt|roundid=1
+ticks=635071132681597481|username=MESSER|level=10|userid=|gameid=a09e5504-39a9-4d9e-aa0a-a6983c8be642|kills=333|score=6329|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132681597481_save.txt|roundid=1
+ticks=635071136039729555|username=MESSER|level=1|userid=|gameid=fe58da78-32b5-4e49-895d-51d3916fbfe5|kills=131|score=2048|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136039729555_save.txt|roundid=1
+ticks=635071136132044835|username=MESSER|level=2|userid=|gameid=d65e0f9c-6fdd-4356-97ec-e255aa7ffe96|kills=0|score=0|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136132044835_save.txt|roundid=1
+ticks=635071136648674385|username=MESSER|level=3|userid=|gameid=e0e51e32-a2f3-421f-90d1-bfc530340e0b|kills=132|score=2276|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136648674385_save.txt|roundid=1
+ticks=635071136738029496|username=MESSER|level=4|userid=|gameid=28d52800-8a04-47aa-bd52-016419ba031e|kills=67|score=1671|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136738029496_save.txt|roundid=1
+ticks=635071136841495414|username=MESSER|level=5|userid=|gameid=5b3387a9-65bf-46cb-80e2-85c83b6d2b13|kills=112|score=2992|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136841495414_save.txt|roundid=1
+ticks=635071136936530849|username=MESSER|level=6|userid=|gameid=ccc3027c-88d3-4634-ac94-c50c9205281b|kills=169|score=4097|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136936530849_save.txt|roundid=1
+ticks=635071137069358447|username=MESSER|level=7|userid=|gameid=2ffb3dcc-6eef-433e-9730-5f06cb5ecffd|kills=152|score=3661|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137069358447_save.txt|roundid=1
+ticks=635071137164183870|username=MESSER|level=8|userid=|gameid=c414d38b-a7f4-4e0b-b1f6-8e3e340a04bb|kills=150|score=3666|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137164183870_save.txt|roundid=1
+ticks=635071137254169017|username=MESSER|level=9|userid=|gameid=13bb3a1f-b444-4f99-a6ac-e403f241cd68|kills=202|score=4640|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137254169017_save.txt|roundid=1
+ticks=635071137345904264|username=MESSER|level=10|userid=|gameid=5feeec7a-d3fa-4d5f-b25b-07e8ed74dc01|kills=332|score=6316|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137345904264_save.txt|roundid=1
+ticks=635071138646338645|username=MESSER|level=10|userid=|gameid=008b8ccb-8fdd-4739-b7cd-cf8d54993cf9|kills=329|score=6677|version=0.0006|sessionid=ca451b45-c401-48ed-ba81-a7efcd9c0367|file=635071138646338645_save.txt|roundid=1
+ticks=635071140572538817|username=MESSER|level=10|userid=|gameid=8b5fb713-25b6-4e13-bd8e-703892f9bdc9|kills=333|score=7329|version=0.0006|sessionid=ea12842e-a461-4611-8842-8ba32102f8c8|file=635071140572538817_save.txt|roundid=1
+ticks=635071140824923253|username=MESSER|level=10|userid=|gameid=75cf787f-5814-4fd6-bee6-adc2ed262a3d|kills=332|score=6916|version=0.0006|sessionid=76103661-9662-40cf-86e5-44de77bfe344|file=635071140824923253_save.txt|roundid=1
+ticks=635071141135911040|username=MESSER|level=10|userid=|gameid=ef0e2cec-1c3b-4a62-b670-f0b151ec4210|kills=330|score=7490|version=0.0006|sessionid=87186d56-3eb1-45f3-bf80-1826e74cacef|file=635071141135911040_save.txt|roundid=1
+
+[info|635071141136161054] Handled request=getHighscoreForRound in 3,0001ms
+[debug|635071141610188167] Incoming: request=beginGame, data={"level":1,"product_key":"freeloader","user_name":"MESSER","user_id":""}
+[debug|635071141610188167] Outgoing: request=beginGame, data={"game_id":"47b022b3-56cf-4640-93f1-f5f52737947b","session_id":"f56933b4-3b58-4aa1-93fc-7f0fe6248ef6","round_id":1}
+[info|635071141610188167] Handled request=beginGame in 0ms
+[debug|635071141626769116] Incoming: request=beginGame, data={"level":10,"product_key":"freeloader","user_name":"MESSER","user_id":""}
+[debug|635071141626769116] Outgoing: request=beginGame, data={"game_id":"f77b7241-29f2-412a-8200-cb1358bfe83b","session_id":"3ebd4fec-a3ba-45a1-9c73-11b5a0e17082","round_id":1}
+[info|635071141626769116] Handled request=beginGame in 1,0001ms
+[debug|635071141734655286] Incoming: request=getHighscoreForRound, data={"product_key":"freeloader","round_id":1}
+[debug|635071141734655286] Outgoing: request=getHighscoreForRound, data=ticks=635071087313442571|username=MESSER|level=1|userid=|gameid=b8e7fa6a-2e4a-4a5d-be0a-b6bc88f02815|kills=134|score=2672|version=0.0006|sessionid=13b4c7e9-04fb-43c6-8619-9adb33c98f9c|file=635071087313442571_save.txt|roundid=1
+ticks=635071094437050018|username=MESSER|level=1|userid=|gameid=2a601397-e492-4765-b58b-58f55ea9e002|kills=148|score=2784|version=0.0006|sessionid=963312b6-fcbb-4b76-b24b-4121fce28f41|file=635071094437050018_save.txt|roundid=1
+ticks=635071110941204002|username=MESSER|level=1|userid=|gameid=4f36adcd-a995-4ba9-bcbe-74dc8b489ae6|kills=128|score=2824|version=0.0006|sessionid=0ee5cbaf-43b8-4efc-b57c-36ec736491d4|file=635071110941204002_save.txt|roundid=1
+ticks=635071112301241791|username=MESSER|level=1|userid=|gameid=2e3917a5-f393-4ab1-8100-4eff1208e0ca|kills=147|score=2576|version=0.0006|sessionid=a28bec19-3366-4c9d-bf17-3f35e42d0fc0|file=635071112301241791_save.txt|roundid=1
+ticks=635071124260555825|username=MESSER|level=1|userid=|gameid=efeb753f-bdfb-4693-83ce-209d68f2638d|kills=149|score=3392|version=0.0006|sessionid=317b03d9-404a-412d-94df-789cee8c6fa4|file=635071124260555825_save.txt|roundid=1
+ticks=635071131817398052|username=MESSER|level=1|userid=|gameid=3cc72378-e368-423f-b4f2-044cb25d41be|kills=104|score=2232|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131817398052_save.txt|roundid=1
+ticks=635071131962176333|username=MESSER|level=2|userid=|gameid=f56f976a-3d9e-4bba-a307-4c8cd8b47d72|kills=138|score=3475|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131962176333_save.txt|roundid=1
+ticks=635071132061702025|username=MESSER|level=3|userid=|gameid=c3916802-d1f7-49a8-8a92-04889de5c270|kills=133|score=2724|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132061702025_save.txt|roundid=1
+ticks=635071132149087023|username=MESSER|level=4|userid=|gameid=b55d9a97-3437-4673-9dbe-0864c220b8bc|kills=69|score=1697|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132149087023_save.txt|roundid=1
+ticks=635071132241732322|username=MESSER|level=5|userid=|gameid=0ff4943b-f248-4f08-bf19-538065198f04|kills=130|score=3260|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132241732322_save.txt|roundid=1
+ticks=635071132329837362|username=MESSER|level=6|userid=|gameid=cda08c71-aabe-490a-a892-2c1ee1092686|kills=200|score=4498|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132329837362_save.txt|roundid=1
+ticks=635071132416642327|username=MESSER|level=7|userid=|gameid=9663a525-544a-45db-927d-9b600eb5e06d|kills=177|score=3812|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132416642327_save.txt|roundid=1
+ticks=635071132505037382|username=MESSER|level=8|userid=|gameid=2497cab7-54be-4351-ad8f-e1754bae3ab6|kills=184|score=4210|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132505037382_save.txt|roundid=1
+ticks=635071132596762629|username=MESSER|level=9|userid=|gameid=54a42f2f-bc3f-43f3-b9e5-d789c94b7b8a|kills=245|score=5644|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132596762629_save.txt|roundid=1
+ticks=635071132681597481|username=MESSER|level=10|userid=|gameid=a09e5504-39a9-4d9e-aa0a-a6983c8be642|kills=333|score=6329|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132681597481_save.txt|roundid=1
+ticks=635071136039729555|username=MESSER|level=1|userid=|gameid=fe58da78-32b5-4e49-895d-51d3916fbfe5|kills=131|score=2048|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136039729555_save.txt|roundid=1
+ticks=635071136132044835|username=MESSER|level=2|userid=|gameid=d65e0f9c-6fdd-4356-97ec-e255aa7ffe96|kills=0|score=0|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136132044835_save.txt|roundid=1
+ticks=635071136648674385|username=MESSER|level=3|userid=|gameid=e0e51e32-a2f3-421f-90d1-bfc530340e0b|kills=132|score=2276|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136648674385_save.txt|roundid=1
+ticks=635071136738029496|username=MESSER|level=4|userid=|gameid=28d52800-8a04-47aa-bd52-016419ba031e|kills=67|score=1671|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136738029496_save.txt|roundid=1
+ticks=635071136841495414|username=MESSER|level=5|userid=|gameid=5b3387a9-65bf-46cb-80e2-85c83b6d2b13|kills=112|score=2992|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136841495414_save.txt|roundid=1
+ticks=635071136936530849|username=MESSER|level=6|userid=|gameid=ccc3027c-88d3-4634-ac94-c50c9205281b|kills=169|score=4097|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136936530849_save.txt|roundid=1
+ticks=635071137069358447|username=MESSER|level=7|userid=|gameid=2ffb3dcc-6eef-433e-9730-5f06cb5ecffd|kills=152|score=3661|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137069358447_save.txt|roundid=1
+ticks=635071137164183870|username=MESSER|level=8|userid=|gameid=c414d38b-a7f4-4e0b-b1f6-8e3e340a04bb|kills=150|score=3666|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137164183870_save.txt|roundid=1
+ticks=635071137254169017|username=MESSER|level=9|userid=|gameid=13bb3a1f-b444-4f99-a6ac-e403f241cd68|kills=202|score=4640|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137254169017_save.txt|roundid=1
+ticks=635071137345904264|username=MESSER|level=10|userid=|gameid=5feeec7a-d3fa-4d5f-b25b-07e8ed74dc01|kills=332|score=6316|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137345904264_save.txt|roundid=1
+ticks=635071138646338645|username=MESSER|level=10|userid=|gameid=008b8ccb-8fdd-4739-b7cd-cf8d54993cf9|kills=329|score=6677|version=0.0006|sessionid=ca451b45-c401-48ed-ba81-a7efcd9c0367|file=635071138646338645_save.txt|roundid=1
+ticks=635071140572538817|username=MESSER|level=10|userid=|gameid=8b5fb713-25b6-4e13-bd8e-703892f9bdc9|kills=333|score=7329|version=0.0006|sessionid=ea12842e-a461-4611-8842-8ba32102f8c8|file=635071140572538817_save.txt|roundid=1
+ticks=635071140824923253|username=MESSER|level=10|userid=|gameid=75cf787f-5814-4fd6-bee6-adc2ed262a3d|kills=332|score=6916|version=0.0006|sessionid=76103661-9662-40cf-86e5-44de77bfe344|file=635071140824923253_save.txt|roundid=1
+ticks=635071141135911040|username=MESSER|level=10|userid=|gameid=ef0e2cec-1c3b-4a62-b670-f0b151ec4210|kills=330|score=7490|version=0.0006|sessionid=87186d56-3eb1-45f3-bf80-1826e74cacef|file=635071141135911040_save.txt|roundid=1
+
+[info|635071141734715290] Handled request=getHighscoreForRound in 10,0006ms
+[debug|635071141734775293] Incoming: request=final, data=(stripped)
+[debug|635071141734775293] Outgoing: request=final, data=OK
+[info|635071141734785294] Handled request=final in 44,0025ms
+[debug|635071141814419849] Incoming: request=beginGame, data={"level":10,"product_key":"freeloader","user_name":"MESSER","user_id":""}
+[debug|635071141814419849] Outgoing: request=beginGame, data={"game_id":"cac97076-ef93-4142-af0a-f0e4eb39ac9f","session_id":"6d6ef017-4fdb-486e-8c2b-c12e720768e5","round_id":1}
+[info|635071141814419849] Handled request=beginGame in 0ms
+[debug|635071141901224814] Incoming: request=getHighscoreForRound, data={"product_key":"freeloader","round_id":1}
+[debug|635071141901224814] Outgoing: request=getHighscoreForRound, data=ticks=635071087313442571|username=MESSER|level=1|userid=|gameid=b8e7fa6a-2e4a-4a5d-be0a-b6bc88f02815|kills=134|score=2672|version=0.0006|sessionid=13b4c7e9-04fb-43c6-8619-9adb33c98f9c|file=635071087313442571_save.txt|roundid=1
+ticks=635071094437050018|username=MESSER|level=1|userid=|gameid=2a601397-e492-4765-b58b-58f55ea9e002|kills=148|score=2784|version=0.0006|sessionid=963312b6-fcbb-4b76-b24b-4121fce28f41|file=635071094437050018_save.txt|roundid=1
+ticks=635071110941204002|username=MESSER|level=1|userid=|gameid=4f36adcd-a995-4ba9-bcbe-74dc8b489ae6|kills=128|score=2824|version=0.0006|sessionid=0ee5cbaf-43b8-4efc-b57c-36ec736491d4|file=635071110941204002_save.txt|roundid=1
+ticks=635071112301241791|username=MESSER|level=1|userid=|gameid=2e3917a5-f393-4ab1-8100-4eff1208e0ca|kills=147|score=2576|version=0.0006|sessionid=a28bec19-3366-4c9d-bf17-3f35e42d0fc0|file=635071112301241791_save.txt|roundid=1
+ticks=635071124260555825|username=MESSER|level=1|userid=|gameid=efeb753f-bdfb-4693-83ce-209d68f2638d|kills=149|score=3392|version=0.0006|sessionid=317b03d9-404a-412d-94df-789cee8c6fa4|file=635071124260555825_save.txt|roundid=1
+ticks=635071131817398052|username=MESSER|level=1|userid=|gameid=3cc72378-e368-423f-b4f2-044cb25d41be|kills=104|score=2232|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131817398052_save.txt|roundid=1
+ticks=635071131962176333|username=MESSER|level=2|userid=|gameid=f56f976a-3d9e-4bba-a307-4c8cd8b47d72|kills=138|score=3475|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131962176333_save.txt|roundid=1
+ticks=635071132061702025|username=MESSER|level=3|userid=|gameid=c3916802-d1f7-49a8-8a92-04889de5c270|kills=133|score=2724|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132061702025_save.txt|roundid=1
+ticks=635071132149087023|username=MESSER|level=4|userid=|gameid=b55d9a97-3437-4673-9dbe-0864c220b8bc|kills=69|score=1697|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132149087023_save.txt|roundid=1
+ticks=635071132241732322|username=MESSER|level=5|userid=|gameid=0ff4943b-f248-4f08-bf19-538065198f04|kills=130|score=3260|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132241732322_save.txt|roundid=1
+ticks=635071132329837362|username=MESSER|level=6|userid=|gameid=cda08c71-aabe-490a-a892-2c1ee1092686|kills=200|score=4498|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132329837362_save.txt|roundid=1
+ticks=635071132416642327|username=MESSER|level=7|userid=|gameid=9663a525-544a-45db-927d-9b600eb5e06d|kills=177|score=3812|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132416642327_save.txt|roundid=1
+ticks=635071132505037382|username=MESSER|level=8|userid=|gameid=2497cab7-54be-4351-ad8f-e1754bae3ab6|kills=184|score=4210|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132505037382_save.txt|roundid=1
+ticks=635071132596762629|username=MESSER|level=9|userid=|gameid=54a42f2f-bc3f-43f3-b9e5-d789c94b7b8a|kills=245|score=5644|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132596762629_save.txt|roundid=1
+ticks=635071132681597481|username=MESSER|level=10|userid=|gameid=a09e5504-39a9-4d9e-aa0a-a6983c8be642|kills=333|score=6329|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132681597481_save.txt|roundid=1
+ticks=635071136039729555|username=MESSER|level=1|userid=|gameid=fe58da78-32b5-4e49-895d-51d3916fbfe5|kills=131|score=2048|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136039729555_save.txt|roundid=1
+ticks=635071136132044835|username=MESSER|level=2|userid=|gameid=d65e0f9c-6fdd-4356-97ec-e255aa7ffe96|kills=0|score=0|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136132044835_save.txt|roundid=1
+ticks=635071136648674385|username=MESSER|level=3|userid=|gameid=e0e51e32-a2f3-421f-90d1-bfc530340e0b|kills=132|score=2276|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136648674385_save.txt|roundid=1
+ticks=635071136738029496|username=MESSER|level=4|userid=|gameid=28d52800-8a04-47aa-bd52-016419ba031e|kills=67|score=1671|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136738029496_save.txt|roundid=1
+ticks=635071136841495414|username=MESSER|level=5|userid=|gameid=5b3387a9-65bf-46cb-80e2-85c83b6d2b13|kills=112|score=2992|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136841495414_save.txt|roundid=1
+ticks=635071136936530849|username=MESSER|level=6|userid=|gameid=ccc3027c-88d3-4634-ac94-c50c9205281b|kills=169|score=4097|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136936530849_save.txt|roundid=1
+ticks=635071137069358447|username=MESSER|level=7|userid=|gameid=2ffb3dcc-6eef-433e-9730-5f06cb5ecffd|kills=152|score=3661|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137069358447_save.txt|roundid=1
+ticks=635071137164183870|username=MESSER|level=8|userid=|gameid=c414d38b-a7f4-4e0b-b1f6-8e3e340a04bb|kills=150|score=3666|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137164183870_save.txt|roundid=1
+ticks=635071137254169017|username=MESSER|level=9|userid=|gameid=13bb3a1f-b444-4f99-a6ac-e403f241cd68|kills=202|score=4640|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137254169017_save.txt|roundid=1
+ticks=635071137345904264|username=MESSER|level=10|userid=|gameid=5feeec7a-d3fa-4d5f-b25b-07e8ed74dc01|kills=332|score=6316|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137345904264_save.txt|roundid=1
+ticks=635071138646338645|username=MESSER|level=10|userid=|gameid=008b8ccb-8fdd-4739-b7cd-cf8d54993cf9|kills=329|score=6677|version=0.0006|sessionid=ca451b45-c401-48ed-ba81-a7efcd9c0367|file=635071138646338645_save.txt|roundid=1
+ticks=635071140572538817|username=MESSER|level=10|userid=|gameid=8b5fb713-25b6-4e13-bd8e-703892f9bdc9|kills=333|score=7329|version=0.0006|sessionid=ea12842e-a461-4611-8842-8ba32102f8c8|file=635071140572538817_save.txt|roundid=1
+ticks=635071140824923253|username=MESSER|level=10|userid=|gameid=75cf787f-5814-4fd6-bee6-adc2ed262a3d|kills=332|score=6916|version=0.0006|sessionid=76103661-9662-40cf-86e5-44de77bfe344|file=635071140824923253_save.txt|roundid=1
+ticks=635071141135911040|username=MESSER|level=10|userid=|gameid=ef0e2cec-1c3b-4a62-b670-f0b151ec4210|kills=330|score=7490|version=0.0006|sessionid=87186d56-3eb1-45f3-bf80-1826e74cacef|file=635071141135911040_save.txt|roundid=1
+ticks=635071141734535280|username=MESSER|level=10|userid=|gameid=f77b7241-29f2-412a-8200-cb1358bfe83b|kills=330|score=7490|version=0.0006|sessionid=3ebd4fec-a3ba-45a1-9c73-11b5a0e17082|file=635071141734535280_save.txt|roundid=1
+
+[info|635071141901224814] Handled request=getHighscoreForRound in 2,0002ms
+[debug|635071141901614836] Incoming: request=final, data=(stripped)
+[debug|635071141901614836] Outgoing: request=final, data=OK
+[info|635071141901614836] Handled request=final in 39,0022ms
+[debug|635071141981089382] Incoming: request=beginGame, data={"level":9,"product_key":"freeloader","user_name":"MESSER","user_id":""}
+[debug|635071141981089382] Outgoing: request=beginGame, data={"game_id":"a9531f48-2343-4d91-a0e8-defc54993a19","session_id":"dcbf6d6d-d145-48dd-8966-f53a8d155050","round_id":1}
+[info|635071141981089382] Handled request=beginGame in 1,0001ms
+[debug|635071142068964408] Incoming: request=getHighscoreOnLevel, data={"level":9,"product_key":"freeloader"}
+[debug|635071142068964408] Outgoing: request=getHighscoreOnLevel, data=ticks=635071132596762629|username=MESSER|level=9|userid=|gameid=54a42f2f-bc3f-43f3-b9e5-d789c94b7b8a|kills=245|score=5644|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132596762629_save.txt|roundid=1
+ticks=635071137254169017|username=MESSER|level=9|userid=|gameid=13bb3a1f-b444-4f99-a6ac-e403f241cd68|kills=202|score=4640|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137254169017_save.txt|roundid=1
+
+[info|635071142068984409] Handled request=getHighscoreOnLevel in 3,0002ms
+[debug|635071142069064413] Incoming: request=continueGame, data={"level":10,"round_id":1,"product_key":"freeloader","session_id":"dcbf6d6d-d145-48dd-8966-f53a8d155050","user_name":"MESSER","user_id":""}
+[debug|635071142069064413] Outgoing: request=continueGame, data={"game_id":"65f1f01e-0dd4-4177-a907-2ba0229dccb7","session_id":"dcbf6d6d-d145-48dd-8966-f53a8d155050","round_id":1}
+[info|635071142069064413] Handled request=continueGame in 4,0002ms
+[debug|635071142069314428] Incoming: request=final, data=(stripped)
+[debug|635071142069314428] Outgoing: request=final, data=OK
+[info|635071142069314428] Handled request=final in 30,0017ms
+[debug|635071142161999729] Incoming: request=getHighscoreForRound, data={"product_key":"freeloader","round_id":1}
+[debug|635071142161999729] Outgoing: request=getHighscoreForRound, data=ticks=635071087313442571|username=MESSER|level=1|userid=|gameid=b8e7fa6a-2e4a-4a5d-be0a-b6bc88f02815|kills=134|score=2672|version=0.0006|sessionid=13b4c7e9-04fb-43c6-8619-9adb33c98f9c|file=635071087313442571_save.txt|roundid=1
+ticks=635071094437050018|username=MESSER|level=1|userid=|gameid=2a601397-e492-4765-b58b-58f55ea9e002|kills=148|score=2784|version=0.0006|sessionid=963312b6-fcbb-4b76-b24b-4121fce28f41|file=635071094437050018_save.txt|roundid=1
+ticks=635071110941204002|username=MESSER|level=1|userid=|gameid=4f36adcd-a995-4ba9-bcbe-74dc8b489ae6|kills=128|score=2824|version=0.0006|sessionid=0ee5cbaf-43b8-4efc-b57c-36ec736491d4|file=635071110941204002_save.txt|roundid=1
+ticks=635071112301241791|username=MESSER|level=1|userid=|gameid=2e3917a5-f393-4ab1-8100-4eff1208e0ca|kills=147|score=2576|version=0.0006|sessionid=a28bec19-3366-4c9d-bf17-3f35e42d0fc0|file=635071112301241791_save.txt|roundid=1
+ticks=635071124260555825|username=MESSER|level=1|userid=|gameid=efeb753f-bdfb-4693-83ce-209d68f2638d|kills=149|score=3392|version=0.0006|sessionid=317b03d9-404a-412d-94df-789cee8c6fa4|file=635071124260555825_save.txt|roundid=1
+ticks=635071131817398052|username=MESSER|level=1|userid=|gameid=3cc72378-e368-423f-b4f2-044cb25d41be|kills=104|score=2232|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131817398052_save.txt|roundid=1
+ticks=635071131962176333|username=MESSER|level=2|userid=|gameid=f56f976a-3d9e-4bba-a307-4c8cd8b47d72|kills=138|score=3475|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131962176333_save.txt|roundid=1
+ticks=635071132061702025|username=MESSER|level=3|userid=|gameid=c3916802-d1f7-49a8-8a92-04889de5c270|kills=133|score=2724|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132061702025_save.txt|roundid=1
+ticks=635071132149087023|username=MESSER|level=4|userid=|gameid=b55d9a97-3437-4673-9dbe-0864c220b8bc|kills=69|score=1697|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132149087023_save.txt|roundid=1
+ticks=635071132241732322|username=MESSER|level=5|userid=|gameid=0ff4943b-f248-4f08-bf19-538065198f04|kills=130|score=3260|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132241732322_save.txt|roundid=1
+ticks=635071132329837362|username=MESSER|level=6|userid=|gameid=cda08c71-aabe-490a-a892-2c1ee1092686|kills=200|score=4498|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132329837362_save.txt|roundid=1
+ticks=635071132416642327|username=MESSER|level=7|userid=|gameid=9663a525-544a-45db-927d-9b600eb5e06d|kills=177|score=3812|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132416642327_save.txt|roundid=1
+ticks=635071132505037382|username=MESSER|level=8|userid=|gameid=2497cab7-54be-4351-ad8f-e1754bae3ab6|kills=184|score=4210|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132505037382_save.txt|roundid=1
+ticks=635071132596762629|username=MESSER|level=9|userid=|gameid=54a42f2f-bc3f-43f3-b9e5-d789c94b7b8a|kills=245|score=5644|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132596762629_save.txt|roundid=1
+ticks=635071132681597481|username=MESSER|level=10|userid=|gameid=a09e5504-39a9-4d9e-aa0a-a6983c8be642|kills=333|score=6329|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132681597481_save.txt|roundid=1
+ticks=635071136039729555|username=MESSER|level=1|userid=|gameid=fe58da78-32b5-4e49-895d-51d3916fbfe5|kills=131|score=2048|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136039729555_save.txt|roundid=1
+ticks=635071136132044835|username=MESSER|level=2|userid=|gameid=d65e0f9c-6fdd-4356-97ec-e255aa7ffe96|kills=0|score=0|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136132044835_save.txt|roundid=1
+ticks=635071136648674385|username=MESSER|level=3|userid=|gameid=e0e51e32-a2f3-421f-90d1-bfc530340e0b|kills=132|score=2276|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136648674385_save.txt|roundid=1
+ticks=635071136738029496|username=MESSER|level=4|userid=|gameid=28d52800-8a04-47aa-bd52-016419ba031e|kills=67|score=1671|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136738029496_save.txt|roundid=1
+ticks=635071136841495414|username=MESSER|level=5|userid=|gameid=5b3387a9-65bf-46cb-80e2-85c83b6d2b13|kills=112|score=2992|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136841495414_save.txt|roundid=1
+ticks=635071136936530849|username=MESSER|level=6|userid=|gameid=ccc3027c-88d3-4634-ac94-c50c9205281b|kills=169|score=4097|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136936530849_save.txt|roundid=1
+ticks=635071137069358447|username=MESSER|level=7|userid=|gameid=2ffb3dcc-6eef-433e-9730-5f06cb5ecffd|kills=152|score=3661|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137069358447_save.txt|roundid=1
+ticks=635071137164183870|username=MESSER|level=8|userid=|gameid=c414d38b-a7f4-4e0b-b1f6-8e3e340a04bb|kills=150|score=3666|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137164183870_save.txt|roundid=1
+ticks=635071137254169017|username=MESSER|level=9|userid=|gameid=13bb3a1f-b444-4f99-a6ac-e403f241cd68|kills=202|score=4640|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137254169017_save.txt|roundid=1
+ticks=635071137345904264|username=MESSER|level=10|userid=|gameid=5feeec7a-d3fa-4d5f-b25b-07e8ed74dc01|kills=332|score=6316|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137345904264_save.txt|roundid=1
+ticks=635071138646338645|username=MESSER|level=10|userid=|gameid=008b8ccb-8fdd-4739-b7cd-cf8d54993cf9|kills=329|score=6677|version=0.0006|sessionid=ca451b45-c401-48ed-ba81-a7efcd9c0367|file=635071138646338645_save.txt|roundid=1
+ticks=635071140572538817|username=MESSER|level=10|userid=|gameid=8b5fb713-25b6-4e13-bd8e-703892f9bdc9|kills=333|score=7329|version=0.0006|sessionid=ea12842e-a461-4611-8842-8ba32102f8c8|file=635071140572538817_save.txt|roundid=1
+ticks=635071140824923253|username=MESSER|level=10|userid=|gameid=75cf787f-5814-4fd6-bee6-adc2ed262a3d|kills=332|score=6916|version=0.0006|sessionid=76103661-9662-40cf-86e5-44de77bfe344|file=635071140824923253_save.txt|roundid=1
+ticks=635071141135911040|username=MESSER|level=10|userid=|gameid=ef0e2cec-1c3b-4a62-b670-f0b151ec4210|kills=330|score=7490|version=0.0006|sessionid=87186d56-3eb1-45f3-bf80-1826e74cacef|file=635071141135911040_save.txt|roundid=1
+ticks=635071141734535280|username=MESSER|level=10|userid=|gameid=f77b7241-29f2-412a-8200-cb1358bfe83b|kills=330|score=7490|version=0.0006|sessionid=3ebd4fec-a3ba-45a1-9c73-11b5a0e17082|file=635071141734535280_save.txt|roundid=1
+ticks=635071141901384823|username=MESSER|level=10|userid=|gameid=cac97076-ef93-4142-af0a-f0e4eb39ac9f|kills=332|score=7316|version=0.0006|sessionid=6d6ef017-4fdb-486e-8c2b-c12e720768e5|file=635071141901384823_save.txt|roundid=1
+ticks=635071142069114416|username=MESSER|level=9|userid=|gameid=a9531f48-2343-4d91-a0e8-defc54993a19|kills=227|score=5012|version=0.0006|sessionid=dcbf6d6d-d145-48dd-8966-f53a8d155050|file=635071142069114416_save.txt|roundid=1
+
+[info|635071142162209741] Handled request=getHighscoreForRound in 22,0012ms
+[debug|635071142162369750] Incoming: request=final, data=(stripped)
+[debug|635071142162369750] Outgoing: request=final, data=OK
+[info|635071142162369750] Handled request=final in 39,0022ms
+[debug|635071142239574166] Incoming: request=beginGame, data={"level":10,"product_key":"freeloader","user_name":"MESSER","user_id":""}
+[debug|635071142239574166] Outgoing: request=beginGame, data={"game_id":"fc35b6b9-aee8-4efe-93a0-bc7bc1f68267","session_id":"4612614c-0a09-4e5a-87e1-c7c5398af29c","round_id":1}
+[info|635071142239584167] Handled request=beginGame in 1,0001ms
+[debug|635071142325479080] Incoming: request=getHighscoreForRound, data={"product_key":"freeloader","round_id":1}
+[debug|635071142325479080] Outgoing: request=getHighscoreForRound, data=ticks=635071087313442571|username=MESSER|level=1|userid=|gameid=b8e7fa6a-2e4a-4a5d-be0a-b6bc88f02815|kills=134|score=2672|version=0.0006|sessionid=13b4c7e9-04fb-43c6-8619-9adb33c98f9c|file=635071087313442571_save.txt|roundid=1
+ticks=635071094437050018|username=MESSER|level=1|userid=|gameid=2a601397-e492-4765-b58b-58f55ea9e002|kills=148|score=2784|version=0.0006|sessionid=963312b6-fcbb-4b76-b24b-4121fce28f41|file=635071094437050018_save.txt|roundid=1
+ticks=635071110941204002|username=MESSER|level=1|userid=|gameid=4f36adcd-a995-4ba9-bcbe-74dc8b489ae6|kills=128|score=2824|version=0.0006|sessionid=0ee5cbaf-43b8-4efc-b57c-36ec736491d4|file=635071110941204002_save.txt|roundid=1
+ticks=635071112301241791|username=MESSER|level=1|userid=|gameid=2e3917a5-f393-4ab1-8100-4eff1208e0ca|kills=147|score=2576|version=0.0006|sessionid=a28bec19-3366-4c9d-bf17-3f35e42d0fc0|file=635071112301241791_save.txt|roundid=1
+ticks=635071124260555825|username=MESSER|level=1|userid=|gameid=efeb753f-bdfb-4693-83ce-209d68f2638d|kills=149|score=3392|version=0.0006|sessionid=317b03d9-404a-412d-94df-789cee8c6fa4|file=635071124260555825_save.txt|roundid=1
+ticks=635071131817398052|username=MESSER|level=1|userid=|gameid=3cc72378-e368-423f-b4f2-044cb25d41be|kills=104|score=2232|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131817398052_save.txt|roundid=1
+ticks=635071131962176333|username=MESSER|level=2|userid=|gameid=f56f976a-3d9e-4bba-a307-4c8cd8b47d72|kills=138|score=3475|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071131962176333_save.txt|roundid=1
+ticks=635071132061702025|username=MESSER|level=3|userid=|gameid=c3916802-d1f7-49a8-8a92-04889de5c270|kills=133|score=2724|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132061702025_save.txt|roundid=1
+ticks=635071132149087023|username=MESSER|level=4|userid=|gameid=b55d9a97-3437-4673-9dbe-0864c220b8bc|kills=69|score=1697|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132149087023_save.txt|roundid=1
+ticks=635071132241732322|username=MESSER|level=5|userid=|gameid=0ff4943b-f248-4f08-bf19-538065198f04|kills=130|score=3260|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132241732322_save.txt|roundid=1
+ticks=635071132329837362|username=MESSER|level=6|userid=|gameid=cda08c71-aabe-490a-a892-2c1ee1092686|kills=200|score=4498|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132329837362_save.txt|roundid=1
+ticks=635071132416642327|username=MESSER|level=7|userid=|gameid=9663a525-544a-45db-927d-9b600eb5e06d|kills=177|score=3812|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132416642327_save.txt|roundid=1
+ticks=635071132505037382|username=MESSER|level=8|userid=|gameid=2497cab7-54be-4351-ad8f-e1754bae3ab6|kills=184|score=4210|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132505037382_save.txt|roundid=1
+ticks=635071132596762629|username=MESSER|level=9|userid=|gameid=54a42f2f-bc3f-43f3-b9e5-d789c94b7b8a|kills=245|score=5644|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132596762629_save.txt|roundid=1
+ticks=635071132681597481|username=MESSER|level=10|userid=|gameid=a09e5504-39a9-4d9e-aa0a-a6983c8be642|kills=333|score=6329|version=0.0006|sessionid=b45ae235-23c5-430c-9c3a-2226a31c7cdd|file=635071132681597481_save.txt|roundid=1
+ticks=635071136039729555|username=MESSER|level=1|userid=|gameid=fe58da78-32b5-4e49-895d-51d3916fbfe5|kills=131|score=2048|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136039729555_save.txt|roundid=1
+ticks=635071136132044835|username=MESSER|level=2|userid=|gameid=d65e0f9c-6fdd-4356-97ec-e255aa7ffe96|kills=0|score=0|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136132044835_save.txt|roundid=1
+ticks=635071136648674385|username=MESSER|level=3|userid=|gameid=e0e51e32-a2f3-421f-90d1-bfc530340e0b|kills=132|score=2276|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136648674385_save.txt|roundid=1
+ticks=635071136738029496|username=MESSER|level=4|userid=|gameid=28d52800-8a04-47aa-bd52-016419ba031e|kills=67|score=1671|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136738029496_save.txt|roundid=1
+ticks=635071136841495414|username=MESSER|level=5|userid=|gameid=5b3387a9-65bf-46cb-80e2-85c83b6d2b13|kills=112|score=2992|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136841495414_save.txt|roundid=1
+ticks=635071136936530849|username=MESSER|level=6|userid=|gameid=ccc3027c-88d3-4634-ac94-c50c9205281b|kills=169|score=4097|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071136936530849_save.txt|roundid=1
+ticks=635071137069358447|username=MESSER|level=7|userid=|gameid=2ffb3dcc-6eef-433e-9730-5f06cb5ecffd|kills=152|score=3661|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137069358447_save.txt|roundid=1
+ticks=635071137164183870|username=MESSER|level=8|userid=|gameid=c414d38b-a7f4-4e0b-b1f6-8e3e340a04bb|kills=150|score=3666|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137164183870_save.txt|roundid=1
+ticks=635071137254169017|username=MESSER|level=9|userid=|gameid=13bb3a1f-b444-4f99-a6ac-e403f241cd68|kills=202|score=4640|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137254169017_save.txt|roundid=1
+ticks=635071137345904264|username=MESSER|level=10|userid=|gameid=5feeec7a-d3fa-4d5f-b25b-07e8ed74dc01|kills=332|score=6316|version=0.0006|sessionid=00c02222-071c-460d-a6fb-0d9ef61f9bf1|file=635071137345904264_save.txt|roundid=1
+ticks=635071138646338645|username=MESSER|level=10|userid=|gameid=008b8ccb-8fdd-4739-b7cd-cf8d54993cf9|kills=329|score=6677|version=0.0006|sessionid=ca451b45-c401-48ed-ba81-a7efcd9c0367|file=635071138646338645_save.txt|roundid=1
+ticks=635071140572538817|username=MESSER|level=10|userid=|gameid=8b5fb713-25b6-4e13-bd8e-703892f9bdc9|kills=333|score=7329|version=0.0006|sessionid=ea12842e-a461-4611-8842-8ba32102f8c8|file=635071140572538817_save.txt|roundid=1
+ticks=635071140824923253|username=MESSER|level=10|userid=|gameid=75cf787f-5814-4fd6-bee6-adc2ed262a3d|kills=332|score=6916|version=0.0006|sessionid=76103661-9662-40cf-86e5-44de77bfe344|file=635071140824923253_save.txt|roundid=1
+ticks=635071141135911040|username=MESSER|level=10|userid=|gameid=ef0e2cec-1c3b-4a62-b670-f0b151ec4210|kills=330|score=7490|version=0.0006|sessionid=87186d56-3eb1-45f3-bf80-1826e74cacef|file=635071141135911040_save.txt|roundid=1
+ticks=635071141734535280|username=MESSER|level=10|userid=|gameid=f77b7241-29f2-412a-8200-cb1358bfe83b|kills=330|score=7490|version=0.0006|sessionid=3ebd4fec-a3ba-45a1-9c73-11b5a0e17082|file=635071141734535280_save.txt|roundid=1
+ticks=635071141901384823|username=MESSER|level=10|userid=|gameid=cac97076-ef93-4142-af0a-f0e4eb39ac9f|kills=332|score=7316|version=0.0006|sessionid=6d6ef017-4fdb-486e-8c2b-c12e720768e5|file=635071141901384823_save.txt|roundid=1
+ticks=635071142069114416|username=MESSER|level=9|userid=|gameid=a9531f48-2343-4d91-a0e8-defc54993a19|kills=227|score=5012|version=0.0006|sessionid=dcbf6d6d-d145-48dd-8966-f53a8d155050|file=635071142069114416_save.txt|roundid=1
+ticks=635071142162149738|username=MESSER|level=10|userid=|gameid=65f1f01e-0dd4-4177-a907-2ba0229dccb7|kills=320|score=6760|version=0.0006|sessionid=dcbf6d6d-d145-48dd-8966-f53a8d155050|file=635071142162149738_save.txt|roundid=1
+
+[info|635071142325479080] Handled request=getHighscoreForRound in 1,0001ms
+[debug|635071142325799098] Incoming: request=final, data=(stripped)
+[debug|635071142325799098] Outgoing: request=final, data=OK
+[info|635071142325799098] Handled request=final in 36,0021ms

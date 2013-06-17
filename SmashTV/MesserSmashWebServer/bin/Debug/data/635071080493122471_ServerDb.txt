@@ -1,0 +1,1 @@
+ticks=0|sessionid=4ef2768b-dcc2-46ca-bd66-e467ed9783a4|username=MESSER|userid=|gameid=11295952-3f07-46eb-bf8b-dfe6c01273b4|loginkey=freeloader|level=1|status=1

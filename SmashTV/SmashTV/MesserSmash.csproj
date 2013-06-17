@@ -131,6 +131,7 @@
     <Compile Include="Commands\ClientReadyCommand.cs" />
     <Compile Include="Commands\BeginReplayQueueCommand.cs" />
     <Compile Include="Commands\LevelWonCommand.cs" />
+    <Compile Include="Commands\UpdateHighscoresCommand.cs" />
     <Compile Include="Commands\RoundWonCommand.cs" />
     <Compile Include="Commands\RequestRoundHighscoresCommand.cs" />
     <Compile Include="Commands\RequestContinueGameCommand.cs" />

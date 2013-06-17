@@ -13,24 +13,27 @@ namespace MesserSmash.Commands {
         private Action<RequestLevelHighscoresCommand> _callback;
 
         public int Level { get; private set; }
-        public HighscoreContainer ScoringProvider { get; set; }
+        private HighscoreContainer _scoringProvider;
+        public List<Highscore> Scores { get; private set; }
 
         public RequestLevelHighscoresCommand(int level, HighscoreContainer scoringProvider, Action<RequestLevelHighscoresCommand> cb)
             : base(NAME) {
 
             _callback = cb;
+            Scores = new List<Highscore>();
             Level = level;
-            ScoringProvider = scoringProvider;
-            ScoringProvider.clearData();
+            _scoringProvider = scoringProvider;
+            _scoringProvider.clearData();
             //Hack in local highscores...
             var localScores = LocalHighscore.Instance.getHackedHighscoreList(level);
-            ScoringProvider.addHighscores(localScores);
+            scoringProvider.addHighscores(localScores); //#TODO: Can't decide on if local scores should exist allready or not...
+            //Scores.AddRange(localScores);
 
             ThreadWatcher.runBgThread(() => {
                 var server = new LocalServer(SmashTVSystem.Instance.ServerIp);
                 var dir = new Dictionary<string, object> {
                     {MesserSmashWeb.LEVEL, level},
-                    {MesserSmashWeb.LOGIN_SESSION, SmashTVSystem.Instance.LoginResponseKey},
+                    {MesserSmashWeb.VERIFIED_LOGIN_SESSION, SmashTVSystem.Instance.LoginResponseKey},
                 };
                 server.requestHighscores(onResponse, dir);
             });
@@ -45,7 +48,7 @@ namespace MesserSmash.Commands {
                         //#TODO: Fix these sometime...
                         score.IsLocalHighscore = false;
                         score.IsVerified = true;
-                        ScoringProvider.addHighscore(score);
+                        Scores.Add(score);
                     }
                 }
             }

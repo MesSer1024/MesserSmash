@@ -21,8 +21,9 @@ namespace SharedSmashResources {
         public const string KILLS = "kills";
         public const string LEVEL = "level";
 
+        //used as a way to know what round a specific range of levels belong to, for instance level 1-10 = round0 etc...
         public const string ROUND_ID = "round_id";
-        public const string LOGIN_SESSION = "product_key";
+        public const string VERIFIED_LOGIN_SESSION = "product_key";
         public const string USER_NAME = "user_name";
         public const string USER_ID = "user_id";
         public const string PLAYER_STATE = "player_state";

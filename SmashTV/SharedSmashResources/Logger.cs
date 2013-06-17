@@ -30,7 +30,7 @@ namespace MesserSmash.Modules {
                 if ((_flag & State.StreamOpen) != State.StreamOpen)
                     return;
                 sb.Clear();
-                sb.Append("[info] ");
+                sb.AppendFormat("[info|{0}] ", DateTime.Now.Ticks);
                 sb.AppendFormat(s, p);
                 _logMessages.Add(sb.ToString());
                 sw.WriteLine(sb.ToString());
@@ -42,7 +42,7 @@ namespace MesserSmash.Modules {
                 if ((_flag & State.StreamOpen) != State.StreamOpen)
                     return;
                 sb.Clear();
-                sb.Append("[error] ");
+                sb.AppendFormat("[error|{0}] ", DateTime.Now.Ticks);
                 sb.AppendFormat(s, p);
                 _logMessages.Add(sb.ToString());
                 sw.WriteLine(sb.ToString());
@@ -86,6 +86,22 @@ namespace MesserSmash.Modules {
                 if (_logMessages != null) {
                     _logMessages.Clear();
                 }
+            }
+        }
+
+        public static void debug(string s) {
+            debug("{0}", s);
+        }
+
+        public static void debug(string s, params Object[] p) {
+            lock (ThreadLock) {
+                if ((_flag & State.StreamOpen) != State.StreamOpen)
+                    return;
+                sb.Clear();
+                sb.AppendFormat("[debug|{0}] ", DateTime.Now.Ticks);
+                sb.AppendFormat(s, p);
+                _logMessages.Add(sb.ToString());
+                sw.WriteLine(sb.ToString());
             }
         }
     }

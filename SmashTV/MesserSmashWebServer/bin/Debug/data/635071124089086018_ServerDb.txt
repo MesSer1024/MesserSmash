@@ -1,0 +1,3 @@
+ticks=635071124155889839|sessionid=317b03d9-404a-412d-94df-789cee8c6fa4|username=MESSER|userid=|gameid=efeb753f-bdfb-4693-83ce-209d68f2638d|loginkey=freeloader|level=1|status=1
+ticks=635071124260555825|sessionid=317b03d9-404a-412d-94df-789cee8c6fa4|username=MESSER|userid=|gameid=efeb753f-bdfb-4693-83ce-209d68f2638d|loginkey=freeloader|level=1|status=2
+ticks=635071124261015851|sessionid=317b03d9-404a-412d-94df-789cee8c6fa4|username=MESSER|userid=|gameid=d53ef400-87b2-4d23-9f01-e3e9bbee2688|loginkey=freeloader|level=2|status=1

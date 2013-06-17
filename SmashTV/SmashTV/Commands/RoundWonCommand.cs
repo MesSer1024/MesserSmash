@@ -10,6 +10,7 @@ using System.Threading;
 namespace MesserSmash.Commands {
     class RoundWonCommand : Command {
         public const string NAME = "RoundWonCommand";
+        private int ScoreOnLevel;
         public SmashTVSystem GameInstance { get; set; }
         public GUI.GUIMain Gui { get; set; }
         
@@ -21,13 +22,20 @@ namespace MesserSmash.Commands {
 
         protected override void custExecute() {
             RoundId = SmashTVSystem.Instance.RoundId;
-
-            Gui.showEntireRoundWon(GameInstance.GameHighscores, false);
+            ScoreOnLevel = (int)Scoring.getLevelScore();
+            Gui.showEntireRoundWon(GameInstance.GameHighscores, false, ScoreOnLevel);
             new RequestRoundHighscoresCommand(GameInstance.RoundId, GameInstance.GameHighscores, onRoundResponse).execute();
         }
 
         private void onRoundResponse(RequestRoundHighscoresCommand cmd) {
-            Gui.showEntireRoundWon(cmd.ScoringProvider, true);
+            if (!SmashTVSystem.IsGameStarted) {
+                var scoringProvider = SmashTVSystem.Instance.GameHighscores;
+                scoringProvider.addHighscores(cmd.Scores);
+                Gui.showEntireRoundWon(scoringProvider, true, ScoreOnLevel);
+            } else {
+                Logger.error("Game started before LevelWonCommand was finished with highscores");
+            }
+
         }
 
 

@@ -59,15 +59,18 @@ namespace MesserSmashWebServer {
                     var items = toTable(rawData);
                         var userid = items[MesserSmashWeb.USER_ID].ToString();
                         var username = items[MesserSmashWeb.USER_NAME].ToString();
-                        var loginKey = items[MesserSmashWeb.LOGIN_SESSION].ToString();
+                        var loginKey = items[MesserSmashWeb.VERIFIED_LOGIN_SESSION].ToString();
                         var level = uint.Parse(items[MesserSmashWeb.LEVEL].ToString());
 
                         var gameid = Guid.NewGuid().ToString();
                         var sessionid = Guid.NewGuid().ToString();
+                        var roundid = findRoundForLevel(level);
+                        
 
                         var result = new Dictionary<string, object> {
                             {MesserSmashWeb.GAME_ID, gameid},
-                            {MesserSmashWeb.SESSION_ID, sessionid}
+                            {MesserSmashWeb.SESSION_ID, sessionid},
+                            {MesserSmashWeb.ROUND_ID, roundid}
                         };
 
                         _gameEntries.addEntry(new GameEntry { UserId = userid, UserName = username, LoginKey = loginKey, Level = level, GameId = gameid, SessionId = sessionid, Status = GameEntry.GameStatuses.Open });
@@ -108,8 +111,11 @@ namespace MesserSmashWebServer {
                             uint round = uint.Parse(items[MesserSmashWeb.ROUND_ID].ToString());
                             var scores = _highscores.getHighscoresOnRound(round);
                             var sb = new StringBuilder();
-                            foreach (var item in scores.Values) {
-                                sb.AppendLine(item.ToString());
+                            foreach (var list in scores.Values) {
+                                foreach (var item in list)
+                                {
+                                    sb.AppendLine(item.ToString());
+                                }
                             }
                             return sb.ToString();
                         } catch (Exception e) {
@@ -122,17 +128,23 @@ namespace MesserSmashWebServer {
                 case MesserSmashWeb.REQUEST_CONTINUE_GAME: {
                         var items = toTable(rawData);
                         uint level = uint.Parse(items[MesserSmashWeb.LEVEL].ToString());
+                        uint roundid = uint.Parse(items[MesserSmashWeb.ROUND_ID].ToString());
                         string session = items[MesserSmashWeb.SESSION_ID].ToString();
                         string userid = items[MesserSmashWeb.USER_ID].ToString();
                         string username = items[MesserSmashWeb.USER_NAME].ToString();
-                        string loginkey = items[MesserSmashWeb.LOGIN_SESSION].ToString();
+                        string loginkey = items[MesserSmashWeb.VERIFIED_LOGIN_SESSION].ToString();
 
                         var gameid = Guid.NewGuid().ToString();
                         _gameEntries.addEntry(new GameEntry { UserId = userid, UserName = username, LoginKey = loginkey, Level = level, GameId = gameid, SessionId = session, Status = GameEntry.GameStatuses.Open });
 
+                        if (roundid != findRoundForLevel(level)) {
+                            Logger.error("The wanted level does not belong to that round, level={0} round={1}", level, roundid);
+                            throw new Exception("Invalid level and round...");
+                        }
                         var result = new Dictionary<string, object> {
                             {MesserSmashWeb.GAME_ID, gameid},
-                            {MesserSmashWeb.SESSION_ID, session}
+                            {MesserSmashWeb.SESSION_ID, session},
+                            {MesserSmashWeb.ROUND_ID, roundid}
                         };
                         return fastJSON.JSON.Instance.ToJSON(result);
                     }
@@ -146,6 +158,18 @@ namespace MesserSmashWebServer {
             return "status=666";
         }
 
+        private static uint findRoundForLevel(uint level) {
+            var round1 = new List<uint> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            var round2 = new List<uint> { 11, 12, 13, 14, 15, 100 };
+            if (round1.Contains(level)) {
+                return 1;
+            } else if (round2.Contains(level)) {
+                return 2;
+            } else {
+                return 666;
+            }
+        }
+
         private static Dictionary<string, object> toTable(string rawData) {
             if (rawData == "" || rawData == null) { return new Dictionary<string, object>(); }
             return fastJSON.JSON.Instance.Parse(rawData) as Dictionary<string, object>;
@@ -156,17 +180,22 @@ namespace MesserSmashWebServer {
             folder = folder.CreateSubdirectory("games");
 
             var timestamp = DateTime.Now.Ticks;
-            var outputFile = folder.FullName + "/" + timestamp + "_save.txt";
+            var outputFile = folder.FullName + "/" + timestamp + "_save.mer";
             using (var sw = new StreamWriter(outputFile)) {
                 sw.Write(data.toJson());
                 sw.Flush();
             }
 
-            using (var sw = new StreamWriter(folder.FullName + "/last_save.txt", false)) {
+            using (var sw = new StreamWriter(folder.FullName + "/last_save.mer", false)) {
                 sw.Write(data.toJson());
                 sw.Flush();
             }
-            _highscores.addHighscore(new Highscore { Ticks = timestamp, File = timestamp + "_save.txt", GameId = data.GameId, GameVersion = data.GameVersion, Kills = (uint)data.Kills, Level = (uint)data.Level, Score = (uint)data.Score, SessionId = data.SessionId, UserId = data.UserId, UserName = data.UserName });
+            var h = new Highscore { Ticks = timestamp, File = timestamp + "_save.mer", GameId = data.GameId, GameVersion = data.GameVersion, Kills = (uint)data.Kills, Level = (uint)data.Level, Score = (uint)data.Score, SessionId = data.SessionId, UserId = data.UserId, UserName = data.UserName, RoundId = (uint)findRoundForLevel((uint)data.Level)};
+            if (HighscoreContainer.isValidHighscore(h)) {
+                _highscores.addHighscore(h);
+            } else {
+                Logger.error("Could not add highscore since it wasn't valid, data={0}", h.ToString());
+            }
             return timestamp;
         }
     }

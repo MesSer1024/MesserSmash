@@ -336,7 +336,7 @@ namespace MesserSmash {
 		private void cleanOldData() {
             SmashTVSystem.Instance.WaitingForGameCredentials = false;
             _smashTvSystem.resetStates();
-			_states.reset();
+			_states = new GameStates(); //#TODO: States is used in inside "SaveGameCommand" and was previously cleared in the middle of using it
 			Logger.init();
 			_paused = false;
 			Arena arena = SmashTVSystem.Instance.Arena;

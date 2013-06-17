@@ -52,7 +52,7 @@ namespace MesserSmashWebServer {
 
         private static Dictionary<string, object> dummyBeginGameRequest() {
             var d = new Dictionary<string, object> {
-                {MesserSmashWeb.LOGIN_SESSION, "abc0123"},
+                {MesserSmashWeb.VERIFIED_LOGIN_SESSION, "abc0123"},
                 {MesserSmashWeb.USER_NAME, "MesSer"},
                 {MesserSmashWeb.USER_ID, "MesSer1024"},
                 {MesserSmashWeb.PLAYER_STATE, 

@@ -25,17 +25,17 @@ namespace SharedSmashResources {
         /// </summary>
         /// <param name="score"></param>
         public void addHighscore(Highscore score) {
-            if (validHighscore(score) && !_highscores.Exists(a => a.GameId == score.GameId)) {
+            if (!_highscores.Exists(a => a.GameId == score.GameId)) {
                 _highscores.Add(score);
             }
         }
 
-        private static bool validHighscore(Highscore score) {
+        public static bool isValidHighscore(Highscore score) {
             return score.GameId != "" && score.SessionId != "";
         }
 
         public List<Highscore> getHighscoresOnLevel(uint level) {
-            return _highscores.FindAll(a => a.Level == level);
+            return _highscores.FindAll(a => a.Level == level).OrderByDescending(a => a.Score).ToList();
         }
 
 
@@ -71,7 +71,7 @@ namespace SharedSmashResources {
                 }
                 guiHighscoreList.Add(guiScore);
             }
-            return guiHighscoreList;
+            return guiHighscoreList.OrderByDescending(a => a.Score).ToList();
         }
 
         public void populateHighscoresFromFile(string highscoreFilename) {
@@ -80,7 +80,11 @@ namespace SharedSmashResources {
                 using (StreamReader sr = new StreamReader(highscoreFilename)) {
                     while (!sr.EndOfStream) {
                         var score = Highscore.FromString(sr.ReadLine());
-                        addHighscore(score);
+                        if (HighscoreContainer.isValidHighscore(score)) {
+                            addHighscore(score);
+                        } else {
+                            Logger.error("Could not add highscore since it wasn't valid, data={0}", score.ToString());
+                        }
                     }
                 }
             }

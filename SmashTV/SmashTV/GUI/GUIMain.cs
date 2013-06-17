@@ -43,6 +43,7 @@ namespace MesserSmash.GUI {
         private bool _gotScoreData;
         private bool _levelWon;
         private int _savedLevel;
+        private int _scoreOnLevel;
 
 
         public GUIMain() {
@@ -225,7 +226,7 @@ namespace MesserSmash.GUI {
                         text.Draw(sb);
                     }
                     {
-                        var text = new FunnyText(Utils.makeString("Your Score On Level: {0} RoundScore: {1}", formatScorePoints(Scoring.getLevelScore()), formatScorePoints(_score)), new Rectangle { X = 50, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
+                        var text = new FunnyText(Utils.makeString("Your Score On Level: {0} RoundScore: {1}", formatScorePoints(_scoreOnLevel), formatScorePoints(_score)), new Rectangle { X = 50, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
                         text.HorizontalCenter = false;
                         text.Draw(sb);
                     }
@@ -261,7 +262,7 @@ namespace MesserSmash.GUI {
                         text.Draw(sb);
                     }
                     {
-                        var text = new FunnyText(Utils.makeString("Your Score On Level: {0} RoundScore: {1}", formatScorePoints(Scoring.getLevelScore()), formatScorePoints(_score)), new Rectangle { X = 50, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
+                        var text = new FunnyText(Utils.makeString("Your Score On Level {0}: {1} RoundScore: {2}", _savedLevel, formatScorePoints(_scoreOnLevel), formatScorePoints(_score)), new Rectangle { X = 50, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
                         text.HorizontalCenter = false;
                         text.Draw(sb);
                     }
@@ -292,7 +293,7 @@ namespace MesserSmash.GUI {
                     text.Draw(sb);
                 }
                 {
-                    var text = new FunnyText(Utils.makeString("Your Score On Level: {0} RoundScore: {1}", formatScorePoints(Scoring.getLevelScore()), formatScorePoints(_score)), new Rectangle { X = 50, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
+                    var text = new FunnyText(Utils.makeString("Your Score On Level: {0} RoundScore: {1}", formatScorePoints(_scoreOnLevel), formatScorePoints(_score)), new Rectangle { X = 50, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
                     text.HorizontalCenter = false;
                     text.Draw(sb);
                 }
@@ -337,9 +338,10 @@ namespace MesserSmash.GUI {
             }
         }
 
-        internal void showLevelWon(HighscoreContainer scoringProvider, bool gotScoreData, int level) {
+        internal void showLevelWon(HighscoreContainer scoringProvider, bool gotScoreData, int level, int scoreOnLevel) {
             _savedLevel = level; //needs this since it will be reset the 2nd time this function is called...
             _scoringProvider = scoringProvider;
+            _scoreOnLevel = scoreOnLevel;
             _inGame = false;
             _loadingScreenVisible = false;
             _gotScoreData = gotScoreData;
@@ -347,7 +349,8 @@ namespace MesserSmash.GUI {
             _eorTimer = 0;
         }
 
-        public void showGameOver(HighscoreContainer scoringProvider, bool gotScoreData) {
+        public void showGameOver(HighscoreContainer scoringProvider, bool gotScoreData, int scoreOnLevel) {
+            _scoreOnLevel = scoreOnLevel;
             _savedLevel = SmashTVSystem.Instance.Arena.Level;
             _scoringProvider = scoringProvider;
             _inGame = false;
@@ -357,7 +360,8 @@ namespace MesserSmash.GUI {
             _eorTimer = 0;
         }
 
-        public void showEntireRoundWon(HighscoreContainer scoringProvider, bool gotScoreData) {
+        public void showEntireRoundWon(HighscoreContainer scoringProvider, bool gotScoreData, int scoreOnLevel) {
+            _scoreOnLevel = scoreOnLevel;
             _savedLevel = SmashTVSystem.Instance.Arena.Level;
             _scoringProvider = scoringProvider;
             _inGame = false;

@@ -21,7 +21,7 @@ namespace MesserSmash.Commands {
                 var server = new LocalServer(SmashTVSystem.Instance.ServerIp);
                 var dir = new Dictionary<string, object> {
                     {MesserSmashWeb.LEVEL, level},
-                    {MesserSmashWeb.LOGIN_SESSION, SmashTVSystem.Instance.LoginResponseKey},
+                    {MesserSmashWeb.VERIFIED_LOGIN_SESSION, SmashTVSystem.Instance.LoginResponseKey},
                     {MesserSmashWeb.USER_NAME, SmashTVSystem.Instance.Username},
                     {MesserSmashWeb.USER_ID, SmashTVSystem.Instance.UserId}
                 };
@@ -34,10 +34,10 @@ namespace MesserSmash.Commands {
             Logger.info("RequestSessionCommand cb");
             if (rc == 0) {
                 try {
-                    var dir = MesserSmashWeb.toObject(data);
-                    var gameid = dir[MesserSmashWeb.GAME_ID];
-                    var sessionid = dir[MesserSmashWeb.SESSION_ID];
-                    var roundid = dir[MesserSmashWeb.ROUND_ID];
+                    var tbl = MesserSmashWeb.toObject(data);
+                    var gameid = tbl[MesserSmashWeb.GAME_ID];
+                    var sessionid = tbl[MesserSmashWeb.SESSION_ID];
+                    var roundid = tbl[MesserSmashWeb.ROUND_ID];
 
                     var cmd = new UpdateGameCredentialsCommand(sessionid.ToString(), gameid.ToString(), roundid.ToString());
                     cmd.execute();

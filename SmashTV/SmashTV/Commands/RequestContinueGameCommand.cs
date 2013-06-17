@@ -21,7 +21,8 @@ namespace MesserSmash.Commands {
                 var server = new LocalServer(SmashTVSystem.Instance.ServerIp);
                 var dir = new Dictionary<string, object> {
                     {MesserSmashWeb.LEVEL, level},
-                    {MesserSmashWeb.LOGIN_SESSION, SmashTVSystem.Instance.LoginResponseKey},
+                    {MesserSmashWeb.ROUND_ID, SmashTVSystem.Instance.RoundId},
+                    {MesserSmashWeb.VERIFIED_LOGIN_SESSION, SmashTVSystem.Instance.LoginResponseKey},
                     {MesserSmashWeb.SESSION_ID, SmashTVSystem.Instance.SessionId},
                     {MesserSmashWeb.USER_NAME, SmashTVSystem.Instance.Username},
                     {MesserSmashWeb.USER_ID, SmashTVSystem.Instance.UserId}

@@ -55,6 +55,8 @@ namespace MesserSmash {
             get { return _globalHighscores; }
         }
 
+        public static bool IsGameStarted { get { return Instance._gameStarted; } }
+
 		public SmashTVSystem() {
 			_instance = this;
             Username = "";
@@ -159,17 +161,20 @@ namespace MesserSmash {
 
 		void onPlayerDead(ICommand command) {
             new RequestRoundHighscoresCommand(RoundId, GameHighscores, onRequestRoundHighscoreGameLost).execute();
-            _gui.showGameOver(_globalHighscores, false);
+            _gui.showGameOver(_globalHighscores, false, (int)Scoring.getLevelScore());
             var cmd = command as PlayerDiedCommand;
 			_queuedCommands.Add("end_arena");            
 		}
 
         private void onRequestRoundHighscoreGameLost(RequestRoundHighscoresCommand cmd) {
-            _gui.showGameOver(cmd.ScoringProvider, true);
+            if (!IsGameStarted) {
+                _globalHighscores.addHighscores(cmd.Scores);
+                _gui.showGameOver(_globalHighscores, true, (int)Scoring.getLevelScore());
+            }
         }
 
 		public void update(GameState state) {
-			if (_queuedCommands.Count > 0) {
+			if (_queuedCommands.Count > 0) { 
 				foreach (string s in _queuedCommands) {
 					if (s == "end_arena") {
 						_arena.clean();
