@@ -137,5 +137,17 @@ namespace MesserSmash {
         public List<ShotBase> enemyShotsFlaggedForCollision() {
             return _enemyShots.FindAll(a => a.CollisionEnabled);
         }
+
+        public void clear() {
+            foreach (var shot in _enemyShots) {
+                shot.GenerateGroundEffect -= onGenerateGroundEffect;
+            }
+            foreach (var shot in _shots) {
+                shot.GenerateGroundEffect -= onGenerateGroundEffect;
+            }
+            _enemyShots.Clear();
+            _shots.Clear();
+            _explosions.Clear();
+        }
     }
 }

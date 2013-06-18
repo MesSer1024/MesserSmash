@@ -4905,3 +4905,1495 @@
 [info|635071146127956569] <--handleCommand ReloadDatabaseCommand
 [info|635071146127956569] ->handleCommand RequestBeginNewGameCommand
 [info|635071146127956569] <--handleCommand RequestBeginNewGameCommand
+[info|635071879585182933] -------------------------------------------------------------------------
+[info|635071879585192933] -------------------------------------------------------------------------
+[info|635071879585192933] Game started at 635071879585192933
+[info|635071879585272938] ->addObserver MesserSmash.SmashTV_main
+[info|635071879585272938] <-addObserver MesserSmash.SmashTV_main
+[info|635071879587573069] ->addObserver MesserSmash.Modules.SoundManager
+[info|635071879587573069] <-addObserver MesserSmash.Modules.SoundManager
+[info|635071879587613072] ->addObserver MesserSmash.SmashTVSystem
+[info|635071879587613072] <-addObserver MesserSmash.SmashTVSystem
+[info|635071879587673075] ->handleCommand ReloadDatabaseCommand
+[info|635071879587683076] <--handleCommand ReloadDatabaseCommand
+[info|635071879587683076] ->handleCommand LoadConfigFileCommand
+[info|635071879587703077] prepareNewLevel
+[info|635071879587783081] Utils.initialize seed=2108373657
+[info|635071879587843085] -->CreateLootTable
+[info|635071879587863086] <--CreateLootTable randomStatus:MesserRandom seed=2108373657 totalRequests=12
+[info|635071879587913089] showLoadingScreen
+[info|635071879587913089] <--handleCommand LoadConfigFileCommand
+[info|635071879588483121] ->requestBeginGame
+[info|635071879588993151] ->handleCommand ReloadDatabaseCommand
+[info|635071879588993151] <--handleCommand ReloadDatabaseCommand
+[info|635071879588993151] ->handleCommand RequestBeginNewGameCommand
+[info|635071879588993151] <--handleCommand RequestBeginNewGameCommand
+[error|635071879603723993] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071879603723993] RequestSessionCommand cb
+[error|635071879603833999] Error parsing RequestSession data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestBeginNewGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestBeginNewGameCommand.cs:line 38
+[info|635071879603833999] ctor() UpdateGameCredentialsCommand
+[info|635071879603844000] Executing UpdateGameCredentialsCommand
+[info|635071879603844000] <-requestBeginGame
+[info|635071879603894003] ->handleCommand UpdateGameCredentialsCommand
+[info|635071879603894003] <--handleCommand UpdateGameCredentialsCommand
+[info|635071879642056186] ->handleCommand ClientReadyCommand
+[info|635071879666037557] ->addObserver MesserSmash.Arenas.Level01
+[info|635071879666037557] <-addObserver MesserSmash.Arenas.Level01
+[info|635071879666037557] <--handleCommand ClientReadyCommand
+[info|635071879666687594] ->handleCommand LevelStartedCommand
+[info|635071879666777600] <--handleCommand LevelStartedCommand
+[info|635071879727051047] ->handleCommand LauncherReadyCommand
+[info|635071879727051047] <--handleCommand LauncherReadyCommand
+[info|635071879765223230] ->handleCommand LauncherReadyCommand
+[info|635071879765223230] <--handleCommand LauncherReadyCommand
+[info|635071879779384040] ->handleCommand LauncherReadyCommand
+[info|635071879779384040] <--handleCommand LauncherReadyCommand
+[info|635071879789724632] ->handleCommand LauncherReadyCommand
+[info|635071879789724632] <--handleCommand LauncherReadyCommand
+[info|635071879793054822] Game finished frames:974 random status: MesserRandom seed=2108373657 totalRequests=378
+[info|635071879793144827] prepareNewLevel
+[info|635071879793594853] Utils.initialize seed=-1980771867
+[info|635071879793684858] -->CreateLootTable
+[info|635071879793684858] <--CreateLootTable randomStatus:MesserRandom seed=-1980771867 totalRequests=13
+[info|635071879793734861] ->requestBeginGame
+[info|635071879793744862] ->handleCommand SaveGameCommand
+[info|635071879793744862] <--handleCommand SaveGameCommand
+[info|635071879793744862] ->handleCommand RequestLevelHighscoresCommand
+[info|635071879793744862] <--handleCommand RequestLevelHighscoresCommand
+[info|635071879793744862] ->handleCommand LevelWonCommand
+[info|635071879793744862] <--handleCommand LevelWonCommand
+[info|635071879793744862] ->handleCommand ReloadDatabaseCommand
+[info|635071879793744862] <--handleCommand ReloadDatabaseCommand
+[info|635071879793744862] ->handleCommand RequestContinueGameCommand
+[info|635071879793744862] <--handleCommand RequestContinueGameCommand
+[error|635071879803425415] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[error|635071879804015449] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071879804015449] sendGameState ServerResponse=
+[error|635071879804195459] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071879804195459] RequestContinueGameCommand cb
+[error|635071879804285465] Error parsing RequestContinueGameCommand data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestContinueGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestContinueGameCommand.cs:line 40
+[info|635071879804285465] ctor() UpdateGameCredentialsCommand
+[info|635071879804285465] Executing UpdateGameCredentialsCommand
+[info|635071879804285465] <-requestBeginGame
+[info|635071879804385470] ->handleCommand UpdateGameCredentialsCommand
+[info|635071879804385470] <--handleCommand UpdateGameCredentialsCommand
+[info|635071879820716404] ->handleCommand ClientReadyCommand
+[info|635071880121483607] ->addObserver MesserSmash.Arenas.Level02
+[info|635071880121483607] <-addObserver MesserSmash.Arenas.Level02
+[info|635071880121483607] <--handleCommand ClientReadyCommand
+[info|635071880121783624] ->handleCommand LevelStartedCommand
+[info|635071880121783624] <--handleCommand LevelStartedCommand
+[info|635071880152385375] ->handleCommand LauncherReadyCommand
+[info|635071880152385375] <--handleCommand LauncherReadyCommand
+[info|635071880162715966] ->handleCommand LauncherReadyCommand
+[info|635071880162715966] <--handleCommand LauncherReadyCommand
+[info|635071880173046557] ->handleCommand LauncherReadyCommand
+[info|635071880173046557] <--handleCommand LauncherReadyCommand
+[info|635071880183377147] ->handleCommand LauncherReadyCommand
+[info|635071880183377147] <--handleCommand LauncherReadyCommand
+[info|635071880193717739] ->handleCommand LauncherReadyCommand
+[info|635071880193717739] <--handleCommand LauncherReadyCommand
+[info|635071880196007870] Game finished frames:531 random status: MesserRandom seed=-1980771867 totalRequests=454
+[info|635071880196157878] prepareNewLevel
+[info|635071880196197881] Utils.initialize seed=-1578168839
+[info|635071880196217882] -->CreateLootTable
+[info|635071880196217882] <--CreateLootTable randomStatus:MesserRandom seed=-1578168839 totalRequests=12
+[info|635071880196227882] ->requestBeginGame
+[info|635071880196237883] ->handleCommand SaveGameCommand
+[info|635071880196237883] <--handleCommand SaveGameCommand
+[info|635071880196237883] ->handleCommand RequestLevelHighscoresCommand
+[info|635071880196237883] <--handleCommand RequestLevelHighscoresCommand
+[info|635071880196237883] ->handleCommand LevelWonCommand
+[info|635071880196237883] <--handleCommand LevelWonCommand
+[info|635071880196237883] ->handleCommand ReloadDatabaseCommand
+[info|635071880196237883] <--handleCommand ReloadDatabaseCommand
+[info|635071880196237883] ->handleCommand RequestContinueGameCommand
+[info|635071880196237883] <--handleCommand RequestContinueGameCommand
+[error|635071880206728483] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[error|635071880207018500] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071880207018500] RequestContinueGameCommand cb
+[error|635071880207098504] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071880207098504] sendGameState ServerResponse=
+[error|635071880207128506] Error parsing RequestContinueGameCommand data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestContinueGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestContinueGameCommand.cs:line 40
+[info|635071880207128506] ctor() UpdateGameCredentialsCommand
+[info|635071880207128506] Executing UpdateGameCredentialsCommand
+[info|635071880207128506] <-requestBeginGame
+[info|635071880207218511] ->handleCommand UpdateGameCredentialsCommand
+[info|635071880207218511] <--handleCommand UpdateGameCredentialsCommand
+[info|635071880218879178] ->handleCommand ClientReadyCommand
+[info|635071880906938533] ->addObserver MesserSmash.Arenas.Level03
+[info|635071880906938533] <-addObserver MesserSmash.Arenas.Level03
+[info|635071880906938533] <--handleCommand ClientReadyCommand
+[info|635071880907258551] ->handleCommand LevelStartedCommand
+[info|635071880907258551] <--handleCommand LevelStartedCommand
+[info|635071880912518852] ->handleCommand LauncherReadyCommand
+[info|635071880912518852] <--handleCommand LauncherReadyCommand
+[info|635071880937200264] ->handleCommand LauncherReadyCommand
+[info|635071880937200264] <--handleCommand LauncherReadyCommand
+[info|635071880947740867] ->handleCommand LauncherReadyCommand
+[info|635071880947740867] <--handleCommand LauncherReadyCommand
+[info|635071880958361474] ->handleCommand LauncherReadyCommand
+[info|635071880958361474] <--handleCommand LauncherReadyCommand
+[info|635071880981532799] Game finished frames:502 random status: MesserRandom seed=-1578168839 totalRequests=7980
+[info|635071880981732811] prepareNewLevel
+[info|635071885816409338] -------------------------------------------------------------------------
+[info|635071885816409338] -------------------------------------------------------------------------
+[info|635071885816409338] Game started at 635071885816409338
+[info|635071885816489343] ->addObserver MesserSmash.SmashTV_main
+[info|635071885816489343] <-addObserver MesserSmash.SmashTV_main
+[info|635071885817929425] ->addObserver MesserSmash.Modules.SoundManager
+[info|635071885817929425] <-addObserver MesserSmash.Modules.SoundManager
+[info|635071885817969428] ->addObserver MesserSmash.SmashTVSystem
+[info|635071885817969428] <-addObserver MesserSmash.SmashTVSystem
+[info|635071885818019431] ->handleCommand ReloadDatabaseCommand
+[info|635071885818029431] <--handleCommand ReloadDatabaseCommand
+[info|635071885818029431] ->handleCommand LoadConfigFileCommand
+[info|635071885818049432] prepareNewLevel
+[info|635071885818119436] Utils.initialize seed=-251214580
+[info|635071885818249444] ->requestBeginGame
+[info|635071885818249444] -->CreateLootTable
+[info|635071885818279445] <--CreateLootTable randomStatus:MesserRandom seed=-251214580 totalRequests=13
+[info|635071885844370938] showLoadingScreen
+[info|635071885844370938] <--handleCommand LoadConfigFileCommand
+[info|635071885845270989] ->handleCommand ReloadDatabaseCommand
+[info|635071885845270989] <--handleCommand ReloadDatabaseCommand
+[info|635071885845270989] ->handleCommand RequestBeginNewGameCommand
+[info|635071885845270989] <--handleCommand RequestBeginNewGameCommand
+[error|635071885856161612] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071885856171613] RequestSessionCommand cb
+[error|635071885856311621] Error parsing RequestSession data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestBeginNewGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestBeginNewGameCommand.cs:line 38
+[info|635071885856311621] ctor() UpdateGameCredentialsCommand
+[info|635071885856321621] Executing UpdateGameCredentialsCommand
+[info|635071885856321621] <-requestBeginGame
+[info|635071885856321621] ->handleCommand UpdateGameCredentialsCommand
+[info|635071885856331622] <--handleCommand UpdateGameCredentialsCommand
+[info|635071885864432085] ->handleCommand ClientReadyCommand
+[info|635071885895023835] ->addObserver MesserSmash.Arenas.Level01
+[info|635071885895023835] <-addObserver MesserSmash.Arenas.Level01
+[info|635071885895023835] <--handleCommand ClientReadyCommand
+[info|635071885895703874] ->handleCommand LevelStartedCommand
+[info|635071885895793879] <--handleCommand LevelStartedCommand
+[info|635071885952607128] ->handleCommand LauncherReadyCommand
+[info|635071885952607128] <--handleCommand LauncherReadyCommand
+[info|635071885963257738] ->handleCommand LauncherReadyCommand
+[info|635071885963257738] <--handleCommand LauncherReadyCommand
+[info|635071885974758395] ->handleCommand LauncherReadyCommand
+[info|635071885974758395] <--handleCommand LauncherReadyCommand
+[info|635071885987759139] ->handleCommand LauncherReadyCommand
+[info|635071885987759139] <--handleCommand LauncherReadyCommand
+[info|635071886002029955] Game finished frames:676 random status: MesserRandom seed=-251214580 totalRequests=418
+[info|635071886002459980] prepareNewLevel
+[info|635071886002769998] ->requestBeginGame
+[info|635071886002779998] Utils.initialize seed=-66554018
+[info|635071886002789999] -->CreateLootTable
+[info|635071886002789999] <--CreateLootTable randomStatus:MesserRandom seed=-66554018 totalRequests=12
+[info|635071886002799999] ->handleCommand SaveGameCommand
+[info|635071886002799999] <--handleCommand SaveGameCommand
+[info|635071886002799999] ->handleCommand RequestLevelHighscoresCommand
+[info|635071886002799999] <--handleCommand RequestLevelHighscoresCommand
+[info|635071886002799999] ->handleCommand LevelWonCommand
+[info|635071886002799999] <--handleCommand LevelWonCommand
+[info|635071886002799999] ->handleCommand ReloadDatabaseCommand
+[info|635071886002799999] <--handleCommand ReloadDatabaseCommand
+[info|635071886002799999] ->handleCommand RequestContinueGameCommand
+[info|635071886002799999] <--handleCommand RequestContinueGameCommand
+[error|635071886013540614] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886013540614] sendGameState ServerResponse=
+[error|635071886013700623] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886013710623] RequestContinueGameCommand cb
+[error|635071886013770627] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[error|635071886013840631] Error parsing RequestContinueGameCommand data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestContinueGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestContinueGameCommand.cs:line 40
+[info|635071886013840631] ctor() UpdateGameCredentialsCommand
+[info|635071886013840631] Executing UpdateGameCredentialsCommand
+[info|635071886013840631] <-requestBeginGame
+[info|635071886013930636] ->handleCommand UpdateGameCredentialsCommand
+[info|635071886013930636] <--handleCommand UpdateGameCredentialsCommand
+[info|635071886017090817] ->handleCommand ClientReadyCommand
+[info|635071886017090817] ->addObserver MesserSmash.Arenas.Level02
+[info|635071886017090817] <-addObserver MesserSmash.Arenas.Level02
+[info|635071886017090817] <--handleCommand ClientReadyCommand
+[info|635071886017260826] ->handleCommand LevelStartedCommand
+[info|635071886017260826] <--handleCommand LevelStartedCommand
+[info|635071886042762285] ->handleCommand LauncherReadyCommand
+[info|635071886042762285] <--handleCommand LauncherReadyCommand
+[info|635071886055593019] ->handleCommand LauncherReadyCommand
+[info|635071886055593019] <--handleCommand LauncherReadyCommand
+[info|635071886065923610] ->handleCommand LauncherReadyCommand
+[info|635071886065923610] <--handleCommand LauncherReadyCommand
+[info|635071886076264201] ->handleCommand LauncherReadyCommand
+[info|635071886076264201] <--handleCommand LauncherReadyCommand
+[info|635071886086594792] ->handleCommand LauncherReadyCommand
+[info|635071886086594792] <--handleCommand LauncherReadyCommand
+[info|635071886096465357] Game finished frames:492 random status: MesserRandom seed=-66554018 totalRequests=453
+[info|635071886096585364] prepareNewLevel
+[info|635071886096645367] Utils.initialize seed=27311351
+[info|635071886096645367] -->CreateLootTable
+[info|635071886096645367] <--CreateLootTable randomStatus:MesserRandom seed=27311351 totalRequests=12
+[info|635071886096655368] ->handleCommand SaveGameCommand
+[info|635071886096655368] <--handleCommand SaveGameCommand
+[info|635071886096655368] ->handleCommand RequestLevelHighscoresCommand
+[info|635071886096655368] <--handleCommand RequestLevelHighscoresCommand
+[info|635071886096655368] ->handleCommand LevelWonCommand
+[info|635071886096655368] <--handleCommand LevelWonCommand
+[info|635071886096655368] ->handleCommand ReloadDatabaseCommand
+[info|635071886096655368] <--handleCommand ReloadDatabaseCommand
+[info|635071886096655368] ->handleCommand RequestContinueGameCommand
+[info|635071886096655368] <--handleCommand RequestContinueGameCommand
+[info|635071886096665368] ->requestBeginGame
+[error|635071886107225972] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[error|635071886117686570] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886117686570] RequestContinueGameCommand cb
+[error|635071886117976587] Error parsing RequestContinueGameCommand data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestContinueGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestContinueGameCommand.cs:line 40
+[info|635071886117976587] ctor() UpdateGameCredentialsCommand
+[info|635071886117976587] Executing UpdateGameCredentialsCommand
+[info|635071886117976587] <-requestBeginGame
+[error|635071886118026590] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886118026590] sendGameState ServerResponse=
+[info|635071886118036591] ->handleCommand UpdateGameCredentialsCommand
+[info|635071886118036591] <--handleCommand UpdateGameCredentialsCommand
+[info|635071886123586908] ->handleCommand ClientReadyCommand
+[info|635071886123586908] ->addObserver MesserSmash.Arenas.Level03
+[info|635071886123586908] <-addObserver MesserSmash.Arenas.Level03
+[info|635071886123586908] <--handleCommand ClientReadyCommand
+[info|635071886123766918] ->handleCommand LevelStartedCommand
+[info|635071886123766918] <--handleCommand LevelStartedCommand
+[info|635071886149588395] ->handleCommand LauncherReadyCommand
+[info|635071886149588395] <--handleCommand LauncherReadyCommand
+[info|635071886159928987] ->handleCommand LauncherReadyCommand
+[info|635071886159928987] <--handleCommand LauncherReadyCommand
+[info|635071886170259577] ->handleCommand LauncherReadyCommand
+[info|635071886170259577] <--handleCommand LauncherReadyCommand
+[info|635071886180590168] ->handleCommand LauncherReadyCommand
+[info|635071886180590168] <--handleCommand LauncherReadyCommand
+[info|635071886190920759] ->handleCommand LauncherReadyCommand
+[info|635071886190920759] <--handleCommand LauncherReadyCommand
+[info|635071886201261351] ->handleCommand LauncherReadyCommand
+[info|635071886201261351] <--handleCommand LauncherReadyCommand
+[info|635071886203211462] Game finished frames:508 random status: MesserRandom seed=27311351 totalRequests=4352
+[info|635071886203221463] prepareNewLevel
+[info|635071886203371471] Utils.initialize seed=134037455
+[info|635071886203391473] ->requestBeginGame
+[info|635071886203391473] -->CreateLootTable
+[info|635071886203391473] <--CreateLootTable randomStatus:MesserRandom seed=134037455 totalRequests=12
+[info|635071886203401473] ->handleCommand SaveGameCommand
+[info|635071886203401473] <--handleCommand SaveGameCommand
+[info|635071886203401473] ->handleCommand RequestLevelHighscoresCommand
+[info|635071886203401473] <--handleCommand RequestLevelHighscoresCommand
+[info|635071886203401473] ->handleCommand LevelWonCommand
+[info|635071886203401473] <--handleCommand LevelWonCommand
+[info|635071886203401473] ->handleCommand ReloadDatabaseCommand
+[info|635071886203401473] <--handleCommand ReloadDatabaseCommand
+[info|635071886203401473] ->handleCommand RequestContinueGameCommand
+[info|635071886203401473] <--handleCommand RequestContinueGameCommand
+[error|635071886213792067] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886213792067] RequestContinueGameCommand cb
+[error|635071886213852071] Error parsing RequestContinueGameCommand data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestContinueGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestContinueGameCommand.cs:line 40
+[info|635071886213852071] ctor() UpdateGameCredentialsCommand
+[info|635071886213852071] Executing UpdateGameCredentialsCommand
+[info|635071886213852071] <-requestBeginGame
+[info|635071886213922075] ->handleCommand UpdateGameCredentialsCommand
+[info|635071886213922075] <--handleCommand UpdateGameCredentialsCommand
+[info|635071886221092485] ->handleCommand ClientReadyCommand
+[info|635071886221092485] ->addObserver MesserSmash.Arenas.Level04
+[info|635071886221092485] <-addObserver MesserSmash.Arenas.Level04
+[info|635071886221092485] <--handleCommand ClientReadyCommand
+[info|635071886221252494] ->handleCommand LevelStartedCommand
+[info|635071886221252494] <--handleCommand LevelStartedCommand
+[error|635071886224002651] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886224002651] sendGameState ServerResponse=
+[error|635071886224022653] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[error|635071886224022653] Game started before LevelWonCommand was finished with highscores
+[info|635071886240753610] ->handleCommand LauncherReadyCommand
+[info|635071886240753610] <--handleCommand LauncherReadyCommand
+[info|635071886251094201] ->handleCommand LauncherReadyCommand
+[info|635071886251094201] <--handleCommand LauncherReadyCommand
+[info|635071886261424792] ->handleCommand LauncherReadyCommand
+[info|635071886261424792] <--handleCommand LauncherReadyCommand
+[info|635071886271755383] ->handleCommand LauncherReadyCommand
+[info|635071886271755383] <--handleCommand LauncherReadyCommand
+[info|635071886282085974] ->handleCommand LauncherReadyCommand
+[info|635071886282085974] <--handleCommand LauncherReadyCommand
+[info|635071886292416564] ->handleCommand LauncherReadyCommand
+[info|635071886292416564] <--handleCommand LauncherReadyCommand
+[info|635071886300207010] Game finished frames:515 random status: MesserRandom seed=134037455 totalRequests=6304
+[info|635071886300547030] prepareNewLevel
+[info|635071886300597032] Utils.initialize seed=231263016
+[info|635071886300607033] ->requestBeginGame
+[info|635071886300617034] -->CreateLootTable
+[info|635071886300617034] <--CreateLootTable randomStatus:MesserRandom seed=231263016 totalRequests=12
+[info|635071886300627034] ->handleCommand SaveGameCommand
+[info|635071886300627034] <--handleCommand SaveGameCommand
+[info|635071886300627034] ->handleCommand RequestLevelHighscoresCommand
+[info|635071886300627034] <--handleCommand RequestLevelHighscoresCommand
+[info|635071886300627034] ->handleCommand LevelWonCommand
+[info|635071886300627034] <--handleCommand LevelWonCommand
+[info|635071886300627034] ->handleCommand ReloadDatabaseCommand
+[info|635071886300627034] <--handleCommand ReloadDatabaseCommand
+[info|635071886300627034] ->handleCommand RequestContinueGameCommand
+[info|635071886300627034] <--handleCommand RequestContinueGameCommand
+[error|635071886310937624] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886310937624] RequestContinueGameCommand cb
+[error|635071886311047630] Error parsing RequestContinueGameCommand data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestContinueGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestContinueGameCommand.cs:line 40
+[info|635071886311047630] ctor() UpdateGameCredentialsCommand
+[info|635071886311047630] Executing UpdateGameCredentialsCommand
+[info|635071886311047630] <-requestBeginGame
+[info|635071886311117634] ->handleCommand UpdateGameCredentialsCommand
+[info|635071886311117634] <--handleCommand UpdateGameCredentialsCommand
+[error|635071886311227640] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886316757957] ->handleCommand ClientReadyCommand
+[info|635071886316757957] ->addObserver MesserSmash.Arenas.Level05
+[info|635071886316757957] <-addObserver MesserSmash.Arenas.Level05
+[info|635071886316757957] <--handleCommand ClientReadyCommand
+[info|635071886316917966] ->handleCommand LevelStartedCommand
+[info|635071886316917966] <--handleCommand LevelStartedCommand
+[error|635071886321008200] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886321018200] sendGameState ServerResponse=
+[info|635071886337759158] ->handleCommand LauncherReadyCommand
+[info|635071886337759158] <--handleCommand LauncherReadyCommand
+[info|635071886348089749] ->handleCommand LauncherReadyCommand
+[info|635071886348089749] <--handleCommand LauncherReadyCommand
+[info|635071886358420340] ->handleCommand LauncherReadyCommand
+[info|635071886358420340] <--handleCommand LauncherReadyCommand
+[info|635071886368750931] ->handleCommand LauncherReadyCommand
+[info|635071886368750931] <--handleCommand LauncherReadyCommand
+[info|635071886379091522] ->handleCommand LauncherReadyCommand
+[info|635071886379091522] <--handleCommand LauncherReadyCommand
+[info|635071886389422113] ->handleCommand LauncherReadyCommand
+[info|635071886389422113] <--handleCommand LauncherReadyCommand
+[info|635071886395962487] Game finished frames:507 random status: MesserRandom seed=231263016 totalRequests=4203
+[info|635071886396092494] prepareNewLevel
+[info|635071886396122496] Utils.initialize seed=326788480
+[info|635071886396152498] ->requestBeginGame
+[info|635071886396152498] -->CreateLootTable
+[info|635071886396152498] <--CreateLootTable randomStatus:MesserRandom seed=326788480 totalRequests=13
+[info|635071886396162498] ->handleCommand SaveGameCommand
+[info|635071886396162498] <--handleCommand SaveGameCommand
+[info|635071886396162498] ->handleCommand RequestLevelHighscoresCommand
+[info|635071886396162498] <--handleCommand RequestLevelHighscoresCommand
+[info|635071886396162498] ->handleCommand LevelWonCommand
+[info|635071886396162498] <--handleCommand LevelWonCommand
+[info|635071886396162498] ->handleCommand ReloadDatabaseCommand
+[info|635071886396162498] <--handleCommand ReloadDatabaseCommand
+[info|635071886396162498] ->handleCommand RequestContinueGameCommand
+[info|635071886396162498] <--handleCommand RequestContinueGameCommand
+[error|635071886406383083] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[error|635071886417333709] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886417333709] sendGameState ServerResponse=
+[error|635071886417363711] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886417363711] RequestContinueGameCommand cb
+[error|635071886417433715] Error parsing RequestContinueGameCommand data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestContinueGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestContinueGameCommand.cs:line 40
+[info|635071886417433715] ctor() UpdateGameCredentialsCommand
+[info|635071886417433715] Executing UpdateGameCredentialsCommand
+[info|635071886417433715] <-requestBeginGame
+[info|635071886417583724] ->handleCommand UpdateGameCredentialsCommand
+[info|635071886417583724] <--handleCommand UpdateGameCredentialsCommand
+[info|635071886420413886] ->handleCommand ClientReadyCommand
+[info|635071886420423886] ->addObserver MesserSmash.Arenas.Level06
+[info|635071886420423886] <-addObserver MesserSmash.Arenas.Level06
+[info|635071886420423886] <--handleCommand ClientReadyCommand
+[info|635071886420583895] ->handleCommand LevelStartedCommand
+[info|635071886420583895] <--handleCommand LevelStartedCommand
+[info|635071886439584982] ->handleCommand LauncherReadyCommand
+[info|635071886439584982] <--handleCommand LauncherReadyCommand
+[info|635071886449915573] ->handleCommand LauncherReadyCommand
+[info|635071886449915573] <--handleCommand LauncherReadyCommand
+[info|635071886460256164] ->handleCommand LauncherReadyCommand
+[info|635071886460256164] <--handleCommand LauncherReadyCommand
+[info|635071886470586755] ->handleCommand LauncherReadyCommand
+[info|635071886470586755] <--handleCommand LauncherReadyCommand
+[info|635071886480917346] ->handleCommand LauncherReadyCommand
+[info|635071886480917346] <--handleCommand LauncherReadyCommand
+[info|635071886491257938] ->handleCommand LauncherReadyCommand
+[info|635071886491257938] <--handleCommand LauncherReadyCommand
+[info|635071886499888431] Game finished frames:490 random status: MesserRandom seed=326788480 totalRequests=1246
+[info|635071886499898432] prepareNewLevel
+[info|635071886499958435] ->requestBeginGame
+[info|635071886499968436] Utils.initialize seed=430634420
+[info|635071886499968436] -->CreateLootTable
+[info|635071886499968436] <--CreateLootTable randomStatus:MesserRandom seed=430634420 totalRequests=13
+[info|635071886499988437] ->handleCommand SaveGameCommand
+[info|635071886499988437] <--handleCommand SaveGameCommand
+[info|635071886499988437] ->handleCommand RequestLevelHighscoresCommand
+[info|635071886499988437] <--handleCommand RequestLevelHighscoresCommand
+[info|635071886499988437] ->handleCommand LevelWonCommand
+[info|635071886499988437] <--handleCommand LevelWonCommand
+[info|635071886499988437] ->handleCommand ReloadDatabaseCommand
+[info|635071886499988437] <--handleCommand ReloadDatabaseCommand
+[info|635071886499988437] ->handleCommand RequestContinueGameCommand
+[info|635071886499988437] <--handleCommand RequestContinueGameCommand
+[error|635071886510319028] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886510319028] sendGameState ServerResponse=
+[error|635071886510469036] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[error|635071886510579043] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886510579043] RequestContinueGameCommand cb
+[error|635071886510639046] Error parsing RequestContinueGameCommand data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestContinueGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestContinueGameCommand.cs:line 40
+[info|635071886510639046] ctor() UpdateGameCredentialsCommand
+[info|635071886510639046] Executing UpdateGameCredentialsCommand
+[info|635071886510639046] <-requestBeginGame
+[info|635071886510749052] ->handleCommand UpdateGameCredentialsCommand
+[info|635071886510749052] <--handleCommand UpdateGameCredentialsCommand
+[info|635071886513749224] ->handleCommand ClientReadyCommand
+[info|635071886513749224] ->addObserver MesserSmash.Arenas.Level07
+[info|635071886513749224] <-addObserver MesserSmash.Arenas.Level07
+[info|635071886513749224] <--handleCommand ClientReadyCommand
+[info|635071886513919234] ->handleCommand LevelStartedCommand
+[info|635071886513919234] <--handleCommand LevelStartedCommand
+[info|635071886524079815] ->handleCommand LauncherReadyCommand
+[info|635071886524079815] <--handleCommand LauncherReadyCommand
+[info|635071886534420406] ->handleCommand LauncherReadyCommand
+[info|635071886534420406] <--handleCommand LauncherReadyCommand
+[info|635071886544750997] ->handleCommand LauncherReadyCommand
+[info|635071886544750997] <--handleCommand LauncherReadyCommand
+[info|635071886555081588] ->handleCommand LauncherReadyCommand
+[info|635071886555081588] <--handleCommand LauncherReadyCommand
+[info|635071886565412179] ->handleCommand LauncherReadyCommand
+[info|635071886565412179] <--handleCommand LauncherReadyCommand
+[info|635071886575752770] ->handleCommand LauncherReadyCommand
+[info|635071886575752770] <--handleCommand LauncherReadyCommand
+[info|635071886586083361] ->handleCommand LauncherReadyCommand
+[info|635071886586083361] <--handleCommand LauncherReadyCommand
+[info|635071886592983756] Game finished frames:492 random status: MesserRandom seed=430634420 totalRequests=4708
+[info|635071886593013758] prepareNewLevel
+[info|635071886593113763] Utils.initialize seed=523779747
+[info|635071886593143765] ->requestBeginGame
+[info|635071886593143765] -->CreateLootTable
+[info|635071886593143765] <--CreateLootTable randomStatus:MesserRandom seed=523779747 totalRequests=13
+[info|635071886593153766] ->handleCommand SaveGameCommand
+[info|635071886593153766] <--handleCommand SaveGameCommand
+[info|635071886593153766] ->handleCommand RequestLevelHighscoresCommand
+[info|635071886593153766] <--handleCommand RequestLevelHighscoresCommand
+[info|635071886593153766] ->handleCommand LevelWonCommand
+[info|635071886593153766] <--handleCommand LevelWonCommand
+[info|635071886593153766] ->handleCommand ReloadDatabaseCommand
+[info|635071886593153766] <--handleCommand ReloadDatabaseCommand
+[info|635071886593153766] ->handleCommand RequestContinueGameCommand
+[info|635071886593153766] <--handleCommand RequestContinueGameCommand
+[error|635071886603654366] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886603654366] sendGameState ServerResponse=
+[error|635071886603674367] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886603674367] RequestContinueGameCommand cb
+[error|635071886603734371] Error parsing RequestContinueGameCommand data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestContinueGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestContinueGameCommand.cs:line 40
+[info|635071886603734371] ctor() UpdateGameCredentialsCommand
+[info|635071886603734371] Executing UpdateGameCredentialsCommand
+[info|635071886603734371] <-requestBeginGame
+[info|635071886603754372] ->handleCommand UpdateGameCredentialsCommand
+[info|635071886603754372] <--handleCommand UpdateGameCredentialsCommand
+[info|635071886609414696] ->handleCommand ClientReadyCommand
+[info|635071886609414696] ->addObserver MesserSmash.Arenas.Level08
+[info|635071886609414696] <-addObserver MesserSmash.Arenas.Level08
+[info|635071886609414696] <--handleCommand ClientReadyCommand
+[info|635071886609584705] ->handleCommand LevelStartedCommand
+[info|635071886609584705] <--handleCommand LevelStartedCommand
+[error|635071886613954955] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[error|635071886613954955] Game started before LevelWonCommand was finished with highscores
+[info|635071886627085706] ->handleCommand LauncherReadyCommand
+[info|635071886627085706] <--handleCommand LauncherReadyCommand
+[info|635071886637416297] ->handleCommand LauncherReadyCommand
+[info|635071886637416297] <--handleCommand LauncherReadyCommand
+[info|635071886647746888] ->handleCommand LauncherReadyCommand
+[info|635071886647746888] <--handleCommand LauncherReadyCommand
+[info|635071886658077479] ->handleCommand LauncherReadyCommand
+[info|635071886658077479] <--handleCommand LauncherReadyCommand
+[info|635071886668418071] ->handleCommand LauncherReadyCommand
+[info|635071886668418071] <--handleCommand LauncherReadyCommand
+[info|635071886678748661] ->handleCommand LauncherReadyCommand
+[info|635071886678748661] <--handleCommand LauncherReadyCommand
+[info|635071886688729232] Game finished frames:506 random status: MesserRandom seed=523779747 totalRequests=2974
+[info|635071886689039250] prepareNewLevel
+[info|635071886689119255] Utils.initialize seed=619785239
+[info|635071886689129255] -->CreateLootTable
+[info|635071886689129255] <--CreateLootTable randomStatus:MesserRandom seed=619785239 totalRequests=13
+[info|635071886689129255] ->requestBeginGame
+[info|635071886689139256] ->handleCommand SaveGameCommand
+[info|635071886689139256] <--handleCommand SaveGameCommand
+[info|635071886689139256] ->handleCommand RequestLevelHighscoresCommand
+[info|635071886689139256] <--handleCommand RequestLevelHighscoresCommand
+[info|635071886689139256] ->handleCommand LevelWonCommand
+[info|635071886689139256] <--handleCommand LevelWonCommand
+[info|635071886689139256] ->handleCommand ReloadDatabaseCommand
+[info|635071886689139256] <--handleCommand ReloadDatabaseCommand
+[info|635071886689139256] ->handleCommand RequestContinueGameCommand
+[info|635071886689139256] <--handleCommand RequestContinueGameCommand
+[error|635071886699629856] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[error|635071886699639856] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886699639856] RequestContinueGameCommand cb
+[error|635071886699709860] Error parsing RequestContinueGameCommand data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestContinueGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestContinueGameCommand.cs:line 40
+[info|635071886699709860] ctor() UpdateGameCredentialsCommand
+[info|635071886699709860] Executing UpdateGameCredentialsCommand
+[info|635071886699709860] <-requestBeginGame
+[info|635071886699749863] ->handleCommand UpdateGameCredentialsCommand
+[info|635071886699749863] <--handleCommand UpdateGameCredentialsCommand
+[info|635071886703580082] ->handleCommand ClientReadyCommand
+[info|635071886703580082] ->addObserver MesserSmash.Arenas.Level09
+[info|635071886703580082] <-addObserver MesserSmash.Arenas.Level09
+[info|635071886703580082] <--handleCommand ClientReadyCommand
+[info|635071886703750091] ->handleCommand LevelStartedCommand
+[info|635071886703750091] <--handleCommand LevelStartedCommand
+[error|635071886709740434] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886709740434] sendGameState ServerResponse=
+[info|635071886713910673] ->handleCommand LauncherReadyCommand
+[info|635071886713910673] <--handleCommand LauncherReadyCommand
+[info|635071886724241263] ->handleCommand LauncherReadyCommand
+[info|635071886724241263] <--handleCommand LauncherReadyCommand
+[info|635071886734581855] ->handleCommand LauncherReadyCommand
+[info|635071886734581855] <--handleCommand LauncherReadyCommand
+[info|635071886744912446] ->handleCommand LauncherReadyCommand
+[info|635071886744912446] <--handleCommand LauncherReadyCommand
+[info|635071886755243037] ->handleCommand LauncherReadyCommand
+[info|635071886755243037] <--handleCommand LauncherReadyCommand
+[info|635071886765583628] ->handleCommand LauncherReadyCommand
+[info|635071886765583628] <--handleCommand LauncherReadyCommand
+[info|635071886775914219] ->handleCommand LauncherReadyCommand
+[info|635071886775914219] <--handleCommand LauncherReadyCommand
+[info|635071886782904619] Game finished frames:497 random status: MesserRandom seed=619785239 totalRequests=6511
+[info|635071886783254639] prepareNewLevel
+[info|635071886783284641] Utils.initialize seed=713950625
+[info|635071886783294641] ->requestBeginGame
+[info|635071886783304642] -->CreateLootTable
+[info|635071886783304642] <--CreateLootTable randomStatus:MesserRandom seed=713950625 totalRequests=12
+[info|635071886783314642] ->handleCommand SaveGameCommand
+[info|635071886783314642] <--handleCommand SaveGameCommand
+[info|635071886783314642] ->handleCommand RequestLevelHighscoresCommand
+[info|635071886783314642] <--handleCommand RequestLevelHighscoresCommand
+[info|635071886783314642] ->handleCommand LevelWonCommand
+[info|635071886783314642] <--handleCommand LevelWonCommand
+[info|635071886783314642] ->handleCommand ReloadDatabaseCommand
+[info|635071886783314642] <--handleCommand ReloadDatabaseCommand
+[info|635071886783314642] ->handleCommand RequestContinueGameCommand
+[info|635071886783314642] <--handleCommand RequestContinueGameCommand
+[error|635071886794495282] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886794495282] RequestContinueGameCommand cb
+[error|635071886794595287] Error parsing RequestContinueGameCommand data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestContinueGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestContinueGameCommand.cs:line 40
+[info|635071886794595287] ctor() UpdateGameCredentialsCommand
+[info|635071886794595287] Executing UpdateGameCredentialsCommand
+[info|635071886794595287] <-requestBeginGame
+[error|635071886794595287] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886794625289] ->handleCommand UpdateGameCredentialsCommand
+[info|635071886794625289] <--handleCommand UpdateGameCredentialsCommand
+[info|635071886799905591] ->handleCommand ClientReadyCommand
+[info|635071886799915592] ->addObserver MesserSmash.Arenas.Level10
+[info|635071886799915592] <-addObserver MesserSmash.Arenas.Level10
+[info|635071886799915592] <--handleCommand ClientReadyCommand
+[info|635071886800075601] ->handleCommand LevelStartedCommand
+[info|635071886800075601] <--handleCommand LevelStartedCommand
+[error|635071886803675807] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886803675807] sendGameState ServerResponse=
+[info|635071886821906850] ->handleCommand LauncherReadyCommand
+[info|635071886821906850] <--handleCommand LauncherReadyCommand
+[info|635071886832247441] ->handleCommand LauncherReadyCommand
+[info|635071886832247441] <--handleCommand LauncherReadyCommand
+[info|635071886842578032] ->handleCommand LauncherReadyCommand
+[info|635071886842578032] <--handleCommand LauncherReadyCommand
+[info|635071886852908623] ->handleCommand LauncherReadyCommand
+[info|635071886852908623] <--handleCommand LauncherReadyCommand
+[info|635071886863239214] ->handleCommand LauncherReadyCommand
+[info|635071886863239214] <--handleCommand LauncherReadyCommand
+[info|635071886873579805] ->handleCommand LauncherReadyCommand
+[info|635071886873579805] <--handleCommand LauncherReadyCommand
+[info|635071886879350135] Game finished frames:506 random status: MesserRandom seed=713950625 totalRequests=40810
+[info|635071886879420139] ->handleCommand SaveGameCommand
+[info|635071886879420139] <--handleCommand SaveGameCommand
+[info|635071886879420139] ->handleCommand RequestRoundHighscoresCommand
+[info|635071886879420139] <--handleCommand RequestRoundHighscoresCommand
+[info|635071886879420139] ->handleCommand RoundWonCommand
+[info|635071886879420139] <--handleCommand RoundWonCommand
+[error|635071886890590778] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[error|635071886890600779] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071886890600779] sendGameState ServerResponse=
+[info|635071887271722578] -------------------------------------------------------------------------
+[info|635071887271722578] -------------------------------------------------------------------------
+[info|635071887271732578] Game started at 635071887271732578
+[info|635071887271812583] ->addObserver MesserSmash.SmashTV_main
+[info|635071887271812583] <-addObserver MesserSmash.SmashTV_main
+[info|635071887273492679] ->addObserver MesserSmash.Modules.SoundManager
+[info|635071887273492679] <-addObserver MesserSmash.Modules.SoundManager
+[info|635071887273532681] ->addObserver MesserSmash.SmashTVSystem
+[info|635071887273532681] <-addObserver MesserSmash.SmashTVSystem
+[info|635071887273582684] ->handleCommand ReloadDatabaseCommand
+[info|635071887273592685] <--handleCommand ReloadDatabaseCommand
+[info|635071887273592685] ->handleCommand LoadConfigFileCommand
+[info|635071887273612686] prepareNewLevel
+[info|635071887273682690] Utils.initialize seed=1204338673
+[info|635071887273812697] -->CreateLootTable
+[info|635071887273822698] ->requestBeginGame
+[info|635071887273842699] <--CreateLootTable randomStatus:MesserRandom seed=1204338673 totalRequests=13
+[info|635071887273882701] showLoadingScreen
+[info|635071887273882701] <--handleCommand LoadConfigFileCommand
+[info|635071887274442733] ->handleCommand ReloadDatabaseCommand
+[info|635071887274442733] <--handleCommand ReloadDatabaseCommand
+[info|635071887274442733] ->handleCommand RequestBeginNewGameCommand
+[info|635071887274442733] <--handleCommand RequestBeginNewGameCommand
+[info|635071887276332841] RequestSessionCommand cb
+[info|635071887276362843] ctor() UpdateGameCredentialsCommand
+[info|635071887276362843] Executing UpdateGameCredentialsCommand
+[info|635071887276362843] <-requestBeginGame
+[info|635071887276412846] ->handleCommand UpdateGameCredentialsCommand
+[info|635071887276412846] <--handleCommand UpdateGameCredentialsCommand
+[info|635071887285403360] ->handleCommand ClientReadyCommand
+[info|635071887285463364] ->addObserver MesserSmash.Arenas.Level01
+[info|635071887285463364] <-addObserver MesserSmash.Arenas.Level01
+[info|635071887285473364] <--handleCommand ClientReadyCommand
+[info|635071887285883388] ->handleCommand LevelStartedCommand
+[info|635071887285973393] <--handleCommand LevelStartedCommand
+[info|635071887316915162] ->handleCommand LauncherReadyCommand
+[info|635071887316915162] <--handleCommand LauncherReadyCommand
+[info|635071887339736468] ->handleCommand LauncherReadyCommand
+[info|635071887339736468] <--handleCommand LauncherReadyCommand
+[info|635071887350067059] ->handleCommand LauncherReadyCommand
+[info|635071887350067059] <--handleCommand LauncherReadyCommand
+[info|635071887360397649] ->handleCommand LauncherReadyCommand
+[info|635071887360397649] <--handleCommand LauncherReadyCommand
+[info|635071887370728240] ->handleCommand LauncherReadyCommand
+[info|635071887370738241] <--handleCommand LauncherReadyCommand
+[info|635071887384569032] ->handleCommand LauncherReadyCommand
+[info|635071887384569032] <--handleCommand LauncherReadyCommand
+[info|635071887385289073] Game finished frames:650 random status: MesserRandom seed=1204338673 totalRequests=505
+[info|635071887385609092] prepareNewLevel
+[info|635071887386009114] Utils.initialize seed=1316675098
+[info|635071887386019115] -->CreateLootTable
+[info|635071887386019115] <--CreateLootTable randomStatus:MesserRandom seed=1316675098 totalRequests=12
+[info|635071887386049117] ->handleCommand SaveGameCommand
+[info|635071887386049117] <--handleCommand SaveGameCommand
+[info|635071887386049117] ->handleCommand RequestLevelHighscoresCommand
+[info|635071887386049117] <--handleCommand RequestLevelHighscoresCommand
+[info|635071887386049117] ->handleCommand LevelWonCommand
+[info|635071887386049117] <--handleCommand LevelWonCommand
+[info|635071887386049117] ->handleCommand ReloadDatabaseCommand
+[info|635071887386049117] <--handleCommand ReloadDatabaseCommand
+[info|635071887386049117] ->handleCommand RequestContinueGameCommand
+[info|635071887386049117] <--handleCommand RequestContinueGameCommand
+[info|635071887386059117] ->requestBeginGame
+[info|635071887386779158] sendGameState ServerResponse=OK
+[info|635071887386889165] RequestContinueGameCommand cb
+[info|635071887386889165] ctor() UpdateGameCredentialsCommand
+[info|635071887386889165] Executing UpdateGameCredentialsCommand
+[info|635071887386889165] <-requestBeginGame
+[info|635071887386909166] ->handleCommand UpdateGameCredentialsCommand
+[info|635071887386909166] <--handleCommand UpdateGameCredentialsCommand
+[info|635071887413230671] ->handleCommand ClientReadyCommand
+[info|635071887413230671] ->addObserver MesserSmash.Arenas.Level02
+[info|635071887413230671] <-addObserver MesserSmash.Arenas.Level02
+[info|635071887413230671] <--handleCommand ClientReadyCommand
+[info|635071887413400681] ->handleCommand LevelStartedCommand
+[info|635071887413400681] <--handleCommand LevelStartedCommand
+[info|635071887423561262] ->handleCommand LauncherReadyCommand
+[info|635071887423561262] <--handleCommand LauncherReadyCommand
+[info|635071887438232101] ->handleCommand LauncherReadyCommand
+[info|635071887438232101] <--handleCommand LauncherReadyCommand
+[info|635071887448562692] ->handleCommand LauncherReadyCommand
+[info|635071887448562692] <--handleCommand LauncherReadyCommand
+[info|635071887458893283] ->handleCommand LauncherReadyCommand
+[info|635071887458893283] <--handleCommand LauncherReadyCommand
+[info|635071887469233875] ->handleCommand LauncherReadyCommand
+[info|635071887469233875] <--handleCommand LauncherReadyCommand
+[info|635071887479564465] ->handleCommand LauncherReadyCommand
+[info|635071887479564465] <--handleCommand LauncherReadyCommand
+[info|635071887489895056] ->handleCommand LauncherReadyCommand
+[info|635071887489895056] <--handleCommand LauncherReadyCommand
+[info|635071887492685216] Game finished frames:632 random status: MesserRandom seed=1316675098 totalRequests=444
+[info|635071887492935230] prepareNewLevel
+[info|635071887493265249] Utils.initialize seed=1423931233
+[info|635071887493275250] -->CreateLootTable
+[info|635071887493275250] <--CreateLootTable randomStatus:MesserRandom seed=1423931233 totalRequests=12
+[info|635071887493285250] ->requestBeginGame
+[info|635071887493295251] ->handleCommand SaveGameCommand
+[info|635071887493295251] <--handleCommand SaveGameCommand
+[info|635071887493295251] ->handleCommand RequestLevelHighscoresCommand
+[info|635071887493295251] <--handleCommand RequestLevelHighscoresCommand
+[info|635071887493295251] ->handleCommand LevelWonCommand
+[info|635071887493295251] <--handleCommand LevelWonCommand
+[info|635071887493295251] ->handleCommand ReloadDatabaseCommand
+[info|635071887493295251] <--handleCommand ReloadDatabaseCommand
+[info|635071887493295251] ->handleCommand RequestContinueGameCommand
+[info|635071887493295251] <--handleCommand RequestContinueGameCommand
+[info|635071887493375255] sendGameState ServerResponse=OK
+[info|635071887493385256] RequestContinueGameCommand cb
+[info|635071887493385256] ctor() UpdateGameCredentialsCommand
+[info|635071887493385256] Executing UpdateGameCredentialsCommand
+[info|635071887493385256] <-requestBeginGame
+[info|635071887493405257] ->handleCommand UpdateGameCredentialsCommand
+[info|635071887493405257] <--handleCommand UpdateGameCredentialsCommand
+[info|635071887516566582] ->handleCommand ClientReadyCommand
+[info|635071887516566582] ->addObserver MesserSmash.Arenas.Level03
+[info|635071887516566582] <-addObserver MesserSmash.Arenas.Level03
+[info|635071887516566582] <--handleCommand ClientReadyCommand
+[info|635071887516736592] ->handleCommand LevelStartedCommand
+[info|635071887516746592] <--handleCommand LevelStartedCommand
+[info|635071887526897173] ->handleCommand LauncherReadyCommand
+[info|635071887526897173] <--handleCommand LauncherReadyCommand
+[info|635071887537227764] ->handleCommand LauncherReadyCommand
+[info|635071887537227764] <--handleCommand LauncherReadyCommand
+[info|635071887547558354] ->handleCommand LauncherReadyCommand
+[info|635071887547568355] <--handleCommand LauncherReadyCommand
+[info|635071887557898946] ->handleCommand LauncherReadyCommand
+[info|635071887557898946] <--handleCommand LauncherReadyCommand
+[info|635071887568229537] ->handleCommand LauncherReadyCommand
+[info|635071887568229537] <--handleCommand LauncherReadyCommand
+[info|635071887578560128] ->handleCommand LauncherReadyCommand
+[info|635071887578560128] <--handleCommand LauncherReadyCommand
+[info|635071887591390862] ->handleCommand LauncherReadyCommand
+[info|635071887591390862] <--handleCommand LauncherReadyCommand
+[info|635071887596081130] Game finished frames:612 random status: MesserRandom seed=1423931233 totalRequests=3412
+[info|635071887596431150] prepareNewLevel
+[info|635071887596501154] Utils.initialize seed=1527167138
+[info|635071887596521155] -->CreateLootTable
+[info|635071887596521155] <--CreateLootTable randomStatus:MesserRandom seed=1527167138 totalRequests=12
+[info|635071887596521155] ->requestBeginGame
+[info|635071887596531156] ->handleCommand SaveGameCommand
+[info|635071887596531156] <--handleCommand SaveGameCommand
+[info|635071887596531156] ->handleCommand RequestLevelHighscoresCommand
+[info|635071887596531156] <--handleCommand RequestLevelHighscoresCommand
+[info|635071887596531156] ->handleCommand LevelWonCommand
+[info|635071887596531156] <--handleCommand LevelWonCommand
+[info|635071887596531156] ->handleCommand ReloadDatabaseCommand
+[info|635071887596531156] <--handleCommand ReloadDatabaseCommand
+[info|635071887596531156] ->handleCommand RequestContinueGameCommand
+[info|635071887596541156] <--handleCommand RequestContinueGameCommand
+[info|635071887596631161] RequestContinueGameCommand cb
+[info|635071887596631161] ctor() UpdateGameCredentialsCommand
+[info|635071887596631161] Executing UpdateGameCredentialsCommand
+[info|635071887596631161] <-requestBeginGame
+[info|635071887596791170] ->handleCommand UpdateGameCredentialsCommand
+[info|635071887596791170] <--handleCommand UpdateGameCredentialsCommand
+[info|635071887596891176] sendGameState ServerResponse=OK
+[info|635071887630723111] ->handleCommand ClientReadyCommand
+[info|635071887630723111] ->addObserver MesserSmash.Arenas.Level04
+[info|635071887630723111] <-addObserver MesserSmash.Arenas.Level04
+[info|635071887630723111] <--handleCommand ClientReadyCommand
+[info|635071887630893121] ->handleCommand LevelStartedCommand
+[info|635071887630893121] <--handleCommand LevelStartedCommand
+[info|635071887641063703] ->handleCommand LauncherReadyCommand
+[info|635071887641063703] <--handleCommand LauncherReadyCommand
+[info|635071887653224398] ->handleCommand LauncherReadyCommand
+[info|635071887653224398] <--handleCommand LauncherReadyCommand
+[info|635071887663564990] ->handleCommand LauncherReadyCommand
+[info|635071887663564990] <--handleCommand LauncherReadyCommand
+[info|635071887673895581] ->handleCommand LauncherReadyCommand
+[info|635071887673895581] <--handleCommand LauncherReadyCommand
+[info|635071887684226171] ->handleCommand LauncherReadyCommand
+[info|635071887684226171] <--handleCommand LauncherReadyCommand
+[info|635071887694556762] ->handleCommand LauncherReadyCommand
+[info|635071887694556762] <--handleCommand LauncherReadyCommand
+[info|635071887704897354] ->handleCommand LauncherReadyCommand
+[info|635071887704897354] <--handleCommand LauncherReadyCommand
+[info|635071887709837636] Game finished frames:678 random status: MesserRandom seed=1527167138 totalRequests=6144
+[info|635071887710037648] prepareNewLevel
+[info|635071887710277661] Utils.initialize seed=1640943645
+[info|635071887710287662] -->CreateLootTable
+[info|635071887710287662] ->requestBeginGame
+[info|635071887710297663] <--CreateLootTable randomStatus:MesserRandom seed=1640943645 totalRequests=12
+[info|635071887710307663] RequestContinueGameCommand cb
+[info|635071887710307663] ctor() UpdateGameCredentialsCommand
+[info|635071887710307663] Executing UpdateGameCredentialsCommand
+[info|635071887710307663] <-requestBeginGame
+[info|635071887710317664] ->handleCommand SaveGameCommand
+[info|635071887710317664] <--handleCommand SaveGameCommand
+[info|635071887710317664] ->handleCommand RequestLevelHighscoresCommand
+[info|635071887710317664] <--handleCommand RequestLevelHighscoresCommand
+[info|635071887710317664] ->handleCommand LevelWonCommand
+[info|635071887710317664] <--handleCommand LevelWonCommand
+[info|635071887710317664] ->handleCommand ReloadDatabaseCommand
+[info|635071887710317664] <--handleCommand ReloadDatabaseCommand
+[info|635071887710317664] ->handleCommand RequestContinueGameCommand
+[info|635071887710317664] <--handleCommand RequestContinueGameCommand
+[info|635071887710317664] ->handleCommand UpdateGameCredentialsCommand
+[info|635071887710317664] <--handleCommand UpdateGameCredentialsCommand
+[info|635071887710497674] sendGameState ServerResponse=OK
+[info|635071887715557964] ->handleCommand ClientReadyCommand
+[info|635071887715557964] ->addObserver MesserSmash.Arenas.Level05
+[info|635071887715557964] <-addObserver MesserSmash.Arenas.Level05
+[info|635071887715557964] <--handleCommand ClientReadyCommand
+[info|635071887715727973] ->handleCommand LevelStartedCommand
+[info|635071887715727973] <--handleCommand LevelStartedCommand
+[info|635071887725898555] ->handleCommand LauncherReadyCommand
+[info|635071887725898555] <--handleCommand LauncherReadyCommand
+[info|635071887739229317] ->handleCommand LauncherReadyCommand
+[info|635071887739229317] <--handleCommand LauncherReadyCommand
+[info|635071887749559908] ->handleCommand LauncherReadyCommand
+[info|635071887749559908] <--handleCommand LauncherReadyCommand
+[info|635071887759890499] ->handleCommand LauncherReadyCommand
+[info|635071887759890499] <--handleCommand LauncherReadyCommand
+[info|635071887770221090] ->handleCommand LauncherReadyCommand
+[info|635071887770221090] <--handleCommand LauncherReadyCommand
+[info|635071887780561682] ->handleCommand LauncherReadyCommand
+[info|635071887780561682] <--handleCommand LauncherReadyCommand
+[info|635071887790892272] ->handleCommand LauncherReadyCommand
+[info|635071887790892272] <--handleCommand LauncherReadyCommand
+[info|635071887794672489] Game finished frames:506 random status: MesserRandom seed=1640943645 totalRequests=3657
+[info|635071887794782495] prepareNewLevel
+[info|635071887794852499] Utils.initialize seed=1725518483
+[info|635071887794862499] -->CreateLootTable
+[info|635071887794862499] <--CreateLootTable randomStatus:MesserRandom seed=1725518483 totalRequests=13
+[info|635071887794862499] ->requestBeginGame
+[info|635071887794872500] ->handleCommand SaveGameCommand
+[info|635071887794872500] <--handleCommand SaveGameCommand
+[info|635071887794872500] ->handleCommand RequestLevelHighscoresCommand
+[info|635071887794872500] <--handleCommand RequestLevelHighscoresCommand
+[info|635071887794872500] ->handleCommand LevelWonCommand
+[info|635071887794872500] <--handleCommand LevelWonCommand
+[info|635071887794872500] ->handleCommand ReloadDatabaseCommand
+[info|635071887794872500] <--handleCommand ReloadDatabaseCommand
+[info|635071887794872500] ->handleCommand RequestContinueGameCommand
+[info|635071887794872500] <--handleCommand RequestContinueGameCommand
+[info|635071887794952505] RequestContinueGameCommand cb
+[info|635071887794952505] ctor() UpdateGameCredentialsCommand
+[info|635071887794952505] Executing UpdateGameCredentialsCommand
+[info|635071887794952505] <-requestBeginGame
+[info|635071887795062511] ->handleCommand UpdateGameCredentialsCommand
+[info|635071887795062511] <--handleCommand UpdateGameCredentialsCommand
+[info|635071887795212519] sendGameState ServerResponse=OK
+[info|635071887803562997] ->handleCommand ClientReadyCommand
+[info|635071887803562997] ->addObserver MesserSmash.Arenas.Level06
+[info|635071887803562997] <-addObserver MesserSmash.Arenas.Level06
+[info|635071887803562997] <--handleCommand ClientReadyCommand
+[info|635071887803723006] ->handleCommand LevelStartedCommand
+[info|635071887803723006] <--handleCommand LevelStartedCommand
+[info|635071887813893588] ->handleCommand LauncherReadyCommand
+[info|635071887813893588] <--handleCommand LauncherReadyCommand
+[info|635071887824224179] ->handleCommand LauncherReadyCommand
+[info|635071887824224179] <--handleCommand LauncherReadyCommand
+[info|635071887834554770] ->handleCommand LauncherReadyCommand
+[info|635071887834554770] <--handleCommand LauncherReadyCommand
+[info|635071887844895361] ->handleCommand LauncherReadyCommand
+[info|635071887844895361] <--handleCommand LauncherReadyCommand
+[info|635071887855225952] ->handleCommand LauncherReadyCommand
+[info|635071887855225952] <--handleCommand LauncherReadyCommand
+[info|635071887865556543] ->handleCommand LauncherReadyCommand
+[info|635071887865556543] <--handleCommand LauncherReadyCommand
+[info|635071887875897134] ->handleCommand LauncherReadyCommand
+[info|635071887875897134] <--handleCommand LauncherReadyCommand
+[info|635071887882907535] Game finished frames:525 random status: MesserRandom seed=1725518483 totalRequests=1628
+[info|635071887883227554] prepareNewLevel
+[info|635071887883297558] Utils.initialize seed=1813963542
+[info|635071887883337560] ->requestBeginGame
+[info|635071887883337560] -->CreateLootTable
+[info|635071887883337560] <--CreateLootTable randomStatus:MesserRandom seed=1813963542 totalRequests=14
+[info|635071887883357561] ->handleCommand SaveGameCommand
+[info|635071887883357561] <--handleCommand SaveGameCommand
+[info|635071887883357561] ->handleCommand RequestLevelHighscoresCommand
+[info|635071887883357561] <--handleCommand RequestLevelHighscoresCommand
+[info|635071887883357561] ->handleCommand LevelWonCommand
+[info|635071887883357561] <--handleCommand LevelWonCommand
+[info|635071887883357561] ->handleCommand ReloadDatabaseCommand
+[info|635071887883357561] <--handleCommand ReloadDatabaseCommand
+[info|635071887883357561] ->handleCommand RequestContinueGameCommand
+[info|635071887883357561] <--handleCommand RequestContinueGameCommand
+[info|635071887883357561] RequestContinueGameCommand cb
+[info|635071887883357561] ctor() UpdateGameCredentialsCommand
+[info|635071887883357561] Executing UpdateGameCredentialsCommand
+[info|635071887883357561] <-requestBeginGame
+[info|635071887883387563] ->handleCommand UpdateGameCredentialsCommand
+[info|635071887883387563] <--handleCommand UpdateGameCredentialsCommand
+[info|635071887914389336] ->handleCommand ClientReadyCommand
+[info|635071887914389336] ->addObserver MesserSmash.Arenas.Level07
+[info|635071887914389336] <-addObserver MesserSmash.Arenas.Level07
+[info|635071887914389336] <--handleCommand ClientReadyCommand
+[info|635071887914559346] ->handleCommand LevelStartedCommand
+[info|635071887914559346] <--handleCommand LevelStartedCommand
+[info|635071887931560318] ->handleCommand LauncherReadyCommand
+[info|635071887931560318] <--handleCommand LauncherReadyCommand
+[info|635071887941890909] ->handleCommand LauncherReadyCommand
+[info|635071887941890909] <--handleCommand LauncherReadyCommand
+[info|635071887952221500] ->handleCommand LauncherReadyCommand
+[info|635071887952221500] <--handleCommand LauncherReadyCommand
+[info|635071887962552091] ->handleCommand LauncherReadyCommand
+[info|635071887962552091] <--handleCommand LauncherReadyCommand
+[info|635071887972892682] ->handleCommand LauncherReadyCommand
+[info|635071887972892682] <--handleCommand LauncherReadyCommand
+[info|635071887983223273] ->handleCommand LauncherReadyCommand
+[info|635071887983223273] <--handleCommand LauncherReadyCommand
+[info|635071887994013890] Game finished frames:658 random status: MesserRandom seed=1813963542 totalRequests=5119
+[info|635071887994143898] sendGameState ServerResponse=OK
+[info|635071887994163899] prepareNewLevel
+[info|635071887994213902] Utils.initialize seed=1924879886
+[info|635071887994223902] -->CreateLootTable
+[info|635071887994223902] <--CreateLootTable randomStatus:MesserRandom seed=1924879886 totalRequests=12
+[info|635071887994223902] ->requestBeginGame
+[info|635071887994233903] ->handleCommand SaveGameCommand
+[info|635071887994233903] <--handleCommand SaveGameCommand
+[info|635071887994233903] ->handleCommand RequestLevelHighscoresCommand
+[info|635071887994233903] <--handleCommand RequestLevelHighscoresCommand
+[info|635071887994233903] ->handleCommand LevelWonCommand
+[info|635071887994233903] <--handleCommand LevelWonCommand
+[info|635071887994233903] ->handleCommand ReloadDatabaseCommand
+[info|635071887994233903] <--handleCommand ReloadDatabaseCommand
+[info|635071887994233903] ->handleCommand RequestContinueGameCommand
+[info|635071887994233903] <--handleCommand RequestContinueGameCommand
+[info|635071887994243903] RequestContinueGameCommand cb
+[info|635071887994243903] ctor() UpdateGameCredentialsCommand
+[info|635071887994243903] Executing UpdateGameCredentialsCommand
+[info|635071887994243903] <-requestBeginGame
+[info|635071887994383911] ->handleCommand UpdateGameCredentialsCommand
+[info|635071887994383911] <--handleCommand UpdateGameCredentialsCommand
+[info|635071888007054636] ->handleCommand ClientReadyCommand
+[info|635071888007054636] ->addObserver MesserSmash.Arenas.Level08
+[info|635071888007054636] <-addObserver MesserSmash.Arenas.Level08
+[info|635071888007054636] <--handleCommand ClientReadyCommand
+[info|635071888007224646] ->handleCommand LevelStartedCommand
+[info|635071888007224646] <--handleCommand LevelStartedCommand
+[info|635071888017385227] ->handleCommand LauncherReadyCommand
+[info|635071888017385227] <--handleCommand LauncherReadyCommand
+[info|635071888027725818] ->handleCommand LauncherReadyCommand
+[info|635071888027725818] <--handleCommand LauncherReadyCommand
+[info|635071888038056409] ->handleCommand LauncherReadyCommand
+[info|635071888038056409] <--handleCommand LauncherReadyCommand
+[info|635071888048387000] ->handleCommand LauncherReadyCommand
+[info|635071888048387000] <--handleCommand LauncherReadyCommand
+[info|635071888058717591] ->handleCommand LauncherReadyCommand
+[info|635071888058717591] <--handleCommand LauncherReadyCommand
+[info|635071888069048182] ->handleCommand LauncherReadyCommand
+[info|635071888069048182] <--handleCommand LauncherReadyCommand
+[info|635071888079388773] ->handleCommand LauncherReadyCommand
+[info|635071888079388773] <--handleCommand LauncherReadyCommand
+[info|635071888086259166] Game finished frames:550 random status: MesserRandom seed=1924879886 totalRequests=3941
+[info|635071888086339171] prepareNewLevel
+[info|635071888086629188] ->requestBeginGame
+[info|635071888086659189] Utils.initialize seed=2017325173
+[info|635071888086669190] -->CreateLootTable
+[info|635071888086669190] <--CreateLootTable randomStatus:MesserRandom seed=2017325173 totalRequests=12
+[info|635071888086689191] ->handleCommand SaveGameCommand
+[info|635071888086689191] <--handleCommand SaveGameCommand
+[info|635071888086689191] ->handleCommand RequestLevelHighscoresCommand
+[info|635071888086689191] <--handleCommand RequestLevelHighscoresCommand
+[info|635071888086689191] ->handleCommand LevelWonCommand
+[info|635071888086689191] <--handleCommand LevelWonCommand
+[info|635071888086689191] ->handleCommand ReloadDatabaseCommand
+[info|635071888086689191] <--handleCommand ReloadDatabaseCommand
+[info|635071888086689191] ->handleCommand RequestContinueGameCommand
+[info|635071888086689191] <--handleCommand RequestContinueGameCommand
+[info|635071888086699192] sendGameState ServerResponse=OK
+[info|635071888086709192] RequestContinueGameCommand cb
+[info|635071888086709192] ctor() UpdateGameCredentialsCommand
+[info|635071888086709192] Executing UpdateGameCredentialsCommand
+[info|635071888086709192] <-requestBeginGame
+[info|635071888086729193] ->handleCommand UpdateGameCredentialsCommand
+[info|635071888086729193] <--handleCommand UpdateGameCredentialsCommand
+[info|635071888106720337] ->handleCommand ClientReadyCommand
+[info|635071888106720337] ->addObserver MesserSmash.Arenas.Level09
+[info|635071888106720337] <-addObserver MesserSmash.Arenas.Level09
+[info|635071888106720337] <--handleCommand ClientReadyCommand
+[info|635071888106880346] ->handleCommand LevelStartedCommand
+[info|635071888106880346] <--handleCommand LevelStartedCommand
+[info|635071888117050928] ->handleCommand LauncherReadyCommand
+[info|635071888117050928] <--handleCommand LauncherReadyCommand
+[info|635071888127381518] ->handleCommand LauncherReadyCommand
+[info|635071888127381518] <--handleCommand LauncherReadyCommand
+[info|635071888137722110] ->handleCommand LauncherReadyCommand
+[info|635071888137722110] <--handleCommand LauncherReadyCommand
+[info|635071888148052701] ->handleCommand LauncherReadyCommand
+[info|635071888148052701] <--handleCommand LauncherReadyCommand
+[info|635071888158383292] ->handleCommand LauncherReadyCommand
+[info|635071888158383292] <--handleCommand LauncherReadyCommand
+[info|635071888168713883] ->handleCommand LauncherReadyCommand
+[info|635071888168713883] <--handleCommand LauncherReadyCommand
+[info|635071888179044473] ->handleCommand LauncherReadyCommand
+[info|635071888179054474] <--handleCommand LauncherReadyCommand
+[info|635071888186634908] Game finished frames:593 random status: MesserRandom seed=2017325173 totalRequests=7176
+[info|635071888186734913] prepareNewLevel
+[info|635071888186794917] ->requestBeginGame
+[info|635071888186814918] RequestContinueGameCommand cb
+[info|635071888186814918] ctor() UpdateGameCredentialsCommand
+[info|635071888186814918] Executing UpdateGameCredentialsCommand
+[info|635071888186814918] <-requestBeginGame
+[info|635071888186824918] Utils.initialize seed=2117490902
+[info|635071888186834919] -->CreateLootTable
+[info|635071888186834919] <--CreateLootTable randomStatus:MesserRandom seed=2117490902 totalRequests=12
+[info|635071888186854920] ->handleCommand SaveGameCommand
+[info|635071888186854920] <--handleCommand SaveGameCommand
+[info|635071888186854920] ->handleCommand RequestLevelHighscoresCommand
+[info|635071888186854920] <--handleCommand RequestLevelHighscoresCommand
+[info|635071888186854920] ->handleCommand LevelWonCommand
+[info|635071888186854920] <--handleCommand LevelWonCommand
+[info|635071888186854920] ->handleCommand ReloadDatabaseCommand
+[info|635071888186854920] <--handleCommand ReloadDatabaseCommand
+[info|635071888186854920] ->handleCommand UpdateGameCredentialsCommand
+[info|635071888186854920] <--handleCommand UpdateGameCredentialsCommand
+[info|635071888186854920] ->handleCommand RequestContinueGameCommand
+[info|635071888186854920] <--handleCommand RequestContinueGameCommand
+[info|635071888187034930] sendGameState ServerResponse=OK
+[info|635071888199055618] ->handleCommand ClientReadyCommand
+[info|635071888199055618] ->addObserver MesserSmash.Arenas.Level10
+[info|635071888199055618] <-addObserver MesserSmash.Arenas.Level10
+[info|635071888199055618] <--handleCommand ClientReadyCommand
+[info|635071888199215627] ->handleCommand LevelStartedCommand
+[info|635071888199215627] <--handleCommand LevelStartedCommand
+[info|635071888209386209] ->handleCommand LauncherReadyCommand
+[info|635071888209386209] <--handleCommand LauncherReadyCommand
+[info|635071888223217000] ->handleCommand LauncherReadyCommand
+[info|635071888223217000] <--handleCommand LauncherReadyCommand
+[info|635071888233547591] ->handleCommand LauncherReadyCommand
+[info|635071888233547591] <--handleCommand LauncherReadyCommand
+[info|635071888243878182] ->handleCommand LauncherReadyCommand
+[info|635071888243878182] <--handleCommand LauncherReadyCommand
+[info|635071888254218773] ->handleCommand LauncherReadyCommand
+[info|635071888254218773] <--handleCommand LauncherReadyCommand
+[info|635071888264549364] ->handleCommand LauncherReadyCommand
+[info|635071888264549364] <--handleCommand LauncherReadyCommand
+[info|635071888274879955] ->handleCommand LauncherReadyCommand
+[info|635071888274879955] <--handleCommand LauncherReadyCommand
+[info|635071888278630169] Game finished frames:548 random status: MesserRandom seed=2117490902 totalRequests=40948
+[error|635071888278920186] Game started before LevelWonCommand was finished with highscores
+[info|635071888278960188] sendGameState ServerResponse=OK
+[info|635071888278980189] ->handleCommand SaveGameCommand
+[info|635071888278980189] <--handleCommand SaveGameCommand
+[info|635071888278980189] ->handleCommand RequestRoundHighscoresCommand
+[info|635071888278980189] <--handleCommand RequestRoundHighscoresCommand
+[info|635071888278980189] ->handleCommand RoundWonCommand
+[info|635071888278990190] <--handleCommand RoundWonCommand
+[info|635071889682280454] -------------------------------------------------------------------------
+[info|635071889682290454] -------------------------------------------------------------------------
+[info|635071889682290454] Game started at 635071889682290454
+[info|635071889682360458] ->addObserver MesserSmash.SmashTV_main
+[info|635071889682370459] <-addObserver MesserSmash.SmashTV_main
+[info|635071889683770539] ->addObserver MesserSmash.Modules.SoundManager
+[info|635071889683770539] <-addObserver MesserSmash.Modules.SoundManager
+[info|635071889683810541] ->addObserver MesserSmash.SmashTVSystem
+[info|635071889683810541] <-addObserver MesserSmash.SmashTVSystem
+[info|635071889683860544] ->handleCommand ReloadDatabaseCommand
+[info|635071889683870545] <--handleCommand ReloadDatabaseCommand
+[info|635071889683870545] ->handleCommand LoadConfigFileCommand
+[info|635071889683890546] prepareNewLevel
+[info|635071889683950549] Utils.initialize seed=-680350763
+[info|635071889684030554] ->requestBeginGame
+[info|635071889684060555] -->CreateLootTable
+[info|635071889684090557] <--CreateLootTable randomStatus:MesserRandom seed=-680350763 totalRequests=12
+[info|635071889684130559] showLoadingScreen
+[info|635071889684130559] <--handleCommand LoadConfigFileCommand
+[info|635071889684810598] ->handleCommand ReloadDatabaseCommand
+[info|635071889684810598] <--handleCommand ReloadDatabaseCommand
+[info|635071889684810598] ->handleCommand RequestBeginNewGameCommand
+[info|635071889684810598] <--handleCommand RequestBeginNewGameCommand
+[info|635071889687600758] RequestSessionCommand cb
+[info|635071889687630760] ctor() UpdateGameCredentialsCommand
+[info|635071889687630760] Executing UpdateGameCredentialsCommand
+[info|635071889687630760] <-requestBeginGame
+[info|635071889687690763] ->handleCommand UpdateGameCredentialsCommand
+[info|635071889687690763] <--handleCommand UpdateGameCredentialsCommand
+[info|635071889690020896] ->handleCommand RestartGameCommand
+[info|635071889690020896] onRestartGame
+[info|635071889690020896] prepareNewLevel
+[info|635071889690060899] Utils.initialize seed=-674240413
+[info|635071889690080900] -->CreateLootTable
+[info|635071889690080900] <--CreateLootTable randomStatus:MesserRandom seed=-674240413 totalRequests=13
+[info|635071889690080900] showLoadingScreen
+[info|635071889690080900] <--handleCommand RestartGameCommand
+[info|635071889690090900] ->requestBeginGame
+[info|635071889690100901] RequestSessionCommand cb
+[info|635071889690100901] ctor() UpdateGameCredentialsCommand
+[info|635071889690100901] Executing UpdateGameCredentialsCommand
+[info|635071889690100901] <-requestBeginGame
+[info|635071889690190906] ->handleCommand ReloadDatabaseCommand
+[info|635071889690190906] <--handleCommand ReloadDatabaseCommand
+[info|635071889690190906] ->handleCommand RequestBeginNewGameCommand
+[info|635071889690190906] <--handleCommand RequestBeginNewGameCommand
+[info|635071889690190906] ->handleCommand UpdateGameCredentialsCommand
+[info|635071889690190906] <--handleCommand UpdateGameCredentialsCommand
+[info|635071889697521325] ->handleCommand ClientReadyCommand
+[info|635071889697561328] ->addObserver MesserSmash.Arenas.Level10
+[info|635071889697561328] <-addObserver MesserSmash.Arenas.Level10
+[info|635071889697561328] <--handleCommand ClientReadyCommand
+[info|635071889697911348] ->handleCommand LevelStartedCommand
+[info|635071889698001353] <--handleCommand LevelStartedCommand
+[info|635071889736193537] ->handleCommand LauncherReadyCommand
+[info|635071889736193537] <--handleCommand LauncherReadyCommand
+[info|635071889753354519] ->handleCommand LauncherReadyCommand
+[info|635071889753354519] <--handleCommand LauncherReadyCommand
+[info|635071889763685110] ->handleCommand LauncherReadyCommand
+[info|635071889763685110] <--handleCommand LauncherReadyCommand
+[info|635071889774015701] ->handleCommand LauncherReadyCommand
+[info|635071889774015701] <--handleCommand LauncherReadyCommand
+[info|635071889784406295] ->handleCommand LauncherReadyCommand
+[info|635071889784406295] <--handleCommand LauncherReadyCommand
+[info|635071889794686883] ->handleCommand LauncherReadyCommand
+[info|635071889794686883] <--handleCommand LauncherReadyCommand
+[info|635071889803727400] Game finished frames:678 random status: MesserRandom seed=-674240413 totalRequests=46877
+[info|635071889804077420] ->handleCommand SaveGameCommand
+[info|635071889804077420] <--handleCommand SaveGameCommand
+[info|635071889804077420] ->handleCommand RequestRoundHighscoresCommand
+[info|635071889804077420] <--handleCommand RequestRoundHighscoresCommand
+[info|635071889804077420] ->handleCommand RoundWonCommand
+[info|635071889804077420] <--handleCommand RoundWonCommand
+[info|635071889804617451] sendGameState ServerResponse=OK
+[info|635071889856850438] ->handleCommand RestartGameCommand
+[info|635071889856850438] onRestartGame
+[info|635071889856850438] prepareNewLevel
+[info|635071889856880440] Utils.initialize seed=-507420872
+[info|635071889856880440] -->CreateLootTable
+[info|635071889856880440] <--CreateLootTable randomStatus:MesserRandom seed=-507420872 totalRequests=13
+[info|635071889856880440] showLoadingScreen
+[info|635071889856880440] <--handleCommand RestartGameCommand
+[info|635071889856900441] ->requestBeginGame
+[info|635071889856900441] RequestSessionCommand cb
+[info|635071889856900441] ctor() UpdateGameCredentialsCommand
+[info|635071889856900441] Executing UpdateGameCredentialsCommand
+[info|635071889856900441] <-requestBeginGame
+[info|635071889857020448] ->handleCommand ReloadDatabaseCommand
+[info|635071889857020448] <--handleCommand ReloadDatabaseCommand
+[info|635071889857020448] ->handleCommand RequestBeginNewGameCommand
+[info|635071889857020448] <--handleCommand RequestBeginNewGameCommand
+[info|635071889857020448] ->handleCommand UpdateGameCredentialsCommand
+[info|635071889857020448] <--handleCommand UpdateGameCredentialsCommand
+[info|635071889863850839] ->handleCommand ClientReadyCommand
+[info|635071889863850839] ->addObserver MesserSmash.Arenas.Level10
+[info|635071889863850839] <-addObserver MesserSmash.Arenas.Level10
+[info|635071889863850839] <--handleCommand ClientReadyCommand
+[info|635071889864020849] ->handleCommand LevelStartedCommand
+[info|635071889864020849] <--handleCommand LevelStartedCommand
+[info|635071889883681973] ->handleCommand LauncherReadyCommand
+[info|635071889883681973] <--handleCommand LauncherReadyCommand
+[info|635071889894012564] ->handleCommand LauncherReadyCommand
+[info|635071889894012564] <--handleCommand LauncherReadyCommand
+[info|635071889904343155] ->handleCommand LauncherReadyCommand
+[info|635071889904343155] <--handleCommand LauncherReadyCommand
+[info|635071889914683746] ->handleCommand LauncherReadyCommand
+[info|635071889914683746] <--handleCommand LauncherReadyCommand
+[info|635071889925014337] ->handleCommand LauncherReadyCommand
+[info|635071889925014337] <--handleCommand LauncherReadyCommand
+[info|635071889935344928] ->handleCommand LauncherReadyCommand
+[info|635071889935344928] <--handleCommand LauncherReadyCommand
+[info|635071889942995366] Game finished frames:515 random status: MesserRandom seed=-507420872 totalRequests=36046
+[info|635071889943125373] ->handleCommand SaveGameCommand
+[info|635071889943125373] <--handleCommand SaveGameCommand
+[info|635071889943125373] ->handleCommand RequestRoundHighscoresCommand
+[info|635071889943125373] <--handleCommand RequestRoundHighscoresCommand
+[info|635071889943125373] ->handleCommand RoundWonCommand
+[info|635071889943125373] <--handleCommand RoundWonCommand
+[info|635071889943385388] sendGameState ServerResponse=OK
+[info|635071889963176520] ->handleCommand RestartGameCommand
+[info|635071889963176520] onRestartGame
+[info|635071889963176520] prepareNewLevel
+[info|635071889963226523] Utils.initialize seed=-401074789
+[info|635071889963236523] ->requestBeginGame
+[info|635071889963236523] RequestSessionCommand cb
+[info|635071889963236523] ctor() UpdateGameCredentialsCommand
+[info|635071889963236523] Executing UpdateGameCredentialsCommand
+[info|635071889963236523] <-requestBeginGame
+[info|635071889963256525] -->CreateLootTable
+[info|635071889963256525] <--CreateLootTable randomStatus:MesserRandom seed=-401074789 totalRequests=12
+[info|635071889963256525] showLoadingScreen
+[info|635071889963256525] <--handleCommand RestartGameCommand
+[info|635071889963356530] ->handleCommand ReloadDatabaseCommand
+[info|635071889963356530] <--handleCommand ReloadDatabaseCommand
+[info|635071889963356530] ->handleCommand RequestBeginNewGameCommand
+[info|635071889963356530] <--handleCommand RequestBeginNewGameCommand
+[info|635071889963356530] ->handleCommand UpdateGameCredentialsCommand
+[info|635071889963356530] <--handleCommand UpdateGameCredentialsCommand
+[info|635071889970846959] ->handleCommand ClientReadyCommand
+[info|635071889970846959] ->addObserver MesserSmash.Arenas.Level09
+[info|635071889970846959] <-addObserver MesserSmash.Arenas.Level09
+[info|635071889970846959] <--handleCommand ClientReadyCommand
+[info|635071889971016968] ->handleCommand LevelStartedCommand
+[info|635071889971016968] <--handleCommand LevelStartedCommand
+[info|635071889987517912] ->handleCommand LauncherReadyCommand
+[info|635071889987517912] <--handleCommand LauncherReadyCommand
+[info|635071889997848503] ->handleCommand LauncherReadyCommand
+[info|635071889997848503] <--handleCommand LauncherReadyCommand
+[info|635071890008179094] ->handleCommand LauncherReadyCommand
+[info|635071890008179094] <--handleCommand LauncherReadyCommand
+[info|635071890018509685] ->handleCommand LauncherReadyCommand
+[info|635071890018509685] <--handleCommand LauncherReadyCommand
+[info|635071890028840276] ->handleCommand LauncherReadyCommand
+[info|635071890028840276] <--handleCommand LauncherReadyCommand
+[info|635071890039180867] ->handleCommand LauncherReadyCommand
+[info|635071890039180867] <--handleCommand LauncherReadyCommand
+[info|635071890049511458] ->handleCommand LauncherReadyCommand
+[info|635071890049511458] <--handleCommand LauncherReadyCommand
+[info|635071890049871479] Game finished frames:519 random status: MesserRandom seed=-401074789 totalRequests=6394
+[info|635071890050141494] prepareNewLevel
+[info|635071890050651523] Utils.initialize seed=-313649789
+[info|635071890050651523] -->CreateLootTable
+[info|635071890050651523] <--CreateLootTable randomStatus:MesserRandom seed=-313649789 totalRequests=12
+[info|635071890050661524] ->handleCommand SaveGameCommand
+[info|635071890050661524] <--handleCommand SaveGameCommand
+[info|635071890050711527] ->handleCommand RequestLevelHighscoresCommand
+[info|635071890050711527] <--handleCommand RequestLevelHighscoresCommand
+[info|635071890050731528] ->handleCommand LevelWonCommand
+[info|635071890050931539] <--handleCommand LevelWonCommand
+[info|635071890050931539] ->handleCommand ReloadDatabaseCommand
+[info|635071890050931539] <--handleCommand ReloadDatabaseCommand
+[info|635071890050941540] ->handleCommand RequestContinueGameCommand
+[info|635071890050941540] <--handleCommand RequestContinueGameCommand
+[info|635071890050941540] sendGameState ServerResponse=OK
+[info|635071890050951540] ->requestBeginGame
+[info|635071890050981542] RequestContinueGameCommand cb
+[info|635071890050981542] ctor() UpdateGameCredentialsCommand
+[info|635071890050981542] Executing UpdateGameCredentialsCommand
+[info|635071890050981542] <-requestBeginGame
+[info|635071890051011544] ->handleCommand UpdateGameCredentialsCommand
+[info|635071890051011544] <--handleCommand UpdateGameCredentialsCommand
+[info|635071890064512316] ->handleCommand ClientReadyCommand
+[info|635071890064512316] ->addObserver MesserSmash.Arenas.Level10
+[info|635071890064512316] <-addObserver MesserSmash.Arenas.Level10
+[info|635071890064512316] <--handleCommand ClientReadyCommand
+[info|635071890064682326] ->handleCommand LevelStartedCommand
+[info|635071890064682326] <--handleCommand LevelStartedCommand
+[info|635071890074842907] ->handleCommand LauncherReadyCommand
+[info|635071890074842907] <--handleCommand LauncherReadyCommand
+[info|635071890085173498] ->handleCommand LauncherReadyCommand
+[info|635071890085173498] <--handleCommand LauncherReadyCommand
+[info|635071890095514089] ->handleCommand LauncherReadyCommand
+[info|635071890095514089] <--handleCommand LauncherReadyCommand
+[info|635071890105844680] ->handleCommand LauncherReadyCommand
+[info|635071890105844680] <--handleCommand LauncherReadyCommand
+[info|635071890116175271] ->handleCommand LauncherReadyCommand
+[info|635071890116175271] <--handleCommand LauncherReadyCommand
+[info|635071890126525863] ->handleCommand LauncherReadyCommand
+[info|635071890126525863] <--handleCommand LauncherReadyCommand
+[info|635071890136846453] ->handleCommand LauncherReadyCommand
+[info|635071890136846453] <--handleCommand LauncherReadyCommand
+[info|635071890143476833] Game finished frames:553 random status: MesserRandom seed=-313649789 totalRequests=35183
+[info|635071890143626841] ->handleCommand SaveGameCommand
+[info|635071890143636842] <--handleCommand SaveGameCommand
+[info|635071890143636842] ->handleCommand RequestRoundHighscoresCommand
+[info|635071890143636842] <--handleCommand RequestRoundHighscoresCommand
+[info|635071890143636842] ->handleCommand RoundWonCommand
+[info|635071890143636842] <--handleCommand RoundWonCommand
+[info|635071890143916858] sendGameState ServerResponse=OK

@@ -1,0 +1,34 @@
+[info|635071887273682690] Utils.initialize seed=1204338673
+[info|635071887273812697] -->CreateLootTable
+[info|635071887273822698] ->requestBeginGame
+[info|635071887273842699] <--CreateLootTable randomStatus:MesserRandom seed=1204338673 totalRequests=13
+[info|635071887273882701] showLoadingScreen
+[info|635071887273882701] <--handleCommand LoadConfigFileCommand
+[info|635071887274442733] ->handleCommand ReloadDatabaseCommand
+[info|635071887274442733] <--handleCommand ReloadDatabaseCommand
+[info|635071887274442733] ->handleCommand RequestBeginNewGameCommand
+[info|635071887274442733] <--handleCommand RequestBeginNewGameCommand
+[info|635071887276332841] RequestSessionCommand cb
+[info|635071887276362843] ctor() UpdateGameCredentialsCommand
+[info|635071887276362843] Executing UpdateGameCredentialsCommand
+[info|635071887276362843] <-requestBeginGame
+[info|635071887276412846] ->handleCommand UpdateGameCredentialsCommand
+[info|635071887276412846] <--handleCommand UpdateGameCredentialsCommand
+[info|635071887285403360] ->handleCommand ClientReadyCommand
+[info|635071887285463364] ->addObserver MesserSmash.Arenas.Level01
+[info|635071887285463364] <-addObserver MesserSmash.Arenas.Level01
+[info|635071887285473364] <--handleCommand ClientReadyCommand
+[info|635071887285883388] ->handleCommand LevelStartedCommand
+[info|635071887285973393] <--handleCommand LevelStartedCommand
+[info|635071887316915162] ->handleCommand LauncherReadyCommand
+[info|635071887316915162] <--handleCommand LauncherReadyCommand
+[info|635071887339736468] ->handleCommand LauncherReadyCommand
+[info|635071887339736468] <--handleCommand LauncherReadyCommand
+[info|635071887350067059] ->handleCommand LauncherReadyCommand
+[info|635071887350067059] <--handleCommand LauncherReadyCommand
+[info|635071887360397649] ->handleCommand LauncherReadyCommand
+[info|635071887360397649] <--handleCommand LauncherReadyCommand
+[info|635071887370728240] ->handleCommand LauncherReadyCommand
+[info|635071887370738241] <--handleCommand LauncherReadyCommand
+[info|635071887384569032] ->handleCommand LauncherReadyCommand
+[info|635071887384569032] <--handleCommand LauncherReadyCommand

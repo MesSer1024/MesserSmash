@@ -119,6 +119,8 @@ namespace MesserSmash {
 		}
 
 		public void startLoadedLevel() {
+            _shotContainer.clear();
+            _enemyContainer.clear();
             _gui.startLevel();
 			_gameStarted = true;
 			_gui.setScore(Scoring.getTotalScore());

@@ -92,5 +92,9 @@ namespace MesserSmash.Enemies {
                     break;
             }
         }
+
+        public void clear() {
+            _enemies.Clear();
+        }
     }
 }
