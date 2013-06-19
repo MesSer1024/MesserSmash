@@ -22,7 +22,7 @@ namespace MesserSmash.Enemies {
         }
 
         protected override float _getMovementSpeed() {
-            return base._getMovementSpeed() - 21;
+            return base._getMovementSpeed() - 21*Utils.getResolutionScale();
         }
 
         protected override Color getColor() {
@@ -30,11 +30,11 @@ namespace MesserSmash.Enemies {
         }
 
         protected override float _getRadius() {
-            return DataDefines.ID_RUSHER_RADIUS;
+            return DataDefines.ID_RUSHER_RADIUS * Utils.getResolutionScale();
         }
 
         protected override float _getAttackRadius() {
-            return DataDefines.ID_RUSHER_ATTACK_RADIUS;
+            return DataDefines.ID_RUSHER_ATTACK_RADIUS * Utils.getResolutionScale();
         }
 
         protected override Texture2D _getTexture() {
@@ -56,7 +56,7 @@ namespace MesserSmash.Enemies {
         }
 
         protected override Behaviour createAttackBehaviour() {
-            var behaviour = new AttackWithCharge(_getMovementSpeed(), 285f, 1.0f);
+            var behaviour = new AttackWithCharge(_getMovementSpeed(), 285f * Utils.getResolutionScale(), 1.0f);
             behaviour.onBehaviourEnded += onAttackDone;
             return behaviour;
         }

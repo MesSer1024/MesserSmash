@@ -20,7 +20,7 @@ namespace MesserSmash {
         }
 
         public override float getMovementSpeed() {
-            return MOVEMENT_SPEED;
+            return MOVEMENT_SPEED * Utils.getResolutionScale();
         }
 
         public override void exit() {

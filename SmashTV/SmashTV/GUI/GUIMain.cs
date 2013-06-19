@@ -48,7 +48,7 @@ namespace MesserSmash.GUI {
 
         public GUIMain() {
             Instance = this;
-            _debugGui = new DebugGuiOverlay(new Rectangle(40, 40, 850, 600));
+            _debugGui = new DebugGuiOverlay(new Rectangle(Utils.calcResolutionScaledValue(60), Utils.calcResolutionScaledValue(60), Utils.calcResolutionScaledValue(1275), Utils.calcResolutionScaledValue(900)));
             reset();
         }
 
@@ -66,7 +66,7 @@ namespace MesserSmash.GUI {
         public void startLevel() {
             reset();
             _inGame = true;
-            int h = 120;
+            int h = Utils.calcResolutionScaledValue(120);
             _background = new Rectangle(0, Utils.getGameHeight() - h, Utils.getGameWidth(), Utils.getGameHeight());
             _backgroundColor = Color.YellowGreen;
             _portraitPosition = new Rectangle(200, _background.Y + 20, 80, 80);

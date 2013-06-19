@@ -37,13 +37,13 @@ namespace MesserSmash.Weapons {
         public EnemyPistolShot(Vector2 position, Vector2 direction) : base(position, true){
             _position = position;
             _velocity = Utils.safeNormalize(direction);
-            _velocity *= MOVEMENT_SPEED;
+            _velocity *= MOVEMENT_SPEED * Utils.getResolutionScale();
             
             _damage = 7;
         }
 
         protected override float _initRadius() {
-            return 5;
+            return 5 * Utils.getResolutionScale();
         }
 
         protected override Texture2D _initTexture() {

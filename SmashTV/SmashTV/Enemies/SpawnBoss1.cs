@@ -24,12 +24,12 @@ namespace MesserSmash.Enemies {
             Health = MAX_HEALTH;
             _hasDoneFirstAttack = false;
 
-            _healthbar = new Healthbar(new Rectangle(0,0,150,150));
+            _healthbar = new Healthbar(new Rectangle(0, 0, (int)(150 * Utils.getResolutionScale()), (int)(150 * Utils.getResolutionScale())));
             _healthbar.Value = 1;
         }
 
         protected override float _getMovementSpeed() {
-            return 85;
+            return 85 * Utils.getResolutionScale();
         }
 
         protected override Color getColor() {
@@ -41,11 +41,11 @@ namespace MesserSmash.Enemies {
         }
 
         protected override float _getRadius() {
-            return 75;
+            return 75 * Utils.getResolutionScale();
         }
 
         protected override float _getAttackRadius() {
-            return DataDefines.ID_RUSHER_ATTACK_RADIUS * 2;
+            return 406 * Utils.getResolutionScale();
         }
 
         protected override Texture2D _getTexture() {
@@ -103,7 +103,7 @@ namespace MesserSmash.Enemies {
         public override void update(float deltatime) {
             base.update(deltatime);
             _healthbar.Value = Health / MAX_HEALTH;
-            _healthbar.Bounds = new Rectangle((int)_position.X - 113, (int)_position.Y - 2*_textureOrigin, 225, 20);
+            _healthbar.Bounds = new Rectangle((int)_position.X - (int)(113 * Utils.getResolutionScale()), (int)_position.Y - 2 * _textureOrigin, (int)(225 * Utils.getResolutionScale()), 20);
             if (State == EnemyBase.EnemyStates.Idle && _behaviour.TimeThisBehaviour > SECONDS_SLEEPING_AFTER_CHARGE) {
                 State = EnemyBase.EnemyStates.EngagingPlayer;
             }

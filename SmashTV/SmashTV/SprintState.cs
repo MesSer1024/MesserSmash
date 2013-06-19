@@ -14,7 +14,7 @@ namespace MesserSmash {
         }
 
         public override float getMovementSpeed() {
-            return SPRINT_MOVEMENT_SPEED;
+            return SPRINT_MOVEMENT_SPEED * Utils.getResolutionScale();
         }
 
         public override void validate(float deltatime) {

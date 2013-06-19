@@ -42,7 +42,7 @@ namespace MesserSmash {
         }
 
         protected override float _initRadius() {
-            return FLIGHT_SIZE;
+            return FLIGHT_SIZE * Utils.getResolutionScale();
         }
 
         protected override Texture2D _initTexture() {
@@ -93,7 +93,7 @@ namespace MesserSmash {
         private void land() {
             _timeInState = 0;
             _state = ShotState.Landed;
-            _radius = GROUND_SIZE;            
+            _radius = GROUND_SIZE * Utils.getResolutionScale();            
             requestBecomeGroundEffect(EXPLOSION_TIME_DEAL_DAMAGE, EXPLOSION_TIME_SHOWN);
         }
 

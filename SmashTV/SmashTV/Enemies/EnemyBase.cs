@@ -101,7 +101,7 @@ namespace MesserSmash.Enemies {
         }
 
         protected virtual float _getMovementSpeed() {
-            return 75;
+            return 75 * Utils.getResolutionScale();
         }
 
         protected virtual float _getAttackRadius() {

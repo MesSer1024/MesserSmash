@@ -424,14 +424,15 @@ namespace MesserSmash {
         }
 
         internal static List<Spawnpoint> generateSpawnpoints(Rectangle bounds) {
+
             var list = new List<Spawnpoint>();
-            list.Add(new Spawnpoint(new Rectangle(bounds.Center.X - 210, bounds.Bottom - 90, 90, 90),
+            list.Add(new Spawnpoint(new Rectangle(bounds.Center.X - calcResolutionScaledValue(210), bounds.Bottom - calcResolutionScaledValue(90), calcResolutionScaledValue(90), calcResolutionScaledValue(90)),
                                     AssetManager.getArenaTexture()));
-            list.Add(new Spawnpoint(new Rectangle(bounds.Center.X + 150, bounds.Top, 90, 90),
+            list.Add(new Spawnpoint(new Rectangle(bounds.Center.X + calcResolutionScaledValue(150), bounds.Top, calcResolutionScaledValue(90), calcResolutionScaledValue(90)),
                                     AssetManager.getArenaTexture()));
-            list.Add(new Spawnpoint(new Rectangle(bounds.Left, bounds.Center.Y, 90, 90),
+            list.Add(new Spawnpoint(new Rectangle(bounds.Left, bounds.Center.Y, calcResolutionScaledValue(90), calcResolutionScaledValue(90)),
                                     AssetManager.getArenaTexture()));
-            list.Add(new Spawnpoint(new Rectangle(bounds.Right - 90, bounds.Center.Y, 90, 90),
+            list.Add(new Spawnpoint(new Rectangle(bounds.Right - calcResolutionScaledValue(90), bounds.Center.Y, calcResolutionScaledValue(90), calcResolutionScaledValue(90)),
                                     AssetManager.getArenaTexture()));
             return list;
         }
@@ -468,8 +469,12 @@ namespace MesserSmash {
             return new Rectangle(0, 0, getGameWidth(), getGameHeight());
         }
 
-        public static float getScale() {
+        public static float getResolutionScale() {
             return Utils.getGameWidth() / 1920f;
+        }
+
+        public static int calcResolutionScaledValue(int value) {
+            return (int)(value * Utils.getResolutionScale());
         }
     }
 }

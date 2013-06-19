@@ -33,14 +33,14 @@ namespace MesserSmash {
             if(_velocity == Vector2.Zero) 
                 _velocity = new Vector2(1,0);
             _velocity.Normalize();
-            _velocity *= MOVEMENT_SPEED;
+            _velocity *= MOVEMENT_SPEED * Utils.getResolutionScale();
             
             _damage = 3;
             _state = ShotStates.Alive;            
         }
 
         protected override float _initRadius() {
-            return 5;
+            return 5 * Utils.getResolutionScale();
         }
 
         protected override Texture2D _initTexture() {

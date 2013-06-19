@@ -18,7 +18,7 @@ namespace MesserSmash.Enemies {
         }
 
         protected override float _getRadius() {
-            return DataDefines.ID_MELEE_ENEMY_RADIUS;
+            return DataDefines.ID_MELEE_ENEMY_RADIUS * Utils.getResolutionScale();
         }
 
         protected override Texture2D _getTexture() {

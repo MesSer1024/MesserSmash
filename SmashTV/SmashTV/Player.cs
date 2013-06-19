@@ -49,7 +49,7 @@ namespace MesserSmash {
             _position = position;
             _texture = AssetManager.getPlayerTexture();
             _velocity = Vector2.Zero;
-            _radius = 27;
+            _radius = 27 * Utils.getResolutionScale();
             _scale = 2 * _radius / _texture.Width;
             _textureOrigin = _texture.Width / 2;
             _weaponLMB = new WeaponPistol();

@@ -44,7 +44,7 @@ namespace MesserSmash {
             _moneyTexture = moneyTexture;
             _isActive = true;
             _position = position;
-            _radius = 25;
+            _radius = 38 * Utils.getResolutionScale();
 
             switch (_type) {
                 case Arena.LootType.Health:
