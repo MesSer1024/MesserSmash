@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MesserSmash {
     class PistolShot : ShotBase {
-        private const float MOVEMENT_SPEED = 482;
+        private const float MOVEMENT_SPEED = 723;
         public enum ShotStates {
             Alive,
             Dead,
@@ -40,7 +40,7 @@ namespace MesserSmash {
         }
 
         protected override float _initRadius() {
-            return 3;
+            return 5;
         }
 
         protected override Texture2D _initTexture() {

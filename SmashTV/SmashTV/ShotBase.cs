@@ -27,11 +27,13 @@ namespace MesserSmash {
             get { return _damage; }
         }
 
+        public UInt16 Identifier { get; private set; }
         public bool CollisionEnabled { get { return _flaggedForCollision(); } }
 
         public ShotBase() : this(Vector2.Zero, false) {}
 
         public ShotBase(Vector2 position, bool firedByEnemy=true) {
+            Identifier = Utils.NextIdentifier;
             _position = position;
             _texture = _initTexture();
 

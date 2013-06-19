@@ -70,9 +70,9 @@ namespace MesserSmash {
 			Controller.instance.addObserver(this);
 			new ReloadDatabaseCommand().execute();
 
-			_graphics.PreferredBackBufferWidth = 1440;
-			_graphics.PreferredBackBufferHeight = 800;
-			Utils.setGameSize(1440, 800);
+			_graphics.PreferredBackBufferWidth = 1920;
+			_graphics.PreferredBackBufferHeight = 1080;
+            Utils.setGameSize(1920, 1080);
 			_graphics.ApplyChanges();
 			_game.IsMouseVisible = true;
             _circleTexture = _content.Load<Texture2D>("circle 64x64");

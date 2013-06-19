@@ -8,8 +8,8 @@ using MesserSmash.Modules;
 
 namespace MesserSmash {
     class RocketShot : ShotBase {
-        private const float GROUND_SIZE = 88;
-        private const float FLIGHT_SIZE = 5;
+        private const float GROUND_SIZE = 132;
+        private const float FLIGHT_SIZE = 8;
 
         private const float FLYING_TIME = 1.35f;
         private const float EXPLOSION_TIME_SHOWN = 0.750f;

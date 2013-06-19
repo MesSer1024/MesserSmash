@@ -20,6 +20,8 @@ namespace MesserSmash {
         private static MesserMouse _mouseState;
         private static MesserKeys _nonForcedKeyboardState;
         private static MesserKeys _nonForcedOldKeyboardState;
+        private static UInt16 Identifier = UInt16.MinValue;
+        public static UInt16 NextIdentifier { get { return ++Identifier; } }
 
         public static class NonForcedKeyboard {
             public static bool isNewKeyPress(Keys key) {
@@ -423,13 +425,13 @@ namespace MesserSmash {
 
         internal static List<Spawnpoint> generateSpawnpoints(Rectangle bounds) {
             var list = new List<Spawnpoint>();
-            list.Add(new Spawnpoint(new Rectangle(bounds.Center.X - 140, bounds.Bottom - 60, 60, 60),
+            list.Add(new Spawnpoint(new Rectangle(bounds.Center.X - 210, bounds.Bottom - 90, 90, 90),
                                     AssetManager.getArenaTexture()));
-            list.Add(new Spawnpoint(new Rectangle(bounds.Center.X + 100, bounds.Top, 60, 60),
+            list.Add(new Spawnpoint(new Rectangle(bounds.Center.X + 150, bounds.Top, 90, 90),
                                     AssetManager.getArenaTexture()));
-            list.Add(new Spawnpoint(new Rectangle(bounds.Left, bounds.Center.Y, 60, 60),
+            list.Add(new Spawnpoint(new Rectangle(bounds.Left, bounds.Center.Y, 90, 90),
                                     AssetManager.getArenaTexture()));
-            list.Add(new Spawnpoint(new Rectangle(bounds.Right - 60, bounds.Center.Y, 60, 60),
+            list.Add(new Spawnpoint(new Rectangle(bounds.Right - 90, bounds.Center.Y, 90, 90),
                                     AssetManager.getArenaTexture()));
             return list;
         }
@@ -464,6 +466,10 @@ namespace MesserSmash {
 
         public static Rectangle getGameBounds() {
             return new Rectangle(0, 0, getGameWidth(), getGameHeight());
+        }
+
+        public static float getScale() {
+            return Utils.getGameWidth() / 1920f;
         }
     }
 }

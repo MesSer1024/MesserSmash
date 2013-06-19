@@ -41,13 +41,15 @@ namespace MesserSmash {
         private PlayerState _currentState;
         private bool _soundlock;
         private bool _finished;
-        private float _takeDamageAnimationTime;        
+        private float _takeDamageAnimationTime;
+        public UInt16 Identifier { get; private set; }
 
         public Player(Vector2 position) {
+            Identifier = Utils.NextIdentifier;
             _position = position;
             _texture = AssetManager.getPlayerTexture();
             _velocity = Vector2.Zero;
-            _radius = 18;
+            _radius = 27;
             _scale = 2 * _radius / _texture.Width;
             _textureOrigin = _texture.Width / 2;
             _weaponLMB = new WeaponPistol();

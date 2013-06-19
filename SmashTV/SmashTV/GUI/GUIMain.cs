@@ -151,12 +151,12 @@ namespace MesserSmash.GUI {
             return (key >= Keys.A && key <= Keys.Z) || (key >= Keys.D0 && key <= Keys.D9);
         }
 
-        public void setPlayerHealth(int value) {
-            _health.Value = value;
+        public void setPlayerHealth(float curr, float max) {
+            _health.Value = curr/max;
         }
 
-        public void setPlayerEnergy(int value) {
-            _energy.Value = value;
+        public void setPlayerEnergy(float curr, float max) {
+            _energy.Value = curr/max;
         }
 
         public void setKillCount(int value) {

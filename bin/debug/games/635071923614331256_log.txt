@@ -1,0 +1,65 @@
+[info|635071923520755904] Utils.initialize seed=-1203283776
+[info|635071923520755904] ->requestBeginGame
+[info|635071923520755904] -->CreateLootTable
+[info|635071923520755904] <--CreateLootTable randomStatus:MesserRandom seed=-1203283776 totalRequests=12
+[info|635071923520765904] ->handleCommand SaveGameCommand
+[info|635071923520765904] <--handleCommand SaveGameCommand
+[info|635071923520765904] ->handleCommand RequestLevelHighscoresCommand
+[info|635071923520765904] <--handleCommand RequestLevelHighscoresCommand
+[info|635071923520765904] ->handleCommand LevelWonCommand
+[info|635071923520765904] <--handleCommand LevelWonCommand
+[info|635071923520765904] ->handleCommand ReloadDatabaseCommand
+[info|635071923520765904] <--handleCommand ReloadDatabaseCommand
+[info|635071923520765904] ->handleCommand RequestContinueGameCommand
+[info|635071923520765904] <--handleCommand RequestContinueGameCommand
+[error|635071923531116496] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[error|635071923531516519] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071923531516519] RequestContinueGameCommand cb
+[error|635071923531586523] Error parsing RequestContinueGameCommand data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestContinueGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestContinueGameCommand.cs:line 40
+[info|635071923531586523] ctor() UpdateGameCredentialsCommand
+[info|635071923531586523] Executing UpdateGameCredentialsCommand
+[info|635071923531586523] <-requestBeginGame
+[info|635071923531666528] ->handleCommand UpdateGameCredentialsCommand
+[info|635071923531666528] <--handleCommand UpdateGameCredentialsCommand
+[info|635071923535496747] ->handleCommand ClientReadyCommand
+[info|635071923535496747] ->addObserver MesserSmash.Arenas.Level02
+[info|635071923535496747] <-addObserver MesserSmash.Arenas.Level02
+[info|635071923535496747] <--handleCommand ClientReadyCommand
+[info|635071923535666757] ->handleCommand LevelStartedCommand
+[info|635071923535666757] <--handleCommand LevelStartedCommand
+[error|635071923541357082] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071923541357082] sendGameState ServerResponse=
+[info|635071923545827338] ->handleCommand LauncherReadyCommand
+[info|635071923545827338] <--handleCommand LauncherReadyCommand
+[info|635071923556167929] ->handleCommand LauncherReadyCommand
+[info|635071923556167929] <--handleCommand LauncherReadyCommand
+[info|635071923566498520] ->handleCommand LauncherReadyCommand
+[info|635071923566498520] <--handleCommand LauncherReadyCommand
+[info|635071923576829111] ->handleCommand LauncherReadyCommand
+[info|635071923576829111] <--handleCommand LauncherReadyCommand
+[info|635071923587159702] ->handleCommand LauncherReadyCommand
+[info|635071923587159702] <--handleCommand LauncherReadyCommand
+[info|635071923597510294] ->handleCommand LauncherReadyCommand
+[info|635071923597510294] <--handleCommand LauncherReadyCommand
+[info|635071923607830884] ->handleCommand LauncherReadyCommand
+[info|635071923607830884] <--handleCommand LauncherReadyCommand

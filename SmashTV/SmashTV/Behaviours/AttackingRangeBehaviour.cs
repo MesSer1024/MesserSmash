@@ -2,6 +2,7 @@
 using MesserSmash.Weapons;
 using MesserSmash.Modules;
 using MesserSmash.Enemies;
+using System;
 
 namespace MesserSmash.Behaviours {
 
@@ -17,8 +18,11 @@ namespace MesserSmash.Behaviours {
         private readonly bool _rotateLeft;
         private float _preferredDistance;
         private Vector2 _aimRandomness;
+        public UInt16 Identifier { get; private set; }
 
         public AttackingRangeBehaviour(float preferredDistanceToPlayer, Vector2 aimRandomness) {
+            Identifier = Utils.NextIdentifier;
+
             _aimRandomness = aimRandomness;
             _preferredDistance = preferredDistanceToPlayer;
             _timeSinceLastShot = 0 - TIME_BETWEEN_BEHAVIOR_SHIFTS + TIME_BETWEEN_SHOTS;

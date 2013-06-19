@@ -30,7 +30,7 @@ namespace MesserSmash.Enemies {
         }
 
         override public void onPlayerInAttackRadius() {
-            if (TimeSinceCreation > SECONDS_BEFORE_FIRST_ATTACK) {
+            if (TimeSinceCreation > SECONDS_BEFORE_FIRST_ATTACK && _behaviour.TimeThisBehaviour > SECONDS_BEFORE_FIRST_ATTACK) {
                 State = EnemyStates.Attacking;
             }
         }

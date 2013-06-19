@@ -38,6 +38,11 @@ namespace MesserSmash {
             }
         }
 
+        public void spawnEnemy(IEnemy enemy) {
+            enemy.Position = Utils.randomPositionWithinRectangle(_bounds);
+            enemy.init();
+        }
+
         public void generateMeleeEnemies(int amount) {
             while (amount-- > 0) {
                 Player player = SmashTVSystem.Instance.Player;

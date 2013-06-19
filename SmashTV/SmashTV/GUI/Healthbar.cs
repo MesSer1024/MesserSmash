@@ -17,6 +17,9 @@ namespace MesserSmash.GUI {
             }
         }
 
+        /// <summary>
+        /// Value between 0 and 1
+        /// </summary>
         private float _value;
         public float Value {
             get { return _value; }
@@ -29,7 +32,7 @@ namespace MesserSmash.GUI {
 
         public Healthbar(Rectangle bounds) {
             Bounds = bounds;
-            _value = 50;
+            _value = 0.5f;
             _borderColor = Color.LightGray;
             _nonValuedColor = Color.Black;
             _valueColor = Color.Yellow;
@@ -42,7 +45,7 @@ namespace MesserSmash.GUI {
         }
 
         private Rectangle getBoundsByValue() {
-            double valueWidth = _innerBounds.Width * (_value / 100.0f);
+            double valueWidth = _innerBounds.Width * _value;
             return new Rectangle(_innerBounds.X, _innerBounds.Y, (int)valueWidth, _innerBounds.Height);
         }
     }

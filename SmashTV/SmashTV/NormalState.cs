@@ -7,8 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MesserSmash {
     class NormalState : PlayerState {
-        private const float MOVEMENT_SPEED = 90;
-        //private const float MOVEMENT_SPEED = 105;
+        private const float MOVEMENT_SPEED = 135;
 
         public NormalState(Player player) : base(player) { }
 

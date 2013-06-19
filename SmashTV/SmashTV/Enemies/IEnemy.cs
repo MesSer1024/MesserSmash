@@ -13,7 +13,7 @@ namespace MesserSmash.Enemies {
         float Score { get; }
 
         void init();
-        void reloadDatabaseValues();
+        void rereadDatabaseValues();
 
         void takeDamage(float amount);
         void onPlayerInAttackRadius();

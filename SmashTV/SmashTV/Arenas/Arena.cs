@@ -59,7 +59,8 @@ namespace MesserSmash.Arenas {
 
         public Arena() {
             _texture = AssetManager.getArenaTexture();
-            _bounds = new Rectangle(40, 40, 850, 600);
+            var scale = Utils.getScale();
+            _bounds = new Rectangle(0, 0, 1275, 900);
             _timeSinceLastCreation = 0;
             _spawners = new List<WaveSpawner>();
             _activeLoot = new List<Loot>();

@@ -15,7 +15,8 @@ namespace MesserSmash.Enemies {
             Dead,
             Removed,
             Attacking,
-            Leaving
+            Leaving,
+            Idle,
         }
 
         #endregion Enum and eventHandlers
@@ -23,10 +24,10 @@ namespace MesserSmash.Enemies {
         #region Class Members
         public delegate void EnemyDelegate(IEnemy enemy);
 
-        private float _attackRadiusScale;
-        private float _scale;
+        protected float _attackRadiusScale;
+        protected float _scale;
         private Texture2D _texture;
-        private int _textureOrigin;
+        protected int _textureOrigin;
         private float _health;
         protected Vector2 _position;
         protected Vector2 _velocity;
@@ -35,8 +36,7 @@ namespace MesserSmash.Enemies {
 
         private EnemyStates _state;
         protected Behaviour _behaviour;
-        private static int _identifier;
-        private int _id;
+        public UInt16 Identifier { get; private set; }
 
         public float TimeSinceCreation { get; protected set; }
 
@@ -63,7 +63,7 @@ namespace MesserSmash.Enemies {
             get { return _state; }
             protected set {
                 _state = value;
-                TimeSinceCreation = 0;
+                //TimeSinceStateChange = 0;
                 handleStateChange();
             }
         }
@@ -76,19 +76,21 @@ namespace MesserSmash.Enemies {
         #region constructors and initializer methods
         public EnemyBase() {
             SmashTVSystem.Instance.enemyCreated();
+            Identifier = Utils.NextIdentifier;
             Damage = 20;
-            _id = _identifier++;
 
-            reloadDatabaseValues();
+            rereadDatabaseValues();
         }
 
         public void init() {
-            //Controller.instance.addObserver(this);
             SmashTVSystem.Instance.EnemyContainer.addEnemy(this);
             State = EnemyStates.EngagingPlayer;
+            onInit();
         }
 
-        public void reloadDatabaseValues() {
+        protected virtual void onInit() {}
+
+        public void rereadDatabaseValues() {
             _texture = _getTexture();
             _radius = _getRadius();
             AttackRadius = _getAttackRadius();
@@ -99,7 +101,7 @@ namespace MesserSmash.Enemies {
         }
 
         protected virtual float _getMovementSpeed() {
-            return 50;
+            return 75;
         }
 
         protected virtual float _getAttackRadius() {

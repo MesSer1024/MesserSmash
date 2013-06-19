@@ -55,6 +55,7 @@ namespace MesserSmash {
             get { return _globalHighscores; }
         }
 
+        private Dictionary<int, int> _recentCollisions;
         public static bool IsGameStarted { get { return Instance._gameStarted; } }
 
 		public SmashTVSystem() {
@@ -102,6 +103,7 @@ namespace MesserSmash {
         }
 
 		public void initLevel(Arena arena, Player player, ShotContainer shotContainer, EnemyContainer enemyContainer, bool replay, bool restartGame) {
+            _recentCollisions = new Dictionary<int, int>();
             _replay = replay;
 			_gameStarted = false;
 			_queuedCommands = new List<string>();
@@ -202,7 +204,7 @@ namespace MesserSmash {
 				collisionDetection();
 
 				//check for possible enemy attacks
-				checkForNearnessToPlayer();
+				checkIfEngagingEnemiesCanBeginAttack();
 
 				//check if player can pickup loot
 				detectLootPickup();
@@ -240,8 +242,8 @@ namespace MesserSmash {
 			InfoWindow._enemyDestructors = _enemyConstructors.ToString() + ":" + _enemyDestructors.ToString();
 			InfoWindow._behaviourDestructors = _behaviourConstructors.ToString() + ":" + _behaviourDestructors.ToString();
             InfoWindow._randomStatus = Utils.makeString("Randomizer: {0}", MesserRandom.getStatus());
-			_gui.setPlayerEnergy(Convert.ToInt32(_energySystem.AvailableEnergy));
-			_gui.setPlayerHealth(Convert.ToInt32(_player.Health));
+			_gui.setPlayerEnergy(_energySystem.AvailableEnergy, _energySystem.MaxEnergy);
+			_gui.setPlayerHealth(_player.Health, 100);
 			_gui.setSecondsLeft(_arena.SecondsToFinish);
 		}
 
@@ -259,17 +261,51 @@ namespace MesserSmash {
 				float shotRadius = shot.Radius;
 				foreach (IEnemy enemy in activeEnemies) {
 					if (enemy.IsAlive) {
+                        if (reachedHitLimit(shot, enemy)) {
+                            continue;
+                        }
 						if (isOverlapping(shotPos, enemy.Position, shotRadius, enemy.Radius)) {
 							enemy.takeDamage(shot.Damage);
 							shot.entityCollision(enemy.Position);
-							if (shot.CollisionEnabled == false) {
-								break;
-							}
+                            Logger.debug("Collision between {0} and {1}", shot, enemy);
+                            if (shot.CollisionEnabled == false) {
+                                break;
+                            } else {
+                                addHitDetectionBetween(shot, enemy);
+                            }
 						}
 					}
 				}
 			}            
 		}
+
+        private int generateKeyFrom(ShotBase shot, IEnemy enemy) {
+            var value = shot.Identifier << 16 | enemy.Identifier;
+            //Revert keys
+            //var enemyId = value & UInt16.MaxValue;
+            //var shotId = value >> 16;
+            //--
+            return value;
+        }
+
+
+
+        private bool reachedHitLimit(ShotBase shot, IEnemy enemy) {
+            var value = generateKeyFrom(shot, enemy);
+            if (_recentCollisions.ContainsKey(value) && _recentCollisions[value] >= 5) {
+                return true;
+            }
+            return false;
+        }
+
+        private void addHitDetectionBetween(ShotBase shot, IEnemy enemy) {
+            var value = generateKeyFrom(shot, enemy);
+            if (!_recentCollisions.ContainsKey(value)) {
+                _recentCollisions.Add(value, 1);
+            } else {
+                _recentCollisions[value] += 1;
+            }
+        }
 
 		private void detectCollisionBetweenEnemyShotsAndPlayer() {
 			List<ShotBase> enemyShots = _shotContainer.enemyShotsFlaggedForCollision();
@@ -295,13 +331,13 @@ namespace MesserSmash {
 			return false;
 		}
 
-		private void checkForNearnessToPlayer() {
+		private void checkIfEngagingEnemiesCanBeginAttack() {
 			List<IEnemy> activeEnemies = _enemyContainer.getEngagingEnemies();
 
 			foreach (var enemy in activeEnemies) {
 				Vector2 enemyPos = enemy.Position;
-				float enemyRadius = enemy.AttackRadius;
-				if (isOverlapping(enemyPos, _player.Position, enemyRadius, Player.Radius)) {
+				float enemyAttackRadius = enemy.AttackRadius;
+				if (isOverlapping(enemyPos, _player.Position, enemyAttackRadius, Player.Radius)) {
 					enemy.onPlayerInAttackRadius();
 				}
 			}

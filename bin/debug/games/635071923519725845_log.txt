@@ -1,0 +1,42 @@
+[info|635071923412789728] Utils.initialize seed=-1311249952
+[info|635071923412849732] -->CreateLootTable
+[info|635071923412869733] <--CreateLootTable randomStatus:MesserRandom seed=-1311249952 totalRequests=12
+[info|635071923412919736] showLoadingScreen
+[info|635071923412919736] <--handleCommand LoadConfigFileCommand
+[info|635071923413629776] ->requestBeginGame
+[info|635071923414079802] ->handleCommand ReloadDatabaseCommand
+[info|635071923414079802] <--handleCommand ReloadDatabaseCommand
+[info|635071923414079802] ->handleCommand RequestBeginNewGameCommand
+[info|635071923414079802] <--handleCommand RequestBeginNewGameCommand
+[error|635071923426980540] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 55
+[info|635071923426990541] RequestSessionCommand cb
+[error|635071923427120548] Error parsing RequestSession data=System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at MesserSmash.Commands.RequestBeginNewGameCommand.onResponse(Int32 rc, String data) in D:\_programmering2\SmashTV\SmashTV\SmashTV\Commands\RequestBeginNewGameCommand.cs:line 38
+[info|635071923427120548] ctor() UpdateGameCredentialsCommand
+[info|635071923427130549] Executing UpdateGameCredentialsCommand
+[info|635071923427130549] <-requestBeginGame
+[info|635071923427170551] ->handleCommand UpdateGameCredentialsCommand
+[info|635071923427170551] <--handleCommand UpdateGameCredentialsCommand
+[info|635071923430330732] ->handleCommand ClientReadyCommand
+[info|635071923430380735] ->addObserver MesserSmash.Arenas.Level01
+[info|635071923430380735] <-addObserver MesserSmash.Arenas.Level01
+[info|635071923430380735] <--handleCommand ClientReadyCommand
+[info|635071923430800759] ->handleCommand LevelStartedCommand
+[info|635071923430890764] <--handleCommand LevelStartedCommand
+[info|635071923473173182] ->handleCommand LauncherReadyCommand
+[info|635071923473173182] <--handleCommand LauncherReadyCommand
+[info|635071923483663782] ->handleCommand LauncherReadyCommand
+[info|635071923483663782] <--handleCommand LauncherReadyCommand
+[info|635071923493994373] ->handleCommand LauncherReadyCommand
+[info|635071923493994373] <--handleCommand LauncherReadyCommand
+[info|635071923504334964] ->handleCommand LauncherReadyCommand
+[info|635071923504334964] <--handleCommand LauncherReadyCommand
+[info|635071923514665555] ->handleCommand LauncherReadyCommand
+[info|635071923514665555] <--handleCommand LauncherReadyCommand

@@ -87,7 +87,7 @@ namespace MesserSmash.Enemies {
             switch (cmd.Name) {
                 case ReloadDatabaseCommand.NAME:
                     foreach (var item in getAliveEnemies()) {
-                        item.reloadDatabaseValues();
+                        item.rereadDatabaseValues();
                     }
                     break;
             }

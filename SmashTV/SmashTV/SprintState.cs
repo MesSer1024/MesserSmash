@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace MesserSmash {
     class SprintState : PlayerState{
-        private const float SPRINT_MOVEMENT_SPEED = 90 * 2.45f;
+        private const float SPRINT_MOVEMENT_SPEED = 331;
 
         public SprintState(Player player) : base(player) { }
 

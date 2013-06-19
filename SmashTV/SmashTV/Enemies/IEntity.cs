@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace MesserSmash.Enemies {
     public interface IEntity {
+        UInt16 Identifier { get; }
         Vector2 Position { get; set; }
         Vector2 Velocity { get; set; }
         float Radius { get; }

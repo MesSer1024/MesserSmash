@@ -19,7 +19,7 @@ namespace MesserSmash.Behaviours {
         private float _movementSpeed;
         private float _chargeTimer;
 
-        public AttackWithCharge(float moveSpeed = 50, float chargeSpeed = 260, float chargeTime = 0.86f) {
+        public AttackWithCharge(float moveSpeed = 75, float chargeSpeed = 390, float chargeTime = 0.86f) {
             _movementSpeed = moveSpeed;
             _chargeSpeed = chargeSpeed;
             MAX_CHARGE_TIME = chargeTime;

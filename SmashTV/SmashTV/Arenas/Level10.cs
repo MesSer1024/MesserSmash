@@ -1,19 +1,18 @@
 ﻿using MesserSmash.Modules;
 using MesserSmash.Enemies;
 using System;
+using Microsoft.Xna.Framework;
 namespace MesserSmash.Arenas {
     public class Level10 : Arena {
 
         public Level10() {
-            _secondsLeft = 60;
+            _secondsLeft = float.MaxValue;
             Level = 10;
 
-            //TODO Boss Level
-            WaveSpawner wave = new WaveSpawner((int)EnemyTypes.Types.Range, 333);
-            var criteria = new SpawnCriteria();
-            criteria.MinSecondsInArena = 5;
-            wave.addCriteria(criteria);
-            _spawners.Add(wave);
+        }
+
+        public override void custStartLevel() {
+            getRandomSpawnpoint().spawnEnemy(new SpawnBoss1(Vector2.Zero, SmashTVSystem.Instance.Player));
         }
 
         protected override void custUpdate(GameState state) {

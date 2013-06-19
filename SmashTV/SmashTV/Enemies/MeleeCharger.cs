@@ -22,7 +22,7 @@ namespace MesserSmash.Enemies {
         }
 
         protected override float _getMovementSpeed() {
-            return base._getMovementSpeed() - 14;
+            return base._getMovementSpeed() - 21;
         }
 
         protected override Color getColor() {
@@ -56,7 +56,7 @@ namespace MesserSmash.Enemies {
         }
 
         protected override Behaviour createAttackBehaviour() {
-            var behaviour = new AttackWithCharge(_getMovementSpeed(), 190f, 1.0f);
+            var behaviour = new AttackWithCharge(_getMovementSpeed(), 285f, 1.0f);
             behaviour.onBehaviourEnded += onAttackDone;
             return behaviour;
         }
