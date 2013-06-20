@@ -70,12 +70,6 @@ namespace MesserSmash {
 			Controller.instance.addObserver(this);
 			new ReloadDatabaseCommand().execute();
 
-            var multiplier = 1080f/1920f;
-            Utils.setGameSize((int)(1920 * multiplier), (int)(1080 * multiplier));
-            _graphics.PreferredBackBufferWidth = Utils.getGameWidth();
-			_graphics.PreferredBackBufferHeight = Utils.getGameHeight();
-			_graphics.ApplyChanges();
-			_game.IsMouseVisible = true;
             _circleTexture = _content.Load<Texture2D>("circle 64x64");
             _rombTexture = _content.Load<Texture2D>("rectangle_64x64");
 			_defaultTexture = _content.Load<Texture2D>("default");
@@ -93,6 +87,7 @@ namespace MesserSmash {
 			AssetManager._playerPortrait = _content.Load<Texture2D>("portrait");
 			AssetManager._defaultFont = _defaultFont;
 			AssetManager._bigGuiFont = _content.Load<SpriteFont>("BigGuiFont32");
+            AssetManager._guiFont = _content.Load<SpriteFont>("GuiFont");
 			AssetManager._bgSound = _content.Load<SoundEffect>("background_music");
 			AssetManager._failSound = _content.Load<SoundEffect>("fail");
 			AssetManager._weaponSound = _content.Load<SoundEffect>("weapon");
@@ -257,7 +252,16 @@ namespace MesserSmash {
             SmashTVSystem.Instance.LoginResponseKey = "freeloader";
             SmashTVSystem.Instance.SessionId = "";
             SmashTVSystem.Instance.GameId = "";
-            
+
+            command.GameWidth = Utils.clamp(command.GameWidth, 800, 2660);
+            var multiplier = command.GameWidth / 1920f;
+            Utils.setGameSize((int)(1920 * multiplier), (int)(1080 * multiplier));
+            _graphics.PreferredBackBufferWidth = Utils.getGameWidth();
+            _graphics.PreferredBackBufferHeight = Utils.getGameHeight();
+            _graphics.ApplyChanges();
+            _game.IsMouseVisible = true;
+
+
             _hasUsername = command.HasUsername;
             if (_hasUsername) {
 				SmashTVSystem.Instance.Username = command.Username;

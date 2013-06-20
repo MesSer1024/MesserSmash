@@ -25,6 +25,7 @@ namespace MesserSmash {
         public static SoundEffect _failSound;
         public static SoundEffect _weaponSound;
         public static SoundEffect _weaponReadySound;
+        public static SpriteFont _guiFont;
 
         public static Texture2D getDefaultTexture() {
             return _default;
@@ -92,6 +93,10 @@ namespace MesserSmash {
 
         public static Texture2D getControlsTexture() {
             return _controllerLayout;
+        }
+
+        public static SpriteFont getGuiFont() {
+            return _bigGuiFont;
         }
     }
 }

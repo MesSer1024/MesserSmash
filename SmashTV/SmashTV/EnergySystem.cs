@@ -49,12 +49,8 @@ namespace MesserSmash {
         }
 
         private float getRegenBonus() {
-            var v = clamp(_timeSinceUsage / 2.55f, 1, 4);
+            var v = Utils.clamp(_timeSinceUsage / 2.55f, 1, 4);
             return v;
-        }
-
-        private float clamp(float curr, float min, float max) {
-            return Math.Min(max, Math.Max(min, curr));
         }
 
         public bool couldFireRocket() {

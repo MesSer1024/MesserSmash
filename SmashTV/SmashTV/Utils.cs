@@ -476,5 +476,9 @@ namespace MesserSmash {
         public static int calcResolutionScaledValue(int value) {
             return (int)(value * Utils.getResolutionScale());
         }
+
+        public static float clamp(float curr, float min, float max) {
+            return Math.Min(max, Math.Max(min, curr));
+        }
     }
 }

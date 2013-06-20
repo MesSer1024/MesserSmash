@@ -15,14 +15,10 @@ namespace MesserSmash.GUI {
         public static GUIMain Instance { get; set; }
         private Rectangle _background;
         private Color _backgroundColor;
-        private Rectangle _playerHudBackground;
         private Rectangle _portraitPosition;
         private Healthbar _health;
         private Healthbar _energy;
 
-        private ShortcutButton _btnLMB;
-        private ShortcutButton _btnRMB;
-        private ShortcutButton _boost;
         private FunnyText _killCounter;
         private FunnyText _secondsLeft;
         private bool _inGame;
@@ -44,6 +40,7 @@ namespace MesserSmash.GUI {
         private bool _levelWon;
         private int _savedLevel;
         private int _scoreOnLevel;
+        private FunnyText _killText;
 
 
         public GUIMain() {
@@ -66,24 +63,38 @@ namespace MesserSmash.GUI {
         public void startLevel() {
             reset();
             _inGame = true;
-            int h = Utils.calcResolutionScaledValue(120);
-            _background = new Rectangle(0, Utils.getGameHeight() - h, Utils.getGameWidth(), Utils.getGameHeight());
-            _backgroundColor = Color.YellowGreen;
-            _portraitPosition = new Rectangle(200, _background.Y + 20, 80, 80);
+            //width:443 height:89
+            //size of top 1033:89
+            _background = new Rectangle(Utils.calcResolutionScaledValue(443), Utils.calcResolutionScaledValue(0), Utils.calcResolutionScaledValue(1033), Utils.calcResolutionScaledValue(89));
+            _backgroundColor = new Color(14,14,14);
+
+            _killText = new FunnyText("Kills", new Rectangle(_background.Left + Utils.calcResolutionScaledValue(186), 0, Utils.calcResolutionScaledValue(80), Utils.calcResolutionScaledValue(35)));
+            _killText.TextScale = Utils.getResolutionScale();
+            _killText.TextColor = Color.WhiteSmoke;
+            _killText.Font = AssetManager.getGuiFont();
+            _killCounter = new FunnyText("", new Rectangle(_background.Left + Utils.calcResolutionScaledValue(186), Utils.calcResolutionScaledValue(35), Utils.calcResolutionScaledValue(80), Utils.calcResolutionScaledValue(35)));
+            _killCounter.TextScale = Utils.getResolutionScale();
+            _killCounter.TextColor = Color.WhiteSmoke;
+            _killCounter.Font = AssetManager.getGuiFont();
+
+            _portraitPosition = new Rectangle(_killCounter.Bounds.Right, 0, Utils.calcResolutionScaledValue(80), Utils.calcResolutionScaledValue(80));
             _health = new Healthbar(new Rectangle(_portraitPosition.Right + 5, _portraitPosition.Center.Y - 23, 150, 20));
             _energy = new Healthbar(new Rectangle(_portraitPosition.Right + 5, _health.Bounds.Bottom + 6, 150, 20));
             _health._valueColor = Color.Yellow;
             _energy._valueColor = Color.LightBlue;
-            _playerHudBackground = new Rectangle(_portraitPosition.X - 110, _portraitPosition.Y - 10, _health.Bounds.Right + 120 - _portraitPosition.Left, _portraitPosition.Height + 20);
-            _boost = new ShortcutButton(new Rectangle(_playerHudBackground.Right + 20, _playerHudBackground.Bottom - 25, 40, 25));
-            _btnLMB = new ShortcutButton(new Rectangle(_playerHudBackground.Right + 20, _playerHudBackground.Top + 5, 60, 30));
-            _btnRMB = new ShortcutButton(new Rectangle(_btnLMB.Bounds.Right + 10, _playerHudBackground.Top + 5, 60, 30));
-            _boost.setText("Run");
-            _btnLMB.setText("Pistol");
-            _btnRMB.setText("Rocket");
-            _scoreField = new FunnyText("0", new Rectangle { X = _btnRMB.Bounds.Right, Y = _btnRMB.Bounds.Top, Height = 80, Width = _background.Right - _btnRMB.Bounds.Right });
 
-            _killCounter = new FunnyText("0", new Rectangle(_playerHudBackground.Left, _portraitPosition.Top, _portraitPosition.Left - _playerHudBackground.Left, _portraitPosition.Height));
+            //_boost = new ShortcutButton(new Rectangle(_playerHudBackground.Right + 20, _playerHudBackground.Bottom - 25, 40, 25));
+            //_btnLMB = new ShortcutButton(new Rectangle(_playerHudBackground.Right + 20, _playerHudBackground.Top + 5, 60, 30));
+            //_btnRMB = new ShortcutButton(new Rectangle(_btnLMB.Bounds.Right + 10, _playerHudBackground.Top + 5, 60, 30));
+            //_boost.setText("Run");
+            //_btnLMB.setText("Pistol");
+            //_btnRMB.setText("Rocket");
+            var h = Utils.calcResolutionScaledValue(88);
+            _scoreField = new FunnyText("0", new Rectangle { X = 0, Y = Utils.getGameHeight() - h, Width = Utils.calcResolutionScaledValue(1920), Height = h });
+            _scoreField.Font = AssetManager.getGuiFont();
+            _scoreField.TextScale = Utils.getResolutionScale();
+            _scoreField.TextColor = Color.WhiteSmoke;
+
             var gameScreen = SmashTVSystem.Instance.Arena.Bounds;
             _secondsLeft = new FunnyText("100", new Rectangle(gameScreen.Left, gameScreen.Top, gameScreen.Width, gameScreen.Height));
             _secondsLeft.TextColor = Color.LightGoldenrodYellow;
@@ -108,9 +119,9 @@ namespace MesserSmash.GUI {
                     performClientReady();
                 }
             } else if (_inGame) {
-                _boost.setMode(Utils.isKeyDown(Keys.LeftControl));
-                _btnLMB.setMode(Utils.LmbPressed);
-                _btnRMB.setMode(Utils.RmbPressed);
+                //_boost.setMode(Utils.isKeyDown(Keys.LeftControl));
+                //_btnLMB.setMode(Utils.LmbPressed);
+                //_btnRMB.setMode(Utils.RmbPressed);
                 if (_recharge != null) {
                     _timeRechargeShown += gametime;
                     if (_timeRechargeShown >= 0.75f) {
@@ -190,23 +201,23 @@ namespace MesserSmash.GUI {
                 return;
             }
 
-            _debugGui.draw(sb);
+            //_debugGui.draw(sb);
 
             if (_inGame) {
-                var text = new FunnyText(String.Format("Level {0}", _savedLevel), new Rectangle { X = SmashTVSystem.Instance.Arena.Bounds.X, Y = 0, Width = SmashTVSystem.Instance.Arena.Bounds.Width, Height = 50 });
-                text.VerticalCenter = true;
-                text.Draw(sb);
+                var text = new FunnyText(String.Format("Level {0}", _savedLevel), new Rectangle { X = _health.Bounds.Right + Utils.calcResolutionScaledValue(117), Y = 0, Width = 600, Height = 50 });
+                text.HorizontalCenter = false;
+                text.Font = AssetManager.getGuiFont();
+                text.TextScale = 1.25f;
+                text.TextColor = Color.WhiteSmoke;
                 sb.Draw(AssetManager.getDefaultTexture(), _background, _backgroundColor);
-                sb.Draw(AssetManager.getDefaultTexture(), _playerHudBackground, Color.Black);
                 sb.Draw(AssetManager.getPortraitTexture(), _portraitPosition, Color.White);
                 _health.draw(sb);
                 _energy.draw(sb);
-                _boost.draw(sb);
-                _btnLMB.draw(sb);
-                _btnRMB.draw(sb);
+                _killText.Draw(sb);
                 _killCounter.Draw(sb);
                 _secondsLeft.Draw(sb);
                 _scoreField.Draw(sb);
+                text.Draw(sb);
                 if (_recharge != null) {
                     _recharge.Draw(sb);
                 }
@@ -319,10 +330,10 @@ namespace MesserSmash.GUI {
             }
         }
 
-        private string formatScorePoints(float score) {
-            var culture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
-            var formattedNumber = string.Format(culture, "{0:n}", score);
-            return formattedNumber;
+        private string formatScorePoints(float score, bool inGame = false) {
+            //var culture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
+            //var formattedNumber = string.Format(culture, "{000000000:n}", score);
+            return inGame ? score.ToString("000 000 000") : score.ToString("000");
         }
 
         public void setSecondsLeft(float time) {
@@ -374,7 +385,7 @@ namespace MesserSmash.GUI {
 
         public void setScore(float newScore) {
             _score = newScore;
-            _scoreField.Text = Utils.makeString("Score: {0}", formatScorePoints(_score));
+            _scoreField.Text = Utils.makeString("{0}", formatScorePoints(_score, true));
         }
 
         public void showWeaponRecharged() {

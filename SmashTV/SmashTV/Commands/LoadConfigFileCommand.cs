@@ -14,10 +14,12 @@ namespace MesserSmash.Commands {
         public string ReplayPath { get; set;}
         public string GameVersion { get; set; }
         public bool IgnoreVersion { get; set; }
+        public float GameWidth { get; set; }
 
         public LoadConfigFileCommand()
             : base(NAME) {
             HasUsername = false;
+            GameWidth = 1920;
 
             StringBuilder sb = new StringBuilder();
             using (var sr = new StreamReader("./settings.ini")) {
@@ -37,6 +39,12 @@ namespace MesserSmash.Commands {
                     } else if (line.StartsWith("game_version")) {
                         var version = readValue(line);
                         GameVersion = version ?? "";
+                    } else if (line.StartsWith("game_width")) {
+                        var w = readValue(line);
+                        var f = 0f;
+                        if (float.TryParse(w, out f)) {
+                            GameWidth = f;
+                        }
                     }
                 }
             }
@@ -44,7 +52,11 @@ namespace MesserSmash.Commands {
 
         private string readValue(string line) {
             var splitter = '|';
-            var item = line.Split(splitter)[1].Trim();
+            var splits = line.Split(splitter);
+            if (splits.Length != 2) {
+                throw new Exception(string.Format("Invalid setting in LoadConfig for line {0}", line));
+            }
+            var item = splits[1].Trim();
             return item;
         }
     }

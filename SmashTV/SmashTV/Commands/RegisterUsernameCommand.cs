@@ -18,7 +18,7 @@ namespace MesserSmash.Commands {
 
             StringBuilder sb = new StringBuilder();
             using (var sw = new StreamWriter("./settings.ini", true)) {
-                sw.WriteLine(Utils.makeString("\nusername | {0}", username));
+                sw.WriteLine(Utils.makeString(Environment.NewLine + "username | {0}", username));
                 sw.Flush();
             }
         }

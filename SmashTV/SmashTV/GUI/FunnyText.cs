@@ -35,7 +35,12 @@ namespace MesserSmash.GUI {
 
         private Rectangle _bounds;
         private Vector2 _innerBounds;
-        private SpriteFont _font;        
+        private SpriteFont _font;
+
+        public SpriteFont Font {
+            get { return _font; }
+            set { _font = value; }
+        }        
         private string _text;
 
         public string Text {
