@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MesserSmash.Enemies;
+using Microsoft.Xna.Framework.Audio;
 
 namespace MesserSmash {
     public abstract class ShotBase : IEntity {

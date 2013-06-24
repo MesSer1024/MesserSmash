@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MesserSmash.Commands;
 
 namespace MesserSmash.Weapons {
 
@@ -35,6 +36,7 @@ namespace MesserSmash.Weapons {
         }
 
         public EnemyPistolShot(Vector2 position, Vector2 direction) : base(position, true){
+            new PlaySoundCommand(AssetManager.getEnemyShootSound()).execute();
             _position = position;
             _velocity = Utils.safeNormalize(direction);
             _velocity *= MOVEMENT_SPEED * Utils.getResolutionScale();

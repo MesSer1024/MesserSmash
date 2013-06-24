@@ -16,8 +16,8 @@ using SharedSmashResources;
 namespace MesserSmash.Arenas {
     public class Arena : IObserver {
         public delegate void ArenaDelegate(Arena arena);
-        public event ArenaDelegate onGameFinished;
-        public event ArenaDelegate onZeroTimer;
+        public event ArenaDelegate onArenaEnded;
+        public event ArenaDelegate onArenaEnding;
 
         private Rectangle _bounds;
         private List<Spawnpoint> _spawnPoints;
@@ -53,8 +53,8 @@ namespace MesserSmash.Arenas {
         private enum States {
             Starting,
             Running,
-            End,
-            Stopped,
+            Ending,
+            Ended,
         }
 
         public Arena() {
@@ -200,32 +200,35 @@ namespace MesserSmash.Arenas {
                 _showTimeLeft();
                 custUpdate(state);
                 if (_secondsLeft <= 0) {
-                    handleArenaCompleted();
+                    handleArenaEnding();
                 }
-            } else if (_state == States.End) {
+            } else if (_state == States.Ending) {
                 if (_timeInState < 3.0f) {
                     foreach (var loot in getActiveLoot()) {
                         loot.update(gametime);
                     }
                 } else {
-                    handleGameFinished();
+                    handleArenaEnded();
                 }
             }
         }
 
-        protected void handleArenaCompleted() {
-            _secondsLeft = 0;
-            _state = States.End;
+        protected void handleArenaEnding() {
+            custArenaEnding();
+            //_secondsLeft = 0;
+            _state = States.Ending;
             _timeInState = 0;
-            if (onZeroTimer != null) {
-                onZeroTimer.Invoke(this);
+            if (onArenaEnding != null) {
+                onArenaEnding.Invoke(this);
             }
         }
 
-        protected void handleGameFinished() {
-            _state = States.Stopped;
-            if (onGameFinished != null) {
-                onGameFinished.Invoke(this);
+        protected virtual void custArenaEnding() { }
+
+        protected void handleArenaEnded() {
+            _state = States.Ended;
+            if (onArenaEnded != null) {
+                onArenaEnded.Invoke(this);
             }
         }
 
@@ -237,11 +240,7 @@ namespace MesserSmash.Arenas {
             return _spawnPoints[Utils.randomInt(_spawnPoints.Count)];
         }
 
-        protected virtual void custUpdate(GameState state) {
-            //if (canCreateEnemies()) {
-            //    createEnemies(1);
-            //}
-        }
+        protected virtual void custUpdate(GameState state) { }
 
         protected void createEnemies(int amount) {
             while (amount-- > 0) {
@@ -274,10 +273,10 @@ namespace MesserSmash.Arenas {
         }
 
         public void drawBackground(SpriteBatch sb) {
-            if (_state == States.Stopped)
+            if (_state == States.Ended)
                 return;
             sb.Draw(_texture, _bounds, Color.Gray);
-            if (_state != States.End) {
+            if (_state != States.Ending) {
                 foreach (var spawnpoint in _spawnPoints) {
                     spawnpoint.draw(sb);
                 }
@@ -300,6 +299,7 @@ namespace MesserSmash.Arenas {
         }
 
         private void dropLoot(LootType lootType, Vector2 pos) {
+            new PlaySoundCommand(AssetManager.getLootDroppedSound()).execute();
             _activeLoot.Add(new Loot(lootType, AssetManager.getHealthPackTexture(), AssetManager.getMoneyBagTexture(), pos));
         }
 

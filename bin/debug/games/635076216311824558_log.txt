@@ -1,0 +1,190 @@
+[info|635076215662097396] ->requestBeginGame
+[info|635076215662097396] Utils.initialize seed=265729012
+[info|635076215662107396] -->CreateLootTable
+[info|635076215662107396] <--CreateLootTable randomStatus:MesserRandom seed=265729012 totalRequests=12
+[info|635076215662117397] ->handleCommand SaveGameCommand
+[info|635076215662117397] <--handleCommand SaveGameCommand
+[info|635076215662117397] ->handleCommand RequestLevelHighscoresCommand
+[info|635076215662117397] <--handleCommand RequestLevelHighscoresCommand
+[info|635076215662117397] ->handleCommand LevelWonCommand
+[info|635076215662117397] <--handleCommand LevelWonCommand
+[info|635076215662117397] ->handleCommand ReloadDatabaseCommand
+[info|635076215662117397] <--handleCommand ReloadDatabaseCommand
+[info|635076215662117397] ->handleCommand RequestContinueGameCommand
+[info|635076215662117397] <--handleCommand RequestContinueGameCommand
+[info|635076215664317523] sendGameState ServerResponse=OK
+[info|635076215664477532] RequestContinueGameCommand cb
+[info|635076215664477532] ctor() UpdateGameCredentialsCommand
+[info|635076215664477532] Executing UpdateGameCredentialsCommand
+[info|635076215664477532] <-requestBeginGame
+[info|635076215664497533] ->handleCommand UpdateGameCredentialsCommand
+[info|635076215664497533] <--handleCommand UpdateGameCredentialsCommand
+[info|635076215681668515] ->handleCommand ClientReadyCommand
+[info|635076215681668515] ->addObserver MesserSmash.Arenas.Level05
+[info|635076215681668515] <-addObserver MesserSmash.Arenas.Level05
+[info|635076215681668515] <--handleCommand ClientReadyCommand
+[info|635076215681838525] ->handleCommand LevelStartedCommand
+[info|635076215681838525] <--handleCommand LevelStartedCommand
+[debug|635076215698499478] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215702669716] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215703679774] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215703679774] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215703679774] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215703679774] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215703679774] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215703679774] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215703679774] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215703839783] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215703999792] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215719000650] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215720670746] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215723670917] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215723830927] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215725331012] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215728331184] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215740501880] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215741841957] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215746172204] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215753672633] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215759672977] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215762503138] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215768163462] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215769333529] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[info|635076215771833672] ->handleCommand LauncherReadyCommand
+[info|635076215771833672] <--handleCommand LauncherReadyCommand
+[debug|635076215776333930] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215783164320] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215786164492] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215791334788] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215794664978] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215801335360] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215803665493] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215821336504] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215825496741] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215836667380] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215838667495] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215846837962] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215850498171] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215850838191] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215854498400] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215878999802] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215878999802] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215878999802] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215881499945] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215884670126] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215893000602] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215893000602] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215893170612] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215898170898] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215910161584] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215911661670] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215913161756] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215915831908] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215923332337] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215928002604] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215940163300] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215940493319] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[info|635076215946993691] ->handleCommand LauncherReadyCommand
+[info|635076215946993691] <--handleCommand LauncherReadyCommand
+[debug|635076215950993919] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215962164558] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215962664587] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215971835112] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076215975335312] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215976835398] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215978335483] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076215984325826] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216008497208] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216009827285] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216009827285] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216009827285] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216011827399] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216016167647] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216017827742] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216023498066] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216024658133] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216032328572] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216044999296] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216048659506] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216050829630] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216053159763] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216056999983] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216063000326] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216065160449] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216071490812] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216072830888] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216074991012] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216076491098] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[info|635076216077831174] ->handleCommand LauncherReadyCommand
+[info|635076216077831174] <--handleCommand LauncherReadyCommand
+[debug|635076216077991183] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216079331260] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216080831346] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216089991870] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216092161994] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216092492013] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216096992270] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216097492299] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216100162451] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216106832833] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216107662880] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216108992957] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216111833119] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216130494186] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216130494186] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216130494186] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216130494186] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216130494186] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216131664253] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216131664253] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216142324863] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216144494987] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216146325092] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216147825178] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216149495273] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216151995416] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216164656140] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216167156283] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216170996503] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216173156626] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216173996675] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216175656769] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216182327151] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216185657341] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216194987875] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[info|635076216198488075] ->handleCommand LauncherReadyCommand
+[info|635076216198488075] <--handleCommand LauncherReadyCommand
+[debug|635076216199998162] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216205828495] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216209158686] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216210328753] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216210488762] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216212488876] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216214829010] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216225989648] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216228829811] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216232490020] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216232990049] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216235830211] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216236160230] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216236830268] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216237320296] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216239490421] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216251991136] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216254321269] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216258491507] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216258491507] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216258491507] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216258491507] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216258491507] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216259661574] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216264661860] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216267992051] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216288823242] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216289993309] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216291323385] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeCharger
+[debug|635076216297993767] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216298653804] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216299323843] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216300153890] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy
+[debug|635076216300993938] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SecondaryRangedEnemy

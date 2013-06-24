@@ -18,7 +18,7 @@ namespace MesserSmash.Arenas {
 
         protected override void custUpdate(GameState state) {
             if (state.EnemiesAlive == 0 && state.TimeInArena > 5) {
-                handleArenaCompleted();
+                handleArenaEnding();
             }
         }
     }

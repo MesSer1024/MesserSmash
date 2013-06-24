@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MesserSmash.Behaviours;
 using MesserSmash.Modules;
+using MesserSmash.Commands;
 
 namespace MesserSmash.Enemies {
 
@@ -56,6 +57,7 @@ namespace MesserSmash.Enemies {
         }
 
         protected override Behaviour createAttackBehaviour() {
+            new PlaySoundCommand(AssetManager.getEnemyChargeSound()).execute();
             var behaviour = new AttackWithCharge(_getMovementSpeed(), 285f * Utils.getResolutionScale(), 1.0f);
             behaviour.onBehaviourEnded += onAttackDone;
             return behaviour;

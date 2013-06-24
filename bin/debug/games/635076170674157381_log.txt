@@ -1,0 +1,29 @@
+[info|635076170347658707] ->requestBeginGame
+[info|635076170347748712] Utils.initialize seed=-2098946712
+[info|635076170347798715] -->CreateLootTable
+[info|635076170347808715] <--CreateLootTable randomStatus:MesserRandom seed=-2098946712 totalRequests=12
+[info|635076170347928722] showLoadingScreen
+[info|635076170347928722] <--handleCommand LoadConfigFileCommand
+[info|635076170348408749] ->handleCommand ReloadDatabaseCommand
+[info|635076170348408749] <--handleCommand ReloadDatabaseCommand
+[info|635076170348408749] ->handleCommand RequestBeginNewGameCommand
+[info|635076170348408749] <--handleCommand RequestBeginNewGameCommand
+[info|635076170349238797] RequestSessionCommand cb
+[info|635076170349268799] ctor() UpdateGameCredentialsCommand
+[info|635076170349278799] Executing UpdateGameCredentialsCommand
+[info|635076170349278799] <-requestBeginGame
+[info|635076170349308801] ->handleCommand UpdateGameCredentialsCommand
+[info|635076170349308801] <--handleCommand UpdateGameCredentialsCommand
+[info|635076170479456245] ->handleCommand RegisterUsernameCommand
+[info|635076170479466246] <--handleCommand RegisterUsernameCommand
+[info|635076170600123147] ->handleCommand ClientReadyCommand
+[info|635076170600173150] ->addObserver MesserSmash.Arenas.Level01
+[info|635076170600173150] <-addObserver MesserSmash.Arenas.Level01
+[info|635076170600173150] <--handleCommand ClientReadyCommand
+[info|635076170600623175] ->handleCommand LevelStartedCommand
+[info|635076170600683179] <--handleCommand LevelStartedCommand
+[debug|635076170646645808] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076170648285901] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076170669787131] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076170672787303] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[info|635076170674127380] ->handleCommand PlayerDiedCommand

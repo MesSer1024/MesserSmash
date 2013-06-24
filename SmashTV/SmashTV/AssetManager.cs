@@ -26,6 +26,15 @@ namespace MesserSmash {
         public static SoundEffect _weaponSound;
         public static SoundEffect _weaponReadySound;
         public static SpriteFont _guiFont;
+        public static SoundEffect _enemyHitSound;
+        public static SoundEffect _enemyShootSound;
+        public static SoundEffect _bossHitSound;
+        public static SoundEffect _enemyChargeSound;
+        public static SoundEffect _grenadeImpactSound;
+        public static SoundEffect _moneyPickupSound;
+        public static SoundEffect _playerHitSound;
+        public static SoundEffect _wallHitSound;
+        public static SoundEffect _lootDropped;
 
         public static Texture2D getDefaultTexture() {
             return _default;
@@ -97,6 +106,42 @@ namespace MesserSmash {
 
         public static SpriteFont getGuiFont() {
             return _bigGuiFont;
+        }
+
+        public static SoundEffect getEnemyHitSound() {
+            return _enemyHitSound;
+        }
+
+        public static SoundEffect getEnemyShootSound() {
+            return _enemyShootSound;
+        }
+
+        public static SoundEffect getBossHitSound() {
+            return _bossHitSound;
+        }
+
+        public static SoundEffect getEnemyChargeSound() {
+            return _enemyChargeSound;
+        }
+
+        public static SoundEffect getGrenadeImpactSound() {
+            return _grenadeImpactSound;
+        }
+
+        public static SoundEffect getMoneyPickupSound() {
+            return _moneyPickupSound;
+        }
+
+        public static SoundEffect getLootDroppedSound() {
+            return _lootDropped;
+        }
+        
+        public static SoundEffect getPlayerHitSound() {
+            return _playerHitSound;
+        }
+        
+        public static SoundEffect getWallHitSound() {
+            return _wallHitSound;
         }
     }
 }

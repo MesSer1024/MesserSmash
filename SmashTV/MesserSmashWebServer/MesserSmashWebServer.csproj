@@ -84,6 +84,7 @@
     <Compile Include="GameHandler.cs" />
     <Compile Include="GameEntry.cs" />
     <Compile Include="ServerDb.cs" />
+    <Compile Include="ServerModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharedSmashResources\SharedSmashResources.csproj">

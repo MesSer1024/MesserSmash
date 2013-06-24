@@ -56,7 +56,7 @@ namespace MesserSmashWebServer {
         public static string HandleHttpRequest(string request, string rawData) {
             switch (request) {
                 case MesserSmashWeb.REQUEST_BEGIN_GAME: {
-                    var items = toTable(rawData);
+                        var items = toTable(rawData);
                         var userid = items[MesserSmashWeb.USER_ID].ToString();
                         var username = items[MesserSmashWeb.USER_NAME].ToString();
                         var loginKey = items[MesserSmashWeb.VERIFIED_LOGIN_SESSION].ToString();
@@ -65,7 +65,8 @@ namespace MesserSmashWebServer {
                         var gameid = Guid.NewGuid().ToString();
                         var sessionid = Guid.NewGuid().ToString();
                         var roundid = findRoundForLevel(level);
-                        
+
+                        ServerModel.UserName = username;
 
                         var result = new Dictionary<string, object> {
                             {MesserSmashWeb.GAME_ID, gameid},
@@ -75,12 +76,14 @@ namespace MesserSmashWebServer {
 
                         _gameEntries.addEntry(new GameEntry { UserId = userid, UserName = username, LoginKey = loginKey, Level = level, GameId = gameid, SessionId = sessionid, Status = GameEntry.GameStatuses.Open });
 
+
                         return fastJSON.JSON.Instance.ToJSON(result);
                     }
                 case MesserSmashWeb.REQUEST_END_GAME: {
                         GameStates states = _server.handleSaveGame(rawData);
                         if (states != null) {
                             var ticks = saveGameAndGetTimestamp(states);
+                            ServerModel.UserName = states.UserName;
                             _gameEntries.addEntry(new GameEntry {UserId = states.UserId, GameId=states.GameId, Level = (uint)states.Level, SessionId=states.SessionId, Ticks = ticks, UserName = states.UserName, LoginKey=states.LoginKey, Status = GameEntry.GameStatuses.Closed });
                         } else {
                             return string.Format("Foobar | error={0}", states);
@@ -90,6 +93,7 @@ namespace MesserSmashWebServer {
                 case MesserSmashWeb.REQUEST_GET_HIGHSCORE_ON_LEVEL: {
                         try {
                             var items = toTable(rawData);
+                            ServerModel.UserName = "";
                             uint level = uint.Parse(items[MesserSmashWeb.LEVEL].ToString());
                             var scores = _highscores.getHighscoresOnLevel(level).OrderByDescending(a => a.Score);
                             //return fastJSON.JSON.Instance.ToJSON(scores);
@@ -108,6 +112,7 @@ namespace MesserSmashWebServer {
                 case MesserSmashWeb.REQUEST_GET_HIGHSCORE_FOR_ROUND: {
                         try {
                             var items = toTable(rawData);
+                            ServerModel.UserName = "";
                             uint round = uint.Parse(items[MesserSmashWeb.ROUND_ID].ToString());
                             var scores = _highscores.getHighscoresOnRound(round);
                             var sb = new StringBuilder();
@@ -133,7 +138,7 @@ namespace MesserSmashWebServer {
                         string userid = items[MesserSmashWeb.USER_ID].ToString();
                         string username = items[MesserSmashWeb.USER_NAME].ToString();
                         string loginkey = items[MesserSmashWeb.VERIFIED_LOGIN_SESSION].ToString();
-
+                        ServerModel.UserName = username;
                         var gameid = Guid.NewGuid().ToString();
                         _gameEntries.addEntry(new GameEntry { UserId = userid, UserName = username, LoginKey = loginkey, Level = level, GameId = gameid, SessionId = session, Status = GameEntry.GameStatuses.Open });
 
@@ -150,6 +155,7 @@ namespace MesserSmashWebServer {
                     }
                 default: {
                         Logger.error("Unhandled request: {0}", request);
+                        ServerModel.UserName = "";
                         var jsondata = fastJSON.JSON.Instance.ToObject<Dictionary<string, object>>(rawData);
                     }
                     break;

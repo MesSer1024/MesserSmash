@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using MesserSmash.Commands;
 
 namespace MesserSmash {
     public class ShotContainer {
@@ -42,6 +43,7 @@ namespace MesserSmash {
                 i.update(deltatime);
                 if (i.CollisionEnabled) {
                     if (isOutOfBounds(i, bounds)) {
+                        //new PlaySoundCommand(AssetManager.getWallHitSound()).execute();
                         i.entityCollision(getImpactPosition(i, bounds));
                     }
                 }
@@ -51,6 +53,7 @@ namespace MesserSmash {
                 i.update(deltatime);
                 if (i.CollisionEnabled) {
                     if (isOutOfBounds(i, bounds)) {
+                        //new PlaySoundCommand(AssetManager.getWallHitSound()).execute();
                         i.entityCollision(getImpactPosition(i, bounds));
                     }
                 }

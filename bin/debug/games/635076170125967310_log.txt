@@ -1,0 +1,51 @@
+[info|635076169885993585] ->requestBeginGame
+[info|635076169886003585] Utils.initialize seed=1734275457
+[info|635076169886003585] -->CreateLootTable
+[info|635076169886003585] <--CreateLootTable randomStatus:MesserRandom seed=1734275457 totalRequests=12
+[info|635076169886003585] showLoadingScreen
+[info|635076169886003585] <--handleCommand RestartGameCommand
+[info|635076169886143593] ->handleCommand ReloadDatabaseCommand
+[info|635076169886143593] <--handleCommand ReloadDatabaseCommand
+[info|635076169886143593] ->handleCommand RequestBeginNewGameCommand
+[info|635076169886143593] <--handleCommand RequestBeginNewGameCommand
+[info|635076169886363606] RequestSessionCommand cb
+[info|635076169886363606] ctor() UpdateGameCredentialsCommand
+[info|635076169886363606] Executing UpdateGameCredentialsCommand
+[info|635076169886363606] <-requestBeginGame
+[info|635076169886473612] ->handleCommand UpdateGameCredentialsCommand
+[info|635076169886473612] <--handleCommand UpdateGameCredentialsCommand
+[info|635076169897474241] ->handleCommand ClientReadyCommand
+[info|635076169897474241] ->addObserver MesserSmash.Arenas.Level01
+[info|635076169897474241] <-addObserver MesserSmash.Arenas.Level01
+[info|635076169897474241] <--handleCommand ClientReadyCommand
+[info|635076169897634250] ->handleCommand LevelStartedCommand
+[info|635076169897634250] <--handleCommand LevelStartedCommand
+[debug|635076169920135537] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169947807120] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169949807235] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169951467330] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169953307435] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169956637625] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169956967644] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169969468359] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169971138455] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169974298635] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169974468645] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169976308750] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169979968960] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169981799064] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169981969074] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169983469160] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169986469332] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169986639341] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076169991299608] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076170011800780] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076170033302010] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076170034802096] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076170055473278] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076170058803469] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076170059133488] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076170064473793] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076170067633974] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635076170123967196] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[info|635076170125967310] ->handleCommand PlayerDiedCommand

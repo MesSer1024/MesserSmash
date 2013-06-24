@@ -1,0 +1,5 @@
+[info|635077142547981042] sendGameState ServerResponse=OK
+[info|635077142548511072] RegisterHighscoreCommand: MESSER6DEV - 4137 - 215
+[info|635077142548531073] Player died frames:1344, random status: MesserRandom seed=-788746286 totalRequests=309
+[info|635077142548561075] <--handleCommand PlayerDiedCommand
+[info|635077142548561075] ->handleCommand PlayerDiedCommand

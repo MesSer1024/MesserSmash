@@ -55,7 +55,7 @@ namespace MesserSmash {
             get { return _globalHighscores; }
         }
 
-        private Dictionary<int, int> _recentCollisions;
+        private Dictionary<int, int> _flaggedShotEnemyCollisions;
         public static bool IsGameStarted { get { return Instance._gameStarted; } }
 
 		public SmashTVSystem() {
@@ -103,7 +103,7 @@ namespace MesserSmash {
         }
 
 		public void initLevel(Arena arena, Player player, ShotContainer shotContainer, EnemyContainer enemyContainer, bool replay, bool restartGame) {
-            _recentCollisions = new Dictionary<int, int>();
+            _flaggedShotEnemyCollisions = new Dictionary<int, int>();
             _replay = replay;
 			_gameStarted = false;
 			_queuedCommands = new List<string>();
@@ -113,7 +113,7 @@ namespace MesserSmash {
 			_enemyContainer = enemyContainer;
 			_energySystem = EnergySystem.Instance;
             
-			_arena.onZeroTimer += new Arena.ArenaDelegate(onArenaTimerZero);
+			_arena.onArenaEnding += new Arena.ArenaDelegate(onArenaTimerZero);
             if (restartGame) {
                 _gui.reset();
                 _gui.showLoadingScreen();
@@ -225,6 +225,7 @@ namespace MesserSmash {
 				Vector2 lootPos = loot.Position;
 				float lootRadius = loot.Radius;
 				if (isOverlapping(lootPos, _player.Position, lootRadius, _player.Radius)) {
+                    new PlaySoundCommand(AssetManager.getMoneyPickupSound()).execute();
 					loot.inactivate();
 					Scoring.onLoot(loot);
 					if (loot.Type == Arenas.Arena.LootType.Health) {
@@ -248,8 +249,10 @@ namespace MesserSmash {
 		}
 
 		private void collisionDetection() {
+            _flaggedShotEnemyCollisions.Clear();
 			detectCollisionBetweenShotsAndEnemies();
 			detectCollisionBetweenEnemyShotsAndPlayer();
+
 		}
 
 		private void detectCollisionBetweenShotsAndEnemies() {
@@ -269,6 +272,7 @@ namespace MesserSmash {
 							shot.entityCollision(enemy.Position);
                             Logger.debug("Collision between {0} and {1}", shot, enemy);
                             if (shot.CollisionEnabled == false) {
+                                //new PlaySoundCommand(AssetManager.getEnemyHitSound()).execute();
                                 break;
                             } else {
                                 addHitDetectionBetween(shot, enemy);
@@ -292,7 +296,7 @@ namespace MesserSmash {
 
         private bool reachedHitLimit(ShotBase shot, IEnemy enemy) {
             var value = generateKeyFrom(shot, enemy);
-            if (_recentCollisions.ContainsKey(value) && _recentCollisions[value] >= 5) {
+            if (_flaggedShotEnemyCollisions.ContainsKey(value) && _flaggedShotEnemyCollisions[value] >= 5) {
                 return true;
             }
             return false;
@@ -300,10 +304,10 @@ namespace MesserSmash {
 
         private void addHitDetectionBetween(ShotBase shot, IEnemy enemy) {
             var value = generateKeyFrom(shot, enemy);
-            if (!_recentCollisions.ContainsKey(value)) {
-                _recentCollisions.Add(value, 1);
+            if (!_flaggedShotEnemyCollisions.ContainsKey(value)) {
+                _flaggedShotEnemyCollisions.Add(value, 1);
             } else {
-                _recentCollisions[value] += 1;
+                _flaggedShotEnemyCollisions[value] += 1;
             }
         }
 
@@ -316,6 +320,7 @@ namespace MesserSmash {
 				if (isOverlapping(shotPos, Player.Position, shotRadius, Player.Radius)) {
 					Player.takeDamage(shot.Damage);
 					shot.entityCollision(Player.Position);
+                    new PlaySoundCommand(AssetManager.getPlayerHitSound()).execute();
 				}
 			}               
 		}

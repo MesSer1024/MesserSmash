@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MesserSmash.Modules;
+using MesserSmash.Commands;
 
 namespace MesserSmash {
     class RocketShot : ShotBase {
@@ -91,6 +92,7 @@ namespace MesserSmash {
         }
         
         private void land() {
+            new PlaySoundCommand(AssetManager.getGrenadeImpactSound()).execute();
             _timeInState = 0;
             _state = ShotState.Landed;
             _radius = GROUND_SIZE * Utils.getResolutionScale();            

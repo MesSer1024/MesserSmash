@@ -14,6 +14,7 @@ namespace MesserSmashWebServer {
         private readonly Func<string, string, string> _responderMethod;
         private string _url;
         private LocalServer _server;
+        public string userNameInLastRequest;
 
         public LocalServer LocalServer {
             get { return _server; }
@@ -91,8 +92,8 @@ namespace MesserSmashWebServer {
                             finally {
                                 // always close the stream
                                 ctx.Response.OutputStream.Close();
-                                Logger.info("Handled request={0} in {1}ms", request, (DateTime.Now - timestamp).TotalMilliseconds);
-                                Console.WriteLine("Handled request={0} in {1}ms", request, (DateTime.Now - timestamp).TotalMilliseconds);
+                                Logger.info("Handled request={0} in {1}ms user:{2}", request, (DateTime.Now - timestamp).TotalMilliseconds, ServerModel.UserName);
+                                Console.WriteLine("Handled request={0} in {1}ms user:{2}", request, (DateTime.Now - timestamp).TotalMilliseconds, ServerModel.UserName);
                             }
                         }, _listener.GetContext());
                     }

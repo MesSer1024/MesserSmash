@@ -36,6 +36,9 @@ namespace MesserSmash {
             get { return _health; }
         }
 
+        public const int MAX_HEALTH = 100;
+        public int MaxHealth { get { return MAX_HEALTH; } }
+
         public bool CollisionEnabled { get { return true; } }
 
         private PlayerState _currentState;
@@ -54,7 +57,7 @@ namespace MesserSmash {
             _textureOrigin = _texture.Width / 2;
             _weaponLMB = new WeaponPistol();
             _weaponRMB = new WeaponRocketLauncher();
-            _health = 100;
+            _health = MAX_HEALTH;
             _currentState = new NormalState(this);
             _takeDamageAnimationTime = 1500;
         }

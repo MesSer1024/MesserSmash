@@ -91,7 +91,17 @@ namespace MesserSmash {
 			AssetManager._bgSound = _content.Load<SoundEffect>("background_music");
 			AssetManager._failSound = _content.Load<SoundEffect>("fail");
 			AssetManager._weaponSound = _content.Load<SoundEffect>("weapon");
-			AssetManager._weaponReadySound = _content.Load<SoundEffect>("weapon_ready");
+            AssetManager._weaponReadySound = _content.Load<SoundEffect>("weapon_ready");
+            AssetManager._enemyHitSound = _content.Load<SoundEffect>("enemy_hit");
+            AssetManager._enemyShootSound = _content.Load<SoundEffect>("enemy_shot");
+            AssetManager._enemyChargeSound = _content.Load<SoundEffect>("enemy_charge");
+            AssetManager._bossHitSound = _content.Load<SoundEffect>("boss_hit");
+            AssetManager._grenadeImpactSound = _content.Load<SoundEffect>("explosion2");
+            AssetManager._moneyPickupSound = _content.Load<SoundEffect>("powerUp2");
+            AssetManager._playerHitSound = _content.Load<SoundEffect>("player_hit");
+            AssetManager._wallHitSound = _content.Load<SoundEffect>("wall_hit");
+            AssetManager._lootDropped = _content.Load<SoundEffect>("get_money");
+
 			_sound = new SoundManager();
 			_sound.init();
 			_states = new GameStates();
@@ -163,7 +173,7 @@ namespace MesserSmash {
 			_states.Level = _currentLevel;
 			_playing = true;
 			var player = new Player(arena.getPlayerStartPosition());
-			arena.onGameFinished += new Arena.ArenaDelegate(onGameFinished);
+			arena.onArenaEnded += new Arena.ArenaDelegate(onGameFinished);
 			_smashTvSystem.initLevel(arena, player, new ShotContainer(), new EnemyContainer(), _replay, restartGame);
 		}
 
@@ -346,7 +356,7 @@ namespace MesserSmash {
 			_paused = false;
 			Arena arena = SmashTVSystem.Instance.Arena;
 			if (arena != null) {
-				arena.onGameFinished -= onGameFinished;
+				arena.onArenaEnded -= onGameFinished;
 				arena.clean();
 			}
             _loadedGame = null;

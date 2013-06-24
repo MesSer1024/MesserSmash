@@ -7,15 +7,22 @@ using MesserSmash.Behaviours;
 using Microsoft.Xna.Framework;
 using MesserSmash.Modules;
 using MesserSmash.GUI;
+using MesserSmash.Commands;
 
 namespace MesserSmash.Enemies {
     class SpawnBoss1 : EnemyBase {
+        public delegate void Boss1Delegate(SpawnBoss1 sender);
+        public event Boss1Delegate OnDamaged;
+
         private const float SECONDS_ENGAGING_BEFORE_CHARGE = 1.750f;
         private const float SECONDS_BEFORE_FIRST_ATTACK = 1.575f;
         private const float SECONDS_SLEEPING_AFTER_CHARGE = 2.250f;
         private const float MAX_HEALTH = 1650f;
         private bool _hasDoneFirstAttack;
         private Healthbar _healthbar;
+        private Healthbar _energyBar;
+        private float MAX_CHARGE_TIME = 1.10f;
+        public float ScoreWhenHit { get { return 3; } }
 
         public SpawnBoss1(Vector2 position, Player player) {
             Position = position;
@@ -25,6 +32,10 @@ namespace MesserSmash.Enemies {
             _hasDoneFirstAttack = false;
 
             _healthbar = new Healthbar(new Rectangle(0, 0, (int)(150 * Utils.getResolutionScale()), (int)(150 * Utils.getResolutionScale())));
+            _energyBar = new Healthbar(new Rectangle(0, 20, (int)(150 * Utils.getResolutionScale()), (int)(150 * Utils.getResolutionScale())));
+            _energyBar._nonValuedColor = Color.Black;
+            _energyBar._valueColor = Color.LightSteelBlue;
+            _energyBar.Value = 1;
             _healthbar.Value = 1;
         }
 
@@ -77,6 +88,21 @@ namespace MesserSmash.Enemies {
             if (IsAlive) {
                 _healthbar.draw(sb);
             }
+
+            switch (State) {
+                case EnemyStates.Idle:
+                    _energyBar.Value = _behaviour.TimeThisBehaviour / SECONDS_SLEEPING_AFTER_CHARGE;
+                    _energyBar.draw(sb);
+                    break;
+                case EnemyStates.EngagingPlayer:
+                    _energyBar.Value = 1;
+                    _energyBar.draw(sb);
+                    break;
+                case EnemyStates.Attacking:
+                    _energyBar.Value = (MAX_CHARGE_TIME - _behaviour.TimeThisBehaviour) / MAX_CHARGE_TIME;
+                    _energyBar.draw(sb);
+                    break;
+            }
         }
 
         override public void onPlayerInAttackRadius() {
@@ -90,7 +116,8 @@ namespace MesserSmash.Enemies {
         }
 
         protected override Behaviour createAttackBehaviour() {
-            var behaviour = new AttackWithCharge(_getMovementSpeed(), _getMovementSpeed() * 5.15f, 1.10f);
+            new PlaySoundCommand(AssetManager.getEnemyChargeSound()).execute();
+            var behaviour = new AttackWithCharge(_getMovementSpeed(), _getMovementSpeed() * 5.15f, MAX_CHARGE_TIME);
             behaviour.onBehaviourEnded += onBossAttackDone;
             return behaviour;
         }
@@ -103,7 +130,10 @@ namespace MesserSmash.Enemies {
         public override void update(float deltatime) {
             base.update(deltatime);
             _healthbar.Value = Health / MAX_HEALTH;
-            _healthbar.Bounds = new Rectangle((int)_position.X - (int)(113 * Utils.getResolutionScale()), (int)_position.Y - 2 * _textureOrigin, (int)(225 * Utils.getResolutionScale()), 20);
+            var r = new Rectangle((int)_position.X - (int)(113 * Utils.getResolutionScale()), (int)_position.Y - 2 * _textureOrigin, (int)(225 * Utils.getResolutionScale()), 10);
+            _healthbar.Bounds = r;
+            r.Y = _healthbar.Bounds.Bottom;
+            _energyBar.Bounds = r;
             if (State == EnemyBase.EnemyStates.Idle && _behaviour.TimeThisBehaviour > SECONDS_SLEEPING_AFTER_CHARGE) {
                 State = EnemyBase.EnemyStates.EngagingPlayer;
             }
@@ -111,6 +141,9 @@ namespace MesserSmash.Enemies {
 
         public override void takeDamage(float amount) {
             base.takeDamage(amount);
+            if (OnDamaged != null) {
+                OnDamaged.Invoke(this);
+            }
         }
     }
 }
