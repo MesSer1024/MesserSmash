@@ -78,8 +78,10 @@ namespace MesserSmash.GUI {
             _killCounter.Font = AssetManager.getGuiFont();
 
             _portraitPosition = new Rectangle(_killCounter.Bounds.Right, 0, Utils.calcResolutionScaledValue(80), Utils.calcResolutionScaledValue(80));
-            _health = new Healthbar(new Rectangle(_portraitPosition.Right + 5, _portraitPosition.Center.Y - 23, 150, 20));
-            _energy = new Healthbar(new Rectangle(_portraitPosition.Right + 5, _health.Bounds.Bottom + 6, 150, 20));
+            var barWidth = 65;
+            var barHeight = 5;
+            _health = new Healthbar(new Rectangle(_portraitPosition.Right + 5, _portraitPosition.Center.Y - 23, barWidth, barHeight));
+            _energy = new Healthbar(new Rectangle(_portraitPosition.Right + 5, _health.Bounds.Bottom + 6, barWidth, barHeight));
             _health._valueColor = Color.Yellow;
             _energy._valueColor = Color.LightBlue;
 
@@ -204,14 +206,21 @@ namespace MesserSmash.GUI {
             //_debugGui.draw(sb);
 
             if (_inGame) {
-                var text = new FunnyText(String.Format("Level {0}", _savedLevel), new Rectangle { X = _health.Bounds.Right + Utils.calcResolutionScaledValue(117), Y = 0, Width = 600, Height = 50 });
+                var text = new FunnyText(String.Format("Level {0}", _savedLevel), new Rectangle { X = _portraitPosition.Right + Utils.calcResolutionScaledValue(117), Y = 0, Width = 600, Height = 50 });
                 text.HorizontalCenter = false;
                 text.Font = AssetManager.getGuiFont();
                 text.TextScale = 1.25f;
                 text.TextColor = Color.WhiteSmoke;
                 sb.Draw(AssetManager.getDefaultTexture(), _background, _backgroundColor);
                 sb.Draw(AssetManager.getPortraitTexture(), _portraitPosition, Color.White);
+                var r = new Rectangle(_health.Bounds.X, _health.Bounds.Y, _health.Bounds.Width, _health.Bounds.Height);
+                var pos = SmashTVSystem.Instance.Player.Position;
+                r.X = (int)(pos.X - _health.Bounds.Width/2);
+                r.Y = (int)(pos.Y - SmashTVSystem.Instance.Player.Radius - r.Height);
+                _health.Bounds = r;
                 _health.draw(sb);
+                r.Y += r.Height;
+                _energy.Bounds = r;
                 _energy.draw(sb);
                 _killText.Draw(sb);
                 _killCounter.Draw(sb);
