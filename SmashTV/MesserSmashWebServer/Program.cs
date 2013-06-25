@@ -6,6 +6,7 @@ using System.Net;
 using System.IO;
 using SharedSmashResources;
 using MesserSmash.Modules;
+using Newtonsoft.Json;
 
 namespace MesserSmashWebServer {
     class Program {
@@ -77,7 +78,7 @@ namespace MesserSmashWebServer {
                         _gameEntries.addEntry(new GameEntry { UserId = userid, UserName = username, LoginKey = loginKey, Level = level, GameId = gameid, SessionId = sessionid, Status = GameEntry.GameStatuses.Open });
 
 
-                        return fastJSON.JSON.Instance.ToJSON(result);
+                        return JsonConvert.SerializeObject(result);
                     }
                 case MesserSmashWeb.REQUEST_END_GAME: {
                         GameStates states = _server.handleSaveGame(rawData);
@@ -151,12 +152,12 @@ namespace MesserSmashWebServer {
                             {MesserSmashWeb.SESSION_ID, session},
                             {MesserSmashWeb.ROUND_ID, roundid}
                         };
-                        return fastJSON.JSON.Instance.ToJSON(result);
+                        return JsonConvert.SerializeObject(result);
                     }
                 default: {
                         Logger.error("Unhandled request: {0}", request);
                         ServerModel.UserName = "";
-                        var jsondata = fastJSON.JSON.Instance.ToObject<Dictionary<string, object>>(rawData);
+                        var jsondata = JsonConvert.DeserializeObject<Dictionary<string, object>>(rawData);
                     }
                     break;
             }
@@ -178,7 +179,7 @@ namespace MesserSmashWebServer {
 
         private static Dictionary<string, object> toTable(string rawData) {
             if (rawData == "" || rawData == null) { return new Dictionary<string, object>(); }
-            return fastJSON.JSON.Instance.Parse(rawData) as Dictionary<string, object>;
+            return JsonConvert.DeserializeObject<Dictionary<string, object>>(rawData);
         }
 
         private static long saveGameAndGetTimestamp(GameStates data) {

@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace SharedSmashResources {
     public static class MesserSmashWeb {
 
         public static Dictionary<string, object> toObject(string s = null) {
             if (s == null || s == "") { return new Dictionary<string, object>(); }
-            return fastJSON.JSON.Instance.Parse(s) as Dictionary<string, object>;
+            return JsonConvert.DeserializeObject<Dictionary<string, object>>(s);
+            //return fastJSON.JSON.Instance.Parse(s) as Dictionary<string, object>;
         }
 
         public const string REQUEST_BEGIN_GAME = "beginGame";

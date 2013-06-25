@@ -38,6 +38,13 @@ namespace MesserSmash.Modules {
         }
 
         private void overwriteFile(string url) {
+            FileInfo file = new FileInfo(Environment.CurrentDirectory + url);
+            if (!file.Exists) {
+                DirectoryInfo dir = new DirectoryInfo(file.DirectoryName);
+                if (!dir.Exists) {
+                    dir.Create();
+                }
+            }
             using (StreamWriter sw = new StreamWriter(url, false)) {
                 for (int i = 0; i < _highscores.Count; ++i) {
                     var score = _highscores[i];

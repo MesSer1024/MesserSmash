@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using MesserSmash.Modules;
+using Newtonsoft.Json;
 
 namespace SharedSmashResources {
     public class GameLoader {
@@ -22,7 +23,8 @@ namespace SharedSmashResources {
             if (file.Exists) {
                 using (var sr = new StreamReader(file.FullName)) {
                     var s = sr.ReadToEnd();
-                    Replay = fastJSON.JSON.Instance.ToObject<GameStates>(s);
+                    //Replay = fastJSON.JSON.Instance.ToObject<GameStates>(s);
+                    Replay = JsonConvert.DeserializeObject<GameStates>(s);
                 }
             } else {
                 Logger.error("Could not find Replay file input={0}", file.FullName);

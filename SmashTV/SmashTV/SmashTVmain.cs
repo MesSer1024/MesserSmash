@@ -469,6 +469,7 @@ namespace MesserSmash {
 				}
 				if (Utils.isNewKeyPress(Keys.OemPipe)) {
                     cmd = new BeginReplayQueueCommand();
+                    //cmd = new RestartGameCommand(-10);
 				} else if (Utils.isNewKeyPress(Keys.F1)) {
 					cmd = new RestartGameCommand(1);
 				} else if (Utils.isNewKeyPress(Keys.F2)) {

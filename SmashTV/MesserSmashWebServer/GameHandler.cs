@@ -6,6 +6,7 @@ using MesserSmash.Modules;
 using System.Diagnostics;
 using SharedSmashResources;
 using System.Collections;
+using Newtonsoft.Json;
 
 namespace MesserSmashWebServer {
     static class GameHandler {
@@ -114,7 +115,8 @@ namespace MesserSmashWebServer {
         }
 
         public static void verifyDataStartGame(String data, out int status) {
-            _data = fastJSON.JSON.Instance.Parse(data) as Dictionary<string, object>;
+            _data = JsonConvert.DeserializeObject<Dictionary<string, object>>(data);
+            //_data = fastJSON.JSON.Instance.Parse(data) as Dictionary<string, object>;
             
             _status = 0;
 
@@ -140,7 +142,7 @@ namespace MesserSmashWebServer {
         }
 
         internal static void verifyDataStatus(string data, out int status) {
-            _data = fastJSON.JSON.Instance.Parse(data) as Dictionary<string, object>;
+            _data = JsonConvert.DeserializeObject<Dictionary<string, object>>(data);
             _status = 0;
 
             try {

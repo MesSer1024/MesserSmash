@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MesserSmash.Commands;
+using MesserSmash.Modules;
 
 namespace MesserSmash {
     static class Scoring {
@@ -49,6 +50,10 @@ namespace MesserSmash {
         }
 
         public static float getLevelScore() {
+            if (_currLevel == null) {
+                Logger.error("Scoring.getLevelScore, currLevel was null during request");
+                return 0;
+            }
             return _currLevel.Score;
         }
 

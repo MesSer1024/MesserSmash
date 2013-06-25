@@ -7,6 +7,7 @@ using System.Collections;
 using Microsoft.Xna.Framework;
 using System.IO;
 using SharedSmashResources;
+using Newtonsoft.Json;
 
 namespace MesserSmashWebServer {
     class MesserSmashTest {
@@ -14,9 +15,11 @@ namespace MesserSmashWebServer {
         private static DateTime _start = DateTime.Now;
         public static void test(string[] args) {
             //--begin request--
-            var input = fastJSON.JSON.Instance.ToJSON(dummyBeginGameRequest());
+            var input = JsonConvert.SerializeObject(dummyBeginGameRequest());
+            //var input = fastJSON.JSON.Instance.ToJSON(dummyBeginGameRequest());
             _start = DateTime.Now;
-            var foo = fastJSON.JSON.Instance.Parse(input) as Dictionary<string, object>;
+            var foo = JsonConvert.DeserializeObject<Dictionary<string, object>>(input);
+            //var foo = fastJSON.JSON.Instance.Parse(input) as Dictionary<string, object>;
             var a = foo["product_key"];
             var output = buildResponse(MesserSmashWeb.REQUEST_BEGIN_GAME, input);
 
@@ -149,7 +152,7 @@ namespace MesserSmashWebServer {
                     Logger.error("Unknown request id={0}, data={1}", id, data);
                     return "";
             }
-            var output = fastJSON.JSON.Instance.ToJSON(result);
+            var output = JsonConvert.SerializeObject(result);
             Logger.info("Handled |{2}|-request in {0}ms \n\tinput:\t{3} \n\toutput:\t{1}", (DateTime.Now - _start).TotalMilliseconds, output, id, data);
             return output;
         }
@@ -199,7 +202,7 @@ namespace MesserSmashWebServer {
                     Logger.error("Unknown build error request id={0}, data={1}, gameid={2}", request, data, gameid);
                     return "";
             }
-            var output = fastJSON.JSON.Instance.ToJSON(result);
+            var output = JsonConvert.SerializeObject(result);
             Logger.info("InvalidGameid |{2}|-request handled during {0}ms \n\tinput:\t{3} \n\toutput:\t{1}", (DateTime.Now - _start).TotalMilliseconds, output, request, data);
             return output;
         }

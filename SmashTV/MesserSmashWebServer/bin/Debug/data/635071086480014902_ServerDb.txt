@@ -1,2 +1,0 @@
-ticks=0|sessionid=e87d6a7e-cf1f-4c79-bc76-bd5a15fd1e32|username=MESSER|userid=|gameid=6d773a2b-d5db-49eb-bb9a-d37d0d2de4e9|loginkey=freeloader|level=1|status=1
-ticks=0|sessionid=13b4c7e9-04fb-43c6-8619-9adb33c98f9c|username=MESSER|userid=|gameid=b8e7fa6a-2e4a-4a5d-be0a-b6bc88f02815|loginkey=freeloader|level=1|status=1

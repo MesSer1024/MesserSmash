@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using System.Collections;
+using Newtonsoft.Json;
 
 namespace SharedSmashResources {
     public class GameStates {
@@ -63,7 +64,8 @@ namespace SharedSmashResources {
         }
 
         public String toJson() {
-            return fastJSON.JSON.Instance.ToJSON(this);
+            return JsonConvert.SerializeObject(this);
+            //return fastJSON.JSON.Instance.ToJSON(this);
         }
     }
 }
