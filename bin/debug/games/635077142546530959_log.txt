@@ -1,4 +1,0 @@
-[info|635077142546470956] RegisterHighscoreCommand: MESSER6DEV - 4137 - 215
-[info|635077142546500957] Player died frames:1342, random status: MesserRandom seed=-788746286 totalRequests=309
-[info|635077142546530959] <--handleCommand PlayerDiedCommand
-[info|635077142546530959] ->handleCommand PlayerDiedCommand

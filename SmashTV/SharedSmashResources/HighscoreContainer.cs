@@ -24,7 +24,7 @@ namespace SharedSmashResources {
         /// Adds highscore to the highscore list if it is valid (has a gameid and sessionid)
         /// </summary>
         /// <param name="score"></param>
-        public void addHighscore(Highscore score) {
+        public void addIfUnique(Highscore score) {
             if (!_highscores.Exists(a => a.GameId == score.GameId)) {
                 _highscores.Add(score);
             }
@@ -81,7 +81,7 @@ namespace SharedSmashResources {
                     while (!sr.EndOfStream) {
                         var score = Highscore.FromString(sr.ReadLine());
                         if (HighscoreContainer.isValidHighscore(score)) {
-                            addHighscore(score);
+                            addIfUnique(score);
                         } else {
                             Logger.error("Could not add highscore since it wasn't valid, data={0}", score.ToString());
                         }
@@ -101,7 +101,7 @@ namespace SharedSmashResources {
 
         public void addHighscores(List<Highscore> localScores) {
             foreach (var i in localScores) {
-                addHighscore(i);
+                addIfUnique(i);
             }
         }
     }

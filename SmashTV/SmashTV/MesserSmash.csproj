@@ -156,7 +156,6 @@
     <Compile Include="Commands\PlayerDiedCommand.cs" />
     <Compile Include="Commands\RegisterUsernameCommand.cs" />
     <Compile Include="Commands\ReloadDatabaseCommand.cs" />
-    <Compile Include="Commands\RequestLevelHighscoresCommand.cs" />
     <Compile Include="Commands\RequestBeginNewGameCommand.cs" />
     <Compile Include="Commands\SaveGameCommand.cs" />
     <Compile Include="Commands\SpawnWaveCommand.cs" />

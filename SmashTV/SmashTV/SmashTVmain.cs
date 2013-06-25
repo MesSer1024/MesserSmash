@@ -167,6 +167,7 @@ namespace MesserSmash {
                 _replay = true;
                 _replayFrameIndex = 0;
             } else {
+                //new RequestLevelHighscoresCommand()
 				arena = buildLevel(level);
 				_currentLevel = level;
 			}

@@ -23,21 +23,17 @@ namespace MesserSmash.Commands {
         protected override void custExecute() {
             RoundId = SmashTVSystem.Instance.RoundId;
             ScoreOnLevel = (int)Scoring.getLevelScore();
-            Gui.showEntireRoundWon(GameInstance.GameHighscores, false, ScoreOnLevel);
-            new RequestRoundHighscoresCommand(GameInstance.RoundId, GameInstance.GameHighscores, onRoundResponse).execute();
+            Gui.showEntireRoundWon(GameInstance.GlobalHighscores, true, ScoreOnLevel);
+            //new RequestRoundHighscoresCommand(GameInstance.RoundId, GameInstance.GlobalHighscores, onRoundResponse).execute();
         }
 
-        private void onRoundResponse(RequestRoundHighscoresCommand cmd) {
-            if (!SmashTVSystem.IsGameStarted) {
-                var scoringProvider = SmashTVSystem.Instance.GameHighscores;
-                scoringProvider.addHighscores(cmd.Scores);
-                Gui.showEntireRoundWon(scoringProvider, true, ScoreOnLevel);
-            } else {
-                Logger.error("Game started before LevelWonCommand was finished with highscores");
-            }
+        //private void onRoundResponse(RequestRoundHighscoresCommand cmd) {
+        //    if (!SmashTVSystem.IsGameStarted) {
+        //        Gui.showEntireRoundWon(SmashTVSystem.Instance.GlobalHighscores, true, ScoreOnLevel);
+        //    } else {
+        //        Logger.error("Game started before LevelWonCommand was finished with highscores");
+        //    }
 
-        }
-
-
+        //}
     }
 }

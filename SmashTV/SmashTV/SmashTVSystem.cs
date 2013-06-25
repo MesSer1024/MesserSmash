@@ -51,7 +51,7 @@ namespace MesserSmash {
 		}
 
         private HighscoreContainer _globalHighscores;
-        public HighscoreContainer GameHighscores {
+        public HighscoreContainer GlobalHighscores {
             get { return _globalHighscores; }
         }
 
@@ -97,9 +97,14 @@ namespace MesserSmash {
 		private int _behaviourConstructors;
 		private int _enemyConstructors;
         private bool _replay;
+        private System.Timers.Timer _timer;
 
         internal void resetStates() {
             _gameStarted = false;
+            if (_timer != null) {
+                _timer.Stop();
+                _timer.Dispose();
+            }
         }
 
 		public void initLevel(Arena arena, Player player, ShotContainer shotContainer, EnemyContainer enemyContainer, bool replay, bool restartGame) {
@@ -121,6 +126,12 @@ namespace MesserSmash {
 		}
 
 		public void startLoadedLevel() {
+            onManualTimer(null, null);
+            _timer = new System.Timers.Timer();
+            _timer.Elapsed += new System.Timers.ElapsedEventHandler(onManualTimer);
+            _timer.Interval = 12500;
+            _timer.Start();
+
             _shotContainer.clear();
             _enemyContainer.clear();
             _gui.startLevel();
@@ -130,6 +141,12 @@ namespace MesserSmash {
 			_energySystem.reset();
 			_arena.begin();
 		}
+
+        void onManualTimer(object sender, System.Timers.ElapsedEventArgs e) {
+            ThreadWatcher.runBgThread(() => {
+                new RequestRoundHighscoresCommand(SmashTVSystem.Instance.RoundId, SmashTVSystem.Instance.GlobalHighscores, null).execute();
+            });
+        }
 
 		void onEnemyAttackedPlayer(ICommand command) {
 			var cmd = command as AttackPlayerCommand;
@@ -164,16 +181,15 @@ namespace MesserSmash {
         }
 
 		void onPlayerDead(ICommand command) {
-            new RequestRoundHighscoresCommand(RoundId, GameHighscores, onRequestRoundHighscoreGameLost).execute();
-            _gui.showGameOver(_globalHighscores, false, (int)Scoring.getLevelScore());
+            new RequestRoundHighscoresCommand(RoundId, GlobalHighscores, onRequestRoundHighscoreGameLost).execute();
+            _gui.showGameOver(GlobalHighscores, false, (int)Scoring.getLevelScore());
             var cmd = command as PlayerDiedCommand;
 			_queuedCommands.Add("end_arena");            
 		}
 
         private void onRequestRoundHighscoreGameLost(RequestRoundHighscoresCommand cmd) {
             if (!IsGameStarted) {
-                _globalHighscores.addHighscores(cmd.Scores);
-                _gui.showGameOver(_globalHighscores, true, (int)Scoring.getLevelScore());
+                _gui.showGameOver(GlobalHighscores, true, (int)Scoring.getLevelScore());
             }
         }
 

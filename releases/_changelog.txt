@@ -1,4 +1,18 @@
 -----------
+  0.6
+-----------
+- Added Highscores to games and rounds
+- New graphics for arena
+- New GUI
+- Fixed resolution and possible to play in different resolutions
+- Removed local scoring (now requires internet to show highscores)
+- Made level2 easier
+- Handshaking between client and server when game starts
+- Introduced concurrency in game
+- New file format for save files
+- Possible to watch many replays in a row
+- Pleny of new sound effects in game
+-----------
   0.5
 -----------
 - Added GameVersion to saves

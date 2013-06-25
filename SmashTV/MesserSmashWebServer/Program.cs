@@ -198,7 +198,7 @@ namespace MesserSmashWebServer {
             }
             var h = new Highscore { Ticks = timestamp, File = timestamp + "_save.mer", GameId = data.GameId, GameVersion = data.GameVersion, Kills = (uint)data.Kills, Level = (uint)data.Level, Score = (uint)data.Score, SessionId = data.SessionId, UserId = data.UserId, UserName = data.UserName, RoundId = (uint)findRoundForLevel((uint)data.Level)};
             if (HighscoreContainer.isValidHighscore(h)) {
-                _highscores.addHighscore(h);
+                _highscores.addIfUnique(h);
             } else {
                 Logger.error("Could not add highscore since it wasn't valid, data={0}", h.ToString());
             }
