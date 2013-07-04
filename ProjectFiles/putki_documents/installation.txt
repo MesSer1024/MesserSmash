@@ -1,0 +1,38 @@
+Putki is the gui system that dan is developing...
+
+How to make it work:
+	Build compiler:
+		- Enter the "compiler"-folder
+		- generate the project (premake4.exe -> premake4.lua file)
+	
+	Open the solution file (compiler.sln?):
+		- properties
+		- working directory (point to your project path (test-project))
+		- command arguments | test_project
+		
+		- run project (generates a _gen-folder) inside test-project
+		- generate a solution for that project (premake4.exe -> premake4.lua file inside folder)
+		- open that solution (test-projekt.sln?) & compile it
+		
+		
+	- test-projekt data builder
+		- (working directory | projektets folder)
+		- compile that solution (generates an "out" folder)
+		
+	- test-projekt runtime
+		- working directory | projektets folder
+		
+	- Editor (needs data.dll from project)
+		- premake solution (premake4.exe -> ...)
+		- in solution
+			- App.xaml.cs 			-> write in path to dll-file
+			- FileBrowser.xaml.cs 	-> write in path to ...
+		
+	- To change what items that are created - write to "data-objs" to create objects (no idea what that is and where to find it, but it is somewhere there with a similar name)
+	
+	- CCG-UI - example for a UI (non working but should be working sometime)
+	- Claw -  example for a game... (same as above)
+		
+		
+		
+	
