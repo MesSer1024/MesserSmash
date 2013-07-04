@@ -126,11 +126,13 @@ namespace MesserSmash {
 		}
 
 		public void startLoadedLevel() {
-            onManualTimer(null, null);
-            _timer = new System.Timers.Timer();
-            _timer.Elapsed += new System.Timers.ElapsedEventHandler(onManualTimer);
-            _timer.Interval = 12500;
-            _timer.Start();
+            if (!_replay) {
+                onManualTimer(null, null);
+                _timer = new System.Timers.Timer();
+                _timer.Elapsed += new System.Timers.ElapsedEventHandler(onManualTimer);
+                _timer.Interval = 12500;
+                _timer.Start();
+            }
 
             _shotContainer.clear();
             _enemyContainer.clear();
@@ -181,11 +183,12 @@ namespace MesserSmash {
         }
 
 		void onPlayerDead(ICommand command) {
-            new RequestRoundHighscoresCommand(RoundId, GlobalHighscores, onRequestRoundHighscoreGameLost).execute();
-            _gui.showGameOver(GlobalHighscores, false, (int)Scoring.getLevelScore());
-            var cmd = command as PlayerDiedCommand;
-			_queuedCommands.Add("end_arena");            
-		}
+            if (!_replay) {
+                new RequestRoundHighscoresCommand(RoundId, GlobalHighscores, onRequestRoundHighscoreGameLost).execute();
+                _gui.showGameOver(GlobalHighscores, false, (int)Scoring.getLevelScore());
+            }
+            _queuedCommands.Add("end_arena");
+        }
 
         private void onRequestRoundHighscoreGameLost(RequestRoundHighscoresCommand cmd) {
             if (!IsGameStarted) {

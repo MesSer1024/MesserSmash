@@ -465,6 +465,12 @@ namespace MesserSmash {
             _nonForcedKeyboardState = MesserKeys.Create(Keyboard.GetState());
         }
 
+        internal static void forceReplayInputUpdate() {
+            _nonForcedOldKeyboardState = _nonForcedKeyboardState;
+            _nonForcedKeyboardState = MesserKeys.Create(Keyboard.GetState());
+        }
+
+
         public static Rectangle getGameBounds() {
             return new Rectangle(0, 0, getGameWidth(), getGameHeight());
         }

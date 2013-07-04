@@ -48,6 +48,7 @@ namespace MesserSmash {
 		private float _timeSinceLevelStart;
         private List<FileInfo> _replayQueue;
         private int _replayQueueIndex;
+        private bool _replayFinished;
 
 		public SmashTV_main(Microsoft.Xna.Framework.Content.ContentManager Content, Microsoft.Xna.Framework.GraphicsDeviceManager graphics, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Game game) {
 			_content = Content;
@@ -116,13 +117,16 @@ namespace MesserSmash {
 		}
 
 		private void onRestartGame(ICommand command) {
-			Logger.info("onRestartGame");
-			var cmd = command as RestartGameCommand;
+            var cmd = command as RestartGameCommand;
+            Logger.info("onRestartGame");
+            Logger.info("Level={0}", cmd.Level);
 			prepareNewLevel(cmd.Level, true);
 		}
 
 		private void prepareNewLevel(int level, bool restartGame = false) {
+            _replayFinished = false;
 			Logger.info("prepareNewLevel");
+            var foo = _replay;
 			cleanOldData();
             SmashTVSystem.Instance.WaitingForGameCredentials = level > 0;
             if (restartGame) {
@@ -325,6 +329,7 @@ namespace MesserSmash {
 			Logger.info("Game finished frames:{1} random status: {0}", MesserRandom.getStatus(), _states.FrameCounts);
             if (_replay && _replayQueue != null && _replayQueue.Count > 0) {
                 SmashTVSystem.Instance.Gui.showNextReplayOnClick();
+                return;
             }
 
             if (_smashTvSystem.lastLevelInSet(_currentLevel, SmashTVSystem.Instance.RoundId)) {
@@ -369,6 +374,13 @@ namespace MesserSmash {
             ReplayRestartLabel: //ugly goto-hack #TODO: refactor replay into its' own method
             float deltaTime;
             Controller.instance.processCommands();
+
+            if (_replayFinished) {
+                Utils.forceReplayInputUpdate();
+                handleReplayInput();
+                return;
+            }
+
             if (_replay) {
                 if (_replayFrameIndex > 20) {
                     handleReplayInput();
@@ -379,9 +391,10 @@ namespace MesserSmash {
                     _replayFrameIndex++;
                 } else {
                     Logger.info("Last replay frame: status={0}", MesserRandom.getStatus());
-                    //_paused = true;
+                    _paused = true;
                     _replay = false;
                     _playing = false;
+                    _replayFinished = true;
                     return;
                 }
             } else {

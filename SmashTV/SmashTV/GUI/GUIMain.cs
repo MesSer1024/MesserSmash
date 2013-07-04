@@ -206,6 +206,8 @@ namespace MesserSmash.GUI {
             //_debugGui.draw(sb);
 
             if (_inGame) {
+                if (SmashTVSystem.Instance.Player == null)
+                    return;
                 var text = new FunnyText(String.Format("Level {0}", _savedLevel), new Rectangle { X = _portraitPosition.Right + Utils.calcResolutionScaledValue(117), Y = 0, Width = 600, Height = 50 });
                 text.HorizontalCenter = false;
                 text.Font = AssetManager.getGuiFont();
@@ -410,7 +412,8 @@ namespace MesserSmash.GUI {
 
         internal void showOkPopup(string s, Action cb) {
             if (_popupVisible) {
-                throw new Exception("Allready showing a popup, create a new solution for popups...");
+                Logger.error("Allready showing a popup, create a new solution for popups...");
+                //throw new Exception("Allready showing a popup, create a new solution for popups...");
             }
             _popupVisible = true;
             _popupText = s;

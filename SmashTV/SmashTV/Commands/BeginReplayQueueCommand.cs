@@ -21,7 +21,7 @@ namespace MesserSmash.Commands {
 
         protected override void custExecute() {
             Replays = new List<FileInfo>();
-            var files = Directory.GetFiles(System.Environment.CurrentDirectory, "*.mer", SearchOption.AllDirectories);
+            var files = Directory.GetFiles(System.Environment.CurrentDirectory + "/" + SmashTVSystem.Instance.ReplayPath, "*.mer", SearchOption.AllDirectories);
             foreach (var fileString in files) {
                 FileInfo file = new FileInfo(fileString);
                 if (file.Exists && !file.Name.StartsWith("last_")) {
