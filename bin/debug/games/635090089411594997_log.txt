@@ -1,0 +1,70 @@
+[info|635090089228184507] Utils.initialize seed=1087450043
+[info|635090089228184507] -->CreateLootTable
+[info|635090089228184507] <--CreateLootTable randomStatus:MesserRandom seed=1087450043 totalRequests=12
+[info|635090089228184507] showLoadingScreen
+[info|635090089228184507] <--handleCommand RestartGameCommand
+[info|635090089228184507] ->requestBeginGame
+[info|635090089228304513] ->handleCommand ReloadDatabaseCommand
+[info|635090089228304513] <--handleCommand ReloadDatabaseCommand
+[info|635090089228304513] ->handleCommand RequestBeginNewGameCommand
+[info|635090089228304513] <--handleCommand RequestBeginNewGameCommand
+[info|635090089228644533] RequestSessionCommand cb
+[info|635090089228644533] ctor() UpdateGameCredentialsCommand
+[info|635090089228644533] Executing UpdateGameCredentialsCommand
+[info|635090089228644533] <-requestBeginGame
+[info|635090089228804542] ->handleCommand UpdateGameCredentialsCommand
+[info|635090089228804542] <--handleCommand UpdateGameCredentialsCommand
+[info|635090089235464923] ->handleCommand ClientReadyCommand
+[info|635090089235474924] ->addObserver MesserSmash.Arenas.Level10
+[info|635090089235474924] <-addObserver MesserSmash.Arenas.Level10
+[info|635090089235484924] <--handleCommand ClientReadyCommand
+[info|635090089235654934] ->handleCommand LevelStartedCommand
+[info|635090089235654934] <--handleCommand LevelStartedCommand
+[info|635090089235654934] ->handleCommand RequestRoundHighscoresCommand
+[info|635090089235654934] <--handleCommand RequestRoundHighscoresCommand
+[debug|635090089256136105] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089257646192] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089258976268] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089260306344] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089260976382] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089261136391] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089261306401] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089261476411] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089261636420] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089261806430] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089261806430] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089261976439] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089262146449] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089262306458] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089262476468] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089262636477] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089263306515] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089264806601] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089266476697] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089267976783] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089269636877] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089271136963] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089272637049] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089274307145] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089275807230] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089277467325] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089278967411] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089280637507] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089282247599] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089288707968] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635090089328930269] ->handleCommand LauncherReadyCommand
+[info|635090089328930269] <--handleCommand LauncherReadyCommand
+[debug|635090089352231602] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089353611681] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089355081765] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089358551963] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089359982045] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635090089360792091] ->handleCommand RequestRoundHighscoresCommand
+[info|635090089360792091] <--handleCommand RequestRoundHighscoresCommand
+[debug|635090089361482131] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089363022219] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089364582308] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089366142397] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089367582480] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089369122568] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635090089411594997] ->handleCommand PlayerDiedCommand

@@ -16124,3 +16124,377 @@
 [info|635085679420063887] ->handleCommand UpdateGameCredentialsCommand
 [info|635085679420063887] <--handleCommand UpdateGameCredentialsCommand
 [info|635085679420813930] sendGameState ServerResponse=OK
+[info|635090086067683736] -------------------------------------------------------------------------
+[info|635090086067693737] -------------------------------------------------------------------------
+[info|635090086067693737] Game started at 635090086067693737
+[info|635090086067743740] ->addObserver MesserSmash.SmashTV_main
+[info|635090086067743740] <-addObserver MesserSmash.SmashTV_main
+[info|635090086074024099] ->addObserver MesserSmash.Modules.SoundManager
+[info|635090086074024099] <-addObserver MesserSmash.Modules.SoundManager
+[info|635090086074074102] ->addObserver MesserSmash.SmashTVSystem
+[info|635090086074074102] <-addObserver MesserSmash.SmashTVSystem
+[info|635090086074144106] ->handleCommand ReloadDatabaseCommand
+[info|635090086074154106] <--handleCommand ReloadDatabaseCommand
+[info|635090086074154106] ->handleCommand LoadConfigFileCommand
+[info|635090086074594132] prepareNewLevel
+[info|635090086074834145] Utils.initialize seed=-2065910319
+[info|635090086074884148] -->CreateLootTable
+[info|635090086074894149] <--CreateLootTable randomStatus:MesserRandom seed=-2065910319 totalRequests=12
+[info|635090086074934151] showLoadingScreen
+[info|635090086074934151] <--handleCommand LoadConfigFileCommand
+[info|635090086075654192] ->handleCommand ReloadDatabaseCommand
+[info|635090086075654192] <--handleCommand ReloadDatabaseCommand
+[info|635090086075654192] ->handleCommand RequestBeginNewGameCommand
+[info|635090086075654192] <--handleCommand RequestBeginNewGameCommand
+[info|635090086075974210] ->requestBeginGame
+[info|635090086079424408] RequestSessionCommand cb
+[info|635090086079984440] ctor() UpdateGameCredentialsCommand
+[info|635090086079984440] Executing UpdateGameCredentialsCommand
+[info|635090086079984440] <-requestBeginGame
+[info|635090086080044443] ->handleCommand UpdateGameCredentialsCommand
+[info|635090086080044443] <--handleCommand UpdateGameCredentialsCommand
+[info|635090086089704996] ->handleCommand RestartGameCommand
+[info|635090086089704996] onRestartGame
+[info|635090086089704996] Level=10
+[info|635090086089704996] prepareNewLevel
+[info|635090086089744998] Utils.initialize seed=-2050989466
+[info|635090086089744998] ->requestBeginGame
+[info|635090086089744998] -->CreateLootTable
+[info|635090086089744998] <--CreateLootTable randomStatus:MesserRandom seed=-2050989466 totalRequests=12
+[info|635090086089744998] showLoadingScreen
+[info|635090086089744998] <--handleCommand RestartGameCommand
+[info|635090086089875006] ->handleCommand ReloadDatabaseCommand
+[info|635090086089875006] <--handleCommand ReloadDatabaseCommand
+[info|635090086089875006] ->handleCommand RequestBeginNewGameCommand
+[info|635090086089875006] <--handleCommand RequestBeginNewGameCommand
+[info|635090086090155022] RequestSessionCommand cb
+[info|635090086090155022] ctor() UpdateGameCredentialsCommand
+[info|635090086090155022] Executing UpdateGameCredentialsCommand
+[info|635090086090155022] <-requestBeginGame
+[info|635090086090205024] ->handleCommand UpdateGameCredentialsCommand
+[info|635090086090205024] <--handleCommand UpdateGameCredentialsCommand
+[info|635090086095875349] ->handleCommand ClientReadyCommand
+[info|635090086096025357] ->addObserver MesserSmash.Arenas.Level10
+[info|635090086096025357] <-addObserver MesserSmash.Arenas.Level10
+[info|635090086096085361] <--handleCommand ClientReadyCommand
+[info|635090086096405379] ->handleCommand LevelStartedCommand
+[info|635090086096475383] <--handleCommand LevelStartedCommand
+[info|635090086096475383] ->handleCommand RequestRoundHighscoresCommand
+[info|635090086096475383] <--handleCommand RequestRoundHighscoresCommand
+[debug|635090086203841524] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635090086221202517] ->handleCommand RequestRoundHighscoresCommand
+[info|635090086221202517] <--handleCommand RequestRoundHighscoresCommand
+[info|635090087176257143] -------------------------------------------------------------------------
+[info|635090087176257143] -------------------------------------------------------------------------
+[info|635090087176257143] Game started at 635090087176257143
+[info|635090087176347148] ->addObserver MesserSmash.SmashTV_main
+[info|635090087176357149] <-addObserver MesserSmash.SmashTV_main
+[info|635090087178247257] ->addObserver MesserSmash.Modules.SoundManager
+[info|635090087178247257] <-addObserver MesserSmash.Modules.SoundManager
+[info|635090087178287259] ->addObserver MesserSmash.SmashTVSystem
+[info|635090087178287259] <-addObserver MesserSmash.SmashTVSystem
+[info|635090087178347263] ->handleCommand ReloadDatabaseCommand
+[info|635090087178347263] <--handleCommand ReloadDatabaseCommand
+[info|635090087178347263] ->handleCommand LoadConfigFileCommand
+[info|635090087178587276] prepareNewLevel
+[info|635090087178647280] Utils.initialize seed=-962097185
+[info|635090087179367321] -->CreateLootTable
+[info|635090087179387322] <--CreateLootTable randomStatus:MesserRandom seed=-962097185 totalRequests=12
+[info|635090087179437325] showLoadingScreen
+[info|635090087179437325] <--handleCommand LoadConfigFileCommand
+[info|635090087179447325] ->requestBeginGame
+[info|635090087180107363] ->handleCommand ReloadDatabaseCommand
+[info|635090087180107363] <--handleCommand ReloadDatabaseCommand
+[info|635090087180107363] ->handleCommand RequestBeginNewGameCommand
+[info|635090087180107363] <--handleCommand RequestBeginNewGameCommand
+[info|635090087185297660] RequestSessionCommand cb
+[info|635090087185347663] ->handleCommand RestartGameCommand
+[info|635090087185357664] onRestartGame
+[info|635090087185357664] Level=10
+[info|635090087185357664] prepareNewLevel
+[info|635090087594591070] -------------------------------------------------------------------------
+[info|635090087594601071] -------------------------------------------------------------------------
+[info|635090087594601071] Game started at 635090087594601071
+[info|635090087594671075] ->addObserver MesserSmash.SmashTV_main
+[info|635090087594671075] <-addObserver MesserSmash.SmashTV_main
+[info|635090087596261166] ->addObserver MesserSmash.Modules.SoundManager
+[info|635090087596261166] <-addObserver MesserSmash.Modules.SoundManager
+[info|635090087596311169] ->addObserver MesserSmash.SmashTVSystem
+[info|635090087596311169] <-addObserver MesserSmash.SmashTVSystem
+[info|635090087596371172] ->handleCommand ReloadDatabaseCommand
+[info|635090087596381173] <--handleCommand ReloadDatabaseCommand
+[info|635090087596381173] ->handleCommand LoadConfigFileCommand
+[info|635090087596651188] prepareNewLevel
+[info|635090087596721192] Utils.initialize seed=-544013272
+[info|635090087597031210] -->CreateLootTable
+[info|635090087597051211] <--CreateLootTable randomStatus:MesserRandom seed=-544013272 totalRequests=12
+[info|635090087597111215] showLoadingScreen
+[info|635090087597111215] <--handleCommand LoadConfigFileCommand
+[info|635090087597291225] ->requestBeginGame
+[info|635090087597811255] ->handleCommand ReloadDatabaseCommand
+[info|635090087597811255] <--handleCommand ReloadDatabaseCommand
+[info|635090087597811255] ->handleCommand RequestBeginNewGameCommand
+[info|635090087597811255] <--handleCommand RequestBeginNewGameCommand
+[info|635090087601061440] RequestSessionCommand cb
+[info|635090087601371458] ctor() UpdateGameCredentialsCommand
+[info|635090087601381459] Executing UpdateGameCredentialsCommand
+[info|635090087601381459] <-requestBeginGame
+[info|635090087601511466] ->handleCommand UpdateGameCredentialsCommand
+[info|635090087601511466] <--handleCommand UpdateGameCredentialsCommand
+[info|635090087613502152] ->handleCommand RestartGameCommand
+[info|635090087613512153] onRestartGame
+[info|635090087613512153] Level=10
+[info|635090087613512153] prepareNewLevel
+[info|635090088738906521] -------------------------------------------------------------------------
+[info|635090088738916522] -------------------------------------------------------------------------
+[info|635090088738916522] Game started at 635090088738916522
+[info|635090088738986526] ->addObserver MesserSmash.SmashTV_main
+[info|635090088738996527] <-addObserver MesserSmash.SmashTV_main
+[info|635090088740536615] ->addObserver MesserSmash.Modules.SoundManager
+[info|635090088740536615] <-addObserver MesserSmash.Modules.SoundManager
+[info|635090088740576617] ->addObserver MesserSmash.SmashTVSystem
+[info|635090088740576617] <-addObserver MesserSmash.SmashTVSystem
+[info|635090088740686623] ->handleCommand ReloadDatabaseCommand
+[info|635090088740686623] <--handleCommand ReloadDatabaseCommand
+[info|635090088740686623] ->handleCommand LoadConfigFileCommand
+[info|635090088741016642] prepareNewLevel
+[info|635090088741096647] Utils.initialize seed=600352182
+[info|635090088741376663] ->requestBeginGame
+[info|635090088741396664] -->CreateLootTable
+[info|635090088741426666] <--CreateLootTable randomStatus:MesserRandom seed=600352182 totalRequests=12
+[info|635090088741476668] showLoadingScreen
+[info|635090088741476668] <--handleCommand LoadConfigFileCommand
+[info|635090088742586732] ->handleCommand ReloadDatabaseCommand
+[info|635090088742586732] <--handleCommand ReloadDatabaseCommand
+[info|635090088742586732] ->handleCommand RequestBeginNewGameCommand
+[info|635090088742586732] <--handleCommand RequestBeginNewGameCommand
+[info|635090088745426894] RequestSessionCommand cb
+[info|635090088745776914] ctor() UpdateGameCredentialsCommand
+[info|635090088745786915] Executing UpdateGameCredentialsCommand
+[info|635090088745786915] <-requestBeginGame
+[info|635090088745816917] ->handleCommand UpdateGameCredentialsCommand
+[info|635090088745826917] <--handleCommand UpdateGameCredentialsCommand
+[info|635090088747146993] ->handleCommand RestartGameCommand
+[info|635090088747146993] onRestartGame
+[info|635090088747156993] Level=10
+[info|635090088747156993] prepareNewLevel
+[info|635090088747196996] Utils.initialize seed=606462532
+[info|635090088747196996] -->CreateLootTable
+[info|635090088747196996] <--CreateLootTable randomStatus:MesserRandom seed=606462532 totalRequests=13
+[info|635090088747196996] showLoadingScreen
+[info|635090088747206996] <--handleCommand RestartGameCommand
+[info|635090088747206996] ->requestBeginGame
+[info|635090088747327003] ->handleCommand ReloadDatabaseCommand
+[info|635090088747327003] <--handleCommand ReloadDatabaseCommand
+[info|635090088747327003] ->handleCommand RequestBeginNewGameCommand
+[info|635090088747327003] <--handleCommand RequestBeginNewGameCommand
+[info|635090088747647021] RequestSessionCommand cb
+[info|635090088747647021] ctor() UpdateGameCredentialsCommand
+[info|635090088747647021] Executing UpdateGameCredentialsCommand
+[info|635090088747647021] <-requestBeginGame
+[info|635090088747647021] ->handleCommand UpdateGameCredentialsCommand
+[info|635090088747647021] <--handleCommand UpdateGameCredentialsCommand
+[info|635090088754817432] ->handleCommand ClientReadyCommand
+[info|635090088754957440] ->addObserver MesserSmash.Arenas.Level10
+[info|635090088754957440] <-addObserver MesserSmash.Arenas.Level10
+[info|635090088755057445] <--handleCommand ClientReadyCommand
+[info|635090088755427466] ->handleCommand RequestRoundHighscoresCommand
+[info|635090088755427466] <--handleCommand RequestRoundHighscoresCommand
+[info|635090088755427466] ->handleCommand LevelStartedCommand
+[info|635090088755527472] <--handleCommand LevelStartedCommand
+[debug|635090088797339864] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088798809948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088800310034] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635090088919996879] -------------------------------------------------------------------------
+[info|635090088920006880] -------------------------------------------------------------------------
+[info|635090088920006880] Game started at 635090088920006880
+[info|635090088920376901] ->addObserver MesserSmash.SmashTV_main
+[info|635090088920376901] <-addObserver MesserSmash.SmashTV_main
+[info|635090088923407074] ->addObserver MesserSmash.Modules.SoundManager
+[info|635090088923407074] <-addObserver MesserSmash.Modules.SoundManager
+[info|635090088923457077] ->addObserver MesserSmash.SmashTVSystem
+[info|635090088923457077] <-addObserver MesserSmash.SmashTVSystem
+[info|635090088923507080] ->handleCommand ReloadDatabaseCommand
+[info|635090088923517081] <--handleCommand ReloadDatabaseCommand
+[info|635090088923517081] ->handleCommand LoadConfigFileCommand
+[info|635090088923747094] prepareNewLevel
+[info|635090088923817098] Utils.initialize seed=783082634
+[info|635090088924197119] -->CreateLootTable
+[info|635090088924217121] <--CreateLootTable randomStatus:MesserRandom seed=783082634 totalRequests=12
+[info|635090088924247122] ->requestBeginGame
+[info|635090088924287125] showLoadingScreen
+[info|635090088924287125] <--handleCommand LoadConfigFileCommand
+[info|635090088925057169] ->handleCommand ReloadDatabaseCommand
+[info|635090088925057169] <--handleCommand ReloadDatabaseCommand
+[info|635090088925057169] ->handleCommand RequestBeginNewGameCommand
+[info|635090088925057169] <--handleCommand RequestBeginNewGameCommand
+[info|635090088927967335] RequestSessionCommand cb
+[info|635090088928277353] ctor() UpdateGameCredentialsCommand
+[info|635090088928287353] Executing UpdateGameCredentialsCommand
+[info|635090088928287353] <-requestBeginGame
+[info|635090088928307355] ->handleCommand UpdateGameCredentialsCommand
+[info|635090088928317355] <--handleCommand UpdateGameCredentialsCommand
+[info|635090088929647431] ->handleCommand RestartGameCommand
+[info|635090088929647431] onRestartGame
+[info|635090088929647431] Level=10
+[info|635090088929647431] prepareNewLevel
+[info|635090088929887445] Utils.initialize seed=789152981
+[info|635090088929887445] -->CreateLootTable
+[info|635090088929887445] <--CreateLootTable randomStatus:MesserRandom seed=789152981 totalRequests=12
+[info|635090088929887445] showLoadingScreen
+[info|635090088929887445] <--handleCommand RestartGameCommand
+[info|635090088929897446] ->requestBeginGame
+[info|635090088929917447] ->handleCommand ReloadDatabaseCommand
+[info|635090088929917447] <--handleCommand ReloadDatabaseCommand
+[info|635090088929917447] ->handleCommand RequestBeginNewGameCommand
+[info|635090088929917447] <--handleCommand RequestBeginNewGameCommand
+[info|635090088930327470] RequestSessionCommand cb
+[info|635090088930327470] ctor() UpdateGameCredentialsCommand
+[info|635090088930327470] Executing UpdateGameCredentialsCommand
+[info|635090088930327470] <-requestBeginGame
+[info|635090088930487479] ->handleCommand UpdateGameCredentialsCommand
+[info|635090088930487479] <--handleCommand UpdateGameCredentialsCommand
+[info|635090088935977793] ->handleCommand ClientReadyCommand
+[info|635090088936097800] ->addObserver MesserSmash.Arenas.Level10
+[info|635090088936097800] <-addObserver MesserSmash.Arenas.Level10
+[info|635090088936237808] <--handleCommand ClientReadyCommand
+[info|635090088936637831] ->handleCommand LevelStartedCommand
+[info|635090088936737837] <--handleCommand LevelStartedCommand
+[info|635090088936737837] ->handleCommand RequestRoundHighscoresCommand
+[info|635090088936737837] <--handleCommand RequestRoundHighscoresCommand
+[debug|635090088980830359] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088982310443] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088983640519] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088984170550] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088984310558] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088984480567] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088984640577] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088984810586] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088984980596] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088985150606] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088985150606] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088985310615] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088985480625] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088985640634] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088985810644] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088986650692] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088987980768] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088989480853] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088991140948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088992641034] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088994311130] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088995811216] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088997141292] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088998471368] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090088999811444] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089001311530] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089002641606] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635090089052094435] ->handleCommand LauncherReadyCommand
+[info|635090089052094435] <--handleCommand LauncherReadyCommand
+[info|635090089061324963] ->handleCommand RequestRoundHighscoresCommand
+[info|635090089061324963] <--handleCommand RequestRoundHighscoresCommand
+[debug|635090089088076493] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089089576579] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089091176670] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089092646754] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089094166841] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089095726930] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089097227016] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089098697100] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089100257190] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089101837280] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089103377368] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089104787449] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089106377540] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089107887626] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089109467716] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089110867796] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089112277877] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089113687958] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089115098038] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635090089116498118] ->handleCommand PlayerDiedCommand
+[info|635090089160650644] RegisterHighscoreCommand: MESSER7DEV - 138 - 0
+[info|635090089161660702] Player died frames:1005, random status: MesserRandom seed=789152981 totalRequests=15
+[info|635090089161690703] <--handleCommand PlayerDiedCommand
+[debug|635090089161690703] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635090089162110727] ->handleCommand SaveGameCommand
+[info|635090089162110727] <--handleCommand SaveGameCommand
+[info|635090089162110727] ->handleCommand RequestRoundHighscoresCommand
+[info|635090089162110727] <--handleCommand RequestRoundHighscoresCommand
+[info|635090089162550753] sendGameState ServerResponse=OK
+[info|635090089186342113] ->handleCommand RequestRoundHighscoresCommand
+[info|635090089186342113] <--handleCommand RequestRoundHighscoresCommand
+[info|635090089228134504] ->handleCommand RestartGameCommand
+[info|635090089228134504] onRestartGame
+[info|635090089228134504] Level=10
+[info|635090089228134504] prepareNewLevel
+[info|635090089228184507] Utils.initialize seed=1087450043
+[info|635090089228184507] -->CreateLootTable
+[info|635090089228184507] <--CreateLootTable randomStatus:MesserRandom seed=1087450043 totalRequests=12
+[info|635090089228184507] showLoadingScreen
+[info|635090089228184507] <--handleCommand RestartGameCommand
+[info|635090089228184507] ->requestBeginGame
+[info|635090089228304513] ->handleCommand ReloadDatabaseCommand
+[info|635090089228304513] <--handleCommand ReloadDatabaseCommand
+[info|635090089228304513] ->handleCommand RequestBeginNewGameCommand
+[info|635090089228304513] <--handleCommand RequestBeginNewGameCommand
+[info|635090089228644533] RequestSessionCommand cb
+[info|635090089228644533] ctor() UpdateGameCredentialsCommand
+[info|635090089228644533] Executing UpdateGameCredentialsCommand
+[info|635090089228644533] <-requestBeginGame
+[info|635090089228804542] ->handleCommand UpdateGameCredentialsCommand
+[info|635090089228804542] <--handleCommand UpdateGameCredentialsCommand
+[info|635090089235464923] ->handleCommand ClientReadyCommand
+[info|635090089235474924] ->addObserver MesserSmash.Arenas.Level10
+[info|635090089235474924] <-addObserver MesserSmash.Arenas.Level10
+[info|635090089235484924] <--handleCommand ClientReadyCommand
+[info|635090089235654934] ->handleCommand LevelStartedCommand
+[info|635090089235654934] <--handleCommand LevelStartedCommand
+[info|635090089235654934] ->handleCommand RequestRoundHighscoresCommand
+[info|635090089235654934] <--handleCommand RequestRoundHighscoresCommand
+[debug|635090089256136105] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089257646192] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089258976268] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089260306344] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089260976382] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089261136391] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089261306401] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089261476411] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089261636420] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089261806430] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089261806430] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089261976439] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089262146449] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089262306458] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089262476468] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089262636477] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089263306515] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089264806601] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089266476697] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089267976783] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089269636877] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089271136963] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089272637049] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089274307145] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089275807230] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089277467325] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089278967411] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089280637507] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089282247599] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089288707968] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635090089328930269] ->handleCommand LauncherReadyCommand
+[info|635090089328930269] <--handleCommand LauncherReadyCommand
+[debug|635090089352231602] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089353611681] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089355081765] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089358551963] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089359982045] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635090089360792091] ->handleCommand RequestRoundHighscoresCommand
+[info|635090089360792091] <--handleCommand RequestRoundHighscoresCommand
+[debug|635090089361482131] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089363022219] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089364582308] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089366142397] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089367582480] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090089369122568] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635090089411594997] ->handleCommand PlayerDiedCommand

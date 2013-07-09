@@ -1,0 +1,34 @@
+[info|635090087613552155] Utils.initialize seed=-527182309
+[info|635090087613562155] ->requestBeginGame
+[info|635090087613572156] -->CreateLootTable
+[info|635090087613572156] <--CreateLootTable randomStatus:MesserRandom seed=-527182309 totalRequests=13
+[info|635090087613572156] showLoadingScreen
+[info|635090087613572156] <--handleCommand RestartGameCommand
+[info|635090087613682162] ->handleCommand ReloadDatabaseCommand
+[info|635090087613682162] <--handleCommand ReloadDatabaseCommand
+[info|635090087613682162] ->handleCommand RequestBeginNewGameCommand
+[info|635090087613682162] <--handleCommand RequestBeginNewGameCommand
+[info|635090087614002181] RequestSessionCommand cb
+[info|635090087614002181] ctor() UpdateGameCredentialsCommand
+[info|635090087614002181] Executing UpdateGameCredentialsCommand
+[info|635090087614002181] <-requestBeginGame
+[info|635090087614012181] ->handleCommand UpdateGameCredentialsCommand
+[info|635090087614012181] <--handleCommand UpdateGameCredentialsCommand
+[info|635090087630173106] ->handleCommand ClientReadyCommand
+[info|635090087630353116] ->addObserver MesserSmash.Arenas.Level10
+[info|635090087630353116] <-addObserver MesserSmash.Arenas.Level10
+[info|635090087630423120] <--handleCommand ClientReadyCommand
+[info|635090087630793141] ->handleCommand RequestRoundHighscoresCommand
+[info|635090087630793141] <--handleCommand RequestRoundHighscoresCommand
+[info|635090087630793141] ->handleCommand LevelStartedCommand
+[info|635090087630913148] <--handleCommand LevelStartedCommand
+[debug|635090087712797831] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090087714297917] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090087715818004] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090087727018645] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090087728418725] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090087729868808] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635090087731268888] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635090087755560277] ->handleCommand RequestRoundHighscoresCommand
+[info|635090087755560277] <--handleCommand RequestRoundHighscoresCommand
+[info|635090087778681600] ->handleCommand PlayerDiedCommand

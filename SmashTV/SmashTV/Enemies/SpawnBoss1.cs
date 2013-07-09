@@ -74,8 +74,8 @@ namespace MesserSmash.Enemies {
 
         public override void drawBegin(SpriteBatch sb) {
             if (IsAlive) {
-                sb.Draw(_getTexture(), _position, null, getAttackRadiusColor() * 0.27f, 0f,
-                        new Vector2(_textureOrigin, _textureOrigin), _attackRadiusScale, SpriteEffects.None, 0);
+                //sb.Draw(_getTexture(), _position, null, getAttackRadiusColor() * 0.27f, 0f,
+                //        new Vector2(_textureOrigin, _textureOrigin), _attackRadiusScale, SpriteEffects.None, 0);
             }
             if (State == EnemyStates.Dead) {
                 sb.Draw(_getTexture(), _position, null, Color.Red, 0f, new Vector2(_textureOrigin, _textureOrigin), _scale,
