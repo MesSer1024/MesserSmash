@@ -1,0 +1,412 @@
+[info|635091568146407948] Utils.initialize seed=-1758043636
+[info|635091568146407948] ->requestBeginGame
+[info|635091568146407948] -->CreateLootTable
+[info|635091568146407948] <--CreateLootTable randomStatus:MesserRandom seed=-1758043636 totalRequests=12
+[info|635091568146467948] ->handleCommand SaveGameCommand
+[info|635091568146467948] <--handleCommand SaveGameCommand
+[info|635091568146467948] ->handleCommand LevelWonCommand
+[info|635091568146467948] <--handleCommand LevelWonCommand
+[info|635091568146467948] ->handleCommand ReloadDatabaseCommand
+[info|635091568146467948] <--handleCommand ReloadDatabaseCommand
+[info|635091568146467948] ->handleCommand RequestContinueGameCommand
+[info|635091568146467948] <--handleCommand RequestContinueGameCommand
+[info|635091568146547948] RequestContinueGameCommand cb
+[info|635091568146547948] ctor() UpdateGameCredentialsCommand
+[info|635091568146547948] Executing UpdateGameCredentialsCommand
+[info|635091568146547948] <-requestBeginGame
+[info|635091568146627948] ->handleCommand UpdateGameCredentialsCommand
+[info|635091568146627948] <--handleCommand UpdateGameCredentialsCommand
+[info|635091568148167948] sendGameState ServerResponse=OK
+[info|635091568177487948] ->handleCommand ClientReadyCommand
+[info|635091568177487948] ->addObserver MesserSmash.Arenas.Level10
+[info|635091568177487948] <-addObserver MesserSmash.Arenas.Level10
+[info|635091568177507948] <--handleCommand ClientReadyCommand
+[info|635091568177657948] ->handleCommand LevelStartedCommand
+[info|635091568177657948] <--handleCommand LevelStartedCommand
+[info|635091568177657948] ->handleCommand RequestRoundHighscoresCommand
+[info|635091568177657948] <--handleCommand RequestRoundHighscoresCommand
+[debug|635091568193667948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568195167948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568196667948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568198167948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568198497948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568198667948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568198837948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568199007948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568199167948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568199337948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568199497948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568199667948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568199667948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568199837948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568199997948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568200167948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568200997948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568202337948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568203677948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568205007948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568206677948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568208177948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568209677948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568211177948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568212677948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568214347948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568215847948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568217347948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568218677948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568220187948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568221847948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568223357948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568224687948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568226187948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568227687948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568229187948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568230527948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568232027948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568233527948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568235197948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568236537948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568237867948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568239367948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568241037948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568242537948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568243867948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568245207948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568246707948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568248207948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568249537948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568251207948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568252707948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568254207948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568255707948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568257217948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568258547948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568260207948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568261717948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568263217948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568264547948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568265887948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635091568266727948] ->handleCommand LauncherReadyCommand
+[info|635091568266727948] <--handleCommand LauncherReadyCommand
+[debug|635091568267217948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568268717948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568270227948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568271557948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568272887948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568274387948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568275897948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568277557948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568278897948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568280057948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568280227948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568280397948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568280397948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568280567948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568280727948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568280897948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568281057948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568281227948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568281397948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568281567948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568281727948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568281727948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568282897948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568283897948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568284727948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568285567948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568286567948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568287567948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568288897948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568290077948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568291067948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568292237948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568294067948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568296077948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568298237948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568300247948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568302077948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635091568302577948] ->handleCommand RequestRoundHighscoresCommand
+[info|635091568302577948] <--handleCommand RequestRoundHighscoresCommand
+[debug|635091568303577948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568305247948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568307087948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568308747948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568310417948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568312087948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568313757948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568315587948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568317087948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568318587948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568320257948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568321757948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568323257948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568324757948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568326427948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568327927948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568329437948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568331097948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568332597948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568334267948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568335767948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568337267948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568338607948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568340107948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568341607948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568342947948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568344437948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568346107948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568347617948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635091568348277948] ->handleCommand LauncherReadyCommand
+[info|635091568348277948] <--handleCommand LauncherReadyCommand
+[debug|635091568349117948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568350617948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568352107948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568353777948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568355287948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568356787948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568358287948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568359787948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568361287948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568362787948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568364457948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568365457948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568365627948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568365787948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568365957948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568365957948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568366127948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568366287948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568366457948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568366617948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568366787948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568366957948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568367127948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568367457948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568369127948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568370627948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568372297948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568373797948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568375467948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568376967948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568378627948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568380137948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568381637948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568383137948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568384477948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568385807948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568387307948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568388637948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568390147948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568391637948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568392977948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568394477948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568395807948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568397307948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568398817948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568400147948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568401817948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568403147948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568404647948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568406147948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568407487948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568408657948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568409657948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568410657948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568411657948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568412517948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568413487948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568414657948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568415997948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568417167948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568418497948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568420157948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568422337948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568424327948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568426167948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635091568427667948] ->handleCommand RequestRoundHighscoresCommand
+[info|635091568427667948] <--handleCommand RequestRoundHighscoresCommand
+[debug|635091568428167948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568430167948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568432007948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635091568433667948] ->handleCommand LauncherReadyCommand
+[info|635091568433667948] <--handleCommand LauncherReadyCommand
+[debug|635091568433837948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568435837948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568437507948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568439347948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568441147948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568442517948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568444017948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568445517948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568447047948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568448517948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568449857948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568451347948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568452847948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568454357948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568454857948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568455017948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568455187948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568455357948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568455527948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568455687948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568455857948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568455857948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568456027948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568456187948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568456357948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568456527948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568457357948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568458857948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568460357948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568462027948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568463857948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568465357948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568466697948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568468197948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568469697948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568471197948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568472867948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568474367948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568475867948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568477537948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568479037948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568480537948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568482207948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568483547948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568485037948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568486547948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568488047948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568489547948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568490887948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568492217948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568493717948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568495387948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568496717948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568498227948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568499717948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568501057948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568502557948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568504057948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568505557948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568507057948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568508557948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568509897948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568511227948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568512567948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568513897948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568515237948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568516737948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568518417948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568520067948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568521737948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568522907948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635091568523067948] ->handleCommand LauncherReadyCommand
+[info|635091568523067948] <--handleCommand LauncherReadyCommand
+[debug|635091568523737948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568524737948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568525737948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568526567948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568527737948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568528747948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568530077948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568531247948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568532577948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568534617948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568536577948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568538577948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568540587948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568542417948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568544417948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568546257948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568548087948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568549757948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568551587948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635091568552757948] ->handleCommand RequestRoundHighscoresCommand
+[info|635091568552757948] <--handleCommand RequestRoundHighscoresCommand
+[debug|635091568553267948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568554927948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568556597948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568558267948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568559767948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568561267948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568562597948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568564097948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568565597948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568566937948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568567937948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568568107948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568568277948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568568447948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568568447948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568568617948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568568777948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568568937948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568569107948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568569277948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568569437948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568569607948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568569937948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568571437948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568572937948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568574437948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568575947948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568577447948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568578947948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568580617948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568582117948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568583617948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568585117948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568586617948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568588117948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568589627948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568590947948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568592457948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568593957948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568595297948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568596797948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568598297948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568599797948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568601297948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568602797948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568604297948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568605797948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568607297948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568608797948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568610297948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568611797948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568613477948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568614967948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568616477948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568617807948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568619307948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568620977948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568622307948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568623807948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568625307948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568626817948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568628477948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568629987948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568631487948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568632817948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568634317948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568635817948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[info|635091568636147948] ->handleCommand LauncherReadyCommand
+[info|635091568636147948] <--handleCommand LauncherReadyCommand
+[debug|635091568637487948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568638827948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568640327948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568641827948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568643487948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568644997948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568646497948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568647997948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568649497948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568649497948] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568649667948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568649837948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568649997948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568650167948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[debug|635091568650347948] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.SpawnBoss1
+[info|635091568677847948] ->handleCommand RequestRoundHighscoresCommand
+[info|635091568677847948] <--handleCommand RequestRoundHighscoresCommand

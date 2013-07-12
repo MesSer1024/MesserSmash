@@ -90,7 +90,12 @@ namespace SharedSmashResources {
             }
         }
 
-        public void writeHighscoresToFile(string relativeFilePath, bool append=false) {
+        public void writeHighscoresToFile(string relativeFilePath, bool append = false)
+        {
+            var file = new FileInfo(relativeFilePath);
+            if (!file.Directory.Exists)
+                file.Directory.Create();
+            
             using (StreamWriter sw = new StreamWriter(relativeFilePath, append)) {
                 foreach (var i in _highscores) {
                     sw.WriteLine(i.ToString());

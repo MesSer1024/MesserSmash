@@ -20,3 +20,17 @@ D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmas
 D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\Newtonsoft.Json.dll
 D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\Newtonsoft.Json.pdb
 D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\Newtonsoft.Json.xml
+E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.exe
+E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.pdb
+E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.csprojResolveAssemblyReference.cache
+E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\MesserSmashWebServer.exe.manifest
+E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\MesserSmashWebServer.application
+E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\MesserSmashWebServer.exe
+E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\MesserSmashWebServer.pdb
+E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\Newtonsoft.Json.dll
+E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\SharedSmashResources.dll
+E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\SharedSmashResources.pdb
+E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\Newtonsoft.Json.pdb
+E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\Newtonsoft.Json.xml
+E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.exe.manifest
+E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.application

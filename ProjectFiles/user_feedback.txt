@@ -9,3 +9,9 @@ det va bra svårhetsgrad tycker jag, vissa levels var enklare än andra med den ta
 [14:42:33] MesSer: highscore på varje bana och på varje set
 [14:42:40] MesSer: alternativt bara på varje set
 [14:42:44] MesSer: det är min plan
+
+
+00007: Main Menu Screen
+- Kanske borde ge bossen en mer "distinkt" look så man kan ta bort progress bars på den i menyn och samtidigt göra den mer intressant in game
+- Alignment på baren nere i mitten
+- Alignment på vita texten nere i mitten

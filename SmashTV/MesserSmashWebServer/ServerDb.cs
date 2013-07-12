@@ -8,14 +8,24 @@ namespace MesserSmashWebServer {
     internal class ServerDb {
         private List<GameEntry> _savedStates;            
         private string fileName = "./data/ServerDb.txt";
-        private StreamWriter _appendStream = new StreamWriter(String.Format("./data/{0}_ServerDb.txt", DateTime.Now.Ticks), true);
+        private StreamWriter _appendStream;
 
-        public void init() {
+        public void init()
+        {
+            var file = new FileInfo("./data/ServerDb.txt");
+            if (!file.Directory.Exists)
+            {
+                file.Directory.Create();
+            }
+            _appendStream = new StreamWriter(String.Format("./data/{0}_ServerDb.txt", DateTime.Now.Ticks), true);
             _savedStates = new List<GameEntry>();
             var fi = new FileInfo(fileName);
-            if (fi.Exists) {
-                using (StreamReader sr = new StreamReader(fileName)) {
-                    while (!sr.EndOfStream) {
+            if (fi.Exists)
+            {
+                using (StreamReader sr = new StreamReader(fileName))
+                {
+                    while (!sr.EndOfStream)
+                    {
                         var entry = GameEntry.FromString(sr.ReadLine());
                         _savedStates.Add(entry);
                     }

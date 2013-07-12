@@ -60,24 +60,65 @@ namespace MesserSmashWebServer {
                             try {
                                 var httpRequest = ctx.Request;
                                 request = httpRequest.Headers["request"];
+
                                 string responseString = null;
                                 string rc = "0";
-                                if (httpRequest != null && httpRequest.HasEntityBody) {
-                                    var data = new byte[httpRequest.ContentLength64];
-                                    using (System.IO.Stream body = httpRequest.InputStream) {
-                                        body.Read(data, 0, data.Length);
-                                    };
-                                    var rawData = _server.unparse(data);
-                                    responseString = _responderMethod(request, rawData);
-                                    if (request == MesserSmashWeb.REQUEST_END_GAME) {
-                                        Logger.debug("Incoming: request={1}, data=(stripped)", rawData, request);
-                                        Logger.debug("Outgoing: request={1}, data={0}", responseString, request);
-                                    } else {
-                                        Logger.debug("Incoming: request={1}, data={0}", rawData, request);
-                                        Logger.debug("Outgoing: request={1}, data={0}", responseString, request);
+                                
+                                //browserRequest (from non-game-client)
+                                if (request == null || request == "")
+                                {
+                                    request = httpRequest.Headers["browserRequest"];
+                                    if (httpRequest != null && httpRequest.HasEntityBody)
+                                    {
+                                        var data = new byte[httpRequest.ContentLength64];
+                                        using (System.IO.Stream body = httpRequest.InputStream)
+                                        {
+                                            body.Read(data, 0, data.Length);
+                                        };
+                                        var rawData = System.Text.ASCIIEncoding.ASCII.GetString(data);
+                                        responseString = _responderMethod(request, rawData);
+                                        if (request == MesserSmashWeb.REQUEST_END_GAME)
+                                        {
+                                            Logger.debug("Incoming: request={1}, data=(stripped)", rawData, request);
+                                            Logger.debug("Outgoing: request={1}, data={0}", responseString, request);
+                                        }
+                                        else
+                                        {
+                                            Logger.debug("Incoming: request={1}, data={0}", rawData, request);
+                                            Logger.debug("Outgoing: request={1}, data={0}", responseString, request);
+                                        }
                                     }
-                                } else {
-                                    rc = "1";
+                                    else
+                                    {
+                                        rc = "1";
+                                    }
+                                }
+                                else //request (from game-client)
+                                {
+                                    if (httpRequest != null && httpRequest.HasEntityBody)
+                                    {
+                                        var data = new byte[httpRequest.ContentLength64];
+                                        using (System.IO.Stream body = httpRequest.InputStream)
+                                        {
+                                            body.Read(data, 0, data.Length);
+                                        };
+                                        var rawData = _server.unparse(data);
+                                        responseString = _responderMethod(request, rawData);
+                                        if (request == MesserSmashWeb.REQUEST_END_GAME)
+                                        {
+                                            Logger.debug("Incoming: request={1}, data=(stripped)", rawData, request);
+                                            Logger.debug("Outgoing: request={1}, data={0}", responseString, request);
+                                        }
+                                        else
+                                        {
+                                            Logger.debug("Incoming: request={1}, data={0}", rawData, request);
+                                            Logger.debug("Outgoing: request={1}, data={0}", responseString, request);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        rc = "1";
+                                    }
                                 }
 
                                 ctx.Response.Headers.Add("request", request);

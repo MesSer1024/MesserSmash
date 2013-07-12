@@ -11,3 +11,12 @@ D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\obj\Debug\SharedSmashRes
 D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\obj\Debug\SharedSmashResources.pdb
 D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\bin\Debug\Newtonsoft.Json.pdb
 D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\bin\Debug\Newtonsoft.Json.xml
+E:\projects_local\SmashTV\SmashTV\SharedSmashResources\bin\Debug\SharedSmashResources.dll
+E:\projects_local\SmashTV\SmashTV\SharedSmashResources\bin\Debug\SharedSmashResources.pdb
+E:\projects_local\SmashTV\SmashTV\SharedSmashResources\bin\Debug\Microsoft.Xna.Framework.dll
+E:\projects_local\SmashTV\SmashTV\SharedSmashResources\bin\Debug\Microsoft.Xna.Framework.xml
+E:\projects_local\SmashTV\SmashTV\SharedSmashResources\bin\Debug\Newtonsoft.Json.pdb
+E:\projects_local\SmashTV\SmashTV\SharedSmashResources\bin\Debug\Newtonsoft.Json.xml
+E:\projects_local\SmashTV\SmashTV\SharedSmashResources\obj\Debug\SharedSmashResources.csprojResolveAssemblyReference.cache
+E:\projects_local\SmashTV\SmashTV\SharedSmashResources\obj\Debug\SharedSmashResources.dll
+E:\projects_local\SmashTV\SmashTV\SharedSmashResources\obj\Debug\SharedSmashResources.pdb
