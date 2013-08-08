@@ -264,8 +264,7 @@ namespace MesserSmashGameLauncher {
         }
 
         void _logoutControl_PlayClicked() {
-            //var fi = new FileInfo("./gamedata/messersmash.exe");
-            var fi = new FileInfo("./gamedata/messerSMASH-prepreprealpha_00007/messersmash.exe");
+            var fi = new FileInfo("./gamedata/messersmash.exe");
             if (fi.Exists) {
                 var psi = new ProcessStartInfo();
                 var dir = new StringDictionary();
