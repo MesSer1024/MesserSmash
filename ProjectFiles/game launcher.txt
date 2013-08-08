@@ -1,0 +1,16 @@
+Game Launcher:
+
+- Login user against webserver and retrieve "game token"
+- Check Version against webserver
+- Auto update new version
+- Play the game
+- Watch Replays
+
+Start:	news/check can play
+
+Login:	news	username/password/loginBtn/client version
+		- create user
+		- incorrect password
+New Version:	news	progressbar
+Can Play(internet):	news	username/play button/client version
+Can Play(no internet):	play button/client version

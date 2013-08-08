@@ -5,3 +5,5 @@
 /*.suo
 /SmashTV/MesserSmashWebServer/obj/x86/Debug/*.cache
 /SmashTV/SharedSmashResources/obj/Debug/*.cache
+/SmashTV/MesserSmashGameLauncher/bin
+/SmashTV/MesserSmashGameLauncher/obj

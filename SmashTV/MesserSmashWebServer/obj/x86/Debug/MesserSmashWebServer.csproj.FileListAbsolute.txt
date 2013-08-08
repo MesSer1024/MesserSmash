@@ -18,8 +18,6 @@ D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\MesserSmashWeb
 D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.exe.manifest
 D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.application
 D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\Newtonsoft.Json.dll
-D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\Newtonsoft.Json.pdb
-D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\Newtonsoft.Json.xml
 E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.exe
 E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.pdb
 E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.csprojResolveAssemblyReference.cache
