@@ -22,9 +22,7 @@ namespace MesserSmashGameLauncher {
         public event VoidDelegate CreateUserClicked;
 
         public LoginControl() {
-            InitializeComponent();            
-            userName.Text = "messer_@hotmail.com";
-            password.Password = "team1234";
+            InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {

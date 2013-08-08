@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using SharedSmashResources;
+using MesserSmash.Modules;
+using System.Diagnostics;
 
 namespace MesserSmash.Commands {
     class LoadConfigFileCommand : Command {
@@ -10,11 +13,13 @@ namespace MesserSmash.Commands {
 
         public bool HasUsername { get; set; }
         public string Username { get; set; }
+        public string UserId { get; set; }
         public string ServerIp { get; set; }
         public string ReplayPath { get; set;}
         public string GameVersion { get; set; }
         public bool IgnoreVersion { get; set; }
         public float GameWidth { get; set; }
+        public bool LoadedFromLauncher { get; set; }
 
         public LoadConfigFileCommand()
             : base(NAME) {
@@ -47,6 +52,18 @@ namespace MesserSmash.Commands {
                         }
                     }
                 }
+            }
+            Logger.info("EnvironmentVariable launcher={0}", Environment.GetEnvironmentVariable(MesserSmashWeb.ENVIRONMENT_LAUNCHED_FROM_LAUNCHER));
+
+            if (Environment.GetEnvironmentVariable(MesserSmashWeb.ENVIRONMENT_LAUNCHED_FROM_LAUNCHER) == true.ToString()) {
+                LoadedFromLauncher = true;
+                HasUsername = true;
+                Username = Environment.GetEnvironmentVariable(MesserSmashWeb.USER_NAME);
+                UserId = Environment.GetEnvironmentVariable(MesserSmashWeb.USER_ID);
+                GameVersion = Environment.GetEnvironmentVariable(MesserSmashWeb.GAME_VERSION);
+                Logger.info("EnvironmentVariable username={0}", Username);
+                Logger.info("EnvironmentVariable userid={0}", UserId);
+                Logger.info("EnvironmentVariable game_version={0}", GameVersion);
             }
         }
 

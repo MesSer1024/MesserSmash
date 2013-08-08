@@ -129,13 +129,13 @@ namespace MesserSmashWebServer {
                                 ctx.Response.ContentLength64 = buf.Length;
                                 ctx.Response.OutputStream.Write(buf, 0, buf.Length);
                             } catch {
-                                Console.WriteLine("->Error handling request");
+                                Console.WriteLine("[{0}] ->Error handling request", DateTime.Now.ToString("s"));
                             } // suppress any exceptions
                             finally {
                                 // always close the stream
                                 ctx.Response.OutputStream.Close();
-                                Logger.info("Handled request={0} in {1}ms user:{2}", request, (DateTime.Now - timestamp).TotalMilliseconds, ServerModel.UserName);
-                                Console.WriteLine("Handled request={0} in {1}ms user:{2}", request, (DateTime.Now - timestamp).TotalMilliseconds, ServerModel.UserName);
+                                Logger.info("[{3}]Handled request={0} in {1}ms user:{2}", request, (DateTime.Now - timestamp).TotalMilliseconds, ServerModel.UserName, DateTime.Now.ToString("s"));
+                                Console.WriteLine("[{3}] Handled request={0} in {1}ms user:{2}", request, (DateTime.Now - timestamp).TotalMilliseconds, ServerModel.UserName, DateTime.Now.ToString("s"));
                             }
                         }, _listener.GetContext());
                     }
