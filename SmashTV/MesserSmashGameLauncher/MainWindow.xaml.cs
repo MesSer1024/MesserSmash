@@ -152,33 +152,23 @@ namespace MesserSmashGameLauncher {
         }
 
         private void extractFile(FileInfo file, string destinationPath) {
-            // Get hashtable of selected files
             bool fileComplete = false;
-            using(var unrar = new Unrar())
-            try {
-                // Get destination from user
-
-                    // Create new unrar class and attach event handlers for
-                    // progress, missing volumes, and password
-                    //AttachHandlers(unrar);
-
+            using (var unrar = new Unrar()) {
+                try {
                     // Set destination path for all files
                     unrar.DestinationPath = destinationPath;
                     unrar.ExtractionProgress += new ExtractionProgressHandler(unrar_ExtractionProgress);
-
-                    // Open archive for extraction
                     unrar.Open(file.FullName, Unrar.OpenMode.Extract);
 
-                    // Extract each file found in hashtable
                     while (unrar.ReadHeader()) {
                         unrar.Extract();
                     }
                     fileComplete = true;
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                } finally {
+                    unrar.Close();
                 }
-            catch (Exception ex) {
-                MessageBox.Show(ex.Message);
-            } finally {
-                unrar.Close();
             }
             if (fileComplete) {
                 _gameUpdated = true;
