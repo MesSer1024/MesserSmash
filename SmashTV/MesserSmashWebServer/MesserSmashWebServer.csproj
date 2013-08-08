@@ -80,13 +80,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database.cs" />
+    <Compile Include="MesserSmashUser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MesserSmashTest.cs" />
     <Compile Include="MesserSmashWebServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GameHandler.cs" />
     <Compile Include="GameEntry.cs" />
-    <Compile Include="ServerDb.cs" />
+    <Compile Include="ServerLogger.cs" />
     <Compile Include="ServerModel.cs" />
   </ItemGroup>
   <ItemGroup>

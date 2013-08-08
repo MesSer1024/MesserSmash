@@ -13,13 +13,15 @@ namespace MesserSmashWebServer {
         private static HighscoreContainer _highscores;
         private static string _url;
         private static LocalServer _server;
-        private static ServerDb _gameEntries;
+        private static ServerLogger _gameEntries;
+        private static Database _db;
+
         //http://pawncraft.co.uk:8801/ this is the external url to the messersmash server
 
         static void Main(string[] args) {
             var highscoreFilePath = "./highscores/highscores.txt";
             _highscores = new HighscoreContainer();
-            _gameEntries = new ServerDb();
+            _gameEntries = new ServerLogger();
             Logger.init("MesserSmashServer.txt");
 
             //MesserSmashTest.test(null);
@@ -34,8 +36,13 @@ namespace MesserSmashWebServer {
                 while (!sr.EndOfStream) {
                     var line = sr.ReadLine().Trim();
                     var splitter = '|';
+                    var value = line.Split(splitter)[1].Trim();
                     if (line.StartsWith("server_ip")) {
-                        url = line.Split(splitter)[1].Trim();
+                        url = value;
+                    } else if (line.StartsWith("latest_game_version")) {
+                        ServerModel.LatestGameVersion = value;
+                    } else if (line.StartsWith("latest_version_url")) {
+                        ServerModel.LatestGameVersionUrl = value;
                     }
                 }
             }
@@ -43,6 +50,7 @@ namespace MesserSmashWebServer {
 
             _highscores.populateHighscoresFromFile(highscoreFilePath);
             _gameEntries.init();
+            _db = new Database();
 
             var server = new MesserSmashWebServer(HandleHttpRequest, _url);
             _server = server.LocalServer;
@@ -52,9 +60,10 @@ namespace MesserSmashWebServer {
             server.Stop();
             _highscores.writeHighscoresToFile(highscoreFilePath);
             _gameEntries.close();
+            _db.dumpDatabase();
         }
 
-        public static string HandleHttpRequest(string request, string rawData) {
+        public static MesserWebResponse HandleHttpRequest(string request, string rawData) {
             switch (request) {
                 case MesserSmashWeb.REQUEST_BEGIN_GAME: {
                         var items = toTable(rawData);
@@ -77,19 +86,18 @@ namespace MesserSmashWebServer {
 
                         _gameEntries.addEntry(new GameEntry { UserId = userid, UserName = username, LoginKey = loginKey, Level = level, GameId = gameid, SessionId = sessionid, Status = GameEntry.GameStatuses.Open });
 
-
-                        return JsonConvert.SerializeObject(result);
+                        return new MesserWebResponse(MesserWebResponse.RC_OK, JsonConvert.SerializeObject(result), request);
                     }
                 case MesserSmashWeb.REQUEST_END_GAME: {
                         GameStates states = _server.handleSaveGame(rawData);
                         if (states != null) {
                             var ticks = saveGameAndGetTimestamp(states);
                             ServerModel.UserName = states.UserName;
-                            _gameEntries.addEntry(new GameEntry {UserId = states.UserId, GameId=states.GameId, Level = (uint)states.Level, SessionId=states.SessionId, Ticks = ticks, UserName = states.UserName, LoginKey=states.LoginKey, Status = GameEntry.GameStatuses.Closed });
+                            _gameEntries.addEntry(new GameEntry { UserId = states.UserId, GameId = states.GameId, Level = (uint)states.Level, SessionId = states.SessionId, Ticks = ticks, UserName = states.UserName, LoginKey = states.LoginKey, Status = GameEntry.GameStatuses.Closed });
                         } else {
-                            return string.Format("Foobar | error={0}", states);
+                            return new MesserWebResponse(MesserWebResponse.RC_OK, string.Format("Foobar | error={0}", states), request);
                         }
-                        return "OK";
+                        return new MesserWebResponse(MesserWebResponse.RC_OK, "OK", request);
                     }
                 case MesserSmashWeb.REQUEST_GET_HIGHSCORE_ON_LEVEL: {
                         try {
@@ -102,12 +110,11 @@ namespace MesserSmashWebServer {
                             foreach (var item in scores) {
                                 sb.AppendLine(item.ToString());
                             }
-                            return sb.ToString();
+                            return new MesserWebResponse(MesserWebResponse.RC_OK, sb.ToString(), request);
                         } catch (Exception e) {
                             Console.WriteLine("Unable to parse data from client {0}", e.ToString());
                             Logger.error("Unable to parse data from client {0}", e.ToString());
                         }
-
                     }
                     break;
                 case MesserSmashWeb.REQUEST_GET_HIGHSCORE_FOR_ROUND: {
@@ -118,17 +125,15 @@ namespace MesserSmashWebServer {
                             var scores = _highscores.getHighscoresOnRound(round);
                             var sb = new StringBuilder();
                             foreach (var list in scores.Values) {
-                                foreach (var item in list)
-                                {
+                                foreach (var item in list) {
                                     sb.AppendLine(item.ToString());
                                 }
                             }
-                            return sb.ToString();
+                            return new MesserWebResponse(MesserWebResponse.RC_OK, sb.ToString(), request);
                         } catch (Exception e) {
                             Console.WriteLine("Unable to parse data from client {0}", e.ToString());
                             Logger.error("Unable to parse data from client {0}", e.ToString());
                         }
-
                     }
                     break;
                 case MesserSmashWeb.REQUEST_CONTINUE_GAME: {
@@ -152,7 +157,51 @@ namespace MesserSmashWebServer {
                             {MesserSmashWeb.SESSION_ID, session},
                             {MesserSmashWeb.ROUND_ID, roundid}
                         };
-                        return JsonConvert.SerializeObject(result);
+                        return new MesserWebResponse(MesserWebResponse.RC_OK, JsonConvert.SerializeObject(result), request);
+                    }
+                case MesserSmashWeb.LAUNCHER_LOGIN: {
+                        var items = toTable(rawData);
+                        string userName = items[MesserSmashWeb.USER_NAME].ToString();
+                        string password = items[MesserSmashWeb.LAUNCHER_PASSWORD].ToString();
+                        ServerModel.UserName = userName;
+
+                        if (!_db.isValidLogin(userName, password))
+                            return new MesserWebResponse(MesserWebResponse.RC_GENERAL_ERROR, "", request);
+
+                        var user = _db.getUser(userName);
+                        user.ActiveToken = Guid.NewGuid().ToString();
+
+                        var result = new Dictionary<string, object> {
+                            {MesserSmashWeb.USER_ID, user.UserId},
+                            {MesserSmashWeb.VERIFIED_LOGIN_SESSION, user.ActiveToken}
+                        };
+                        return new MesserWebResponse(MesserWebResponse.RC_OK, JsonConvert.SerializeObject(result), request);
+                    }
+                case MesserSmashWeb.LAUNCHER_CREATE_USER: {
+                        var items = toTable(rawData);
+                        string userName = items[MesserSmashWeb.USER_NAME].ToString();
+                        string password = items[MesserSmashWeb.LAUNCHER_PASSWORD].ToString();
+
+                        var user = _db.createUser(userName, password);
+                        ServerModel.UserName = userName;
+
+                        var result = new Dictionary<string, object> {
+                            {MesserSmashWeb.USER_ID, user.UserId},
+                            {MesserSmashWeb.VERIFIED_LOGIN_SESSION, user.ActiveToken}
+                        };
+                        return new MesserWebResponse(MesserWebResponse.RC_OK, JsonConvert.SerializeObject(result), request);
+                    }
+                case MesserSmashWeb.LAUNCHER_QUERY_VERSION: {
+                        var items = toTable(rawData);
+                        var clientVersion = items[MesserSmashWeb.GAME_VERSION].ToString();
+                        var latestVersion = ServerModel.LatestGameVersion;
+                        var latestUrl = ServerModel.LatestGameVersionUrl;
+
+                        var result = new Dictionary<string, object> {
+                            {MesserSmashWeb.GAME_VERSION, latestVersion},
+                            {MesserSmashWeb.GAME_VERSION_LATEST_URL, latestUrl}
+                        };
+                        return new MesserWebResponse(MesserWebResponse.RC_OK, JsonConvert.SerializeObject(result), request);
                     }
                 default: {
                         Logger.error("Unhandled request: {0}", request);
@@ -161,8 +210,8 @@ namespace MesserSmashWebServer {
                     }
                     break;
             }
-            
-            return "status=666";
+
+            return MesserWebResponse.InvalidResponse(request);
         }
 
         private static uint findRoundForLevel(uint level) {

@@ -21,7 +21,7 @@
             <PasswordBox Grid.Row="1" Grid.Column="1" Name="password"  VerticalAlignment="Center" LostFocus="password_lostFocus" PasswordChanged="pwChanged" PreviewKeyDown="onPreviewKey" Margin="2" />
         </Grid>
         <DockPanel DockPanel.Dock="Bottom">
-            <Button DockPanel.Dock="Left"  MaxHeight="23" Width="70" Click="createUser_click" Margin="10,0,0,0">CreateUser</Button>
+            <Button DockPanel.Dock="Left"  MaxHeight="30" Width="100" Click="createUser_click" Margin="10,0,0,0">CreateUser</Button>
             <Button DockPanel.Dock="Right" MaxHeight="30" Width="100" Click="Button_Click" IsDefault="True">Login</Button>
         </DockPanel>
     </DockPanel>

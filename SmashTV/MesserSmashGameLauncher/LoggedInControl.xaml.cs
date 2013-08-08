@@ -19,14 +19,36 @@ namespace MesserSmashGameLauncher {
     public partial class LogoutControl : UserControl {
         public delegate void VoidDelegate();
         public event VoidDelegate LogoutClicked;
+        public event VoidDelegate PlayClicked;
 
         public LogoutControl() {
             InitializeComponent();
+            ContentRoot.DataContext = this;
+            GameUptoDate = false;
         }
+
+        public static readonly DependencyProperty UserNameProperty = DependencyProperty.Register("UserName", typeof(string), typeof(LogoutControl), new PropertyMetadata("messer_@hotmail.com"));
 
         private void Button_Click(object sender, RoutedEventArgs e) {
             if (LogoutClicked != null) {
                 LogoutClicked.Invoke();
+            }
+        }
+
+        public bool GameUptoDate {
+            set {
+                playButton.IsEnabled = value;
+            }
+        }
+
+        public string UserName {
+            get { return (string)GetValue(UserNameProperty); }
+            set { SetValue(UserNameProperty, value); }
+        }
+
+        private void PlayButtonClicked(object sender, RoutedEventArgs e) {
+            if (PlayClicked != null) {
+                PlayClicked.Invoke();
             }
         }
     }

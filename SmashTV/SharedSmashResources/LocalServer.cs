@@ -38,7 +38,7 @@ namespace SharedSmashResources {
             }
         }
 
-        private string postWebRequestAndGetResponse(string url, string request, byte[] data, int timeoutMs = 0, WebHeaderCollection additionalHeaders = null) {
+        private MesserWebResponse postWebRequestAndGetResponse(string url, string request, byte[] data, int timeoutMs = 0, WebHeaderCollection additionalHeaders = null) {
             try {
                 var req = System.Net.WebRequest.Create(url);
                 req.ContentType = "application/x-www-form-urlencoded";
@@ -60,14 +60,15 @@ namespace SharedSmashResources {
                 using (Stream responseStream = response.GetResponseStream())
                 using (StreamReader reader = new StreamReader(responseStream)) {
                     // Get the stream containing content returned by the server.
-                    var rc = req.Headers["rc"];
+                    var rc = int.Parse(response.Headers["rc"]);
                     var s = reader.ReadToEnd();
-                    return s;
+                    return new MesserWebResponse(rc, s, request);
                 }
             } catch (System.Exception ex) {
                 Logger.error("Error communicating with server: {0}", ex.ToString());
             }
-            return "";
+
+            return MesserWebResponse.TimeoutResponse(request);
         }
 
         private byte[] GetBytes(string str) {
@@ -76,11 +77,9 @@ namespace SharedSmashResources {
             return bytes;
         }
 
-
         public GameStates handleSaveGame(string data) {
             GameStates status = null;
             status = JsonConvert.DeserializeObject<GameStates>(data);
-            //status = fastJSON.JSON.Instance.FillObject(new GameStates(), data) as GameStates;
             return status;
         }
 
@@ -98,28 +97,41 @@ namespace SharedSmashResources {
 
         public void requestHighscores( Action<int,string> cb, Dictionary<string, object> data) {
             var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.REQUEST_GET_HIGHSCORE_ON_LEVEL, _compression.Zip(JsonConvert.SerializeObject(data)));
-            cb.Invoke(0, response);
-            //var rsp = postWebRequestAndGetResponse()
+            cb.Invoke(response.ReturnCode, response.ServerResponse);
         }
 
         public void requestRoundHighscores(Action<int, string> cb, Dictionary<string, object> data) {
             var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.REQUEST_GET_HIGHSCORE_FOR_ROUND, _compression.Zip(JsonConvert.SerializeObject(data)));
-            cb.Invoke(0, response);
+            cb.Invoke(response.ReturnCode, response.ServerResponse);
         }
 
         public void requestBeginGame(Action<int, string> cb, Dictionary<string, object> data) {
             Logger.info("->requestBeginGame");
             var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.REQUEST_BEGIN_GAME, _compression.Zip(JsonConvert.SerializeObject(data)), 5000);
-            cb.Invoke(0, response);
+            cb.Invoke(response.ReturnCode, response.ServerResponse);
             Logger.info("<-requestBeginGame");
         }
 
         public void requestContinueGame(Action<int, string> cb, Dictionary<string, object> data) {
             Logger.info("->requestBeginGame");
             var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.REQUEST_CONTINUE_GAME, _compression.Zip(JsonConvert.SerializeObject(data)), 5000);
-            cb.Invoke(0, response);
+            cb.Invoke(response.ReturnCode, response.ServerResponse);
             Logger.info("<-requestBeginGame");
         }
 
+        public void launcherLogin(Action<int, string> cb, Dictionary<string, object> data) {
+            var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.LAUNCHER_LOGIN, _compression.Zip(JsonConvert.SerializeObject(data)), 5000);
+            cb.Invoke(response.ReturnCode, response.ServerResponse);
+        }
+
+        public void launcherCreateUser(Action<int, string> cb, Dictionary<string, object> data) {
+            var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.LAUNCHER_CREATE_USER, _compression.Zip(JsonConvert.SerializeObject(data)), 5000);
+            cb.Invoke(response.ReturnCode, response.ServerResponse);
+        }
+
+        public void launcherCheckVersion(Action<int, string> cb, Dictionary<string, object> data) {
+            var response = postWebRequestAndGetResponse(_url, MesserSmashWeb.LAUNCHER_QUERY_VERSION, _compression.Zip(JsonConvert.SerializeObject(data)), 5000);
+            cb.Invoke(response.ReturnCode, response.ServerResponse);
+        }
     }
 }

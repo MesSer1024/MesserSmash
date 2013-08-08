@@ -72,11 +72,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Unrar.cs" />
+    <Compile Include="WpfUtilities.cs" />
     <Page Include="LoginControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LogoutControl.xaml">
+    <Page Include="LoggedInControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,8 +93,8 @@
     <Compile Include="LoginControl.xaml.cs">
       <DependentUpon>LoginControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LogoutControl.xaml.cs">
-      <DependentUpon>LogoutControl.xaml</DependentUpon>
+    <Compile Include="LoggedInControl.xaml.cs">
+      <DependentUpon>LoggedInControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -100,6 +102,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -144,6 +147,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharedSmashResources\SharedSmashResources.csproj">
+      <Project>{49F58CBC-B8A3-4FA7-B9DA-D6105BB1F217}</Project>
+      <Name>SharedSmashResources</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

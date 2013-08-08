@@ -5,6 +5,8 @@ using System.Text;
 
 namespace MesserSmashWebServer {
     static class ServerModel {
+        public static string LatestGameVersion { get; set; }
+        public static string LatestGameVersionUrl { get; set; }
         public static string UserName { get; set; }
     }
 }

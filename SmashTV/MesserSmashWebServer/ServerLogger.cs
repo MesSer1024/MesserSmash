@@ -5,27 +5,21 @@ using System.Text;
 using System.IO;
 
 namespace MesserSmashWebServer {
-    internal class ServerDb {
-        private List<GameEntry> _savedStates;            
-        private string fileName = "./data/ServerDb.txt";
+    internal class ServerLogger {
+        private List<GameEntry> _savedStates;
+        private string fileName = "./data/ServerLogger.txt";
         private StreamWriter _appendStream;
 
-        public void init()
-        {
-            var file = new FileInfo("./data/ServerDb.txt");
-            if (!file.Directory.Exists)
-            {
+        public void init() {
+            var file = new FileInfo(fileName);
+            if (!file.Directory.Exists) {
                 file.Directory.Create();
             }
-            _appendStream = new StreamWriter(String.Format("./data/{0}_ServerDb.txt", DateTime.Now.Ticks), true);
+            _appendStream = new StreamWriter(String.Format("./data/{0}_ServerLogger.txt", DateTime.Now.Ticks), true);
             _savedStates = new List<GameEntry>();
-            var fi = new FileInfo(fileName);
-            if (fi.Exists)
-            {
-                using (StreamReader sr = new StreamReader(fileName))
-                {
-                    while (!sr.EndOfStream)
-                    {
+            if (file.Exists) {
+                using (StreamReader sr = new StreamReader(fileName)) {
+                    while (!sr.EndOfStream) {
                         var entry = GameEntry.FromString(sr.ReadLine());
                         _savedStates.Add(entry);
                     }

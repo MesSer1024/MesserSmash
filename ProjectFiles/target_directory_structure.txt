@@ -1,0 +1,9 @@
+-- Launcher should contain/require xnaredist
+-- Launcher should notify if .net is not installed
+
+arbitary folder similar to d:\games\smashTV\ [root]
+
+.. MesserSmashLauncher.exe
+.. gamedata/all_dll_files
+.. gamedata/Content/all_content_files
+.. gamedata/MesserSmash.exe

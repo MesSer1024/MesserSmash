@@ -52,6 +52,7 @@
     <Compile Include="MesserRandom.cs" />
     <Compile Include="GameStates.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="MesserWebResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MesserSmashWeb.cs" />
   </ItemGroup>

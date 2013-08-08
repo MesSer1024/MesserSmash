@@ -11,7 +11,8 @@ using SharedSmashResources;
 namespace MesserSmashWebServer {
     class MesserSmashWebServer {
         private readonly HttpListener _listener = new HttpListener();
-        private readonly Func<string, string, string> _responderMethod;
+        public delegate MesserWebResponse WebDelegate(string request, string rawData);
+        private readonly WebDelegate _responderMethod;
         private string _url;
         private LocalServer _server;
 
@@ -20,7 +21,7 @@ namespace MesserSmashWebServer {
             set { _server = value; }
         }
 
-        public MesserSmashWebServer(string[] prefixes, Func<string, string, string> method) {
+        public MesserSmashWebServer(WebDelegate method, params string[] prefixes) {
             if (!HttpListener.IsSupported)
                 throw new NotSupportedException(
                     "Needs Windows XP SP2, Server 2003 or later.");
@@ -42,9 +43,6 @@ namespace MesserSmashWebServer {
             _responderMethod = method;
             _listener.Start();
         }
-
-        public MesserSmashWebServer(Func<string, string, string> method, params string[] prefixes)
-            : this(prefixes, method) { }
 
         public void Run() {
             ThreadPool.QueueUserWorkItem((o) => {
@@ -75,7 +73,9 @@ namespace MesserSmashWebServer {
                                             body.Read(data, 0, data.Length);
                                         };
                                         var rawData = System.Text.ASCIIEncoding.ASCII.GetString(data);
-                                        responseString = _responderMethod(request, rawData);
+                                        var foo = _responderMethod(request, rawData);
+                                        responseString = foo.ServerResponse;
+                                        rc = foo.ReturnCode.ToString();
                                         if (request == MesserSmashWeb.REQUEST_END_GAME)
                                         {
                                             Logger.debug("Incoming: request={1}, data=(stripped)", rawData, request);
@@ -102,7 +102,9 @@ namespace MesserSmashWebServer {
                                             body.Read(data, 0, data.Length);
                                         };
                                         var rawData = _server.unparse(data);
-                                        responseString = _responderMethod(request, rawData);
+                                        var foo = _responderMethod(request, rawData);
+                                        responseString = foo.ServerResponse;
+                                        rc = foo.ReturnCode.ToString();
                                         if (request == MesserSmashWeb.REQUEST_END_GAME)
                                         {
                                             Logger.debug("Incoming: request={1}, data=(stripped)", rawData, request);
