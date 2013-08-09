@@ -12,10 +12,6 @@
             <Button Width="100" Height="25"  Click="Button_Click">Logout</Button>
         </StackPanel>
         <Button Name="playButton" DockPanel.Dock="Right" Content="PLAY!" Width="125" Margin="10" Click="PlayButtonClicked"/>
-        <StackPanel DockPanel.Dock="Left" >
-            <ProgressBar Name="progressbar"  Width="300" Height="20" Value="45" Background="#FF5C1C1C" />
-            <Label Name="status"  HorizontalAlignment="Center" Content="STATUS: Updating game files" />
-            <Label Name="version" HorizontalAlignment="Center" Content="Version: 0.0003" />
-        </StackPanel>
+        <Label />
     </DockPanel>
 </UserControl>

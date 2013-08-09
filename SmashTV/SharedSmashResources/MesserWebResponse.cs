@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 
 namespace SharedSmashResources {
+    public enum ReturnCodes {
+        OK = 0,
+        TIMEOUT = -1,
+        GENERAL_ERROR = -666,
+        USER_EXISTS = 1,
+    }
+
     public class MesserWebResponse {
         //return codes
-        public const int RC_OK = 0;
-        public const int RC_TIMEOUT = -1;
-        public const int RC_GENERAL_ERROR = -666;
 
         //
         public int ReturnCode { get; private set; }
@@ -21,12 +25,15 @@ namespace SharedSmashResources {
             ClientRequest = request;
         }
 
-        public static MesserWebResponse TimeoutResponse(string request) {
-            return new MesserWebResponse(RC_TIMEOUT, "", request);
+        public MesserWebResponse(ReturnCodes rc, string data, string request) : this((int)rc, data, request) {
         }
 
-        public static MesserWebResponse InvalidResponse(string request) {
-            return new MesserWebResponse(RC_GENERAL_ERROR, "", request);
+        public static MesserWebResponse TimeoutResponse(string request) {
+            return new MesserWebResponse(ReturnCodes.TIMEOUT, "", request);
+        }
+
+        public static MesserWebResponse GeneralError(string request) {
+            return new MesserWebResponse(ReturnCodes.GENERAL_ERROR, "", request);
         }
     }
 }

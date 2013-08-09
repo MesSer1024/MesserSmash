@@ -68,7 +68,6 @@ namespace MesserSmashGameLauncher {
             if (_logoutControl == null) {
                 _logoutControl = new LogoutControl();
                 WpfUtilities.cloneControlProperties(_logoutControl, loginControl);
-                _logoutControl.HorizontalAlignment = HorizontalAlignment.Left;
                 _logoutControl.LogoutClicked += new LogoutControl.VoidDelegate(_logoutControl_LogoutClicked);
                 _logoutControl.PlayClicked += new LogoutControl.VoidDelegate(_logoutControl_PlayClicked);
             }
@@ -78,17 +77,17 @@ namespace MesserSmashGameLauncher {
         }
 
         public void rendezvousLoginAndUpdated() {
-            if (_logoutControl == null)
-                return;
             bool value = _loggedIn && _gameUpdated;
             this.Dispatcher.Invoke((Action)(() => {
-                _logoutControl.GameUptoDate = value;
+                if (_logoutControl != null) {
+                    _logoutControl.GameUptoDate = value;
+                }
                 if (value) {
-                    _logoutControl.progressbar.Value = 100;
-                    _logoutControl.status.Content = "STATUS: Ready to play...";
-                    _logoutControl.version.Content = String.Format("GameVersion: {0}", _latestVersion);
+                    progressControl.progressbar.Value = 100;
+                    progressControl.status.Content = "STATUS: Ready to play...";
+                    progressControl.version.Content = String.Format("Installed Version: {0}", _latestVersion);
                 } else {
-                    _logoutControl.version.Content = String.Format("Target version: {0}", _latestVersion);
+                    progressControl.version.Content = String.Format("Installed Version: {1} | Target version: {0}", _latestVersion, defaultIfEmptyOrNull(Model.ClientVersion, "N/A"));
                 }
             }));
         }
@@ -96,11 +95,18 @@ namespace MesserSmashGameLauncher {
         private void doCheckGameVersion() {
             var server = new LocalServer(Model.ServerIp);
             var dir = new Dictionary<string, object> {
-                {MesserSmashWeb.GAME_VERSION, Model.ClientVersion}
+                {MesserSmashWeb.GAME_VERSION, Model.ClientVersion ?? ""}
             };
 
             _gameUpdated = false;
+            progressControl.progressbar.Value = 0;
+            progressControl.status.Content = "STATUS: Checking Game Version!";
+            progressControl.version.Content = "Version: " + defaultIfEmptyOrNull(Model.ClientVersion, "N/A");
             server.launcherCheckVersion(onVersionCallback, dir);
+        }
+
+        private string defaultIfEmptyOrNull(string s, string def) {
+            return s != null && s.Length > 0 ? s : def;
         }
 
         private void doUpdateGame() {
@@ -111,6 +117,7 @@ namespace MesserSmashGameLauncher {
         }
 
         public void downloadNewestVersion(Uri url) {
+            setStatus("Downloading new version...");
             var s = "./patches" + url.AbsoluteUri.Substring(url.AbsoluteUri.LastIndexOf("/"));
             WebClient wc = new WebClient();
             wc.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(wc_DownloadFileCompleted);
@@ -123,21 +130,32 @@ namespace MesserSmashGameLauncher {
         }
 
         void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e) {
-            if (_logoutControl != null && _logoutControl.IsVisible) {
+            if (progressControl != null && progressControl.IsVisible) {
                 var value = e.BytesReceived / (float)e.TotalBytesToReceive * 95;
 
                 this.Dispatcher.Invoke((Action)(() => {
-                    _logoutControl.progressbar.Value = value;
-                    _logoutControl.status.Content = "STATUS: Downloading new version...";
-                    _logoutControl.version.Content = String.Format("Target version: {0}", _latestVersion);
+                    progressControl.progressbar.Value = value;
+                    setStatus("Downloading new version...");
+                    progressControl.version.Content = String.Format("Installed Version: {1} | Target version: {0}", _latestVersion, defaultIfEmptyOrNull(Model.ClientVersion, "N/A"));
                 }));
             }
         }
 
+        private void setStatus(string s) {
+            this.Dispatcher.Invoke((Action)(() => {
+                progressControl.status.Content = String.Format("STATUS: {0}", s);
+            }));
+        }
+
         void wc_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
+
             var success = e.Cancelled == false && e.Error == null;
             if (success) {
+                setStatus("Installing Files...");
                 extractFile(_targetfile, TargetDirectory);
+            } else {
+                setStatus(String.Format("[{0}] Error downloading file...", _url));
+                MessageBox.Show(String.Format("Failed to download file ({1}): {0}", e.Error, _url));
             }
         }
 
@@ -164,32 +182,39 @@ namespace MesserSmashGameLauncher {
                 _gameUpdated = true;
                 Model.ClientVersion = _latestVersion;
                 Model.save();
-                this.Dispatcher.Invoke((Action)(() => {
-                    rendezvousLoginAndUpdated();
-                }));
+                progressControl.status.Content = "STATUS: Newest Version Installed...";
+                rendezvousLoginAndUpdated();
             }
         }
 
         private void unrar_ExtractionProgress(object sender, ExtractionProgressEventArgs e) {
             var value = 95 + e.PercentComplete / 100 * (100-95);
             this.Dispatcher.Invoke((Action)(() => {
-                _logoutControl.progressbar.Value = value;
-                _logoutControl.status.Content = "STATUS: Installing...";
+                progressControl.progressbar.Value = value;
+                progressControl.status.Content = "STATUS: Installing...";
             }));
         }
 
         private void onVersionCallback(int rc, string data) {
-            Model.Online = rc != MesserWebResponse.RC_TIMEOUT;
-            if (rc == MesserWebResponse.RC_OK) {
-                try {
-                    var tbl = MesserSmashWeb.toObject(data);
-                    _latestVersion = tbl[MesserSmashWeb.GAME_VERSION].ToString();
-                    _gameUpdated = _latestVersion == Model.ClientVersion;
-                    _url = tbl[MesserSmashWeb.GAME_VERSION_LATEST_URL].ToString();
-                } catch (System.Exception ex) {
-                    MessageBox.Show(String.Format("Error parsing login request data={0}", ex.ToString()));
-                }
-            } else {
+            switch ((ReturnCodes)rc) {
+                case ReturnCodes.OK:
+                    Model.Online = true;
+                    try {
+                        var tbl = MesserSmashWeb.toObject(data);
+                        _latestVersion = tbl[MesserSmashWeb.GAME_VERSION].ToString();
+                        _gameUpdated = _latestVersion == Model.ClientVersion;
+                        _url = tbl[MesserSmashWeb.GAME_VERSION_LATEST_URL].ToString();
+                        if(_gameUpdated)  {
+                            setStatus("No Update Needed");
+                        }
+                    } catch (System.Exception ex) {
+                        MessageBox.Show(String.Format("Error parsing login request data={0}", ex.ToString()));
+                    }
+                    break;
+                case ReturnCodes.TIMEOUT:
+                    Model.Online = false;
+                    break;
+
             }
 
             rendezvousLoginAndUpdated();
@@ -220,32 +245,37 @@ namespace MesserSmashGameLauncher {
         }
 
         private void onLoginCallback(int rc, string data) {
-            if (Model.Online == false) {
+            if (Model.Online == false && rc != (int)ReturnCodes.TIMEOUT) {
                 Model.Online = true;
                 if (!_gameUpdated) {
                     doCheckGameVersion();
                 }
             }
-            if (rc == MesserWebResponse.RC_OK) {
-                try {
-                    var tbl = MesserSmashWeb.toObject(data);
-                    var userid = tbl[MesserSmashWeb.USER_ID].ToString();
-                    var sessionid = tbl[MesserSmashWeb.VERIFIED_LOGIN_SESSION].ToString();
-                    Model.UserId = userid;
-                    Model.Token = sessionid;
-                    Model.save();
-                    _loggedIn = true;
-                } catch (System.Exception ex) {
-                    MessageBox.Show(String.Format("Error parsing login request data={0}", ex.ToString()));
-                }
-            } else {
-                if (rc == MesserWebResponse.RC_TIMEOUT) {
+
+            switch ((ReturnCodes)rc) {
+                case ReturnCodes.OK:
+                    try {
+                        var tbl = MesserSmashWeb.toObject(data);
+                        var userid = tbl[MesserSmashWeb.USER_ID].ToString();
+                        var sessionid = tbl[MesserSmashWeb.VERIFIED_LOGIN_SESSION].ToString();
+                        Model.UserId = userid;
+                        Model.Token = sessionid;
+                        Model.save();
+                        _loggedIn = true;
+                    } catch (System.Exception ex) {
+                        MessageBox.Show(String.Format("Error parsing login request data={0}", ex.ToString()));
+                    }
+                    break;
+                case ReturnCodes.TIMEOUT:
                     Model.Online = false;
                     MessageBox.Show(String.Format("[Error:{0}] No server response, check internet connection", rc));
-                } else {
+                    break;
+                case ReturnCodes.USER_EXISTS:
+                    MessageBox.Show("User Already Exists!");
+                    break;
+                default:
                     MessageBox.Show(String.Format("[Error:{0}] Invalid username or password", rc));
-                }
-                //invalidData();
+                    break;
             }
 
             if (isLoggedIn()) {
@@ -267,9 +297,6 @@ namespace MesserSmashGameLauncher {
             var fi = new FileInfo("./gamedata/messersmash.exe");
             if (fi.Exists) {
                 var psi = new ProcessStartInfo();
-                var dir = new StringDictionary();
-                //dir.Add("")
-                dir = psi.EnvironmentVariables;
                 psi.EnvironmentVariables[MesserSmashWeb.ENVIRONMENT_LAUNCHED_FROM_LAUNCHER] = true.ToString();
                 psi.EnvironmentVariables[MesserSmashWeb.USER_NAME] = Model.UserName;
                 psi.EnvironmentVariables[MesserSmashWeb.USER_ID] = Model.UserId;

@@ -11,3 +11,8 @@
 /SmashTV/MesserSmashGameLauncher/bin/Debug/MesserSmashGameLauncher.vshost.exe
 /SmashTV/MesserSmashGameLauncher/bin/Debug/SharedSmashResources.pdb
 /SmashTV/MesserSmashGameLauncher/bin/Debug/MesserSmashGameLauncher.pdb
+/SmashTV/MesserSmashGameLauncher/bin/Release
+/SmashTV/MesserSmashWebServer/bin/Release
+/SmashTV/MesserSmashWebServer/obj/x86/Release
+/SmashTV/SharedSmashResources/bin/Release
+/SmashTV/SharedSmashResources/obj/Release

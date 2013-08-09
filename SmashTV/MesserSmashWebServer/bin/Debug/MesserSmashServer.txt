@@ -7471,3 +7471,24 @@ ticks=635115941270212687|username=Messer8dev|level=1|userid=|gameid=b141e3a2-313
 ticks=635115957284548655|username=Messer8dev|level=1|userid=|gameid=04408144-8ef1-4176-9173-974c48519696|kills=24|score=592|version=0.0.8a|sessionid=36a7751d-e880-43de-be3f-a15a5ecc6587|file=635115957284548655_save.mer|roundid=1
 
 [info|635116024082199262] [2013-08-08T23:46:48]Handled request=getHighscoreForRound in 21,0012ms user:
+[debug|635116609158706980] Incoming: request=version_check, data={"game_version":""}
+[debug|635116609158706980] Outgoing: request=version_check, data={"game_version":"0.0.7","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prepreprealpha_00007.rar"}
+[info|635116609158816986] [2013-08-09T16:01:55]Handled request=version_check in 45,0026ms user:
+[debug|635116609736900051] Incoming: request=version_check, data={"game_version":""}
+[debug|635116609736900051] Outgoing: request=version_check, data={"game_version":"0.0.7","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prepreprealpha_00007.rar"}
+[info|635116609737000057] [2013-08-09T16:02:53]Handled request=version_check in 40,0023ms user:
+[debug|635116615132468660] Incoming: request=version_check, data={"game_version":""}
+[debug|635116615132468660] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/foobar.rar"}
+[info|635116615132598667] [2013-08-09T16:11:53]Handled request=version_check in 43,0025ms user:
+[debug|635116616566360674] Incoming: request=version_check, data={"game_version":""}
+[debug|635116616566360674] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/foobar.rar"}
+[info|635116616566370674] [2013-08-09T16:14:16]Handled request=version_check in 0ms user:
+[debug|635116616719069408] Incoming: request=version_check, data={"game_version":""}
+[debug|635116616719069408] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/foobar.rar"}
+[info|635116616719169414] [2013-08-09T16:14:31]Handled request=version_check in 41,0023ms user:
+[debug|635116620321935480] Incoming: request=version_check, data={"game_version":""}
+[debug|635116620321935480] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/foobar.rar"}
+[info|635116620322055487] [2013-08-09T16:20:32]Handled request=version_check in 42,0024ms user:
+[debug|635116723703238553] Incoming: request=version_check, data={"game_version":""}
+[debug|635116723703238553] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/foobar.rar"}
+[info|635116723703348559] [2013-08-09T19:12:50]Handled request=version_check in 35,002ms user:

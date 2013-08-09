@@ -47,7 +47,7 @@ namespace MesserSmashWebServer {
         }
 
         public MesserSmashUser getUser(string userName) {
-            return _db[userName];
+            return _db.ContainsKey(userName) ? _db[userName] : null;
         }
 
         public MesserSmashUser createUser(string userName, string password) {
