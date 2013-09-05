@@ -7492,3 +7492,62 @@ ticks=635115957284548655|username=Messer8dev|level=1|userid=|gameid=04408144-8ef
 [debug|635116723703238553] Incoming: request=version_check, data={"game_version":""}
 [debug|635116723703238553] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/foobar.rar"}
 [info|635116723703348559] [2013-08-09T19:12:50]Handled request=version_check in 35,002ms user:
+[debug|635140181916418190] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140181916418190] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140181916518195] [2013-09-05T22:49:51]Handled request=version_check in 45,0026ms user:
+[debug|635140182091528205] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140182091528205] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140182091528205] [2013-09-05T22:50:09]Handled request=version_check in 1ms user:
+[debug|635140182458619202] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140182458619202] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140182458619202] [2013-09-05T22:50:45]Handled request=version_check in 0ms user:
+[debug|635140187379970687] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140187379970687] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140187379970687] [2013-09-05T22:58:57]Handled request=version_check in 0ms user:
+[debug|635140187463995493] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140187463995493] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140187463995493] [2013-09-05T22:59:06]Handled request=version_check in 0ms user:
+[debug|635140187828006313] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140187828006313] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140187828006313] [2013-09-05T22:59:42]Handled request=version_check in 0ms user:
+[debug|635140188739348439] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140188739348439] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140188739348439] [2013-09-05T23:01:13]Handled request=version_check in 0ms user:
+[debug|635140189607738108] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140189607738108] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140189607738108] [2013-09-05T23:02:40]Handled request=version_check in 0ms user:
+[debug|635140193553953819] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140193553953819] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140193553953819] [2013-09-05T23:09:15]Handled request=version_check in 0ms user:
+[debug|635140196178763949] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140196178763949] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140196178763949] [2013-09-05T23:13:37]Handled request=version_check in 0ms user:
+[debug|635140196478311082] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140196478311082] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140196478311082] [2013-09-05T23:14:07]Handled request=version_check in 0ms user:
+[debug|635140197360951566] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140197360951566] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140197360951566] [2013-09-05T23:15:36]Handled request=version_check in 1ms user:
+[debug|635140197601995353] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140197602105360] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140197602105360] [2013-09-05T23:16:00]Handled request=version_check in 11,0007ms user:
+[debug|635140200378494160] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140200378494160] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140200378504160] [2013-09-05T23:20:37]Handled request=version_check in 1ms user:
+[debug|635140200631188613] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140200631188613] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140200631218615] [2013-09-05T23:21:03]Handled request=version_check in 5,0003ms user:
+[debug|635140205606913208] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140205606913208] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140205606923209] [2013-09-05T23:29:20]Handled request=version_check in 0ms user:
+[debug|635140206281021765] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140206281021765] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140206281031766] [2013-09-05T23:30:28]Handled request=version_check in 1,0001ms user:
+[debug|635140206743098194] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140206743098194] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140206743098194] [2013-09-05T23:31:14]Handled request=version_check in 0ms user:
+[debug|635140210632530657] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[debug|635140210632530657] Outgoing: request=version_check, data={"game_version":"0.0.8a","file_url":"http://pawncraft.co.uk:8800/files/messerSMASH-prealpha_008a.rar","xna_redist_url":"http://pawncraft.co.uk:8800/files/_xnafx40_redist.msi"}
+[info|635140210632530657] [2013-09-05T23:37:43]Handled request=version_check in 1ms user:
+[debug|635140211392274112] Incoming: request=version_check, data={"game_version":"0.0.8a"}
+[de

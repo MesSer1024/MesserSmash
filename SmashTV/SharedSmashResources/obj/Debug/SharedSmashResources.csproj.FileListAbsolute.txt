@@ -15,6 +15,8 @@ E:\projects_local\SmashTV\SmashTV\SharedSmashResources\obj\Debug\SharedSmashReso
 E:\projects_local\SmashTV\SmashTV\SharedSmashResources\obj\Debug\SharedSmashResources.pdb
 D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\bin\Debug\SharedSmashResources.dll
 D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\bin\Debug\SharedSmashResources.pdb
-D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\obj\Debug\ResolveAssemblyReference.cache
 D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\obj\Debug\SharedSmashResources.dll
 D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\obj\Debug\SharedSmashResources.pdb
+D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\bin\Debug\Microsoft.Xna.Framework.dll
+D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\bin\Debug\Microsoft.Xna.Framework.xml
+D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\obj\Debug\SharedSmashResources.csprojResolveAssemblyReference.cache

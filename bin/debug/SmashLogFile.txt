@@ -1,0 +1,352 @@
+[info|635140221670611999] -------------------------------------------------------------------------
+[info|635140221670611999] -------------------------------------------------------------------------
+[info|635140221670611999] Game started at 635140221670611999
+[info|635140221670782009] ->addObserver MesserSmash.SmashTV_main
+[info|635140221670782009] <-addObserver MesserSmash.SmashTV_main
+[info|635140221675822297] ->addObserver MesserSmash.Modules.SoundManager
+[info|635140221675822297] <-addObserver MesserSmash.Modules.SoundManager
+[info|635140221675862300] ->addObserver MesserSmash.SmashTVSystem
+[info|635140221675862300] <-addObserver MesserSmash.SmashTVSystem
+[info|635140221675902302] EnvironmentVariable launcher=
+[info|635140221675932304] ->handleCommand ReloadDatabaseCommand
+[info|635140221675942304] <--handleCommand ReloadDatabaseCommand
+[info|635140221675942304] ->handleCommand LoadConfigFileCommand
+[info|635140221676162317] prepareNewLevel
+[info|635140221676352328] Utils.initialize seed=-1617628344
+[info|635140221676412331] -->CreateLootTable
+[info|635140221676432332] <--CreateLootTable randomStatus:MesserRandom seed=-1617628344 totalRequests=12
+[info|635140221676482335] showLoadingScreen
+[info|635140221676482335] <--handleCommand LoadConfigFileCommand
+[info|635140221677012365] ->handleCommand ReloadDatabaseCommand
+[info|635140221677012365] <--handleCommand ReloadDatabaseCommand
+[info|635140221677012365] ->handleCommand RequestBeginNewGameCommand
+[info|635140221677012365] <--handleCommand RequestBeginNewGameCommand
+[info|635140221678222435] ->requestBeginGame
+[info|635140221683742750] ->handleCommand BeginReplayQueueCommand
+[info|635140221683752751] <--handleCommand BeginReplayQueueCommand
+[info|635140221683912760] ->handleCommand RestartGameCommand
+[info|635140221683912760] onRestartGame
+[info|635140221683912760] Level=-10
+[info|635140221683912760] prepareNewLevel
+[info|635140221683942762] Utils.initialize seed=-1610037910
+[info|635140221686412903] prepareNewLevel replay: D:\_programmering2\SmashTV\bin\debug\games\downloaded_games\635140124641258404_save.mer -- version 0.0.8b
+[info|635140221686422904] Utils.initialize seed=-568015372
+[info|635140221686432904] -->CreateLootTable
+[info|635140221686432904] <--CreateLootTable randomStatus:MesserRandom seed=-568015372 totalRequests=13
+[info|635140221686432904] showLoadingScreen
+[info|635140221686432904] <--handleCommand RestartGameCommand
+[info|635140221686462906] ->handleCommand ReloadDatabaseCommand
+[info|635140221686462906] <--handleCommand ReloadDatabaseCommand
+[error|635140221691963221] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 56
+[info|635140221691983222] RequestSessionCommand cb
+[info|635140221691983222] ctor() UpdateGameCredentialsCommand
+[info|635140221691993222] Executing UpdateGameCredentialsCommand
+[info|635140221691993222] <-requestBeginGame
+[info|635140221692083227] ->handleCommand UpdateGameCredentialsCommand
+[info|635140221692083227] <--handleCommand UpdateGameCredentialsCommand
+[info|635140222052203825] -------------------------------------------------------------------------
+[info|635140222052203825] -------------------------------------------------------------------------
+[info|635140222052203825] Game started at 635140222052203825
+[info|635140222052383835] ->addObserver MesserSmash.SmashTV_main
+[info|635140222052383835] <-addObserver MesserSmash.SmashTV_main
+[info|635140222054043930] ->addObserver MesserSmash.Modules.SoundManager
+[info|635140222054043930] <-addObserver MesserSmash.Modules.SoundManager
+[info|635140222054083933] ->addObserver MesserSmash.SmashTVSystem
+[info|635140222054083933] <-addObserver MesserSmash.SmashTVSystem
+[info|635140222054103934] EnvironmentVariable launcher=
+[info|635140222054153937] ->handleCommand ReloadDatabaseCommand
+[info|635140222054163937] <--handleCommand ReloadDatabaseCommand
+[info|635140222054163937] ->handleCommand LoadConfigFileCommand
+[info|635140222054453954] prepareNewLevel
+[info|635140222054593962] Utils.initialize seed=-1239386710
+[info|635140222054923981] ->requestBeginGame
+[info|635140222054983984] -->CreateLootTable
+[info|635140222055003985] <--CreateLootTable randomStatus:MesserRandom seed=-1239386710 totalRequests=12
+[info|635140222055073989] showLoadingScreen
+[info|635140222055073989] <--handleCommand LoadConfigFileCommand
+[info|635140222056004043] ->handleCommand ReloadDatabaseCommand
+[info|635140222056004043] <--handleCommand ReloadDatabaseCommand
+[info|635140222056004043] ->handleCommand RequestBeginNewGameCommand
+[info|635140222056004043] <--handleCommand RequestBeginNewGameCommand
+[error|635140222070064847] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 56
+[info|635140222070074847] RequestSessionCommand cb
+[info|635140222070074847] ctor() UpdateGameCredentialsCommand
+[info|635140222070084848] Executing UpdateGameCredentialsCommand
+[info|635140222070084848] <-requestBeginGame
+[info|635140222070084848] ->handleCommand UpdateGameCredentialsCommand
+[info|635140222070094849] <--handleCommand UpdateGameCredentialsCommand
+[info|635140222678179629] ->handleCommand BeginReplayQueueCommand
+[info|635140222678179629] <--handleCommand BeginReplayQueueCommand
+[info|635140222695920644] ->handleCommand RestartGameCommand
+[info|635140222695920644] onRestartGame
+[info|635140222695920644] Level=-10
+[info|635140222695920644] prepareNewLevel
+[info|635140222695970647] Utils.initialize seed=-598010025
+[info|635140222697550737] prepareNewLevel replay: D:\_programmering2\SmashTV\bin\debug\games\downloaded_games\635140124641258404_save.mer -- version 0.0.8b
+[info|635140222697550737] Utils.initialize seed=-568015372
+[info|635140222697550737] -->CreateLootTable
+[info|635140222697550737] <--CreateLootTable randomStatus:MesserRandom seed=-568015372 totalRequests=13
+[info|635140222697550737] showLoadingScreen
+[info|635140222697550737] <--handleCommand RestartGameCommand
+[info|635140222697550737] ->handleCommand RestartGameCommand
+[info|635140222697550737] onRestartGame
+[info|635140222697550737] Level=5
+[info|635140222697550737] prepareNewLevel
+[info|635140223274183718] -------------------------------------------------------------------------
+[info|635140223274193719] -------------------------------------------------------------------------
+[info|635140223274193719] Game started at 635140223274193719
+[info|635140223274343728] ->addObserver MesserSmash.SmashTV_main
+[info|635140223274343728] <-addObserver MesserSmash.SmashTV_main
+[info|635140223275953820] ->addObserver MesserSmash.Modules.SoundManager
+[info|635140223275953820] <-addObserver MesserSmash.Modules.SoundManager
+[info|635140223276003823] ->addObserver MesserSmash.SmashTVSystem
+[info|635140223276003823] <-addObserver MesserSmash.SmashTVSystem
+[info|635140223276023824] EnvironmentVariable launcher=
+[info|635140223276073827] ->handleCommand ReloadDatabaseCommand
+[info|635140223276083827] <--handleCommand ReloadDatabaseCommand
+[info|635140223276083827] ->handleCommand LoadConfigFileCommand
+[info|635140223276393845] prepareNewLevel
+[info|635140223276483850] Utils.initialize seed=-17496822
+[info|635140223276893873] -->CreateLootTable
+[info|635140223276913875] <--CreateLootTable randomStatus:MesserRandom seed=-17496822 totalRequests=12
+[info|635140223276953877] showLoadingScreen
+[info|635140223276953877] <--handleCommand LoadConfigFileCommand
+[info|635140223277153888] ->requestBeginGame
+[info|635140223277843928] ->handleCommand ReloadDatabaseCommand
+[info|635140223277843928] <--handleCommand ReloadDatabaseCommand
+[info|635140223277843928] ->handleCommand RequestBeginNewGameCommand
+[info|635140223277843928] <--handleCommand RequestBeginNewGameCommand
+[error|635140223291034682] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering2\SmashTV\SmashTV\SharedSmashResources\LocalServer.cs:line 56
+[info|635140223291044683] RequestSessionCommand cb
+[info|635140223291044683] ctor() UpdateGameCredentialsCommand
+[info|635140223291054683] Executing UpdateGameCredentialsCommand
+[info|635140223291054683] <-requestBeginGame
+[info|635140223291214693] ->handleCommand UpdateGameCredentialsCommand
+[info|635140223291214693] <--handleCommand UpdateGameCredentialsCommand
+[info|635140223338567401] ->handleCommand BeginReplayQueueCommand
+[info|635140223338567401] <--handleCommand BeginReplayQueueCommand
+[info|635140223338767412] ->handleCommand RestartGameCommand
+[info|635140223338767412] onRestartGame
+[info|635140223338767412] Level=-10
+[info|635140223338767412] prepareNewLevel
+[info|635140223338797414] Utils.initialize seed=44816742
+[info|635140223340277499] prepareNewLevel replay: D:\_programmering2\SmashTV\bin\debug\games\downloaded_games\635140124641258404_save.mer -- version 0.0.8b
+[info|635140223340277499] Utils.initialize seed=-568015372
+[info|635140223340277499] -->CreateLootTable
+[info|635140223340277499] <--CreateLootTable randomStatus:MesserRandom seed=-568015372 totalRequests=13
+[info|635140223340277499] showLoadingScreen
+[info|635140223340277499] <--handleCommand RestartGameCommand
+[info|635140223340487511] ->handleCommand ReloadDatabaseCommand
+[info|635140223340487511] <--handleCommand ReloadDatabaseCommand
+[info|635140223722869382] ->handleCommand RestartGameCommand
+[info|635140223722869382] onRestartGame
+[info|635140223722869382] Level=-10
+[info|635140223722869382] prepareNewLevel
+[info|635140223722899384] Utils.initialize seed=428918712
+[info|635140223723769433] prepareNewLevel replay: D:\_programmering2\SmashTV\bin\debug\games\downloaded_games\635140125588960069_save.mer -- version 0.0.8b
+[info|635140223723769433] Utils.initialize seed=634783424
+[info|635140223723769433] -->CreateLootTable
+[info|635140223723769433] <--CreateLootTable randomStatus:MesserRandom seed=634783424 totalRequests=12
+[info|635140223723769433] showLoadingScreen
+[info|635140223723769433] <--handleCommand RestartGameCommand
+[info|635140223723769433] ->handleCommand ReloadDatabaseCommand
+[info|635140223723769433] <--handleCommand ReloadDatabaseCommand
+[info|635140223786873043] ->handleCommand ClientReadyCommand
+[info|635140223786933046] ->addObserver MesserSmash.Arenas.Level01
+[info|635140223786933046] <-addObserver MesserSmash.Arenas.Level01
+[info|635140223786933046] <--handleCommand ClientReadyCommand
+[info|635140223787373071] ->handleCommand LevelStartedCommand
+[info|635140223787463076] <--handleCommand LevelStartedCommand
+[debug|635140223818074827] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140223826205292] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140223829205464] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140223926701040] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140223931031288] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140223986864481] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140223994034892] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140223997535092] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224001365311] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224003365425] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224005205531] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224007205645] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224008535721] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224011035864] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224012865969] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224015206103] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224015536121] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224015536121] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224017536236] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224019866369] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224021866483] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224024536636] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224025866712] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224035207247] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224037697389] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224039537494] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224041037580] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224044867799] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224046377885] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224049868085] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224051528180] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224053038266] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224054698361] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224056198447] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224057868543] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224058528580] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224060028666] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224061698762] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224063368857] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224064868943] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224065869000] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224067699105] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224073869458] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224075199534] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224078029696] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224091870487] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224095870716] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224096370745] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224097030783] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224098360859] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224099360916] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[info|635140224102201078] ->handleCommand PlayerDiedCommand
+[info|635140224102221079] Player died frames:0, random status: MesserRandom seed=634783424 totalRequests=237
+[info|635140224102221079] <--handleCommand PlayerDiedCommand
+[info|635140224102361087] Last replay frame: status=MesserRandom seed=634783424 totalRequests=237
+[info|635140224169524929] ->handleCommand RestartGameCommand
+[info|635140224169524929] onRestartGame
+[info|635140224169524929] Level=-10
+[info|635140224169524929] prepareNewLevel
+[info|635140224169564931] Utils.initialize seed=875584259
+[info|635140224170034958] prepareNewLevel replay: D:\_programmering2\SmashTV\bin\debug\games\downloaded_games\635140132328015905_save.mer -- version 0.0.8b
+[info|635140224170034958] Utils.initialize seed=-1061536876
+[info|635140224170034958] -->CreateLootTable
+[info|635140224170034958] <--CreateLootTable randomStatus:MesserRandom seed=-1061536876 totalRequests=12
+[info|635140224170034958] showLoadingScreen
+[info|635140224170034958] <--handleCommand RestartGameCommand
+[info|635140224170034958] ->handleCommand ReloadDatabaseCommand
+[info|635140224170034958] <--handleCommand ReloadDatabaseCommand
+[info|635140224206027017] ->handleCommand ClientReadyCommand
+[info|635140224206027017] ->addObserver MesserSmash.Arenas.Level01
+[info|635140224206027017] <-addObserver MesserSmash.Arenas.Level01
+[info|635140224206027017] <--handleCommand ClientReadyCommand
+[info|635140224206197027] ->handleCommand LevelStartedCommand
+[info|635140224206197027] <--handleCommand LevelStartedCommand
+[debug|635140224227858266] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224239858952] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224245529276] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224249199486] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224263860325] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224275530992] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224279191202] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224280031250] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224282361383] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224293692031] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224299192346] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224299522364] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224305862727] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224309362927] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224312363099] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224313193146] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224321693633] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224323693747] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224353365444] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224356025596] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224358705750] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224361695921] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[info|635140224368696321] ->handleCommand PlayerDiedCommand
+[info|635140224368696321] Player died frames:0, random status: MesserRandom seed=-1061536876 totalRequests=129
+[info|635140224368696321] <--handleCommand PlayerDiedCommand
+[info|635140224368856330] Last replay frame: status=MesserRandom seed=-1061536876 totalRequests=129
+[info|635140224430859877] ->handleCommand RestartGameCommand
+[info|635140224430859877] onRestartGame
+[info|635140224430859877] Level=-10
+[info|635140224430859877] prepareNewLevel
+[info|635140224430889878] Utils.initialize seed=1136909206
+[info|635140224431439910] prepareNewLevel replay: D:\_programmering2\SmashTV\bin\debug\games\downloaded_games\635140125588960069_save.mer -- version 0.0.8b
+[info|635140224431439910] Utils.initialize seed=634783424
+[info|635140224431439910] -->CreateLootTable
+[info|635140224431439910] <--CreateLootTable randomStatus:MesserRandom seed=634783424 totalRequests=12
+[info|635140224431439910] showLoadingScreen
+[info|635140224431439910] <--handleCommand RestartGameCommand
+[info|635140224431449910] ->handleCommand ReloadDatabaseCommand
+[info|635140224431449910] <--handleCommand ReloadDatabaseCommand
+[info|635140224459691526] ->handleCommand RestartGameCommand
+[info|635140224459691526] onRestartGame
+[info|635140224459691526] Level=-10
+[info|635140224459691526] prepareNewLevel
+[info|635140224459751529] Utils.initialize seed=1165770857
+[info|635140224460101549] prepareNewLevel replay: D:\_programmering2\SmashTV\bin\debug\games\downloaded_games\635140132328015905_save.mer -- version 0.0.8b
+[info|635140224460101549] Utils.initialize seed=-1061536876
+[info|635140224460101549] -->CreateLootTable
+[info|635140224460101549] <--CreateLootTable randomStatus:MesserRandom seed=-1061536876 totalRequests=12
+[info|635140224460101549] showLoadingScreen
+[info|635140224460101549] <--handleCommand RestartGameCommand
+[info|635140224460101549] ->handleCommand ReloadDatabaseCommand
+[info|635140224460101549] <--handleCommand ReloadDatabaseCommand
+[info|635140224496023604] ->handleCommand ClientReadyCommand
+[info|635140224496023604] ->addObserver MesserSmash.Arenas.Level01
+[info|635140224496023604] <-addObserver MesserSmash.Arenas.Level01
+[info|635140224496023604] <--handleCommand ClientReadyCommand
+[info|635140224496183613] ->handleCommand LevelStartedCommand
+[info|635140224496183613] <--handleCommand LevelStartedCommand
+[debug|635140224517854852] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224529855539] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224535525863] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224539186072] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224553856912] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224565517579] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224569187788] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224570017836] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224572357970] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224583688618] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224589188932] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224589518951] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224595859314] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224599349514] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224602349685] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224603189733] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224611690219] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224613690334] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224643352030] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224646022183] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224648692336] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635140224651682507] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[info|635140224658682907] ->handleCommand PlayerDiedCommand
+[info|635140224658682907] Player died frames:0, random status: MesserRandom seed=-1061536876 totalRequests=129
+[info|635140224658682907] <--handleCommand PlayerDiedCommand
+[info|635140224658852917] Last replay frame: status=MesserRandom seed=-1061536876 totalRequests=129
+[info|635140224701015329] ->handleCommand RestartGameCommand
+[info|635140224701015329] onRestartGame
+[info|635140224701015329] Level=-10
+[info|635140224701015329] prepareNewLevel
+[info|635140224701055331] Utils.initialize seed=1407074659
+[info|635140224701555359] prepareNewLevel replay: D:\_programmering2\SmashTV\bin\debug\games\downloaded_games\635140125588960069_save.mer -- version 0.0.8b
+[info|635140224701555359] Utils.initialize seed=634783424
+[info|635140224701555359] -->CreateLootTable
+[info|635140224701555359] <--CreateLootTable randomStatus:MesserRandom seed=634783424 totalRequests=12
+[info|635140224701555359] showLoadingScreen
+[info|635140224701555359] <--handleCommand RestartGameCommand
+[info|635140224701565360] ->handleCommand ReloadDatabaseCommand
+[info|635140224701565360] <--handleCommand ReloadDatabaseCommand
+[info|635140224706015615] ->handleCommand RestartGameCommand
+[info|635140224706015615] onRestartGame
+[info|635140224706015615] Level=-10
+[info|635140224706015615] prepareNewLevel

@@ -18,6 +18,7 @@ using System.Net;
 using Schematrix;
 using System.Diagnostics;
 using System.Collections.Specialized;
+using System.Runtime.InteropServices;
 
 namespace MesserSmashGameLauncher {
     /// <summary>
@@ -26,12 +27,20 @@ namespace MesserSmashGameLauncher {
     public partial class MainWindow : Window {
         private string TargetDirectory;
 
+        [DllImport("msi.dll")]
+        public static extern Int32 MsiQueryProductState(string szProduct);
+
+        private static string XNA_MSI_QUERY_CODE =      "{D69C8EDE-BBC5-436B-8E0E-C5A6D311CF4F}"; //xna dev studio 4.0  or vice versa
+        private static string XNA_MSI_QUERY_CODE2 =     "{2BFC7AA0-544C-4E3A-8796-67F3BE655BE9}"; //xna redist 4.0 or vice versa
         LogoutControl _logoutControl;
         bool _loggedIn;
         private bool _gameUpdated;
         private string _url;
         private FileInfo _targetfile;
         private string _latestVersion;
+        private bool _hasRedistInstalled;
+        private  string _redistUrl;
+        private FileInfo _xnaRedistFile;
 
         public MainWindow() {
             InitializeComponent();
@@ -42,7 +51,12 @@ namespace MesserSmashGameLauncher {
             Model.load();
             loginControl.userName.Text = Model.UserName;
             loginControl.password.Password = Model.Password;
+            updateRedistStatus();
             doCheckGameVersion();
+        }
+
+        void updateRedistStatus() {
+            _hasRedistInstalled = MsiQueryProductState(XNA_MSI_QUERY_CODE) == 5 || MsiQueryProductState(XNA_MSI_QUERY_CODE2) == 5;
         }
 
         void foo_CreateUserClicked() {
@@ -77,7 +91,12 @@ namespace MesserSmashGameLauncher {
         }
 
         public void rendezvousLoginAndUpdated() {
-            bool value = _loggedIn && _gameUpdated;
+            bool value = _loggedIn && _gameUpdated && _hasRedistInstalled;
+
+            if (!_hasRedistInstalled) {
+                return;
+            }
+
             this.Dispatcher.Invoke((Action)(() => {
                 if (_logoutControl != null) {
                     _logoutControl.GameUptoDate = value;
@@ -90,6 +109,43 @@ namespace MesserSmashGameLauncher {
                     progressControl.version.Content = String.Format("Installed Version: {1} | Target version: {0}", _latestVersion, defaultIfEmptyOrNull(Model.ClientVersion, "N/A"));
                 }
             }));
+        }
+
+        private void downloadXnaRedist(string redistUrl) {
+            _gameUpdated = false;
+            setStatus("Downloading new version...");
+            var url = new Uri(redistUrl);
+            var s = "./patches" + url.AbsoluteUri.Substring(url.AbsoluteUri.LastIndexOf("/"));
+            WebClient wc = new WebClient();
+            wc.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(wc_RedistDownloaded);
+            _xnaRedistFile = new FileInfo(s);
+            if (!_xnaRedistFile.Directory.Exists) {
+                _xnaRedistFile.Directory.Create();
+            }
+            wc.DownloadFileAsync(url, s);
+        }
+
+        void wc_RedistDownloaded(object sender, System.ComponentModel.AsyncCompletedEventArgs e) {
+            var success = e.Cancelled == false && e.Error == null;
+            if (success) {
+                Process p = new Process();
+                p.StartInfo.FileName = "msiexec";
+                p.StartInfo.Arguments = String.Format("/i {0} /Lv* {1} INSTALLLEVEL=200 ALLUSERS=1", _xnaRedistFile.FullName, "./patches/xnaRedistInstallLog.txt");
+                p.Exited += new EventHandler(p_Exited);
+                p.Start();
+            } else {
+                setStatus(String.Format("[{0}] Error downloading file...", _url));
+                MessageBox.Show(String.Format("Failed to download file ({1}): {0}", e.Error, _url));
+            }
+        }
+
+        void p_Exited(object sender, EventArgs e) {
+            updateRedistStatus();
+            if (_hasRedistInstalled) {
+                rendezvousLoginAndUpdated();
+            } else {
+                MessageBox.Show("Unable to automatically install xna redist which is required to run this game, please manually install it from /gamedata/patches/_xnafx40redist.msi folder or download it from the web at @http://download.microsoft.com/download/E/C/6/EC68782D-872A-4D58-A8D3-87881995CDD4/XNAGS40_setup.exe");
+            }
         }
 
         private void doCheckGameVersion() {
@@ -110,14 +166,9 @@ namespace MesserSmashGameLauncher {
         }
 
         private void doUpdateGame() {
-            var server = new LocalServer(Model.ServerIp);
-
             _gameUpdated = false;
-            downloadNewestVersion(new Uri(_url));
-        }
-
-        public void downloadNewestVersion(Uri url) {
             setStatus("Downloading new version...");
+            var url = new Uri(_url);
             var s = "./patches" + url.AbsoluteUri.Substring(url.AbsoluteUri.LastIndexOf("/"));
             WebClient wc = new WebClient();
             wc.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(wc_DownloadFileCompleted);
@@ -204,6 +255,7 @@ namespace MesserSmashGameLauncher {
                         _latestVersion = tbl[MesserSmashWeb.GAME_VERSION].ToString();
                         _gameUpdated = _latestVersion == Model.ClientVersion;
                         _url = tbl[MesserSmashWeb.GAME_VERSION_LATEST_URL].ToString();
+                        _redistUrl = tbl[MesserSmashWeb.XNA_REDIST_URL].ToString();
                         if(_gameUpdated)  {
                             setStatus("No Update Needed");
                         }
@@ -215,6 +267,10 @@ namespace MesserSmashGameLauncher {
                     Model.Online = false;
                     break;
 
+            }
+
+            if (!_hasRedistInstalled && _redistUrl != null) {
+                downloadXnaRedist(_redistUrl);
             }
 
             rendezvousLoginAndUpdated();

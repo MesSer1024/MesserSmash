@@ -43,6 +43,8 @@ namespace MesserSmashWebServer {
                         ServerModel.LatestGameVersion = value;
                     } else if (line.StartsWith("latest_version_url")) {
                         ServerModel.LatestGameVersionUrl = value;
+                    } else if (line.StartsWith("xna_redist_url")) {
+                        ServerModel.XnaRedistUrl = value;
                     }
                 }
             }
@@ -201,10 +203,12 @@ namespace MesserSmashWebServer {
                         var clientVersion = items[MesserSmashWeb.GAME_VERSION].ToString();
                         var latestVersion = ServerModel.LatestGameVersion;
                         var latestUrl = ServerModel.LatestGameVersionUrl;
+                        var xnaRedistUrl = ServerModel.XnaRedistUrl;
 
                         var result = new Dictionary<string, object> {
                             {MesserSmashWeb.GAME_VERSION, latestVersion},
-                            {MesserSmashWeb.GAME_VERSION_LATEST_URL, latestUrl}
+                            {MesserSmashWeb.GAME_VERSION_LATEST_URL, latestUrl},
+                            {MesserSmashWeb.XNA_REDIST_URL, xnaRedistUrl}
                         };
                         return new MesserWebResponse(ReturnCodes.OK, JsonConvert.SerializeObject(result), request);
                     }
