@@ -9,14 +9,16 @@ namespace MesserSmash.Modules {
     public class WaveSpawner {
         public int EnemyType { get; set; }
         public int SpawnCount { get; set; }
+        public Spawnpoint WantedSpawnpoint { get; set; }
 
         public List<SpawnCriteria> Criterias;
         private bool _active;
 
-        public WaveSpawner(int enemyType, int enemiesToSpawn) {
+        public WaveSpawner(int enemyType, int enemiesToSpawn, Spawnpoint spawnpoint = null) {
             Criterias = new List<SpawnCriteria>();
             EnemyType = enemyType;
             SpawnCount = enemiesToSpawn;
+            WantedSpawnpoint = spawnpoint;
             _active = true;
         }
 
@@ -43,5 +45,6 @@ namespace MesserSmash.Modules {
         internal void deactivate() {
             _active = false;
         }
+
     }
 }

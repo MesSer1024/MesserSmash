@@ -32,3 +32,15 @@ E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\bin\Debug\Newtonsoft.Json
 E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.exe.manifest
 E:\projects_local\SmashTV\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.application
 D:\_programmering2\SmashTV\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.csprojResolveAssemblyReference.cache
+D:\_programmering\MesserSmash\SmashTV\MesserSmashWebServer\bin\Debug\MesserSmashWebServer.exe.manifest
+D:\_programmering\MesserSmash\SmashTV\MesserSmashWebServer\bin\Debug\MesserSmashWebServer.application
+D:\_programmering\MesserSmash\SmashTV\MesserSmashWebServer\bin\Debug\MesserSmashWebServer.exe
+D:\_programmering\MesserSmash\SmashTV\MesserSmashWebServer\bin\Debug\MesserSmashWebServer.pdb
+D:\_programmering\MesserSmash\SmashTV\MesserSmashWebServer\bin\Debug\Newtonsoft.Json.dll
+D:\_programmering\MesserSmash\SmashTV\MesserSmashWebServer\bin\Debug\SharedSmashResources.dll
+D:\_programmering\MesserSmash\SmashTV\MesserSmashWebServer\bin\Debug\SharedSmashResources.pdb
+D:\_programmering\MesserSmash\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.csprojResolveAssemblyReference.cache
+D:\_programmering\MesserSmash\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.exe.manifest
+D:\_programmering\MesserSmash\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.application
+D:\_programmering\MesserSmash\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.exe
+D:\_programmering\MesserSmash\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.pdb

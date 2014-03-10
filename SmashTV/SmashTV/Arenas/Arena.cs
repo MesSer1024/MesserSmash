@@ -21,6 +21,12 @@ namespace MesserSmash.Arenas {
 
         private Rectangle _bounds;
         private List<Spawnpoint> _spawnPoints;
+
+        public List<Spawnpoint> SpawnPoints
+        {
+            get { return _spawnPoints; }
+            private set { _spawnPoints = value; }
+        }
         protected List<WaveSpawner> _spawners;
         private float _timeSinceLastCreation;
         private const float ARENA_ENEMY_CREATION_CD = 0.65f;
@@ -50,7 +56,13 @@ namespace MesserSmash.Arenas {
 
         private float _timeInState;
         private States _state;
-        private enum States {
+
+        public States State
+        {
+            get { return _state; }
+            set { _state = value; }
+        }
+        public enum States {
             Starting,
             Running,
             Ending,
@@ -65,7 +77,7 @@ namespace MesserSmash.Arenas {
             _spawners = new List<WaveSpawner>();
             _activeLoot = new List<Loot>();
             _secondsLeft = 120;
-            _state = States.Running;
+            _state = States.Starting;
             _timeInState = 0;
 
             _spawnPoints = createSpawnpoints();
@@ -74,6 +86,7 @@ namespace MesserSmash.Arenas {
 
         public void begin() {
             Controller.instance.addObserver(this);
+            _state = States.Running;
             _timeInState = 0;
             new LevelStartedCommand(this).execute();
             custStartLevel();
@@ -101,19 +114,20 @@ namespace MesserSmash.Arenas {
             spawner.deactivate();
 
             for (int i = 0; i < spawner.SpawnCount; i++) {
+                var point = spawner.WantedSpawnpoint == null ? getRandomSpawnpoint() : spawner.WantedSpawnpoint;
                 switch ((EnemyTypes.Types)spawner.EnemyType)
                 {
                     case EnemyTypes.Types.Melee:
-                        getRandomSpawnpoint().generateMeleeEnemies(1);
+                        point.generateMeleeEnemies(1);
                         break;
                     case EnemyTypes.Types.SecondaryMelee:
-                        getRandomSpawnpoint().generateSecondaryMeleeUnits(1);
+                        point.generateSecondaryMeleeUnits(1);
                         break;
                     case EnemyTypes.Types.Range:
-                        getRandomSpawnpoint().generateSecondaryRangedEnemies(1);
+                        point.generateSecondaryRangedEnemies(1);
                         break;
                     case EnemyTypes.Types.RandomItem:
-                        getRandomSpawnpoint().generateRandomEnemies(1);
+                        point.generateRandomEnemies(1);
                         break;
                     default:
                         throw new Exception("Unhandled enemy!");

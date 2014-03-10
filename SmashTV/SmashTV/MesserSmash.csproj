@@ -110,6 +110,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\AIManager.cs" />
     <Compile Include="Arenas\Arena.cs" />
     <Compile Include="Arenas\Level20.cs" />
     <Compile Include="Arenas\Level08.cs" />

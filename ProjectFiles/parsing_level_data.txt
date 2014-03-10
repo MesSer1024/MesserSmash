@@ -1,0 +1,28 @@
+# parsing strategy 
+#	var parts = split("|").trim().remove('[', ']'); 
+#	assert(parts.count = 3); 
+#	var times = parts[0].split(','); 
+#	assert(times.count = 2); 
+#	startTime = int.times[0];
+#	endTime = int.times[1];
+#	enemyType = parts[1];
+#	percentage = float.parts[2];
+
+# timespan	| enemy_type	| percentage	| spread out during spawn range
+[0,0]	| melee1		| 0.15		| [2,8]
+[5.20]	| melee1 		| 0.15
+[20,30]	| melee1	| 0.25
+[30,40]	| melee1	| 0.05
+[40,52]	| melee1	| 0.40
+
+# test2
+[level]
+startTime=0
+endTime=0
+enemy_type=0
+budget=2000
+percentage=0.15
+iterationStart=2
+iterationEnd=14
+
+[level]
