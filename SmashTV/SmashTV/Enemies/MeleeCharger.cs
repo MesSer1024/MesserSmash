@@ -11,8 +11,11 @@ using MesserSmash.Commands;
 namespace MesserSmash.Enemies {
 
     public class MeleeCharger : EnemyBase {
-        private const float SECONDS_BETWEEN_CHARGE = 2.5f;
-        private const float SECONDS_BEFORE_FIRST_ATTACK = 1.575f;
+
+        private const float SECONDS_ENGAGING_BEFORE_CHARGE = 1.150f;
+        private const float SECONDS_BEFORE_FIRST_ATTACK = 1.975f;
+        private const float SECONDS_SLEEPING_AFTER_CHARGE = 1.12f;
+
         private bool _hasDoneFirstAttack;
 
         public MeleeCharger(Vector2 position, Player player) {
@@ -51,7 +54,7 @@ namespace MesserSmash.Enemies {
                 _hasDoneFirstAttack = true;
                 State = EnemyStates.Attacking;
             }
-            if (_behaviour.TimeThisBehaviour > SECONDS_BETWEEN_CHARGE) {
+            if (_behaviour.TimeThisBehaviour > SECONDS_ENGAGING_BEFORE_CHARGE) {
                 State = EnemyStates.Attacking;
             }
         }
@@ -59,8 +62,21 @@ namespace MesserSmash.Enemies {
         protected override Behaviour createAttackBehaviour() {
             new PlaySoundCommand(AssetManager.getEnemyChargeSound()).execute();
             var behaviour = new AttackWithCharge(_getMovementSpeed(), 285f * Utils.getResolutionScale(), 1.0f);
-            behaviour.onBehaviourEnded += onAttackDone;
+            behaviour.onBehaviourEnded += onChargeAttackDone;
             return behaviour;
+        }
+
+        private void onChargeAttackDone(Behaviour behaviour) {
+            State = EnemyStates.Idle;
+            _behaviour = new NullBehaviour();
+        }
+
+        public override void update(float deltatime) {
+            base.update(deltatime);
+
+            if (State == EnemyBase.EnemyStates.Idle && _behaviour.TimeThisBehaviour > SECONDS_SLEEPING_AFTER_CHARGE) {
+                State = EnemyBase.EnemyStates.EngagingPlayer;
+            }
         }
     }
 }

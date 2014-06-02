@@ -23,7 +23,7 @@ namespace MesserSmash.Arenas {
             }
 
             _spawners[0].SpawnCount = 8;
-            _spawners[1].SpawnCount = 10;
+            _spawners[1].SpawnCount = 5;
             _spawners[4].SpawnCount = 5;
             _spawners[5].SpawnCount = 5;
             var end3 = new WaveSpawner((int)EnemyTypes.Types.Melee, 4);
