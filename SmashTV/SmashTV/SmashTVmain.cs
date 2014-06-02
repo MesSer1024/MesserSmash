@@ -251,6 +251,18 @@ namespace MesserSmash {
                 case 16:
                     arena = new Level16();
                     break;
+                case 17:
+                    arena = new Level17();
+                    break;
+                case 18:
+                    arena = new Level18();
+                    break;
+                case 19:
+                    arena = new Level19();
+                    break;
+                case 20:
+                    arena = new Level20(); //BOSS LEVEL!
+                    break;
 				default:
 					arena = new SpecialLevel();
 					Logger.error("unknown level={0}", level);

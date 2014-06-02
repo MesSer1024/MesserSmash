@@ -13,40 +13,35 @@ namespace MesserSmash.Arenas {
             _secondsLeft = 60;
             Level = 15;
 
-            WaveSpawner wave;
             for (int i = 0; i < 30; i++) {
-                if (i % 2 == 0) {
-                    wave = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 4 + (int)(i * 0.29f));
-                } else {
-                    wave = new WaveSpawner((int)EnemyTypes.Types.Melee, 5 + (int)(i * 0.29f));
-                }
+                var wave = new WaveSpawner((int)EnemyTypes.Types.Range, 4 + Math.Min(8, (int)(i * 0.29f)));
                 var criteria = new SpawnCriteria();
-                criteria.MinSecondsInArena = (int)(i * 1.37f);
-                criteria.MaxEnemiesAlive = 50;
+                criteria.MinSecondsInArena = (int)(i * 2.40f);
+                criteria.MaxEnemiesAlive = 35;
                 wave.addCriteria(criteria);
                 _spawners.Add(wave);
             }
 
-            _spawners[0].SpawnCount = 18;
-            _spawners[1].SpawnCount = 18;
-            _spawners[4].SpawnCount = 16;
-            _spawners[5].SpawnCount = 16;
-            var end = new WaveSpawner((int)EnemyTypes.Types.Melee, 4);
-            end.addCriteria(new SpawnCriteria { MinSecondsInArena = 43, MaxEnemiesAlive = 35 });
-            var end2 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 4);
-            end2.addCriteria(new SpawnCriteria { MinSecondsInArena = 43, MaxEnemiesAlive = 35 });
-            var end3 = new WaveSpawner((int)EnemyTypes.Types.Melee, 6);
-            end3.addCriteria(new SpawnCriteria { MinSecondsInArena = 51, MaxEnemiesAlive = 42 });
-            var end4 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 4);
-            end4.addCriteria(new SpawnCriteria { MinSecondsInArena = 54, MaxEnemiesAlive = 45 });
-            var end5 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 8);
-            end5.addCriteria(new SpawnCriteria { MinSecondsInArena = 57, MaxEnemiesAlive = 45 });
+            _spawners[0].SpawnCount = 16;
+            _spawners[1].SpawnCount = 12;
+            _spawners[4].SpawnCount = 14;
+            _spawners[7].SpawnCount = 10;
+            _spawners[9].SpawnCount = 13;
+
+            var middle = new WaveSpawner((int)EnemyTypes.Types.Range, 11);
+            middle.addCriteria(new SpawnCriteria { MinSecondsInArena = 27 });
+            _spawners.Add(middle);
+
+            var end = new WaveSpawner((int)EnemyTypes.Types.Range, 6);
+            end.addCriteria(new SpawnCriteria { MinSecondsInArena = 40, MaxEnemiesAlive = 45 });
+            var end3 = new WaveSpawner((int)EnemyTypes.Types.Range, 2);
+            end3.addCriteria(new SpawnCriteria { MinSecondsInArena = 43, MaxEnemiesAlive = 60 });
+            var end4 = new WaveSpawner((int)EnemyTypes.Types.Range, 9);
+            end4.addCriteria(new SpawnCriteria { MinSecondsInArena = 55, MaxEnemiesAlive = 60 });
 
             _spawners.Add(end);
-            _spawners.Add(end2);
             _spawners.Add(end3);
             _spawners.Add(end4);
-            _spawners.Add(end5);
         }
     }
 }
