@@ -23,12 +23,12 @@ namespace MesserSmash.Arenas {
             }
 
             for (int i = 0; i < 5;++i ) {
-                wave = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 9);
+                wave = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 7);
                 var wave2 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 9);
                 var criteria = new SpawnCriteria();
                 var criteria2 = new SpawnCriteria();
-                criteria.MinSecondsInArena = (int)(i * 10.23f + 9.23f);
-                criteria2.MinSecondsInArena = (int)(i * 10.23f + 10.23f);
+                criteria.MinSecondsInArena = (int)(i * 10 + 9.23f);
+                criteria2.MinSecondsInArena = (int)(i * 10 + 10.23f);
                 criteria.MaxEnemiesAlive = criteria2.MaxEnemiesAlive = 50;
                 wave.addCriteria(criteria);
                 wave2.addCriteria(criteria2);
@@ -41,17 +41,10 @@ namespace MesserSmash.Arenas {
             _spawners[4].SpawnCount = 6;
             _spawners[5].SpawnCount = 5;
 
-            var middle = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 7);
-            middle.addCriteria(new SpawnCriteria { MinSecondsInArena = 37 });
-            _spawners.Add(middle);
-            var middle2 = new WaveSpawner((int)EnemyTypes.Types.Range, 6);
-            middle2.addCriteria(new SpawnCriteria { MinSecondsInArena = 36 });
-            _spawners.Add(middle2);
-
             var end = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 4);
-            end.addCriteria(new SpawnCriteria { MinSecondsInArena = 46, MaxEnemiesAlive = 35 });
+            end.addCriteria(new SpawnCriteria { MinSecondsInArena = 49, MaxEnemiesAlive = 35 });
             var end2 = new WaveSpawner((int)EnemyTypes.Types.Range, 4);
-            end2.addCriteria(new SpawnCriteria { MinSecondsInArena = 46, MaxEnemiesAlive = 35 });
+            end2.addCriteria(new SpawnCriteria { MinSecondsInArena = 49, MaxEnemiesAlive = 35 });
 
             _spawners.Add(end);
             _spawners.Add(end2);

@@ -9,9 +9,9 @@ namespace MesserSmash.Arenas {
             Level = 8;
 
             WaveSpawner wave1, wave2, wave3;
-            for (int i = 0; i < 60; i++) {
+            for (int i = 0; i < 25; i++) {
                 var criteria = new SpawnCriteria();
-                criteria.MinSecondsInArena = (int)(i * 3.09f);
+                criteria.MinSecondsInArena = (int)(i * 3.29f);
                 criteria.MaxEnemiesAlive = 30;
                 wave1 = new WaveSpawner((int)EnemyTypes.Types.Melee, Math.Min(8, 2 + (int)(i * 0.49f)));
                 wave2 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, Math.Min(3, 2 + (int)(i * 0.09f)));
@@ -25,8 +25,8 @@ namespace MesserSmash.Arenas {
             }
 
             _spawners[0].SpawnCount = 9;
-            _spawners[1].SpawnCount = 9;
-            _spawners[2].SpawnCount = 9;
+            _spawners[1].SpawnCount = 8;
+            _spawners[2].SpawnCount = 8;
             _spawners[9].SpawnCount = 4;
             _spawners[10].SpawnCount = 8;
             _spawners[11].SpawnCount = 3;

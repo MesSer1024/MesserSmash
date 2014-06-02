@@ -13,10 +13,10 @@ namespace MesserSmash.Arenas {
                 if (i % 2 == 0) {
                     wave = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, 3);
                 } else {
-                    wave = new WaveSpawner((int)EnemyTypes.Types.Melee, 2 + Math.Min(4, (int)(i * 0.29f)));
+                    wave = new WaveSpawner((int)EnemyTypes.Types.Melee, 2 + Math.Min(2, (int)(i * 0.29f)));
                 }
                 var criteria = new SpawnCriteria();
-                criteria.MinSecondsInArena = (int)(i * 1.89f);
+                criteria.MinSecondsInArena = (int)(i * 2.08f);
                 criteria.MaxEnemiesAlive = 26;
                 wave.addCriteria(criteria);
                 _spawners.Add(wave);

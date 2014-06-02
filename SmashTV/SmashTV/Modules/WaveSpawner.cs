@@ -9,6 +9,7 @@ namespace MesserSmash.Modules {
     public class WaveSpawner {
         public int EnemyType { get; set; }
         public int SpawnCount { get; set; }
+        public Action<WaveSpawner, List<Spawnpoint>> CustomSpawnCommand { get; set; }
 
         public List<SpawnCriteria> Criterias;
         private bool _active;

@@ -20,7 +20,7 @@ namespace MesserSmash.GUI {
         private Healthbar _energy;
 
         private FunnyText _killCounter;
-        private FunnyText _secondsLeft;
+        private FunnyText _secondsLeftMiddlescreenCounter;
         private bool _inGame;
         private float _score;
         private FunnyText _scoreField;
@@ -41,6 +41,7 @@ namespace MesserSmash.GUI {
         private int _savedLevel;
         private int _scoreOnLevel;
         private FunnyText _killText;
+        private FunnyText _secondsLeft;
 
 
         public GUIMain() {
@@ -72,6 +73,13 @@ namespace MesserSmash.GUI {
             _killText.TextScale = Utils.getResolutionScale();
             _killText.TextColor = Color.WhiteSmoke;
             _killText.Font = AssetManager.getGuiFont();
+
+            _secondsLeft = new FunnyText("Seconds", new Rectangle(_background.Right - 100, 0, 100, _background.Height));
+            _secondsLeft.HorizontalCenter = false;
+            _secondsLeft.TextScale = Utils.getResolutionScale();
+            _secondsLeft.TextColor = Color.WhiteSmoke;
+            _secondsLeft.Font = AssetManager.getGuiFont();
+
             _killCounter = new FunnyText("", new Rectangle(_background.Left + Utils.calcResolutionScaledValue(186), Utils.calcResolutionScaledValue(35), Utils.calcResolutionScaledValue(80), Utils.calcResolutionScaledValue(35)));
             _killCounter.TextScale = Utils.getResolutionScale();
             _killCounter.TextColor = Color.WhiteSmoke;
@@ -98,10 +106,10 @@ namespace MesserSmash.GUI {
             _scoreField.TextColor = Color.WhiteSmoke;
 
             var gameScreen = SmashTVSystem.Instance.Arena.Bounds;
-            _secondsLeft = new FunnyText("100", new Rectangle(gameScreen.Left, gameScreen.Top, gameScreen.Width, gameScreen.Height));
-            _secondsLeft.TextColor = Color.LightGoldenrodYellow;
-            _secondsLeft.Visible = false;
-            _secondsLeft.TextScale = 2.25f;
+            _secondsLeftMiddlescreenCounter = new FunnyText("100", new Rectangle(gameScreen.Left, gameScreen.Top, gameScreen.Width, gameScreen.Height));
+            _secondsLeftMiddlescreenCounter.TextColor = Color.LightGoldenrodYellow;
+            _secondsLeftMiddlescreenCounter.Visible = false;
+            _secondsLeftMiddlescreenCounter.TextScale = 2.25f;
             _savedLevel = SmashTVSystem.Instance.Arena.Level;
         }
 
@@ -215,6 +223,7 @@ namespace MesserSmash.GUI {
                 text.TextColor = Color.WhiteSmoke;
                 sb.Draw(AssetManager.getDefaultTexture(), _background, _backgroundColor);
                 sb.Draw(AssetManager.getPortraitTexture(), _portraitPosition, Color.White);
+                _secondsLeft.Draw(sb);
                 var r = new Rectangle(_health.Bounds.X, _health.Bounds.Y, _health.Bounds.Width, _health.Bounds.Height);
                 var pos = SmashTVSystem.Instance.Player.Position;
                 r.X = (int)(pos.X - _health.Bounds.Width/2);
@@ -226,7 +235,7 @@ namespace MesserSmash.GUI {
                 _energy.draw(sb);
                 _killText.Draw(sb);
                 _killCounter.Draw(sb);
-                _secondsLeft.Draw(sb);
+                _secondsLeftMiddlescreenCounter.Draw(sb);
                 _scoreField.Draw(sb);
                 text.Draw(sb);
                 if (_recharge != null) {
@@ -350,14 +359,16 @@ namespace MesserSmash.GUI {
         public void setSecondsLeft(float time) {
             if (Utils.valueBetween(time, 0, 9)) {
                 //use countdown in middle of screen
-                _secondsLeft.Text = ((int)time).ToString();
-                _secondsLeft.Visible = true;
+                _secondsLeftMiddlescreenCounter.Text = ((int)time).ToString();
+                _secondsLeftMiddlescreenCounter.Visible = true;
                 //scale : [1..3]    timespan :  [10..1]
                 var numeric = time/10;
-                _secondsLeft.TextScale = (1 - numeric) * 2 + 1;
+                _secondsLeftMiddlescreenCounter.TextScale = (1 - numeric) * 2 + 1;
             } else {
-                _secondsLeft.Visible = false;
+                _secondsLeftMiddlescreenCounter.Visible = false;
             }
+
+            _secondsLeft.Text = String.Format("Seconds: {0}", time > 0 ? (int)time : 0);
         }
 
         internal void showLevelWon(HighscoreContainer scoringProvider, bool gotScoreData, int level, int scoreOnLevel) {

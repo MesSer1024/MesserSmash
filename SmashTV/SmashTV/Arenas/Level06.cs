@@ -1,6 +1,7 @@
 ﻿using MesserSmash.Modules;
 using MesserSmash.Enemies;
 using System;
+using System.Collections.Generic;
 namespace MesserSmash.Arenas {
     public class Level06 : Arena {
 
@@ -14,8 +15,8 @@ namespace MesserSmash.Arenas {
                 var criteria = new SpawnCriteria();
                 criteria.MinSecondsInArena = (int)(i * 2.87f);
                 criteria.MaxEnemiesAlive = 35;
-                wave = new WaveSpawner((int)EnemyTypes.Types.Melee, Math.Min(5, 2 + (int)(i * 0.09f)));
-                wave2 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, Math.Min(9, 5 + (int)(i * 0.09f)));
+                wave = new WaveSpawner((int)EnemyTypes.Types.Melee, Math.Min(2, 1 + (int)(i * 0.09f)));
+                wave2 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, Math.Min(2, 2 + (int)(i * 0.09f)));
                 wave.addCriteria(criteria);
                 wave2.addCriteria(criteria);
                 _spawners.Add(wave);
@@ -24,10 +25,13 @@ namespace MesserSmash.Arenas {
 
             _spawners[0].SpawnCount = 11;
             _spawners[1].SpawnCount = 11;
-            _spawners[4].SpawnCount = 6;
-            _spawners[5].SpawnCount = 5;
-            _spawners[9].SpawnCount = 11;
-            _spawners[10].SpawnCount = 12;
+
+            for (int i = 0; i < 6; ++i) {
+                var every10Second = new WaveSpawner(0, 14);
+                every10Second.CustomSpawnCommand = onCustomSpawn;
+                every10Second.addCriteria(new SpawnCriteria() { MinSecondsInArena = (10 * (i + 1)) - 8 });
+                _spawners.Add(every10Second);
+            }
 
             var middle = new WaveSpawner((int)EnemyTypes.Types.Range, 6);
             middle.addCriteria(new SpawnCriteria { MinSecondsInArena = 33 });
@@ -44,5 +48,11 @@ namespace MesserSmash.Arenas {
             _spawners.Add(end);
             _spawners.Add(end2);
         }
+
+        private void onCustomSpawn(WaveSpawner spawner, List<Spawnpoint> spawnpoints) {
+            spawner.CustomSpawnCommand = null;
+            var sp = spawnpoints[Utils.randomInt(spawnpoints.Count)];
+            sp.generateSecondaryMeleeUnits(spawner.SpawnCount);
+        } 
     }
 }
