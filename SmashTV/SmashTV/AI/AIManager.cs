@@ -19,8 +19,6 @@ namespace MesserSmash.AI
         public float BudgetOriginal { get; set; }
 
         private int _priceMeleeUnit = 30;
-        private int _priceRangeUnit = 55;
-        private int _priceSecondaryMeleeUnit = 70;
 
         public AIManager(EnemyContainer container, Arena arena)
         {

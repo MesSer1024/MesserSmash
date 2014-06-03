@@ -10,7 +10,7 @@ namespace MesserSmash.Arenas {
             WaveSpawner wave;
             for (int i = 0; i < 60; i++) {
                 if (i % 2 == 0) {
-                    wave = new WaveSpawner((int)EnemyTypes.Types.Range, Math.Min(4, 3 + (int)(i * 0.129f)));
+                    wave = new WaveSpawner((int)EnemyTypes.Types.Range, Math.Min(4, 3 + (int)(i * 0.109f)));
                 } else {
                     wave = new WaveSpawner((int)EnemyTypes.Types.Melee, Math.Min(5, 3 + (int)(i * 0.09f)));
                 }
@@ -33,9 +33,9 @@ namespace MesserSmash.Arenas {
             middle2.addCriteria(new SpawnCriteria { MinSecondsInArena = 36 });
             _spawners.Add(middle2);
 
-            var end = new WaveSpawner((int)EnemyTypes.Types.Melee, 4);
+            var end = new WaveSpawner((int)EnemyTypes.Types.Melee, 2);
             end.addCriteria(new SpawnCriteria { MinSecondsInArena = 51, MaxEnemiesAlive = 35 });
-            var end2 = new WaveSpawner((int)EnemyTypes.Types.Range, 8);
+            var end2 = new WaveSpawner((int)EnemyTypes.Types.Range, 3);
             end2.addCriteria(new SpawnCriteria { MinSecondsInArena = 46, MaxEnemiesAlive = 35 });
 
             _spawners.Add(end);

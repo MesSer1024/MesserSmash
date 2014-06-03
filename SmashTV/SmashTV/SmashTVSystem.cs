@@ -115,7 +115,7 @@ namespace MesserSmash {
 			_gameStarted = false;
 			_queuedCommands = new List<string>();
 			_arena = arena;
-            _ai = new AIManager(enemyContainer, arena);
+            //_ai = new AIManager(enemyContainer, arena);
 			_player = player;
 			_shotContainer = shotContainer;
 			_enemyContainer = enemyContainer;
@@ -219,7 +219,7 @@ namespace MesserSmash {
 				_energySystem.update(state.DeltaTime);
                 _enemyContainer.update(state.DeltaTime); //let all enemies decide where they want to move
                 _shotContainer.update(state.DeltaTime);
-                _ai.update(state);
+                //_ai.update(state);
                 _arena.update(state);
                 _player.update(state.DeltaTime);
 

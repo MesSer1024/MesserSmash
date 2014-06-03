@@ -12,7 +12,7 @@ namespace MesserSmash.Enemies {
 
     public class MeleeCharger : EnemyBase {
 
-        private const float SECONDS_ENGAGING_BEFORE_CHARGE = 1.150f;
+        private const float SECONDS_ENGAGING_BEFORE_CHARGE = 1.975f;
         private const float SECONDS_BEFORE_FIRST_ATTACK = 1.975f;
         private const float SECONDS_SLEEPING_AFTER_CHARGE = 1.12f;
 

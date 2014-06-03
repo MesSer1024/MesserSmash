@@ -120,7 +120,7 @@ namespace MesserSmash.Arenas {
 
 
             for (int i = 0; i < spawner.SpawnCount; i++) {
-                var point = spawner.WantedSpawnpoint == null ? getRandomSpawnpoint() : spawner.WantedSpawnpoint;
+                var point = getRandomSpawnpoint();
                 switch ((EnemyTypes.Types)spawner.EnemyType)
                 {
                     case EnemyTypes.Types.Melee:
