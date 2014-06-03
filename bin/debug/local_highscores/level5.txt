@@ -9,3 +9,7 @@ MESSER6DEV|947|53
 MESSER7DEV|3549|151
 Messer8dev|1452|74
 Messer8dev|2175|97
+Messer8dev|2336|80
+Messer8dev|2939|137
+Messer8dev|2674|118
+Messer8dev|3242|130

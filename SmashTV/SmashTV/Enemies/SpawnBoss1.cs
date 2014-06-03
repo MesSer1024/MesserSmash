@@ -15,9 +15,9 @@ namespace MesserSmash.Enemies {
         public event Boss1Delegate OnDamaged;
 
         private const float SECONDS_ENGAGING_BEFORE_CHARGE = 1.750f;
-        private const float SECONDS_BEFORE_FIRST_ATTACK = 1.575f;
-        private const float SECONDS_SLEEPING_AFTER_CHARGE = 2.250f;
-        private const float MAX_HEALTH = 1650f;
+        private const float SECONDS_BEFORE_FIRST_ATTACK = 1.975f;
+        private const float SECONDS_SLEEPING_AFTER_CHARGE = 2.2f;
+        private const float MAX_HEALTH = 1950f;
         private bool _hasDoneFirstAttack;
         private Healthbar _healthbar;
         private Healthbar _energyBar;
@@ -26,7 +26,7 @@ namespace MesserSmash.Enemies {
 
         public SpawnBoss1(Vector2 position, Player player) {
             Position = position;
-            Damage = 35;
+            Damage = 31;
             _target = player;
             Health = MAX_HEALTH;
             _hasDoneFirstAttack = false;

@@ -7,7 +7,7 @@ using MesserSmash.Commands;
 
 namespace MesserSmash {
     public class WeaponPistol {
-        private const float SHOT_GENERATION_CD = 0.140f;
+        private const float SHOT_GENERATION_CD = 0.148f;
         private float _timeSinceLastShot;
 
 

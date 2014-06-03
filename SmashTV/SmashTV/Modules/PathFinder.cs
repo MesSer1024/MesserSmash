@@ -103,7 +103,7 @@ namespace MesserSmash.Modules {
             }
         }
 
-        private static bool overlaps(IEntity e1, IEntity e2) {
+        public static bool overlaps(IEntity e1, IEntity e2) {
             var delta = e1.Position + e1.Velocity - (e2.Position + e2.Velocity);
             return delta.LengthSquared() < (e1.Radius + e2.Radius) * (e1.Radius + e2.Radius);
         }

@@ -11,10 +11,10 @@ namespace MesserSmash.Arenas {
             WaveSpawner wave, wave2;
             for (int i = 0; i < 40; i++) {
                 var criteria = new SpawnCriteria();
-                criteria.MinSecondsInArena = (int)(i * 3.17f);
+                criteria.MinSecondsInArena = (int)(i * 3.47f);
                 criteria.MaxEnemiesAlive = 30;
-                wave = new WaveSpawner((int)EnemyTypes.Types.Range, Math.Min(5, 2 + (int)(i * 0.09f)));
-                wave2 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, Math.Min(9, 5 + (int)(i * 0.09f)));
+                wave = new WaveSpawner((int)EnemyTypes.Types.Range, Math.Min(4, 2 + (int)(i * 0.09f)));
+                wave2 = new WaveSpawner((int)EnemyTypes.Types.SecondaryMelee, Math.Min(8, 5 + (int)(i * 0.09f)));
                 wave.addCriteria(criteria);
                 wave2.addCriteria(criteria);
                 _spawners.Add(wave);
@@ -23,10 +23,10 @@ namespace MesserSmash.Arenas {
 
             _spawners[0].SpawnCount = 9;
             _spawners[1].SpawnCount = 9;
-            _spawners[4].SpawnCount = 6;
-            _spawners[5].SpawnCount = 5;
-            _spawners[8].SpawnCount = 12;
-            _spawners[9].SpawnCount = 13;
+            _spawners[4].SpawnCount = 5;
+            _spawners[5].SpawnCount = 4;
+            _spawners[8].SpawnCount = 10;
+            _spawners[9].SpawnCount = 11;
 
             var middle = new WaveSpawner((int)EnemyTypes.Types.Melee, 17);
             middle.addCriteria(new SpawnCriteria { MinSecondsInArena = 32 });

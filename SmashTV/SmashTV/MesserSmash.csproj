@@ -112,6 +112,9 @@
   <ItemGroup>
     <Compile Include="AI\AIManager.cs" />
     <Compile Include="Arenas\Arena.cs" />
+    <Compile Include="Arenas\Level17.cs" />
+    <Compile Include="Arenas\Level18.cs" />
+    <Compile Include="Arenas\Level19.cs" />
     <Compile Include="Arenas\Level20.cs" />
     <Compile Include="Arenas\Level08.cs" />
     <Compile Include="Arenas\Level09.cs" />

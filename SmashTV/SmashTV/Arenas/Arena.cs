@@ -113,6 +113,12 @@ namespace MesserSmash.Arenas {
         protected virtual void custSpawnWaveCommand(WaveSpawner spawner) {
             spawner.deactivate();
 
+            if (spawner.CustomSpawnCommand != null) {
+                spawner.CustomSpawnCommand(spawner, _spawnPoints);
+                return;
+            } 
+
+
             for (int i = 0; i < spawner.SpawnCount; i++) {
                 var point = spawner.WantedSpawnpoint == null ? getRandomSpawnpoint() : spawner.WantedSpawnpoint;
                 switch ((EnemyTypes.Types)spawner.EnemyType)
