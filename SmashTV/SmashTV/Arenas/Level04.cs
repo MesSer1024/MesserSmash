@@ -11,14 +11,14 @@ namespace MesserSmash.Arenas {
             for (int i = 0; i < 30; i++) {
                 var wave = new WaveSpawner((int)EnemyTypes.Types.Range, 2 + Math.Min(2, (int)(i * 0.45f)));
                 var criteria = new SpawnCriteria();
-                criteria.MinSecondsInArena = (int)(i * 2.983f);
+                criteria.MinSecondsInArena = (int)(i * 2.483f);
                 criteria.MaxEnemiesAlive = 13;
                 wave.addCriteria(criteria);
                 _spawners.Add(wave);
             }
 
-            _spawners[0].SpawnCount = 15;
-            _spawners[1].SpawnCount = 6;
+            _spawners[0].SpawnCount = 12;
+            _spawners[1].SpawnCount = 3;
             _spawners[4].SpawnCount = 9;
             _spawners[7].SpawnCount = 6;
 

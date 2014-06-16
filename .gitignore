@@ -1,7 +1,5 @@
-/bin/debug/*.pdb
-/bin/debug/*.exe
-/bin/release/*.pdb
-/bin/release/*.exe
+/bin/debug/*.*
+/bin/release/*.*
 /*.suo
 /SmashTV/MesserSmashWebServer/obj/x86/Debug/*.cache
 /SmashTV/SharedSmashResources/obj/Debug/*.cache
@@ -16,3 +14,7 @@
 /SmashTV/MesserSmashWebServer/obj/x86/Release
 /SmashTV/SharedSmashResources/bin/Release
 /SmashTV/SharedSmashResources/obj/Release
+*.application
+*.exe
+*.pdb
+/bin/debug/games/*.*

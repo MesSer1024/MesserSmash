@@ -13,6 +13,7 @@ using SharedSmashResources.Patterns;
 using SharedSmashResources;
 using System.ComponentModel;
 using System.Threading;
+using MesserSmash.AI;
 
 namespace MesserSmash {
 	public class SmashTVSystem : IObserver {
@@ -98,6 +99,7 @@ namespace MesserSmash {
 		private int _enemyConstructors;
         private bool _replay;
         private System.Timers.Timer _timer;
+        private AIManager _ai;
 
         internal void resetStates() {
             _gameStarted = false;
@@ -113,6 +115,7 @@ namespace MesserSmash {
 			_gameStarted = false;
 			_queuedCommands = new List<string>();
 			_arena = arena;
+            //_ai = new AIManager(enemyContainer, arena);
 			_player = player;
 			_shotContainer = shotContainer;
 			_enemyContainer = enemyContainer;
@@ -216,7 +219,8 @@ namespace MesserSmash {
 				_energySystem.update(state.DeltaTime);
                 _enemyContainer.update(state.DeltaTime); //let all enemies decide where they want to move
                 _shotContainer.update(state.DeltaTime);
-				_arena.update(state);
+                //_ai.update(state);
+                _arena.update(state);
                 _player.update(state.DeltaTime);
 
 				//check for collisions between shots and enemies
