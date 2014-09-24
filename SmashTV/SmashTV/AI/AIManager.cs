@@ -10,8 +10,10 @@ using MesserSmash.Modules;
 
 namespace MesserSmash.AI
 {
+    
     class AIManager : IObserver
     {
+        /*
         private EnemyContainer _enemies;
         private Arena _arena;
         private List<WaveSpawner> _waves;
@@ -171,5 +173,11 @@ namespace MesserSmash.AI
                     break;
             }
         }
-    }
+         */
+        public void handleCommand(ICommand cmd)
+        {
+            //throw new NotImplementedException();
+        }
+
+    } 
 }

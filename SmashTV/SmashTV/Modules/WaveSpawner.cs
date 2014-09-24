@@ -9,34 +9,31 @@ namespace MesserSmash.Modules {
     public class WaveSpawner {
         public int EnemyType { get; set; }
         public int SpawnCount { get; set; }
-        public Action<WaveSpawner, List<Spawnpoint>> CustomSpawnCommand { get; set; }
 
-        public List<SpawnCriteria> Criterias;
+        public SpawnCriteria Criteria;
         private bool _active;
 
-        public WaveSpawner(int enemyType, int enemiesToSpawn) {
-            Criterias = new List<SpawnCriteria>();
-            EnemyType = enemyType;
-            SpawnCount = enemiesToSpawn;
+        /// <summary>
+        /// Constructor for JSON when creating object
+        /// </summary>
+        public WaveSpawner()
+        {
             _active = true;
         }
 
-        public void addCriteria(SpawnCriteria criteria) {
-            Criterias.Add(criteria);
+        public WaveSpawner(int enemyType, int enemiesToSpawn) {
+            Criteria = new SpawnCriteria();
+            EnemyType = enemyType;
+            SpawnCount = enemiesToSpawn;
+            _active = true;
         }
 
         public void update(GameState state) {
             if (_active == false) {
                 return;
             }
-            int fulfilledCriterias = 0;
-            foreach (var criteria in Criterias) {
-                if (criteria.isFulfilled(state)) {
-                    fulfilledCriterias++;
-                }
-            }
 
-            if (fulfilledCriterias == Criterias.Count) {
+            if (Criteria.isFulfilled(state)) {
                 new SpawnWaveCommand(this).execute();
             }
         }
