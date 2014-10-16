@@ -54,6 +54,18 @@ namespace MesserSmash {
             }
         }
 
+        public static void delayCall(Action action, int delayMS = 10) {
+            new System.Threading.Timer(obj =>
+            {
+                action.Invoke();
+            },
+                null,
+                delayMS,
+                System.Threading.Timeout.Infinite
+                );
+        }
+
+
         public static void initialize(int seed) {
             Logger.info("Utils.initialize seed=" + seed);
             Seed = seed;

@@ -1,0 +1,58 @@
+[
+{
+    Level: 1,
+    Time: 60,
+    Waves: [
+        {
+            EnemyType: 0,
+            SpawnCount: 30,
+            Criteria: {
+                MaxEnemiesAlive: -1,
+                MinSecondsInArena: -1,
+                MinTotalEnemiesKilled: -1,
+                WaveRepeatableCount: 0,
+                SecondsBetweenRepeat: 1                
+            }
+        },
+        {
+            EnemyType: 0,
+            SpawnCount: 30,
+            Criteria: {
+                MaxEnemiesAlive: -1,
+                MinSecondsInArena: -1,
+                MinTotalEnemiesKilled: -1,
+                WaveRepeatableCount: 0,
+                SecondsBetweenRepeat: 1                
+            }
+        }
+    ]
+},
+{
+    Level: 1,
+    Time: 60,
+    Waves: [
+        {
+            EnemyType: 0,
+            SpawnCount: 30,
+            Criteria: {
+                MaxEnemiesAlive: -1,
+                MinSecondsInArena: -1,
+                MinTotalEnemiesKilled: -1,
+                WaveRepeatableCount: 0,
+                SecondsBetweenRepeat: 1                
+            }
+        },
+        {
+            EnemyType: 0,
+            SpawnCount: 30,
+            Criteria: {
+                MaxEnemiesAlive: -1,
+                MinSecondsInArena: -1,
+                MinTotalEnemiesKilled: -1,
+                WaveRepeatableCount: 0,
+                SecondsBetweenRepeat: 1                
+            }
+        }
+    ]
+}
+]
