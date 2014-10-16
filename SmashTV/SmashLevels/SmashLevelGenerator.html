@@ -2,7 +2,7 @@
 <head><style>
 td
 {
-border:1px dotted #000000;
+border:0px solid #000000;
 background-color: #ececec;
 text-align: center;
 vertical-align: middle;
@@ -10,50 +10,19 @@ vertical-align: middle;
 </style></head>
 <body>
 
-<table id="levels" style="background-color:red">
+<table id="levels" style="background-color:gray">
 	<tr>
 		<td>Level:</td>
-		<td><input>01</input></td>
+		<td><input value="01" /></td>
 	</tr>
 	<tr>
 		<td>Seconds Left:</td>
-		<td><input>60</input></td>
+		<td><input value="60" /></td>
 	</tr>
 	<tr>
-		<td>Waves[]</td>
-	</tr>
-	<tr class="header">
-		<td>Wave0</td>
-		<tr>
-			<td>EnemyType:</td>
-			<td>0</td>
-		</tr>
-		<tr>
-			<td>SpawnCount:</td>
-			<td>30</td>
-			<tr>
-				<td>MaxEnemiesAlive:</td>
-				<td>-1</td>
-			</tr>
-			<tr>
-				<td>MinSecondsInArena:</td>
-				<td>-1</td>
-			</tr>
-			<tr>
-				<td>MinTotalEnemiesKilled:</td>
-				<td>-1</td>
-			</tr>
-			<tr>
-				<td>WaveRepeatableCount</td>
-				<td>0</td>
-			</tr>
-			<tr>
-				<td>SecondsBetweenRepeat:</td>
-				<td>1</td>
-			</tr>
-		</tr>
+		<td colspan="2">Waves[]</td>
 	</tr>
 </table>
-<script src="jquery-2.1.1.js"> </script>
-<script src="SmashLevelGenerator.js"> </script>
+<script type="text/javascript" src="jquery-2.1.1.js"> </script>
+<script type="text/javascript" src="SmashLevelGenerator.js"> </script>
 </body></html>
