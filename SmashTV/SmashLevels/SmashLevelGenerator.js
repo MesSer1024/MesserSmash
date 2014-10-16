@@ -10,18 +10,39 @@ var waves = [];
 
 function Utils() {
 	this.addExpandHandler = function() {
-		// bind a click-handler to the 'tr' elements with the 'header' class-name:
-		$('tr.header').click(function(){
-			/* get all the subsequent 'tr' elements until the next 'tr.header',
-			   set the 'display' property to 'none' (if they're visible), to 'table-row'
-			   if they're not: */
-			$(this).nextUntil('tr.header').css('display', function(i,v){
-				return this.style.display === 'table-row' ? 'none' : 'table-row';
-			});
+		$('tr.header').mousedown(function(event) {
+			switch (event.which) {
+				case 1:
+					$(this).nextUntil('tr.header').css('display', function(i,v){
+						return this.style.display === 'table-row' ? 'none' : 'table-row';
+					});
+					break;
+				case 2:
+					alert('Middle Mouse button pressed.');
+					break;
+				case 3:
+					var idx = this.getAttribute("data-index");
+					console.log("index=" + idx + ", isNaN?" + isNaN(idx));
+					if(!isNaN(idx)) {
+						waves.splice(idx, 1);
+						console.log("removed item with index=" + idx);
+					}
+					new Utils().visualizeWaves(waves);
+					break;
+				default:
+					alert('You have a strange Mouse!');
+					break;
+			}
 		});
 	};
 	
+	this.removeAllVisualWaves = function() {
+		$("#levels").find("tr:gt(2)").remove();
+	}
+	
 	this.visualizeWaves = function(waves) {
+		this.removeAllVisualWaves();
+	
 		function createDropdown(selectedType) {
 			var s = "<select name=\"foobar\">";
 			for(var i in EnemyTypes) {
@@ -34,8 +55,8 @@ function Utils() {
 			return s;
 		}
 		
-		function visualizeWave(waveData) {
-			var waveRow = "<tr class=\"header\"><td colspan=\"2\" style=\"background-color: #acacac\">{data}</td></tr>";
+		function visualizeWave(waveData, index) {
+			var waveRow = "<tr class=\"header\" data-index=\"{index}\"><td class=\"header\" colspan=2>{data}</td></tr>";
 			var typeRow = "<tr><td>Enemy Type:</td><td>{data}</td></tr>";
 			var spawnRow = "<tr><td>Spawn count:</td><td><input value=\"{data}\" /></td></tr>";
 			var criteriaMaxEnemies = "<tr><td>Max enemies alive:</td><td><input value=\"{data}\" /></td></tr>";
@@ -43,6 +64,7 @@ function Utils() {
 			var criteriaMinKills = "<tr><td>Min total enemies killed:</td><td><input value=\"{data}\" /></td></tr>";
 			
 			waveRow = waveRow.replace("{data}", "Wave" + $('tr.header').length);
+			waveRow = waveRow.replace("{index}", index);
 			typeRow = typeRow.replace("{data}", createDropdown(waveData.EnemyType));
 			spawnRow = spawnRow.replace("{data}", waveData.SpawnCount);
 			criteriaMaxEnemies = criteriaMaxEnemies.replace("{data}", waveData.Criteria.MaxEnemiesAlive);
@@ -58,8 +80,9 @@ function Utils() {
 		}
 		
 		for(var i=0; i < waves.length; ++i) {
-			visualizeWave(waves[i]);
+			visualizeWave(waves[i], i);
 		}
+		this.addExpandHandler();
 	};
 }
 
@@ -81,6 +104,25 @@ window.onload = function() {
 	waves.push(new WaveSpawner(EnemyTypes.Melee, 37));
 	waves.push(new WaveSpawner(EnemyTypes.Range, 21));
 
-	new Utils().addExpandHandler();
 	new Utils().visualizeWaves(waves);
+	new Utils().addExpandHandler();
+	
+	$('#generate').click(function(){
+		var str = JSON.stringify(waves);
+		console.log(str);
+		$('#output').val(str);
+	});
+
+	$('#addWave').click(function(){
+		var old = waves[waves.length - 1];
+		var clone = new WaveSpawner(old.EnemyType, old.SpawnCount);
+		clone.Criteria.MaxEnemiesAlive = old.Criteria.MaxEnemiesAlive;
+        clone.Criteria.MinSecondsInArena = clone.Criteria.MinSecondsInArena;
+        clone.Criteria.MinTotalEnemiesKilled = clone.Criteria.MinTotalEnemiesKilled;
+        clone.Criteria.WaveRepeatableCount = clone.Criteria.WaveRepeatableCount;
+        clone.Criteria.SecondsBetweenRepeat = clone.Criteria.SecondsBetweenRepeat;
+		
+		waves.push(clone);
+		new Utils().visualizeWaves(waves);
+	});
 }
