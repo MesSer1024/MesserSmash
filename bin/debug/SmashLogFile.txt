@@ -39784,3 +39784,74 @@
    at System.Net.HttpWebRequest.GetRequestStream()
    at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering\MesserSmash\SmashTV\SharedSmashResources\LocalServer.cs:line 56
 [info|635471803062478438] sendGameState ServerResponse=SharedSmashResources.MesserWebResponse
+[info|635471805040774385] -------------------------------------------------------------------------
+[info|635471805040784388] -------------------------------------------------------------------------
+[info|635471805040784388] Game started at 635471805040784388
+[info|635471805040834423] ->addObserver MesserSmash.SmashTV_main
+[info|635471805040834423] <-addObserver MesserSmash.SmashTV_main
+[info|635471805041594964] ->addObserver MesserSmash.Modules.SoundManager
+[info|635471805041594964] <-addObserver MesserSmash.Modules.SoundManager
+[info|635471805041624985] ->addObserver MesserSmash.SmashTVSystem
+[info|635471805041624985] <-addObserver MesserSmash.SmashTVSystem
+[info|635471805041634992] EnvironmentVariable launcher=
+[info|635471805041665014] ->handleCommand ReloadDatabaseCommand
+[info|635471805041675021] <--handleCommand ReloadDatabaseCommand
+[info|635471805041675021] ->handleCommand LoadConfigFileCommand
+[info|635471805049425952] prepareNewLevel
+[info|635471805049590176] Utils.initialize seed=1690403698
+[info|635471805049675232] ->requestBeginGame
+[info|635471805049800608] -->CreateLootTable
+[info|635471805049850639] <--CreateLootTable randomStatus:MesserRandom seed=1690403698 totalRequests=12
+[info|635471805049990730] showLoadingScreen
+[info|635471805049990730] <--handleCommand LoadConfigFileCommand
+[info|635471805052472489] ->handleCommand ReloadDatabaseCommand
+[info|635471805052472489] <--handleCommand ReloadDatabaseCommand
+[info|635471805052472489] ->handleCommand RequestBeginNewGameCommand
+[info|635471805052472489] <--handleCommand RequestBeginNewGameCommand
+[error|635471805075598921] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.InternalConnect(EndPoint remoteEP)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering\MesserSmash\SmashTV\SharedSmashResources\LocalServer.cs:line 56
+[info|635471805075608928] RequestSessionCommand cb
+[info|635471805075608928] ctor() UpdateGameCredentialsCommand
+[info|635471805075608928] Executing UpdateGameCredentialsCommand
+[info|635471805075608928] <-requestBeginGame
+[info|635471805075668992] ->handleCommand UpdateGameCredentialsCommand
+[info|635471805075679328] <--handleCommand UpdateGameCredentialsCommand
+[info|635471805084165021] ->handleCommand ClientReadyCommand
+[info|635471805084485420] ->addObserver MesserSmash.Arenas.GeneratedLevel
+[info|635471805084485420] <-addObserver MesserSmash.Arenas.GeneratedLevel
+[info|635471805084495427] <--handleCommand ClientReadyCommand
+[info|635471805084865562] ->handleCommand RequestRoundHighscoresCommand
+[info|635471805084865562] <--handleCommand RequestRoundHighscoresCommand
+[info|635471805084865562] ->handleCommand LevelStartedCommand
+[info|635471805085055650] <--handleCommand LevelStartedCommand
+[error|635471805104849713] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.InternalConnect(EndPoint remoteEP)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in D:\_programmering\MesserSmash\SmashTV\SharedSmashResources\LocalServer.cs:line 56
+[debug|635471805113225850] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805113225850] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805113225850] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805113225850] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805113225850] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805113225850] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805113225850] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805113225850] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805113225850] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805113225850] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805113235865] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805113235865] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805113235865] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805113676058] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805114346749] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805131018537] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[debug|635471805132999762] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
