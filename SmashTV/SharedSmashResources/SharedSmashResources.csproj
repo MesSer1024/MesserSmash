@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataCompression.cs" />
+    <Compile Include="DebugServer.cs" />
     <Compile Include="GameLoader.cs" />
     <Compile Include="Highscore.cs" />
     <Compile Include="HighscoreContainer.cs" />

@@ -28,10 +28,11 @@ select {
 	position: relative;
 }
 
-#wrapper {
+#wrapper, #top {
 	position: relative;
 	width: 1200px;
 	margin: 0 auto;
+	background-color: #acacac;
 }
 
 #leftcolumn, #rightcolumn {
@@ -68,6 +69,9 @@ select {
 <body>
 
 <div id="wrapper">
+	<div id="top">
+		<button id="connect">Connect to Game</button>
+	</div>
 	<div id="leftcolumn">
 	<table id="levels">
 		<tr>
@@ -87,7 +91,10 @@ select {
 	<div id="rightcolumn">	
 		<textarea id="output" placeholder="Here you will see JSON output of all level items"></textarea>
 		<br>
-		<button id="generate" style="float: left; margin: 4px; padding: 8px; position: absolute; bottom: 0;">Generate JSON</button>
+		<div style="float: left; margin: 4px; padding: 8px; position: absolute; bottom: 0;">
+			<button id="generate" style="margin: 4px; padding: 8px;">Generate JSON</button>
+			<button id="sendToGame" style="margin: 4px; padding: 8px;">Send Text To Game</button>
+		</div>
 	</div>
 </div>
 <script type="text/javascript" src="jquery-2.1.1.js"> </script>

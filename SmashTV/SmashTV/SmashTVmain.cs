@@ -49,6 +49,7 @@ namespace MesserSmash {
         private List<FileInfo> _replayQueue;
         private int _replayQueueIndex;
         private bool _replayFinished;
+        private DebugServer _debugServer;
 
 		public SmashTV_main(Microsoft.Xna.Framework.Content.ContentManager Content, Microsoft.Xna.Framework.GraphicsDeviceManager graphics, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Game game) {
 			_content = Content;
@@ -114,6 +115,7 @@ namespace MesserSmash {
 			_smashTvSystem = new SmashTVSystem();
 			_currentLevel = 0;
 			new LoadConfigFileCommand().execute();
+            _debugServer = new DebugServer();
 		}
 
 		private void onRestartGame(ICommand command) {
