@@ -1,32 +1,5 @@
 <html>
 <head><style>
-td
-{
-text-align: center;
-vertical-align: middle;
-margin: 0px;
-}
-
-td.header {
-	background-color: #7c7c7c;
-}
-
-input {
-	width: 100%;
-}
-
-select {
-	width: 100%;
-}
-
-#levels {
-	background-color: #acacac;
-	padding: 0px;
-	margin: 4px;
-	border-spacing: 0px;
-	border: 1px solid black;
-	position: relative;
-}
 
 #wrapper, #top {
 	position: relative;
@@ -65,6 +38,56 @@ select {
 	margin: 0px;
 	padding: 0px;
 }
+
+.keyvaluepair {
+	float: left;
+	background-color: #dededf;
+	margin: 0px;
+	padding: 2px;
+	clear: both;
+}
+
+.key {
+	min-width: 150px;
+	max-width: 150px;
+	float: left;
+	padding-left: 4px;
+}
+
+.value {
+	min-width:80px;
+	max-width:80px;
+	float: left;
+	padding-left: 4px;
+}
+
+.wave-container {
+	background-color: #ff0000;
+	overflow:hidden;
+	margin: 10px;
+	padding: 8px;
+}
+
+.waveheader {
+	float: right;
+	background-color: #aeae00;
+	min-width: 100px;
+}
+
+.waveheader--button {
+	float: left;
+	background-color: #cecece;
+	margin-right: 10px;
+}
+
+.wavecontainer {
+	float: left;
+	background-color: #ffaaaa;
+	padding: 10px;
+	margin: 10px;
+}
+
+
 </style></head>
 <body>
 
@@ -73,20 +96,17 @@ select {
 		<button id="connect">Connect to Game</button>
 	</div>
 	<div id="leftcolumn">
-	<table id="levels">
-		<tr>
-			<td>Level:</td>
-			<td><input value="01" /></td>
-		</tr>
-		<tr>
-			<td>Seconds Left:</td>
-			<td><input value="60" /></td>
-		</tr>
-		<tr>
-			<td colspan="2">Waves[]</td>
-		</tr>
-	</table>
-	<button id="addWave" style="float: left; margin: 4px; padding: 8px; position: absolute; bottom: 0;">Add Wave</button>
+		<div class="keyvaluepair">
+			<label class="key">Level:</label>
+			<input class="value" type="text" value="01" />
+		</div>
+		<div class="keyvaluepair">
+			<label class="key">Length(s):</label>
+			<input class="value" type="text" value="60" />
+		</div>
+		<div id="waves" class="wavecontainer">
+		</div>
+		<button id="addWave" style="float: left; margin: 4px; padding: 8px; position: absolute; bottom: 0;">Add Wave</button>
 	</div>
 	<div id="rightcolumn">	
 		<textarea id="output" placeholder="Here you will see JSON output of all level items"></textarea>
@@ -98,5 +118,6 @@ select {
 	</div>
 </div>
 <script type="text/javascript" src="jquery-2.1.1.js"> </script>
+<script type="text/javascript" src="WaveSpawner.js"> </script>
 <script type="text/javascript" src="SmashLevelGenerator.js"> </script>
 </body></html>
