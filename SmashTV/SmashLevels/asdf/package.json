@@ -1,0 +1,14 @@
+{
+  "name": "Legacy",
+  "version": "1.0.0",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-handlebars": "*",
+    "gulp-declare": "*",
+    "gulp-uglify": "*",
+    "gulp-rename": "*"
+  },
+  "author": "Messer Entertainment",
+  "description": "Converted build from Grunt to Gulp"
+}

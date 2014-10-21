@@ -1,15 +1,19 @@
 function SpawnCriteria() {
-	this.MaxEnemiesAlive = -1;
-	this.MinSecondsInArena = -1;
-	this.MinTotalEnemiesKilled = -1;
-	this.WaveRepeatableCount = 0;
-	this.SecondsBetweenRepeat = 1;
+	return {
+		MaxEnemiesAlive : -1,
+		MinSecondsInArena : -1,
+		MinTotalEnemiesKilled : -1,
+		WaveRepeatableCount : 0,
+		SecondsBetweenRepeat : 1
+	};
 }; 
 
 function WaveSpawner(enemyType, amount) {
-   this.EnemyType = enemyType;
-   this.SpawnCount = amount;
-   this.Criteria = new SpawnCriteria();
+	return {
+	   EnemyType : enemyType,
+	   SpawnCount : amount,
+	   Criteria : new SpawnCriteria()
+	}
 };
 
 function WaveView(model, index) {
@@ -18,8 +22,8 @@ function WaveView(model, index) {
 	var _content = $("<div class='wave-container'>");
 	var _button = $("<button class='waveheader--button'>+/-</button>").appendTo(_content);
 	
-	this.hide = function() {
-		console.log("hide idx=" + _index);
+	function hide() {
+		console.log("hide idx=", _index, this);
 		_content.children().not(_button).not(".waveheader").toggle();
 	}
 
@@ -123,11 +127,13 @@ function WaveView(model, index) {
 		)
 	).appendTo(_content);
 	
-	this.getContent = function() {
-		return _content;
-	};
-	
-	this.getButton = function() {
-		return _button;
+	return {
+		getContent: function getContent() {
+			return _content
+		},
+		getButton: function getButton() {
+			return _button;
+		},
+		hide: hide
 	}
 };

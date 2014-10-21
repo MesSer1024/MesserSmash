@@ -1,0 +1,34 @@
+börja med att installera node.js
+skriv "npm install (kräver att vara i folder där package.json finns)"
+ladda hem handlebars.js och placera på något bra ställe (js/lib -- kan också troligtvis göras mha npm install och lägga en dependency mot "något id" eller liknande)
+
+asdf/
+	package.json (namnet är viktigt, info ang. vilka dependencies på externa libbar som behövs, triggas genom att stå i mappen och skriva "npm install")
+	gulpfile.js (namnet är viktigt, info ang. funktioner som ska köras mha gulp-kommandot (build tool), default körs om man skriver bara 'gulp' i cmd)
+
+./template/
+	(html-filer som vi sedan använder "handlebars" för att använda oss utav)
+	i gulpfile.js så gör vi en build task för handlebars som har lite magi i sig, där tar vi datan från en html-fil, och sparar till en fil och placerar i katalog mha gulp.dest
+
+./output/
+	html-fil, som länkar in den outputtade js-filen från gulpfile.js (typ "link src="./main.js2)
+	nånstans i den js-fil som jag utgår ifrån, och som gulp referar till (smashlevelgenerator.js) så lägger jag till följande kod för att arbeta med Handlebars-templaten
+
+	var json = {
+		SpawnCount: "12",
+		MaxEnemiesAlive: "14"
+	};
+
+	var template = Handlebars.template(JST["asdf\\WaveSpawnView"])(json);
+	console.log(template);
+
+
+
+
+npm install 	(to trigger changes in package.json) put command prompt in correct directory
+gulp		(to trigger 'default' build step of gulp)
+gulp buildJS	(to trigger 'buildJS' build step of gulp -- manually named function)
+
+
+foldrar:
+	node_modules (autogenerad när man kör npm install, tankar hem alla requirements som finns definerade i package.json)
