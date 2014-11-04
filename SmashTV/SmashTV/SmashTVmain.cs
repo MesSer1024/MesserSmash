@@ -50,7 +50,8 @@ namespace MesserSmash {
         private List<FileInfo> _replayQueue;
         private int _replayQueueIndex;
         private bool _replayFinished;
-        private DebugServer _debugServer;
+        private MesserWebSocket _websocketServer;
+        private bool _debugLevel;
 
 		public SmashTV_main(Microsoft.Xna.Framework.Content.ContentManager Content, Microsoft.Xna.Framework.GraphicsDeviceManager graphics, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Game game) {
 			_content = Content;
@@ -118,7 +119,7 @@ namespace MesserSmash {
 			new LoadConfigFileCommand().execute();
             Task.Factory.StartNew(() =>
             {
-                _debugServer = new DebugServer();
+                _websocketServer = new MesserWebSocket();
             });
 		}
 
@@ -237,7 +238,7 @@ namespace MesserSmash {
 				_screen = new NewUserScreen();
 			}
 
-            LevelBuilder.setLevelData("");
+            LevelBuilder.setLevelData(LevelBuilder.ExampleData);
             prepareNewLevel(1, true);
 		}
 
@@ -286,7 +287,14 @@ namespace MesserSmash {
                 return;
             }
 
-            if (_smashTvSystem.lastLevelInSet(_currentLevel, SmashTVSystem.Instance.RoundId)) {
+            if (_debugLevel) {
+                _smashTvSystem.unloadArena();
+                var cmd = new LevelWonCommand();
+                cmd.GameInstance = SmashTVSystem.Instance;
+                cmd.Gui = SmashTVSystem.Instance.Gui;
+                cmd.execute();
+                prepareNewLevel(_currentLevel);
+            } else if (_smashTvSystem.lastLevelInSet(_currentLevel, SmashTVSystem.Instance.RoundId)) {
                 _smashTvSystem.unloadArena();
                 var cmd = new RoundWonCommand();
                 cmd.GameInstance = SmashTVSystem.Instance;
@@ -517,6 +525,11 @@ namespace MesserSmash {
                     break;
                 case BeginReplayQueueCommand.NAME:
                     onBeginReplayQueue(cmd);
+                    break;
+                case RemoteLevelCommand.NAME:
+                    LevelBuilder.setLevelData((cmd as RemoteLevelCommand).Data);
+                    prepareNewLevel(1, true);
+                    _debugLevel = true;
                     break;
 			}
 		}

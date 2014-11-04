@@ -15,15 +15,25 @@ function WaveSpawner(enemyType, amount) {
 function WaveView(model, index) {
 	var _model = model;
 	var _index = index;
-	var template = Handlebars.template(MesserEntertainment["asdf\\WaveSpawnView"])(model);
-	console.log("Template:", template);
-	console.log("Model:", model);
+	
+	var clone = jQuery.extend({index: index}, model);
+	var template = Handlebars.template(MesserEntertainment["asdf\\WaveSpawnView"])(clone);
 	var _content = $(template);
+
+	console.log("Model:", model);
 	console.log("Content:", _content);
-	var _button = _content.children('button');
 	console.log("-------------");
-	var c = _content.find("#foo");
-	c.append(createDropdown());
+	
+	var _button = _content.children('button');
+	var dropdown = $(createDropdown(model.EnemyType));
+	dropdown.appendTo(_content.find("#foo"));
+	
+	//add event handlers for input change
+	dropdown.change(onEnemyType);
+	_content.find("#spawn_count").change(onSpawnCount);
+	_content.find("#max_enemies").change(onMaxEnemies);
+	_content.find("#min_seconds").change(onMinSeconds);
+	_content.find("#min_kill").change(onMinKills);
 
 	function createDropdown(selectedType) {
 		var s = "<select class=\"value\">";

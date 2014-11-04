@@ -27,3 +27,11 @@ D:\_programmering\MesserSmash\SmashTV\SharedSmashResources\bin\Debug\Microsoft.X
 D:\_programmering\MesserSmash\SmashTV\SharedSmashResources\obj\Debug\SharedSmashResources.csprojResolveAssemblyReference.cache
 D:\_programmering\MesserSmash\SmashTV\SharedSmashResources\obj\Debug\SharedSmashResources.dll
 D:\_programmering\MesserSmash\SmashTV\SharedSmashResources\obj\Debug\SharedSmashResources.pdb
+D:\_programmering2\MesserSmash\SmashTV\SharedSmashResources\bin\Debug\SharedSmashResources.dll
+D:\_programmering2\MesserSmash\SmashTV\SharedSmashResources\bin\Debug\SharedSmashResources.pdb
+D:\_programmering2\MesserSmash\SmashTV\SharedSmashResources\bin\Debug\Microsoft.Xna.Framework.dll
+D:\_programmering2\MesserSmash\SmashTV\SharedSmashResources\bin\Debug\Microsoft.Xna.Framework.xml
+D:\_programmering2\MesserSmash\SmashTV\SharedSmashResources\obj\Debug\SharedSmashResources.csprojResolveAssemblyReference.cache
+D:\_programmering2\MesserSmash\SmashTV\SharedSmashResources\obj\Debug\SharedSmashResources.dll
+D:\_programmering2\MesserSmash\SmashTV\SharedSmashResources\obj\Debug\SharedSmashResources.pdb
+D:\_programmering2\MesserSmash\SmashTV\SharedSmashResources\bin\Debug\Newtonsoft.Json.dll

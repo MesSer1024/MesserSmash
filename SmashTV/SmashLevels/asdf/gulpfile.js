@@ -10,7 +10,7 @@ var OutputTemplateFiles = 'foobar_templates.js';
 var foo = "main.js";
 //'js/myJs.js'
 var FILES_JS = [
-	"bin/" + OutputTemplateFiles,
+	"obj/" + OutputTemplateFiles,
 	'js/**/*.js'
 ];
 
@@ -33,16 +33,16 @@ gulp.task('handlebars', function() {
             }			
 		}))
 		.pipe(concat(OutputTemplateFiles))
-		.pipe(gulp.dest("bin/"));
+		.pipe(gulp.dest("obj/"));
 });
 
 gulp.task('buildJS', ['handlebars'], function() {
 	return gulp.src(FILES_JS)
 		.pipe(concat(foo))
-		.pipe(gulp.dest("dist/"))
+		.pipe(gulp.dest("bin/"))
 		.pipe(uglify())
 		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest("dist/"))
+		.pipe(gulp.dest("bin/"))
 });
 
 //this makes it possible to autobuild whenever a file has been saved, just write "gulp watch" in terminal

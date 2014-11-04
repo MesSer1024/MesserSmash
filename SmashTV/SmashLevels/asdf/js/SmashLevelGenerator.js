@@ -6,35 +6,14 @@ var EnemyTypes = {
 }
 
 //'global' variables
+var data = {
+	Level: 1,
+	Time: 60,
+	Waves : []
+};
 var waves = [];
 var waveViews = [];
-
-function WebSocketTest() {
-	var SERVER_URL = "ws://localhost:6677";
-	
-	if ("WebSocket" in window) {
-		// Let us open a web socket
-		console.log("Attempting to connect to websocket server on URL:" + SERVER_URL);
-		var ws = new WebSocket(SERVER_URL);
-		ws.onopen = function() {
-			// Web Socket is connected, send data using send()
-			ws.send("Message to send");
-			alert("Message is sent...");
-		};
-		ws.onmessage = function (evt) { 
-			var received_msg = evt.data;
-			alert("Message is received...");
-			console.log("asdfsadfsadf");
-		};
-		ws.onclose = function() { 
-			// websocket is closed.
-			alert("Connection is closed..."); 
-		};
-	} else {
-		// The browser doesn't support WebSocket
-		alert("WebSocket NOT supported by your Browser!");
-	}
-}
+var ws;
 
 function onWaveClicked(idx) {
 	console.log("wave clicked, wave=" + idx);
@@ -66,11 +45,44 @@ function onAddWave() {
 	wave.getButton().click(function() {
 		onWaveClicked(idx);
 	});
-}
+};
+
+function connect() {
+	var SERVER_URL = "ws://localhost:6677";
+	var status = $("#connection_text");
+
+	if ("WebSocket" in window) {
+		// Let us open a web socket
+		console.log("Attempting to connect to websocket server on URL:" + SERVER_URL);
+		ws = new WebSocket(SERVER_URL);
+		ws.onopen = function() {
+			// Web Socket is connected, send data using send()
+			status.val("Message is sent!");
+		};
+		ws.onmessage = function (evt) { 
+			var received_msg = evt.data;
+			status.val("Message received: " + received_msg);
+		};
+		ws.onclose = function() { 
+			// websocket is closed.
+			alert("Connection is closed..."); 
+			ws = null;
+		};
+	} else {
+		// The browser doesn't support WebSocket
+		alert("WebSocket NOT supported by your Browser!");
+	}	
+};
 
 $(function() {
 	$('#generate').click(function(){
-		var str = JSON.stringify(waves);
+		var levels = [];
+		data.Level = Number($("#level").val());
+		data.Time = Number($("#time").val());
+		data.Waves = waves;
+		
+		levels[0] = data;
+		var str = JSON.stringify(levels);
 		$('#output').val(str);
 	});
 
@@ -84,15 +96,18 @@ $(function() {
 	});
 	
 	$("#connect").click(function() {
-		WebSocketTest();
+		connect();
+	});
+	
+	$("#sendToGame").click(function() {
+		if(!ws)
+			connect();
+		
+		ws.send($('#output').val());
 	});
 
 	var json = {
 		SpawnCount: "12",
 		MaxEnemiesAlive: "14"
 	};
-
-	var template = Handlebars.template(MesserEntertainment["asdf\\WaveSpawnView"])(json);
-	console.log(template);
-
 });

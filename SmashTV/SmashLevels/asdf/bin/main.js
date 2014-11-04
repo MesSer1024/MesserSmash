@@ -1,15 +1,15 @@
 this["MesserEntertainment"] = this["MesserEntertainment"] || {};
 this["MesserEntertainment"]["asdf\\WaveSpawnView"] = {"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, lambda=this.lambda;
-  return "<div class=\"wave-container\">\r\n	<button class='waveheader--button'>+/-</button>\r\n	<div class='waveheader'>\r\n		<label text=\"Wave_"
+  return "<div class=\"wave-container\">\r\n	<button class='waveheader--button'>+/-</button>\r\n	<div class='waveheader'>\r\n		<label>Wave_"
     + escapeExpression(((helper = (helper = helpers.index || (depth0 != null ? depth0.index : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"index","hash":{},"data":data}) : helper)))
-    + "\" />\r\n	</div>\r\n	<div>\r\n		<div id=\"foo\" class=\"keyvaluepair\">\r\n			<label class=\"key\" text=\"EnemyType\" />\r\n		</div>	\r\n		<div class=\"keyvaluepair\">\r\n			<label class=\"key\" text=\"SpawnCount\" />\r\n			<input class=\"value\" type=\"text\" value=\""
+    + "</label>\r\n	</div>\r\n	<div>\r\n		<div id=\"foo\" class=\"keyvaluepair\">\r\n			<label class=\"key\">EnemyType</label>\r\n		</div>	\r\n		<div class=\"keyvaluepair\">\r\n			<label class=\"key\">SpawnCount</label>\r\n			<input id=\"spawn_count\" class=\"value\" type=\"text\" value=\""
     + escapeExpression(((helper = (helper = helpers.SpawnCount || (depth0 != null ? depth0.SpawnCount : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"SpawnCount","hash":{},"data":data}) : helper)))
-    + "\" />\r\n		</div>\r\n		<div class=\"keyvaluepair\">\r\n			<label class=\"key\" text=\"MaxEnemiesAlive\" />\r\n			<input class=\"value\" type=\"text\" value=\""
+    + "\" />\r\n		</div>\r\n		<div class=\"keyvaluepair\">\r\n			<label class=\"key\">MaxEnemiesAlive</label>\r\n			<input id=\"max_enemies\" class=\"value\" type=\"text\" value=\""
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.Criteria : depth0)) != null ? stack1.MaxEnemiesAlive : stack1), depth0))
-    + "\" />	\r\n		</div>\r\n		<div class=\"keyvaluepair\">\r\n			<label class=\"key\" text=\"MinSecondsInArena\" />\r\n			<input class=\"value\" type=\"text\" value=\""
+    + "\" />	\r\n		</div>\r\n		<div class=\"keyvaluepair\">\r\n			<label class=\"key\">MinSecondsInArena</label>\r\n			<input id=\"min_seconds\" class=\"value\" type=\"text\" value=\""
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.Criteria : depth0)) != null ? stack1.MinSecondsInArena : stack1), depth0))
-    + "\" />	\r\n		</div>\r\n		<div class=\"keyvaluepair\">\r\n			<label class=\"key\" text=\"MinTotalEnemiesKilled\" />\r\n			<input class=\"value\" type=\"text\" value=\""
+    + "\" />	\r\n		</div>\r\n		<div class=\"keyvaluepair\">\r\n			<label class=\"key\">MinEnemiesKilled</label>\r\n			<input id=\"min_kill\" class=\"value\" type=\"text\" value=\""
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.Criteria : depth0)) != null ? stack1.MinTotalEnemiesKilled : stack1), depth0))
     + "\" />		\r\n		</div>\r\n	</div>\r\n</div>";
 },"useData":true};
@@ -21,35 +21,14 @@ var EnemyTypes = {
 }
 
 //'global' variables
+var data = {
+	Level: 1,
+	Time: 60,
+	Waves : []
+};
 var waves = [];
 var waveViews = [];
-
-function WebSocketTest() {
-	var SERVER_URL = "ws://localhost:6677";
-	
-	if ("WebSocket" in window) {
-		// Let us open a web socket
-		console.log("Attempting to connect to websocket server on URL:" + SERVER_URL);
-		var ws = new WebSocket(SERVER_URL);
-		ws.onopen = function() {
-			// Web Socket is connected, send data using send()
-			ws.send("Message to send");
-			alert("Message is sent...");
-		};
-		ws.onmessage = function (evt) { 
-			var received_msg = evt.data;
-			alert("Message is received...");
-			console.log("asdfsadfsadf");
-		};
-		ws.onclose = function() { 
-			// websocket is closed.
-			alert("Connection is closed..."); 
-		};
-	} else {
-		// The browser doesn't support WebSocket
-		alert("WebSocket NOT supported by your Browser!");
-	}
-}
+var ws;
 
 function onWaveClicked(idx) {
 	console.log("wave clicked, wave=" + idx);
@@ -81,11 +60,44 @@ function onAddWave() {
 	wave.getButton().click(function() {
 		onWaveClicked(idx);
 	});
-}
+};
+
+function connect() {
+	var SERVER_URL = "ws://localhost:6677";
+	var status = $("#connection_text");
+
+	if ("WebSocket" in window) {
+		// Let us open a web socket
+		console.log("Attempting to connect to websocket server on URL:" + SERVER_URL);
+		ws = new WebSocket(SERVER_URL);
+		ws.onopen = function() {
+			// Web Socket is connected, send data using send()
+			status.val("Message is sent!");
+		};
+		ws.onmessage = function (evt) { 
+			var received_msg = evt.data;
+			status.val("Message received: " + received_msg);
+		};
+		ws.onclose = function() { 
+			// websocket is closed.
+			alert("Connection is closed..."); 
+			ws = null;
+		};
+	} else {
+		// The browser doesn't support WebSocket
+		alert("WebSocket NOT supported by your Browser!");
+	}	
+};
 
 $(function() {
 	$('#generate').click(function(){
-		var str = JSON.stringify(waves);
+		var levels = [];
+		data.Level = Number($("#level").val());
+		data.Time = Number($("#time").val());
+		data.Waves = waves;
+		
+		levels[0] = data;
+		var str = JSON.stringify(levels);
 		$('#output').val(str);
 	});
 
@@ -99,17 +111,20 @@ $(function() {
 	});
 	
 	$("#connect").click(function() {
-		WebSocketTest();
+		connect();
+	});
+	
+	$("#sendToGame").click(function() {
+		if(!ws)
+			connect();
+		
+		ws.send($('#output').val());
 	});
 
 	var json = {
 		SpawnCount: "12",
 		MaxEnemiesAlive: "14"
 	};
-
-	var template = Handlebars.template(MesserEntertainment["asdf\\WaveSpawnView"])(json);
-	console.log(template);
-
 });
 function WaveSpawner(enemyType, amount) {
 	return {
@@ -128,15 +143,25 @@ function WaveSpawner(enemyType, amount) {
 function WaveView(model, index) {
 	var _model = model;
 	var _index = index;
-	var template = Handlebars.template(MesserEntertainment["asdf\\WaveSpawnView"])(model);
-	console.log("Template:", template);
-	console.log("Model:", model);
+	
+	var clone = jQuery.extend({index: index}, model);
+	var template = Handlebars.template(MesserEntertainment["asdf\\WaveSpawnView"])(clone);
 	var _content = $(template);
+
+	console.log("Model:", model);
 	console.log("Content:", _content);
-	var _button = _content.children('button');
 	console.log("-------------");
-	var c = _content.find("#foo");
-	c.append(createDropdown());
+	
+	var _button = _content.children('button');
+	var dropdown = $(createDropdown(model.EnemyType));
+	dropdown.appendTo(_content.find("#foo"));
+	
+	//add event handlers for input change
+	dropdown.change(onEnemyType);
+	_content.find("#spawn_count").change(onSpawnCount);
+	_content.find("#max_enemies").change(onMaxEnemies);
+	_content.find("#min_seconds").change(onMinSeconds);
+	_content.find("#min_kill").change(onMinKills);
 
 	function createDropdown(selectedType) {
 		var s = "<select class=\"value\">";

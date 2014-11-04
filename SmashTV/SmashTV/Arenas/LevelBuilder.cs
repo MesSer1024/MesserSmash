@@ -9,8 +9,7 @@ namespace MesserSmash.Arenas
 {
     class LevelBuilder
     {
-        static string ExampleData() {
-            return @"[
+        public static string ExampleData = @"[
 {
     Level: 1,
     Time: 60,
@@ -68,15 +67,14 @@ namespace MesserSmash.Arenas
     ]
 }
 ]";
-        }
 
 
         public static void setLevelData(string rawData) {
-            var s = LevelBuilder.ExampleData();
+            //var s = LevelBuilder.ExampleData();
             //var foo = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(s);
             //var waves = foo[0]["Waves"];
-
-            Levels = JsonConvert.DeserializeObject<List<jsLevel>>(LevelBuilder.ExampleData());
+            //Levels = JsonConvert.DeserializeObject<List<jsLevel>>(LevelBuilder.ExampleData());
+            Levels = JsonConvert.DeserializeObject<List<jsLevel>>(rawData);
         }
 
         public class jsLevel
