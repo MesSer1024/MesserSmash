@@ -1,10 +1,27 @@
-<div>
-	<div class="keyvaluepair">
-		<label class="key" text="SpawnCount" />
-		<input class="value" type="text" value="{{SpawnCount}}" />
+<div class="wave-container">
+	<button class='waveheader--button'>+/-</button>
+	<div class='waveheader'>
+		<label text="Wave_{{index}}" />
 	</div>
-	<div class="keyvaluepair">
-		<label class="key" text="MaxEnemiesAlive" />
-		<input class="value" type="text" value="{{MaxEnemiesAlive}}" />		
+	<div>
+		<div id="foo" class="keyvaluepair">
+			<label class="key" text="EnemyType" />
+		</div>	
+		<div class="keyvaluepair">
+			<label class="key" text="SpawnCount" />
+			<input class="value" type="text" value="{{SpawnCount}}" />
+		</div>
+		<div class="keyvaluepair">
+			<label class="key" text="MaxEnemiesAlive" />
+			<input class="value" type="text" value="{{Criteria.MaxEnemiesAlive}}" />	
+		</div>
+		<div class="keyvaluepair">
+			<label class="key" text="MinSecondsInArena" />
+			<input class="value" type="text" value="{{Criteria.MinSecondsInArena}}" />	
+		</div>
+		<div class="keyvaluepair">
+			<label class="key" text="MinTotalEnemiesKilled" />
+			<input class="value" type="text" value="{{Criteria.MinTotalEnemiesKilled}}" />		
+		</div>
 	</div>
 </div>

@@ -14,6 +14,10 @@ var FILES_JS = [
 	'js/**/*.js'
 ];
 
+var FILES_TEMPLATE = [
+	"template/**/*.html"
+];
+
 gulp.task('default', ["buildJS"], function() {
 	console.log("Hello world!");
 });
@@ -22,7 +26,7 @@ gulp.task('handlebars', function() {
 	return gulp.src(['template/*.html'])
 		.pipe(handlebars())
 		.pipe(declare({
-			namespace: 'JST',
+			namespace: 'MesserEntertainment',
             processName: function (filePath) {
                 var ret = path.join(path.basename(__dirname), filePath.replace(/^.*[\\\/]/, '')).replace('.js', '');
                 return ret;
@@ -44,6 +48,6 @@ gulp.task('buildJS', ['handlebars'], function() {
 //this makes it possible to autobuild whenever a file has been saved, just write "gulp watch" in terminal
 gulp.task('watch', function() {
 	gulp.watch(FILES_JS, ['buildJS']);
+	gulp.watch(FILES_TEMPLATE, ['buildJS']); //rebuild template files
 	//gulp.watch(FILES_CSS, ['copyCSS']);
-	//gulp.watch(FILES_TEMPLATE, ['buildJS']); //rebuild template files
 });

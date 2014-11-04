@@ -1,11 +1,17 @@
-this["JST"] = this["JST"] || {};
-this["JST"]["asdf\\WaveSpawnView"] = {"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "<div>\r\n	<div class=\"keyvaluepair\">\r\n		<label class=\"key\" text=\"SpawnCount\" />\r\n		<input class=\"value\" type=\"text\" value=\""
+this["MesserEntertainment"] = this["MesserEntertainment"] || {};
+this["MesserEntertainment"]["asdf\\WaveSpawnView"] = {"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, lambda=this.lambda;
+  return "<div class=\"wave-container\">\r\n	<button class='waveheader--button'>+/-</button>\r\n	<div class='waveheader'>\r\n		<label text=\"Wave_"
+    + escapeExpression(((helper = (helper = helpers.index || (depth0 != null ? depth0.index : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"index","hash":{},"data":data}) : helper)))
+    + "\" />\r\n	</div>\r\n	<div>\r\n		<div id=\"foo\" class=\"keyvaluepair\">\r\n			<label class=\"key\" text=\"EnemyType\" />\r\n		</div>	\r\n		<div class=\"keyvaluepair\">\r\n			<label class=\"key\" text=\"SpawnCount\" />\r\n			<input class=\"value\" type=\"text\" value=\""
     + escapeExpression(((helper = (helper = helpers.SpawnCount || (depth0 != null ? depth0.SpawnCount : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"SpawnCount","hash":{},"data":data}) : helper)))
-    + "\" />\r\n	</div>\r\n	<div class=\"keyvaluepair\">\r\n		<label class=\"key\" text=\"MaxEnemiesAlive\" />\r\n		<input class=\"value\" type=\"text\" value=\""
-    + escapeExpression(((helper = (helper = helpers.MaxEnemiesAlive || (depth0 != null ? depth0.MaxEnemiesAlive : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"MaxEnemiesAlive","hash":{},"data":data}) : helper)))
-    + "\" />		\r\n	</div>\r\n</div>";
+    + "\" />\r\n		</div>\r\n		<div class=\"keyvaluepair\">\r\n			<label class=\"key\" text=\"MaxEnemiesAlive\" />\r\n			<input class=\"value\" type=\"text\" value=\""
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.Criteria : depth0)) != null ? stack1.MaxEnemiesAlive : stack1), depth0))
+    + "\" />	\r\n		</div>\r\n		<div class=\"keyvaluepair\">\r\n			<label class=\"key\" text=\"MinSecondsInArena\" />\r\n			<input class=\"value\" type=\"text\" value=\""
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.Criteria : depth0)) != null ? stack1.MinSecondsInArena : stack1), depth0))
+    + "\" />	\r\n		</div>\r\n		<div class=\"keyvaluepair\">\r\n			<label class=\"key\" text=\"MinTotalEnemiesKilled\" />\r\n			<input class=\"value\" type=\"text\" value=\""
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.Criteria : depth0)) != null ? stack1.MinTotalEnemiesKilled : stack1), depth0))
+    + "\" />		\r\n		</div>\r\n	</div>\r\n</div>";
 },"useData":true};
 //From codebase
 var EnemyTypes = {
@@ -101,38 +107,36 @@ $(function() {
 		MaxEnemiesAlive: "14"
 	};
 
-	var template = Handlebars.template(JST["asdf\\WaveSpawnView"])(json);
+	var template = Handlebars.template(MesserEntertainment["asdf\\WaveSpawnView"])(json);
 	console.log(template);
 
 });
-function SpawnCriteria() {
-	return {
-		MaxEnemiesAlive : -1,
-		MinSecondsInArena : -1,
-		MinTotalEnemiesKilled : -1,
-		WaveRepeatableCount : 0,
-		SecondsBetweenRepeat : 1
-	};
-}; 
-
 function WaveSpawner(enemyType, amount) {
 	return {
 	   EnemyType : enemyType,
 	   SpawnCount : amount,
-	   Criteria : new SpawnCriteria()
+	   Criteria : {
+			MaxEnemiesAlive : -1,
+			MinSecondsInArena : -1,
+			MinTotalEnemiesKilled : -1,
+			WaveRepeatableCount : 0,
+			SecondsBetweenRepeat : 1
+		}
 	}
 };
 
 function WaveView(model, index) {
 	var _model = model;
 	var _index = index;
-	var _content = $("<div class='wave-container'>");
-	var _button = $("<button class='waveheader--button'>+/-</button>").appendTo(_content);
-	
-	function hide() {
-		console.log("hide idx=", _index, this);
-		_content.children().not(_button).not(".waveheader").toggle();
-	}
+	var template = Handlebars.template(MesserEntertainment["asdf\\WaveSpawnView"])(model);
+	console.log("Template:", template);
+	console.log("Model:", model);
+	var _content = $(template);
+	console.log("Content:", _content);
+	var _button = _content.children('button');
+	console.log("-------------");
+	var c = _content.find("#foo");
+	c.append(createDropdown());
 
 	function createDropdown(selectedType) {
 		var s = "<select class=\"value\">";
@@ -144,8 +148,23 @@ function WaveView(model, index) {
 		}
 		s += "</select>";
 		return s;
-	}
+	};
 	
+	function hide() {
+		console.log("hide idx=", _index, this);
+		var c = _content.children().not(_button).not(".waveheader")
+		console.log("c=", c);
+		c.toggle();
+	};
+
+	function getContent() {
+		return _content;
+	};
+
+	function getButton() {
+		return _button;
+	};
+
 	function onEnemyType() {
 		var value = this.selectedIndex;
 		console.log("[" + _index + "]onEnemyType value=" + value);
@@ -181,66 +200,9 @@ function WaveView(model, index) {
 		console.log(_model);
 	};
 	
-	//header
-	($("<div>", { class: "waveheader", text:"Wave_" + _index })).appendTo(_content);
-	
-	//enemy type
-	$("<div class='keyvaluepair'>").append(
-		$("<div>", {class: "keyvaluepair"}).append(
-			$("<label>", {class: "key", text:"EnemyType"}),
-			$(createDropdown(_model.EnemyType)).change(
-				onEnemyType
-			)
-		)
-	).appendTo(_content);
-	
-	//spawn count
-	$("<div class='keyvaluepair'>").append(
-		$("<div>", {class: "keyvaluepair"}).append(
-			$("<label>", {class: "key", text:"SpawnCount"}),
-			$("<input>", {class: "value", type: "text", value:_model.SpawnCount}).change(
-				onSpawnCount
-			)
-		)
-	).appendTo(_content);
-	
-	//criteria MaxEnemies
-	$("<div class='keyvaluepair'>").append(
-		$("<div>", {class: "keyvaluepair"}).append(
-			$("<label>", {class: "key", text:"MaxEnemiesAlive"}),
-			$("<input>", {class: "value", type: "text", value:_model.Criteria.MaxEnemiesAlive}).change(
-				onMaxEnemies
-			)
-		)
-	).appendTo(_content);
-	
-	//criteria MinSeconds
-	$("<div class='keyvaluepair'>").append(
-		$("<div>", {class: "keyvaluepair"}).append(
-			$("<label>", {class: "key", text:"MinSecondsInArena"}),
-			$("<input>", {class: "value", type: "text", value:_model.Criteria.MinSecondsInArena}).change(
-				onMinSeconds
-			)
-		)
-	).appendTo(_content);
-	
-	//criteria MinKills
-	$("<div class='keyvaluepair'>").append(
-		$("<div>", {class: "keyvaluepair"}).append(
-			$("<label>", {class: "key", text:"MinTotalKills"}),
-			$("<input>", {class: "value", type: "text", value:_model.Criteria.MinTotalEnemiesKilled}).change(
-				onMinKills
-			)
-		)
-	).appendTo(_content);
-	
 	return {
-		getContent: function getContent() {
-			return _content
-		},
-		getButton: function getButton() {
-			return _button;
-		},
+		getContent: getContent,
+		getButton: getButton,
 		hide: hide
 	}
 };
