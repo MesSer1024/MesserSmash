@@ -92,7 +92,7 @@ $(function() {
 		MaxEnemiesAlive: "14"
 	};
 
-	var template = Handlebars.template(JST["asdf\\WaveSpawnView"])(json);
+	var template = Handlebars.template(MesserEntertainment["asdf\\WaveSpawnView"])(json);
 	console.log(template);
 
 });

@@ -17,6 +17,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using SharedSmashResources;
 using SharedSmashResources.Patterns;
+using System.Threading.Tasks;
 
 namespace MesserSmash {
 	class SmashTV_main : IObserver {
@@ -115,7 +116,10 @@ namespace MesserSmash {
 			_smashTvSystem = new SmashTVSystem();
 			_currentLevel = 0;
 			new LoadConfigFileCommand().execute();
-            _debugServer = new DebugServer();
+            Task.Factory.StartNew(() =>
+            {
+                _debugServer = new DebugServer();
+            });
 		}
 
 		private void onRestartGame(ICommand command) {

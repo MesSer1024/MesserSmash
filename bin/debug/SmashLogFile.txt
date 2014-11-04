@@ -39855,3 +39855,164 @@
 [debug|635471805114346749] Collision between MesserSmash.RocketShot and MesserSmash.Enemies.MeleeEnemy
 [debug|635471805131018537] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
 [debug|635471805132999762] Collision between MesserSmash.PistolShot and MesserSmash.Enemies.MeleeEnemy
+[info|635501672344514275] -------------------------------------------------------------------------
+[info|635501672344524282] -------------------------------------------------------------------------
+[info|635501672344524282] Game started at 635501672344524282
+[info|635501672344564310] ->addObserver MesserSmash.SmashTV_main
+[info|635501672344564310] <-addObserver MesserSmash.SmashTV_main
+[info|635501672345915270] ->addObserver MesserSmash.Modules.SoundManager
+[info|635501672345915270] <-addObserver MesserSmash.Modules.SoundManager
+[info|635501672345945291] ->addObserver MesserSmash.SmashTVSystem
+[info|635501672345945291] <-addObserver MesserSmash.SmashTVSystem
+[info|635501672345965305] EnvironmentVariable launcher=
+[info|635501672346025365] ->handleCommand ReloadDatabaseCommand
+[info|635501672346035355] <--handleCommand ReloadDatabaseCommand
+[info|635501672346035355] ->handleCommand LoadConfigFileCommand
+[info|635501672349848063] prepareNewLevel
+[info|635501672349948117] Utils.initialize seed=1788185272
+[info|635501672349968153] ->requestBeginGame
+[info|635501672350028195] -->CreateLootTable
+[info|635501672350058217] <--CreateLootTable randomStatus:MesserRandom seed=1788185272 totalRequests=12
+[info|635501672350128267] showLoadingScreen
+[info|635501672350128267] <--handleCommand LoadConfigFileCommand
+[info|635501672351469245] ->handleCommand ReloadDatabaseCommand
+[info|635501672351469245] <--handleCommand ReloadDatabaseCommand
+[info|635501672351469245] ->handleCommand RequestBeginNewGameCommand
+[info|635501672351469245] <--handleCommand RequestBeginNewGameCommand
+[error|635501672372894603] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in d:\_programmering\MesserSmash\SmashTV\SharedSmashResources\LocalServer.cs:line 56
+[info|635501672372914613] RequestSessionCommand cb
+[info|635501672372914613] ctor() UpdateGameCredentialsCommand
+[info|635501672372914613] Executing UpdateGameCredentialsCommand
+[info|635501672372914613] <-requestBeginGame
+[info|635501672372954462] ->handleCommand UpdateGameCredentialsCommand
+[info|635501672372964490] <--handleCommand UpdateGameCredentialsCommand
+[info|635501673561738821] -------------------------------------------------------------------------
+[info|635501673561738821] -------------------------------------------------------------------------
+[info|635501673561738821] Game started at 635501673561738821
+[info|635501673561788852] ->addObserver MesserSmash.SmashTV_main
+[info|635501673561788852] <-addObserver MesserSmash.SmashTV_main
+[info|635501673563249898] ->addObserver MesserSmash.Modules.SoundManager
+[info|635501673563249898] <-addObserver MesserSmash.Modules.SoundManager
+[info|635501673563279911] ->addObserver MesserSmash.SmashTVSystem
+[info|635501673563279911] <-addObserver MesserSmash.SmashTVSystem
+[info|635501673563299925] EnvironmentVariable launcher=
+[info|635501673563480040] ->handleCommand ReloadDatabaseCommand
+[info|635501673563490047] <--handleCommand ReloadDatabaseCommand
+[info|635501673563490047] ->handleCommand LoadConfigFileCommand
+[info|635501673566642299] prepareNewLevel
+[info|635501673566712447] Utils.initialize seed=-1290007802
+[info|635501673566742374] ->requestBeginGame
+[info|635501673566782382] -->CreateLootTable
+[info|635501673566812403] <--CreateLootTable randomStatus:MesserRandom seed=-1290007802 totalRequests=12
+[info|635501673566862460] showLoadingScreen
+[info|635501673566862460] <--handleCommand LoadConfigFileCommand
+[info|635501673567803128] ->handleCommand ReloadDatabaseCommand
+[info|635501673567803128] <--handleCommand ReloadDatabaseCommand
+[info|635501673567803128] ->handleCommand RequestBeginNewGameCommand
+[info|635501673567803128] <--handleCommand RequestBeginNewGameCommand
+[error|635501673588417765] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in d:\_programmering\MesserSmash\SmashTV\SharedSmashResources\LocalServer.cs:line 56
+[info|635501673588437797] RequestSessionCommand cb
+[info|635501673588437797] ctor() UpdateGameCredentialsCommand
+[info|635501673588437797] Executing UpdateGameCredentialsCommand
+[info|635501673588437797] <-requestBeginGame
+[info|635501673588447782] ->handleCommand UpdateGameCredentialsCommand
+[info|635501673588457781] <--handleCommand UpdateGameCredentialsCommand
+[info|635501673651262414] ->handleCommand ClientReadyCommand
+[info|635501673651392493] ->addObserver MesserSmash.Arenas.GeneratedLevel
+[info|635501673651392493] <-addObserver MesserSmash.Arenas.GeneratedLevel
+[info|635501673651392493] <--handleCommand ClientReadyCommand
+[info|635501673651692698] ->handleCommand RequestRoundHighscoresCommand
+[info|635501673651702701] <--handleCommand RequestRoundHighscoresCommand
+[info|635501673651702701] ->handleCommand LevelStartedCommand
+[info|635501673651822799] <--handleCommand LevelStartedCommand
+[info|635501675076644788] -------------------------------------------------------------------------
+[info|635501675076644788] -------------------------------------------------------------------------
+[info|635501675076644788] Game started at 635501675076644788
+[info|635501675076704831] ->addObserver MesserSmash.SmashTV_main
+[info|635501675076704831] <-addObserver MesserSmash.SmashTV_main
+[info|635501675078205897] ->addObserver MesserSmash.Modules.SoundManager
+[info|635501675078205897] <-addObserver MesserSmash.Modules.SoundManager
+[info|635501675078235922] ->addObserver MesserSmash.SmashTVSystem
+[info|635501675078235922] <-addObserver MesserSmash.SmashTVSystem
+[info|635501675078255932] EnvironmentVariable launcher=
+[info|635501675078376001] ->handleCommand ReloadDatabaseCommand
+[info|635501675078406022] <--handleCommand ReloadDatabaseCommand
+[info|635501675078406022] ->handleCommand LoadConfigFileCommand
+[info|635501675082078647] prepareNewLevel
+[info|635501676806663528] -------------------------------------------------------------------------
+[info|635501676806673535] -------------------------------------------------------------------------
+[info|635501676806673535] Game started at 635501676806673535
+[info|635501676806743585] ->addObserver MesserSmash.SmashTV_main
+[info|635501676806743585] <-addObserver MesserSmash.SmashTV_main
+[info|635501676808324725] ->addObserver MesserSmash.Modules.SoundManager
+[info|635501676808324725] <-addObserver MesserSmash.Modules.SoundManager
+[info|635501676808354746] ->addObserver MesserSmash.SmashTVSystem
+[info|635501676808354746] <-addObserver MesserSmash.SmashTVSystem
+[info|635501676808374760] EnvironmentVariable launcher=
+[info|635501676808514881] ->handleCommand ReloadDatabaseCommand
+[info|635501676808544864] <--handleCommand ReloadDatabaseCommand
+[info|635501676808544864] ->handleCommand LoadConfigFileCommand
+[info|635501676814089396] prepareNewLevel
+[info|635501677371790930] -------------------------------------------------------------------------
+[info|635501677371790930] -------------------------------------------------------------------------
+[info|635501677371790930] Game started at 635501677371790930
+[info|635501677371850981] ->addObserver MesserSmash.SmashTV_main
+[info|635501677371850981] <-addObserver MesserSmash.SmashTV_main
+[info|635501677373301995] ->addObserver MesserSmash.Modules.SoundManager
+[info|635501677373301995] <-addObserver MesserSmash.Modules.SoundManager
+[info|635501677373332038] ->addObserver MesserSmash.SmashTVSystem
+[info|635501677373332038] <-addObserver MesserSmash.SmashTVSystem
+[info|635501677373352048] EnvironmentVariable launcher=
+[info|635501677373762429] ->handleCommand ReloadDatabaseCommand
+[info|635501677373802355] <--handleCommand ReloadDatabaseCommand
+[info|635501677373802355] ->handleCommand LoadConfigFileCommand
+[info|635501677376624355] prepareNewLevel
+[info|635501677376714419] Utils.initialize seed=-1774983018
+[info|635501677376744461] ->requestBeginGame
+[info|635501677376784490] -->CreateLootTable
+[info|635501677376824514] <--CreateLootTable randomStatus:MesserRandom seed=-1774983018 totalRequests=12
+[info|635501677376864547] showLoadingScreen
+[info|635501677376864547] <--handleCommand LoadConfigFileCommand
+[info|635501677377585041] ->handleCommand ReloadDatabaseCommand
+[info|635501677377585041] <--handleCommand ReloadDatabaseCommand
+[info|635501677377585041] ->handleCommand RequestBeginNewGameCommand
+[info|635501677377585041] <--handleCommand RequestBeginNewGameCommand
+[error|635501677398249731] Error communicating with server: System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8801
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at SharedSmashResources.LocalServer.postWebRequestAndGetResponse(String url, String request, Byte[] data, Int32 timeoutMs, WebHeaderCollection additionalHeaders) in d:\_programmering\MesserSmash\SmashTV\SharedSmashResources\LocalServer.cs:line 56
+[info|635501677398259738] RequestSessionCommand cb
+[info|635501677398259738] ctor() UpdateGameCredentialsCommand
+[info|635501677398259738] Executing UpdateGameCredentialsCommand
+[info|635501677398259738] <-requestBeginGame
+[info|635501677398389827] ->handleCommand UpdateGameCredentialsCommand
+[info|635501677398389827] <--handleCommand UpdateGameCredentialsCommand
+[info|635501679237145828] -------------------------------------------------------------------------
+[info|635501679237145828] -------------------------------------------------------------------------
+[info|635501679237145828] Game started at 635501679237145828
+[info|635501679237225859] ->addObserver MesserSmash.SmashTV_main
+[info|635501679237225859] <-addObserver MesserSmash.SmashTV_main
+[info|635501679238917081] ->addObserver MesserSmash.Modules.SoundManager
+[info|635501679238917081] <-addObserver MesserSmash.Modules.SoundManager
+[info|635501679238947103] ->addObserver MesserSmash.SmashTVSystem
+[info|635501679238947103] <-addObserver MesserSmash.SmashTVSystem
+[info|635501679238967117] EnvironmentVariable launcher=
+[info|635501679239107216] ->handleCommand ReloadDatabaseCommand
+[info|635501679239117224] <--handleCommand ReloadDatabaseCommand
+[info|635501679239117224] ->handleCommand LoadConfigFileCommand
+[info|635501679241659025] prepareNewLevel
