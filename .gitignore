@@ -18,3 +18,4 @@
 *.exe
 *.pdb
 /bin/debug/games/*.*
+node_modules
