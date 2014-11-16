@@ -1,123 +1,175 @@
 <html>
 <head><style>
 
-#wrapper, #top {
+div {
+	box-sizing: border-box;
+}
+
+hr {
+	border: 0;
+	height: 1px;
+	background: black;
+}
+
+#wrapper {
 	position: relative;
 	width: 1200px;
 	margin: 0 auto;
-	background-color: #acacac;
+	/* display: block; */
+}
+
+#top {
+	border: 1px solid black;
+	vertical-align: middle;
+	padding: 3px;
 }
 
 #leftcolumn, #rightcolumn {
-	border: 1px solid orange;
+	float: left; 
+	border: 1px solid black;
 	min-height: 550px;
 	vertical-align: middle;
-	margin: 0px;
-	padding: 0px;
-	position: relative;
+	padding: 3px;
 }
 
 #leftcolumn {
-	float: left;
-	width: 500px;
-	//background-color: #ff0000;
+	min-width: 30%;
+	background-color: #ff0000;
 }
 
 #rightcolumn {
-	float: right;
-	width: 600px;
-	//background-color: #00ff00;
+	min-width: 70%;
+	background-color: #00ff00;
+}
+
+#content {
+	width: 100%;
+	/* display: inline-block; */
 }
 
 #output {
 	min-height: 60%;
 	max-height: 80%;
-	min-width: 100%;
-	max-width: 100%;
 	text-align: left;
-	margin: 0px;
 	padding: 0px;
 }
 
-.keyvaluepair {
-	float: left;
-	background-color: #dededf;
-	margin: 0px;
-	padding: 2px;
+.stretchWidth {
+	width: 100%;
 	clear: both;
 }
 
+.keyvaluepair {
+	background-color: #dededf;
+	padding: 2px;
+}
+
 .key {
-	min-width: 150px;
-	max-width: 150px;
-	float: left;
-	padding-left: 4px;
+	display: inline-block;
+	min-width: 175px;
 }
 
 .value {
+	display: inline-block;
 	min-width:80px;
 	max-width:80px;
-	float: left;
-	padding-left: 4px;
-}
-
-.wave-container {
-	background-color: #ff0000;
-	overflow:hidden;
-	margin: 10px;
-	padding: 8px;
-}
-
-.waveheader {
-	float: right;
-	background-color: #aeae00;
-	min-width: 100px;
-	min-height: 40px;
-}
-
-.waveheader--button {
-	float: left;
-	background-color: #cecece;
-	margin-right: 10px;
 }
 
 .wavecontainer {
-	float: left;
-	background-color: #ffaaaa;
-	padding: 10px;
-	margin: 10px;
 }
 
+.wave {
+	float: left;
+	clear: both;
+	background-color: #ff0000;
+	padding: 2px;
+	padding-left: 15px;
+}
+
+.waveheader {
+	padding: 2px;
+	background-color: #7777cc;
+	margin: 0 auto;
+}
+
+.waveheader > * {
+	font-size: small;
+}
+
+.action {
+	padding: 8px;
+}
+
+.header {
+	padding: 0px;
+	font-size: small;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+dialog {
+	/* arbitrary styling */
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+	height:200px;
+	width:300px;
+
+	/* change position to fixed if you want to prevent the dialog from scrolling away, and center it */
+	position:fixed;
+	top:50%;
+	left:50%;
+	margin-left: -150px;
+	margin-top:-100px;
+	z-index: 10;
+}
 
 </style></head>
 <body>
-
+		<dialog id="dlg"></dialog>
 <div id="wrapper">
 	<div id="top">
-		<div>
-			<textarea id="connection_text"></textarea>
-		</div>
+		<textarea class="stretchWidth" id="connection_text"></textarea>
 		<button id="connect">Connect to Game</button>
 	</div>
-	<div id="leftcolumn">
-		<div class="keyvaluepair">
-			<label class="key">Level:</label>
-			<input id="level" class="value" type="text" value="1" />
+	<div id="content">
+	
+		<div id="leftcolumn">
+			<center><button id="addWave" class="action">Add Wave</button></center>
+			<hr>
+			<div class="keyvaluepair">
+				<label class="key">Level:</label>
+				<input id="level" class="value" type="text" value="1" />
+			</div>
+			<div class="keyvaluepair">
+				<label class="key">Length(s):</label>
+				<input id="time" class="value" type="text" value="60" />
+			</div>
+			<hr>
+			<div id="waves" class="wavecontainer">
+			</div>
 		</div>
-		<div class="keyvaluepair">
-			<label class="key">Length(s):</label>
-			<input id="time" class="value" type="text" value="60" />
-		</div>
-		<div id="waves" class="wavecontainer">
-		</div>
-		<button id="addWave" style="float: left; margin: 4px; padding: 8px; position: absolute; bottom: 0;">Add Wave</button>
-	</div>
-	<div id="rightcolumn">	
-		<textarea id="output" placeholder="Here you will see JSON output of all level items"></textarea>
-		<br>
-		<div style="float: left; margin: 4px; padding: 8px; position: absolute; bottom: 0;">
-			<button id="generate" style="margin: 4px; padding: 8px;">Generate JSON</button>
-			<button id="sendToGame" style="margin: 4px; padding: 8px;">Send Text To Game</button>
+		<div id="rightcolumn">	
+			<textarea class="stretchWidth" id="output" placeholder="Here you will see JSON output of all level items"></textarea>
+			<hr>
+			<div>
+				<label class="header">Input:</label><br>
+				<button id="populate" class="action">Populate last wave data</button>
+			</div>
+			<hr>
+			<div>
+				<label class="header">Output:</label><br>
+				<button id="generate" class="action">Generate JSON from Waves</button>
+				<button id="sendToGame" class="action">Send JSON to game</button>
+			</div>
 		</div>
 	</div>
 </div>

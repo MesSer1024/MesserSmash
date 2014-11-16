@@ -29,7 +29,21 @@ namespace SharedSmashResources {
 
         void _server_NewMessageReceived(WebSocketSession session, string value) {
             session.Send("Message: " + value);
-            new RemoteLevelCommand(value).execute();
+            var parts = value.Split('|');
+            if (parts.Length == 2) {
+                var id = parts[0];
+                var data = parts[1];
+                switch (id) {
+                    case "level":
+                        new RemoteLevelCommand(data).execute();
+                        break;
+                    case "save":
+                        break;
+                }
+            } else {
+                throw new Exception("Expected id|data in message");
+                new RemoteLevelCommand(value).execute();
+            }
         }
 
         void _server_NewSessionConnected(WebSocketSession session) {

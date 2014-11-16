@@ -24,9 +24,9 @@ function WaveView(model, index) {
 	console.log("Content:", _content);
 	console.log("-------------");
 	
-	var _button = _content.children('button');
+	var _button = _content.find('button');
 	var dropdown = $(createDropdown(model.EnemyType));
-	dropdown.appendTo(_content.find("#foo"));
+	dropdown.appendTo(_content.find("#drop"));
 	
 	//add event handlers for input change
 	dropdown.change(onEnemyType);

@@ -5,6 +5,10 @@ var EnemyTypes = {
 	Charger : 2
 }
 
+if (!Date.now) {
+    Date.now = function() { return new Date().getTime(); };
+}
+
 //'global' variables
 var data = {
 	Level: 1,
@@ -75,22 +79,6 @@ function connect() {
 };
 
 $(function() {
-	$('#generate').click(function(){
-		var levels = [];
-		data.Level = Number($("#level").val());
-		data.Time = Number($("#time").val());
-		data.Waves = waves;
-		
-		levels[0] = data;
-		var str = JSON.stringify(levels);
-		$('#output').val(str);
-	});
-
-	$('#sendToGame').click(function(){
-		var str = $("#output").val();
-		console.log(str);
-	});
-
 	$('#addWave').click(function(){
 		onAddWave();
 	});
@@ -99,11 +87,71 @@ $(function() {
 		connect();
 	});
 	
+	$("#populate").click(function() {
+	/*
+		var overlay = $("<div class='overlay'><center></center></div>");
+		var item = $("<div></div>");
+		console.log(localStorage);
+		for (var key in localStorage){
+		   console.log(key);
+		   item.append("<button>" + key + "</button>");
+		}
+		
+		item.appendTo(overlay);
+		overlay.appendTo($('body'));*/
+		
+		var item = $("#dlg");
+		for (var key in localStorage){
+		   console.log(key);
+		   item.append("<button>" + key + "</button>");
+		}
+		var foo = document.querySelector('dialog');
+		foo.show();
+		
+		/*var raw = localStorage.getItem("recent");
+		var parts = raw.split("|");
+		var str = "";
+		if(parts.length == 2)
+			str = parts[1];
+		else
+			str = parts[0];
+			
+		console.log(str);
+		var input = JSON.parse(str)[0];
+		console.log(input);
+		waves = [];
+		waveViews = [];
+		
+		$("#waves").empty();
+		$("#level").val(input.Level);
+		$("#time").val(input.Time);
+		waves = input.Waves;
+		
+		for(var i=0; i < waves.length; ++i) {
+			var wave = new WaveView(waves[i], i);
+			wave.getContent().appendTo("#waves");
+		}*/
+	});
+	
+	$('#generate').click(function(){
+		var levels = [];
+		data.Level = Number($("#level").val());
+		data.Time = Number($("#time").val());
+		data.Waves = waves;
+		
+		levels[0] = data;
+		var str = JSON.stringify(levels);
+		$('#output').val("level|" + str);
+	});
+	
 	$("#sendToGame").click(function() {
+		var data = $('#output').val();
+		var timestamp = Date.now();
+		localStorage.setItem(timestamp, data);
 		if(!ws)
 			connect();
 		
-		ws.send($('#output').val());
+		ws.send(data);
 	});
 
 	var json = {
