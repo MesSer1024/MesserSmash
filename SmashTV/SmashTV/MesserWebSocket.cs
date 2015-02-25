@@ -9,6 +9,8 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using SuperWebSocket;
 using MesserSmash.Commands;
+using MesserSmash.Arenas;
+using Newtonsoft.Json;
 
 namespace SharedSmashResources {
     public class MesserWebSocket {
@@ -28,7 +30,6 @@ namespace SharedSmashResources {
         }
 
         void _server_NewMessageReceived(WebSocketSession session, string value) {
-            session.Send("Message: " + value);
             var parts = value.Split('|');
             if (parts.Length == 2) {
                 var id = parts[0];
@@ -38,11 +39,17 @@ namespace SharedSmashResources {
                         new RemoteLevelCommand(data).execute();
                         break;
                     case "save":
+                        var levels = LevelBuilder.generateLevel(data);
+                        LevelBuilder.SaveLevelData(levels[0]); //#TODO#
+                        break;
+                    case "load":
+                        var level = LevelBuilder.GetLevelData(int.Parse(data));
+                        session.Send("load|" + JsonConvert.SerializeObject(level));asdfasf
                         break;
                 }
             } else {
                 throw new Exception("Expected id|data in message");
-                new RemoteLevelCommand(value).execute();
+                //new RemoteLevelCommand(value).execute();
             }
         }
 

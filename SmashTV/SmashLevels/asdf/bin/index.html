@@ -33,12 +33,12 @@ hr {
 }
 
 #leftcolumn {
-	min-width: 30%;
+	min-width: 50%;
 	background-color: #ff0000;
 }
 
 #rightcolumn {
-	min-width: 70%;
+	min-width: 50%;
 	background-color: #00ff00;
 }
 
@@ -134,7 +134,7 @@ dialog {
 
 </style></head>
 <body>
-		<dialog id="dlg"></dialog>
+		<!--dialog id="dlg"></dialog-->
 <div id="wrapper">
 	<div id="top">
 		<textarea class="stretchWidth" id="connection_text"></textarea>
@@ -163,6 +163,7 @@ dialog {
 			<div>
 				<label class="header">Input:</label><br>
 				<button id="populate" class="action">Populate last wave data</button>
+				<button id="load" class="action">Load level from server</button>
 			</div>
 			<hr>
 			<div>

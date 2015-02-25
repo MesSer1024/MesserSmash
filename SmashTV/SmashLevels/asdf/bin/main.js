@@ -147,6 +147,13 @@ $(function() {
 			wave.getContent().appendTo("#waves");
 		}*/
 	});
+
+	$('load').click(function() {
+		var data = {
+			Level: $('#level').val()
+		}
+		ws.send("load|" + data);
+	});
 	
 	$('#generate').click(function(){
 		var levels = [];

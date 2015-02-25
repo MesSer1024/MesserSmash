@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using MesserSmash.Modules;
+using System.IO;
 
 namespace MesserSmash.Arenas
 {
@@ -67,14 +68,15 @@ namespace MesserSmash.Arenas
     ]
 }
 ]";
-
+        private static string LEVEL_FOLDER = System.IO.Path.Combine(Environment.CurrentDirectory, "./levels/");
 
         public static void setLevelData(string rawData) {
-            //var s = LevelBuilder.ExampleData();
-            //var foo = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(s);
-            //var waves = foo[0]["Waves"];
-            //Levels = JsonConvert.DeserializeObject<List<jsLevel>>(LevelBuilder.ExampleData());
             Levels = JsonConvert.DeserializeObject<List<jsLevel>>(rawData);
+        }
+
+        public static List<jsLevel> generateLevel(string data)
+        {
+            return JsonConvert.DeserializeObject<List<jsLevel>>(data);
         }
 
         public class jsLevel
@@ -84,8 +86,40 @@ namespace MesserSmash.Arenas
             public List<WaveSpawner> Waves;
         }
 
+        private static string getFilePath(int level)
+        {
+            var dir = new DirectoryInfo(LEVEL_FOLDER);
+            var filename = String.Format("level_{0}.lvl", level);
+            return Path.Combine(dir.FullName, filename);
+        }
+
+        public static jsLevel GetLevelData(int level)
+        {
+            var path = getFilePath(level);
+            if (File.Exists(path))
+                return JsonConvert.DeserializeObject<jsLevel>(File.ReadAllText(path));
+            return null;
+        }
+
+
+        public static void SaveLevelData(jsLevel level)
+        {
+            var dir = new DirectoryInfo(LEVEL_FOLDER);
+            if (!dir.Exists)
+                dir.Create();
+
+            var path = getFilePath(level.Level);
+            var data = JsonConvert.SerializeObject(level);
+            File.WriteAllText(path, data);
+        }
+
+        public static void SaveLevelData(int level, string data)
+        {
+            throw new NotImplementedException();
+        }
 
         public static List<jsLevel> Levels { get; set; }
+
     }
     /*
 			switch (level) {
