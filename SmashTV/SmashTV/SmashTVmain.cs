@@ -174,13 +174,13 @@ namespace MesserSmash {
                 //    throw new Exception(Utils.makeString("Invalid GameVersions! {0}", SmashTVSystem.Instance.GameVersion));
                 //}
 				Utils.initialize(_loadedGame.Seed);
-				arena = buildLevel(_loadedGame.Level);
+                arena = LevelBuilder.buildLevel(_loadedGame.Level);
 				_currentLevel = _loadedGame.Level;
                 _replay = true;
                 _replayFrameIndex = 0;
             } else {
                 //new RequestLevelHighscoresCommand()
-				arena = buildLevel(level);
+				arena = LevelBuilder.buildLevel(level);
 				_currentLevel = level;
 			}
 			_states.Level = _currentLevel;
@@ -208,11 +208,6 @@ namespace MesserSmash {
             return null;
         }
 
-		private Arena buildLevel(int level) {
-            var foo = new GeneratedLevel(LevelBuilder.Levels[level - 1]);
-            return foo;
-		}
-
 		private void onConfigFileLoaded(ICommand cmd) {
 			var command = cmd as LoadConfigFileCommand;
             SmashTVSystem.Instance.ServerIp = command.ServerIp;
@@ -238,7 +233,7 @@ namespace MesserSmash {
 				_screen = new NewUserScreen();
 			}
 
-            LevelBuilder.setLevelData(LevelBuilder.ExampleData);
+            LevelBuilder.init();
             prepareNewLevel(1, true);
 		}
 
@@ -527,7 +522,7 @@ namespace MesserSmash {
                     onBeginReplayQueue(cmd);
                     break;
                 case RemoteLevelCommand.NAME:
-                    LevelBuilder.setLevelData((cmd as RemoteLevelCommand).Data);
+                    LevelBuilder.setDebugLevelData((cmd as RemoteLevelCommand).Data);
                     prepareNewLevel(1, true);
                     _debugLevel = true;
                     break;

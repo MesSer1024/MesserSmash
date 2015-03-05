@@ -47,14 +47,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MesserSmashWebServer.exe" size="29696">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MesserSmashWebServer.exe" size="30208">
       <assemblyIdentity name="MesserSmashWebServer" version="1.0.0.6" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Kyf+69e0NA33E+jFcUFTWC2V/vY=</dsig:DigestValue>
+        <dsig:DigestValue>+X5zsZ33BbMeigU2XF/mJExXqXo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -78,7 +78,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>WBMRf59zaiz1+s/yN1C/+I88DZw=</dsig:DigestValue>
+        <dsig:DigestValue>V0NdfpoYrwckWm6z4Zs7eMIHyNE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

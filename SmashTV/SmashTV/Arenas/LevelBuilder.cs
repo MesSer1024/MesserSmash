@@ -68,10 +68,39 @@ namespace MesserSmash.Arenas
     ]
 }
 ]";
-        private static string LEVEL_FOLDER = System.IO.Path.Combine(Environment.CurrentDirectory, "./levels/");
+        private static string EXTERNAL_LEVELS = System.IO.Path.Combine(Environment.CurrentDirectory, "./levels/");
+        private static string EXTERNAL_LEVELS_DEFAULT = System.IO.Path.Combine(Environment.CurrentDirectory, "../../SmashTV/SmashTV/external/default_levels/");
+        public static List<jsLevel> LevelsData { get; private set; }
 
-        public static void setLevelData(string rawData) {
-            Levels = JsonConvert.DeserializeObject<List<jsLevel>>(rawData);
+        internal static void init()
+        {
+            string levelData = loadLevelsByPath(EXTERNAL_LEVELS_DEFAULT);
+            LevelsData = generateLevel(levelData);
+        }
+
+        private static string loadLevelsByPath(string path)
+        {
+            var dir = new DirectoryInfo(path);
+            if (!dir.Exists)
+                throw new Exception();
+            var files = dir.GetFiles("*.txt");
+            if (files.Length == 0)
+                throw new Exception();
+            var sb = new StringBuilder();
+            sb.Append("[");
+            for (int i = 0; i < files.Length; ++i)
+            {
+                sb.Append(File.ReadAllText(files[i].FullName));
+                if (i < files.Length - 1)
+                    sb.Append(',');
+                else
+                    sb.Append(']');
+            }
+            return sb.ToString();
+        }
+
+        public static void setDebugLevelData(string rawData) {
+            LevelsData = JsonConvert.DeserializeObject<List<jsLevel>>(rawData);
         }
 
         public static List<jsLevel> generateLevel(string data)
@@ -84,11 +113,26 @@ namespace MesserSmash.Arenas
             public int Level;
             public int Time;
             public List<WaveSpawner> Waves;
+            public bool NeedCode = false;
+
+            private bool IsDirty = false;
+
+            public void init()
+            {
+                if (IsDirty)
+                {
+                    foreach (var wave in Waves)
+                    {
+                        wave.enabled(true);
+                    }
+                }
+                IsDirty = true;
+            }
         }
 
         private static string getFilePath(int level)
         {
-            var dir = new DirectoryInfo(LEVEL_FOLDER);
+            var dir = new DirectoryInfo(EXTERNAL_LEVELS);
             var filename = String.Format("level_{0}.lvl", level);
             return Path.Combine(dir.FullName, filename);
         }
@@ -104,7 +148,7 @@ namespace MesserSmash.Arenas
 
         public static void SaveLevelData(jsLevel level)
         {
-            var dir = new DirectoryInfo(LEVEL_FOLDER);
+            var dir = new DirectoryInfo(EXTERNAL_LEVELS);
             if (!dir.Exists)
                 dir.Create();
 
@@ -118,74 +162,36 @@ namespace MesserSmash.Arenas
             throw new NotImplementedException();
         }
 
-        public static List<jsLevel> Levels { get; set; }
 
-    }
-    /*
-			switch (level) {
-				case 1:
-					arena = new Level01();
-					break;
-				case 2:
-					arena = new Level02();
-					break;
-				case 3:
-					arena = new Level03();
-					break;
-				case 4:
-					arena = new Level04();
-					break;
-				case 5:
-					arena = new Level05();
-                    break;
-                case 6:
-                    arena = new Level06();
-                    break;
-                case 7:
-                    arena = new Level07();
-                    break;
-                case 8:
-                    arena = new Level08();
-                    break;
-                case 9:
-                    arena = new Level09();
-                    break;
+        internal static Arena buildLevel(int levelNumber)
+        {
+            foreach (var levelData in LevelsData)
+            {
+                if (levelData.Level == levelNumber)
+                {
+                    levelData.init();
+                    if (!levelData.NeedCode)
+                    {
+                        return new GeneratedLevel(levelData);
+                    }
+                    else
+                    {
+                        return buildCustomLevel(levelData);
+                    }
+                }
+            }
+            throw new Exception();
+        }
+
+        private static Arena buildCustomLevel(jsLevel levelData)
+        {
+            switch (levelData.Level)
+            {
                 case 10:
-                    arena = new Level10(); //BOSS LEVEL!
-                    break;
-                case 11:
-                    arena = new Level11();
-                    break;
-                case 12:
-                    arena = new Level12();
-                    break;
-                case 13:
-                    arena = new Level13();
-                    break;
-                case 14:
-                    arena = new Level14();
-                    break;
-                case 15:
-                    arena = new Level15();
-                    break;
-                case 16:
-                    arena = new Level16();
-                    break;
-                case 17:
-                    arena = new Level17();
-                    break;
-                case 18:
-                    arena = new Level18();
-                    break;
-                case 19:
-                    arena = new Level19();
-                    break;
-                case 20:
-                    arena = new Level20(); //BOSS LEVEL!
-                    break;
-				default:
-					arena = new SpecialLevel();
-					Logger.error("unknown level={0}", level);
-					break;
-			}*/
+                    return new Level10();
+
+            }
+            throw new Exception();
+        }
+    }
 }

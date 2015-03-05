@@ -19,3 +19,4 @@
 *.pdb
 /bin/debug/games/*.*
 node_modules
+/SmashTV/MesserSmashWebServer/bin/Debug/data

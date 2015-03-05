@@ -9,6 +9,7 @@ namespace MesserSmash.Modules {
     public class WaveSpawner {
         public int EnemyType { get; set; }
         public int SpawnCount { get; set; }
+        public bool SameSpawnpoint { get; set; }
 
         public SpawnCriteria Criteria;
         private bool _active;
@@ -19,13 +20,13 @@ namespace MesserSmash.Modules {
         public WaveSpawner()
         {
             _active = true;
+            SameSpawnpoint = false;
         }
 
-        public WaveSpawner(int enemyType, int enemiesToSpawn) {
+        public WaveSpawner(int enemyType, int enemiesToSpawn):base() {
             Criteria = new SpawnCriteria();
             EnemyType = enemyType;
             SpawnCount = enemiesToSpawn;
-            _active = true;
         }
 
         public void update(GameState state) {
@@ -38,8 +39,10 @@ namespace MesserSmash.Modules {
             }
         }
 
-        internal void deactivate() {
-            _active = false;
+        internal void enabled(bool isEnabled) {
+            if (isEnabled)
+                Criteria.reset();
+            _active = isEnabled;
         }
     }
 }

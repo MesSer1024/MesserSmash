@@ -111,10 +111,14 @@ namespace MesserSmash.Arenas {
         }
 
         protected virtual void custSpawnWaveCommand(WaveSpawner spawner) {
-            spawner.deactivate();
-
+            spawner.enabled(false);
+            Spawnpoint point = null;
+            if(spawner.SameSpawnpoint)
+                point = getRandomSpawnpoint();
             for (int i = 0; i < spawner.SpawnCount; i++) {
-                var point = getRandomSpawnpoint();
+                if(!spawner.SameSpawnpoint)
+                    point = getRandomSpawnpoint();
+
                 switch ((EnemyTypes.Types)spawner.EnemyType)
                 {
                     case EnemyTypes.Types.Melee:

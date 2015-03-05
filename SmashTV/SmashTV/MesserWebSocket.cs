@@ -44,7 +44,7 @@ namespace SharedSmashResources {
                         break;
                     case "load":
                         var level = LevelBuilder.GetLevelData(int.Parse(data));
-                        session.Send("load|" + JsonConvert.SerializeObject(level));asdfasf
+                        session.Send("load|" + JsonConvert.SerializeObject(level));
                         break;
                 }
             } else {

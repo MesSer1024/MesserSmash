@@ -8,34 +8,18 @@ namespace MesserSmash.Modules {
         public int MaxEnemiesAlive { get; set; }
         public int MinTotalEnemiesKilled { get; set; }
         public int MinSecondsInArena { get; set; }
-        public int WaveRepeatableCount { get; set; }
-        public int SecondsBetweenRepeat { get; set; }
 
-        public bool Active { get; private set; }
         public bool Satisfied { get; private set; }
 
-        //private int _repeatCounter;
-        //private float _timeSinceRepeat;
-
-        public SpawnCriteria(int repeatCount = 0, int secondsBetweenRepeat = 1) {
+        public SpawnCriteria() {
             MaxEnemiesAlive = -1;
             MinSecondsInArena = -1;
             MinTotalEnemiesKilled = -1;
-            WaveRepeatableCount = repeatCount;
-            SecondsBetweenRepeat = secondsBetweenRepeat;
-
-            //_repeatCounter = 0;
-            //_timeSinceRepeat = 10000000;
 
             Satisfied = false;
-            Active = true;
         }
 
         public bool isFulfilled(GameState state) {
-            if (Active == false) {
-                return true;
-            }
-
             if (Satisfied && (MaxEnemiesAlive < 0 || state.EnemiesAlive <= MaxEnemiesAlive)) {
                 return true;
             } else {
@@ -56,6 +40,11 @@ namespace MesserSmash.Modules {
 
             Satisfied = numCriteriasMet >= 3;
             return Satisfied;
+        }
+
+        public void reset()
+        {
+            Satisfied = false;
         }
     }
 }
