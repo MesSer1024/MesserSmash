@@ -132,9 +132,7 @@ namespace MesserSmash {
         }
 
         public void endGame() {
-            foreach (var shot in shotsFlaggedForCollision()) {
-                //should I really do something here?
-            }
+
         }
 
         public List<ShotBase> enemyShotsFlaggedForCollision() {

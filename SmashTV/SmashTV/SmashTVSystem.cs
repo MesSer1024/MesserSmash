@@ -99,7 +99,7 @@ namespace MesserSmash {
 		private int _enemyConstructors;
         private bool _replay;
         private System.Timers.Timer _timer;
-        private AIManager _ai;
+        //private AIManager _ai;
 
         internal void resetStates() {
             _gameStarted = false;
