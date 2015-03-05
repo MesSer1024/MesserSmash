@@ -293,7 +293,7 @@ namespace MesserSmash {
 						if (isOverlapping(shotPos, enemy.Position, shotRadius, enemy.Radius)) {
 							enemy.takeDamage(shot.Damage);
 							shot.entityCollision(enemy.Position);
-                            Logger.debug("Collision between {0} and {1}", shot, enemy);
+                            Logger.spam("Collision between {0} and {1}", shot, enemy);
                             if (shot.CollisionEnabled == false) {
                                 //new PlaySoundCommand(AssetManager.getEnemyHitSound()).execute();
                                 break;

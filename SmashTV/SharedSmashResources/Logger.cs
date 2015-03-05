@@ -14,6 +14,15 @@ namespace MesserSmash.Modules {
             StreamOpen = 1 << 1,
         }
 
+        public enum LogLevels
+        {
+            i0_Spam,
+            i1_Debug,
+            i2_Info,
+            i3_Error,
+        }
+        public static LogLevels LogLevel = LogLevels.i1_Debug;
+
         private const string DEFAULT_LOG_FILE = "SmashLogFile.txt";
         private static List<string> _logMessages;
         private static StringBuilder sb;
@@ -25,7 +34,10 @@ namespace MesserSmash.Modules {
             info("{0}", s);
         }
 
-        public static void info(string s, params Object[] p) {
+        public static void info(string s, params Object[] p)
+        {
+            if (LogLevel > LogLevels.i2_Info)
+                return;
             lock (ThreadLock) {
                 if ((_flag & State.StreamOpen) != State.StreamOpen)
                     return;
@@ -94,11 +106,29 @@ namespace MesserSmash.Modules {
         }
 
         public static void debug(string s, params Object[] p) {
+            if (LogLevel > LogLevels.i1_Debug)
+                return;
             lock (ThreadLock) {
                 if ((_flag & State.StreamOpen) != State.StreamOpen)
                     return;
                 sb.Clear();
                 sb.AppendFormat("[debug|{0}] ", DateTime.Now.Ticks);
+                sb.AppendFormat(s, p);
+                _logMessages.Add(sb.ToString());
+                sw.WriteLine(sb.ToString());
+            }
+        }
+
+        public static void spam(string s, params Object[] p)
+        {
+            if (LogLevel > LogLevels.i0_Spam)
+                return;
+            lock (ThreadLock)
+            {
+                if ((_flag & State.StreamOpen) != State.StreamOpen)
+                    return;
+                sb.Clear();
+                sb.AppendFormat("[spam|{0}] ", DateTime.Now.Ticks);
                 sb.AppendFormat(s, p);
                 _logMessages.Add(sb.ToString());
                 sw.WriteLine(sb.ToString());

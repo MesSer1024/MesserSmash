@@ -14,7 +14,7 @@ namespace MesserSmash.Commands {
 
         public UpdateGameCredentialsCommand(string session, string gameid, string roundid)
             : base(NAME) {
-            Logger.info("ctor() UpdateGameCredentialsCommand");
+            Logger.spam("ctor() UpdateGameCredentialsCommand");
             SessionId = session ?? "";
             GameId = gameid ?? "";
             uint r = 0;
@@ -27,7 +27,7 @@ namespace MesserSmash.Commands {
         }
 
         protected override void custExecute() {
-            Logger.info("Executing UpdateGameCredentialsCommand");
+            Logger.spam("Executing UpdateGameCredentialsCommand");
         }
 
     }
