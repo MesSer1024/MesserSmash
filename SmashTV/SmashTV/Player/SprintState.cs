@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using MesserSmash.Modules;
 
 namespace MesserSmash {
     class SprintState : PlayerState{
@@ -33,7 +34,7 @@ namespace MesserSmash {
 
         public override void handleInput() {
             checkForShots();
-            if (Utils.isKeyUp(Microsoft.Xna.Framework.Input.Keys.LeftControl)) {
+            if (InputMapping.isKeyUp(InputAction.Sprint)) {
                 exit();
             }
         }

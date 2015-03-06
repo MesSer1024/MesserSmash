@@ -8,7 +8,8 @@ using Microsoft.Xna.Framework.Input;
 using MesserSmash.Commands;
 
 namespace MesserSmash.GUI {
-    public class NewUserScreen : IScreen{
+    public class NewUserScreen /*: IScreen */{
+        /*
         private Rectangle _background;
         private StringBuilder _name;
         private bool _error = false;
@@ -70,5 +71,6 @@ namespace MesserSmash.GUI {
         public void destroy() {
             //throw new NotImplementedException();
         }
+         * */
     }
 }

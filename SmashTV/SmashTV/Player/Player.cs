@@ -81,20 +81,17 @@ namespace MesserSmash {
         }
 
         private Vector2 generateMovementVector() {
-            var pressedKeys = Utils.getPressedKeys();
             Vector2 value = Vector2.Zero;
 
-            foreach (Keys key in pressedKeys) {
-                if (key == Keys.W) {
-                    value.Y -= 1;
-                } else if (key == Keys.S) {
-                    value.Y += 1;
-                } else if (key == Keys.A) {
-                    value.X -= 1;
-                } else if (key == Keys.D) {
-                    value.X += 1;
-                }
-            }
+            if (InputMapping.isKeyDown(InputAction.NavigateUp))
+                value.Y -= 1;
+            else if (InputMapping.isKeyDown(InputAction.NavigateDown))
+                value.Y += 1;
+            if (InputMapping.isKeyDown(InputAction.NavigateLeft))
+                value.X -= 1;
+            else if (InputMapping.isKeyDown(InputAction.NavigateRight))
+                value.X += 1;
+
             return value;
         }
 

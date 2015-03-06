@@ -182,6 +182,7 @@ namespace MesserSmash.Arenas {
         public void checkDebugInput() {
             if (_state == States.Running) {
                 //debug                
+                /*
                 if (Utils.isNewKeyPress(Keys.G)) {
                     createEnemies(10);
                 }
@@ -196,7 +197,7 @@ namespace MesserSmash.Arenas {
                 }
                 if (Utils.isNewKeyPress(Keys.M)) {
                     dropLoot(LootType.Money, Utils.randomPositionWithinRectangle(_bounds));
-                }
+                } */
                 //--
             }
         }

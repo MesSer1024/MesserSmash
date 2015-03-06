@@ -14,7 +14,7 @@ namespace MesserSmash {
 
         private const float COST_FIRE_ROCKET = 15f;
         private const float COST_FIRE_ROCKET_REQUIREMENT = 5f;
-        private const float COST_FIRE_PISTOL_SHOT = 1.05f;
+        private const float COST_FIRE_PISTOL_SHOT = 0.0f; //1.05f
         private const float COST_ACTIVATE_SPRINT_MODE = 5f;
         private const float COST_RUNNING = 100/2.5f; //should be depleted over "value" seconds
         private bool _endgame;
@@ -55,8 +55,10 @@ namespace MesserSmash {
 
         public bool couldFireRocket() {
             if (_energyAvailable >= COST_FIRE_ROCKET_REQUIREMENT) {
-                _timeSinceUsage = 0;
+                float orgEnergy = _energyAvailable;
                 _energyAvailable = Math.Max(_energyAvailable - COST_FIRE_ROCKET, 0);
+                if (orgEnergy > _energyAvailable)
+                    _timeSinceUsage = 0;
                 return true;
             }
             return false;
@@ -67,8 +69,10 @@ namespace MesserSmash {
         }
 
         public bool couldFirePistolShot() {
+            float orgEnergy = _energyAvailable;
             _energyAvailable = Math.Max(_energyAvailable - COST_FIRE_PISTOL_SHOT, 0);
-            _timeSinceUsage = 0;
+            if(orgEnergy > _energyAvailable)
+                _timeSinceUsage = 0;
             return true;
         }
 

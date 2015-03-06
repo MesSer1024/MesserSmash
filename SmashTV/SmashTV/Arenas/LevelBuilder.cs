@@ -10,64 +10,6 @@ namespace MesserSmash.Arenas
 {
     class LevelBuilder
     {
-        public static string ExampleData = @"[
-{
-    Level: 1,
-    Time: 60,
-    Waves: [
-        {
-            EnemyType: 0,
-            SpawnCount: 30,
-            Criteria: {
-                MaxEnemiesAlive: -1,
-                MinSecondsInArena: -1,
-                MinTotalEnemiesKilled: -1,
-                WaveRepeatableCount: 0,
-                SecondsBetweenRepeat: 1                
-            }
-        },
-        {
-            EnemyType: 0,
-            SpawnCount: 30,
-            Criteria: {
-                MaxEnemiesAlive: -1,
-                MinSecondsInArena: -1,
-                MinTotalEnemiesKilled: -1,
-                WaveRepeatableCount: 0,
-                SecondsBetweenRepeat: 1                
-            }
-        }
-    ]
-},
-{
-    Level: 2,
-    Time: 58,
-    Waves: [
-        {
-            EnemyType: 1,
-            SpawnCount: 24,
-            Criteria: {
-                MaxEnemiesAlive: 1,
-                MinSecondsInArena: 2,
-                MinTotalEnemiesKilled: -1,
-                WaveRepeatableCount: 0,
-                SecondsBetweenRepeat: 1                
-            }
-        },
-        {
-            EnemyType: 2,
-            SpawnCount: 30,
-            Criteria: {
-                MaxEnemiesAlive: 3,
-                MinSecondsInArena: 41,
-                MinTotalEnemiesKilled: -1,
-                WaveRepeatableCount: 0,
-                SecondsBetweenRepeat: 1                
-            }
-        }
-    ]
-}
-]";
         private static string EXTERNAL_LEVELS = System.IO.Path.Combine(Environment.CurrentDirectory, "./levels/");
         private static string EXTERNAL_LEVELS_DEFAULT = System.IO.Path.Combine(Environment.CurrentDirectory, "../../SmashTV/SmashTV/external/default_levels/");
         public static List<jsLevel> LevelsData { get; private set; }
@@ -110,9 +52,9 @@ namespace MesserSmash.Arenas
 
         public class jsLevel
         {
-            public int Level;
-            public int Time;
-            public List<WaveSpawner> Waves;
+            public int Level = 0;
+            public int Time = 0;
+            public List<WaveSpawner> Waves = null;
             public bool NeedCode = false;
 
             private bool IsDirty = false;

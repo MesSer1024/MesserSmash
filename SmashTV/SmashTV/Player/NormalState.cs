@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MesserSmash.Modules;
 
 namespace MesserSmash {
     class NormalState : PlayerState {
@@ -32,7 +33,7 @@ namespace MesserSmash {
 
         public override void handleInput() {
             checkForShots();
-            if (Utils.isKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftControl)) {
+            if (InputMapping.isKeyDown(InputAction.Sprint)) {
                 if (EnergySystem.Instance.canActivateSprintMode())
                     _player.tryChangeState(new SprintState(_player));
             }            

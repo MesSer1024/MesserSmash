@@ -170,6 +170,7 @@
     <Compile Include="Commands\UpdateGameCredentialsCommand.cs" />
     <Compile Include="Modules\Controller.cs" />
     <Compile Include="Arenas\DefaultLevels\Level10.cs" />
+    <Compile Include="Modules\InputMapping.cs" />
     <Compile Include="Modules\MesserWebSocket.cs" />
     <Compile Include="Enemies\EnemyTypes.cs" />
     <Compile Include="Enemies\IEntity.cs" />

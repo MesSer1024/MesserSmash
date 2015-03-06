@@ -125,7 +125,8 @@ namespace MesserSmash.GUI {
             }
 
             if (_loadingScreenVisible) {
-                if (!SmashTVSystem.Instance.WaitingForGameCredentials && Utils.isNewKeyPress(Keys.Space)) {
+                if (!SmashTVSystem.Instance.WaitingForGameCredentials && Utils.isNewKeyPress(Keys.Space))
+                {
                     performClientReady();
                 }
             } else if (_inGame) {
@@ -141,14 +142,16 @@ namespace MesserSmash.GUI {
             } else if (_entireRoundWon) {
                 _eorTimer += gametime;
                 if (_eorTimer > 1.0f && !SmashTVSystem.Instance.WaitingForGameCredentials) {
-                    if (Utils.isNewKeyPress(Keys.Space)) {
+                    if (Utils.isNewKeyPress(Keys.Space))
+                    {
                         showOkPopup("Game is finished, do something game creator, need gui!", null);
                     }
                 }
             } else if (_levelWon) {
                 _eorTimer += gametime;
                 if (_eorTimer > 1.0f && !SmashTVSystem.Instance.WaitingForGameCredentials) {
-                    if (Utils.isNewKeyPress(Keys.Space)) {
+                    if (Utils.isNewKeyPress(Keys.Space))
+                    {
                         performClientReady();
                     }
                 }

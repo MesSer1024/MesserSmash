@@ -63,6 +63,7 @@ namespace MesserSmash {
 		}
 
 		private void init() {
+            InputMapping.loadLayout();
 			Logger.init();
 			Logger.info("-------------------------------------------------------------------------");
 			Logger.info("-------------------------------------------------------------------------");
@@ -230,7 +231,7 @@ namespace MesserSmash {
             if (_hasUsername) {
 				SmashTVSystem.Instance.Username = command.Username;
 			} else {
-				_screen = new NewUserScreen();
+				//_screen = new NewUserScreen();
 			}
 
             LevelBuilder.init();
