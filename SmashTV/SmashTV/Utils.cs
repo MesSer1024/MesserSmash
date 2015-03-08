@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using MesserSmash.Arenas;
 using MesserSmash.Modules;
 using SharedSmashResources;
+using Microsoft.Xna.Framework.GamerServices;
 
 namespace MesserSmash {
     static class Utils {
@@ -497,6 +498,17 @@ namespace MesserSmash {
 
         public static float clamp(float curr, float min, float max) {
             return Math.Min(max, Math.Max(min, curr));
+        }
+
+        public static void showException(Exception e)
+        {
+            List<string> MBOPTIONS = new List<string>();
+            MBOPTIONS.Add("OK");
+            string msg = e.ToString();
+            Logger.error(msg);
+            Guide.BeginShowMessageBox(
+                    "Exception during init()", msg.Substring(0, 255), MBOPTIONS, 0,
+                    MessageBoxIcon.Error, null, null);
         }
     }
 }

@@ -67,13 +67,7 @@ namespace MesserSmash {
             }
             catch (Exception e)
             {
-                List<string> MBOPTIONS = new List<string>();
-                MBOPTIONS.Add("OK");
-                string msg = e.Message + e.StackTrace;
-                Logger.error(e.ToString());
-                Guide.BeginShowMessageBox(
-                        "Exception during init()", msg.Substring(0, 255), MBOPTIONS, 0,
-                        MessageBoxIcon.Alert, null, null);
+                Utils.showException(e);
                 _crashed = true;
             }
 		}

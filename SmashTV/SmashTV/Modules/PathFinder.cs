@@ -17,7 +17,8 @@ namespace MesserSmash.Modules {
         }
 
         public static void spreadEnemies() {
-            _enemies = _enemies.FindAll(a => a.CollisionEnabled).Distinct().ToList(); //remove unwanted items (non collidable entities)
+            //remove unwanted items (non collidable entities)
+            _enemies = _enemies.FindAll(a => a.CollisionEnabled).Distinct().ToList();
 
             //do something so they dont "clump together that much"
             //better solution - implement Potential Fields [node based map where each "selection/part/pixel" has a "busy value" and units try to avoid busy values
@@ -63,9 +64,9 @@ namespace MesserSmash.Modules {
                 if (counts > 0) {
 
                     //slow down the units with many overlaps
-                    float minimumVelocityFactor = 0.075f; // value between 0..1
-                    float velocityReductionDuringOverlap_percentage = 0.165f;
-                    float factor = Math.Max(minimumVelocityFactor, 1 - counts * velocityReductionDuringOverlap_percentage);
+                    float maxSpeedReduction = 0.075f; // value between 0..1
+                    float speedReductionStep = 0.165f;
+                    float factor = Math.Max(maxSpeedReduction, 1 - (counts * speedReductionStep));
                     i.Velocity *= factor;
                 }
             }
