@@ -27,9 +27,9 @@ namespace MesserSmash.Enemies {
             _timeCounter += deltatime;
             foreach (var i in _enemies) {
                 i.preUpdate(deltatime);
-                PathFinder.registerPosition(i);
+                PathFinder.registerEnemy(i);
             }
-            PathFinder.makeEnemiesNotClumpTogether();
+            PathFinder.spreadEnemies();
 
             foreach (var i in _enemies) {
                 i.update(deltatime); //do the actual position updates

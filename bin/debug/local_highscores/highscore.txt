@@ -96,3 +96,5 @@ Messer8dev|0|0
 Messer8dev|0|0
 Messer8dev|0|0
 Messer8dev|0|0
+Messer8dev|770|35
+Messer8dev|1128|84
