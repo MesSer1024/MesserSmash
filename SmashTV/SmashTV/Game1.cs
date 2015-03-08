@@ -22,6 +22,8 @@ namespace MesserSmash {
         public Game1() {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            Components.Add(new GamerServicesComponent(this));
+
         }
 
         /// <summary>
@@ -35,6 +37,7 @@ namespace MesserSmash {
 
             base.Initialize();
             IsFixedTimeStep = false;
+            //The Gamer Services functionality must be initialized before you call this method. The easiest way to do that is to add a GamerServicesComponent to the Game.Components collection in the constructor of your Game class.
             _game = new SmashTV_main(Content, graphics, spriteBatch, this);
         }
 

@@ -13,7 +13,7 @@ namespace MesserSmash.Commands {
             : base(NAME) {
 
             DirectoryInfo dir = new DirectoryInfo(System.Environment.CurrentDirectory);
-            using (StreamReader sr = new StreamReader("./database.txt")) {
+            using (StreamReader sr = new StreamReader("./external/database.txt")) {
                 SmashDb.populateKeyValues(sr);
             }
         }

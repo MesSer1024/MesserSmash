@@ -21,7 +21,7 @@ namespace MesserSmash.Modules
     static class InputMapping
     {
         private const Keys NULL_KEY = Keys.F24;
-        private const string INPUT_SETTINGS_FILE = "./input.cfg";
+        private const string INPUT_SETTINGS_FILE = "./external/input.cfg";
 
         private static Dictionary<InputAction, Keys> _keyboardBinding;
 
@@ -70,8 +70,8 @@ namespace MesserSmash.Modules
         public static void loadLayout()
         {
             var fi = new FileInfo(INPUT_SETTINGS_FILE);
-            if(!fi.Exists) 
-                throw new Exception();
+            if (!fi.Exists)
+                saveLayout();
             
             var blob = File.ReadAllText(fi.FullName);
             var data = JsonConvert.DeserializeObject<InputData>(blob);

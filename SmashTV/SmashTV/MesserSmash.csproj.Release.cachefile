@@ -2,14 +2,14 @@ Content\circle 64x64.xnb
 Content\default.xnb
 Content\portrait.xnb
 Content\player64x64.xnb
-Content\Arial 12.xnb
-Content\BigGuiFont32.xnb
-Content\assets.xnb
 Content\money_loot.xnb
 Content\health_loot.xnb
 Content\rectangle_64x64.xnb
 Content\smashTV_controls.xnb
+Content\Arial 12.xnb
+Content\BigGuiFont32.xnb
 Content\GuiFont.xnb
+Content\assets.xnb
 Content\background_music.xnb
 Content\fail.xnb
 Content\lowDown.xnb
@@ -27,3 +27,16 @@ Content\player_hit.xnb
 Content\wall_hit.xnb
 Content\lowDown.wma
 Content\Szymon Matuszewski - Gooey.wma
+External\database.txt
+External\default_levels\level01.txt
+External\default_levels\level02.txt
+External\default_levels\level03.txt
+External\default_levels\level04.txt
+External\default_levels\level05.txt
+External\default_levels\level06.txt
+External\default_levels\level07.txt
+External\default_levels\level08.txt
+External\default_levels\level09.txt
+External\default_levels\level10.txt
+External\input.cfg
+settings.ini

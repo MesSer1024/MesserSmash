@@ -27,7 +27,7 @@ namespace MesserSmash.Commands {
             GameWidth = 1920;
 
             StringBuilder sb = new StringBuilder();
-            using (var sr = new StreamReader("./settings.ini")) {
+            using (var sr = new StreamReader("./external/settings.ini")) {
                 while (!sr.EndOfStream) {
                     var line = sr.ReadLine().Trim();
                     if (line.StartsWith("username")) {

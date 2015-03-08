@@ -11,7 +11,7 @@ namespace MesserSmash.Arenas
     class LevelBuilder
     {
         private static string EXTERNAL_LEVELS = System.IO.Path.Combine(Environment.CurrentDirectory, "./levels/");
-        private static string EXTERNAL_LEVELS_DEFAULT = System.IO.Path.Combine(Environment.CurrentDirectory, "../../SmashTV/SmashTV/external/default_levels/");
+        private static string EXTERNAL_LEVELS_DEFAULT = System.IO.Path.Combine(Environment.CurrentDirectory, "./external/default_levels/");
         public static List<jsLevel> LevelsData { get; private set; }
 
         internal static void init()

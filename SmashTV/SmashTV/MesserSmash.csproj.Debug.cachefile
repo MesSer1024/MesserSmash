@@ -27,3 +27,16 @@ Content\player_hit.xnb
 Content\wall_hit.xnb
 Content\lowDown.wma
 Content\Szymon Matuszewski - Gooey.wma
+External\database.txt
+External\default_levels\level01.txt
+External\default_levels\level02.txt
+External\default_levels\level03.txt
+External\default_levels\level04.txt
+External\default_levels\level05.txt
+External\default_levels\level06.txt
+External\default_levels\level07.txt
+External\default_levels\level08.txt
+External\default_levels\level09.txt
+External\default_levels\level10.txt
+External\settings.ini
+External\input.cfg

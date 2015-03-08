@@ -18,6 +18,7 @@ using Microsoft.Xna.Framework.Media;
 using SharedSmashResources;
 using SharedSmashResources.Patterns;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.GamerServices;
 
 namespace MesserSmash {
 	class SmashTV_main : IObserver {
@@ -52,23 +53,39 @@ namespace MesserSmash {
         private bool _replayFinished;
         private MesserWebSocket _websocketServer;
         private bool _debugLevel;
+        private bool _crashed = false;
 
 		public SmashTV_main(Microsoft.Xna.Framework.Content.ContentManager Content, Microsoft.Xna.Framework.GraphicsDeviceManager graphics, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Game game) {
-			_content = Content;
-			_graphics = graphics;
-			_spriteBatch = spriteBatch;
-			_game = game;
-			_hasUsername = false;
-			init();
+            try
+            {
+                _content = Content;
+                _graphics = graphics;
+                _spriteBatch = spriteBatch;
+                _game = game;
+                _hasUsername = false;
+                init();
+            }
+            catch (Exception e)
+            {
+                List<string> MBOPTIONS = new List<string>();
+                MBOPTIONS.Add("OK");
+                string msg = e.Message + e.StackTrace;
+                Logger.error(e.ToString());
+                Guide.BeginShowMessageBox(
+                        "Exception during init()", msg.Substring(0, 255), MBOPTIONS, 0,
+                        MessageBoxIcon.Alert, null, null);
+                _crashed = true;
+            }
 		}
 
 		private void init() {
-            InputMapping.loadLayout();
 			Logger.init();
 			Logger.info("-------------------------------------------------------------------------");
 			Logger.info("-------------------------------------------------------------------------");
 			Logger.info("Game started at {0}", DateTime.Now.Ticks);
 			Utils.tick();
+            InputMapping.loadLayout();
+
 			//Utils.initialize((int)DateTime.Now.Ticks);
 
 			//Controller.instance.addObserver(RestartGameCommand.NAME, onRestartGame);
@@ -328,6 +345,8 @@ namespace MesserSmash {
 		}
 
 		public void update(GameTime time) {
+            if (_crashed)
+                return;
             int replayFrames = _replaySpeeds[_replaySpeedIndex];
             ReplayRestartLabel: //ugly goto-hack #TODO: refactor replay into its' own method
             float deltaTime;
@@ -487,6 +506,8 @@ namespace MesserSmash {
 		}
 
 		public void draw(GameTime time) {
+            if (_crashed)
+                return;
 			if (!_hasUsername) {
 				_screen.draw(_spriteBatch);
 				return;
