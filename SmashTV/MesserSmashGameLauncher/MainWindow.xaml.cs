@@ -38,7 +38,7 @@ namespace MesserSmashGameLauncher {
         private string _url;
         private FileInfo _targetfile;
         private string _latestVersion;
-        private bool _hasRedistInstalled;
+        private bool _hasXna;
         private  string _redistUrl;
         private FileInfo _xnaRedistFile;
 
@@ -51,12 +51,12 @@ namespace MesserSmashGameLauncher {
             Model.load();
             loginControl.userName.Text = Model.UserName;
             loginControl.password.Password = Model.Password;
-            updateRedistStatus();
+            verifyXnaRedist();
             doCheckGameVersion();
         }
 
-        void updateRedistStatus() {
-            _hasRedistInstalled = MsiQueryProductState(XNA_MSI_QUERY_CODE) == 5 || MsiQueryProductState(XNA_MSI_QUERY_CODE2) == 5;
+        void verifyXnaRedist() {
+            _hasXna = MsiQueryProductState(XNA_MSI_QUERY_CODE) == 5 || MsiQueryProductState(XNA_MSI_QUERY_CODE2) == 5;
         }
 
         void foo_CreateUserClicked() {
@@ -91,9 +91,9 @@ namespace MesserSmashGameLauncher {
         }
 
         public void rendezvousLoginAndUpdated() {
-            bool value = _loggedIn && _gameUpdated && _hasRedistInstalled;
+            bool value = _loggedIn && _gameUpdated && _hasXna;
 
-            if (!_hasRedistInstalled) {
+            if (!_hasXna) {
                 return;
             }
 
@@ -140,8 +140,8 @@ namespace MesserSmashGameLauncher {
         }
 
         void p_Exited(object sender, EventArgs e) {
-            updateRedistStatus();
-            if (_hasRedistInstalled) {
+            verifyXnaRedist();
+            if (_hasXna) {
                 rendezvousLoginAndUpdated();
             } else {
                 MessageBox.Show("Unable to automatically install xna redist which is required to run this game, please manually install it from /gamedata/patches/_xnafx40redist.msi folder or download it from the web at @http://download.microsoft.com/download/E/C/6/EC68782D-872A-4D58-A8D3-87881995CDD4/XNAGS40_setup.exe");
@@ -233,7 +233,7 @@ namespace MesserSmashGameLauncher {
                 _gameUpdated = true;
                 Model.ClientVersion = _latestVersion;
                 Model.save();
-                progressControl.status.Content = "STATUS: Newest Version Installed...";
+                setStatus("Newest Version Installed...");
                 rendezvousLoginAndUpdated();
             }
         }
@@ -269,7 +269,7 @@ namespace MesserSmashGameLauncher {
 
             }
 
-            if (!_hasRedistInstalled && _redistUrl != null) {
+            if (!_hasXna && _redistUrl != null) {
                 downloadXnaRedist(_redistUrl);
             }
 
@@ -364,7 +364,7 @@ namespace MesserSmashGameLauncher {
                 psi.FileName = fi.FullName;
                 Process.Start(psi);
             } else {
-                MessageBox.Show("Could not find the exe file!");
+                MessageBox.Show(String.Format("Could not find the game.exe file expected:[{0}]!", fi.FullName));
             }
         }
 
