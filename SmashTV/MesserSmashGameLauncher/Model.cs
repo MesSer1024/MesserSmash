@@ -7,6 +7,8 @@ using System.IO;
 
 namespace MesserSmashGameLauncher {
     public class Model : DependencyObject {
+        private const string SETTINGS_FILE = "./external/launcher_settings.ini";
+
         public static string Password { get; set; }
         public static string UserName { get; set; }
         public static string UserId { get; set; }
@@ -22,7 +24,7 @@ namespace MesserSmashGameLauncher {
         public static Model Instance { get; private set; }
 
         public static void load() {
-            var file = "./launcher_settings.ini";
+            var file = SETTINGS_FILE;
             var fi = new FileInfo(file);
             if (!fi.Exists) {
                 MessageBox.Show("Could not find settings file...");
@@ -59,7 +61,7 @@ namespace MesserSmashGameLauncher {
         }
 
         internal static void save() {
-            var file = "./launcher_settings.ini";
+            var file = SETTINGS_FILE;
             var sb = new StringBuilder();
             sb.AppendLine(String.Format("{0} | {1}", "game_version", Model.ClientVersion));
             sb.AppendLine(String.Format("{0} | {1}", "server_ip", "http://pawncraft.co.uk:8801/"));
