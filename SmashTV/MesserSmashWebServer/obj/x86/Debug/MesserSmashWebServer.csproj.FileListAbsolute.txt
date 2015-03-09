@@ -56,3 +56,4 @@ D:\_programmering2\MesserSmash\SmashTV\MesserSmashWebServer\obj\x86\Debug\Messer
 D:\_programmering2\MesserSmash\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.application
 D:\_programmering2\MesserSmash\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.exe
 D:\_programmering2\MesserSmash\SmashTV\MesserSmashWebServer\obj\x86\Debug\MesserSmashWebServer.pdb
+D:\_programmering\MesserSmash\SmashTV\MesserSmashWebServer\bin\Debug\External\server_settings.ini

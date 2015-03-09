@@ -54,7 +54,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>U6/lcp03gTtStxRH8YdDnQCCYW4=</dsig:DigestValue>
+        <dsig:DigestValue>RJT95GFuL0Xbx/aTZOXjuTAWTzA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -71,14 +71,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SharedSmashResources.dll" size="30720">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SharedSmashResources.dll" size="30208">
       <assemblyIdentity name="SharedSmashResources" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Q7ceZZ4f/q3wuUALPyDurNtvTBs=</dsig:DigestValue>
+        <dsig:DigestValue>BbTZq785HMpMunjB830Iup6wPeU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

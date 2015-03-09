@@ -46,7 +46,7 @@ namespace MesserSmash.Commands {
                             //#TODO: Fix these sometime...
                             score.IsLocalHighscore = false;
                             score.IsVerified = true;
-                            _scoringProvider.addIfUnique(score);
+                            _scoringProvider.validateAndAdd(score);
                         }
                     }
                 }

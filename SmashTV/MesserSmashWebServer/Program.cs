@@ -19,8 +19,6 @@ namespace MesserSmashWebServer {
         //http://pawncraft.co.uk:8801/ this is the external url to the messersmash server
 
         static void Main(string[] args) {
-            var highscoreFilePath = "./highscores/highscores.txt";
-            _highscores = new HighscoreContainer();
             _gameEntries = new ServerLogger();
             Logger.init("MesserSmashServer.txt");
 
@@ -28,10 +26,7 @@ namespace MesserSmashWebServer {
 
 
             string url = null;
-            var file = new FileInfo("../../../../bin/debug/server_settings.ini");
-            if (!file.Exists) {
-                file = new FileInfo("./server_settings.ini");
-            }
+            var file = new FileInfo("./external/server_settings.ini");
             using (var sr = new StreamReader(file.FullName)) {
                 while (!sr.EndOfStream) {
                     var line = sr.ReadLine().Trim();
@@ -50,7 +45,8 @@ namespace MesserSmashWebServer {
             }
             _url = url ?? "http://localhost:8801/";
 
-            _highscores.populateHighscoresFromFile(highscoreFilePath);
+            _highscores = new HighscoreContainer();
+            _highscores.init();
             _gameEntries.init();
             _db = new Database();
 
@@ -60,7 +56,7 @@ namespace MesserSmashWebServer {
             Console.WriteLine("A simple webserver url:{0} \nPress a key to quit.", _url);
             Console.ReadKey();
             server.Stop();
-            _highscores.writeHighscoresToFile(highscoreFilePath);
+            _highscores.close();
             _gameEntries.close();
             _db.dumpDatabase();
         }
@@ -106,7 +102,7 @@ namespace MesserSmashWebServer {
                             var items = toTable(rawData);
                             ServerModel.UserName = "";
                             uint level = uint.Parse(items[MesserSmashWeb.LEVEL].ToString());
-                            var scores = _highscores.getHighscoresOnLevel(level).OrderByDescending(a => a.Score);
+                            var scores = _highscores.getHighscoresOnLevel(level).FindAll(a => a.GameVersion == ServerModel.LatestGameVersion).OrderByDescending(a => a.Score);
                             //return fastJSON.JSON.Instance.ToJSON(scores);
                             var sb = new StringBuilder();
                             foreach (var item in scores) {
@@ -128,7 +124,8 @@ namespace MesserSmashWebServer {
                             var sb = new StringBuilder();
                             foreach (var list in scores.Values) {
                                 foreach (var item in list) {
-                                    sb.AppendLine(item.ToString());
+                                    if(item.GameVersion == ServerModel.LatestGameVersion)
+                                        sb.AppendLine(item.ToString());
                                 }
                             }
                             return new MesserWebResponse(ReturnCodes.OK, sb.ToString(), request);
@@ -256,11 +253,7 @@ namespace MesserSmashWebServer {
                 sw.Flush();
             }
             var h = new Highscore { Ticks = timestamp, File = timestamp + "_save.mer", GameId = data.GameId, GameVersion = data.GameVersion, Kills = (uint)data.Kills, Level = (uint)data.Level, Score = (uint)data.Score, SessionId = data.SessionId, UserId = data.UserId, UserName = data.UserName, RoundId = (uint)findRoundForLevel((uint)data.Level)};
-            if (HighscoreContainer.isValidHighscore(h)) {
-                _highscores.addIfUnique(h);
-            } else {
-                Logger.error("Could not add highscore since it wasn't valid, data={0}", h.ToString());
-            }
+            _highscores.validateAndAdd(h);
             return timestamp;
         }
     }

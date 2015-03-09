@@ -85,14 +85,5 @@ namespace SharedSmashResources {
             }
             return defaultValue;
         }
-
-        public override bool Equals(object obj) {
-            var o = obj as Highscore;
-            if (o == null) { return false; }
-            if (o.GameId == GameId && o.GameId != "") {
-                return true;
-            }
-            return false;
-        }
     }
 }
