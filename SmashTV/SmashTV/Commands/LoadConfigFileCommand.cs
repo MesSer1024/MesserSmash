@@ -61,9 +61,11 @@ namespace MesserSmash.Commands {
                 Username = Environment.GetEnvironmentVariable(MesserSmashWeb.USER_NAME);
                 UserId = Environment.GetEnvironmentVariable(MesserSmashWeb.USER_ID);
                 GameVersion = Environment.GetEnvironmentVariable(MesserSmashWeb.GAME_VERSION);
+                ServerIp = Environment.GetEnvironmentVariable(MesserSmashWeb.SERVER_IP);
                 Logger.info("EnvironmentVariable username={0}", Username);
                 Logger.info("EnvironmentVariable userid={0}", UserId);
                 Logger.info("EnvironmentVariable game_version={0}", GameVersion);
+                Logger.info("EnvironmentVariable ServerIp={0}", ServerIp);
             }
         }
 

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using MesserSmash.Arenas;
 using MesserSmash.Modules;
 using SharedSmashResources;
-using Microsoft.Xna.Framework.GamerServices;
+//using Microsoft.Xna.Framework.GamerServices;
 
 namespace MesserSmash {
     static class Utils {
@@ -506,9 +506,9 @@ namespace MesserSmash {
             MBOPTIONS.Add("OK");
             string msg = e.ToString();
             Logger.error(msg);
-            Guide.BeginShowMessageBox(
-                    "Exception during init()", msg.Substring(0, 255), MBOPTIONS, 0,
-                    MessageBoxIcon.Error, null, null);
+            //Guide.BeginShowMessageBox(
+            //        "Exception during init()", msg.Substring(0, 255), MBOPTIONS, 0,
+            //        MessageBoxIcon.Error, null, null);
         }
     }
 }

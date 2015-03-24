@@ -358,6 +358,7 @@ namespace MesserSmashGameLauncher {
                 psi.EnvironmentVariables[MesserSmashWeb.USER_ID] = Model.UserId;
                 psi.EnvironmentVariables[MesserSmashWeb.VERIFIED_LOGIN_SESSION] = Model.Token;
                 psi.EnvironmentVariables[MesserSmashWeb.GAME_VERSION] = Model.ClientVersion;
+                psi.EnvironmentVariables[MesserSmashWeb.SERVER_IP] = Model.ServerIp;
 
                 psi.UseShellExecute = false;
                 psi.WorkingDirectory = fi.Directory.FullName;

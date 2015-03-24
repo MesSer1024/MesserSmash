@@ -53,6 +53,7 @@ namespace SharedSmashResources {
         public const string GAME_VERSION_LATEST_URL = "file_url";
         public const string ENVIRONMENT_LAUNCHED_FROM_LAUNCHER = "messersmash_launched_from_launcher";
         public const string XNA_REDIST_URL = "xna_redist_url";
+        public const string SERVER_IP = "server_ip";
 
     }
 }
