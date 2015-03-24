@@ -13,7 +13,6 @@ namespace MesserSmash.Commands {
                 var cmd = new PlaySoundCommand(AssetManager.getWeaponReadySound());
                 cmd.Volume = 0.6f;
                 cmd.execute();
-                GUIMain.Instance.showWeaponRecharged();
         }
     }
 }

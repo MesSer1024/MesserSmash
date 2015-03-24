@@ -7,8 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 namespace MesserSmash.GUI {
     interface IScreen {
         void initialize();
+        void destroy();
+
         void update(float deltatime);
         void draw(SpriteBatch sb);
-        void destroy();
     }
 }

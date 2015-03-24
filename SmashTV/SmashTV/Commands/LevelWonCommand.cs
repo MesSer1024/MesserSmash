@@ -23,7 +23,7 @@ namespace MesserSmash.Commands {
         protected override void custExecute() {
             Level = SmashTVSystem.Instance.Arena.Level;
             ScoreOnLevel = (int)Scoring.getLevelScore();
-            Gui.showLevelWon(GameInstance.GlobalHighscores, true, Level, ScoreOnLevel);
+            //Gui.showLevelWon(GameInstance.GlobalHighscores, true, Level, ScoreOnLevel);
             //new RequestRoundHighscoresCommand(GameInstance.RoundId, GameInstance.GlobalHighscores, onRoundResponse).execute();
         }
 

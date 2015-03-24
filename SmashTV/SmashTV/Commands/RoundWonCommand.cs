@@ -10,7 +10,7 @@ using System.Threading;
 namespace MesserSmash.Commands {
     class RoundWonCommand : Command {
         public const string NAME = "RoundWonCommand";
-        private int ScoreOnLevel;
+        public int ScoreOnLevel;
         public SmashTVSystem GameInstance { get; set; }
         public GUI.GUIMain Gui { get; set; }
         
@@ -23,7 +23,7 @@ namespace MesserSmash.Commands {
         protected override void custExecute() {
             RoundId = SmashTVSystem.Instance.RoundId;
             ScoreOnLevel = (int)Scoring.getLevelScore();
-            Gui.showEntireRoundWon(GameInstance.GlobalHighscores, true, ScoreOnLevel);
+            //Gui.showEntireRoundWon(GameInstance.GlobalHighscores, true, ScoreOnLevel);
             //new RequestRoundHighscoresCommand(GameInstance.RoundId, GameInstance.GlobalHighscores, onRoundResponse).execute();
         }
 

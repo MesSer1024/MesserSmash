@@ -98,3 +98,13 @@ Messer8dev|0|0
 Messer8dev|0|0
 Messer8dev|770|35
 Messer8dev|1128|84
+Messer8dev|1440|80
+Messer8dev|3463|161
+Messer8dev|1181|27
+Messer8dev|1181|27
+Messer8dev|1181|27
+Messer8dev|267|19
+Messer8dev|256|32
+Messer8dev|1104|63
+Messer8dev|6318|425
+Messer8dev|2915|115

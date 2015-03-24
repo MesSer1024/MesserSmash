@@ -8,112 +8,43 @@ using Microsoft.Xna.Framework.Input;
 using MesserSmash.Commands;
 using MesserSmash.Modules;
 using SharedSmashResources;
+using SharedSmashResources.Patterns;
 
 namespace MesserSmash.GUI {
-    class GUIMain {
+    class GUIMain : IObserver {
         private const int MAX_HIGHSCORES_TO_SHOW = 8;
         public static GUIMain Instance { get; set; }
-        private Rectangle _background;
-        private Color _backgroundColor;
-        private Rectangle _portraitPosition;
-        private Healthbar _health;
-        private Healthbar _energy;
-
-        private FunnyText _killCounter;
-        private FunnyText _secondsLeftMiddlescreenCounter;
-        private bool _inGame;
-        private float _score;
-        private FunnyText _scoreField;
-        private float _eorTimer;
-        private FunnyText _recharge;
-        private float _timeRechargeShown;
-        private bool _loadingScreenVisible;
-
         private DebugGuiOverlay _debugGui;
-        private bool _entireRoundWon;
-        private bool _gameOver;
-        private HighscoreContainer _scoringProvider;
         private bool _popupVisible;
         private string _popupText;
         private Action _onPopupCallback;
-        private bool _gotScoreData;
-        private bool _levelWon;
-        private int _savedLevel;
-        private int _scoreOnLevel;
-        private FunnyText _killText;
-        private FunnyText _secondsLeft;
 
+        private GUIState _state;
 
         public GUIMain() {
             Instance = this;
             _debugGui = new DebugGuiOverlay(new Rectangle(Utils.calcResolutionScaledValue(60), Utils.calcResolutionScaledValue(60), Utils.calcResolutionScaledValue(1275), Utils.calcResolutionScaledValue(900)));
+            _state = new GUIState();
+            Controller.instance.addObserver(this);
             reset();
-        }
-
-        internal void reset() {
-            _inGame = false;
-            _loadingScreenVisible = false;
-            _popupVisible = false;
-            _onPopupCallback = null;
-            _gameOver = false;
-            _entireRoundWon = false;
-            _levelWon = false;
-            _timeRechargeShown = 100;
         }
 
         public void startLevel() {
             reset();
-            _inGame = true;
-            //width:443 height:89
-            //size of top 1033:89
-            _background = new Rectangle(Utils.calcResolutionScaledValue(443), Utils.calcResolutionScaledValue(0), Utils.calcResolutionScaledValue(1033), Utils.calcResolutionScaledValue(89));
-            _backgroundColor = new Color(14,14,14);
+            GUIState.Level = SmashTVSystem.Instance.Arena.Level;
+            GUIState.Background = new Rectangle(Utils.calcResolutionScaledValue(443), Utils.calcResolutionScaledValue(0), Utils.calcResolutionScaledValue(1033), Utils.calcResolutionScaledValue(89));
+            //GUIState.PortraitPosition = 
+            _state.changeState(GuiStates.InGame);
+        }
 
-            _killText = new FunnyText("Kills", new Rectangle(_background.Left + Utils.calcResolutionScaledValue(186), 0, Utils.calcResolutionScaledValue(80), Utils.calcResolutionScaledValue(35)));
-            _killText.TextScale = Utils.getResolutionScale();
-            _killText.TextColor = Color.WhiteSmoke;
-            _killText.Font = AssetManager.getGuiFont();
-
-            _secondsLeft = new FunnyText("Seconds", new Rectangle(_background.Right - 100, 0, 100, _background.Height));
-            _secondsLeft.HorizontalCenter = false;
-            _secondsLeft.TextScale = Utils.getResolutionScale();
-            _secondsLeft.TextColor = Color.WhiteSmoke;
-            _secondsLeft.Font = AssetManager.getGuiFont();
-
-            _killCounter = new FunnyText("", new Rectangle(_background.Left + Utils.calcResolutionScaledValue(186), Utils.calcResolutionScaledValue(35), Utils.calcResolutionScaledValue(80), Utils.calcResolutionScaledValue(35)));
-            _killCounter.TextScale = Utils.getResolutionScale();
-            _killCounter.TextColor = Color.WhiteSmoke;
-            _killCounter.Font = AssetManager.getGuiFont();
-
-            _portraitPosition = new Rectangle(_killCounter.Bounds.Right, 0, Utils.calcResolutionScaledValue(80), Utils.calcResolutionScaledValue(80));
-            var barWidth = 65;
-            var barHeight = 5;
-            _health = new Healthbar(new Rectangle(_portraitPosition.Right + 5, _portraitPosition.Center.Y - 23, barWidth, barHeight));
-            _energy = new Healthbar(new Rectangle(_portraitPosition.Right + 5, _health.Bounds.Bottom + 6, barWidth, barHeight));
-            _health._valueColor = Color.Yellow;
-            _energy._valueColor = Color.LightBlue;
-
-            //_boost = new ShortcutButton(new Rectangle(_playerHudBackground.Right + 20, _playerHudBackground.Bottom - 25, 40, 25));
-            //_btnLMB = new ShortcutButton(new Rectangle(_playerHudBackground.Right + 20, _playerHudBackground.Top + 5, 60, 30));
-            //_btnRMB = new ShortcutButton(new Rectangle(_btnLMB.Bounds.Right + 10, _playerHudBackground.Top + 5, 60, 30));
-            //_boost.setText("Run");
-            //_btnLMB.setText("Pistol");
-            //_btnRMB.setText("Rocket");
-            var h = Utils.calcResolutionScaledValue(88);
-            _scoreField = new FunnyText("0", new Rectangle { X = 0, Y = Utils.getGameHeight() - h, Width = Utils.calcResolutionScaledValue(1920), Height = h });
-            _scoreField.Font = AssetManager.getGuiFont();
-            _scoreField.TextScale = Utils.getResolutionScale();
-            _scoreField.TextColor = Color.WhiteSmoke;
-
-            var gameScreen = SmashTVSystem.Instance.Arena.Bounds;
-            _secondsLeftMiddlescreenCounter = new FunnyText("100", new Rectangle(gameScreen.Left, gameScreen.Top, gameScreen.Width, gameScreen.Height));
-            _secondsLeftMiddlescreenCounter.TextColor = Color.LightGoldenrodYellow;
-            _secondsLeftMiddlescreenCounter.Visible = false;
-            _secondsLeftMiddlescreenCounter.TextScale = 2.25f;
-            _savedLevel = SmashTVSystem.Instance.Arena.Level;
+        public void reset() {
+            _popupVisible = false;
+            _onPopupCallback = null;
         }
 
         public void update(float gametime) {
+            _state.update(gametime);
+
             if (_popupVisible) {
                 if (Utils.isNewKeyPress(Keys.Space)) {
                     _popupVisible = false;
@@ -121,49 +52,6 @@ namespace MesserSmash.GUI {
                         _onPopupCallback.Invoke();
                     }
                     return;
-                }
-            }
-
-            if (_loadingScreenVisible) {
-                if (!SmashTVSystem.Instance.WaitingForGameCredentials && Utils.isNewKeyPress(Keys.Space))
-                {
-                    performClientReady();
-                }
-            } else if (_inGame) {
-                //_boost.setMode(Utils.isKeyDown(Keys.LeftControl));
-                //_btnLMB.setMode(Utils.LmbPressed);
-                //_btnRMB.setMode(Utils.RmbPressed);
-                if (_recharge != null) {
-                    _timeRechargeShown += gametime;
-                    if (_timeRechargeShown >= 0.75f) {
-                        _recharge = null;
-                    }
-                }
-            } else if (_entireRoundWon) {
-                _eorTimer += gametime;
-                if (_eorTimer > 1.0f && !SmashTVSystem.Instance.WaitingForGameCredentials) {
-                    if (Utils.isNewKeyPress(Keys.Space))
-                    {
-                        showOkPopup("Game is finished, do something game creator, need gui!", null);
-                    }
-                }
-            } else if (_levelWon) {
-                _eorTimer += gametime;
-                if (_eorTimer > 1.0f && !SmashTVSystem.Instance.WaitingForGameCredentials) {
-                    if (Utils.isNewKeyPress(Keys.Space))
-                    {
-                        performClientReady();
-                    }
-                }
-            } else if (_gameOver) {
-                //player is dead
-                _eorTimer += gametime;
-                if (_eorTimer > 1.0f && !SmashTVSystem.Instance.WaitingForGameCredentials) {
-                    if (Utils.isNewKeyPress(Keys.R)) {
-                        new RestartGameCommand(1).execute();
-                    } else if (Utils.isNewKeyPress(Keys.Enter)) {
-                        new RestartGameCommand(_savedLevel).execute();
-                    }
                 }
             }
         }
@@ -176,18 +64,21 @@ namespace MesserSmash.GUI {
         }
 
         public void setPlayerHealth(float curr, float max) {
-            _health.Value = curr/max;
+            GUIState.Health.Value = curr/max;
         }
 
         public void setPlayerEnergy(float curr, float max) {
-            _energy.Value = curr/max;
+            GUIState.Energy.Value = curr / max;
         }
 
         public void setKillCount(int value) {
-            _killCounter.Text = value.ToString();
+            GUIState.KillCounter.Text = value.ToString();
         }
 
         public void draw(SpriteBatch sb) {
+            if(_state != null)
+                _state.draw(sb);
+
             if (_popupVisible) {
                 sb.Draw(AssetManager.getDefaultTexture(), Utils.getGameBounds(), Color.Black * 0.6f);
                 sb.Draw(AssetManager.getDefaultTexture(), new Rectangle(300, 200, 600, 400), Color.Black);
@@ -197,237 +88,37 @@ namespace MesserSmash.GUI {
                 text.Draw(sb);
             }
 
-            if (_loadingScreenVisible) {
-                sb.Draw(AssetManager.getControlsTexture(), new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight()), Color.White);
-
-                if (SmashTVSystem.Instance.WaitingForGameCredentials) {
-                    var text = new FunnyText(String.Format("Using Internet..."), new Rectangle { X = 0, Y = Utils.getGameHeight() - 100, Width = Utils.getGameWidth(), Height = 0 });
-                    text.HorizontalCenter = true;
-                    text.VerticalCenter = true;
-                    text.Draw(sb);
-                } else {
-                    var text = new FunnyText(String.Format("Press <space> to start Level{0}", SmashTVSystem.Instance.Arena.Level), new Rectangle { X = 0, Y = Utils.getGameHeight() - 100, Width = Utils.getGameWidth(), Height = 0 });
-                    text.HorizontalCenter = true;
-                    text.VerticalCenter = true;
-                    text.Draw(sb);
-                }
-                return;
-            }
-
-            //_debugGui.draw(sb);
-
-            if (_inGame) {
-                if (SmashTVSystem.Instance.Player == null)
-                    return;
-                var text = new FunnyText(String.Format("Level {0}", _savedLevel), new Rectangle { X = _portraitPosition.Right + Utils.calcResolutionScaledValue(117), Y = 0, Width = 600, Height = 50 });
-                text.HorizontalCenter = false;
-                text.Font = AssetManager.getGuiFont();
-                text.TextScale = 1.25f;
-                text.TextColor = Color.WhiteSmoke;
-                sb.Draw(AssetManager.getDefaultTexture(), _background, _backgroundColor);
-                sb.Draw(AssetManager.getPortraitTexture(), _portraitPosition, Color.White);
-                _secondsLeft.Draw(sb);
-                var r = new Rectangle(_health.Bounds.X, _health.Bounds.Y, _health.Bounds.Width, _health.Bounds.Height);
-                var pos = SmashTVSystem.Instance.Player.Position;
-                r.X = (int)(pos.X - _health.Bounds.Width/2);
-                r.Y = (int)(pos.Y - SmashTVSystem.Instance.Player.Radius - r.Height);
-                _health.Bounds = r;
-                _health.draw(sb);
-                r.Y += r.Height;
-                _energy.Bounds = r;
-                _energy.draw(sb);
-                _killText.Draw(sb);
-                _killCounter.Draw(sb);
-                _secondsLeftMiddlescreenCounter.Draw(sb);
-                _scoreField.Draw(sb);
-                text.Draw(sb);
-                if (_recharge != null) {
-                    _recharge.Draw(sb);
-                }
-            } else if (_entireRoundWon) {
-                var r = new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight());
-                sb.Draw(AssetManager.getDefaultTexture(), r, Color.Black);
-
-                if (SmashTVSystem.Instance.WaitingForGameCredentials) {
-                    var text = new FunnyText(String.Format("Using Internet..."), new Rectangle { X = 0, Y = Utils.getGameHeight() - 100, Width = Utils.getGameWidth(), Height = 0 });
-                    text.HorizontalCenter = true;
-                    text.VerticalCenter = true;
-                    text.Draw(sb);
-                } else {
-                    {
-                        var text = new FunnyText("All our base are belong to you (Victorious!!)", new Rectangle { X = 50, Y = 0, Width = Utils.getGameWidth(), Height = 75 });
-                        text.HorizontalCenter = false;
-                        text.Draw(sb);
-                    }
-                    {
-                        var text = new FunnyText(Utils.makeString("Your Score On Level: {0} RoundScore: {1}", formatScorePoints(_scoreOnLevel), formatScorePoints(_score)), new Rectangle { X = 50, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
-                        text.HorizontalCenter = false;
-                        text.Draw(sb);
-                    }
-
-                    var highscores = _scoringProvider.getMergedHighscoresOnRound(SmashTVSystem.Instance.RoundId);
-                    for (int i = 0; i < Math.Min(MAX_HIGHSCORES_TO_SHOW, highscores.Count); ++i) {
-                        var item = highscores[i];
-                        var prefix = item.IsLocalHighscore || item.IsVerified == false ? "*" : "";
-                        var foo = new FunnyText(String.Format("{3}{0} - {1} - {2}", item.UserName, item.Score, item.Kills, prefix), new Rectangle(100, 300 + 50 * i, Utils.getGameWidth(), 75));
-                        foo.HorizontalCenter = false;
-                        foo.Draw(sb);
-                    }
-                    {
-                        var text = new FunnyText(String.Format("Press <space> to do something", SmashTVSystem.Instance.Arena.Level), new Rectangle { X = 0, Y = Utils.getGameHeight() - 100, Width = Utils.getGameWidth(), Height = 0 });
-                        text.HorizontalCenter = true;
-                        text.VerticalCenter = true;
-                        text.Draw(sb);
-                    }
-                }
-            } else if (_levelWon) {
-                var r = new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight());
-                sb.Draw(AssetManager.getDefaultTexture(), r, Color.Black);
-
-                if (SmashTVSystem.Instance.WaitingForGameCredentials) {
-                    var text = new FunnyText(String.Format("Using Internet..."), new Rectangle { X = 0, Y = Utils.getGameHeight() - 100, Width = Utils.getGameWidth(), Height = 0 });
-                    text.HorizontalCenter = true;
-                    text.VerticalCenter = true;
-                    text.Draw(sb);
-                } else {
-                    {
-                        var text = new FunnyText("You completed this challenge", new Rectangle { X = 50, Y = 0, Width = Utils.getGameWidth(), Height = 75 });
-                        text.HorizontalCenter = false;
-                        text.Draw(sb);
-                    }
-                    {
-                        var text = new FunnyText(Utils.makeString("Your Score On Level {0}: {1} RoundScore: {2}", _savedLevel, formatScorePoints(_scoreOnLevel), formatScorePoints(_score)), new Rectangle { X = 50, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
-                        text.HorizontalCenter = false;
-                        text.Draw(sb);
-                    }
-
-                    var highscores = _scoringProvider.getHighscoresOnLevel((uint)_savedLevel);
-                    for (int i = 0; i < Math.Min(MAX_HIGHSCORES_TO_SHOW, highscores.Count); ++i) {
-                        var item = highscores[i];
-                        var prefix = item.IsLocalHighscore || item.IsVerified == false ? "*" : "";
-                        var foo = new FunnyText(String.Format("{3}{0} - {1} - {2}", item.UserName, item.Score, item.Kills, prefix), new Rectangle(100, 300 + 50 * i, Utils.getGameWidth(), 75));
-                        foo.HorizontalCenter = false;
-                        foo.Draw(sb);
-                    }
-                    {
-                        var text = new FunnyText(String.Format("Press <space> to start Level{0}", SmashTVSystem.Instance.Arena.Level), new Rectangle { X = 0, Y = Utils.getGameHeight() - 100, Width = Utils.getGameWidth(), Height = 0 });
-                        text.HorizontalCenter = true;
-                        text.VerticalCenter = true;
-                        text.Draw(sb);
-                    }
-                }
-
-            } else if (_gameOver) {
-                var r = new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight());
-                sb.Draw(AssetManager.getDefaultTexture(), r, Color.Black);
-
-                {
-                    var text = new FunnyText("GAME OVER!", new Rectangle { X = 50, Y = 0, Width = Utils.getGameWidth(), Height = 75 });
-                    text.HorizontalCenter = false;
-                    text.Draw(sb);
-                }
-                {
-                    var text = new FunnyText(Utils.makeString("Your Score On Level: {0} RoundScore: {1}", formatScorePoints(_scoreOnLevel), formatScorePoints(_score)), new Rectangle { X = 50, Y = 75, Width = Utils.getGameWidth(), Height = 75 });
-                    text.HorizontalCenter = false;
-                    text.Draw(sb);
-                }
-                {
-                    var text = new FunnyText(Utils.makeString("Press <enter> to retry level"), new Rectangle(50, 200, Utils.getGameWidth(), 75));
-                    text.HorizontalCenter = false;
-                    text.Draw(sb);
-                }
-                {
-                    var text = new FunnyText(Utils.makeString("Press <r> to restart game"), new Rectangle(50, 250, Utils.getGameWidth(), 75));
-                    text.HorizontalCenter = false;
-                    text.Draw(sb);
-                }
-
-                var highscores = _scoringProvider.getMergedHighscoresOnRound(SmashTVSystem.Instance.RoundId);
-                for (int i = 0; i < Math.Min(MAX_HIGHSCORES_TO_SHOW, highscores.Count); ++i) {
-                    var item = highscores[i];
-                    var prefix = item.IsLocalHighscore || item.IsVerified == false ? "*" : "";
-                    var foo = new FunnyText(String.Format("{3}{0} - {1} - {2}", item.UserName, item.Score, item.Kills, prefix), new Rectangle(100, 300 + 50 * i, Utils.getGameWidth(), 75));
-                    foo.HorizontalCenter = false;
-                    foo.Draw(sb);
-                }
-            }
-        }
-
-        private string formatScorePoints(float score, bool inGame = false) {
-            //var culture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
-            //var formattedNumber = string.Format(culture, "{000000000:n}", score);
-            return inGame ? score.ToString("000 000 000") : score.ToString("000");
         }
 
         public void setSecondsLeft(float time) {
             if (Utils.valueBetween(time, 0, 9)) {
                 //use countdown in middle of screen
-                _secondsLeftMiddlescreenCounter.Text = ((int)time).ToString();
-                _secondsLeftMiddlescreenCounter.Visible = true;
+                
+                GUIState.SecondsLeftMiddleScreenCounter.Text = ((int)time).ToString();
+                GUIState.SecondsLeftMiddleScreenCounter.Visible = true;
                 //scale : [1..3]    timespan :  [10..1]
                 var numeric = time/10;
-                _secondsLeftMiddlescreenCounter.TextScale = (1 - numeric) * 2 + 1;
+                GUIState.SecondsLeftMiddleScreenCounter.TextScale = (1 - numeric) * 2 + 1;
             } else {
-                _secondsLeftMiddlescreenCounter.Visible = false;
+                GUIState.SecondsLeftMiddleScreenCounter.Visible = false;
             }
 
-            _secondsLeft.Text = String.Format("Seconds: {0}", time > 0 ? (int)time : 0);
-        }
-
-        internal void showLevelWon(HighscoreContainer scoringProvider, bool gotScoreData, int level, int scoreOnLevel) {
-            _savedLevel = level; //needs this since it will be reset the 2nd time this function is called...
-            _scoringProvider = scoringProvider;
-            _scoreOnLevel = scoreOnLevel;
-            _inGame = false;
-            _loadingScreenVisible = false;
-            _gotScoreData = gotScoreData;
-            _levelWon = true;
-            _eorTimer = 0;
-        }
-
-        public void showGameOver(HighscoreContainer scoringProvider, bool gotScoreData, int scoreOnLevel) {
-            _scoreOnLevel = scoreOnLevel;
-            _savedLevel = SmashTVSystem.Instance.Arena.Level;
-            _scoringProvider = scoringProvider;
-            _inGame = false;
-            _loadingScreenVisible = false;
-            _gotScoreData = gotScoreData;
-            _gameOver = true;
-            _eorTimer = 0;
-        }
-
-        public void showEntireRoundWon(HighscoreContainer scoringProvider, bool gotScoreData, int scoreOnLevel) {
-            _scoreOnLevel = scoreOnLevel;
-            _savedLevel = SmashTVSystem.Instance.Arena.Level;
-            _scoringProvider = scoringProvider;
-            _inGame = false;
-            _loadingScreenVisible = false;
-            _gameOver = false;
-            _entireRoundWon = true;
-            _gotScoreData = gotScoreData;
-            _eorTimer = 0;
+            GUIState.SecondsLeft.Text = String.Format("Seconds: {0}", time > 0 ? (int)time : 0);
         }
 
         public void setScore(float newScore) {
-            _score = newScore;
-            _scoreField.Text = Utils.makeString("{0}", formatScorePoints(_score, true));
-        }
-
-        public void showWeaponRecharged() {
-            _recharge = new FunnyText("Weapon Recharged!", new Rectangle(0, 0, Utils.getGameWidth(), Utils.getGameHeight()));
-            _recharge.TextColor = Color.NavajoWhite;
-            _timeRechargeShown = 0;
+            GUIState.ScoreRound = (int)newScore;
+            GUIState.ScoreField.Text = Utils.makeString("{0}", Utils.formatScorePoints(GUIState.ScoreRound, true));
         }
 
         internal void showLoadingScreen() {
             Logger.info("showLoadingScreen");
-            _loadingScreenVisible = true;
+            _state.changeState(GuiStates.LoadingLevel);
         }
 
         internal void showOkPopup(string s, Action cb) {
             if (_popupVisible) {
                 Logger.error("Allready showing a popup, create a new solution for popups...");
-                //throw new Exception("Allready showing a popup, create a new solution for popups...");
             }
             _popupVisible = true;
             _popupText = s;
@@ -440,6 +131,41 @@ namespace MesserSmash.GUI {
 
         private void onShowNextReplay() {
             new RestartGameCommand(-10).execute();
+        }
+
+        public void handleCommand(ICommand cmd) {
+            switch (cmd.Name) {
+                case LevelWonCommand.NAME:
+                    onLevelWon(cmd as LevelWonCommand);
+                    break;
+                case RoundWonCommand.NAME:
+                    onRoundWon(cmd as RoundWonCommand);
+                    break;
+            }
+        }
+
+        private void onLevelWon(LevelWonCommand cmd) {
+            GUIState.Level = cmd.Level;
+            GUIState.ScoringProvider = cmd.GameInstance.GlobalHighscores;
+            GUIState.ScoreLevel = cmd.ScoreOnLevel;
+
+            _state.changeState(GuiStates.EndOfLevel);
+        }
+
+        private void onRoundWon(RoundWonCommand cmd) {
+            GUIState.Level = SmashTVSystem.Instance.Arena.Level;
+            GUIState.ScoreLevel = cmd.ScoreOnLevel;
+            GUIState.ScoringProvider = cmd.GameInstance.GlobalHighscores;
+
+            _state.changeState(GuiStates.EndOfRound);
+        }
+
+        public void showGameOver(HighscoreContainer scoringProvider, bool gotScoreData, int scoreOnLevel) {
+            GUIState.ScoreLevel = scoreOnLevel;
+            GUIState.Level = SmashTVSystem.Instance.Arena.Level;
+            GUIState.ScoringProvider = scoringProvider;
+
+            _state.changeState(GuiStates.GameOver);
         }
     }
 }

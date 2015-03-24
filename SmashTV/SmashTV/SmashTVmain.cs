@@ -80,33 +80,30 @@ namespace MesserSmash {
 			Utils.tick();
             InputMapping.loadLayout();
 
-			//Utils.initialize((int)DateTime.Now.Ticks);
-
-			//Controller.instance.addObserver(RestartGameCommand.NAME, onRestartGame);
 			Controller.instance.addObserver(this);
 			new ReloadDatabaseCommand().execute();
 
             _circleTexture = _content.Load<Texture2D>("circle 64x64");
             _rombTexture = _content.Load<Texture2D>("rectangle_64x64");
-			_defaultTexture = _content.Load<Texture2D>("default");
-			_defaultFont = _content.Load<SpriteFont>("Arial 12");
-			AssetManager._player = _content.Load<Texture2D>("player64x64");
-			AssetManager._shot = _circleTexture;
-			AssetManager._arena = _defaultTexture;
-			AssetManager._enemy = _circleTexture;
-			AssetManager._rangedEnemy = _rombTexture;
-			AssetManager._healthPack = _content.Load<Texture2D>("health_loot");
-			AssetManager._moneyBag = _content.Load<Texture2D>("money_loot");
-			AssetManager._rocketShot = _circleTexture;
-			AssetManager._default = _defaultTexture;
+            _defaultTexture = _content.Load<Texture2D>("default");
+            _defaultFont = _content.Load<SpriteFont>("Arial 12");
+            AssetManager._player = _content.Load<Texture2D>("player64x64");
+            AssetManager._shot = _circleTexture;
+            AssetManager._arena = _defaultTexture;
+            AssetManager._enemy = _circleTexture;
+            AssetManager._rangedEnemy = _rombTexture;
+            AssetManager._healthPack = _content.Load<Texture2D>("health_loot");
+            AssetManager._moneyBag = _content.Load<Texture2D>("money_loot");
+            AssetManager._rocketShot = _circleTexture;
+            AssetManager._default = _defaultTexture;
             AssetManager._controllerLayout = _content.Load<Texture2D>("smashTV_controls");
-			AssetManager._playerPortrait = _content.Load<Texture2D>("portrait");
-			AssetManager._defaultFont = _defaultFont;
-			AssetManager._bigGuiFont = _content.Load<SpriteFont>("BigGuiFont32");
+            AssetManager._playerPortrait = _content.Load<Texture2D>("portrait");
+            AssetManager._defaultFont = _defaultFont;
+            AssetManager._bigGuiFont = _content.Load<SpriteFont>("BigGuiFont32");
             AssetManager._guiFont = _content.Load<SpriteFont>("GuiFont");
-			AssetManager._bgSound = _content.Load<SoundEffect>("background_music");
-			AssetManager._failSound = _content.Load<SoundEffect>("fail");
-			AssetManager._weaponSound = _content.Load<SoundEffect>("weapon");
+            AssetManager._bgSound = _content.Load<SoundEffect>("background_music");
+            AssetManager._failSound = _content.Load<SoundEffect>("fail");
+            AssetManager._weaponSound = _content.Load<SoundEffect>("weapon");
             AssetManager._weaponReadySound = _content.Load<SoundEffect>("weapon_ready");
             AssetManager._enemyHitSound = _content.Load<SoundEffect>("enemy_hit");
             AssetManager._enemyShootSound = _content.Load<SoundEffect>("enemy_shot");
@@ -126,7 +123,6 @@ namespace MesserSmash {
 
 
 			InfoWindow._defaultFont = _defaultFont;
-			_smashTvSystem = new SmashTVSystem();
 			_currentLevel = 0;
 			new LoadConfigFileCommand().execute();
             Task.Factory.StartNew(() =>
@@ -222,13 +218,7 @@ namespace MesserSmash {
 
 		private void onConfigFileLoaded(ICommand cmd) {
 			var command = cmd as LoadConfigFileCommand;
-            SmashTVSystem.Instance.ServerIp = command.ServerIp;
-            SmashTVSystem.Instance.ReplayPath = command.ReplayPath;
-            SmashTVSystem.Instance.GameVersion = command.GameVersion;
-            SmashTVSystem.Instance.LoginResponseKey = "freeloader";
-            SmashTVSystem.Instance.SessionId = "";
-            SmashTVSystem.Instance.GameId = "";
-
+            
             command.GameWidth = Utils.clamp(command.GameWidth, 800, 2660);
             var multiplier = command.GameWidth / 1920f;
             Utils.setGameSize((int)(1920 * multiplier), (int)(1080 * multiplier));
@@ -237,6 +227,13 @@ namespace MesserSmash {
             _graphics.ApplyChanges();
             _game.IsMouseVisible = true;
 
+            _smashTvSystem = new SmashTVSystem();
+            SmashTVSystem.Instance.ServerIp = command.ServerIp;
+            SmashTVSystem.Instance.ReplayPath = command.ReplayPath;
+            SmashTVSystem.Instance.GameVersion = command.GameVersion;
+            SmashTVSystem.Instance.LoginResponseKey = "freeloader";
+            SmashTVSystem.Instance.SessionId = "";
+            SmashTVSystem.Instance.GameId = "";
 
             _hasUsername = command.HasUsername;
             if (_hasUsername) {
@@ -500,8 +497,10 @@ namespace MesserSmash {
 		}
 
 		public void draw(GameTime time) {
-            if (_crashed)
+            if (_crashed) {
+                GUIMain.Instance.draw(_spriteBatch);
                 return;
+            }
 			if (!_hasUsername) {
 				_screen.draw(_spriteBatch);
 				return;

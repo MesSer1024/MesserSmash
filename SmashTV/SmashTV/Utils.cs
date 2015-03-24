@@ -153,6 +153,18 @@ namespace MesserSmash {
             return v.ToString().ToUpper();
         }
 
+        public static string formatScorePoints(float score, bool inGame = false) {
+            //var culture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
+            //var formattedNumber = string.Format(culture, "{000000000:n}", score);
+            return inGame ? score.ToString("000 000 000") : score.ToString("000");
+        }
+
+        public static string formatScorePoints(int score, bool inGame = false) {
+            //var culture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
+            //var formattedNumber = string.Format(culture, "{000000000:n}", score);
+            return inGame ? score.ToString("000 000 000") : score.ToString("000");
+        }
+
         private static bool TryConvertKeyboardInput(Keys keys, bool shift, out char key) {
             switch (keys) {
                 //Alphabet keys
@@ -506,6 +518,7 @@ namespace MesserSmash {
             MBOPTIONS.Add("OK");
             string msg = e.ToString();
             Logger.error(msg);
+            GUI.GUIMain.Instance.showOkPopup(msg, null);
             //Guide.BeginShowMessageBox(
             //        "Exception during init()", msg.Substring(0, 255), MBOPTIONS, 0,
             //        MessageBoxIcon.Error, null, null);

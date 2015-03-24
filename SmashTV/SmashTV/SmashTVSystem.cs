@@ -18,9 +18,9 @@ using MesserSmash.AI;
 namespace MesserSmash {
 	public class SmashTVSystem : IObserver {
 		private static SmashTVSystem _instance;
-        public static SmashTVSystem Instance {
-            get { return _instance; }
-        }
+		public static SmashTVSystem Instance {
+			get { return _instance; }
+		}
 
 		private Arena _arena;
 
@@ -51,43 +51,43 @@ namespace MesserSmash {
 			get { return _gui; }
 		}
 
-        private HighscoreContainer _globalHighscores;
-        public HighscoreContainer GlobalHighscores {
-            get { return _globalHighscores; }
-        }
+		private HighscoreContainer _globalHighscores;
+		public HighscoreContainer GlobalHighscores {
+			get { return _globalHighscores; }
+		}
 
-        private Dictionary<int, int> _flaggedShotEnemyCollisions;
-        public static bool IsGameStarted { get { return Instance._gameStarted; } }
+		private Dictionary<int, int> _flaggedShotEnemyCollisions;
+		public static bool IsGameStarted { get { return Instance._gameStarted; } }
 
 		public SmashTVSystem() {
 			_instance = this;
-            Username = "";
-            GameId = "";
-            UserId = "";
-            ServerIp = "";
-            ReplayPath = "";
-            GameVersion = "";
-            LoginResponseKey = "";
-            SessionId = "";
+			Username = "";
+			GameId = "";
+			UserId = "";
+			ServerIp = "";
+			ReplayPath = "";
+			GameVersion = "";
+			LoginResponseKey = "";
+			SessionId = "";
 			Controller.instance.addObserver(this);
-            _globalHighscores = new HighscoreContainer();
+			_globalHighscores = new HighscoreContainer();
 		}
 
-        public uint RoundId { get; set; }
-        public bool WaitingForGameCredentials { get; set; }
-        public string Username { get; set; }
-        public string GameId { get; set; }
-        public string UserId { get; set; }
-        public string ServerIp { get; set; }
-        public string ReplayPath { get; set; }
-        public string GameVersion { get; set; }
-        public string LoginResponseKey { get; set; }
-        private string _sessionId;
-        public string SessionId {
-            get { return _sessionId; }
-            set { _sessionId = value; }
-        }
-        public int KillCount { get { return _killCount; } }
+		public uint RoundId { get; set; }
+		public bool WaitingForGameCredentials { get; set; }
+		public string Username { get; set; }
+		public string GameId { get; set; }
+		public string UserId { get; set; }
+		public string ServerIp { get; set; }
+		public string ReplayPath { get; set; }
+		public string GameVersion { get; set; }
+		public string LoginResponseKey { get; set; }
+		private string _sessionId;
+		public string SessionId {
+			get { return _sessionId; }
+			set { _sessionId = value; }
+		}
+		public int KillCount { get { return _killCount; } }
 
 		private int _killCount;
 		private bool _gameStarted = false;
@@ -97,49 +97,48 @@ namespace MesserSmash {
 		private int _behaviourDestructors;
 		private int _behaviourConstructors;
 		private int _enemyConstructors;
-        private bool _replay;
-        private System.Timers.Timer _timer;
-        //private AIManager _ai;
+		private bool _replay;
+		private System.Timers.Timer _timer;
+		//private AIManager _ai;
 
-        internal void resetStates() {
-            _gameStarted = false;
-            if (_timer != null) {
-                _timer.Stop();
-                _timer.Dispose();
-            }
-        }
+		internal void resetStates() {
+			_gameStarted = false;
+			if (_timer != null) {
+				_timer.Stop();
+				_timer.Dispose();
+			}
+		}
 
 		public void initLevel(Arena arena, Player player, ShotContainer shotContainer, EnemyContainer enemyContainer, bool replay, bool restartGame) {
-            _flaggedShotEnemyCollisions = new Dictionary<int, int>();
-            _replay = replay;
+			_flaggedShotEnemyCollisions = new Dictionary<int, int>();
+			_replay = replay;
 			_gameStarted = false;
 			_queuedCommands = new List<string>();
 			_arena = arena;
-            //_ai = new AIManager(enemyContainer, arena);
+			//_ai = new AIManager(enemyContainer, arena);
 			_player = player;
 			_shotContainer = shotContainer;
 			_enemyContainer = enemyContainer;
 			_energySystem = EnergySystem.Instance;
-            
+			
 			_arena.onArenaEnding += new Arena.ArenaDelegate(onArenaTimerZero);
-            if (restartGame) {
-                _gui.reset();
-                _gui.showLoadingScreen();
-            }
+			if (restartGame) {
+				_gui.showLoadingScreen();
+			}
 		}
 
 		public void startLoadedLevel() {
-            if (!_replay) {
-                onManualTimer(null, null);
-                _timer = new System.Timers.Timer();
-                _timer.Elapsed += new System.Timers.ElapsedEventHandler(onManualTimer);
-                _timer.Interval = 12500;
-                _timer.Start();
-            }
+			if (!_replay) {
+				onManualTimer(null, null);
+				_timer = new System.Timers.Timer();
+				_timer.Elapsed += new System.Timers.ElapsedEventHandler(onManualTimer);
+				_timer.Interval = 12500;
+				_timer.Start();
+			}
 
-            _shotContainer.clear();
-            _enemyContainer.clear();
-            _gui.startLevel();
+			_shotContainer.clear();
+			_enemyContainer.clear();
+			_gui.startLevel();
 			_gameStarted = true;
 			_gui.setScore(Scoring.getTotalScore());
 			_killCount = 0;
@@ -147,11 +146,11 @@ namespace MesserSmash {
 			_arena.begin();
 		}
 
-        void onManualTimer(object sender, System.Timers.ElapsedEventArgs e) {
-            ThreadWatcher.runBgThread(() => {
-                new RequestRoundHighscoresCommand(SmashTVSystem.Instance.RoundId, SmashTVSystem.Instance.GlobalHighscores, null).execute();
-            });
-        }
+		void onManualTimer(object sender, System.Timers.ElapsedEventArgs e) {
+			ThreadWatcher.runBgThread(() => {
+				new RequestRoundHighscoresCommand(SmashTVSystem.Instance.RoundId, SmashTVSystem.Instance.GlobalHighscores, null).execute();
+			});
+		}
 
 		void onEnemyAttackedPlayer(ICommand command) {
 			var cmd = command as AttackPlayerCommand;
@@ -167,37 +166,37 @@ namespace MesserSmash {
 			_gui.setScore(Scoring.getTotalScore());
 		}
 
-        void onArenaTimerZero(Arena arena) {
-            _enemyContainer.endGame();
-            _shotContainer.endGame();
-            _player.stateEndGame();
-            _energySystem.endGame();
-            Scoring.setKillsOnLevel(_killCount);
-        }
+		void onArenaTimerZero(Arena arena) {
+			_enemyContainer.endGame();
+			_shotContainer.endGame();
+			_player.stateEndGame();
+			_energySystem.endGame();
+			Scoring.setKillsOnLevel(_killCount);
+		}
 
-        public bool lastLevelInSet(int level, uint RoundId) {
-            if (Utils.anyEquals(level, 10,20,100))
-                return true;
-            return false;
-        }
+		public bool lastLevelInSet(int level, uint RoundId) {
+			if (Utils.anyEquals(level, 10,20,100))
+				return true;
+			return false;
+		}
 
-        public void unloadArena() {
-            _queuedCommands.Add("end_arena");
-        }
+		public void unloadArena() {
+			_queuedCommands.Add("end_arena");
+		}
 
 		void onPlayerDead(ICommand command) {
-            if (!_replay) {
-                new RequestRoundHighscoresCommand(RoundId, GlobalHighscores, onRequestRoundHighscoreGameLost).execute();
-                _gui.showGameOver(GlobalHighscores, false, (int)Scoring.getLevelScore());
-            }
-            _queuedCommands.Add("end_arena");
-        }
+			if (!_replay) {
+				new RequestRoundHighscoresCommand(RoundId, GlobalHighscores, onRequestRoundHighscoreGameLost).execute();
+				_gui.showGameOver(GlobalHighscores, false, (int)Scoring.getLevelScore());
+			}
+			_queuedCommands.Add("end_arena");
+		}
 
-        private void onRequestRoundHighscoreGameLost(RequestRoundHighscoresCommand cmd) {
-            if (!IsGameStarted) {
-                _gui.showGameOver(GlobalHighscores, true, (int)Scoring.getLevelScore());
-            }
-        }
+		private void onRequestRoundHighscoreGameLost(RequestRoundHighscoresCommand cmd) {
+			if (!IsGameStarted) {
+				_gui.showGameOver(GlobalHighscores, true, (int)Scoring.getLevelScore());
+			}
+		}
 
 		public void update(GameState state) {
 			if (_queuedCommands.Count > 0) { 
@@ -213,15 +212,15 @@ namespace MesserSmash {
 				_queuedCommands.Clear();
 			}
 			if (_gameStarted) {
-                //var state = new GameState(deltatime, _arena.TimeSinceStart);
+				//var state = new GameState(deltatime, _arena.TimeSinceStart);
 				DataDefines.ID_STATE_ENEMIES_ALIVE = SmashTVSystem.Instance.EnemyContainer.getAliveEnemies().Count;
 				DataDefines.ID_STATE_ENEMIES_KILLED = _killCount;
 				_energySystem.update(state.DeltaTime);
-                _enemyContainer.update(state.DeltaTime); //let all enemies decide where they want to move
-                _shotContainer.update(state.DeltaTime);
-                //_ai.update(state);
-                _arena.update(state);
-                _player.update(state.DeltaTime);
+				_enemyContainer.update(state.DeltaTime); //let all enemies decide where they want to move
+				_shotContainer.update(state.DeltaTime);
+				//_ai.update(state);
+				_arena.update(state);
+				_player.update(state.DeltaTime);
 
 				//check for collisions between shots and enemies
 				collisionDetection();
@@ -233,11 +232,11 @@ namespace MesserSmash {
 				detectLootPickup();
 
 				_updateGUIValues();
-                _gui.update(state.DeltaTime);
+				_gui.update(state.DeltaTime);
 			} else {
 				//not started or game over
 				if (_gui != null) {
-                    _gui.update(state.DeltaTime);
+					_gui.update(state.DeltaTime);
 				}
 			}
 		}
@@ -248,7 +247,7 @@ namespace MesserSmash {
 				Vector2 lootPos = loot.Position;
 				float lootRadius = loot.Radius;
 				if (isOverlapping(lootPos, _player.Position, lootRadius, _player.Radius)) {
-                    new PlaySoundCommand(AssetManager.getMoneyPickupSound()).execute();
+					new PlaySoundCommand(AssetManager.getMoneyPickupSound()).execute();
 					loot.inactivate();
 					Scoring.onLoot(loot);
 					if (loot.Type == Arenas.Arena.LootType.Health) {
@@ -265,14 +264,14 @@ namespace MesserSmash {
 			InfoWindow._health = _player.Health.ToString();
 			InfoWindow._enemyDestructors = _enemyConstructors.ToString() + ":" + _enemyDestructors.ToString();
 			InfoWindow._behaviourDestructors = _behaviourConstructors.ToString() + ":" + _behaviourDestructors.ToString();
-            InfoWindow._randomStatus = Utils.makeString("Randomizer: {0}", MesserRandom.getStatus());
+			InfoWindow._randomStatus = Utils.makeString("Randomizer: {0}", MesserRandom.getStatus());
 			_gui.setPlayerEnergy(_energySystem.AvailableEnergy, _energySystem.MaxEnergy);
 			_gui.setPlayerHealth(_player.Health, 100);
 			_gui.setSecondsLeft(_arena.SecondsToFinish);
 		}
 
 		private void collisionDetection() {
-            _flaggedShotEnemyCollisions.Clear();
+			_flaggedShotEnemyCollisions.Clear();
 			detectCollisionBetweenShotsAndEnemies();
 			detectCollisionBetweenEnemyShotsAndPlayer();
 
@@ -287,52 +286,52 @@ namespace MesserSmash {
 				float shotRadius = shot.Radius;
 				foreach (IEnemy enemy in activeEnemies) {
 					if (enemy.IsAlive) {
-                        if (reachedHitLimit(shot, enemy)) {
-                            continue;
-                        }
+						if (reachedHitLimit(shot, enemy)) {
+							continue;
+						}
 						if (isOverlapping(shotPos, enemy.Position, shotRadius, enemy.Radius)) {
 							enemy.takeDamage(shot.Damage);
 							shot.entityCollision(enemy.Position);
-                            Logger.spam("Collision between {0} and {1}", shot, enemy);
-                            if (shot.CollisionEnabled == false) {
-                                //new PlaySoundCommand(AssetManager.getEnemyHitSound()).execute();
-                                break;
-                            } else {
-                                addHitDetectionBetween(shot, enemy);
-                            }
+							Logger.spam("Collision between {0} and {1}", shot, enemy);
+							if (shot.CollisionEnabled == false) {
+								//new PlaySoundCommand(AssetManager.getEnemyHitSound()).execute();
+								break;
+							} else {
+								addHitDetectionBetween(shot, enemy);
+							}
 						}
 					}
 				}
 			}            
 		}
 
-        private int generateKeyFrom(ShotBase shot, IEnemy enemy) {
-            var value = shot.Identifier << 16 | enemy.Identifier;
-            //Revert keys
-            //var enemyId = value & UInt16.MaxValue;
-            //var shotId = value >> 16;
-            //--
-            return value;
-        }
+		private int generateKeyFrom(ShotBase shot, IEnemy enemy) {
+			var value = shot.Identifier << 16 | enemy.Identifier;
+			//Revert keys
+			//var enemyId = value & UInt16.MaxValue;
+			//var shotId = value >> 16;
+			//--
+			return value;
+		}
 
 
 
-        private bool reachedHitLimit(ShotBase shot, IEnemy enemy) {
-            var value = generateKeyFrom(shot, enemy);
-            if (_flaggedShotEnemyCollisions.ContainsKey(value) && _flaggedShotEnemyCollisions[value] >= 5) {
-                return true;
-            }
-            return false;
-        }
+		private bool reachedHitLimit(ShotBase shot, IEnemy enemy) {
+			var value = generateKeyFrom(shot, enemy);
+			if (_flaggedShotEnemyCollisions.ContainsKey(value) && _flaggedShotEnemyCollisions[value] >= 5) {
+				return true;
+			}
+			return false;
+		}
 
-        private void addHitDetectionBetween(ShotBase shot, IEnemy enemy) {
-            var value = generateKeyFrom(shot, enemy);
-            if (!_flaggedShotEnemyCollisions.ContainsKey(value)) {
-                _flaggedShotEnemyCollisions.Add(value, 1);
-            } else {
-                _flaggedShotEnemyCollisions[value] += 1;
-            }
-        }
+		private void addHitDetectionBetween(ShotBase shot, IEnemy enemy) {
+			var value = generateKeyFrom(shot, enemy);
+			if (!_flaggedShotEnemyCollisions.ContainsKey(value)) {
+				_flaggedShotEnemyCollisions.Add(value, 1);
+			} else {
+				_flaggedShotEnemyCollisions[value] += 1;
+			}
+		}
 
 		private void detectCollisionBetweenEnemyShotsAndPlayer() {
 			List<ShotBase> enemyShots = _shotContainer.enemyShotsFlaggedForCollision();
@@ -343,7 +342,7 @@ namespace MesserSmash {
 				if (isOverlapping(shotPos, Player.Position, shotRadius, Player.Radius)) {
 					Player.takeDamage(shot.Damage);
 					shot.entityCollision(Player.Position);
-                    new PlaySoundCommand(AssetManager.getPlayerHitSound()).execute();
+					new PlaySoundCommand(AssetManager.getPlayerHitSound()).execute();
 				}
 			}               
 		}
@@ -421,12 +420,12 @@ namespace MesserSmash {
 			}
 		}
 
-        internal void saveData() {
-            Scoring.setKillsOnLevel(_killCount);
-        }
+		internal void saveData() {
+			Scoring.setKillsOnLevel(_killCount);
+		}
 
-        internal void showPopup(string s) {
-            _gui.showOkPopup(s, null);
-        }
-    }
+		internal void showPopup(string s) {
+			_gui.showOkPopup(s, null);
+		}
+	}
 }

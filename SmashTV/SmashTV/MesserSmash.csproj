@@ -137,6 +137,7 @@
     <Compile Include="Arenas\LevelBuilder.cs" />
     <Compile Include="Commands\ClientReadyCommand.cs" />
     <Compile Include="Commands\BeginReplayQueueCommand.cs" />
+    <Compile Include="Commands\IniitializeAssetsCommand.cs" />
     <Compile Include="Commands\LevelWonCommand.cs" />
     <Compile Include="Commands\RemoteLevelCommand.cs" />
     <Compile Include="Commands\UpdateHighscoresCommand.cs" />
@@ -168,6 +169,13 @@
     <Compile Include="Commands\SpawnWaveCommand.cs" />
     <Compile Include="Commands\RestartGameCommand.cs" />
     <Compile Include="Commands\UpdateGameCredentialsCommand.cs" />
+    <Compile Include="GUI\GUIState.cs" />
+    <Compile Include="GUI\screens\EndOfLevelScreen.cs" />
+    <Compile Include="GUI\screens\EndOfRoundScreen.cs" />
+    <Compile Include="GUI\screens\FrontendScreen.cs" />
+    <Compile Include="GUI\screens\GameOverScreen.cs" />
+    <Compile Include="GUI\screens\LoadingScreen.cs" />
+    <Compile Include="GUI\screens\PlayingScreen.cs" />
     <Compile Include="Modules\Controller.cs" />
     <Compile Include="Arenas\DefaultLevels\Level10.cs" />
     <Compile Include="Modules\InputMapping.cs" />
@@ -181,7 +189,7 @@
     <Compile Include="GUI\FunnyText.cs" />
     <Compile Include="GUI\InGameView.cs" />
     <Compile Include="Commands\RegisterHighscoreCommand.cs" />
-    <Compile Include="GUI\IScreen.cs" />
+    <Compile Include="GUI\screens\IScreen.cs" />
     <Compile Include="GUI\NewUserScreen.cs" />
     <Compile Include="Modules\LevelScore.cs" />
     <Compile Include="Modules\Loot.cs" />

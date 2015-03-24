@@ -11,16 +11,13 @@ namespace MesserSmash.Modules {
         
         public void init() {
             Controller.instance.addObserver(this);
-            //EventDispatcher
-            //Controller.instance.addObserver(LevelStartedCommand.NAME, onLevelStarted);
-            //Controller.instance.addObserver(PlaySoundCommand.NAME, onPlaySound);
         }
 
         private void onLevelStarted(ICommand cmd) {
             var command = cmd as LevelStartedCommand;
             if (DataDefines.ID_SETTINGS_PLAY_MUSIC != 0 && _music == null) {
                 _music = AssetManager.getBackgroundMusic().CreateInstance();
-                _music.Volume = 0.45f;
+                _music.Volume = 0.35f;
                 _music.IsLooped = true;
                 _music.Play();
             }
